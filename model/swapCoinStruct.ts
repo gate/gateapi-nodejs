@@ -31,7 +31,7 @@ export class SwapCoinStruct {
      */
     'type'?: number;
     /**
-     * 子类型
+     * SubType
      */
     'subtype'?: string;
     /**
@@ -47,7 +47,7 @@ export class SwapCoinStruct {
      */
     'exchangeAmount'?: string;
     /**
-     * 更新时间戳
+     * UpdateTimestamp
      */
     'updateStamp'?: number;
     /**

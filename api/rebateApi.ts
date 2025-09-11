@@ -113,6 +113,7 @@ export class RebateApi {
      * @summary Broker obtains rebate history of recommended users
      * @param opts Optional parameters
      * @param opts.currency Specify the currency. If not specified, returns all currencies
+     * @param opts.commissionType Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate
      * @param opts.userId User ID. If not specified, all user records will be returned
      * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
      * @param opts.to End timestamp for the query, defaults to current time if not specified
@@ -121,6 +122,7 @@ export class RebateApi {
      */
     public async agencyCommissionsHistory(opts: {
         currency?: string;
+        commissionType?: number;
         userId?: number;
         from?: number;
         to?: number;
@@ -141,6 +143,10 @@ export class RebateApi {
         opts = opts || {};
         if (opts.currency !== undefined) {
             localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        if (opts.commissionType !== undefined) {
+            localVarQueryParameters['commission_type'] = ObjectSerializer.serialize(opts.commissionType, 'number');
         }
 
         if (opts.userId !== undefined) {

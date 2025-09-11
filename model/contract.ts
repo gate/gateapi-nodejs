@@ -158,13 +158,21 @@ export class Contract {
      */
     'fundingCapRatio'?: string;
     /**
-     * Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted)
+     * Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted), circuit_breaker (circuit breaker)
      */
     'status'?: string;
     /**
      * Contract expiry timestamp
      */
     'launchTime'?: number;
+    /**
+     * Timestamp when contract enters reduce-only state
+     */
+    'delistingTime'?: number;
+    /**
+     * Contract delisting time
+     */
+    'delistedTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -357,6 +365,16 @@ export class Contract {
         {
             name: 'launchTime',
             baseName: 'launch_time',
+            type: 'number',
+        },
+        {
+            name: 'delistingTime',
+            baseName: 'delisting_time',
+            type: 'number',
+        },
+        {
+            name: 'delistedTime',
+            baseName: 'delisted_time',
             type: 'number',
         },
     ];

@@ -144,6 +144,10 @@ export class Position {
      * Average maintenance margin rate
      */
     'averageMaintenanceRate'?: string;
+    /**
+     * Sub-account position ID
+     */
+    'pid'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -312,6 +316,11 @@ export class Position {
             name: 'averageMaintenanceRate',
             baseName: 'average_maintenance_rate',
             type: 'string',
+        },
+        {
+            name: 'pid',
+            baseName: 'pid',
+            type: 'number',
         },
     ];
 

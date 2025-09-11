@@ -4,6 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**coin** | **string** | Currency | [optional] [default to undefined]
-**cointype** | **string** | Token Type: swap-Voucher, lock-Locked | [optional] [default to undefined]
+**cointype** | **string** | Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. | [optional] [default to undefined]
 

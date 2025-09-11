@@ -21,7 +21,7 @@ export class MultiLoanRepayItem {
     /**
      * Repayment method, set to true for full repayment, false for partial repayment
      */
-    'repaidAll'?: boolean;
+    'repaidAll': boolean;
 
     static discriminator: string | undefined = undefined;
 

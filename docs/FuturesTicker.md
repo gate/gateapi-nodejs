@@ -25,4 +25,9 @@ Name | Type | Description | Notes
 **lowestSize** | **string** | The latest seller\&#39;s lowest price order quantity | [optional] [default to undefined]
 **highestBid** | **string** | Recent highest bid | [optional] [default to undefined]
 **highestSize** | **string** | The latest buyer\&#39;s highest price order volume | [optional] [default to undefined]
+**changeUtc0** | **string** | Percentage change at utc0. Negative values indicate a drop, e.g., -7.45% | [optional] [default to undefined]
+**changeUtc8** | **string** | Percentage change at utc8. Negative values indicate a drop, e.g., -7.45% | [optional] [default to undefined]
+**changePrice** | **string** | 24h change amount. Negative values indicate a drop, e.g., -7.45 | [optional] [default to undefined]
+**changeUtc0Price** | **string** | Change amount at utc0. Negative values indicate a drop, e.g., -7.45 | [optional] [default to undefined]
+**changeUtc8Price** | **string** | Change amount at utc8. Negative values indicate a drop, e.g., -7.45 | [optional] [default to undefined]
 

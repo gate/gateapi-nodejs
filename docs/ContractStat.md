@@ -17,4 +17,5 @@ Name | Type | Description | Notes
 **openInterestUsd** | **number** | Total open interest volume (quote currency) | [optional] [default to undefined]
 **topLsrAccount** | **number** | Top trader long/short account ratio | [optional] [default to undefined]
 **topLsrSize** | **number** | Top trader long/short position ratio | [optional] [default to undefined]
+**markPrice** | **number** | Mark price | [optional] [default to undefined]
 

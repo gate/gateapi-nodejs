@@ -22,6 +22,10 @@ export class FuturesOrderAmendment {
      * Custom info during order amendment
      */
     'amendText'?: string;
+    /**
+     * Internal users can modify information in the text field.
+     */
+    'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -39,6 +43,11 @@ export class FuturesOrderAmendment {
         {
             name: 'amendText',
             baseName: 'amend_text',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
     ];

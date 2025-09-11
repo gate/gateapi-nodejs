@@ -277,7 +277,8 @@ const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   'limit': 100, // number | Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'interval': '5m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Interval time between data points. Note that `1w` means natural week(Mon-Sun), while `7d` means every 7d since unix 0. 30d represents a natural month, not 30 days
+  'interval': '5m', // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Interval time between data points. Note that `1w` means natural week(Mon-Sun), while `7d` means every 7d since unix 0. 30d represents a natural month, not 30 days
+  'timezone': 'utc0' // string | Time zone: all/utc0/utc8, default utc0
 };
 api.listFuturesCandlesticks(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -295,6 +296,7 @@ Name | Type | Description  | Notes
  **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional] [default to undefined]
  **limit** | **number**| Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **interval** | **Interval**| Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days | [optional] [default to &#39;5m&#39;]
+ **timezone** | **string**| Time zone: all/utc0/utc8, default utc0 | [optional] [default to &#39;utc0&#39;]
 
 ### Return type
 
@@ -605,7 +607,7 @@ No authorization required
 
 Query liquidation order history
 
-The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for detailsThe time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for interfaces, refer to field descriptions for details
+The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for details
 
 ### Example
 
@@ -658,7 +660,7 @@ No authorization required
 
 Query risk limit tiers
 
-When the \&#39;contract\&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets.\&#39;Limit\&#39; and \&#39;offset\&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect empty.
+When the \&#39;contract\&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets. \&#39;Limit\&#39; and \&#39;offset\&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the contract parameter is empty.
 
 ### Example
 
@@ -772,7 +774,7 @@ const opts = {
   'offset': 0, // number | List offset, starting from 0
   'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
   'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-  'type': "dnw" // string | Changing Type：  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
+  'type': "dnw" // string | Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction
 };
 api.listFuturesAccountBook(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -790,7 +792,7 @@ Name | Type | Description  | Notes
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
  **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
- **type** | **string**| Changing Type：  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction | [optional] [default to undefined]
+ **type** | **string**| Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction | [optional] [default to undefined]
 
 ### Return type
 
@@ -969,7 +971,8 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const leverage = "10"; // string | New position leverage
 const opts = {
-  'crossLeverageLimit': "10" // string | Cross margin leverage (valid only when `leverage` is 0)
+  'crossLeverageLimit': "10", // string | Cross margin leverage (valid only when `leverage` is 0)
+  'pid': 1 // number | Product ID
 };
 api.updatePositionLeverage(settle, contract, leverage, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -985,6 +988,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract | [default to undefined]
  **leverage** | **string**| New position leverage | [default to undefined]
  **crossLeverageLimit** | **string**| Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | [optional] [default to undefined]
+ **pid** | **number**| Product ID | [optional] [default to undefined]
 
 ### Return type
 
@@ -1400,7 +1404,7 @@ const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'lastId': "12345" // string | Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+  'lastId': "12345" // string | Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
 };
 api.listFuturesOrders(settle, status, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1417,7 +1421,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **lastId** | **string**| Specify the currency name to query in batches, and support up to 100 pass parameters at a time | [optional] [default to undefined]
+ **lastId** | **string**| Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used | [optional] [default to undefined]
 
 ### Return type
 
@@ -1506,7 +1510,9 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'xGateExptime': "1689560679123", // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
-  'side': "ask" // string | Specify all buy orders or all sell orders, both are included if not specified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell orders
+  'side': "ask", // string | Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
+  'excludeReduceOnly': false, // boolean | Whether to exclude reduce-only orders
+  'text': "cancel by user" // string | Remark for order cancellation
 };
 api.cancelFuturesOrders(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1521,7 +1527,9 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
- **side** | **string**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell orders | [optional] [default to undefined]
+ **side** | **string**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders | [optional] [default to undefined]
+ **excludeReduceOnly** | **boolean**| Whether to exclude reduce-only orders | [optional] [default to undefined]
+ **text** | **string**| Remark for order cancellation | [optional] [default to undefined]
 
 ### Return type
 

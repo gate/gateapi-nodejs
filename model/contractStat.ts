@@ -62,6 +62,10 @@ export class ContractStat {
      * Top trader long/short position ratio
      */
     'topLsrSize'?: number;
+    /**
+     * Mark price
+     */
+    'markPrice'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -129,6 +133,11 @@ export class ContractStat {
         {
             name: 'topLsrSize',
             baseName: 'top_lsr_size',
+            type: 'number',
+        },
+        {
+            name: 'markPrice',
+            baseName: 'mark_price',
             type: 'number',
         },
     ];

@@ -45,6 +45,10 @@ export class FuturesAccount {
      */
     'inDualMode'?: boolean;
     /**
+     * Position mode: single - one-way, dual - dual-side, split - sub-positions (in_dual_mode is deprecated)
+     */
+    'positionMode'?: string;
+    /**
      * Whether portfolio margin account mode is enabled
      */
     'enableCredit'?: boolean;
@@ -156,6 +160,11 @@ export class FuturesAccount {
             name: 'inDualMode',
             baseName: 'in_dual_mode',
             type: 'boolean',
+        },
+        {
+            name: 'positionMode',
+            baseName: 'position_mode',
+            type: 'string',
         },
         {
             name: 'enableCredit',

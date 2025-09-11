@@ -362,7 +362,7 @@ export class EarnApi {
      * @summary Staking coins
      * @param findCoin
      */
-    public async findCoin(findCoin: FindCoin): Promise<{ response: AxiosResponse; body: Array<string> }> {
+    public async findCoin(findCoin: FindCoin): Promise<{ response: AxiosResponse; body: object }> {
         const localVarPath = this.client.basePath + '/earn/staking/coins';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -388,7 +388,7 @@ export class EarnApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<string>>(config, 'Array<string>', authSettings);
+        return this.client.request<object>(config, 'object', authSettings);
     }
 
     /**

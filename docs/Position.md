@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **openTime** | **number** | First Open Time | [optional] [default to undefined]
 **riskLimitTable** | **string** | Risk limit table ID | [optional] [readonly] [default to undefined]
 **averageMaintenanceRate** | **string** | Average maintenance margin rate | [optional] [readonly] [default to undefined]
+**pid** | **number** | Sub-account position ID | [optional] [readonly] [default to undefined]
 
 ## Enum: Position.Mode
 

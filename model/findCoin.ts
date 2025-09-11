@@ -11,22 +11,13 @@
 
 export class FindCoin {
     /**
-     * Currency
-     */
-    'coin'?: string;
-    /**
-     * Token Type: swap-Voucher, lock-Locked
+     * Currency type: swap - voucher; lock - locked position; debt - US Treasury bond.
      */
     'cointype'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'coin',
-            baseName: 'coin',
-            type: 'string',
-        },
         {
             name: 'cointype',
             baseName: 'cointype',

@@ -191,7 +191,7 @@ const settle = "usdt"; // 'usdt' | Settle currency
 const contract = "BTC_USDT_20200814"; // string | Futures contract
 const opts = {
   'limit': 100, // number | Maximum number of records returned in a single list
-  'lastId': "12345", // string | 以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 `from` 和 `to` 字段来限定时间范围
+  'lastId': "12345", // string | Use the ID of the last record in the previous list as the starting point for the next list.This field is no longer supported. For new requests, please use the fromand tofields to specify the time rang
   'from': 1546905600, // number | Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
   'to': 1546935600 // number | Specify end time in Unix seconds, default to current time.
 };
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
- **lastId** | **string**| 以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 &#x60;from&#x60; 和 &#x60;to&#x60; 字段来限定时间范围 | [optional] [default to undefined]
+ **lastId** | **string**| Use the ID of the last record in the previous list as the starting point for the next list.This field is no longer supported. For new requests, please use the fromand tofields to specify the time rang | [optional] [default to undefined]
  **from** | **number**| Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.  | [optional] [default to undefined]
  **to** | **number**| Specify end time in Unix seconds, default to current time. | [optional] [default to undefined]
 
@@ -248,7 +248,7 @@ const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   'limit': 100, // number | Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'interval': '5m' // '10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d' | Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeTime interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time
+  'interval': '5m' // '10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d' | Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial time
 };
 api.listDeliveryCandlesticks(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional] [default to undefined]
  **limit** | **number**| Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
- **interval** | **Interval**| Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeTime interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time | [optional] [default to &#39;5m&#39;]
+ **interval** | **Interval**| Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial time | [optional] [default to &#39;5m&#39;]
 
 ### Return type
 
@@ -435,7 +435,7 @@ const opts = {
   'limit': 100, // number | Maximum number of records returned in a single list
   'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
   'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-  'type': "dnw" // 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr' | Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+  'type': "dnw" // 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr' | Change types: - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates
 };
 api.listDeliveryAccountBook(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -451,7 +451,7 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
  **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
- **type** | **Type**| Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate | [optional] [default to undefined]
+ **type** | **Type**| Change types: - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates | [optional] [default to undefined]
 
 ### Return type
 
@@ -720,7 +720,7 @@ const opts = {
   'contract': "BTC_USDT_20200814", // string | Futures contract
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'lastId': "12345", // string | Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+  'lastId': "12345", // string | Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
   'countTotal': 0 // 0 | 1 | Whether to return total number matched, defaults to 0 (no return)
 };
 api.listDeliveryOrders(settle, status, opts)
@@ -738,7 +738,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **lastId** | **string**| Specify the currency name to query in batches, and support up to 100 pass parameters at a time | [optional] [default to undefined]
+ **lastId** | **string**| Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used | [optional] [default to undefined]
  **countTotal** | **CountTotal**| Whether to return total number matched, defaults to 0 (no return) | [optional] [default to 0]
 
 ### Return type
@@ -967,7 +967,7 @@ const opts = {
   'order': 12345, // number | Futures order ID, return related data only if specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'lastId': "12345", // string | Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+  'lastId': "12345", // string | Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
   'countTotal': 0 // 0 | 1 | Whether to return total number matched, defaults to 0 (no return)
 };
 api.getMyDeliveryTrades(settle, opts)
@@ -985,7 +985,7 @@ Name | Type | Description  | Notes
  **order** | **number**| Futures order ID, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **lastId** | **string**| Specify the currency name to query in batches, and support up to 100 pass parameters at a time | [optional] [default to undefined]
+ **lastId** | **string**| Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used | [optional] [default to undefined]
  **countTotal** | **CountTotal**| Whether to return total number matched, defaults to 0 (no return) | [optional] [default to 0]
 
 ### Return type
@@ -1158,7 +1158,7 @@ Promise<{ response: AxiosResponse; body: Array<DeliverySettlement>; }> [Delivery
 
 Query risk limit tiers
 
-When the \&#39;contract\&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets.\&#39;Limit\&#39; and \&#39;offset\&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect empty.
+When the \&#39;contract\&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets. \&#39;Limit\&#39; and \&#39;offset\&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the contract parameter is empty.
 
 ### Example
 

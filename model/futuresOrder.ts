@@ -26,6 +26,10 @@ export class FuturesOrder {
      */
     'createTime'?: number;
     /**
+     * OrderUpdateTime
+     */
+    'updateTime'?: number;
+    /**
      * Order finished time. Not returned if order is open
      */
     'finishTime'?: number;
@@ -117,6 +121,14 @@ export class FuturesOrder {
      * The custom data that the user remarked when amending the order
      */
     'amendText'?: string;
+    /**
+     * Counterparty user\'s VIP level for limit order fills. Current order will only match with orders whose VIP level is less than or equal to the specified level. Only 11~16 are supported; default is 0
+     */
+    'limitVip'?: number;
+    /**
+     * Position ID
+     */
+    'pid'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -134,6 +146,11 @@ export class FuturesOrder {
         {
             name: 'createTime',
             baseName: 'create_time',
+            type: 'number',
+        },
+        {
+            name: 'updateTime',
+            baseName: 'update_time',
             type: 'number',
         },
         {
@@ -250,6 +267,16 @@ export class FuturesOrder {
             name: 'amendText',
             baseName: 'amend_text',
             type: 'string',
+        },
+        {
+            name: 'limitVip',
+            baseName: 'limit_vip',
+            type: 'number',
+        },
+        {
+            name: 'pid',
+            baseName: 'pid',
+            type: 'number',
         },
     ];
 

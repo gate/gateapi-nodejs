@@ -382,7 +382,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 ## findCoin
 
-> Promise<{ response: http.IncomingMessage; body: Array<string>; }> findCoin(findCoin)
+> Promise<{ response: http.IncomingMessage; body: object; }> findCoin(findCoin)
 
 Staking coins
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<string>; }> [string](string.md)
+Promise<{ response: AxiosResponse; body: object; }> [object](object.md)
 
 ### Authorization
 

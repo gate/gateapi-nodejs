@@ -94,6 +94,26 @@ export class FuturesTicker {
      * The latest buyer\'s highest price order volume
      */
     'highestSize'?: string;
+    /**
+     * Percentage change at utc0. Negative values indicate a drop, e.g., -7.45%
+     */
+    'changeUtc0'?: string;
+    /**
+     * Percentage change at utc8. Negative values indicate a drop, e.g., -7.45%
+     */
+    'changeUtc8'?: string;
+    /**
+     * 24h change amount. Negative values indicate a drop, e.g., -7.45
+     */
+    'changePrice'?: string;
+    /**
+     * Change amount at utc0. Negative values indicate a drop, e.g., -7.45
+     */
+    'changeUtc0Price'?: string;
+    /**
+     * Change amount at utc8. Negative values indicate a drop, e.g., -7.45
+     */
+    'changeUtc8Price'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -201,6 +221,31 @@ export class FuturesTicker {
         {
             name: 'highestSize',
             baseName: 'highest_size',
+            type: 'string',
+        },
+        {
+            name: 'changeUtc0',
+            baseName: 'change_utc0',
+            type: 'string',
+        },
+        {
+            name: 'changeUtc8',
+            baseName: 'change_utc8',
+            type: 'string',
+        },
+        {
+            name: 'changePrice',
+            baseName: 'change_price',
+            type: 'string',
+        },
+        {
+            name: 'changeUtc0Price',
+            baseName: 'change_utc0_price',
+            type: 'string',
+        },
+        {
+            name: 'changeUtc8Price',
+            baseName: 'change_utc8_price',
             type: 'string',
         },
     ];

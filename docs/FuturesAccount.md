@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **point** | **string** | Point card amount | [optional] [default to undefined]
 **currency** | **string** | Settlement currency | [optional] [default to undefined]
 **inDualMode** | **boolean** | Whether dual mode is enabled | [optional] [default to undefined]
+**positionMode** | **string** | Position mode: single - one-way, dual - dual-side, split - sub-positions (in_dual_mode is deprecated) | [optional] [default to undefined]
 **enableCredit** | **boolean** | Whether portfolio margin account mode is enabled | [optional] [default to undefined]
 **positionInitialMargin** | **string** | Initial margin occupied by positions, applicable to unified account mode | [optional] [default to undefined]
 **maintenanceMargin** | **string** | Maintenance margin occupied by positions, applicable to new classic account margin mode and unified account mode | [optional] [default to undefined]

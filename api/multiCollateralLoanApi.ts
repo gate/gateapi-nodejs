@@ -50,7 +50,7 @@ export class MultiCollateralLoanApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending.
-     * @param opts.orderType Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specifiedOrder type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
+     * @param opts.orderType Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
      */
     public async listMultiCollateralOrders(opts: {
         page?: number;

@@ -573,7 +573,7 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary Query unified account tiered discount
+     * @summary Query unified account tiered
      */
     public async listCurrencyDiscountTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedDiscount> }> {
         const localVarPath = this.client.basePath + '/unified/currency_discount_tiers';

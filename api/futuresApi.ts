@@ -306,6 +306,7 @@ export class FuturesApi {
      * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
      * @param opts.limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days
+     * @param opts.timezone Time zone: all/utc0/utc8, default utc0
      */
     public async listFuturesCandlesticks(
         settle: 'btc' | 'usdt',
@@ -315,6 +316,7 @@ export class FuturesApi {
             to?: number;
             limit?: number;
             interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
+            timezone?: string;
         },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
         const localVarPath =
@@ -360,6 +362,10 @@ export class FuturesApi {
                 opts.interval,
                 "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
             );
+        }
+
+        if (opts.timezone !== undefined) {
+            localVarQueryParameters['timezone'] = ObjectSerializer.serialize(opts.timezone, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -719,7 +725,7 @@ export class FuturesApi {
     }
 
     /**
-     * The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for detailsThe time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for interfaces, refer to field descriptions for details
+     * The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for details
      * @summary Query liquidation order history
      * @param settle Settle currency
      * @param opts Optional parameters
@@ -779,7 +785,7 @@ export class FuturesApi {
     }
 
     /**
-     * When the \'contract\' parameter is not passed, the default is to query the risk limits for the top 100 markets.\'Limit\' and \'offset\' correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect empty.
+     * When the \'contract\' parameter is not passed, the default is to query the risk limits for the top 100 markets. \'Limit\' and \'offset\' correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the contract parameter is empty.
      * @summary Query risk limit tiers
      * @param settle Settle currency
      * @param opts Optional parameters
@@ -880,7 +886,7 @@ export class FuturesApi {
      * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.type Changing Type：  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
+     * @param opts.type Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction
      */
     public async listFuturesAccountBook(
         settle: 'btc' | 'usdt',
@@ -1104,12 +1110,13 @@ export class FuturesApi {
      * @param leverage New position leverage
      * @param opts Optional parameters
      * @param opts.crossLeverageLimit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0)
+     * @param opts.pid Product ID
      */
     public async updatePositionLeverage(
         settle: 'btc' | 'usdt',
         contract: string,
         leverage: string,
-        opts: { crossLeverageLimit?: string },
+        opts: { crossLeverageLimit?: string; pid?: number },
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
             this.client.basePath +
@@ -1149,6 +1156,10 @@ export class FuturesApi {
                 opts.crossLeverageLimit,
                 'string',
             );
+        }
+
+        if (opts.pid !== undefined) {
+            localVarQueryParameters['pid'] = ObjectSerializer.serialize(opts.pid, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -1622,7 +1633,7 @@ export class FuturesApi {
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+     * @param opts.lastId Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
      */
     public async listFuturesOrders(
         settle: 'btc' | 'usdt',
@@ -1742,12 +1753,14 @@ export class FuturesApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
-     * @param opts.side Specify all buy orders or all sell orders, both are included if not specified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell orders
+     * @param opts.side Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
+     * @param opts.excludeReduceOnly Whether to exclude reduce-only orders
+     * @param opts.text Remark for order cancellation
      */
     public async cancelFuturesOrders(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { xGateExptime?: string; side?: string },
+        opts: { xGateExptime?: string; side?: string; excludeReduceOnly?: boolean; text?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1777,6 +1790,17 @@ export class FuturesApi {
 
         if (opts.side !== undefined) {
             localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, 'string');
+        }
+
+        if (opts.excludeReduceOnly !== undefined) {
+            localVarQueryParameters['exclude_reduce_only'] = ObjectSerializer.serialize(
+                opts.excludeReduceOnly,
+                'boolean',
+            );
+        }
+
+        if (opts.text !== undefined) {
+            localVarQueryParameters['text'] = ObjectSerializer.serialize(opts.text, 'string');
         }
 
         if (opts.xGateExptime !== undefined) {

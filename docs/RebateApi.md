@@ -93,6 +93,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.RebateApi(client);
 const opts = {
   'currency': "BTC", // string | Specify the currency. If not specified, returns all currencies
+  'commissionType': 1, // number | Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate
   'userId': 10003, // number | User ID. If not specified, all user records will be returned
   'from': 1602120000, // number | Start time for querying records, defaults to 7 days before current time if not specified
   'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
@@ -110,6 +111,7 @@ api.agencyCommissionsHistory(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Specify the currency. If not specified, returns all currencies | [optional] [default to undefined]
+ **commissionType** | **number**| Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate | [optional] [default to undefined]
  **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
  **from** | **number**| Start time for querying records, defaults to 7 days before current time if not specified | [optional] [default to undefined]
  **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
