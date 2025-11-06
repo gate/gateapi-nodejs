@@ -21,11 +21,11 @@ export class FuturesPriceTrigger {
     /**
      * Price value for price trigger, or spread value for spread trigger
      */
-    'price'?: string;
+    'price': string;
     /**
      * Price Condition Type  - 1: Trigger when the price calculated based on `strategy_type` and `price_type` is greater than or equal to `Trigger.Price`, while Trigger.Price must > last_price - 2: Trigger when the price calculated based on `strategy_type` and `price_type` is less than or equal to `Trigger.Price`, and Trigger.Price must < last_price
      */
-    'rule'?: FuturesPriceTrigger.Rule;
+    'rule': FuturesPriceTrigger.Rule;
     /**
      * Maximum wait time for trigger condition (in seconds). Order will be cancelled if timeout
      */

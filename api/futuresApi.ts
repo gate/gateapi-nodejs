@@ -20,6 +20,7 @@ import { FutureCancelOrderResult } from '../model/futureCancelOrderResult';
 import { FuturesAccount } from '../model/futuresAccount';
 import { FuturesAccountBook } from '../model/futuresAccountBook';
 import { FuturesAutoDeleverage } from '../model/futuresAutoDeleverage';
+import { FuturesBBOOrder } from '../model/futuresBBOOrder';
 import { FuturesCandlestick } from '../model/futuresCandlestick';
 import { FuturesFee } from '../model/futuresFee';
 import { FuturesIndexConstituents } from '../model/futuresIndexConstituents';
@@ -35,6 +36,7 @@ import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder'
 import { FuturesRiskLimitTier } from '../model/futuresRiskLimitTier';
 import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
+import { FuturesUpdatePriceTriggeredOrder } from '../model/futuresUpdatePriceTriggeredOrder';
 import { InlineObject } from '../model/inlineObject';
 import { InsuranceRecord } from '../model/insuranceRecord';
 import { MyFuturesTrade } from '../model/myFuturesTrade';
@@ -1328,10 +1330,10 @@ export class FuturesApi {
     }
 
     /**
-     * The prerequisite for changing mode is that all positions have no holdings and no pending orders
+     * The prerequisite for changing mode is that there are no open positions and no open orders
      * @summary Set position mode
      * @param settle Settle currency
-     * @param dualMode Whether to enable dual mode
+     * @param dualMode Whether to enable Hedge Mode
      */
     public async setDualMode(
         settle: 'btc' | 'usdt',
@@ -1375,7 +1377,7 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Get position information in dual mode
+     * @summary Get position information in Hedge Mode
      * @param settle Settle currency
      * @param contract Futures contract
      */
@@ -1421,7 +1423,7 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Update position margin in dual mode
+     * @summary Update position margin in Hedge Mode
      * @param settle Settle currency
      * @param contract Futures contract
      * @param change Margin change amount, positive number increases, negative number decreases
@@ -1493,7 +1495,7 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Update position leverage in dual mode
+     * @summary Update position leverage in Hedge Mode
      * @param settle Settle currency
      * @param contract Futures contract
      * @param leverage New position leverage
@@ -1565,7 +1567,7 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Update position risk limit in dual mode
+     * @summary Update position risk limit in Hedge Mode
      * @param settle Settle currency
      * @param contract Futures contract
      * @param riskLimit New risk limit value
@@ -2721,6 +2723,61 @@ export class FuturesApi {
     }
 
     /**
+     * Compared to the futures trading order placement interface (futures/{settle}/orders), it adds the `level` and `direction` parameters.
+     * @summary Level-based BBO Contract Order Placement
+     * @param settle Settle currency
+     * @param futuresBBOOrder
+     * @param opts Optional parameters
+     * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+     */
+    public async createFuturesBBOOrder(
+        settle: 'btc' | 'usdt',
+        futuresBBOOrder: FuturesBBOOrder,
+        opts: { xGateExptime?: string },
+    ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/bbo_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling createFuturesBBOOrder.');
+        }
+
+        // verify required parameter 'futuresBBOOrder' is not null or undefined
+        if (futuresBBOOrder === null || futuresBBOOrder === undefined) {
+            throw new Error(
+                'Required parameter futuresBBOOrder was null or undefined when calling createFuturesBBOOrder.',
+            );
+        }
+
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(futuresBBOOrder, 'FuturesBBOOrder'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesOrder>(config, 'FuturesOrder', authSettings);
+    }
+
+    /**
      *
      * @summary Query auto order list
      * @param settle Settle currency
@@ -2930,6 +2987,62 @@ export class FuturesApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<FuturesPriceTriggeredOrder>(config, 'FuturesPriceTriggeredOrder', authSettings);
+    }
+
+    /**
+     *
+     * @summary Modify a Single Auto Order
+     * @param settle Settle currency
+     * @param orderId ID returned when order is successfully created
+     * @param futuresUpdatePriceTriggeredOrder
+     */
+    public async updatePriceTriggeredOrder(
+        settle: 'btc' | 'usdt',
+        orderId: string,
+        futuresUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
+    ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/price_orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling updatePriceTriggeredOrder.');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling updatePriceTriggeredOrder.');
+        }
+
+        // verify required parameter 'futuresUpdatePriceTriggeredOrder' is not null or undefined
+        if (futuresUpdatePriceTriggeredOrder === null || futuresUpdatePriceTriggeredOrder === undefined) {
+            throw new Error(
+                'Required parameter futuresUpdatePriceTriggeredOrder was null or undefined when calling updatePriceTriggeredOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'PUT',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(futuresUpdatePriceTriggeredOrder, 'FuturesUpdatePriceTriggeredOrder'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<TriggerOrderResponse>(config, 'TriggerOrderResponse', authSettings);
     }
 
     /**

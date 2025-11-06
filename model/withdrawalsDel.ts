@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-export class DepositRecord {
+export class WithdrawalsDel {
     /**
      * Record ID
      */
@@ -39,7 +39,7 @@ export class DepositRecord {
      */
     'memo'?: string;
     /**
-     * Transaction Status  - BLOCKED: Deposit Blocked - DEP_CREDITED: Deposit Credited, Withdrawal Pending Unlock - DONE: Awaiting Fund Unlock - FINAL: Funds Credited to Spot Account - INVALID: Invalid Transaction - MANUAL: Manual Review Required - PEND: Processing - REVIEW: Under Compliance Review - TRACK: Tracking Block Confirmations, Pending Spot Account Credit
+     * 交易状态  - BCODE: 充值码操作 - CANCEL: 已取消 - CANCELPEND: 取消提现中 - DMOVE: 待人工审核 - DONE: 完成 (block_number > 0 才算真的上链完成) - EXTPEND: 已经发送等待确认 - FAIL: 链上失败等待确认 - FVERIFY: 人脸审核处理中 - LOCKED: 钱包侧锁单 - MANUAL: 待人工审核 - REJECT: 拒绝 - REQUEST: 请求中 - REVIEW: 审核中
      */
     'status'?: string;
     /**
@@ -98,6 +98,6 @@ export class DepositRecord {
     ];
 
     static getAttributeTypeMap() {
-        return DepositRecord.attributeTypeMap;
+        return WithdrawalsDel.attributeTypeMap;
     }
 }

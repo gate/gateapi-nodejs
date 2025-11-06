@@ -1,8 +1,8 @@
 {
     "name": "gate-api",
-    "version": "7.1.8",
+    "version": "7.1.25",
     "description": "NodeJS client for gate-api",
-    "repository": "gateio/gateapi-nodejs",
+    "repository": "gate/gateapi-nodejs",
     "main": "dist/api.js",
     "types": "dist/api.d.ts",
     "scripts": {

@@ -42,6 +42,10 @@ export class CurrencyChain {
      * Withdrawal precision
      */
     'decimal'?: string;
+    /**
+     * Whether to Include Tag
+     */
+    'isTag'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -85,6 +89,11 @@ export class CurrencyChain {
             name: 'decimal',
             baseName: 'decimal',
             type: 'string',
+        },
+        {
+            name: 'isTag',
+            baseName: 'is_tag',
+            type: 'number',
         },
     ];
 

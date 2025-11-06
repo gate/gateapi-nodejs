@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAccountDetail**](AccountApi.md#getAccountDetail) | **GET** /account/detail | Retrieve user account information
+[**getAccountMainKeys**](AccountApi.md#getAccountMainKeys) | **GET** /account/main_keys | Query All Main Account Key Information
 [**getAccountRateLimit**](AccountApi.md#getAccountRateLimit) | **GET** /account/rate_limit | Get user transaction rate limit information
 [**listSTPGroups**](AccountApi.md#listSTPGroups) | **GET** /account/stp_groups | Query STP user groups created by the user
 [**createSTPGroup**](AccountApi.md#createSTPGroup) | **POST** /account/stp_groups | Create STP user group
@@ -44,6 +45,45 @@ This endpoint does not need any parameter.
 ### Return type
 
 Promise<{ response: AxiosResponse; body: AccountDetail; }> [AccountDetail](AccountDetail.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getAccountMainKeys
+
+> Promise<{ response: http.IncomingMessage; body: Key; }> getAccountMainKeys()
+
+Query All Main Account Key Information
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.AccountApi(client);
+api.getAccountMainKeys()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Key; }> [Key](Key.md)
 
 ### Authorization
 

@@ -13,6 +13,7 @@
 import { LedgerRecord } from '../model/ledgerRecord';
 import { UidPushWithdrawal } from '../model/uidPushWithdrawal';
 import { UidPushWithdrawalResp } from '../model/uidPushWithdrawalResp';
+import { WithdrawalsDel } from '../model/withdrawalsDel';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -109,7 +110,7 @@ export class WithdrawalApi {
      * @summary Cancel withdrawal with specified ID
      * @param withdrawalId
      */
-    public async cancelWithdrawal(withdrawalId: string): Promise<{ response: AxiosResponse; body: LedgerRecord }> {
+    public async cancelWithdrawal(withdrawalId: string): Promise<{ response: AxiosResponse; body: WithdrawalsDel }> {
         const localVarPath =
             this.client.basePath +
             '/withdrawals/{withdrawal_id}'.replace(
@@ -139,6 +140,6 @@ export class WithdrawalApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<LedgerRecord>(config, 'LedgerRecord', authSettings);
+        return this.client.request<WithdrawalsDel>(config, 'WithdrawalsDel', authSettings);
     }
 }

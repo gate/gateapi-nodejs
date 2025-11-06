@@ -7,6 +7,8 @@ export * from './agencyCommissionHistory';
 export * from './agencyTransaction';
 export * from './agencyTransactionHistory';
 export * from './autoRepaySetting';
+export * from './awardListStruct';
+export * from './awardListStructList';
 export * from './batchAmendItem';
 export * from './batchAmendOrderReq';
 export * from './batchFuturesOrder';
@@ -72,6 +74,7 @@ export * from './futuresAccount';
 export * from './futuresAccountBook';
 export * from './futuresAccountHistory';
 export * from './futuresAutoDeleverage';
+export * from './futuresBBOOrder';
 export * from './futuresBatchAmendOrderRequest';
 export * from './futuresCandlestick';
 export * from './futuresFee';
@@ -91,11 +94,14 @@ export * from './futuresPriceTriggeredOrder';
 export * from './futuresRiskLimitTier';
 export * from './futuresTicker';
 export * from './futuresTrade';
+export * from './futuresUpdatePriceTriggeredOrder';
 export * from './indexConstituent';
 export * from './inlineObject';
 export * from './inlineResponse200';
 export * from './inlineResponse2001';
 export * from './insuranceRecord';
+export * from './key';
+export * from './keyPerms';
 export * from './ledgerRecord';
 export * from './liquidateOrder';
 export * from './marginAccount';
@@ -146,6 +152,8 @@ export * from './optionsUnderlyingTicker';
 export * from './order';
 export * from './orderBook';
 export * from './orderCancel';
+export * from './orderListStruct';
+export * from './orderListStructList';
 export * from './orderPatch';
 export * from './orderResp';
 export * from './partnerCommissionHistory';
@@ -252,6 +260,7 @@ export * from './userSubRelation';
 export * from './userTotalAmount';
 export * from './withdrawStatus';
 export * from './withdrawalRecord';
+export * from './withdrawalsDel';
 
 import { AxiosRequestConfig } from 'axios';
 import querystring = require('querystring');
@@ -267,6 +276,8 @@ import { AgencyCommissionHistory } from './agencyCommissionHistory';
 import { AgencyTransaction } from './agencyTransaction';
 import { AgencyTransactionHistory } from './agencyTransactionHistory';
 import { AutoRepaySetting } from './autoRepaySetting';
+import { AwardListStruct } from './awardListStruct';
+import { AwardListStructList } from './awardListStructList';
 import { BatchAmendItem } from './batchAmendItem';
 import { BatchAmendOrderReq } from './batchAmendOrderReq';
 import { BatchFuturesOrder } from './batchFuturesOrder';
@@ -332,6 +343,7 @@ import { FuturesAccount } from './futuresAccount';
 import { FuturesAccountBook } from './futuresAccountBook';
 import { FuturesAccountHistory } from './futuresAccountHistory';
 import { FuturesAutoDeleverage } from './futuresAutoDeleverage';
+import { FuturesBBOOrder } from './futuresBBOOrder';
 import { FuturesBatchAmendOrderRequest } from './futuresBatchAmendOrderRequest';
 import { FuturesCandlestick } from './futuresCandlestick';
 import { FuturesFee } from './futuresFee';
@@ -351,11 +363,14 @@ import { FuturesPriceTriggeredOrder } from './futuresPriceTriggeredOrder';
 import { FuturesRiskLimitTier } from './futuresRiskLimitTier';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
+import { FuturesUpdatePriceTriggeredOrder } from './futuresUpdatePriceTriggeredOrder';
 import { IndexConstituent } from './indexConstituent';
 import { InlineObject } from './inlineObject';
 import { InlineResponse200 } from './inlineResponse200';
 import { InlineResponse2001 } from './inlineResponse2001';
 import { InsuranceRecord } from './insuranceRecord';
+import { Key } from './key';
+import { KeyPerms } from './keyPerms';
 import { LedgerRecord } from './ledgerRecord';
 import { LiquidateOrder } from './liquidateOrder';
 import { MarginAccount } from './marginAccount';
@@ -406,6 +421,8 @@ import { OptionsUnderlyingTicker } from './optionsUnderlyingTicker';
 import { Order } from './order';
 import { OrderBook } from './orderBook';
 import { OrderCancel } from './orderCancel';
+import { OrderListStruct } from './orderListStruct';
+import { OrderListStructList } from './orderListStructList';
 import { OrderPatch } from './orderPatch';
 import { OrderResp } from './orderResp';
 import { PartnerCommissionHistory } from './partnerCommissionHistory';
@@ -512,6 +529,7 @@ import { UserSubRelation } from './userSubRelation';
 import { UserTotalAmount } from './userTotalAmount';
 import { WithdrawStatus } from './withdrawStatus';
 import { WithdrawalRecord } from './withdrawalRecord';
+import { WithdrawalsDel } from './withdrawalsDel';
 
 /* tslint:disable:no-unused-variable */
 let primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any', 'bigint'];
@@ -541,6 +559,9 @@ let enumsMap: { [index: string]: any } = {
     'DeliveryContract.Type': DeliveryContract.Type,
     'DeliveryContract.MarkType': DeliveryContract.MarkType,
     'FuturesAccountBook.Type': FuturesAccountBook.Type,
+    'FuturesBBOOrder.Tif': FuturesBBOOrder.Tif,
+    'FuturesBBOOrder.AutoSize': FuturesBBOOrder.AutoSize,
+    'FuturesBBOOrder.StpAct': FuturesBBOOrder.StpAct,
     'FuturesInitialOrder.Tif': FuturesInitialOrder.Tif,
     'FuturesOrder.FinishAs': FuturesOrder.FinishAs,
     'FuturesOrder.Status': FuturesOrder.Status,
@@ -552,6 +573,7 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTrigger.Rule': FuturesPriceTrigger.Rule,
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
+    'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
     'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
     'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
@@ -597,6 +619,8 @@ let typeMap: { [index: string]: any } = {
     AgencyTransaction: AgencyTransaction,
     AgencyTransactionHistory: AgencyTransactionHistory,
     AutoRepaySetting: AutoRepaySetting,
+    AwardListStruct: AwardListStruct,
+    AwardListStructList: AwardListStructList,
     BatchAmendItem: BatchAmendItem,
     BatchAmendOrderReq: BatchAmendOrderReq,
     BatchFuturesOrder: BatchFuturesOrder,
@@ -662,6 +686,7 @@ let typeMap: { [index: string]: any } = {
     FuturesAccountBook: FuturesAccountBook,
     FuturesAccountHistory: FuturesAccountHistory,
     FuturesAutoDeleverage: FuturesAutoDeleverage,
+    FuturesBBOOrder: FuturesBBOOrder,
     FuturesBatchAmendOrderRequest: FuturesBatchAmendOrderRequest,
     FuturesCandlestick: FuturesCandlestick,
     FuturesFee: FuturesFee,
@@ -681,11 +706,14 @@ let typeMap: { [index: string]: any } = {
     FuturesRiskLimitTier: FuturesRiskLimitTier,
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
+    FuturesUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
     IndexConstituent: IndexConstituent,
     InlineObject: InlineObject,
     InlineResponse200: InlineResponse200,
     InlineResponse2001: InlineResponse2001,
     InsuranceRecord: InsuranceRecord,
+    Key: Key,
+    KeyPerms: KeyPerms,
     LedgerRecord: LedgerRecord,
     LiquidateOrder: LiquidateOrder,
     MarginAccount: MarginAccount,
@@ -736,6 +764,8 @@ let typeMap: { [index: string]: any } = {
     Order: Order,
     OrderBook: OrderBook,
     OrderCancel: OrderCancel,
+    OrderListStruct: OrderListStruct,
+    OrderListStructList: OrderListStructList,
     OrderPatch: OrderPatch,
     OrderResp: OrderResp,
     PartnerCommissionHistory: PartnerCommissionHistory,
@@ -842,6 +872,7 @@ let typeMap: { [index: string]: any } = {
     UserTotalAmount: UserTotalAmount,
     WithdrawStatus: WithdrawStatus,
     WithdrawalRecord: WithdrawalRecord,
+    WithdrawalsDel: WithdrawalsDel,
 };
 
 export class ObjectSerializer {

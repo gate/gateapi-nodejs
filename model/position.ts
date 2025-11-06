@@ -117,7 +117,7 @@ export class Position {
     'pendingOrders'?: number;
     'closeOrder'?: PositionCloseOrder | null;
     /**
-     * Position mode, including:  - `single`: Single position mode - `dual_long`: Long position in dual position mode - `dual_short`: Short position in dual position mode
+     * Position mode, including:  - `single`: One-way Mode - `dual_long`: Long position in Hedge Mode - `dual_short`: Short position in Hedge Mode
      */
     'mode'?: Position.Mode;
     /**

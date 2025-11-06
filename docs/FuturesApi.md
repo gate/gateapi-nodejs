@@ -27,10 +27,10 @@ Method | HTTP request | Description
 [**updateDualCompPositionCrossMode**](FuturesApi.md#updateDualCompPositionCrossMode) | **POST** /futures/{settle}/dual_comp/positions/cross_mode | Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 [**updatePositionRiskLimit**](FuturesApi.md#updatePositionRiskLimit) | **POST** /futures/{settle}/positions/{contract}/risk_limit | Update position risk limit
 [**setDualMode**](FuturesApi.md#setDualMode) | **POST** /futures/{settle}/dual_mode | Set position mode
-[**getDualModePosition**](FuturesApi.md#getDualModePosition) | **GET** /futures/{settle}/dual_comp/positions/{contract} | Get position information in dual mode
-[**updateDualModePositionMargin**](FuturesApi.md#updateDualModePositionMargin) | **POST** /futures/{settle}/dual_comp/positions/{contract}/margin | Update position margin in dual mode
-[**updateDualModePositionLeverage**](FuturesApi.md#updateDualModePositionLeverage) | **POST** /futures/{settle}/dual_comp/positions/{contract}/leverage | Update position leverage in dual mode
-[**updateDualModePositionRiskLimit**](FuturesApi.md#updateDualModePositionRiskLimit) | **POST** /futures/{settle}/dual_comp/positions/{contract}/risk_limit | Update position risk limit in dual mode
+[**getDualModePosition**](FuturesApi.md#getDualModePosition) | **GET** /futures/{settle}/dual_comp/positions/{contract} | Get position information in Hedge Mode
+[**updateDualModePositionMargin**](FuturesApi.md#updateDualModePositionMargin) | **POST** /futures/{settle}/dual_comp/positions/{contract}/margin | Update position margin in Hedge Mode
+[**updateDualModePositionLeverage**](FuturesApi.md#updateDualModePositionLeverage) | **POST** /futures/{settle}/dual_comp/positions/{contract}/leverage | Update position leverage in Hedge Mode
+[**updateDualModePositionRiskLimit**](FuturesApi.md#updateDualModePositionRiskLimit) | **POST** /futures/{settle}/dual_comp/positions/{contract}/risk_limit | Update position risk limit in Hedge Mode
 [**listFuturesOrders**](FuturesApi.md#listFuturesOrders) | **GET** /futures/{settle}/orders | Query futures order list
 [**createFuturesOrder**](FuturesApi.md#createFuturesOrder) | **POST** /futures/{settle}/orders | Place futures order
 [**cancelFuturesOrders**](FuturesApi.md#cancelFuturesOrders) | **DELETE** /futures/{settle}/orders | Cancel all orders with \&#39;open\&#39; status
@@ -49,10 +49,12 @@ Method | HTTP request | Description
 [**cancelBatchFutureOrders**](FuturesApi.md#cancelBatchFutureOrders) | **POST** /futures/{settle}/batch_cancel_orders | Cancel batch orders by specified ID list
 [**amendBatchFutureOrders**](FuturesApi.md#amendBatchFutureOrders) | **POST** /futures/{settle}/batch_amend_orders | Batch modify orders by specified IDs
 [**getFuturesRiskLimitTable**](FuturesApi.md#getFuturesRiskLimitTable) | **GET** /futures/{settle}/risk_limit_table | Query risk limit table by table_id
+[**createFuturesBBOOrder**](FuturesApi.md#createFuturesBBOOrder) | **POST** /futures/{settle}/bbo_orders | Level-based BBO Contract Order Placement
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/{settle}/price_orders | Query auto order list
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create price-triggered order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all auto orders
 [**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/{settle}/price_orders/{order_id} | Query single auto order details
+[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/{order_id} | Modify a Single Auto Order
 [**cancelPriceTriggeredOrder**](FuturesApi.md#cancelPriceTriggeredOrder) | **DELETE** /futures/{settle}/price_orders/{order_id} | Cancel single auto order
 
 
@@ -1146,7 +1148,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 Set position mode
 
-The prerequisite for changing mode is that all positions have no holdings and no pending orders
+The prerequisite for changing mode is that there are no open positions and no open orders
 
 ### Example
 
@@ -1160,7 +1162,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const dualMode = true; // boolean | Whether to enable dual mode
+const dualMode = true; // boolean | Whether to enable Hedge Mode
 api.setDualMode(settle, dualMode)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1172,7 +1174,7 @@ api.setDualMode(settle, dualMode)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **dualMode** | **boolean**| Whether to enable dual mode | [default to undefined]
+ **dualMode** | **boolean**| Whether to enable Hedge Mode | [default to undefined]
 
 ### Return type
 
@@ -1191,7 +1193,7 @@ Promise<{ response: AxiosResponse; body: FuturesAccount; }> [FuturesAccount](Fut
 
 > Promise<{ response: http.IncomingMessage; body: Array<Position>; }> getDualModePosition(settle, contract)
 
-Get position information in dual mode
+Get position information in Hedge Mode
 
 ### Example
 
@@ -1236,7 +1238,7 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 
 > Promise<{ response: http.IncomingMessage; body: Array<Position>; }> updateDualModePositionMargin(settle, contract, change, dualSide)
 
-Update position margin in dual mode
+Update position margin in Hedge Mode
 
 ### Example
 
@@ -1285,7 +1287,7 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 
 > Promise<{ response: http.IncomingMessage; body: Array<Position>; }> updateDualModePositionLeverage(settle, contract, leverage, opts)
 
-Update position leverage in dual mode
+Update position leverage in Hedge Mode
 
 ### Example
 
@@ -1336,7 +1338,7 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 
 > Promise<{ response: http.IncomingMessage; body: Array<Position>; }> updateDualModePositionRiskLimit(settle, contract, riskLimit)
 
-Update position risk limit in dual mode
+Update position risk limit in Hedge Mode
 
 ### Example
 
@@ -2325,6 +2327,57 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## createFuturesBBOOrder
+
+> Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> createFuturesBBOOrder(settle, futuresBBOOrder, opts)
+
+Level-based BBO Contract Order Placement
+
+Compared to the futures trading order placement interface (futures/{settle}/orders), it adds the &#x60;level&#x60; and &#x60;direction&#x60; parameters.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const futuresBBOOrder = new FuturesBBOOrder(); // FuturesBBOOrder | 
+const opts = {
+  'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+};
+api.createFuturesBBOOrder(settle, futuresBBOOrder, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **futuresBBOOrder** | [**FuturesBBOOrder**](FuturesBBOOrder.md)|  | 
+ **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](FuturesOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 ## listPriceTriggeredOrders
 
 > Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder>; }> listPriceTriggeredOrders(settle, status, opts)
@@ -2513,6 +2566,53 @@ Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder; }> [Futures
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+## updatePriceTriggeredOrder
+
+> Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse; }> updatePriceTriggeredOrder(settle, orderId, futuresUpdatePriceTriggeredOrder)
+
+Modify a Single Auto Order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const orderId = "orderId_example"; // string | ID returned when order is successfully created
+const futuresUpdatePriceTriggeredOrder = new FuturesUpdatePriceTriggeredOrder(); // FuturesUpdatePriceTriggeredOrder | 
+api.updatePriceTriggeredOrder(settle, orderId, futuresUpdatePriceTriggeredOrder)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **orderId** | **string**| ID returned when order is successfully created | [default to undefined]
+ **futuresUpdatePriceTriggeredOrder** | [**FuturesUpdatePriceTriggeredOrder**](FuturesUpdatePriceTriggeredOrder.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: TriggerOrderResponse; }> [TriggerOrderResponse](TriggerOrderResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ## cancelPriceTriggeredOrder

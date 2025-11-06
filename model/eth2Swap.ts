@@ -10,11 +10,11 @@
  */
 
 /**
- * ETH2 Mining
+ * ETH Mining
  */
 export class Eth2Swap {
     /**
-     * 1-Forward Swap (ETH -> ETH2), 2-Reverse Swap (ETH2 -> ETH)
+     * 1-Forward Swap (ETH -> GTETH), 2-Reverse Swap (GTETH -> ETH)
      */
     'side': string;
     /**

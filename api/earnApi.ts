@@ -10,11 +10,13 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { AwardListStruct } from '../model/awardListStruct';
 import { DualGetOrders } from '../model/dualGetOrders';
 import { DualGetPlans } from '../model/dualGetPlans';
 import { Eth2RateList } from '../model/eth2RateList';
 import { Eth2Swap } from '../model/eth2Swap';
 import { FindCoin } from '../model/findCoin';
+import { OrderListStruct } from '../model/orderListStruct';
 import { PlaceDualInvestmentOrder } from '../model/placeDualInvestmentOrder';
 import { StructuredBuy } from '../model/structuredBuy';
 import { StructuredGetProjectList } from '../model/structuredGetProjectList';
@@ -42,7 +44,7 @@ export class EarnApi {
 
     /**
      *
-     * @summary ETH2 swap
+     * @summary ETH swap
      * @param eth2Swap
      */
     public async swapETH2(eth2Swap: Eth2Swap): Promise<{ response: AxiosResponse; body?: any }> {
@@ -69,7 +71,7 @@ export class EarnApi {
 
     /**
      * Query ETH earnings rate records for the last 31 days
-     * @summary ETH2 historical return rate query
+     * @summary GTETH historical return rate query
      */
     public async rateListETH2(): Promise<{ response: AxiosResponse; body: Array<Eth2RateList> }> {
         const localVarPath = this.client.basePath + '/earn/staking/eth2/rate_records';
@@ -362,7 +364,7 @@ export class EarnApi {
      * @summary Staking coins
      * @param findCoin
      */
-    public async findCoin(findCoin: FindCoin): Promise<{ response: AxiosResponse; body: object }> {
+    public async findCoin(findCoin: FindCoin): Promise<{ response: AxiosResponse; body: Array<object> }> {
         const localVarPath = this.client.basePath + '/earn/staking/coins';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -388,7 +390,7 @@ export class EarnApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<object>(config, 'object', authSettings);
+        return this.client.request<Array<object>>(config, 'Array<object>', authSettings);
     }
 
     /**
@@ -423,5 +425,141 @@ export class EarnApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<SwapCoinStruct>(config, 'SwapCoinStruct', authSettings);
+    }
+
+    /**
+     *
+     * @summary List of on-chain coin-earning orders
+     * @param opts Optional parameters
+     * @param opts.pid Product ID
+     * @param opts.coin Currency name
+     * @param opts.type Type 0-staking 1-redemption
+     * @param opts.page Page number
+     */
+    public async orderList(opts: {
+        pid?: number;
+        coin?: string;
+        type?: number;
+        page?: number;
+    }): Promise<{ response: AxiosResponse; body: OrderListStruct }> {
+        const localVarPath = this.client.basePath + '/earn/staking/order_list';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.pid !== undefined) {
+            localVarQueryParameters['pid'] = ObjectSerializer.serialize(opts.pid, 'number');
+        }
+
+        if (opts.coin !== undefined) {
+            localVarQueryParameters['coin'] = ObjectSerializer.serialize(opts.coin, 'string');
+        }
+
+        if (opts.type !== undefined) {
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'number');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OrderListStruct>(config, 'OrderListStruct', authSettings);
+    }
+
+    /**
+     *
+     * @summary On-chain coin-earning dividend records
+     * @param opts Optional parameters
+     * @param opts.pid Product ID
+     * @param opts.coin Currency name
+     * @param opts.page Page number
+     */
+    public async awardList(opts: {
+        pid?: number;
+        coin?: string;
+        page?: number;
+    }): Promise<{ response: AxiosResponse; body: AwardListStruct }> {
+        const localVarPath = this.client.basePath + '/earn/staking/award_list';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.pid !== undefined) {
+            localVarQueryParameters['pid'] = ObjectSerializer.serialize(opts.pid, 'number');
+        }
+
+        if (opts.coin !== undefined) {
+            localVarQueryParameters['coin'] = ObjectSerializer.serialize(opts.coin, 'string');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AwardListStruct>(config, 'AwardListStruct', authSettings);
+    }
+
+    /**
+     *
+     * @summary On-chain coin-earning assets
+     * @param opts Optional parameters
+     * @param opts.coin Currency name
+     */
+    public async assetList(opts: { coin?: string }): Promise<{ response: AxiosResponse; body: Array<object> }> {
+        const localVarPath = this.client.basePath + '/earn/staking/assets';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.coin !== undefined) {
+            localVarQueryParameters['coin'] = ObjectSerializer.serialize(opts.coin, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<object>>(config, 'Array<object>', authSettings);
     }
 }

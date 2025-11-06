@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **baseName** | **string** | Base currency name | [optional] [default to undefined]
 **quote** | **string** | Quote currency | [optional] [default to undefined]
 **quoteName** | **string** | Quote currency name | [optional] [default to undefined]
-**fee** | **string** | Trading fee rate | [optional] [default to undefined]
+**fee** | **string** | Trading fee rate(deprecated) | [optional] [default to undefined]
 **minBaseAmount** | **string** | Minimum amount of base currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
 **minQuoteAmount** | **string** | Minimum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
 **maxBaseAmount** | **string** | Maximum amount of base currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]

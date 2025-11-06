@@ -34,7 +34,7 @@ export class CurrencyPair {
      */
     'quoteName'?: string;
     /**
-     * Trading fee rate
+     * Trading fee rate(deprecated)
      */
     'fee'?: string;
     /**

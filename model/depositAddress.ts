@@ -20,6 +20,10 @@ export class DepositAddress {
      * Deposit address
      */
     'address': string;
+    /**
+     * Minimum Deposit Amount
+     */
+    'minDepositAmount'?: string;
     'multichainAddresses'?: Array<MultiChainAddressItem>;
 
     static discriminator: string | undefined = undefined;
@@ -33,6 +37,11 @@ export class DepositAddress {
         {
             name: 'address',
             baseName: 'address',
+            type: 'string',
+        },
+        {
+            name: 'minDepositAmount',
+            baseName: 'min_deposit_amount',
             type: 'string',
         },
         {

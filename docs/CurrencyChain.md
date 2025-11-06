@@ -12,4 +12,5 @@ Name | Type | Description | Notes
 **isDepositDisabled** | **number** | Is deposit disabled. 0 means not disabled | [optional] [default to undefined]
 **isWithdrawDisabled** | **number** | Is withdrawal disabled. 0 means not disabled | [optional] [default to undefined]
 **decimal** | **string** | Withdrawal precision | [optional] [default to undefined]
+**isTag** | **number** | Whether to Include Tag | [optional] [default to undefined]
 

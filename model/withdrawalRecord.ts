@@ -47,6 +47,10 @@ export class WithdrawalRecord {
      */
     'address'?: string;
     /**
+     * Business Type
+     */
+    'type'?: string;
+    /**
      * Reason for withdrawal failure. Has a value when status = CANCEL, empty for all other statuses
      */
     'failReason'?: string;
@@ -59,7 +63,7 @@ export class WithdrawalRecord {
      */
     'memo'?: string;
     /**
-     * Transaction status  - DONE: Completed (block_number > 0 is considered to be truly completed) - CANCEL: Canceled - REQUEST: Requesting - MANUAL: Pending manual review - BCODE: Recharge code operation - EXTPEND: Sent awaiting confirmation - FAIL: Failure on the chain awaiting confirmation - INVALID: Invalid order - VERIFY: Verifying - PROCES: Processing - PEND: Processing - DMOVE: pending manual review - REVIEW: Under review
+     * Transaction Status  - BCODE: Deposit Code Operation - CANCEL: Cancelled - CANCELPEND: Withdrawal Cancellation Pending - DONE: Completed (Only considered truly on-chain when block_number > 0) - EXTPEND: Sent and Waiting for Confirmation - FAIL: On-Chain Failure Pending Confirmation - FVERIFY: Facial Verification in Progress - LOCKED: Wallet-Side Order Locked - MANUAL: Pending Manual Review - REJECT: Rejected - REQUEST: Request in Progress - REVIEW: Under Review
      */
     'status'?: string;
     /**
@@ -113,6 +117,11 @@ export class WithdrawalRecord {
         {
             name: 'address',
             baseName: 'address',
+            type: 'string',
+        },
+        {
+            name: 'type',
+            baseName: 'type',
             type: 'string',
         },
         {

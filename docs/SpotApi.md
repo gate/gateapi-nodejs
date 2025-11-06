@@ -1142,7 +1142,7 @@ const opts = {
   'limit': 100, // number | Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000
   'page': 1, // number | Page number
   'orderId': "12345", // string | Filter trades with specified order ID. `currency_pair` is also required if this field is present
-  'account': "spot", // string | Specify query account
+  'account': "spot", // string | The accountparameter has been deprecated. The interface supports querying all transaction records of the account.
   'from': 1627706330, // number | Start timestamp for the query
   'to': 1635329650 // number | End timestamp for the query, defaults to current time if not specified
 };
@@ -1160,7 +1160,7 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 | [optional] [default to 100]
  **page** | **number**| Page number | [optional] [default to 1]
  **orderId** | **string**| Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present | [optional] [default to undefined]
- **account** | **string**| Specify query account | [optional] [default to undefined]
+ **account** | **string**| The accountparameter has been deprecated. The interface supports querying all transaction records of the account. | [optional] [default to undefined]
  **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
  **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
 

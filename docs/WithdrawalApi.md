@@ -101,7 +101,7 @@ Promise<{ response: AxiosResponse; body: UidPushWithdrawalResp; }> [UidPushWithd
 
 ## cancelWithdrawal
 
-> Promise<{ response: http.IncomingMessage; body: LedgerRecord; }> cancelWithdrawal(withdrawalId)
+> Promise<{ response: http.IncomingMessage; body: WithdrawalsDel; }> cancelWithdrawal(withdrawalId)
 
 Cancel withdrawal with specified ID
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: LedgerRecord; }> [LedgerRecord](LedgerRecord.md)
+Promise<{ response: AxiosResponse; body: WithdrawalsDel; }> [WithdrawalsDel](WithdrawalsDel.md)
 
 ### Authorization
 

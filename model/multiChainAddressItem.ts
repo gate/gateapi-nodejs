@@ -30,6 +30,10 @@ export class MultiChainAddressItem {
      * The obtain failed status- 0: address successfully obtained- 1: failed to obtain address
      */
     'obtainFailed'?: number;
+    /**
+     * Minimum Confirmation Count
+     */
+    'minConfirms'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -57,6 +61,11 @@ export class MultiChainAddressItem {
         {
             name: 'obtainFailed',
             baseName: 'obtain_failed',
+            type: 'number',
+        },
+        {
+            name: 'minConfirms',
+            baseName: 'min_confirms',
             type: 'number',
         },
     ];

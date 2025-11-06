@@ -4,8 +4,8 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**swapETH2**](EarnApi.md#swapETH2) | **POST** /earn/staking/eth2/swap | ETH2 swap
-[**rateListETH2**](EarnApi.md#rateListETH2) | **GET** /earn/staking/eth2/rate_records | ETH2 historical return rate query
+[**swapETH2**](EarnApi.md#swapETH2) | **POST** /earn/staking/eth2/swap | ETH swap
+[**rateListETH2**](EarnApi.md#rateListETH2) | **GET** /earn/staking/eth2/rate_records | GTETH historical return rate query
 [**listDualInvestmentPlans**](EarnApi.md#listDualInvestmentPlans) | **GET** /earn/dual/investment_plan | Dual Investment product list
 [**listDualOrders**](EarnApi.md#listDualOrders) | **GET** /earn/dual/orders | Dual Investment order list
 [**placeDualOrder**](EarnApi.md#placeDualOrder) | **POST** /earn/dual/orders | Place Dual Investment order
@@ -14,13 +14,16 @@ Method | HTTP request | Description
 [**placeStructuredOrder**](EarnApi.md#placeStructuredOrder) | **POST** /earn/structured/orders | Place Structured Product Order
 [**findCoin**](EarnApi.md#findCoin) | **GET** /earn/staking/coins | Staking coins
 [**swapStakingCoin**](EarnApi.md#swapStakingCoin) | **POST** /earn/staking/swap | On-chain token swap for earned coins
+[**orderList**](EarnApi.md#orderList) | **GET** /earn/staking/order_list | List of on-chain coin-earning orders
+[**awardList**](EarnApi.md#awardList) | **GET** /earn/staking/award_list | On-chain coin-earning dividend records
+[**assetList**](EarnApi.md#assetList) | **GET** /earn/staking/assets | On-chain coin-earning assets
 
 
 ## swapETH2
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> swapETH2(eth2Swap)
 
-ETH2 swap
+ETH swap
 
 ### Example
 
@@ -63,7 +66,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: Array<Eth2RateList>; }> rateListETH2()
 
-ETH2 historical return rate query
+GTETH historical return rate query
 
 Query ETH earnings rate records for the last 31 days
 
@@ -382,7 +385,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 ## findCoin
 
-> Promise<{ response: http.IncomingMessage; body: object; }> findCoin(findCoin)
+> Promise<{ response: http.IncomingMessage; body: Array<object>; }> findCoin(findCoin)
 
 Staking coins
 
@@ -412,7 +415,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: object; }> [object](object.md)
+Promise<{ response: AxiosResponse; body: Array<object>; }> [object](object.md)
 
 ### Authorization
 
@@ -464,4 +467,149 @@ Promise<{ response: AxiosResponse; body: SwapCoinStruct; }> [SwapCoinStruct](Swa
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+## orderList
+
+> Promise<{ response: http.IncomingMessage; body: OrderListStruct; }> orderList(opts)
+
+List of on-chain coin-earning orders
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const opts = {
+  'pid': 7, // number | Product ID
+  'coin': "ETH", // string | Currency name
+  'type': 0, // number | Type 0-staking 1-redemption
+  'page': 1 // number | Page number
+};
+api.orderList(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pid** | **number**| Product ID | [optional] [default to undefined]
+ **coin** | **string**| Currency name | [optional] [default to undefined]
+ **type** | **number**| Type 0-staking 1-redemption | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: OrderListStruct; }> [OrderListStruct](OrderListStruct.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## awardList
+
+> Promise<{ response: http.IncomingMessage; body: AwardListStruct; }> awardList(opts)
+
+On-chain coin-earning dividend records
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const opts = {
+  'pid': 7, // number | Product ID
+  'coin': "ETH", // string | Currency name
+  'page': 1 // number | Page number
+};
+api.awardList(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pid** | **number**| Product ID | [optional] [default to undefined]
+ **coin** | **string**| Currency name | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AwardListStruct; }> [AwardListStruct](AwardListStruct.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## assetList
+
+> Promise<{ response: http.IncomingMessage; body: Array<object>; }> assetList(opts)
+
+On-chain coin-earning assets
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const opts = {
+  'coin': "ETH" // string | Currency name
+};
+api.assetList(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coin** | **string**| Currency name | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<object>; }> [object](object.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json

@@ -9,41 +9,32 @@
  * Do not edit the class manually.
  */
 
-export class SubUserMode {
+export class KeyPerms {
     /**
-     * User ID
+     * 权限功能名称（不传值即为清空）  - `wallet`: 钱包 - `spot`: 现货/杠杆 - `futures`: 永续合约 - `delivery`: 交割合约 - `earn`: 理财 - `custody`: 托管 - `options`: 期权 - `account`: 账户信息 - `loan`: 借贷 - `margin`: 杠杆 - `unified`: 统一账户 - `copy`: 跟单 - `pilot`: 创新 - `otc`: otc - `alpha`: alpha - `crossx`: 跨所
      */
-    'userId'?: number;
+    'name'?: string;
     /**
-     * Whether it is a unified account
+     * Read Only
      */
-    'isUnified'?: boolean;
-    /**
-     * Unified account mode: - `classic`: Classic account mode - `multi_currency`: Cross-currency margin mode - `portfolio`: Portfolio margin mode - `single_currency`: Single-currency margin mode
-     */
-    'mode'?: string;
+    'readOnly'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
-        },
-        {
-            name: 'isUnified',
-            baseName: 'is_unified',
-            type: 'boolean',
-        },
-        {
-            name: 'mode',
-            baseName: 'mode',
+            name: 'name',
+            baseName: 'name',
             type: 'string',
+        },
+        {
+            name: 'readOnly',
+            baseName: 'read_only',
+            type: 'boolean',
         },
     ];
 
     static getAttributeTypeMap() {
-        return SubUserMode.attributeTypeMap;
+        return KeyPerms.attributeTypeMap;
     }
 }

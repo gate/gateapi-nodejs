@@ -1141,7 +1141,7 @@ export class SpotApi {
      * @param opts.limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000
      * @param opts.page Page number
      * @param opts.orderId Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present
-     * @param opts.account Specify query account
+     * @param opts.account The accountparameter has been deprecated. The interface supports querying all transaction records of the account.
      * @param opts.from Start timestamp for the query
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      */

@@ -13,6 +13,7 @@
 import { AccountDetail } from '../model/accountDetail';
 import { AccountRateLimit } from '../model/accountRateLimit';
 import { DebitFee } from '../model/debitFee';
+import { Key } from '../model/key';
 import { StpGroup } from '../model/stpGroup';
 import { StpGroupUser } from '../model/stpGroupUser';
 import { ObjectSerializer } from '../model/models';
@@ -59,6 +60,33 @@ export class AccountApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<AccountDetail>(config, 'AccountDetail', authSettings);
+    }
+
+    /**
+     *
+     * @summary Query All Main Account Key Information
+     */
+    public async getAccountMainKeys(): Promise<{ response: AxiosResponse; body: Key }> {
+        const localVarPath = this.client.basePath + '/account/main_keys';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Key>(config, 'Key', authSettings);
     }
 
     /**

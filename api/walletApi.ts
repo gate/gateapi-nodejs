@@ -52,7 +52,7 @@ export class WalletApi {
     }
 
     /**
-     *
+     * API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
      * @summary Query chains supported for specified currency
      * @param currency Currency name
      */
@@ -478,7 +478,7 @@ export class WalletApi {
     }
 
     /**
-     *
+     * API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
      * @summary Query withdrawal status
      * @param opts Optional parameters
      * @param opts.currency Query by specified currency name
