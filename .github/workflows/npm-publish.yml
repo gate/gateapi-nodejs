@@ -6,15 +6,14 @@ name: Node.js Package
 on:
   push:
     tags:
-     - '*'
-
-permissions:
-  id-token: write  # Required for OIDC
-  contents: read
+      - '*'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # Required for OIDC
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
