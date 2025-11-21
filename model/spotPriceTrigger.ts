@@ -15,7 +15,7 @@ export class SpotPriceTrigger {
      */
     'price': string;
     /**
-     * 价格条件类型 - 大于等于 (>=): 表示市场价格大于等于 price 时触发 - 小于等于 (<=): 表示市场价格小于等于 price 时触发
+     * 价格条件类型 - 大于等于: 表示市场价格大于等于 price 时触发 - 小于等于: 表示市场价格小于等于 price 时触发
      */
     'rule': SpotPriceTrigger.Rule;
     /**
