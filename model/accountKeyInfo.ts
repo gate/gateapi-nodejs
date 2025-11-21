@@ -10,12 +10,12 @@
  */
 
 import { AccountDetailKey } from './accountDetailKey';
-import { KeyPerms } from './keyPerms';
+import { AccountKeyInfoPerms } from './accountKeyInfoPerms';
 
 /**
  * Main Account API Key Information
  */
-export class Key {
+export class AccountKeyInfo {
     /**
      * API Key Status: 1 - Normal, 2 - Locked, 3 - Frozen (can only be modified; default is 1 upon creation)
      */
@@ -40,7 +40,7 @@ export class Key {
      * IP Whitelist
      */
     'ipWhitelist'?: Array<string>;
-    'perms'?: Array<KeyPerms>;
+    'perms'?: Array<AccountKeyInfoPerms>;
     'key'?: AccountDetailKey;
     /**
      * Created time
@@ -91,7 +91,7 @@ export class Key {
         {
             name: 'perms',
             baseName: 'perms',
-            type: 'Array<KeyPerms>',
+            type: 'Array<AccountKeyInfoPerms>',
         },
         {
             name: 'key',
@@ -116,6 +116,6 @@ export class Key {
     ];
 
     static getAttributeTypeMap() {
-        return Key.attributeTypeMap;
+        return AccountKeyInfo.attributeTypeMap;
     }
 }

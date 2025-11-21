@@ -1,4 +1,4 @@
-# Key
+# AccountKeyInfo
 
 ## Properties
 
@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **currencyPairs** | **Array&lt;string&gt;** | Trading Pair Whitelist, Maximum 30 Pairs | [optional] [default to undefined]
 **userId** | **number** | User ID | [optional] [default to undefined]
 **ipWhitelist** | **Array&lt;string&gt;** | IP Whitelist | [optional] [default to undefined]
-**perms** | [**Array&lt;KeyPerms&gt;**](KeyPerms.md) |  | [optional] [default to undefined]
+**perms** | [**Array&lt;AccountKeyInfoPerms&gt;**](AccountKeyInfoPerms.md) |  | [optional] [default to undefined]
 **key** | [**AccountDetailKey**](AccountDetailKey.md) |  | [optional] [default to undefined]
 **createdAt** | **string** | Created time | [optional] [readonly] [default to undefined]
 **updatedAt** | **string** | Last Update Time | [optional] [readonly] [default to undefined]
