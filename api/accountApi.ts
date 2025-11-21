@@ -11,9 +11,9 @@
 
 /* tslint:disable:no-unused-locals */
 import { AccountDetail } from '../model/accountDetail';
+import { AccountKeyInfo } from '../model/accountKeyInfo';
 import { AccountRateLimit } from '../model/accountRateLimit';
 import { DebitFee } from '../model/debitFee';
-import { Key } from '../model/key';
 import { StpGroup } from '../model/stpGroup';
 import { StpGroupUser } from '../model/stpGroupUser';
 import { ObjectSerializer } from '../model/models';
@@ -66,7 +66,7 @@ export class AccountApi {
      *
      * @summary Query All Main Account Key Information
      */
-    public async getAccountMainKeys(): Promise<{ response: AxiosResponse; body: Key }> {
+    public async getAccountMainKeys(): Promise<{ response: AxiosResponse; body: AccountKeyInfo }> {
         const localVarPath = this.client.basePath + '/account/main_keys';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -86,7 +86,7 @@ export class AccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Key>(config, 'Key', authSettings);
+        return this.client.request<AccountKeyInfo>(config, 'AccountKeyInfo', authSettings);
     }
 
     /**
