@@ -1,8 +1,6 @@
 export * from './accountBalance';
 export * from './accountDetail';
 export * from './accountDetailKey';
-export * from './accountKeyInfo';
-export * from './accountKeyInfoPerms';
 export * from './accountRateLimit';
 export * from './agencyCommission';
 export * from './agencyCommissionHistory';
@@ -102,6 +100,8 @@ export * from './inlineObject';
 export * from './inlineResponse200';
 export * from './inlineResponse2001';
 export * from './insuranceRecord';
+export * from './key';
+export * from './keyPerms';
 export * from './ledgerRecord';
 export * from './liquidateOrder';
 export * from './marginAccount';
@@ -270,8 +270,6 @@ import { URL } from 'url';
 import { AccountBalance } from './accountBalance';
 import { AccountDetail } from './accountDetail';
 import { AccountDetailKey } from './accountDetailKey';
-import { AccountKeyInfo } from './accountKeyInfo';
-import { AccountKeyInfoPerms } from './accountKeyInfoPerms';
 import { AccountRateLimit } from './accountRateLimit';
 import { AgencyCommission } from './agencyCommission';
 import { AgencyCommissionHistory } from './agencyCommissionHistory';
@@ -371,6 +369,8 @@ import { InlineObject } from './inlineObject';
 import { InlineResponse200 } from './inlineResponse200';
 import { InlineResponse2001 } from './inlineResponse2001';
 import { InsuranceRecord } from './insuranceRecord';
+import { Key } from './key';
+import { KeyPerms } from './keyPerms';
 import { LedgerRecord } from './ledgerRecord';
 import { LiquidateOrder } from './liquidateOrder';
 import { MarginAccount } from './marginAccount';
@@ -613,8 +613,6 @@ let typeMap: { [index: string]: any } = {
     AccountBalance: AccountBalance,
     AccountDetail: AccountDetail,
     AccountDetailKey: AccountDetailKey,
-    AccountKeyInfo: AccountKeyInfo,
-    AccountKeyInfoPerms: AccountKeyInfoPerms,
     AccountRateLimit: AccountRateLimit,
     AgencyCommission: AgencyCommission,
     AgencyCommissionHistory: AgencyCommissionHistory,
@@ -714,6 +712,8 @@ let typeMap: { [index: string]: any } = {
     InlineResponse200: InlineResponse200,
     InlineResponse2001: InlineResponse2001,
     InsuranceRecord: InsuranceRecord,
+    Key: Key,
+    KeyPerms: KeyPerms,
     LedgerRecord: LedgerRecord,
     LiquidateOrder: LiquidateOrder,
     MarginAccount: MarginAccount,

@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-export class AccountKeyInfoPerms {
+export class KeyPerms {
     /**
      * Permission function name (no value will be cleared) - `wallet`: wallet - `spot`: spot/margin - `futures`: perpetual contract - `delivery`: delivery contract - `earn`: earn - `custody`: custody - `options`: options - `account`: account information - `loan`: lending - `margin`: margin - `unified`: unified account - `copy`: copy trading- `pilot`: pilot - `otc`: otc - `alpha`: alpha - `crossx`: cross-exchange
      */
@@ -35,6 +35,6 @@ export class AccountKeyInfoPerms {
     ];
 
     static getAttributeTypeMap() {
-        return AccountKeyInfoPerms.attributeTypeMap;
+        return KeyPerms.attributeTypeMap;
     }
 }

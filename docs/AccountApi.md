@@ -57,7 +57,7 @@ Promise<{ response: AxiosResponse; body: AccountDetail; }> [AccountDetail](Accou
 
 ## getAccountMainKeys
 
-> Promise<{ response: http.IncomingMessage; body: AccountKeyInfo; }> getAccountMainKeys()
+> Promise<{ response: http.IncomingMessage; body: Key; }> getAccountMainKeys()
 
 Query All Main Account Key Information
 
@@ -83,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: AccountKeyInfo; }> [AccountKeyInfo](AccountKeyInfo.md)
+Promise<{ response: AxiosResponse; body: Key; }> [Key](Key.md)
 
 ### Authorization
 
