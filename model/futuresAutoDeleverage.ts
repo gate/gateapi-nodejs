@@ -45,11 +45,11 @@ export class FuturesAutoDeleverage {
     /**
      * Trading size
      */
-    'tradeSize'?: number;
+    'tradeSize'?: string;
     /**
      * Positions after auto-deleveraging
      */
-    'positionSize'?: number;
+    'positionSize'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -97,12 +97,12 @@ export class FuturesAutoDeleverage {
         {
             name: 'tradeSize',
             baseName: 'trade_size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'positionSize',
             baseName: 'position_size',
-            type: 'number',
+            type: 'string',
         },
     ];
 

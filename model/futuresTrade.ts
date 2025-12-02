@@ -29,7 +29,7 @@ export class FuturesTrade {
     /**
      * Trading size
      */
-    'size'?: number;
+    'size'?: string;
     /**
      * Trade price (quote currency)
      */
@@ -65,7 +65,7 @@ export class FuturesTrade {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'price',

@@ -25,7 +25,7 @@ export class FuturesLiquidate {
     /**
      * Position size
      */
-    'size'?: number;
+    'size'?: string;
     /**
      * Position margin. Not returned in public endpoints
      */
@@ -57,7 +57,7 @@ export class FuturesLiquidate {
     /**
      * Liquidation order maker size
      */
-    'left'?: number;
+    'left'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -80,7 +80,7 @@ export class FuturesLiquidate {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'margin',
@@ -120,7 +120,7 @@ export class FuturesLiquidate {
         {
             name: 'left',
             baseName: 'left',
-            type: 'number',
+            type: 'string',
         },
     ];
 

@@ -24,7 +24,7 @@ export class FuturesBatchAmendOrderRequest {
     /**
      * New order size, including filled size. - If less than or equal to the filled quantity, the order will be cancelled. - The new order side must be identical to the original one. - Close order size cannot be modified. - For reduce-only orders, increasing the size may cancel other reduce-only orders. - If the price is not modified, decreasing the size will not affect the depth queue, while increasing the size will place it at the end of the current price level.
      */
-    'size'?: number;
+    'size'?: string;
     /**
      * New order price
      */
@@ -50,7 +50,7 @@ export class FuturesBatchAmendOrderRequest {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'price',

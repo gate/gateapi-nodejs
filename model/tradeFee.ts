@@ -15,13 +15,17 @@ export class TradeFee {
      */
     'userId'?: number;
     /**
-     * taker fee rate
+     * spot taker fee rate
      */
     'takerFee'?: string;
     /**
-     * maker fee rate
+     * spot maker fee rate
      */
     'makerFee'?: string;
+    /**
+     * spot RPI MM maker fee rate
+     */
+    'rpiMakerFee'?: string;
     /**
      * Whether GT deduction discount is enabled
      */
@@ -51,6 +55,10 @@ export class TradeFee {
      */
     'futuresMakerFee'?: string;
     /**
+     * contract RPI MM maker fee rate
+     */
+    'futuresRpiMakerFee'?: string;
+    /**
      * Delivery contract taker fee rate
      */
     'deliveryTakerFee'?: string;
@@ -62,6 +70,10 @@ export class TradeFee {
      * Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates
      */
     'debitFee'?: number;
+    /**
+     * RPI MM Level
+     */
+    'rpiMm'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -79,6 +91,11 @@ export class TradeFee {
         {
             name: 'makerFee',
             baseName: 'maker_fee',
+            type: 'string',
+        },
+        {
+            name: 'rpiMakerFee',
+            baseName: 'rpi_maker_fee',
             type: 'string',
         },
         {
@@ -117,6 +134,11 @@ export class TradeFee {
             type: 'string',
         },
         {
+            name: 'futuresRpiMakerFee',
+            baseName: 'futures_rpi_maker_fee',
+            type: 'string',
+        },
+        {
             name: 'deliveryTakerFee',
             baseName: 'delivery_taker_fee',
             type: 'string',
@@ -129,6 +151,11 @@ export class TradeFee {
         {
             name: 'debitFee',
             baseName: 'debit_fee',
+            type: 'number',
+        },
+        {
+            name: 'rpiMm',
+            baseName: 'rpi_mm',
             type: 'number',
         },
     ];

@@ -23,6 +23,10 @@ export class SpotFee {
      */
     'makerFee'?: string;
     /**
+     * RPI MM maker fee rate
+     */
+    'rpiMakerFee'?: string;
+    /**
      * Whether GT deduction discount is enabled
      */
     'gtDiscount'?: boolean;
@@ -50,6 +54,10 @@ export class SpotFee {
      * Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates
      */
     'debitFee'?: number;
+    /**
+     * RPI MM Level
+     */
+    'rpiMm'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -67,6 +75,11 @@ export class SpotFee {
         {
             name: 'makerFee',
             baseName: 'maker_fee',
+            type: 'string',
+        },
+        {
+            name: 'rpiMakerFee',
+            baseName: 'rpi_maker_fee',
             type: 'string',
         },
         {
@@ -102,6 +115,11 @@ export class SpotFee {
         {
             name: 'debitFee',
             baseName: 'debit_fee',
+            type: 'number',
+        },
+        {
+            name: 'rpiMm',
+            baseName: 'rpi_mm',
             type: 'number',
         },
     ];

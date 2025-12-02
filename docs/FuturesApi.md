@@ -756,7 +756,7 @@ Promise<{ response: AxiosResponse; body: FuturesAccount; }> [FuturesAccount](Fut
 
 Query futures account change history
 
-If the contract field is passed, only records containing this field after 2023-10-30 can be filtered.
+If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。
 
 ### Example
 
@@ -958,6 +958,8 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 Update position leverage
 
+⚠️ Position Mode Switching Rules:  - leverage ≠ 0: Isolated Margin Mode (Regardless of whether cross_leverage_limit is filled, this parameter will be ignored) - leverage &#x3D; 0: Cross Margin Mode (Use cross_leverage_limit to set the leverage multiple)  Examples: - Set isolated margin with 10x leverage: leverage&#x3D;10 - Set cross margin with 10x leverage: leverage&#x3D;0&amp;cross_leverage_limit&#x3D;10 - leverage&#x3D;5&amp;cross_leverage_limit&#x3D;10 → Result: Isolated margin with 5x leverage (cross_leverage_limit is ignored)  ⚠️ Warning: Incorrect settings may cause unexpected position mode switching, affecting risk management.
+
 ### Example
 
 ```typescript
@@ -1148,7 +1150,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 Set position mode
 
-The prerequisite for changing mode is that there are no open positions and no open orders
+The prerequisite for changing mode is that all positions have no holdings and no pending orders
 
 ### Example
 
@@ -1491,7 +1493,7 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 
 ## cancelFuturesOrders
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder>; }> cancelFuturesOrders(settle, contract, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder>; }> cancelFuturesOrders(settle, opts)
 
 Cancel all orders with \&#39;open\&#39; status
 
@@ -1509,14 +1511,14 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'xGateExptime': "1689560679123", // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'contract': "BTC_USDT", // string | Contract Identifier; if specified, only cancel pending orders related to this contract
   'side': "ask", // string | Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
   'excludeReduceOnly': false, // boolean | Whether to exclude reduce-only orders
   'text': "cancel by user" // string | Remark for order cancellation
 };
-api.cancelFuturesOrders(settle, contract, opts)
+api.cancelFuturesOrders(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -1527,8 +1529,8 @@ api.cancelFuturesOrders(settle, contract, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **contract** | **string**| Futures contract | [default to undefined]
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+ **contract** | **string**| Contract Identifier; if specified, only cancel pending orders related to this contract | [optional] [default to undefined]
  **side** | **string**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders | [optional] [default to undefined]
  **excludeReduceOnly** | **boolean**| Whether to exclude reduce-only orders | [optional] [default to undefined]
  **text** | **string**| Remark for order cancellation | [optional] [default to undefined]
@@ -2186,7 +2188,7 @@ Promise<{ response: AxiosResponse; body: { [key: string]: FuturesFee; }; }> [Fut
 
 Cancel batch orders by specified ID list
 
-Multiple different order IDs can be specified, maximum 20 records per request
+Multiple different order IDs can be specified. A maximum of 20 records can be cancelled in one request
 
 ### Example
 
@@ -2237,7 +2239,7 @@ Promise<{ response: AxiosResponse; body: Array<FutureCancelOrderResult>; }> [Fut
 
 Batch modify orders by specified IDs
 
-Multiple different order IDs can be specified, maximum 10 orders per request
+Multiple different order IDs can be specified. A maximum of 10 orders can be modified in one request
 
 ### Example
 

@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **crossLeverageLimit** | **string** | Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | [optional] [readonly] [default to undefined]
 **entryPrice** | **string** | Average entry price | [optional] [readonly] [default to undefined]
 **fillPrice** | **string** | Average fill price | [optional] [readonly] [default to undefined]
-**tradeSize** | **number** | Trading size | [optional] [readonly] [default to undefined]
-**positionSize** | **number** | Positions after auto-deleveraging | [optional] [readonly] [default to undefined]
+**tradeSize** | **string** | Trading size | [optional] [readonly] [default to undefined]
+**positionSize** | **string** | Positions after auto-deleveraging | [optional] [readonly] [default to undefined]
 

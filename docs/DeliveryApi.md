@@ -121,7 +121,7 @@ No authorization required
 
 ## listDeliveryOrderBook
 
-> Promise<{ response: http.IncomingMessage; body: FuturesOrderBook; }> listDeliveryOrderBook(settle, contract, opts)
+> Promise<{ response: http.IncomingMessage; body: DeliveryOrderBook; }> listDeliveryOrderBook(settle, contract, opts)
 
 Query futures market depth information
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: FuturesOrderBook; }> [FuturesOrderBook](FuturesOrderBook.md)
+Promise<{ response: AxiosResponse; body: DeliveryOrderBook; }> [DeliveryOrderBook](DeliveryOrderBook.md)
 
 ### Authorization
 
@@ -174,7 +174,7 @@ No authorization required
 
 ## listDeliveryTrades
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesTrade>; }> listDeliveryTrades(settle, contract, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryTrade>; }> listDeliveryTrades(settle, contract, opts)
 
 Futures market transaction records
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesTrade>; }> [FuturesTrade](FuturesTrade.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryTrade>; }> [DeliveryTrade](DeliveryTrade.md)
 
 ### Authorization
 
@@ -372,7 +372,7 @@ No authorization required
 
 ## listDeliveryAccounts
 
-> Promise<{ response: http.IncomingMessage; body: FuturesAccount; }> listDeliveryAccounts(settle)
+> Promise<{ response: http.IncomingMessage; body: DeliveryAccount; }> listDeliveryAccounts(settle)
 
 Get futures account
 
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: FuturesAccount; }> [FuturesAccount](FuturesAccount.md)
+Promise<{ response: AxiosResponse; body: DeliveryAccount; }> [DeliveryAccount](DeliveryAccount.md)
 
 ### Authorization
 
@@ -415,7 +415,7 @@ Promise<{ response: AxiosResponse; body: FuturesAccount; }> [FuturesAccount](Fut
 
 ## listDeliveryAccountBook
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesAccountBook>; }> listDeliveryAccountBook(settle, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryAccountBook>; }> listDeliveryAccountBook(settle, opts)
 
 Query futures account change history
 
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook>; }> [FuturesAccountBook](FuturesAccountBook.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryAccountBook>; }> [DeliveryAccountBook](DeliveryAccountBook.md)
 
 ### Authorization
 
@@ -468,7 +468,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook>; }> [FuturesA
 
 ## listDeliveryPositions
 
-> Promise<{ response: http.IncomingMessage; body: Array<Position>; }> listDeliveryPositions(settle)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryPosition>; }> listDeliveryPositions(settle)
 
 Get user position list
 
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryPosition>; }> [DeliveryPosition](DeliveryPosition.md)
 
 ### Authorization
 
@@ -511,7 +511,7 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 
 ## getDeliveryPosition
 
-> Promise<{ response: http.IncomingMessage; body: Position; }> getDeliveryPosition(settle, contract)
+> Promise<{ response: http.IncomingMessage; body: DeliveryPosition; }> getDeliveryPosition(settle, contract)
 
 Get single position information
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
+Promise<{ response: AxiosResponse; body: DeliveryPosition; }> [DeliveryPosition](DeliveryPosition.md)
 
 ### Authorization
 
@@ -556,7 +556,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ## updateDeliveryPositionMargin
 
-> Promise<{ response: http.IncomingMessage; body: Position; }> updateDeliveryPositionMargin(settle, contract, change)
+> Promise<{ response: http.IncomingMessage; body: DeliveryPosition; }> updateDeliveryPositionMargin(settle, contract, change)
 
 Update position margin
 
@@ -590,7 +590,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
+Promise<{ response: AxiosResponse; body: DeliveryPosition; }> [DeliveryPosition](DeliveryPosition.md)
 
 ### Authorization
 
@@ -603,7 +603,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ## updateDeliveryPositionLeverage
 
-> Promise<{ response: http.IncomingMessage; body: Position; }> updateDeliveryPositionLeverage(settle, contract, leverage)
+> Promise<{ response: http.IncomingMessage; body: DeliveryPosition; }> updateDeliveryPositionLeverage(settle, contract, leverage)
 
 Update position leverage
 
@@ -637,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
+Promise<{ response: AxiosResponse; body: DeliveryPosition; }> [DeliveryPosition](DeliveryPosition.md)
 
 ### Authorization
 
@@ -650,7 +650,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ## updateDeliveryPositionRiskLimit
 
-> Promise<{ response: http.IncomingMessage; body: Position; }> updateDeliveryPositionRiskLimit(settle, contract, riskLimit)
+> Promise<{ response: http.IncomingMessage; body: DeliveryPosition; }> updateDeliveryPositionRiskLimit(settle, contract, riskLimit)
 
 Update position risk limit
 
@@ -684,7 +684,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
+Promise<{ response: AxiosResponse; body: DeliveryPosition; }> [DeliveryPosition](DeliveryPosition.md)
 
 ### Authorization
 
@@ -697,7 +697,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ## listDeliveryOrders
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder>; }> listDeliveryOrders(settle, status, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryOrder>; }> listDeliveryOrders(settle, status, opts)
 
 Query futures order list
 
@@ -743,7 +743,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryOrder>; }> [DeliveryOrder](DeliveryOrder.md)
 
 ### Authorization
 
@@ -756,7 +756,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](
 
 ## createDeliveryOrder
 
-> Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> createDeliveryOrder(settle, futuresOrder)
+> Promise<{ response: http.IncomingMessage; body: DeliveryOrder; }> createDeliveryOrder(settle, deliveryOrder)
 
 Place futures order
 
@@ -774,8 +774,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.DeliveryApi(client);
 const settle = "usdt"; // 'usdt' | Settle currency
-const futuresOrder = new FuturesOrder(); // FuturesOrder | 
-api.createDeliveryOrder(settle, futuresOrder)
+const deliveryOrder = new DeliveryOrder(); // DeliveryOrder | 
+api.createDeliveryOrder(settle, deliveryOrder)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -786,11 +786,11 @@ api.createDeliveryOrder(settle, futuresOrder)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **futuresOrder** | [**FuturesOrder**](FuturesOrder.md)|  | 
+ **deliveryOrder** | [**DeliveryOrder**](DeliveryOrder.md)|  | 
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: DeliveryOrder; }> [DeliveryOrder](DeliveryOrder.md)
 
 ### Authorization
 
@@ -803,7 +803,7 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 
 ## cancelDeliveryOrders
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder>; }> cancelDeliveryOrders(settle, contract, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryOrder>; }> cancelDeliveryOrders(settle, contract, opts)
 
 Cancel all orders with \&#39;open\&#39; status
 
@@ -841,7 +841,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryOrder>; }> [DeliveryOrder](DeliveryOrder.md)
 
 ### Authorization
 
@@ -854,7 +854,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](
 
 ## getDeliveryOrder
 
-> Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> getDeliveryOrder(settle, orderId)
+> Promise<{ response: http.IncomingMessage; body: DeliveryOrder; }> getDeliveryOrder(settle, orderId)
 
 Query single order details
 
@@ -888,7 +888,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: DeliveryOrder; }> [DeliveryOrder](DeliveryOrder.md)
 
 ### Authorization
 
@@ -901,7 +901,7 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 
 ## cancelDeliveryOrder
 
-> Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> cancelDeliveryOrder(settle, orderId)
+> Promise<{ response: http.IncomingMessage; body: DeliveryOrder; }> cancelDeliveryOrder(settle, orderId)
 
 Cancel single order
 
@@ -933,7 +933,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: DeliveryOrder; }> [DeliveryOrder](DeliveryOrder.md)
 
 ### Authorization
 
@@ -946,7 +946,7 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 
 ## getMyDeliveryTrades
 
-> Promise<{ response: http.IncomingMessage; body: Array<MyFuturesTrade>; }> getMyDeliveryTrades(settle, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryMyTrade>; }> getMyDeliveryTrades(settle, opts)
 
 Query personal trading records
 
@@ -990,7 +990,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade>; }> [MyFuturesTrade](MyFuturesTrade.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryMyTrade>; }> [DeliveryMyTrade](DeliveryMyTrade.md)
 
 ### Authorization
 
@@ -1003,7 +1003,7 @@ Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade>; }> [MyFuturesTra
 
 ## listDeliveryPositionClose
 
-> Promise<{ response: http.IncomingMessage; body: Array<PositionClose>; }> listDeliveryPositionClose(settle, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryPositionClose>; }> listDeliveryPositionClose(settle, opts)
 
 Query position close history
 
@@ -1039,7 +1039,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<PositionClose>; }> [PositionClose](PositionClose.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryPositionClose>; }> [DeliveryPositionClose](DeliveryPositionClose.md)
 
 ### Authorization
 
@@ -1052,7 +1052,7 @@ Promise<{ response: AxiosResponse; body: Array<PositionClose>; }> [PositionClose
 
 ## listDeliveryLiquidates
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesLiquidate>; }> listDeliveryLiquidates(settle, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryLiquidate>; }> listDeliveryLiquidates(settle, opts)
 
 Query liquidation history
 
@@ -1090,7 +1090,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate>; }> [FuturesLiquidate](FuturesLiquidate.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryLiquidate>; }> [DeliveryLiquidate](DeliveryLiquidate.md)
 
 ### Authorization
 
@@ -1154,7 +1154,7 @@ Promise<{ response: AxiosResponse; body: Array<DeliverySettlement>; }> [Delivery
 
 ## listDeliveryRiskLimitTiers
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesLimitRiskTiers>; }> listDeliveryRiskLimitTiers(settle, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryLimitRiskTiers>; }> listDeliveryRiskLimitTiers(settle, opts)
 
 Query risk limit tiers
 
@@ -1192,7 +1192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesLimitRiskTiers>; }> [FuturesLimitRiskTiers](FuturesLimitRiskTiers.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryLimitRiskTiers>; }> [DeliveryLimitRiskTiers](DeliveryLimitRiskTiers.md)
 
 ### Authorization
 

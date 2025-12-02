@@ -29,11 +29,11 @@ export class MyFuturesTradeTimeRange {
     /**
      * Trading size
      */
-    'size'?: number;
+    'size'?: string;
     /**
      * Number of closed positions:  close_size=0 && size＞0 Open long position close_size=0 && size＜0 Open short position close_size>0 && size>0 && size <= close_size Close short position close_size>0 && size>0 && size > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long position close_size<0 && size<0 && size < close_size Close long position and open short position
      */
-    'closeSize'?: number;
+    'closeSize'?: string;
     /**
      * Fill Price
      */
@@ -81,12 +81,12 @@ export class MyFuturesTradeTimeRange {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'closeSize',
             baseName: 'close_size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'price',

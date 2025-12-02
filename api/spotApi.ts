@@ -222,7 +222,7 @@ export class SpotApi {
     }
 
     /**
-     * Market depth buy orders are sorted by price from high to low, sell orders are sorted from low to high
+     * Market depth buy orders are sorted by price from high to low, sell orders are reversed
      * @summary Get market depth information
      * @param currencyPair Currency pair
      * @param opts Optional parameters

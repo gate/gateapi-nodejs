@@ -38,7 +38,7 @@ const api = new GateApi.MultiCollateralLoanApi(client);
 const opts = {
   'page': 1, // number | Page number
   'limit': 10, // number | Maximum number of records returned in a single list
-  'sort': "ltv_asc", // string | Sort type: `time_desc` - Created time descending (default), `ltv_asc` - Collateral ratio ascending, `ltv_desc` - Collateral ratio descending.
+  'sort': "ltv_asc", // string | Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio
   'orderType': "current" // string | Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
 };
 api.listMultiCollateralOrders(opts)
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 10]
- **sort** | **string**| Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. | [optional] [default to undefined]
+ **sort** | **string**| Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio | [optional] [default to undefined]
  **orderType** | **string**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | [optional] [default to undefined]
 
 ### Return type
@@ -367,7 +367,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MultiCollateralLoanApi(client);
 const type = "collateral"; // string | Currency type: collateral - Collateral currency, borrow - Borrowing currency
-const currency = "BTC"; // string | When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided.
+const currency = "BTC"; // string | When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed
 api.listUserCurrencyQuota(type, currency)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -379,7 +379,7 @@ api.listUserCurrencyQuota(type, currency)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **string**| Currency type: collateral - Collateral currency, borrow - Borrowing currency | [default to undefined]
- **currency** | **string**| When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided. | [default to undefined]
+ **currency** | **string**| When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed | [default to undefined]
 
 ### Return type
 
@@ -513,7 +513,7 @@ No authorization required
 
 Query currency\&#39;s current interest rate
 
-Query currency\&#39;s current interest rate for the previous hour, current interest rate updates hourly
+Query the current interest rate of the currency in the previous hour, the current interest rate is updated every hour
 
 ### Example
 

@@ -56,11 +56,11 @@ export class BatchFuturesOrder {
     /**
      * Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
      */
-    'size'?: number;
+    'size'?: string;
     /**
      * Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
      */
-    'iceberg'?: number;
+    'iceberg'?: string;
     /**
      * Order price. Price of 0 with `tif` set to `ioc` represents a market order.
      */
@@ -92,7 +92,7 @@ export class BatchFuturesOrder {
     /**
      * Unfilled quantity
      */
-    'left'?: number;
+    'left'?: string;
     /**
      * Fill price
      */
@@ -182,12 +182,12 @@ export class BatchFuturesOrder {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'iceberg',
             baseName: 'iceberg',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'price',
@@ -227,7 +227,7 @@ export class BatchFuturesOrder {
         {
             name: 'left',
             baseName: 'left',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'fillPrice',

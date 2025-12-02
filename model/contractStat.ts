@@ -25,7 +25,7 @@ export class ContractStat {
     /**
      * Long liquidation size (contracts)
      */
-    'longLiqSize'?: number;
+    'longLiqSize'?: string;
     /**
      * Long liquidation amount (base currency)
      */
@@ -37,7 +37,7 @@ export class ContractStat {
     /**
      * Short liquidation size (contracts)
      */
-    'shortLiqSize'?: number;
+    'shortLiqSize'?: string;
     /**
      * Short liquidation amount (base currency)
      */
@@ -49,7 +49,7 @@ export class ContractStat {
     /**
      * Total open interest size (contracts)
      */
-    'openInterest'?: number;
+    'openInterest'?: string;
     /**
      * Total open interest volume (quote currency)
      */
@@ -61,7 +61,7 @@ export class ContractStat {
     /**
      * Top trader long/short position ratio
      */
-    'topLsrSize'?: number;
+    'topLsrSize'?: string;
     /**
      * Mark price
      */
@@ -88,7 +88,7 @@ export class ContractStat {
         {
             name: 'longLiqSize',
             baseName: 'long_liq_size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'longLiqAmount',
@@ -103,7 +103,7 @@ export class ContractStat {
         {
             name: 'shortLiqSize',
             baseName: 'short_liq_size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'shortLiqAmount',
@@ -118,7 +118,7 @@ export class ContractStat {
         {
             name: 'openInterest',
             baseName: 'open_interest',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'openInterestUsd',
@@ -133,7 +133,7 @@ export class ContractStat {
         {
             name: 'topLsrSize',
             baseName: 'top_lsr_size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'markPrice',

@@ -26,7 +26,7 @@ export class Position {
     /**
      * Position size
      */
-    'size'?: number;
+    'size'?: string;
     /**
      * Position leverage. 0 means cross margin; positive number means isolated margin
      */
@@ -165,7 +165,7 @@ export class Position {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'leverage',

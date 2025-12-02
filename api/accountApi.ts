@@ -185,7 +185,7 @@ export class AccountApi {
     }
 
     /**
-     * Only the main account that created this STP group can query the account ID list in the current STP group
+     * Only the main account that created this STP group can query the account ID list of the current STP group
      * @summary Query users in the STP user group
      * @param stpId STP Group ID
      */

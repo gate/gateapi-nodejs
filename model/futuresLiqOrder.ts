@@ -21,11 +21,11 @@ export class FuturesLiqOrder {
     /**
      * User position size
      */
-    'size'?: number;
+    'size'?: string;
     /**
      * Number of forced liquidation orders
      */
-    'orderSize'?: number;
+    'orderSize'?: string;
     /**
      * Liquidation order price
      */
@@ -37,7 +37,7 @@ export class FuturesLiqOrder {
     /**
      * System liquidation order maker size
      */
-    'left'?: number;
+    'left'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -55,12 +55,12 @@ export class FuturesLiqOrder {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'orderSize',
             baseName: 'order_size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'orderPrice',
@@ -75,7 +75,7 @@ export class FuturesLiqOrder {
         {
             name: 'left',
             baseName: 'left',
-            type: 'number',
+            type: 'string',
         },
     ];
 

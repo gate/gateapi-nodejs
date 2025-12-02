@@ -879,7 +879,7 @@ export class FuturesApi {
     }
 
     /**
-     * If the contract field is passed, only records containing this field after 2023-10-30 can be filtered.
+     * If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。
      * @summary Query futures account change history
      * @param settle Settle currency
      * @param opts Optional parameters
@@ -1105,7 +1105,7 @@ export class FuturesApi {
     }
 
     /**
-     *
+     * ⚠️ Position Mode Switching Rules:  - leverage ≠ 0: Isolated Margin Mode (Regardless of whether cross_leverage_limit is filled, this parameter will be ignored) - leverage = 0: Cross Margin Mode (Use cross_leverage_limit to set the leverage multiple)  Examples: - Set isolated margin with 10x leverage: leverage=10 - Set cross margin with 10x leverage: leverage=0&cross_leverage_limit=10 - leverage=5&cross_leverage_limit=10 → Result: Isolated margin with 5x leverage (cross_leverage_limit is ignored)  ⚠️ Warning: Incorrect settings may cause unexpected position mode switching, affecting risk management.
      * @summary Update position leverage
      * @param settle Settle currency
      * @param contract Futures contract
@@ -1330,7 +1330,7 @@ export class FuturesApi {
     }
 
     /**
-     * The prerequisite for changing mode is that there are no open positions and no open orders
+     * The prerequisite for changing mode is that all positions have no holdings and no pending orders
      * @summary Set position mode
      * @param settle Settle currency
      * @param dualMode Whether to enable Hedge Mode
@@ -1752,17 +1752,16 @@ export class FuturesApi {
      * Zero-fill orders cannot be retrieved 10 minutes after order cancellation
      * @summary Cancel all orders with \'open\' status
      * @param settle Settle currency
-     * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+     * @param opts.contract Contract Identifier; if specified, only cancel pending orders related to this contract
      * @param opts.side Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
      * @param opts.excludeReduceOnly Whether to exclude reduce-only orders
      * @param opts.text Remark for order cancellation
      */
     public async cancelFuturesOrders(
         settle: 'btc' | 'usdt',
-        contract: string,
-        opts: { xGateExptime?: string; side?: string; excludeReduceOnly?: boolean; text?: string },
+        opts: { xGateExptime?: string; contract?: string; side?: string; excludeReduceOnly?: boolean; text?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1782,13 +1781,10 @@ export class FuturesApi {
             throw new Error('Required parameter settle was null or undefined when calling cancelFuturesOrders.');
         }
 
-        // verify required parameter 'contract' is not null or undefined
-        if (contract === null || contract === undefined) {
-            throw new Error('Required parameter contract was null or undefined when calling cancelFuturesOrders.');
-        }
-
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
+        if (opts.contract !== undefined) {
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+        }
 
         if (opts.side !== undefined) {
             localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, 'string');
@@ -2563,7 +2559,7 @@ export class FuturesApi {
     }
 
     /**
-     * Multiple different order IDs can be specified, maximum 20 records per request
+     * Multiple different order IDs can be specified. A maximum of 20 records can be cancelled in one request
      * @summary Cancel batch orders by specified ID list
      * @param settle Settle currency
      * @param requestBody
@@ -2622,7 +2618,7 @@ export class FuturesApi {
     }
 
     /**
-     * Multiple different order IDs can be specified, maximum 10 orders per request
+     * Multiple different order IDs can be specified. A maximum of 10 orders can be modified in one request
      * @summary Batch modify orders by specified IDs
      * @param settle Settle currency
      * @param batchAmendOrderReq

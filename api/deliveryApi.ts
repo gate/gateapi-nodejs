@@ -10,22 +10,22 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { DeliveryAccount } from '../model/deliveryAccount';
+import { DeliveryAccountBook } from '../model/deliveryAccountBook';
 import { DeliveryCandlestick } from '../model/deliveryCandlestick';
 import { DeliveryContract } from '../model/deliveryContract';
+import { DeliveryLimitRiskTiers } from '../model/deliveryLimitRiskTiers';
+import { DeliveryLiquidate } from '../model/deliveryLiquidate';
+import { DeliveryMyTrade } from '../model/deliveryMyTrade';
+import { DeliveryOrder } from '../model/deliveryOrder';
+import { DeliveryOrderBook } from '../model/deliveryOrderBook';
+import { DeliveryPosition } from '../model/deliveryPosition';
+import { DeliveryPositionClose } from '../model/deliveryPositionClose';
 import { DeliverySettlement } from '../model/deliverySettlement';
 import { DeliveryTicker } from '../model/deliveryTicker';
-import { FuturesAccount } from '../model/futuresAccount';
-import { FuturesAccountBook } from '../model/futuresAccountBook';
-import { FuturesLimitRiskTiers } from '../model/futuresLimitRiskTiers';
-import { FuturesLiquidate } from '../model/futuresLiquidate';
-import { FuturesOrder } from '../model/futuresOrder';
-import { FuturesOrderBook } from '../model/futuresOrderBook';
+import { DeliveryTrade } from '../model/deliveryTrade';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
-import { FuturesTrade } from '../model/futuresTrade';
 import { InsuranceRecord } from '../model/insuranceRecord';
-import { MyFuturesTrade } from '../model/myFuturesTrade';
-import { Position } from '../model/position';
-import { PositionClose } from '../model/positionClose';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -143,7 +143,7 @@ export class DeliveryApi {
         settle: 'usdt',
         contract: string,
         opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
-    ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
+    ): Promise<{ response: AxiosResponse; body: DeliveryOrderBook }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/order_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -190,7 +190,7 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<FuturesOrderBook>(config, 'FuturesOrderBook', authSettings);
+        return this.client.request<DeliveryOrderBook>(config, 'DeliveryOrderBook', authSettings);
     }
 
     /**
@@ -208,7 +208,7 @@ export class DeliveryApi {
         settle: 'usdt',
         contract: string,
         opts: { limit?: number; lastId?: string; from?: number; to?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryTrade> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -259,7 +259,7 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesTrade>>(config, 'Array<FuturesTrade>', authSettings);
+        return this.client.request<Array<DeliveryTrade>>(config, 'Array<DeliveryTrade>', authSettings);
     }
 
     /**
@@ -452,7 +452,7 @@ export class DeliveryApi {
      * @summary Get futures account
      * @param settle Settle currency
      */
-    public async listDeliveryAccounts(settle: 'usdt'): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
+    public async listDeliveryAccounts(settle: 'usdt'): Promise<{ response: AxiosResponse; body: DeliveryAccount }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/accounts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -479,7 +479,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesAccount>(config, 'FuturesAccount', authSettings);
+        return this.client.request<DeliveryAccount>(config, 'DeliveryAccount', authSettings);
     }
 
     /**
@@ -500,7 +500,7 @@ export class DeliveryApi {
             to?: number;
             type?: 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr';
         },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryAccountBook> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/account_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -547,7 +547,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesAccountBook>>(config, 'Array<FuturesAccountBook>', authSettings);
+        return this.client.request<Array<DeliveryAccountBook>>(config, 'Array<DeliveryAccountBook>', authSettings);
     }
 
     /**
@@ -555,7 +555,9 @@ export class DeliveryApi {
      * @summary Get user position list
      * @param settle Settle currency
      */
-    public async listDeliveryPositions(settle: 'usdt'): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+    public async listDeliveryPositions(
+        settle: 'usdt',
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryPosition> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/positions'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -582,7 +584,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<Position>>(config, 'Array<Position>', authSettings);
+        return this.client.request<Array<DeliveryPosition>>(config, 'Array<DeliveryPosition>', authSettings);
     }
 
     /**
@@ -594,7 +596,7 @@ export class DeliveryApi {
     public async getDeliveryPosition(
         settle: 'usdt',
         contract: string,
-    ): Promise<{ response: AxiosResponse; body: Position }> {
+    ): Promise<{ response: AxiosResponse; body: DeliveryPosition }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/positions/{contract}'
@@ -628,7 +630,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Position>(config, 'Position', authSettings);
+        return this.client.request<DeliveryPosition>(config, 'DeliveryPosition', authSettings);
     }
 
     /**
@@ -642,7 +644,7 @@ export class DeliveryApi {
         settle: 'usdt',
         contract: string,
         change: string,
-    ): Promise<{ response: AxiosResponse; body: Position }> {
+    ): Promise<{ response: AxiosResponse; body: DeliveryPosition }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/positions/{contract}/margin'
@@ -689,7 +691,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Position>(config, 'Position', authSettings);
+        return this.client.request<DeliveryPosition>(config, 'DeliveryPosition', authSettings);
     }
 
     /**
@@ -703,7 +705,7 @@ export class DeliveryApi {
         settle: 'usdt',
         contract: string,
         leverage: string,
-    ): Promise<{ response: AxiosResponse; body: Position }> {
+    ): Promise<{ response: AxiosResponse; body: DeliveryPosition }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/positions/{contract}/leverage'
@@ -750,7 +752,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Position>(config, 'Position', authSettings);
+        return this.client.request<DeliveryPosition>(config, 'DeliveryPosition', authSettings);
     }
 
     /**
@@ -764,7 +766,7 @@ export class DeliveryApi {
         settle: 'usdt',
         contract: string,
         riskLimit: string,
-    ): Promise<{ response: AxiosResponse; body: Position }> {
+    ): Promise<{ response: AxiosResponse; body: DeliveryPosition }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/positions/{contract}/risk_limit'
@@ -811,7 +813,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Position>(config, 'Position', authSettings);
+        return this.client.request<DeliveryPosition>(config, 'DeliveryPosition', authSettings);
     }
 
     /**
@@ -830,7 +832,7 @@ export class DeliveryApi {
         settle: 'usdt',
         status: 'open' | 'finished',
         opts: { contract?: string; limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryOrder> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -885,19 +887,19 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesOrder>>(config, 'Array<FuturesOrder>', authSettings);
+        return this.client.request<Array<DeliveryOrder>>(config, 'Array<DeliveryOrder>', authSettings);
     }
 
     /**
      * Zero-fill orders cannot be retrieved 10 minutes after order cancellation
      * @summary Place futures order
      * @param settle Settle currency
-     * @param futuresOrder
+     * @param deliveryOrder
      */
     public async createDeliveryOrder(
         settle: 'usdt',
-        futuresOrder: FuturesOrder,
-    ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        deliveryOrder: DeliveryOrder,
+    ): Promise<{ response: AxiosResponse; body: DeliveryOrder }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -916,9 +918,9 @@ export class DeliveryApi {
             throw new Error('Required parameter settle was null or undefined when calling createDeliveryOrder.');
         }
 
-        // verify required parameter 'futuresOrder' is not null or undefined
-        if (futuresOrder === null || futuresOrder === undefined) {
-            throw new Error('Required parameter futuresOrder was null or undefined when calling createDeliveryOrder.');
+        // verify required parameter 'deliveryOrder' is not null or undefined
+        if (deliveryOrder === null || deliveryOrder === undefined) {
+            throw new Error('Required parameter deliveryOrder was null or undefined when calling createDeliveryOrder.');
         }
 
         const config: AxiosRequestConfig = {
@@ -926,11 +928,11 @@ export class DeliveryApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(futuresOrder, 'FuturesOrder'),
+            data: ObjectSerializer.serialize(deliveryOrder, 'DeliveryOrder'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder>(config, 'FuturesOrder', authSettings);
+        return this.client.request<DeliveryOrder>(config, 'DeliveryOrder', authSettings);
     }
 
     /**
@@ -945,7 +947,7 @@ export class DeliveryApi {
         settle: 'usdt',
         contract: string,
         opts: { side?: 'ask' | 'bid' },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryOrder> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -984,7 +986,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesOrder>>(config, 'Array<FuturesOrder>', authSettings);
+        return this.client.request<Array<DeliveryOrder>>(config, 'Array<DeliveryOrder>', authSettings);
     }
 
     /**
@@ -996,7 +998,7 @@ export class DeliveryApi {
     public async getDeliveryOrder(
         settle: 'usdt',
         orderId: string,
-    ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+    ): Promise<{ response: AxiosResponse; body: DeliveryOrder }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/orders/{order_id}'
@@ -1030,7 +1032,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder>(config, 'FuturesOrder', authSettings);
+        return this.client.request<DeliveryOrder>(config, 'DeliveryOrder', authSettings);
     }
 
     /**
@@ -1042,7 +1044,7 @@ export class DeliveryApi {
     public async cancelDeliveryOrder(
         settle: 'usdt',
         orderId: string,
-    ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+    ): Promise<{ response: AxiosResponse; body: DeliveryOrder }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/orders/{order_id}'
@@ -1076,7 +1078,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder>(config, 'FuturesOrder', authSettings);
+        return this.client.request<DeliveryOrder>(config, 'DeliveryOrder', authSettings);
     }
 
     /**
@@ -1101,7 +1103,7 @@ export class DeliveryApi {
             lastId?: string;
             countTotal?: 0 | 1;
         },
-    ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryMyTrade> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/my_trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1153,7 +1155,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<MyFuturesTrade>>(config, 'Array<MyFuturesTrade>', authSettings);
+        return this.client.request<Array<DeliveryMyTrade>>(config, 'Array<DeliveryMyTrade>', authSettings);
     }
 
     /**
@@ -1167,7 +1169,7 @@ export class DeliveryApi {
     public async listDeliveryPositionClose(
         settle: 'usdt',
         opts: { contract?: string; limit?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<PositionClose> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryPositionClose> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/position_close'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1203,7 +1205,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<PositionClose>>(config, 'Array<PositionClose>', authSettings);
+        return this.client.request<Array<DeliveryPositionClose>>(config, 'Array<DeliveryPositionClose>', authSettings);
     }
 
     /**
@@ -1218,7 +1220,7 @@ export class DeliveryApi {
     public async listDeliveryLiquidates(
         settle: 'usdt',
         opts: { contract?: string; limit?: number; at?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryLiquidate> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/liquidates'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1258,7 +1260,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesLiquidate>>(config, 'Array<FuturesLiquidate>', authSettings);
+        return this.client.request<Array<DeliveryLiquidate>>(config, 'Array<DeliveryLiquidate>', authSettings);
     }
 
     /**
@@ -1328,7 +1330,7 @@ export class DeliveryApi {
     public async listDeliveryRiskLimitTiers(
         settle: 'usdt',
         opts: { contract?: string; limit?: number; offset?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesLimitRiskTiers> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryLimitRiskTiers> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/risk_limit_tiers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1368,7 +1370,11 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesLimitRiskTiers>>(config, 'Array<FuturesLimitRiskTiers>', authSettings);
+        return this.client.request<Array<DeliveryLimitRiskTiers>>(
+            config,
+            'Array<DeliveryLimitRiskTiers>',
+            authSettings,
+        );
     }
 
     /**

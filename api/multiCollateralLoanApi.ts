@@ -49,7 +49,7 @@ export class MultiCollateralLoanApi {
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in a single list
-     * @param opts.sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending.
+     * @param opts.sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio
      * @param opts.orderType Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
      */
     public async listMultiCollateralOrders(opts: {
@@ -385,7 +385,7 @@ export class MultiCollateralLoanApi {
      *
      * @summary Query user\'s collateral and borrowing currency quota information
      * @param type Currency type: collateral - Collateral currency, borrow - Borrowing currency
-     * @param currency When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided.
+     * @param currency When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed
      */
     public async listUserCurrencyQuota(
         type: string,
@@ -509,7 +509,7 @@ export class MultiCollateralLoanApi {
     }
 
     /**
-     * Query currency\'s current interest rate for the previous hour, current interest rate updates hourly
+     * Query the current interest rate of the currency in the previous hour, the current interest rate is updated every hour
      * @summary Query currency\'s current interest rate
      * @param currencies Specify currency name query array, separated by commas, maximum 100 items
      * @param opts Optional parameters

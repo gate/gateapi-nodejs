@@ -30,6 +30,9 @@ export class ApiClient {
     ) {
         this._basePath = basePath || this._basePath;
 
+        // Set default X-Gate-Size-Decimal header for futures API
+        this._defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
         this.axiosInstance.defaults.transformResponse = [
             (data) => {
                 try {

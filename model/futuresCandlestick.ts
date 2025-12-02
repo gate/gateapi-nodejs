@@ -20,7 +20,7 @@ export class FuturesCandlestick {
     /**
      * size volume (contract size). Only returned if `contract` is not prefixed
      */
-    'v'?: number;
+    'v'?: string;
     /**
      * Close price (quote currency)
      */
@@ -53,7 +53,7 @@ export class FuturesCandlestick {
         {
             name: 'v',
             baseName: 'v',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'c',

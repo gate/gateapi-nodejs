@@ -53,10 +53,20 @@ export * from './currencyChain';
 export * from './currencyPair';
 export * from './currencyQuota';
 export * from './debitFee';
+export * from './deliveryAccount';
+export * from './deliveryAccountBook';
 export * from './deliveryCandlestick';
 export * from './deliveryContract';
+export * from './deliveryLimitRiskTiers';
+export * from './deliveryLiquidate';
+export * from './deliveryMyTrade';
+export * from './deliveryOrder';
+export * from './deliveryOrderBook';
+export * from './deliveryPosition';
+export * from './deliveryPositionClose';
 export * from './deliverySettlement';
 export * from './deliveryTicker';
+export * from './deliveryTrade';
 export * from './depositAddress';
 export * from './depositRecord';
 export * from './dualGetOrders';
@@ -89,6 +99,7 @@ export * from './futuresOrder';
 export * from './futuresOrderAmendment';
 export * from './futuresOrderBook';
 export * from './futuresOrderBookItem';
+export * from './futuresOrderBookItem1';
 export * from './futuresPositionCrossMode';
 export * from './futuresPremiumIndex';
 export * from './futuresPriceTrigger';
@@ -322,10 +333,20 @@ import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
 import { CurrencyQuota } from './currencyQuota';
 import { DebitFee } from './debitFee';
+import { DeliveryAccount } from './deliveryAccount';
+import { DeliveryAccountBook } from './deliveryAccountBook';
 import { DeliveryCandlestick } from './deliveryCandlestick';
 import { DeliveryContract } from './deliveryContract';
+import { DeliveryLimitRiskTiers } from './deliveryLimitRiskTiers';
+import { DeliveryLiquidate } from './deliveryLiquidate';
+import { DeliveryMyTrade } from './deliveryMyTrade';
+import { DeliveryOrder } from './deliveryOrder';
+import { DeliveryOrderBook } from './deliveryOrderBook';
+import { DeliveryPosition } from './deliveryPosition';
+import { DeliveryPositionClose } from './deliveryPositionClose';
 import { DeliverySettlement } from './deliverySettlement';
 import { DeliveryTicker } from './deliveryTicker';
+import { DeliveryTrade } from './deliveryTrade';
 import { DepositAddress } from './depositAddress';
 import { DepositRecord } from './depositRecord';
 import { DualGetOrders } from './dualGetOrders';
@@ -358,6 +379,7 @@ import { FuturesOrder } from './futuresOrder';
 import { FuturesOrderAmendment } from './futuresOrderAmendment';
 import { FuturesOrderBook } from './futuresOrderBook';
 import { FuturesOrderBookItem } from './futuresOrderBookItem';
+import { FuturesOrderBookItem1 } from './futuresOrderBookItem1';
 import { FuturesPositionCrossMode } from './futuresPositionCrossMode';
 import { FuturesPremiumIndex } from './futuresPremiumIndex';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
@@ -555,9 +577,18 @@ let enumsMap: { [index: string]: any } = {
     'CreateUniLoan.Type': CreateUniLoan.Type,
     'CrossMarginLoan.Status': CrossMarginLoan.Status,
     'CurrencyPair.TradeStatus': CurrencyPair.TradeStatus,
+    'DeliveryAccountBook.Type': DeliveryAccountBook.Type,
     'DeliveryContract.Cycle': DeliveryContract.Cycle,
     'DeliveryContract.Type': DeliveryContract.Type,
     'DeliveryContract.MarkType': DeliveryContract.MarkType,
+    'DeliveryMyTrade.Role': DeliveryMyTrade.Role,
+    'DeliveryOrder.FinishAs': DeliveryOrder.FinishAs,
+    'DeliveryOrder.Status': DeliveryOrder.Status,
+    'DeliveryOrder.Tif': DeliveryOrder.Tif,
+    'DeliveryOrder.AutoSize': DeliveryOrder.AutoSize,
+    'DeliveryOrder.StpAct': DeliveryOrder.StpAct,
+    'DeliveryPosition.Mode': DeliveryPosition.Mode,
+    'DeliveryPositionClose.Side': DeliveryPositionClose.Side,
     'FuturesAccountBook.Type': FuturesAccountBook.Type,
     'FuturesBBOOrder.Tif': FuturesBBOOrder.Tif,
     'FuturesBBOOrder.AutoSize': FuturesBBOOrder.AutoSize,
@@ -665,10 +696,20 @@ let typeMap: { [index: string]: any } = {
     CurrencyPair: CurrencyPair,
     CurrencyQuota: CurrencyQuota,
     DebitFee: DebitFee,
+    DeliveryAccount: DeliveryAccount,
+    DeliveryAccountBook: DeliveryAccountBook,
     DeliveryCandlestick: DeliveryCandlestick,
     DeliveryContract: DeliveryContract,
+    DeliveryLimitRiskTiers: DeliveryLimitRiskTiers,
+    DeliveryLiquidate: DeliveryLiquidate,
+    DeliveryMyTrade: DeliveryMyTrade,
+    DeliveryOrder: DeliveryOrder,
+    DeliveryOrderBook: DeliveryOrderBook,
+    DeliveryPosition: DeliveryPosition,
+    DeliveryPositionClose: DeliveryPositionClose,
     DeliverySettlement: DeliverySettlement,
     DeliveryTicker: DeliveryTicker,
+    DeliveryTrade: DeliveryTrade,
     DepositAddress: DepositAddress,
     DepositRecord: DepositRecord,
     DualGetOrders: DualGetOrders,
@@ -701,6 +742,7 @@ let typeMap: { [index: string]: any } = {
     FuturesOrderAmendment: FuturesOrderAmendment,
     FuturesOrderBook: FuturesOrderBook,
     FuturesOrderBookItem: FuturesOrderBookItem,
+    FuturesOrderBookItem1: FuturesOrderBookItem1,
     FuturesPositionCrossMode: FuturesPositionCrossMode,
     FuturesPremiumIndex: FuturesPremiumIndex,
     FuturesPriceTrigger: FuturesPriceTrigger,

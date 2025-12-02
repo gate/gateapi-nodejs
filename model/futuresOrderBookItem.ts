@@ -17,7 +17,7 @@ export class FuturesOrderBookItem {
     /**
      * Size
      */
-    's'?: number;
+    's'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -30,7 +30,7 @@ export class FuturesOrderBookItem {
         {
             name: 's',
             baseName: 's',
-            type: 'number',
+            type: 'string',
         },
     ];
 

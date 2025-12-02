@@ -96,11 +96,11 @@ export class Contract {
     /**
      * Minimum order size allowed by the contract
      */
-    'orderSizeMin'?: number;
+    'orderSizeMin'?: string;
     /**
      * Maximum order size allowed by the contract
      */
-    'orderSizeMax'?: number;
+    'orderSizeMax'?: string;
     /**
      * Maximum allowed deviation between order price and current mark price. The order price `order_price` must satisfy the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
      */
@@ -124,11 +124,11 @@ export class Contract {
     /**
      * Historical cumulative trading volume
      */
-    'tradeSize'?: number;
+    'tradeSize'?: string;
     /**
      * Current total long position size
      */
-    'positionSize'?: number;
+    'positionSize'?: string;
     /**
      * Last configuration update time
      */
@@ -280,12 +280,12 @@ export class Contract {
         {
             name: 'orderSizeMin',
             baseName: 'order_size_min',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'orderSizeMax',
             baseName: 'order_size_max',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'orderPriceDeviate',
@@ -315,12 +315,12 @@ export class Contract {
         {
             name: 'tradeSize',
             baseName: 'trade_size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'positionSize',
             baseName: 'position_size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'configChangeTime',

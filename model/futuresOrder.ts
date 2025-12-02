@@ -48,15 +48,15 @@ export class FuturesOrder {
     /**
      * Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
      */
-    'size': number;
+    'size': string;
     /**
      * Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
      */
-    'iceberg'?: number;
+    'iceberg'?: string;
     /**
-     * Order price. Price of 0 with `tif` set to `ioc` represents a market order.
+     * Required. Order Price; a price of 0 with `tif` as `ioc` represents a market order.
      */
-    'price'?: string;
+    'price': string;
     /**
      * Set as `true` to close the position, with `size` set to 0
      */
@@ -84,7 +84,7 @@ export class FuturesOrder {
     /**
      * Unfilled quantity
      */
-    'left'?: number;
+    'left'?: string;
     /**
      * Fill price
      */
@@ -129,6 +129,14 @@ export class FuturesOrder {
      * Position ID
      */
     'pid'?: number;
+    /**
+     * order\'s value
+     */
+    'orderValue'?: string;
+    /**
+     * trade value
+     */
+    'tradeValue'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -176,12 +184,12 @@ export class FuturesOrder {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'iceberg',
             baseName: 'iceberg',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'price',
@@ -221,7 +229,7 @@ export class FuturesOrder {
         {
             name: 'left',
             baseName: 'left',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'fillPrice',
@@ -277,6 +285,16 @@ export class FuturesOrder {
             name: 'pid',
             baseName: 'pid',
             type: 'number',
+        },
+        {
+            name: 'orderValue',
+            baseName: 'order_value',
+            type: 'string',
+        },
+        {
+            name: 'tradeValue',
+            baseName: 'trade_value',
+            type: 'string',
         },
     ];
 
