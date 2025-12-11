@@ -266,7 +266,7 @@ export class SubAccountApi {
     }
 
     /**
-     *
+     * Modify Sub-account API Key Pair (Note: This interface cannot modify the mode account type attribute)
      * @summary Update sub-account API key pair
      * @param userId Sub-account user ID
      * @param key Sub-account API key

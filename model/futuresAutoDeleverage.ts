@@ -27,11 +27,11 @@ export class FuturesAutoDeleverage {
      */
     'contract'?: string;
     /**
-     * Position leverage
+     *  leverage for isolated margin. 0 means cross margin. For leverage of cross margin, please refer to `cross_leverage_limit`.
      */
     'leverage'?: string;
     /**
-     * Cross margin leverage (valid only when `leverage` is 0)
+     * leverage for cross margin
      */
     'crossLeverageLimit'?: string;
     /**

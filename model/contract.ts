@@ -22,7 +22,7 @@ export class Contract {
      */
     'type'?: Contract.Type;
     /**
-     * Multiplier used in converting from invoicing to settlement currency
+     * The contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
      */
     'quantoMultiplier'?: string;
     /**
@@ -34,11 +34,11 @@ export class Contract {
      */
     'leverageMax'?: string;
     /**
-     * Maintenance rate of margin
+     * The maintenance margin rate of the first tier of risk limit sheet
      */
     'maintenanceRate'?: string;
     /**
-     * Mark price type: internal - internal trading price, index - external index price
+     * Deprecated
      */
     'markType'?: Contract.MarkType;
     /**
@@ -154,7 +154,7 @@ export class Contract {
      */
     'createTime'?: number;
     /**
-     * The factor for the maximum of the funding rate. Maximum of funding rate = (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio
+     * Deprecated
      */
     'fundingCapRatio'?: string;
     /**
@@ -173,6 +173,10 @@ export class Contract {
      * Contract delisting time
      */
     'delistedTime'?: number;
+    /**
+     * Upper and lower limits of funding rate
+     */
+    'fundingRateLimit'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -376,6 +380,11 @@ export class Contract {
             name: 'delistedTime',
             baseName: 'delisted_time',
             type: 'number',
+        },
+        {
+            name: 'fundingRateLimit',
+            baseName: 'funding_rate_limit',
+            type: 'string',
         },
     ];
 

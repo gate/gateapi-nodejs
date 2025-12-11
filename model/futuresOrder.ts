@@ -90,7 +90,7 @@ export class FuturesOrder {
      */
     'fillPrice'?: string;
     /**
-     * Custom order information. If not empty, must follow the rules below:  1. Prefixed with `t-` 2. No longer than 28 bytes without `t-` prefix 3. Can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  In addition to user-defined information, the following are internal reserved fields that identify the order source:  - web: Web - api: API call - app: Mobile app - auto_deleveraging: Automatic deleveraging - liquidation: Forced liquidation of positions under the old classic mode - liq-xxx: a. Forced liquidation of positions under the new classic mode, including isolated margin, one-way cross margin, and non-hedged positions under two-way cross margin. b. Forced liquidation of isolated positions under the unified account single-currency margin mode - hedge-liq-xxx: Forced liquidation of hedged positions under the new classic mode two-way cross margin, i.e., simultaneously closing long and short positions - pm_liquidate: Forced liquidation under unified account multi-currency margin mode - comb_margin_liquidate: Forced liquidation under unified account portfolio margin mode - scm_liquidate: Forced liquidation of positions under unified account single-currency margin mode - insurance: Insurance
+     * Custom order information. If not empty, must follow the rules below:  1. Prefixed with `t-` 2. No longer than 28 bytes without `t-` prefix 3. Can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  In addition to user-defined information, the following are internal reserved fields that identify the order source:  - web: Web - api: API call - app: Mobile app - auto_deleveraging: Automatic deleveraging - liquidation: Forced liquidation of positions under the old classic mode - liq-xxx: a. Forced liquidation of positions under the new classic mode, including isolated margin, one-way cross margin, and non-hedged positions under two-way cross margin. b. Forced liquidation of isolated positions under the unified account single-currency margin mode - hedge-liq-xxx: Forced liquidation of hedged positions under the new classic mode two-way cross margin, i.e., simultaneously closing long and short positions - pm_liquidate: Forced liquidation under unified account multi-currency margin mode - comb_margin_liquidate: Forced liquidation under unified account portfolio margin mode - scm_liquidate: Forced liquidation of positions under unified account single-currency margin mode - insurance: Insurance - clear: Contract delisting withdrawal
      */
     'text'?: string;
     /**
@@ -121,10 +121,6 @@ export class FuturesOrder {
      * The custom data that the user remarked when amending the order
      */
     'amendText'?: string;
-    /**
-     * Counterparty user\'s VIP level for limit order fills. Current order will only match with orders whose VIP level is less than or equal to the specified level. Only 11~16 are supported; default is 0
-     */
-    'limitVip'?: number;
     /**
      * Position ID
      */
@@ -275,11 +271,6 @@ export class FuturesOrder {
             name: 'amendText',
             baseName: 'amend_text',
             type: 'string',
-        },
-        {
-            name: 'limitVip',
-            baseName: 'limit_vip',
-            type: 'number',
         },
         {
             name: 'pid',

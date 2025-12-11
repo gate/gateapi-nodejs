@@ -13,7 +13,7 @@ import { FuturesAccountHistory } from './futuresAccountHistory';
 
 export class DeliveryAccount {
     /**
-     * total is the balance after the user\'s accumulated deposit, withdraw, profit and loss (including realized profit and loss, fund, fee and referral rebate), excluding unrealized profit and loss.  total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
+     * Balance, only applicable to classic contract account.The balance is the sum of all historical fund flows, including historical transfers in and out, closing settlements, and transaction fee expenses, but does not include upl of positions.total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
      */
     'total'?: string;
     /**
@@ -21,11 +21,11 @@ export class DeliveryAccount {
      */
     'unrealisedPnl'?: string;
     /**
-     * Position margin
+     * Deprecated
      */
     'positionMargin'?: string;
     /**
-     * Order margin of unfinished orders
+     * initial margin of all open orders
      */
     'orderMargin'?: string;
     /**
@@ -61,7 +61,7 @@ export class DeliveryAccount {
      */
     'bonus'?: string;
     /**
-     * Classic account margin mode, true-new mode, false-old mode
+     * Deprecated
      */
     'enableEvolvedClassic'?: boolean;
     /**
@@ -101,11 +101,11 @@ export class DeliveryAccount {
      */
     'isolatedPositionMargin'?: string;
     /**
-     * Whether to open a new two-way position mode
+     * Deprecated
      */
     'enableNewDualMode'?: boolean;
     /**
-     * Margin mode, 0-classic margin mode, 1-cross-currency margin mode, 2-combined margin mode
+     * Margin mode of the account 0: classic future account or Classic Spot Margin Mode of unified account; 1:  Multi-Currency Margin Mode; 2:  Portoforlio Margin Mode; 3:  Single-Currency Margin Mode
      */
     'marginMode'?: number;
     /**

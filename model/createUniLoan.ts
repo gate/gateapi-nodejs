@@ -18,7 +18,7 @@ export class CreateUniLoan {
      */
     'currency': string;
     /**
-     * Type: `borrow` - borrow, `repay` - repay
+     * Loan Type margin: margin borrowing
      */
     'type': CreateUniLoan.Type;
     /**

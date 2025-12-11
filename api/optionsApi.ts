@@ -702,7 +702,7 @@ export class OptionsApi {
     }
 
     /**
-     *
+     * Query account information for classic option account and unified account
      * @summary Query account information
      */
     public async listOptionsAccount(): Promise<{ response: AxiosResponse; body: OptionsAccount }> {

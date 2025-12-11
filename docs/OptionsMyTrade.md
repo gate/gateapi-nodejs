@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **orderId** | **number** | Related order ID | [optional] [default to undefined]
 **size** | **number** | Trading size | [optional] [default to undefined]
 **price** | **string** | Trade price (quote currency) | [optional] [default to undefined]
-**underlyingPrice** | **string** | Underlying price (quote currency) | [optional] [default to undefined]
+**underlyingPrice** | **string** | The forward futures price corresponding to the delivery date | [optional] [default to undefined]
 **role** | **string** | Trade role. taker - taker, maker - maker | [optional] [default to undefined]
 
 ## Enum: OptionsMyTrade.Role

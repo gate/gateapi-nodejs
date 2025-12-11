@@ -40,7 +40,7 @@ export class DeliveryPosition {
      */
     'leverageMax'?: string;
     /**
-     * Maintenance rate under current risk limit
+     * The maintenance margin rate of the first tier of risk limit sheet
      */
     'maintenanceRate'?: string;
     /**

@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**convertSmallBalance**](WalletApi.md#convertSmallBalance) | **POST** /wallet/small_balance | Convert small balance currency
 [**listSmallBalanceHistory**](WalletApi.md#listSmallBalanceHistory) | **GET** /wallet/small_balance_history | Get convertible small balance currency history
 [**listPushOrders**](WalletApi.md#listPushOrders) | **GET** /wallet/push | Get UID transfer history
+[**getLowCapExchangeList**](WalletApi.md#getLowCapExchangeList) | **GET** /wallet/getLowCapExchangeList | Retrieve the list of low-liquidity or low-cap tokens
 
 
 ## listCurrencyChains
@@ -1018,6 +1019,45 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<UidPushOrder>; }> [UidPushOrder](UidPushOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getLowCapExchangeList
+
+> Promise<{ response: http.IncomingMessage; body: Array<string>; }> getLowCapExchangeList()
+
+Retrieve the list of low-liquidity or low-cap tokens
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+api.getLowCapExchangeList()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<string>; }> [string](string.md)
 
 ### Authorization
 

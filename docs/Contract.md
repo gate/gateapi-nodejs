@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Futures contract | [optional] [default to undefined]
 **type** | **string** | Contract type: inverse - inverse contract, direct - direct contract | [optional] [default to undefined]
-**quantoMultiplier** | **string** | Multiplier used in converting from invoicing to settlement currency | [optional] [default to undefined]
+**quantoMultiplier** | **string** | The contract multiplier indicates how many units of the underlying asset the face value of one contract represents. | [optional] [default to undefined]
 **leverageMin** | **string** | Minimum leverage | [optional] [default to undefined]
 **leverageMax** | **string** | Maximum leverage | [optional] [default to undefined]
-**maintenanceRate** | **string** | Maintenance rate of margin | [optional] [default to undefined]
-**markType** | **string** | Mark price type: internal - internal trading price, index - external index price | [optional] [default to undefined]
+**maintenanceRate** | **string** | The maintenance margin rate of the first tier of risk limit sheet | [optional] [default to undefined]
+**markType** | **string** | Deprecated | [optional] [default to undefined]
 **markPrice** | **string** | Current mark price | [optional] [default to undefined]
 **indexPrice** | **string** | Current index price | [optional] [default to undefined]
 **lastPrice** | **string** | Last trading price | [optional] [default to undefined]
@@ -39,11 +39,12 @@ Name | Type | Description | Notes
 **enableBonus** | **boolean** | Whether bonus is enabled | [optional] [default to undefined]
 **enableCredit** | **boolean** | Whether portfolio margin account is enabled | [optional] [default to undefined]
 **createTime** | **number** | Created time of the contract | [optional] [default to undefined]
-**fundingCapRatio** | **string** | The factor for the maximum of the funding rate. Maximum of funding rate &#x3D; (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio | [optional] [default to undefined]
+**fundingCapRatio** | **string** | Deprecated | [optional] [default to undefined]
 **status** | **string** | Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted), circuit_breaker (circuit breaker) | [optional] [default to undefined]
 **launchTime** | **number** | Contract expiry timestamp | [optional] [default to undefined]
 **delistingTime** | **number** | Timestamp when contract enters reduce-only state | [optional] [default to undefined]
 **delistedTime** | **number** | Contract delisting time | [optional] [default to undefined]
+**fundingRateLimit** | **string** | Upper and lower limits of funding rate | [optional] [default to undefined]
 
 ## Enum: Contract.Type
 

@@ -18,7 +18,7 @@ export class OptionsContract {
      */
     'name'?: string;
     /**
-     * Tag
+     * Expiry periods include day, week, and month.
      */
     'tag'?: string;
     /**
@@ -34,7 +34,7 @@ export class OptionsContract {
      */
     'isCall'?: boolean;
     /**
-     * Multiplier used in converting from invoicing to settlement currency
+     * The option contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
      */
     'multiplier'?: string;
     /**
@@ -42,7 +42,7 @@ export class OptionsContract {
      */
     'underlying'?: string;
     /**
-     * Underlying price (quote currency)
+     * The forward futures price corresponding to the delivery date
      */
     'underlyingPrice'?: string;
     /**
@@ -82,7 +82,7 @@ export class OptionsContract {
      */
     'orderSizeMax'?: number;
     /**
-     * The positive and negative offset allowed between the order price and the current mark price, that `order_price` must meet the following conditions:  order_price is within the range of mark_price +/- order_price_deviate * underlying_price and does not distinguish between buy and sell orders
+     * Deprecated
      */
     'orderPriceDeviate'?: string;
     /**
@@ -98,7 +98,7 @@ export class OptionsContract {
      */
     'orderbookId'?: number;
     /**
-     * Current trade ID
+     * Deprecated
      */
     'tradeId'?: number;
     /**
@@ -110,7 +110,7 @@ export class OptionsContract {
      */
     'positionSize'?: number;
     /**
-     * Maximum number of pending orders
+     * The maximum number of open orders each user can place in this order book.
      */
     'ordersLimit'?: number;
 

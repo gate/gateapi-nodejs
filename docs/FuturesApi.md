@@ -713,6 +713,8 @@ No authorization required
 
 Get futures account
 
+Query account information for classic future account and unified account
+
 ### Example
 
 ```typescript
@@ -866,6 +868,8 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 
 Get single position information
 
+Get single position information from a contract. If you hold two postions in one contract market, please use this API: /futures/{settle}/dual_comp/positions/{contract}
+
 ### Example
 
 ```typescript
@@ -910,6 +914,8 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 > Promise<{ response: http.IncomingMessage; body: Position; }> updatePositionMargin(settle, contract, change)
 
 Update position margin
+
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
 
 ### Example
 
@@ -973,9 +979,9 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
-const leverage = "10"; // string | New position leverage
+const leverage = "10"; // string | Set the leverage for isolated margin. When setting isolated margin leverage, the `cross_leverage_limit`  must be empty.
 const opts = {
-  'crossLeverageLimit': "10", // string | Cross margin leverage (valid only when `leverage` is 0)
+  'crossLeverageLimit': "10", // string | Set the leverage for cross margin. When setting cross margin leverage, the `leverage` must be set to 0.
   'pid': 1 // number | Product ID
 };
 api.updatePositionLeverage(settle, contract, leverage, opts)
@@ -990,8 +996,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **leverage** | **string**| New position leverage | [default to undefined]
- **crossLeverageLimit** | **string**| Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | [optional] [default to undefined]
+ **leverage** | **string**| Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. | [default to undefined]
+ **crossLeverageLimit** | **string**| Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. | [optional] [default to undefined]
  **pid** | **number**| Product ID | [optional] [default to undefined]
 
 ### Return type
@@ -1102,6 +1108,8 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 > Promise<{ response: http.IncomingMessage; body: Position; }> updatePositionRiskLimit(settle, contract, riskLimit)
 
 Update position risk limit
+
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
 
 ### Example
 
@@ -1341,6 +1349,8 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 > Promise<{ response: http.IncomingMessage; body: Array<Position>; }> updateDualModePositionRiskLimit(settle, contract, riskLimit)
 
 Update position risk limit in Hedge Mode
+
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
 
 ### Example
 

@@ -14,15 +14,15 @@
  */
 export class MarginLeverageTier {
     /**
-     * Maximum loan limit
+     * Maximum borrowing limit. Determined by the leverage you set; the lower the leverage, the larger the borrowing limit.
      */
     'upperLimit'?: string;
     /**
-     * Maintenance margin rate
+     * Maintenance margin rate.Under tiered margin requirements(https://www.gate.com/en/help/trade/margin-trading/42357), the maintenance margin rate is a composite value.
      */
     'mmr'?: string;
     /**
-     * Maximum leverage multiple
+     * the maximum permissible leverage given to the current debt level; the higher the debt level, the lower the maximum leverage.
      */
     'leverage'?: string;
 

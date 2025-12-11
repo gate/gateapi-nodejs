@@ -979,4 +979,31 @@ export class WalletApi {
         const authSettings = ['apiv4'];
         return this.client.request<Array<UidPushOrder>>(config, 'Array<UidPushOrder>', authSettings);
     }
+
+    /**
+     *
+     * @summary Retrieve the list of low-liquidity or low-cap tokens
+     */
+    public async getLowCapExchangeList(): Promise<{ response: AxiosResponse; body: Array<string> }> {
+        const localVarPath = this.client.basePath + '/wallet/getLowCapExchangeList';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<string>>(config, 'Array<string>', authSettings);
+    }
 }

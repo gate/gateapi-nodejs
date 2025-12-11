@@ -35,7 +35,7 @@ export class OptionsMyTrade {
      */
     'price'?: string;
     /**
-     * Underlying price (quote currency)
+     * The forward futures price corresponding to the delivery date
      */
     'underlyingPrice'?: string;
     /**

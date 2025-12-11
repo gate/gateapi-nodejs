@@ -15,7 +15,7 @@ export class OptionsAccount {
      */
     'user'?: number;
     /**
-     * Account Balance
+     * Account balance, invalid for unified account
      */
     'total'?: string;
     /**
@@ -23,7 +23,7 @@ export class OptionsAccount {
      */
     'positionValue'?: string;
     /**
-     * Account equity, the sum of account balance and position value
+     * Account equity = balance + option position value, invalid for unified account
      */
     'equity'?: string;
     /**
@@ -35,15 +35,15 @@ export class OptionsAccount {
      */
     'mmpEnabled'?: boolean;
     /**
-     * Whether to trigger position liquidation
+     * Whether the account is in a liquidation state
      */
     'liqTriggered'?: boolean;
     /**
-     * ｜ 保证金模式： - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式
+     * 此字段表示统一账户所使用的保证金模式：  - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式 - 3: 表示为单币种保证金模式
      */
     'marginMode'?: OptionsAccount.MarginMode;
     /**
-     * Unrealized PNL
+     * Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
      */
     'unrealisedPnl'?: string;
     /**
@@ -197,5 +197,6 @@ export namespace OptionsAccount {
         NUMBER_0 = <any>0,
         NUMBER_1 = <any>1,
         NUMBER_2 = <any>2,
+        NUMBER_3 = <any>3,
     }
 }

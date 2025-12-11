@@ -290,7 +290,7 @@ export class MarginApi {
     }
 
     /**
-     *
+     * Query the borrowing tier margin requirements of a specific spot market.For more details about borrowing tier margin requirements, please refer to Underlying Logic of the New Isolated Margin System（https://www.gate.com/en/help/trade/margin-trading/42357）
      * @summary Query user\'s own leverage lending tiers in current market
      * @param currencyPair Currency pair
      */
@@ -327,7 +327,7 @@ export class MarginApi {
     }
 
     /**
-     *
+     * Query the borrowing tier margin requirements of a specific spot market.For more details about borrowing tier margin requirements, please refer to Underlying Logic of the New Isolated Margin System（https://www.gate.com/en/help/trade/margin-trading/42357）
      * @summary Query current market leverage lending tiers
      * @param currencyPair Currency pair
      */

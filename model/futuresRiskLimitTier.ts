@@ -26,7 +26,7 @@ export class FuturesRiskLimitTier {
      */
     'initialRate'?: string;
     /**
-     * Maintenance margin rate
+     * The maintenance margin rate of the first tier of risk limit sheet
      */
     'maintenanceRate'?: string;
     /**

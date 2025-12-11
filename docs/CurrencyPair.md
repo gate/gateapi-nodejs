@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **type** | **string** | Trading pair type, normal: normal, premarket: pre-market | [optional] [default to undefined]
 **tradeUrl** | **string** | Transaction link | [optional] [default to undefined]
 **stTag** | **boolean** | Whether the trading pair is in ST risk assessment, false - No, true - Yes | [optional] [default to undefined]
+**upRate** | **string** | Maximum Quote Rise Percentage | [optional] [default to undefined]
+**downRate** | **string** | Maximum Quote Decline Percentage | [optional] [default to undefined]
 
 ## Enum: CurrencyPair.TradeStatus
 

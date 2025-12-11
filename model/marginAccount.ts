@@ -20,7 +20,7 @@ export class MarginAccount {
      */
     'currencyPair'?: string;
     /**
-     * Account type: risk - risk rate account, mmr - maintenance margin rate account, inactive - market not activated
+     * Account Type  mmr: maintenance margin rate account;inactive: market not activated
      */
     'accountType'?: string;
     /**
@@ -32,11 +32,11 @@ export class MarginAccount {
      */
     'locked'?: boolean;
     /**
-     * Current risk rate of the margin account (returned when the account is a risk rate account)
+     * Deprecated
      */
     'risk'?: string;
     /**
-     * Leveraged Account Current Maintenance Margin Rate (returned when the Account is Account)
+     * Current Maintenance Margin Rate of the account
      */
     'mmr'?: string;
     'base'?: MarginAccountCurrency;

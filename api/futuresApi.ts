@@ -842,7 +842,7 @@ export class FuturesApi {
     }
 
     /**
-     *
+     * Query account information for classic future account and unified account
      * @summary Get futures account
      * @param settle Settle currency
      */
@@ -1004,7 +1004,7 @@ export class FuturesApi {
     }
 
     /**
-     *
+     * Get single position information from a contract. If you hold two postions in one contract market, please use this API: /futures/{settle}/dual_comp/positions/{contract}
      * @summary Get single position information
      * @param settle Settle currency
      * @param contract Futures contract
@@ -1050,7 +1050,7 @@ export class FuturesApi {
     }
 
     /**
-     *
+     * Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
      * @summary Update position margin
      * @param settle Settle currency
      * @param contract Futures contract
@@ -1109,9 +1109,9 @@ export class FuturesApi {
      * @summary Update position leverage
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param leverage New position leverage
+     * @param leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty.
      * @param opts Optional parameters
-     * @param opts.crossLeverageLimit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0)
+     * @param opts.crossLeverageLimit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0.
      * @param opts.pid Product ID
      */
     public async updatePositionLeverage(
@@ -1275,7 +1275,7 @@ export class FuturesApi {
     }
 
     /**
-     *
+     * Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
      * @summary Update position risk limit
      * @param settle Settle currency
      * @param contract Futures contract
@@ -1566,7 +1566,7 @@ export class FuturesApi {
     }
 
     /**
-     *
+     * Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
      * @summary Update position risk limit in Hedge Mode
      * @param settle Settle currency
      * @param contract Futures contract

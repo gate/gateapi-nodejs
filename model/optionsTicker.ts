@@ -62,7 +62,7 @@ export class OptionsTicker {
      */
     'askIv'?: string;
     /**
-     * Current leverage. Formula: underlying_price / mark_price * delta
+     * Leverage = underlying_price / (mark_price * delta). This value is for reference only.
      */
     'leverage'?: string;
     /**

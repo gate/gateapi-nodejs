@@ -34,7 +34,7 @@ export class UniLoanInterestRecord {
      */
     'status'?: number;
     /**
-     * Type: platform - Platform borrowing, margin - Margin borrowing
+     * Loan Type margin: margin borrowing
      */
     'type'?: string;
     /**

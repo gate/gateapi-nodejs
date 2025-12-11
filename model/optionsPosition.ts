@@ -24,7 +24,7 @@ export class OptionsPosition {
      */
     'underlying'?: string;
     /**
-     * Underlying price (quote currency)
+     * The forward futures price corresponding to the delivery date
      */
     'underlyingPrice'?: string;
     /**
@@ -52,7 +52,7 @@ export class OptionsPosition {
      */
     'realisedPnl'?: string;
     /**
-     * Unrealized PNL
+     * Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
      */
     'unrealisedPnl'?: string;
     /**

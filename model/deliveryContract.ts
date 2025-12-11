@@ -30,7 +30,7 @@ export class DeliveryContract {
      */
     'type'?: DeliveryContract.Type;
     /**
-     * Multiplier used in converting from invoicing to settlement currency
+     * The contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
      */
     'quantoMultiplier'?: string;
     /**
@@ -42,11 +42,11 @@ export class DeliveryContract {
      */
     'leverageMax'?: string;
     /**
-     * Maintenance rate of margin
+     * The maintenance margin rate of the first tier of risk limit sheet
      */
     'maintenanceRate'?: string;
     /**
-     * Mark price type: internal - internal trading price, index - external index price
+     * Deprecated
      */
     'markType'?: DeliveryContract.MarkType;
     /**

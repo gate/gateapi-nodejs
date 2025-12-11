@@ -89,6 +89,14 @@ export class CurrencyPair {
      * Whether the trading pair is in ST risk assessment, false - No, true - Yes
      */
     'stTag'?: boolean;
+    /**
+     * Maximum Quote Rise Percentage
+     */
+    'upRate'?: string;
+    /**
+     * Maximum Quote Decline Percentage
+     */
+    'downRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -187,6 +195,16 @@ export class CurrencyPair {
             name: 'stTag',
             baseName: 'st_tag',
             type: 'boolean',
+        },
+        {
+            name: 'upRate',
+            baseName: 'up_rate',
+            type: 'string',
+        },
+        {
+            name: 'downRate',
+            baseName: 'down_rate',
+            type: 'string',
         },
     ];
 

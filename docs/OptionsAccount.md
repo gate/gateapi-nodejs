@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user** | **number** | User ID | [optional] [default to undefined]
-**total** | **string** | Account Balance | [optional] [default to undefined]
+**total** | **string** | Account balance, invalid for unified account | [optional] [default to undefined]
 **positionValue** | **string** | Position value, long position value is positive, short position value is negative | [optional] [default to undefined]
-**equity** | **string** | Account equity, the sum of account balance and position value | [optional] [default to undefined]
+**equity** | **string** | Account equity &#x3D; balance + option position value, invalid for unified account | [optional] [default to undefined]
 **shortEnabled** | **boolean** | If the account is allowed to short | [optional] [default to undefined]
 **mmpEnabled** | **boolean** | Whether to enable MMP | [optional] [default to undefined]
-**liqTriggered** | **boolean** | Whether to trigger position liquidation | [optional] [default to undefined]
-**marginMode** | **number** | ｜ 保证金模式： - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式 | [optional] [default to undefined]
-**unrealisedPnl** | **string** | Unrealized PNL | [optional] [default to undefined]
+**liqTriggered** | **boolean** | Whether the account is in a liquidation state | [optional] [default to undefined]
+**marginMode** | **number** | 此字段表示统一账户所使用的保证金模式：  - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式 - 3: 表示为单币种保证金模式 | [optional] [default to undefined]
+**unrealisedPnl** | **string** | Unrealised PnL &#x3D; (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only. | [optional] [default to undefined]
 **initMargin** | **string** | Initial position margin | [optional] [default to undefined]
 **maintMargin** | **string** | Position maintenance margin | [optional] [default to undefined]
 **orderMargin** | **string** | Order margin of unfinished orders | [optional] [default to undefined]
@@ -31,5 +31,7 @@ Name | Type | Description | Notes
 * `NUMBER_1` (value: `1`)
 
 * `NUMBER_2` (value: `2`)
+
+* `NUMBER_3` (value: `3`)
 
 
