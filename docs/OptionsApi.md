@@ -351,7 +351,7 @@ Promise<{ response: AxiosResponse; body: Array<OptionsMySettlements>; }> [Option
 
 ## listOptionsOrderBook
 
-> Promise<{ response: http.IncomingMessage; body: FuturesOrderBook; }> listOptionsOrderBook(contract, opts)
+> Promise<{ response: http.IncomingMessage; body: OptionsOrderBook; }> listOptionsOrderBook(contract, opts)
 
 Query options contract order book
 
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: FuturesOrderBook; }> [FuturesOrderBook](FuturesOrderBook.md)
+Promise<{ response: AxiosResponse; body: OptionsOrderBook; }> [OptionsOrderBook](OptionsOrderBook.md)
 
 ### Authorization
 
@@ -535,7 +535,7 @@ No authorization required
 
 ## listOptionsUnderlyingCandlesticks
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesCandlestick>; }> listOptionsUnderlyingCandlesticks(underlying, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<OptionsCandlestick>; }> listOptionsUnderlyingCandlesticks(underlying, opts)
 
 Underlying index price candlestick chart
 
@@ -573,7 +573,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick>; }> [FuturesCandlestick](FuturesCandlestick.md)
+Promise<{ response: AxiosResponse; body: Array<OptionsCandlestick>; }> [OptionsCandlestick](OptionsCandlestick.md)
 
 ### Authorization
 
@@ -586,7 +586,7 @@ No authorization required
 
 ## listOptionsTrades
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesTrade>; }> listOptionsTrades(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<OptionsTrade>; }> listOptionsTrades(opts)
 
 Market trade records
 
@@ -626,7 +626,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesTrade>; }> [FuturesTrade](FuturesTrade.md)
+Promise<{ response: AxiosResponse; body: Array<OptionsTrade>; }> [OptionsTrade](OptionsTrade.md)
 
 ### Authorization
 

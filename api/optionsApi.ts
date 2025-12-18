@@ -11,9 +11,6 @@
 
 /* tslint:disable:no-unused-locals */
 import { CountdownCancelAllOptionsTask } from '../model/countdownCancelAllOptionsTask';
-import { FuturesCandlestick } from '../model/futuresCandlestick';
-import { FuturesOrderBook } from '../model/futuresOrderBook';
-import { FuturesTrade } from '../model/futuresTrade';
 import { OptionsAccount } from '../model/optionsAccount';
 import { OptionsAccountBook } from '../model/optionsAccountBook';
 import { OptionsCandlestick } from '../model/optionsCandlestick';
@@ -23,10 +20,12 @@ import { OptionsMMPReset } from '../model/optionsMMPReset';
 import { OptionsMySettlements } from '../model/optionsMySettlements';
 import { OptionsMyTrade } from '../model/optionsMyTrade';
 import { OptionsOrder } from '../model/optionsOrder';
+import { OptionsOrderBook } from '../model/optionsOrderBook';
 import { OptionsPosition } from '../model/optionsPosition';
 import { OptionsPositionClose } from '../model/optionsPositionClose';
 import { OptionsSettlement } from '../model/optionsSettlement';
 import { OptionsTicker } from '../model/optionsTicker';
+import { OptionsTrade } from '../model/optionsTrade';
 import { OptionsUnderlying } from '../model/optionsUnderlying';
 import { OptionsUnderlyingTicker } from '../model/optionsUnderlyingTicker';
 import { TriggerTime } from '../model/triggerTime';
@@ -385,7 +384,7 @@ export class OptionsApi {
     public async listOptionsOrderBook(
         contract: string,
         opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
-    ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
+    ): Promise<{ response: AxiosResponse; body: OptionsOrderBook }> {
         const localVarPath = this.client.basePath + '/options/order_book';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -425,7 +424,7 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<FuturesOrderBook>(config, 'FuturesOrderBook', authSettings);
+        return this.client.request<OptionsOrderBook>(config, 'OptionsOrderBook', authSettings);
     }
 
     /**
@@ -583,7 +582,7 @@ export class OptionsApi {
     public async listOptionsUnderlyingCandlesticks(
         underlying: string,
         opts: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsCandlestick> }> {
         const localVarPath = this.client.basePath + '/options/underlying/candlesticks';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -632,7 +631,7 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesCandlestick>>(config, 'Array<FuturesCandlestick>', authSettings);
+        return this.client.request<Array<OptionsCandlestick>>(config, 'Array<OptionsCandlestick>', authSettings);
     }
 
     /**
@@ -653,7 +652,7 @@ export class OptionsApi {
         offset?: number;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<OptionsTrade> }> {
         const localVarPath = this.client.basePath + '/options/trades';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -698,7 +697,7 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesTrade>>(config, 'Array<FuturesTrade>', authSettings);
+        return this.client.request<Array<OptionsTrade>>(config, 'Array<OptionsTrade>', authSettings);
     }
 
     /**

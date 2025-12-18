@@ -153,11 +153,13 @@ export * from './optionsMMPReset';
 export * from './optionsMySettlements';
 export * from './optionsMyTrade';
 export * from './optionsOrder';
+export * from './optionsOrderBook';
 export * from './optionsPosition';
 export * from './optionsPositionClose';
 export * from './optionsPositionCloseOrder';
 export * from './optionsSettlement';
 export * from './optionsTicker';
+export * from './optionsTrade';
 export * from './optionsUnderlying';
 export * from './optionsUnderlyingTicker';
 export * from './order';
@@ -433,11 +435,13 @@ import { OptionsMMPReset } from './optionsMMPReset';
 import { OptionsMySettlements } from './optionsMySettlements';
 import { OptionsMyTrade } from './optionsMyTrade';
 import { OptionsOrder } from './optionsOrder';
+import { OptionsOrderBook } from './optionsOrderBook';
 import { OptionsPosition } from './optionsPosition';
 import { OptionsPositionClose } from './optionsPositionClose';
 import { OptionsPositionCloseOrder } from './optionsPositionCloseOrder';
 import { OptionsSettlement } from './optionsSettlement';
 import { OptionsTicker } from './optionsTicker';
+import { OptionsTrade } from './optionsTrade';
 import { OptionsUnderlying } from './optionsUnderlying';
 import { OptionsUnderlyingTicker } from './optionsUnderlyingTicker';
 import { Order } from './order';
@@ -796,11 +800,13 @@ let typeMap: { [index: string]: any } = {
     OptionsMySettlements: OptionsMySettlements,
     OptionsMyTrade: OptionsMyTrade,
     OptionsOrder: OptionsOrder,
+    OptionsOrderBook: OptionsOrderBook,
     OptionsPosition: OptionsPosition,
     OptionsPositionClose: OptionsPositionClose,
     OptionsPositionCloseOrder: OptionsPositionCloseOrder,
     OptionsSettlement: OptionsSettlement,
     OptionsTicker: OptionsTicker,
+    OptionsTrade: OptionsTrade,
     OptionsUnderlying: OptionsUnderlying,
     OptionsUnderlyingTicker: OptionsUnderlyingTicker,
     Order: Order,
