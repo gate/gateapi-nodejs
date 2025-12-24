@@ -133,6 +133,10 @@ export class FuturesOrder {
      * trade value
      */
     'tradeValue'?: string;
+    /**
+     * Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used
+     */
+    'marketOrderSlipRatio'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -285,6 +289,11 @@ export class FuturesOrder {
         {
             name: 'tradeValue',
             baseName: 'trade_value',
+            type: 'string',
+        },
+        {
+            name: 'marketOrderSlipRatio',
+            baseName: 'market_order_slip_ratio',
             type: 'string',
         },
     ];

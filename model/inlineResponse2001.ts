@@ -12,7 +12,7 @@
 export class InlineResponse2001 {
     'currency'?: string;
     /**
-     * Unconverted percentage
+     * Estimated Annualized Rate, e.g., `est_rate`: `0.8014` represents an annualized rate of 80.14%
      */
     'estRate'?: string;
 

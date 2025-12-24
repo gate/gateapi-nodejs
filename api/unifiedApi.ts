@@ -75,11 +75,21 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
         }
 
         if (opts.subUid !== undefined) {
-            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
+            let subUidSerialized = ObjectSerializer.serialize(opts.subUid, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(subUidSerialized)) {
+                subUidSerialized = subUidSerialized.join(',');
+            }
+            localVarQueryParameters['sub_uid'] = subUidSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -115,7 +125,12 @@ export class UnifiedApi {
             throw new Error('Required parameter currency was null or undefined when calling getUnifiedBorrowable.');
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+        let currencySerialized = ObjectSerializer.serialize(currency, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(currencySerialized)) {
+            currencySerialized = currencySerialized.join(',');
+        }
+        localVarQueryParameters['currency'] = currencySerialized;
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -152,7 +167,12 @@ export class UnifiedApi {
             throw new Error('Required parameter currency was null or undefined when calling getUnifiedTransferable.');
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+        let currencySerialized = ObjectSerializer.serialize(currency, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(currencySerialized)) {
+            currencySerialized = currencySerialized.join(',');
+        }
+        localVarQueryParameters['currency'] = currencySerialized;
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -191,7 +211,12 @@ export class UnifiedApi {
             );
         }
 
-        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'string');
+        let currenciesSerialized = ObjectSerializer.serialize(currencies, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(currenciesSerialized)) {
+            currenciesSerialized = currenciesSerialized.join(',');
+        }
+        localVarQueryParameters['currencies'] = currenciesSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -230,7 +255,12 @@ export class UnifiedApi {
             );
         }
 
-        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'Array<string>');
+        let currenciesSerialized = ObjectSerializer.serialize(currencies, 'Array<string>');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(currenciesSerialized)) {
+            currenciesSerialized = currenciesSerialized.join(',');
+        }
+        localVarQueryParameters['currencies'] = currenciesSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -271,19 +301,39 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
+            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -361,19 +411,39 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
+            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
         }
 
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -419,27 +489,57 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(fromSerialized)) {
+                fromSerialized = fromSerialized.join(',');
+            }
+            localVarQueryParameters['from'] = fromSerialized;
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(toSerialized)) {
+                toSerialized = toSerialized.join(',');
+            }
+            localVarQueryParameters['to'] = toSerialized;
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
+            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -558,7 +658,12 @@ export class UnifiedApi {
             throw new Error('Required parameter currencies was null or undefined when calling getUnifiedEstimateRate.');
         }
 
-        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'Array<string>');
+        let currenciesSerialized = ObjectSerializer.serialize(currencies, 'Array<string>');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(currenciesSerialized)) {
+            currenciesSerialized = currenciesSerialized.join(',');
+        }
+        localVarQueryParameters['currencies'] = currenciesSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -689,7 +794,12 @@ export class UnifiedApi {
             );
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+        let currencySerialized = ObjectSerializer.serialize(currency, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(currencySerialized)) {
+            currencySerialized = currencySerialized.join(',');
+        }
+        localVarQueryParameters['currency'] = currencySerialized;
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -724,7 +834,12 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -795,7 +910,12 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -840,17 +960,37 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.tier !== undefined) {
-            localVarQueryParameters['tier'] = ObjectSerializer.serialize(opts.tier, 'string');
+            let tierSerialized = ObjectSerializer.serialize(opts.tier, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(tierSerialized)) {
+                tierSerialized = tierSerialized.join(',');
+            }
+            localVarQueryParameters['tier'] = tierSerialized;
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+        let currencySerialized = ObjectSerializer.serialize(currency, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(currencySerialized)) {
+            currencySerialized = currencySerialized.join(',');
+        }
+        localVarQueryParameters['currency'] = currencySerialized;
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         const config: AxiosRequestConfig = {

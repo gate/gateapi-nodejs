@@ -136,7 +136,12 @@ export class AccountApi {
 
         opts = opts || {};
         if (opts.name !== undefined) {
-            localVarQueryParameters['name'] = ObjectSerializer.serialize(opts.name, 'string');
+            let nameSerialized = ObjectSerializer.serialize(opts.name, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(nameSerialized)) {
+                nameSerialized = nameSerialized.join(',');
+            }
+            localVarQueryParameters['name'] = nameSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -297,7 +302,12 @@ export class AccountApi {
             throw new Error('Required parameter userId was null or undefined when calling deleteSTPGroupUsers.');
         }
 
-        localVarQueryParameters['user_id'] = ObjectSerializer.serialize(userId, 'number');
+        let userIdSerialized = ObjectSerializer.serialize(userId, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(userIdSerialized)) {
+            userIdSerialized = userIdSerialized.join(',');
+        }
+        localVarQueryParameters['user_id'] = userIdSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',

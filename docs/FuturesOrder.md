@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **pid** | **number** | Position ID | [optional] [default to undefined]
 **orderValue** | **string** | order\&#39;s value | [optional] [default to undefined]
 **tradeValue** | **string** | trade value | [optional] [default to undefined]
+**marketOrderSlipRatio** | **string** | Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used | [optional] [default to undefined]
 
 ## Enum: FuturesOrder.FinishAs
 

@@ -125,6 +125,10 @@ export class BatchFuturesOrder {
      * Orders between users in the same `stp_id` group are not allowed to be self-traded  1. If the `stp_id` of two orders being matched is non-zero and equal, they will not be executed. Instead, the corresponding strategy will be executed based on the `stp_act` of the taker. 2. `stp_id` returns `0` by default for orders that have not been set for `STP group`
      */
     'stpId'?: number;
+    /**
+     * The maximum slippage ratio
+     */
+    'marketOrderSlipRatio'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -268,6 +272,11 @@ export class BatchFuturesOrder {
             name: 'stpId',
             baseName: 'stp_id',
             type: 'number',
+        },
+        {
+            name: 'marketOrderSlipRatio',
+            baseName: 'market_order_slip_ratio',
+            type: 'string',
         },
     ];
 

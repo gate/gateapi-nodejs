@@ -60,15 +60,30 @@ export class FlashSwapApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -114,27 +129,57 @@ export class FlashSwapApi {
 
         opts = opts || {};
         if (opts.status !== undefined) {
-            localVarQueryParameters['status'] = ObjectSerializer.serialize(opts.status, 'number');
+            let statusSerialized = ObjectSerializer.serialize(opts.status, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(statusSerialized)) {
+                statusSerialized = statusSerialized.join(',');
+            }
+            localVarQueryParameters['status'] = statusSerialized;
         }
 
         if (opts.sellCurrency !== undefined) {
-            localVarQueryParameters['sell_currency'] = ObjectSerializer.serialize(opts.sellCurrency, 'string');
+            let sellCurrencySerialized = ObjectSerializer.serialize(opts.sellCurrency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sellCurrencySerialized)) {
+                sellCurrencySerialized = sellCurrencySerialized.join(',');
+            }
+            localVarQueryParameters['sell_currency'] = sellCurrencySerialized;
         }
 
         if (opts.buyCurrency !== undefined) {
-            localVarQueryParameters['buy_currency'] = ObjectSerializer.serialize(opts.buyCurrency, 'string');
+            let buyCurrencySerialized = ObjectSerializer.serialize(opts.buyCurrency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(buyCurrencySerialized)) {
+                buyCurrencySerialized = buyCurrencySerialized.join(',');
+            }
+            localVarQueryParameters['buy_currency'] = buyCurrencySerialized;
         }
 
         if (opts.reverse !== undefined) {
-            localVarQueryParameters['reverse'] = ObjectSerializer.serialize(opts.reverse, 'boolean');
+            let reverseSerialized = ObjectSerializer.serialize(opts.reverse, 'boolean');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(reverseSerialized)) {
+                reverseSerialized = reverseSerialized.join(',');
+            }
+            localVarQueryParameters['reverse'] = reverseSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
         }
 
         const config: AxiosRequestConfig = {

@@ -168,18 +168,38 @@ export class DeliveryApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
+        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(contractSerialized)) {
+            contractSerialized = contractSerialized.join(',');
+        }
+        localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "'0' | '0.1' | '0.01'");
+            let intervalSerialized = ObjectSerializer.serialize(opts.interval, "'0' | '0.1' | '0.01'");
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(intervalSerialized)) {
+                intervalSerialized = intervalSerialized.join(',');
+            }
+            localVarQueryParameters['interval'] = intervalSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.withId !== undefined) {
-            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, 'boolean');
+            let withIdSerialized = ObjectSerializer.serialize(opts.withId, 'boolean');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(withIdSerialized)) {
+                withIdSerialized = withIdSerialized.join(',');
+            }
+            localVarQueryParameters['with_id'] = withIdSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -233,22 +253,47 @@ export class DeliveryApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
+        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(contractSerialized)) {
+            contractSerialized = contractSerialized.join(',');
+        }
+        localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
+            let lastIdSerialized = ObjectSerializer.serialize(opts.lastId, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(lastIdSerialized)) {
+                lastIdSerialized = lastIdSerialized.join(',');
+            }
+            localVarQueryParameters['last_id'] = lastIdSerialized;
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(fromSerialized)) {
+                fromSerialized = fromSerialized.join(',');
+            }
+            localVarQueryParameters['from'] = fromSerialized;
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(toSerialized)) {
+                toSerialized = toSerialized.join(',');
+            }
+            localVarQueryParameters['to'] = toSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -323,25 +368,50 @@ export class DeliveryApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
+        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(contractSerialized)) {
+            contractSerialized = contractSerialized.join(',');
+        }
+        localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(fromSerialized)) {
+                fromSerialized = fromSerialized.join(',');
+            }
+            localVarQueryParameters['from'] = fromSerialized;
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(toSerialized)) {
+                toSerialized = toSerialized.join(',');
+            }
+            localVarQueryParameters['to'] = toSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
+            let intervalSerialized = ObjectSerializer.serialize(
                 opts.interval,
                 "'10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d'",
             );
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(intervalSerialized)) {
+                intervalSerialized = intervalSerialized.join(',');
+            }
+            localVarQueryParameters['interval'] = intervalSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -386,7 +456,12 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -433,7 +508,12 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -521,22 +601,42 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(fromSerialized)) {
+                fromSerialized = fromSerialized.join(',');
+            }
+            localVarQueryParameters['from'] = fromSerialized;
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(toSerialized)) {
+                toSerialized = toSerialized.join(',');
+            }
+            localVarQueryParameters['to'] = toSerialized;
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(
+            let typeSerialized = ObjectSerializer.serialize(
                 opts.type,
                 "'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr'",
             );
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -681,7 +781,12 @@ export class DeliveryApi {
             );
         }
 
-        localVarQueryParameters['change'] = ObjectSerializer.serialize(change, 'string');
+        let changeSerialized = ObjectSerializer.serialize(change, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(changeSerialized)) {
+            changeSerialized = changeSerialized.join(',');
+        }
+        localVarQueryParameters['change'] = changeSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -742,7 +847,12 @@ export class DeliveryApi {
             );
         }
 
-        localVarQueryParameters['leverage'] = ObjectSerializer.serialize(leverage, 'string');
+        let leverageSerialized = ObjectSerializer.serialize(leverage, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(leverageSerialized)) {
+            leverageSerialized = leverageSerialized.join(',');
+        }
+        localVarQueryParameters['leverage'] = leverageSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -803,7 +913,12 @@ export class DeliveryApi {
             );
         }
 
-        localVarQueryParameters['risk_limit'] = ObjectSerializer.serialize(riskLimit, 'string');
+        let riskLimitSerialized = ObjectSerializer.serialize(riskLimit, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(riskLimitSerialized)) {
+            riskLimitSerialized = riskLimitSerialized.join(',');
+        }
+        localVarQueryParameters['risk_limit'] = riskLimitSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -858,25 +973,55 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
         }
 
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        let statusSerialized = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(statusSerialized)) {
+            statusSerialized = statusSerialized.join(',');
+        }
+        localVarQueryParameters['status'] = statusSerialized;
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(offsetSerialized)) {
+                offsetSerialized = offsetSerialized.join(',');
+            }
+            localVarQueryParameters['offset'] = offsetSerialized;
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
+            let lastIdSerialized = ObjectSerializer.serialize(opts.lastId, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(lastIdSerialized)) {
+                lastIdSerialized = lastIdSerialized.join(',');
+            }
+            localVarQueryParameters['last_id'] = lastIdSerialized;
         }
 
         if (opts.countTotal !== undefined) {
-            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
+            let countTotalSerialized = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(countTotalSerialized)) {
+                countTotalSerialized = countTotalSerialized.join(',');
+            }
+            localVarQueryParameters['count_total'] = countTotalSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -972,10 +1117,20 @@ export class DeliveryApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
+        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(contractSerialized)) {
+            contractSerialized = contractSerialized.join(',');
+        }
+        localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.side !== undefined) {
-            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'ask' | 'bid'");
+            let sideSerialized = ObjectSerializer.serialize(opts.side, "'ask' | 'bid'");
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sideSerialized)) {
+                sideSerialized = sideSerialized.join(',');
+            }
+            localVarQueryParameters['side'] = sideSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -1124,27 +1279,57 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
         }
 
         if (opts.order !== undefined) {
-            localVarQueryParameters['order'] = ObjectSerializer.serialize(opts.order, 'number');
+            let orderSerialized = ObjectSerializer.serialize(opts.order, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(orderSerialized)) {
+                orderSerialized = orderSerialized.join(',');
+            }
+            localVarQueryParameters['order'] = orderSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(offsetSerialized)) {
+                offsetSerialized = offsetSerialized.join(',');
+            }
+            localVarQueryParameters['offset'] = offsetSerialized;
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
+            let lastIdSerialized = ObjectSerializer.serialize(opts.lastId, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(lastIdSerialized)) {
+                lastIdSerialized = lastIdSerialized.join(',');
+            }
+            localVarQueryParameters['last_id'] = lastIdSerialized;
         }
 
         if (opts.countTotal !== undefined) {
-            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
+            let countTotalSerialized = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(countTotalSerialized)) {
+                countTotalSerialized = countTotalSerialized.join(',');
+            }
+            localVarQueryParameters['count_total'] = countTotalSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -1190,11 +1375,21 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -1241,15 +1436,30 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.at !== undefined) {
-            localVarQueryParameters['at'] = ObjectSerializer.serialize(opts.at, 'number');
+            let atSerialized = ObjectSerializer.serialize(opts.at, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(atSerialized)) {
+                atSerialized = atSerialized.join(',');
+            }
+            localVarQueryParameters['at'] = atSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -1296,15 +1506,30 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.at !== undefined) {
-            localVarQueryParameters['at'] = ObjectSerializer.serialize(opts.at, 'number');
+            let atSerialized = ObjectSerializer.serialize(opts.at, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(atSerialized)) {
+                atSerialized = atSerialized.join(',');
+            }
+            localVarQueryParameters['at'] = atSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -1351,15 +1576,30 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(offsetSerialized)) {
+                offsetSerialized = offsetSerialized.join(',');
+            }
+            localVarQueryParameters['offset'] = offsetSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -1420,18 +1660,38 @@ export class DeliveryApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        let statusSerialized = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(statusSerialized)) {
+            statusSerialized = statusSerialized.join(',');
+        }
+        localVarQueryParameters['status'] = statusSerialized;
 
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(offsetSerialized)) {
+                offsetSerialized = offsetSerialized.join(',');
+            }
+            localVarQueryParameters['offset'] = offsetSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -1535,7 +1795,12 @@ export class DeliveryApi {
             );
         }
 
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
+        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(contractSerialized)) {
+            contractSerialized = contractSerialized.join(',');
+        }
+        localVarQueryParameters['contract'] = contractSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',

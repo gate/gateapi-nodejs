@@ -44,6 +44,8 @@ Name | Type | Description | Notes
 **launchTime** | **number** | Contract expiry timestamp | [optional] [default to undefined]
 **delistingTime** | **number** | Timestamp when contract enters reduce-only state | [optional] [default to undefined]
 **delistedTime** | **number** | Contract delisting time | [optional] [default to undefined]
+**marketOrderSlipRatio** | **string** | The maximum slippage allowed for market orders, with the slippage rate calculated based on the latest market price | [optional] [default to undefined]
+**marketOrderSizeMax** | **string** | The maximum number of contracts supported for market orders, with a default value of 0. When the default value is used, the maximum number of contracts is limited by the &#x60;order_size_max&#x60; field | [optional] [default to undefined]
 **fundingRateLimit** | **string** | Upper and lower limits of funding rate | [optional] [default to undefined]
 
 ## Enum: Contract.Type
