@@ -157,6 +157,10 @@ export class Order {
      * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
      */
     'actionMode'?: string;
+    /**
+     * Slippage, default limit range 0.0001-0.05, converted to percentage is 0.01%-5%, indicating the acceptable price difference for market order transactions
+     */
+    'slippage'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -339,6 +343,11 @@ export class Order {
         {
             name: 'actionMode',
             baseName: 'action_mode',
+            type: 'string',
+        },
+        {
+            name: 'slippage',
+            baseName: 'slippage',
             type: 'string',
         },
     ];

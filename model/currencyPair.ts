@@ -97,6 +97,18 @@ export class CurrencyPair {
      * Maximum Quote Decline Percentage
      */
     'downRate'?: string;
+    /**
+     * Currency Slippage
+     */
+    'slippage'?: string;
+    /**
+     * Maximum Market Order Quantity
+     */
+    'marketOrderMaxStock'?: string;
+    /**
+     * Maximum Market Order Amount
+     */
+    'marketOrderMaxMoney'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -204,6 +216,21 @@ export class CurrencyPair {
         {
             name: 'downRate',
             baseName: 'down_rate',
+            type: 'string',
+        },
+        {
+            name: 'slippage',
+            baseName: 'slippage',
+            type: 'string',
+        },
+        {
+            name: 'marketOrderMaxStock',
+            baseName: 'market_order_max_stock',
+            type: 'string',
+        },
+        {
+            name: 'marketOrderMaxMoney',
+            baseName: 'market_order_max_money',
             type: 'string',
         },
     ];

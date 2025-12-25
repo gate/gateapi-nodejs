@@ -161,6 +161,10 @@ export class BatchOrder {
      * How the order was finished.  - open: processing - filled: filled totally - cancelled: manually cancelled - ioc: time in force is `IOC`, finish immediately - stp: cancelled because self trade prevention
      */
     'finishAs'?: BatchOrder.FinishAs;
+    /**
+     * Slippage, default limit range 0.0001-0.05, converted to percentage is 0.01%-5%, indicating the acceptable price difference for market order transactions
+     */
+    'slippage'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -349,6 +353,11 @@ export class BatchOrder {
             name: 'finishAs',
             baseName: 'finish_as',
             type: 'BatchOrder.FinishAs',
+        },
+        {
+            name: 'slippage',
+            baseName: 'slippage',
+            type: 'string',
         },
     ];
 

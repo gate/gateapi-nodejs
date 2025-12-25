@@ -25,6 +25,9 @@ Name | Type | Description | Notes
 **stTag** | **boolean** | Whether the trading pair is in ST risk assessment, false - No, true - Yes | [optional] [default to undefined]
 **upRate** | **string** | Maximum Quote Rise Percentage | [optional] [default to undefined]
 **downRate** | **string** | Maximum Quote Decline Percentage | [optional] [default to undefined]
+**slippage** | **string** | Currency Slippage | [optional] [default to undefined]
+**marketOrderMaxStock** | **string** | Maximum Market Order Quantity | [optional] [default to undefined]
+**marketOrderMaxMoney** | **string** | Maximum Market Order Amount | [optional] [default to undefined]
 
 ## Enum: CurrencyPair.TradeStatus
 
