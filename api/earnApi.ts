@@ -11,6 +11,7 @@
 
 /* tslint:disable:no-unused-locals */
 import { AwardListStruct } from '../model/awardListStruct';
+import { DualGetBalance } from '../model/dualGetBalance';
 import { DualGetOrders } from '../model/dualGetOrders';
 import { DualGetPlans } from '../model/dualGetPlans';
 import { Eth2RateList } from '../model/eth2RateList';
@@ -240,6 +241,33 @@ export class EarnApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary Dual-Currency Earning Assets
+     */
+    public async listDualBalance(): Promise<{ response: AxiosResponse; body: DualGetBalance }> {
+        const localVarPath = this.client.basePath + '/earn/dual/balance';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<DualGetBalance>(config, 'DualGetBalance', authSettings);
     }
 
     /**

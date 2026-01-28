@@ -54,7 +54,7 @@ export class OrderCancel {
      */
     'updateTimeMs'?: number;
     /**
-     * Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
+     * Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
      */
     'status'?: OrderCancel.Status;
     /**

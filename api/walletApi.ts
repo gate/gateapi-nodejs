@@ -536,8 +536,8 @@ export class WalletApi {
     }
 
     /**
-     * Supports querying transfer status based on user-defined client_order_id or tx_id returned by the transfer interface
-     * @summary Transfer status query
+     * Supports querying Main-Sub Account Transfer Status based on user-defined client_order_id or tx_id returned by the transfer interface
+     * @summary Main-Sub Account Transfer Status Query
      * @param opts Optional parameters
      * @param opts.clientOrderId Customer-defined ID to prevent duplicate transfers. Can be a combination of letters (case-sensitive), numbers, hyphens \&#39;-\&#39;, and underscores \&#39;_\&#39;. Can be pure letters or pure numbers with length between 1-64 characters
      * @param opts.txId Transfer operation number, cannot be empty at the same time as client_order_id

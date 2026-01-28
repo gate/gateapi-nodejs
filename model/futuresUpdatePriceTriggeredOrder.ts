@@ -18,13 +18,9 @@ export class FuturesUpdatePriceTriggeredOrder {
      */
     'settle'?: string;
     /**
-     * ID of the Pending Take-Profit/Stop-Loss Trigger Order
-     */
-    'orderId'?: number;
-    /**
      * The order ID of the modified price-triggered order. This ID is returned upon successful creation of the price-triggered order. Note: This ID must be passed in both the request path and request body.
      */
-    'contact'?: string;
+    'orderId': string;
     /**
      * Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
      */
@@ -45,6 +41,10 @@ export class FuturesUpdatePriceTriggeredOrder {
      * One-way Mode: auto_size is not required Hedge Mode partial closing (size≠0): auto_size is not required Hedge Mode full closing (size=0): auto_size must be set, close_long for closing long positions, close_short for closing short positions
      */
     'autoSize'?: string;
+    /**
+     * In One-way Mode, when closing all positions, this must be set to true to perform the closing operation When partially closing positions in One-way Mode or Hedge Mode, you can omit close or set close=false
+     */
+    'close'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -57,11 +57,6 @@ export class FuturesUpdatePriceTriggeredOrder {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
-        },
-        {
-            name: 'contact',
-            baseName: 'contact',
             type: 'string',
         },
         {
@@ -88,6 +83,11 @@ export class FuturesUpdatePriceTriggeredOrder {
             name: 'autoSize',
             baseName: 'auto_size',
             type: 'string',
+        },
+        {
+            name: 'close',
+            baseName: 'close',
+            type: 'boolean',
         },
     ];
 

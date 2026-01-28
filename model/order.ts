@@ -18,7 +18,7 @@ export class Order {
      */
     'id'?: string;
     /**
-     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  Besides user defined information, reserved contents are listed below, denoting how the order is created:  - 101: from android - 102: from IOS - 103: from IPAD - 104: from webapp - 3: from web - 2: from apiv2 - apiv4: from apiv4
+     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  Besides user defined information, reserved contents are listed below, denoting how the order is created:  - 101: from android - 102: from IOS - 103: from IPAD - 104: from webapp - 3: from web - 2: from apiv2 - apiv4: from apiv4 pm_liquidate, comb_margin_liquidate, and scm_liquidate represent cross-margin liquidation orders liquidate represents isolated-margin liquidation orders
      */
     'text'?: string;
     /**
@@ -42,7 +42,7 @@ export class Order {
      */
     'updateTimeMs'?: number;
     /**
-     * Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
+     * Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
      */
     'status'?: Order.Status;
     /**
@@ -158,7 +158,7 @@ export class Order {
      */
     'actionMode'?: string;
     /**
-     * Slippage, default limit range 0.0001-0.05, converted to percentage is 0.01%-5%, indicating the acceptable price difference for market order transactions
+     * Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
      */
     'slippage'?: string;
 

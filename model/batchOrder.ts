@@ -58,7 +58,7 @@ export class BatchOrder {
      */
     'updateTimeMs'?: number;
     /**
-     * Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
+     * Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
      */
     'status'?: BatchOrder.Status;
     /**
@@ -162,7 +162,7 @@ export class BatchOrder {
      */
     'finishAs'?: BatchOrder.FinishAs;
     /**
-     * Slippage, default limit range 0.0001-0.05, converted to percentage is 0.01%-5%, indicating the acceptable price difference for market order transactions
+     * Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
      */
     'slippage'?: string;
 

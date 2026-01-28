@@ -21,7 +21,7 @@ export class SpotPriceTrigger {
     /**
      * Maximum wait time for trigger condition (in seconds). Order will be cancelled if timeout
      */
-    'expiration': number;
+    'expiration'?: number;
 
     static discriminator: string | undefined = undefined;
 

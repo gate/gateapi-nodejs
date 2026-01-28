@@ -137,6 +137,10 @@ export class FuturesOrder {
      * Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used
      */
     'marketOrderSlipRatio'?: string;
+    /**
+     * Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode
+     */
+    'posMarginMode'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -294,6 +298,11 @@ export class FuturesOrder {
         {
             name: 'marketOrderSlipRatio',
             baseName: 'market_order_slip_ratio',
+            type: 'string',
+        },
+        {
+            name: 'posMarginMode',
+            baseName: 'pos_margin_mode',
             type: 'string',
         },
     ];

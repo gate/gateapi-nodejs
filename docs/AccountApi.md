@@ -100,6 +100,8 @@ Promise<{ response: AxiosResponse; body: AccountKeyInfo; }> [AccountKeyInfo](Acc
 
 Get user transaction rate limit information
 
+This interface is not yet open for use
+
 ### Example
 
 ```typescript

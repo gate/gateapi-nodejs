@@ -39,7 +39,7 @@ export class OptionsAccount {
      */
     'liqTriggered'?: boolean;
     /**
-     * 此字段表示统一账户所使用的保证金模式：  - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式 - 3: 表示为单币种保证金模式
+     * This field indicates the margin mode used by the unified account:  - 0: Classic Spot Margin Mode - 1: Cross-Currency Margin Mode - 2: Portfolio Margin Mode - 3: Single-Currency Margin Mode
      */
     'marginMode'?: OptionsAccount.MarginMode;
     /**

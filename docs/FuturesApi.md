@@ -21,12 +21,15 @@ Method | HTTP request | Description
 [**listFuturesAccountBook**](FuturesApi.md#listFuturesAccountBook) | **GET** /futures/{settle}/account_book | Query futures account change history
 [**listPositions**](FuturesApi.md#listPositions) | **GET** /futures/{settle}/positions | Get user position list
 [**getPosition**](FuturesApi.md#getPosition) | **GET** /futures/{settle}/positions/{contract} | Get single position information
+[**getLeverage**](FuturesApi.md#getLeverage) | **GET** /futures/{settle}/get_leverage/{contract} | Get Leverage Information for Specified Mode
 [**updatePositionMargin**](FuturesApi.md#updatePositionMargin) | **POST** /futures/{settle}/positions/{contract}/margin | Update position margin
 [**updatePositionLeverage**](FuturesApi.md#updatePositionLeverage) | **POST** /futures/{settle}/positions/{contract}/leverage | Update position leverage
+[**updateContractPositionLeverage**](FuturesApi.md#updateContractPositionLeverage) | **POST** /futures/{settle}/positions/{contract}/set_leverage | Update Leverage for Specified Mode
 [**updatePositionCrossMode**](FuturesApi.md#updatePositionCrossMode) | **POST** /futures/{settle}/positions/cross_mode | Switch Position Margin Mode
 [**updateDualCompPositionCrossMode**](FuturesApi.md#updateDualCompPositionCrossMode) | **POST** /futures/{settle}/dual_comp/positions/cross_mode | Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 [**updatePositionRiskLimit**](FuturesApi.md#updatePositionRiskLimit) | **POST** /futures/{settle}/positions/{contract}/risk_limit | Update position risk limit
 [**setDualMode**](FuturesApi.md#setDualMode) | **POST** /futures/{settle}/dual_mode | Set position mode
+[**setPositionMode**](FuturesApi.md#setPositionMode) | **POST** /futures/{settle}/set_position_mode | Set Position Holding Mode, replacing the dual_mode interface
 [**getDualModePosition**](FuturesApi.md#getDualModePosition) | **GET** /futures/{settle}/dual_comp/positions/{contract} | Get position information in Hedge Mode
 [**updateDualModePositionMargin**](FuturesApi.md#updateDualModePositionMargin) | **POST** /futures/{settle}/dual_comp/positions/{contract}/margin | Update position margin in Hedge Mode
 [**updateDualModePositionLeverage**](FuturesApi.md#updateDualModePositionLeverage) | **POST** /futures/{settle}/dual_comp/positions/{contract}/leverage | Update position leverage in Hedge Mode
@@ -909,6 +912,59 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## getLeverage
+
+> Promise<{ response: http.IncomingMessage; body: FuturesLeverage; }> getLeverage(settle, contract, opts)
+
+Get Leverage Information for Specified Mode
+
+Get Leverage Information for Specified Mode
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const contract = "BTC_USDT"; // string | Futures contract
+const opts = {
+  'posMarginMode': "isolated", // string | Position Margin Mode, required for split position mode, values: isolated/cross.
+  'dualSide': "dual_long" // string | dual_long - Long, dual_short - Short
+};
+api.getLeverage(settle, contract, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **contract** | **string**| Futures contract | [default to undefined]
+ **posMarginMode** | **string**| Position Margin Mode, required for split position mode, values: isolated/cross. | [optional] [default to undefined]
+ **dualSide** | **string**| dual_long - Long, dual_short - Short | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FuturesLeverage; }> [FuturesLeverage](FuturesLeverage.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 ## updatePositionMargin
 
 > Promise<{ response: http.IncomingMessage; body: Position; }> updatePositionMargin(settle, contract, change)
@@ -999,6 +1055,61 @@ Name | Type | Description  | Notes
  **leverage** | **string**| Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. | [default to undefined]
  **crossLeverageLimit** | **string**| Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. | [optional] [default to undefined]
  **pid** | **number**| Product ID | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## updateContractPositionLeverage
+
+> Promise<{ response: http.IncomingMessage; body: Position; }> updateContractPositionLeverage(settle, contract, leverage, marginMode, opts)
+
+Update Leverage for Specified Mode
+
+To simplify the complex logic of the leverage interface, added a new interface for modifying leverage
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const contract = "BTC_USDT"; // string | Futures contract
+const leverage = "10"; // string | Position Leverage Multiple
+const marginMode = "cross"; // string | Margin Mode isolated/cross
+const opts = {
+  'dualSide': "dual_long" // string | dual_long - Long, dual_short - Short
+};
+api.updateContractPositionLeverage(settle, contract, leverage, marginMode, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **contract** | **string**| Futures contract | [default to undefined]
+ **leverage** | **string**| Position Leverage Multiple | [default to undefined]
+ **marginMode** | **string**| Margin Mode isolated/cross | [default to undefined]
+ **dualSide** | **string**| dual_long - Long, dual_short - Short | [optional] [default to undefined]
 
 ### Return type
 
@@ -1185,6 +1296,53 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **dualMode** | **boolean**| Whether to enable Hedge Mode | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FuturesAccount; }> [FuturesAccount](FuturesAccount.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## setPositionMode
+
+> Promise<{ response: http.IncomingMessage; body: FuturesAccount; }> setPositionMode(settle, positionMode)
+
+Set Position Holding Mode, replacing the dual_mode interface
+
+The prerequisite for changing mode is that all positions have no holdings and no pending orders
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const positionMode = "dual_plus"; // string | Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively
+api.setPositionMode(settle, positionMode)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **positionMode** | **string**| Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively | [default to undefined]
 
 ### Return type
 

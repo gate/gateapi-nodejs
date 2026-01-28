@@ -148,6 +148,14 @@ export class Position {
      * Sub-account position ID
      */
     'pid'?: number;
+    /**
+     * Position Margin Mode isolated - Isolated Margin, cross - Cross Margin
+     */
+    'posMarginMode'?: string;
+    /**
+     * Indicates the current leverage of the position, applicable to both isolated and cross margin, gradually replacing the current leverage and cross_leverage_limit
+     */
+    'lever'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -321,6 +329,16 @@ export class Position {
             name: 'pid',
             baseName: 'pid',
             type: 'number',
+        },
+        {
+            name: 'posMarginMode',
+            baseName: 'pos_margin_mode',
+            type: 'string',
+        },
+        {
+            name: 'lever',
+            baseName: 'lever',
+            type: 'string',
         },
     ];
 

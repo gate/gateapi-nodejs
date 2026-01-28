@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **point** | **string** | Point card amount | [optional] [default to undefined]
 **currency** | **string** | Settlement currency | [optional] [default to undefined]
 **inDualMode** | **boolean** | Whether Hedge Mode is enabled | [optional] [default to undefined]
-**positionMode** | **string** | Position mode: single - one-way, dual - dual-side, split - sub-positions (in_dual_mode is deprecated) | [optional] [default to undefined]
 **enableCredit** | **boolean** | Whether portfolio margin account mode is enabled | [optional] [default to undefined]
 **positionInitialMargin** | **string** | Initial margin occupied by positions, applicable to unified account mode | [optional] [default to undefined]
 **maintenanceMargin** | **string** | Maintenance margin occupied by positions, applicable to new classic account margin mode and unified account mode | [optional] [default to undefined]
@@ -30,5 +29,7 @@ Name | Type | Description | Notes
 **enableNewDualMode** | **boolean** | Deprecated | [optional] [default to undefined]
 **marginMode** | **number** | Margin mode of the account 0: classic future account or Classic Spot Margin Mode of unified account; 1:  Multi-Currency Margin Mode; 2:  Portoforlio Margin Mode; 3:  Single-Currency Margin Mode | [optional] [default to undefined]
 **enableTieredMm** | **boolean** | Whether to enable tiered maintenance margin calculation | [optional] [default to undefined]
+**enableDualPlus** | **boolean** | Whether to Support Split Position Mode | [optional] [default to undefined]
+**positionMode** | **string** | Position Holding Mode single - Single Direction Position, dual - Dual Direction Position, dual_plus - Split Position | [optional] [default to undefined]
 **history** | [**FuturesAccountHistory**](FuturesAccountHistory.md) |  | [optional] [default to undefined]
 

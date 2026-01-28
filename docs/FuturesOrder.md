@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **orderValue** | **string** | order\&#39;s value | [optional] [default to undefined]
 **tradeValue** | **string** | trade value | [optional] [default to undefined]
 **marketOrderSlipRatio** | **string** | Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used | [optional] [default to undefined]
+**posMarginMode** | **string** | Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode | [optional] [default to undefined]
 
 ## Enum: FuturesOrder.FinishAs
 

@@ -90,7 +90,7 @@ export class AccountApi {
     }
 
     /**
-     *
+     * This interface is not yet open for use
      * @summary Get user transaction rate limit information
      */
     public async getAccountRateLimit(): Promise<{ response: AxiosResponse; body: Array<AccountRateLimit> }> {

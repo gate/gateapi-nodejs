@@ -98,7 +98,7 @@ export class CurrencyPair {
      */
     'downRate'?: string;
     /**
-     * Currency Slippage
+     * Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
      */
     'slippage'?: string;
     /**

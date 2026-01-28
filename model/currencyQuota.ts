@@ -26,13 +26,21 @@ export class CurrencyQuota {
      */
     'minQuota'?: string;
     /**
-     * Remaining borrowing/collateral quota for the currency
+     * Remaining currency limit for `borrow/collateral` (when input parameter `type` is `borrow`, represents current currency)
      */
     'leftQuota'?: string;
     /**
-     * Remaining currency limit converted to USDT
+     * Remaining currency limit converted to USDT (when input parameter `type` is `borrow`, represents current currency)
      */
     'leftQuoteUsdt'?: string;
+    /**
+     * Remaining `borrow/collateral` limit for fixed-term currency
+     */
+    'leftQuotaFixed'?: string;
+    /**
+     * Remaining currency limit for fixed-term currency converted to USDT
+     */
+    'leftQuoteUsdtFixed'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -60,6 +68,16 @@ export class CurrencyQuota {
         {
             name: 'leftQuoteUsdt',
             baseName: 'left_quote_usdt',
+            type: 'string',
+        },
+        {
+            name: 'leftQuotaFixed',
+            baseName: 'left_quota_fixed',
+            type: 'string',
+        },
+        {
+            name: 'leftQuoteUsdtFixed',
+            baseName: 'left_quote_usdt_fixed',
             type: 'string',
         },
     ];

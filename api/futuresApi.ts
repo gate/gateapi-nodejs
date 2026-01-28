@@ -24,6 +24,7 @@ import { FuturesBBOOrder } from '../model/futuresBBOOrder';
 import { FuturesCandlestick } from '../model/futuresCandlestick';
 import { FuturesFee } from '../model/futuresFee';
 import { FuturesIndexConstituents } from '../model/futuresIndexConstituents';
+import { FuturesLeverage } from '../model/futuresLeverage';
 import { FuturesLimitRiskTiers } from '../model/futuresLimitRiskTiers';
 import { FuturesLiqOrder } from '../model/futuresLiqOrder';
 import { FuturesLiquidate } from '../model/futuresLiquidate';
@@ -1295,6 +1296,75 @@ export class FuturesApi {
     }
 
     /**
+     * Get Leverage Information for Specified Mode
+     * @summary Get Leverage Information for Specified Mode
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param opts Optional parameters
+     * @param opts.posMarginMode Position Margin Mode, required for split position mode, values: isolated/cross.
+     * @param opts.dualSide dual_long - Long, dual_short - Short
+     */
+    public async getLeverage(
+        settle: 'btc' | 'usdt',
+        contract: string,
+        opts: { posMarginMode?: string; dualSide?: string },
+    ): Promise<{ response: AxiosResponse; body: FuturesLeverage }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/get_leverage/{contract}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling getLeverage.');
+        }
+
+        // verify required parameter 'contract' is not null or undefined
+        if (contract === null || contract === undefined) {
+            throw new Error('Required parameter contract was null or undefined when calling getLeverage.');
+        }
+
+        opts = opts || {};
+        if (opts.posMarginMode !== undefined) {
+            let posMarginModeSerialized = ObjectSerializer.serialize(opts.posMarginMode, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(posMarginModeSerialized)) {
+                posMarginModeSerialized = posMarginModeSerialized.join(',');
+            }
+            localVarQueryParameters['pos_margin_mode'] = posMarginModeSerialized;
+        }
+
+        if (opts.dualSide !== undefined) {
+            let dualSideSerialized = ObjectSerializer.serialize(opts.dualSide, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(dualSideSerialized)) {
+                dualSideSerialized = dualSideSerialized.join(',');
+            }
+            localVarQueryParameters['dual_side'] = dualSideSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesLeverage>(config, 'FuturesLeverage', authSettings);
+    }
+
+    /**
      * Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
      * @summary Update position margin
      * @param settle Settle currency
@@ -1424,6 +1494,101 @@ export class FuturesApi {
                 pidSerialized = pidSerialized.join(',');
             }
             localVarQueryParameters['pid'] = pidSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Position>(config, 'Position', authSettings);
+    }
+
+    /**
+     * To simplify the complex logic of the leverage interface, added a new interface for modifying leverage
+     * @summary Update Leverage for Specified Mode
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param leverage Position Leverage Multiple
+     * @param marginMode Margin Mode isolated/cross
+     * @param opts Optional parameters
+     * @param opts.dualSide dual_long - Long, dual_short - Short
+     */
+    public async updateContractPositionLeverage(
+        settle: 'btc' | 'usdt',
+        contract: string,
+        leverage: string,
+        marginMode: string,
+        opts: { dualSide?: string },
+    ): Promise<{ response: AxiosResponse; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/positions/{contract}/set_leverage'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error(
+                'Required parameter settle was null or undefined when calling updateContractPositionLeverage.',
+            );
+        }
+
+        // verify required parameter 'contract' is not null or undefined
+        if (contract === null || contract === undefined) {
+            throw new Error(
+                'Required parameter contract was null or undefined when calling updateContractPositionLeverage.',
+            );
+        }
+
+        // verify required parameter 'leverage' is not null or undefined
+        if (leverage === null || leverage === undefined) {
+            throw new Error(
+                'Required parameter leverage was null or undefined when calling updateContractPositionLeverage.',
+            );
+        }
+
+        // verify required parameter 'marginMode' is not null or undefined
+        if (marginMode === null || marginMode === undefined) {
+            throw new Error(
+                'Required parameter marginMode was null or undefined when calling updateContractPositionLeverage.',
+            );
+        }
+
+        opts = opts || {};
+        let leverageSerialized = ObjectSerializer.serialize(leverage, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(leverageSerialized)) {
+            leverageSerialized = leverageSerialized.join(',');
+        }
+        localVarQueryParameters['leverage'] = leverageSerialized;
+
+        let marginModeSerialized = ObjectSerializer.serialize(marginMode, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(marginModeSerialized)) {
+            marginModeSerialized = marginModeSerialized.join(',');
+        }
+        localVarQueryParameters['margin_mode'] = marginModeSerialized;
+
+        if (opts.dualSide !== undefined) {
+            let dualSideSerialized = ObjectSerializer.serialize(opts.dualSide, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(dualSideSerialized)) {
+                dualSideSerialized = dualSideSerialized.join(',');
+            }
+            localVarQueryParameters['dual_side'] = dualSideSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -1635,6 +1800,57 @@ export class FuturesApi {
             dualModeSerialized = dualModeSerialized.join(',');
         }
         localVarQueryParameters['dual_mode'] = dualModeSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesAccount>(config, 'FuturesAccount', authSettings);
+    }
+
+    /**
+     * The prerequisite for changing mode is that all positions have no holdings and no pending orders
+     * @summary Set Position Holding Mode, replacing the dual_mode interface
+     * @param settle Settle currency
+     * @param positionMode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively
+     */
+    public async setPositionMode(
+        settle: 'btc' | 'usdt',
+        positionMode: string,
+    ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/set_position_mode'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling setPositionMode.');
+        }
+
+        // verify required parameter 'positionMode' is not null or undefined
+        if (positionMode === null || positionMode === undefined) {
+            throw new Error('Required parameter positionMode was null or undefined when calling setPositionMode.');
+        }
+
+        let positionModeSerialized = ObjectSerializer.serialize(positionMode, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(positionModeSerialized)) {
+            positionModeSerialized = positionModeSerialized.join(',');
+        }
+        localVarQueryParameters['position_mode'] = positionModeSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'POST',

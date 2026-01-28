@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Order ID | [optional] [readonly] [default to undefined]
-**text** | **string** | User defined information. If not empty, must follow the rules below:  1. prefixed with &#x60;t-&#x60; 2. no longer than 28 bytes without &#x60;t-&#x60; prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  Besides user defined information, reserved contents are listed below, denoting how the order is created:  - 101: from android - 102: from IOS - 103: from IPAD - 104: from webapp - 3: from web - 2: from apiv2 - apiv4: from apiv4  | [optional] [default to undefined]
+**text** | **string** | User defined information. If not empty, must follow the rules below:  1. prefixed with &#x60;t-&#x60; 2. no longer than 28 bytes without &#x60;t-&#x60; prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  Besides user defined information, reserved contents are listed below, denoting how the order is created:  - 101: from android - 102: from IOS - 103: from IPAD - 104: from webapp - 3: from web - 2: from apiv2 - apiv4: from apiv4 | [optional] [default to undefined]
 **amendText** | **string** | The custom data that the user remarked when amending the order | [optional] [readonly] [default to undefined]
 **succeeded** | **boolean** | Request execution result | [optional] [default to undefined]
 **label** | **string** | Error label, if any, otherwise an empty string | [optional] [default to undefined]
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **updateTime** | **string** | Last modification time of order | [optional] [readonly] [default to undefined]
 **createTimeMs** | **number** | Creation time of order (in milliseconds) | [optional] [readonly] [default to undefined]
 **updateTimeMs** | **number** | Last modification time of order (in milliseconds) | [optional] [readonly] [default to undefined]
-**status** | **string** | Order status  - &#x60;open&#x60;: to be filled - &#x60;closed&#x60;: filled - &#x60;cancelled&#x60;: cancelled | [optional] [readonly] [default to undefined]
+**status** | **string** | Order status  - &#x60;open&#x60;: to be filled - &#x60;closed&#x60;: closed order - &#x60;cancelled&#x60;: cancelled | [optional] [readonly] [default to undefined]
 **currencyPair** | **string** | Currency pair | [default to undefined]
 **type** | **string** | Order Type   - limit : Limit Order - market : Market Order | [optional] [default to &#39;limit&#39;]
 **account** | **string** | Account type, spot - spot account, margin - leveraged account, unified - unified account | [optional] [default to &#39;spot&#39;]
