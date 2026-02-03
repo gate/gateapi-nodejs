@@ -11,61 +11,169 @@
 
 export class InlineResponse20041 {
     /**
-     * Currency
+     * Position ID
      */
-    'coin': string;
+    'positionId'?: string;
     /**
-     * Exchange
+     * User ID
      */
-    'exchangeType': string;
+    'userId'?: string;
     /**
-     * Tier
+     * Currency pair
      */
-    'tier': string;
+    'symbol'?: string;
     /**
-     * Minimum value
+     * Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed)
      */
-    'minValue': string;
+    'closedType'?: string;
     /**
-     * Maximum value
+     * Close Position P&L
      */
-    'maxValue': string;
+    'closedPnl'?: string;
     /**
-     * Discount rate
+     * Close Position P&L Ratio
      */
-    'discountRate': string;
+    'closedPnlRate'?: string;
+    /**
+     * Average Opening Price
+     */
+    'openAvgPrice'?: string;
+    /**
+     * Average Close Price
+     */
+    'closedAvgPrice'?: string;
+    /**
+     * Max Trade Size
+     */
+    'maxPositionQty'?: string;
+    /**
+     * Close Position Quantity
+     */
+    'closedQty'?: string;
+    /**
+     * Close Position Value
+     */
+    'closedValue'?: string;
+    /**
+     * Liquidation Fee
+     */
+    'liqFee'?: string;
+    /**
+     * Position Direction Before Close
+     */
+    'positionSide'?: string;
+    /**
+     * Leverage at Close
+     */
+    'leverage'?: string;
+    /**
+     * Total Deducted Interest
+     */
+    'interest': string;
+    /**
+     * Position Business Type
+     */
+    'businessType': string;
+    /**
+     * Created time
+     */
+    'createTime'?: string;
+    /**
+     * Update time
+     */
+    'updateTime'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'positionId',
+            baseName: 'position_id',
             type: 'string',
         },
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
+            name: 'userId',
+            baseName: 'user_id',
             type: 'string',
         },
         {
-            name: 'tier',
-            baseName: 'tier',
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'minValue',
-            baseName: 'min_value',
+            name: 'closedType',
+            baseName: 'closed_type',
             type: 'string',
         },
         {
-            name: 'maxValue',
-            baseName: 'max_value',
+            name: 'closedPnl',
+            baseName: 'closed_pnl',
             type: 'string',
         },
         {
-            name: 'discountRate',
-            baseName: 'discount_rate',
+            name: 'closedPnlRate',
+            baseName: 'closed_pnl_rate',
+            type: 'string',
+        },
+        {
+            name: 'openAvgPrice',
+            baseName: 'open_avg_price',
+            type: 'string',
+        },
+        {
+            name: 'closedAvgPrice',
+            baseName: 'closed_avg_price',
+            type: 'string',
+        },
+        {
+            name: 'maxPositionQty',
+            baseName: 'max_position_qty',
+            type: 'string',
+        },
+        {
+            name: 'closedQty',
+            baseName: 'closed_qty',
+            type: 'string',
+        },
+        {
+            name: 'closedValue',
+            baseName: 'closed_value',
+            type: 'string',
+        },
+        {
+            name: 'liqFee',
+            baseName: 'liq_fee',
+            type: 'string',
+        },
+        {
+            name: 'positionSide',
+            baseName: 'position_side',
+            type: 'string',
+        },
+        {
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
+        },
+        {
+            name: 'interest',
+            baseName: 'interest',
+            type: 'string',
+        },
+        {
+            name: 'businessType',
+            baseName: 'business_type',
+            type: 'string',
+        },
+        {
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'string',
+        },
+        {
+            name: 'updateTime',
+            baseName: 'update_time',
             type: 'string',
         },
     ];

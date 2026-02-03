@@ -35,7 +35,7 @@ export class SubAccountToSubAccount {
      */
     'subAccountToType': string;
     /**
-     * Transfer amount
+     * Transfer Amount, supports up to 8 decimal places, must be greater than 0
      */
     'amount': string;
 

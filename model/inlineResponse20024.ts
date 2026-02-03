@@ -9,28 +9,24 @@
  * Do not edit the class manually.
  */
 
+import { RuleRiskLimitsTiers } from './ruleRiskLimitsTiers';
+
 export class InlineResponse20024 {
-    /**
-     * Order ID
-     */
-    'orderId': string;
-    /**
-     * User-defined Order ID
-     */
-    'text': string;
+    'symbol'?: string;
+    'tiers'?: Array<RuleRiskLimitsTiers>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'text',
-            baseName: 'text',
-            type: 'string',
+            name: 'tiers',
+            baseName: 'tiers',
+            type: 'Array<RuleRiskLimitsTiers>',
         },
     ];
 

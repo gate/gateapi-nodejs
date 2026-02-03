@@ -10,20 +10,20 @@
  */
 
 export class InlineResponse2004 {
-    'code': number;
-    'message': string;
+    'time'?: number;
+    'value'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'code',
-            baseName: 'code',
+            name: 'time',
+            baseName: 'time',
             type: 'number',
         },
         {
-            name: 'message',
-            baseName: 'message',
+            name: 'value',
+            baseName: 'value',
             type: 'string',
         },
     ];

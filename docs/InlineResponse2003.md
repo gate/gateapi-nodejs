@@ -4,7 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **number** |  | [default to undefined]
-**message** | **string** |  | [default to undefined]
-**timestamp** | **number** |  | [default to undefined]
+**changeLog** | [**Array&lt;TrailChangeLog&gt;**](TrailChangeLog.md) |  | [optional] [default to undefined]
 

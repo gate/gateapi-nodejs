@@ -9,379 +9,45 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20015List } from './inlineResponse20015List';
+
 export class InlineResponse20015Data {
     /**
-     * Price
+     * Payment method type
      */
-    'rate': string;
+    'payType'?: string;
     /**
-     * Buy/Sell order
+     * Payment method name
      */
-    'type': string;
+    'payName'?: string;
     /**
-     * Cryptocurrency amount
+     * User\'s currently bound payment method (primary key ID)
      */
-    'amount': string;
-    /**
-     * Minimum limit
-     */
-    'minAmount': string;
-    /**
-     * Maximum limit
-     */
-    'maxAmount': string;
-    /**
-     * Fiat amount
-     */
-    'total': string;
-    /**
-     * Whether Alipay payment is supported
-     */
-    'payAli': number;
-    /**
-     * Whether bank payment is supported
-     */
-    'payBank': number;
-    /**
-     * Whether PayPal payment is supported
-     */
-    'payPaypal': number;
-    /**
-     * Whether WeChat payment is supported
-     */
-    'payWechat': number;
-    /**
-     * Payment method ID list
-     */
-    'payTypeNum': string;
-    /**
-     * Payment method list
-     */
-    'payTypeJson': string;
-    /**
-     * Locked amount
-     */
-    'lockedAmount': string;
-    /**
-     * Order ID
-     */
-    'orderid': number;
-    /**
-     * Created time
-     */
-    'timestamp': number;
-    /**
-     * Cryptocurrency type
-     */
-    'currencyType': string;
-    /**
-     * Fiat type
-     */
-    'wantType': string;
-    /**
-     * Hidden price
-     */
-    'hideRate': string;
-    /**
-     * Trading terms
-     */
-    'tradeTips': string;
-    /**
-     * Auto reply
-     */
-    'autoReply': string;
-    /**
-     * Merchant-friendly order
-     */
-    'newHand': string;
-    /**
-     * Floating price reference ID: 1=Platform reference price, 3=Spot reference price (≤0 means fixed price, >0 means floating price)
-     */
-    'rateRefId': number;
-    /**
-     * Floating ratio (absolute value)
-     */
-    'rateOffset': number;
-    /**
-     * Status
-     */
-    'status': string;
-    /**
-     * 0=Floating, 1=Fixed
-     */
-    'rateFixed': number;
-    /**
-     * 0=Upward float, 1=Downward float
-     */
-    'floatTrend': number;
-    /**
-     * Timeout (minutes)
-     */
-    'expireMin': number;
-    /**
-     * Tier limit
-     */
-    'tierLimit': number;
-    /**
-     * Registration time limit
-     */
-    'regTimeLimit': number;
-    /**
-     * Do not trade with advertisers, advertiser limit: 0=No limit, 1=Limit
-     */
-    'advertisersLimit': number;
-    /**
-     * kyclimit
-     */
-    'verifiedLimit': number;
-    /**
-     * Minimum limit of completed orders
-     */
-    'minCompletedLimit': number;
-    /**
-     * Maximum limit of completed orders
-     */
-    'maxCompletedLimit': number;
-    /**
-     * Order count limit
-     */
-    'userOrdersLimit': number;
-    /**
-     * 30-day completion rate limit
-     */
-    'completedRateLimit': number;
-    /**
-     * KYC nationality restriction
-     */
-    'userCountryLimit': number;
-    /**
-     * Restricted nationality (Chinese)
-     */
-    'limitCountryCn': string;
-    /**
-     * Restricted nationality (English)
-     */
-    'limitCountryEn': string;
-    /**
-     * Whether auto delegation
-     */
-    'isHedge': number;
-    /**
-     * Whether to hide payment method
-     */
-    'hidePayment': number;
-    /**
-     * fee
-     */
-    'fee': number;
+    'ids'?: Array<number>;
+    'list'?: Array<InlineResponse20015List>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'rate',
-            baseName: 'rate',
+            name: 'payType',
+            baseName: 'pay_type',
             type: 'string',
         },
         {
-            name: 'type',
-            baseName: 'type',
+            name: 'payName',
+            baseName: 'pay_name',
             type: 'string',
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            name: 'ids',
+            baseName: 'ids',
+            type: 'Array<number>',
         },
         {
-            name: 'minAmount',
-            baseName: 'min_amount',
-            type: 'string',
-        },
-        {
-            name: 'maxAmount',
-            baseName: 'max_amount',
-            type: 'string',
-        },
-        {
-            name: 'total',
-            baseName: 'total',
-            type: 'string',
-        },
-        {
-            name: 'payAli',
-            baseName: 'pay_ali',
-            type: 'number',
-        },
-        {
-            name: 'payBank',
-            baseName: 'pay_bank',
-            type: 'number',
-        },
-        {
-            name: 'payPaypal',
-            baseName: 'pay_paypal',
-            type: 'number',
-        },
-        {
-            name: 'payWechat',
-            baseName: 'pay_wechat',
-            type: 'number',
-        },
-        {
-            name: 'payTypeNum',
-            baseName: 'pay_type_num',
-            type: 'string',
-        },
-        {
-            name: 'payTypeJson',
-            baseName: 'pay_type_json',
-            type: 'string',
-        },
-        {
-            name: 'lockedAmount',
-            baseName: 'locked_amount',
-            type: 'string',
-        },
-        {
-            name: 'orderid',
-            baseName: 'orderid',
-            type: 'number',
-        },
-        {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
-        },
-        {
-            name: 'currencyType',
-            baseName: 'currencyType',
-            type: 'string',
-        },
-        {
-            name: 'wantType',
-            baseName: 'want_type',
-            type: 'string',
-        },
-        {
-            name: 'hideRate',
-            baseName: 'hide_rate',
-            type: 'string',
-        },
-        {
-            name: 'tradeTips',
-            baseName: 'trade_tips',
-            type: 'string',
-        },
-        {
-            name: 'autoReply',
-            baseName: 'auto_reply',
-            type: 'string',
-        },
-        {
-            name: 'newHand',
-            baseName: 'new_hand',
-            type: 'string',
-        },
-        {
-            name: 'rateRefId',
-            baseName: 'rate_ref_id',
-            type: 'number',
-        },
-        {
-            name: 'rateOffset',
-            baseName: 'rate_offset',
-            type: 'number',
-        },
-        {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
-        },
-        {
-            name: 'rateFixed',
-            baseName: 'rate_fixed',
-            type: 'number',
-        },
-        {
-            name: 'floatTrend',
-            baseName: 'float_trend',
-            type: 'number',
-        },
-        {
-            name: 'expireMin',
-            baseName: 'expire_min',
-            type: 'number',
-        },
-        {
-            name: 'tierLimit',
-            baseName: 'tier_limit',
-            type: 'number',
-        },
-        {
-            name: 'regTimeLimit',
-            baseName: 'reg_time_limit',
-            type: 'number',
-        },
-        {
-            name: 'advertisersLimit',
-            baseName: 'advertisers_limit',
-            type: 'number',
-        },
-        {
-            name: 'verifiedLimit',
-            baseName: 'verified_limit',
-            type: 'number',
-        },
-        {
-            name: 'minCompletedLimit',
-            baseName: 'min_completed_limit',
-            type: 'number',
-        },
-        {
-            name: 'maxCompletedLimit',
-            baseName: 'max_completed_limit',
-            type: 'number',
-        },
-        {
-            name: 'userOrdersLimit',
-            baseName: 'user_orders_limit',
-            type: 'number',
-        },
-        {
-            name: 'completedRateLimit',
-            baseName: 'completed_rate_limit',
-            type: 'number',
-        },
-        {
-            name: 'userCountryLimit',
-            baseName: 'user_country_limit',
-            type: 'number',
-        },
-        {
-            name: 'limitCountryCn',
-            baseName: 'limit_country_cn',
-            type: 'string',
-        },
-        {
-            name: 'limitCountryEn',
-            baseName: 'limit_country_en',
-            type: 'string',
-        },
-        {
-            name: 'isHedge',
-            baseName: 'is_hedge',
-            type: 'number',
-        },
-        {
-            name: 'hidePayment',
-            baseName: 'hide_payment',
-            type: 'number',
-        },
-        {
-            name: 'fee',
-            baseName: 'fee',
-            type: 'number',
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<InlineResponse20015List>',
         },
     ];
 

@@ -29,5 +29,5 @@ Name | Type | Description | Notes
 **enableNewDualMode** | **boolean** | Deprecated | [optional] [default to undefined]
 **marginMode** | **number** | Margin mode of the account 0: classic future account or Classic Spot Margin Mode of unified account; 1:  Multi-Currency Margin Mode; 2:  Portoforlio Margin Mode; 3:  Single-Currency Margin Mode | [optional] [default to undefined]
 **enableTieredMm** | **boolean** | Whether to enable tiered maintenance margin calculation | [optional] [default to undefined]
-**history** | [**FuturesAccountHistory**](FuturesAccountHistory.md) |  | [optional] [default to undefined]
+**history** | [**DeliveryAccountHistory**](DeliveryAccountHistory.md) |  | [optional] [default to undefined]
 

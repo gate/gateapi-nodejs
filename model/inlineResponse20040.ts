@@ -11,48 +11,92 @@
 
 export class InlineResponse20040 {
     /**
-     * Account Change Record ID
+     * Position ID
      */
-    'id': string;
+    'positionId'?: string;
     /**
      * User ID
      */
-    'userId': string;
+    'userId'?: string;
     /**
-     * Business ID
+     * Currency pair
      */
-    'businessId': string;
+    'symbol'?: string;
     /**
-     * 变更类型| `TRANSACTION` 成交 `TRADING_FEE` 手续费 `FUNDING_FEE` 合约资金费 `LIQUIDATION_FEE` 强平费 `TRANSFER_IN` 资金转入 `TRANSFER_OUT` 资金转出 `BANKRUPT_COMPENSATION` 穿仓补贴 `AUTO_REPAY` 杠杆仓位自动还负债
+     * Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed)
      */
-    'type': string;
+    'closedType'?: string;
     /**
-     * Exchange
+     * Close Position P&L
      */
-    'exchangeType': string;
+    'closedPnl'?: string;
     /**
-     * Currency
+     * Close Position P&L Ratio
      */
-    'coin': string;
+    'closedPnlRate'?: string;
     /**
-     * Change amount (positive indicates transfer in; negative indicates transfer out)
+     * Average Opening Price
      */
-    'change': string;
+    'openAvgPrice'?: string;
     /**
-     * Balance after change
+     * Average Close Price
      */
-    'balance': string;
+    'closedAvgPrice'?: string;
+    /**
+     * Max Trade Size
+     */
+    'maxPositionQty'?: string;
+    /**
+     * Close Position Quantity
+     */
+    'closedQty'?: string;
+    /**
+     * Close Position Value
+     */
+    'closedValue'?: string;
+    /**
+     * Position Accumulated Fees
+     */
+    'fee'?: string;
+    /**
+     * Liquidation Fee
+     */
+    'liqFee'?: string;
+    /**
+     * Funding Fee
+     */
+    'fundingFee'?: string;
+    /**
+     * Position Direction Before Close
+     */
+    'positionSide'?: string;
+    /**
+     * Position Mode at Close
+     */
+    'positionMode'?: string;
+    /**
+     * Leverage at Close
+     */
+    'leverage'?: string;
+    /**
+     * Business Type
+     */
+    'businessType': string;
     /**
      * Created time
      */
-    'createTime': string;
+    'createTime'?: string;
+    /**
+     * Update time
+     */
+    'updateTime'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'id',
-            baseName: 'id',
+            name: 'positionId',
+            baseName: 'position_id',
             type: 'string',
         },
         {
@@ -61,38 +105,93 @@ export class InlineResponse20040 {
             type: 'string',
         },
         {
-            name: 'businessId',
-            baseName: 'business_id',
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'type',
-            baseName: 'type',
+            name: 'closedType',
+            baseName: 'closed_type',
             type: 'string',
         },
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
+            name: 'closedPnl',
+            baseName: 'closed_pnl',
             type: 'string',
         },
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'closedPnlRate',
+            baseName: 'closed_pnl_rate',
             type: 'string',
         },
         {
-            name: 'change',
-            baseName: 'change',
+            name: 'openAvgPrice',
+            baseName: 'open_avg_price',
             type: 'string',
         },
         {
-            name: 'balance',
-            baseName: 'balance',
+            name: 'closedAvgPrice',
+            baseName: 'closed_avg_price',
+            type: 'string',
+        },
+        {
+            name: 'maxPositionQty',
+            baseName: 'max_position_qty',
+            type: 'string',
+        },
+        {
+            name: 'closedQty',
+            baseName: 'closed_qty',
+            type: 'string',
+        },
+        {
+            name: 'closedValue',
+            baseName: 'closed_value',
+            type: 'string',
+        },
+        {
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
+        },
+        {
+            name: 'liqFee',
+            baseName: 'liq_fee',
+            type: 'string',
+        },
+        {
+            name: 'fundingFee',
+            baseName: 'funding_fee',
+            type: 'string',
+        },
+        {
+            name: 'positionSide',
+            baseName: 'position_side',
+            type: 'string',
+        },
+        {
+            name: 'positionMode',
+            baseName: 'position_mode',
+            type: 'string',
+        },
+        {
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
+        },
+        {
+            name: 'businessType',
+            baseName: 'business_type',
             type: 'string',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
+            type: 'string',
+        },
+        {
+            name: 'updateTime',
+            baseName: 'update_time',
             type: 'string',
         },
     ];

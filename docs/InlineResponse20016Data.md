@@ -4,5 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lists** | [**Array&lt;InlineResponse20016DataLists&gt;**](InlineResponse20016DataLists.md) |  | [default to undefined]
+**list** | [**Array&lt;InlineResponse20016DataList&gt;**](InlineResponse20016DataList.md) |  | [default to undefined]
+**transTime** | [**Array&lt;InlineResponse20016DataTransTime&gt;**](InlineResponse20016DataTransTime.md) | Countdown time | [default to undefined]
+**count** | **number** | Number of orders | [default to undefined]
+**exportedNum** | **number** | Export count | [default to undefined]
 

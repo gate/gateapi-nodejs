@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## p2pMerchantAccountGetUserInfo
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2009; }> p2pMerchantAccountGetUserInfo()
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20013; }> p2pMerchantAccountGetUserInfo()
 
 Get account information
 
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2009; }> [InlineResponse2009](InlineResponse2009.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20013; }> [InlineResponse20013](InlineResponse20013.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ No authorization required
 
 ## p2pMerchantAccountGetCounterpartyUserInfo
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20010; }> p2pMerchantAccountGetCounterpartyUserInfo(bizUid)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20014; }> p2pMerchantAccountGetCounterpartyUserInfo(bizUid)
 
 Get counterparty information
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20010; }> [InlineResponse20010](InlineResponse20010.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20014; }> [InlineResponse20014](InlineResponse20014.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ No authorization required
 
 ## p2pMerchantAccountGetMyselfPayment
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20011; }> p2pMerchantAccountGetMyselfPayment(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20015; }> p2pMerchantAccountGetMyselfPayment(opts)
 
 Get payment method list
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse20011](InlineResponse20011.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20015; }> [InlineResponse20015](InlineResponse20015.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ No authorization required
 
 ## p2pMerchantTransactionGetPendingTransactionList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20012; }> p2pMerchantTransactionGetPendingTransactionList(cryptoCurrency, fiatCurrency, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20016; }> p2pMerchantTransactionGetPendingTransactionList(cryptoCurrency, fiatCurrency, opts)
 
 Get pending orders
 
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse20012](InlineResponse20012.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20016; }> [InlineResponse20016](InlineResponse20016.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ No authorization required
 
 ## p2pMerchantTransactionGetCompletedTransactionList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20012; }> p2pMerchantTransactionGetCompletedTransactionList(cryptoCurrency, fiatCurrency, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20016; }> p2pMerchantTransactionGetCompletedTransactionList(cryptoCurrency, fiatCurrency, opts)
 
 Get all/historical orders
 
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse20012](InlineResponse20012.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20016; }> [InlineResponse20016](InlineResponse20016.md)
 
 ### Authorization
 
@@ -263,7 +263,7 @@ No authorization required
 
 ## p2pMerchantTransactionGetTransactionDetails
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20013; }> p2pMerchantTransactionGetTransactionDetails(txid, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20017; }> p2pMerchantTransactionGetTransactionDetails(txid, opts)
 
 Query order details
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20013; }> [InlineResponse20013](InlineResponse20013.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20017; }> [InlineResponse20017](InlineResponse20017.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ No authorization required
 
 ## p2pMerchantTransactionConfirmPayment
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> p2pMerchantTransactionConfirmPayment(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> p2pMerchantTransactionConfirmPayment(opts)
 
 Confirm payment
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
 
 ### Authorization
 
@@ -351,7 +351,7 @@ No authorization required
 
 ## p2pMerchantTransactionConfirmReceipt
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> p2pMerchantTransactionConfirmReceipt(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> p2pMerchantTransactionConfirmReceipt(opts)
 
 Confirm receipt
 
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
 
 ### Authorization
 
@@ -394,7 +394,7 @@ No authorization required
 
 ## p2pMerchantTransactionCancel
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> p2pMerchantTransactionCancel(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> p2pMerchantTransactionCancel(opts)
 
 Cancel order
 
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
 
 ### Authorization
 
@@ -532,7 +532,7 @@ No authorization required
 
 ## p2pMerchantBooksAdsUpdateStatus
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20014; }> p2pMerchantBooksAdsUpdateStatus(advNo, advStatus, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20018; }> p2pMerchantBooksAdsUpdateStatus(advNo, advStatus, opts)
 
 Update ad status
 
@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20014; }> [InlineResponse20014](InlineResponse20014.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20018; }> [InlineResponse20018](InlineResponse20018.md)
 
 ### Authorization
 
@@ -579,7 +579,7 @@ No authorization required
 
 ## p2pMerchantBooksAdsDetail
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20015; }> p2pMerchantBooksAdsDetail(advNo, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20019; }> p2pMerchantBooksAdsDetail(advNo, opts)
 
 Query ad details
 
@@ -611,7 +611,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20015; }> [InlineResponse20015](InlineResponse20015.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20019; }> [InlineResponse20019](InlineResponse20019.md)
 
 ### Authorization
 
@@ -624,7 +624,7 @@ No authorization required
 
 ## p2pMerchantBooksMyAdsList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20016; }> p2pMerchantBooksMyAdsList(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20020; }> p2pMerchantBooksMyAdsList(opts)
 
 Get my ad list
 
@@ -658,7 +658,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20016; }> [InlineResponse20016](InlineResponse20016.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20020; }> [InlineResponse20020](InlineResponse20020.md)
 
 ### Authorization
 
@@ -671,7 +671,7 @@ No authorization required
 
 ## p2pMerchantChatGetChatsList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20017; }> p2pMerchantChatGetChatsList(txid, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20021; }> p2pMerchantChatGetChatsList(txid, opts)
 
 Get chat history
 
@@ -705,7 +705,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20017; }> [InlineResponse20017](InlineResponse20017.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20021; }> [InlineResponse20021](InlineResponse20021.md)
 
 ### Authorization
 
@@ -718,7 +718,7 @@ No authorization required
 
 ## p2pMerchantChatSendChatMessage
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20018; }> p2pMerchantChatSendChatMessage(txid, message, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20022; }> p2pMerchantChatSendChatMessage(txid, message, opts)
 
 Send text message
 
@@ -752,7 +752,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20018; }> [InlineResponse20018](InlineResponse20018.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20022; }> [InlineResponse20022](InlineResponse20022.md)
 
 ### Authorization
 
@@ -765,7 +765,7 @@ No authorization required
 
 ## p2pMerchantChatUploadChatFile
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20019; }> p2pMerchantChatUploadChatFile(imageContentType, base64Img)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20023; }> p2pMerchantChatUploadChatFile(imageContentType, base64Img)
 
 Upload chat file
 
@@ -795,7 +795,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20019; }> [InlineResponse20019](InlineResponse20019.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20023; }> [InlineResponse20023](InlineResponse20023.md)
 
 ### Authorization
 

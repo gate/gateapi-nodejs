@@ -14,13 +14,13 @@ import { InlineObject1 } from '../model/inlineObject1';
 import { InlineObject2 } from '../model/inlineObject2';
 import { InlineObject3 } from '../model/inlineObject3';
 import { InlineObject4 } from '../model/inlineObject4';
-import { InlineResponse2002 } from '../model/inlineResponse2002';
-import { InlineResponse2003 } from '../model/inlineResponse2003';
-import { InlineResponse2004 } from '../model/inlineResponse2004';
-import { InlineResponse2005 } from '../model/inlineResponse2005';
+import { InlineResponse20010 } from '../model/inlineResponse20010';
+import { InlineResponse20011 } from '../model/inlineResponse20011';
+import { InlineResponse20012 } from '../model/inlineResponse20012';
 import { InlineResponse2006 } from '../model/inlineResponse2006';
 import { InlineResponse2007 } from '../model/inlineResponse2007';
 import { InlineResponse2008 } from '../model/inlineResponse2008';
+import { InlineResponse2009 } from '../model/inlineResponse2009';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -47,7 +47,7 @@ export class OTCApi {
      */
     public async createOtcQuote(
         inlineObject1: InlineObject1,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2002 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2006 }> {
         const localVarPath = this.client.basePath + '/otc/quote';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -73,7 +73,7 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2002>(config, 'InlineResponse2002', authSettings);
+        return this.client.request<InlineResponse2006>(config, 'InlineResponse2006', authSettings);
     }
 
     /**
@@ -83,7 +83,7 @@ export class OTCApi {
      */
     public async createOtcOrder(
         inlineObject2: InlineObject2,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2003 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
         const localVarPath = this.client.basePath + '/otc/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -109,7 +109,7 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2003>(config, 'InlineResponse2003', authSettings);
+        return this.client.request<InlineResponse2007>(config, 'InlineResponse2007', authSettings);
     }
 
     /**
@@ -119,7 +119,7 @@ export class OTCApi {
      */
     public async createStableCoinOrder(
         inlineObject3: InlineObject3,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2004 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2008 }> {
         const localVarPath = this.client.basePath + '/otc/stable_coin/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -147,14 +147,14 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2004>(config, 'InlineResponse2004', authSettings);
+        return this.client.request<InlineResponse2008>(config, 'InlineResponse2008', authSettings);
     }
 
     /**
      * Get user\'s default bank account information for order placement
      * @summary Get user\'s default bank account information
      */
-    public async getUserDefaultBank(): Promise<{ response: AxiosResponse; body: InlineResponse2005 }> {
+    public async getUserDefaultBank(): Promise<{ response: AxiosResponse; body: InlineResponse2009 }> {
         const localVarPath = this.client.basePath + '/otc/get_user_def_bank';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -174,7 +174,7 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2005>(config, 'InlineResponse2005', authSettings);
+        return this.client.request<InlineResponse2009>(config, 'InlineResponse2009', authSettings);
     }
 
     /**
@@ -184,7 +184,7 @@ export class OTCApi {
      */
     public async markOtcOrderPaid(
         inlineObject4: InlineObject4,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2003 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
         const localVarPath = this.client.basePath + '/otc/order/paid';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -210,7 +210,7 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2003>(config, 'InlineResponse2003', authSettings);
+        return this.client.request<InlineResponse2007>(config, 'InlineResponse2007', authSettings);
     }
 
     /**
@@ -218,7 +218,7 @@ export class OTCApi {
      * @summary Fiat order cancellation
      * @param orderId Order ID
      */
-    public async cancelOtcOrder(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse2003 }> {
+    public async cancelOtcOrder(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
         const localVarPath = this.client.basePath + '/otc/order/cancel';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -250,7 +250,7 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2003>(config, 'InlineResponse2003', authSettings);
+        return this.client.request<InlineResponse2007>(config, 'InlineResponse2007', authSettings);
     }
 
     /**
@@ -275,7 +275,7 @@ export class OTCApi {
         status?: string;
         pn?: string;
         ps?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse2006 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20010 }> {
         const localVarPath = this.client.basePath + '/otc/order/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -368,7 +368,7 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2006>(config, 'InlineResponse2006', authSettings);
+        return this.client.request<InlineResponse20010>(config, 'InlineResponse20010', authSettings);
     }
 
     /**
@@ -389,7 +389,7 @@ export class OTCApi {
         startTime?: string;
         endTime?: string;
         status?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20011 }> {
         const localVarPath = this.client.basePath + '/otc/stable_coin/order/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -464,7 +464,7 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2007>(config, 'InlineResponse2007', authSettings);
+        return this.client.request<InlineResponse20011>(config, 'InlineResponse20011', authSettings);
     }
 
     /**
@@ -472,7 +472,7 @@ export class OTCApi {
      * @summary Fiat order details
      * @param orderId Order ID
      */
-    public async getOtcOrderDetail(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse2008 }> {
+    public async getOtcOrderDetail(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse20012 }> {
         const localVarPath = this.client.basePath + '/otc/order/detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -504,6 +504,6 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2008>(config, 'InlineResponse2008', authSettings);
+        return this.client.request<InlineResponse20012>(config, 'InlineResponse20012', authSettings);
     }
 }

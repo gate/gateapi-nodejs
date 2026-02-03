@@ -4,6 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**txId** | **string** | Order ID | [default to undefined]
-**text** | **string** | User-defined Order ID | [default to undefined]
+**timestamp** | **number** |  | [default to undefined]
+**method** | **string** |  | [default to undefined]
+**code** | **number** |  | [default to undefined]
+**message** | **string** |  | [default to undefined]
+**data** | [**InlineResponse20023Data**](InlineResponse20023Data.md) |  | [default to undefined]
+**version** | **string** |  | [default to undefined]
 

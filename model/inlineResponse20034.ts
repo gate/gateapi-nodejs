@@ -11,43 +11,43 @@
 
 export class InlineResponse20034 {
     /**
-     * User ID
+     * Currency
      */
-    'userId': string;
+    'coin': string;
     /**
-     * Currency pair
+     * Exchange
      */
-    'symbol': string;
+    'exchangeType': string;
     /**
-     * CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
+     * Hourly Interest Rate
      */
-    'crossexAdlRank': string;
+    'hourInterestRate': string;
     /**
-     * Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
+     * Millisecond Timestamp
      */
-    'exchangeAdlRank': string;
+    'time': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
+            name: 'coin',
+            baseName: 'coin',
             type: 'string',
         },
         {
-            name: 'symbol',
-            baseName: 'symbol',
+            name: 'exchangeType',
+            baseName: 'exchange_type',
             type: 'string',
         },
         {
-            name: 'crossexAdlRank',
-            baseName: 'crossex_adl_rank',
+            name: 'hourInterestRate',
+            baseName: 'hour_interest_rate',
             type: 'string',
         },
         {
-            name: 'exchangeAdlRank',
-            baseName: 'exchange_adl_rank',
+            name: 'time',
+            baseName: 'time',
             type: 'string',
         },
     ];

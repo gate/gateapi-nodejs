@@ -14,4 +14,5 @@ Name | Type | Description | Notes
 **pointRefr** | **string** | total amount of referrer rebates of point fee | [optional] [default to undefined]
 **bonusDnw** | **string** | total amount of perpetual contract bonus transfer | [optional] [default to undefined]
 **bonusOffset** | **string** | total amount of perpetual contract bonus deduction | [optional] [default to undefined]
+**crossSettle** | **string** | Represents the value of profit settlement from the futures account to the spot account under Unified Account Mode. Negative values indicate settlement from futures to spot, while positive values indicate settlement from spot to futures. This value is cumulative. | [optional] [default to undefined]
 

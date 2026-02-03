@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**coin** | **string** | Currency | [default to undefined]
-**minTransAmount** | **number** | Minimum Transfer Quantity (including estimated fees) | [default to undefined]
-**estFee** | **number** | Estimated Fee | [default to undefined]
-**precision** | **number** | Precision | [default to undefined]
-**isDisabled** | **number** | If it is disabled. 0 means NOT being disabled | [default to undefined]
+**timestamp** | **number** |  | [default to undefined]
+**method** | **string** |  | [default to undefined]
+**code** | **number** |  | [default to undefined]
+**message** | **string** |  | [default to undefined]
+**data** | [**InlineResponse20021Data**](InlineResponse20021Data.md) |  | [default to undefined]
+**version** | **string** |  | [default to undefined]
 

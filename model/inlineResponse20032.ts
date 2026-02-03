@@ -9,91 +9,62 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20032Assets } from './inlineResponse20032Assets';
+
 export class InlineResponse20032 {
     /**
      * User ID
      */
-    'userId'?: string;
+    'userId': string;
     /**
-     * Position ID
+     * Available Margin
      */
-    'positionId'?: string;
+    'availableMargin': string;
     /**
-     * Currency pair
+     * marginbalance
      */
-    'symbol'?: string;
-    /**
-     * Position Direction
-     */
-    'positionSide'?: string;
+    'marginBalance': string;
     /**
      * Initial Margin
      */
-    'initialMargin'?: string;
+    'initialMargin': string;
     /**
      * Maintenance margin
      */
-    'maintenanceMargin'?: string;
+    'maintenanceMargin': string;
     /**
-     * Position Quantity
+     * Initial margin rate
      */
-    'positionQty'?: string;
+    'initialMarginRate': string;
     /**
-     * Position Value
+     * Maintenance margin rate
      */
-    'positionValue'?: string;
+    'maintenanceMarginRate': string;
     /**
-     * Unrealized P&L
+     * Contract Position Mode
      */
-    'upnl'?: string;
+    'positionMode': string;
     /**
-     * Unrealized P&L Ratio
+     * Account limit
      */
-    'upnlRate'?: string;
+    'accountLimit'?: string;
     /**
-     * Position Average Entry Price
+     * Created time
      */
-    'entryPrice'?: string;
+    'createTime': string;
     /**
-     * Mark price
+     * Update time
      */
-    'markPrice'?: string;
+    'updateTime': string;
     /**
-     * Position Leverage
+     * Account mode. CROSS_EXCHANGE: cross-exchange mode. ISOLATED_EXCHANGE: isolated exchange mode
      */
-    'leverage'?: string;
+    'accountMode'?: string;
     /**
-     * Maximum leverage
+     * Exchange type. When account_mode is CROSS_EXCHANGE, this must be CROSSEX; otherwise, it represents a specific exchange
      */
-    'maxLeverage'?: string;
-    /**
-     * Position risk limit
-     */
-    'riskLimit'?: string;
-    /**
-     * Position Fee
-     */
-    'fee'?: string;
-    /**
-     * Position Funding Fee
-     */
-    'fundingFee'?: string;
-    /**
-     * Position funding fee collection time (0 indicates it has not been collected yet)
-     */
-    'fundingTime'?: string;
-    /**
-     * Position Creation Time
-     */
-    'createTime'?: string;
-    /**
-     * Position Update Time
-     */
-    'updateTime'?: string;
-    /**
-     * Realized PnL
-     */
-    'closedPnl'?: string;
+    'exchangeType'?: string;
+    'assets': Array<InlineResponse20032Assets>;
 
     static discriminator: string | undefined = undefined;
 
@@ -104,18 +75,13 @@ export class InlineResponse20032 {
             type: 'string',
         },
         {
-            name: 'positionId',
-            baseName: 'position_id',
+            name: 'availableMargin',
+            baseName: 'available_margin',
             type: 'string',
         },
         {
-            name: 'symbol',
-            baseName: 'symbol',
-            type: 'string',
-        },
-        {
-            name: 'positionSide',
-            baseName: 'position_side',
+            name: 'marginBalance',
+            baseName: 'margin_balance',
             type: 'string',
         },
         {
@@ -129,63 +95,23 @@ export class InlineResponse20032 {
             type: 'string',
         },
         {
-            name: 'positionQty',
-            baseName: 'position_qty',
+            name: 'initialMarginRate',
+            baseName: 'initial_margin_rate',
             type: 'string',
         },
         {
-            name: 'positionValue',
-            baseName: 'position_value',
+            name: 'maintenanceMarginRate',
+            baseName: 'maintenance_margin_rate',
             type: 'string',
         },
         {
-            name: 'upnl',
-            baseName: 'upnl',
+            name: 'positionMode',
+            baseName: 'position_mode',
             type: 'string',
         },
         {
-            name: 'upnlRate',
-            baseName: 'upnl_rate',
-            type: 'string',
-        },
-        {
-            name: 'entryPrice',
-            baseName: 'entry_price',
-            type: 'string',
-        },
-        {
-            name: 'markPrice',
-            baseName: 'mark_price',
-            type: 'string',
-        },
-        {
-            name: 'leverage',
-            baseName: 'leverage',
-            type: 'string',
-        },
-        {
-            name: 'maxLeverage',
-            baseName: 'max_leverage',
-            type: 'string',
-        },
-        {
-            name: 'riskLimit',
-            baseName: 'risk_limit',
-            type: 'string',
-        },
-        {
-            name: 'fee',
-            baseName: 'fee',
-            type: 'string',
-        },
-        {
-            name: 'fundingFee',
-            baseName: 'funding_fee',
-            type: 'string',
-        },
-        {
-            name: 'fundingTime',
-            baseName: 'funding_time',
+            name: 'accountLimit',
+            baseName: 'account_limit',
             type: 'string',
         },
         {
@@ -199,9 +125,19 @@ export class InlineResponse20032 {
             type: 'string',
         },
         {
-            name: 'closedPnl',
-            baseName: 'closed_pnl',
+            name: 'accountMode',
+            baseName: 'account_mode',
             type: 'string',
+        },
+        {
+            name: 'exchangeType',
+            baseName: 'exchange_type',
+            type: 'string',
+        },
+        {
+            name: 'assets',
+            baseName: 'assets',
+            type: 'Array<InlineResponse20032Assets>',
         },
     ];
 

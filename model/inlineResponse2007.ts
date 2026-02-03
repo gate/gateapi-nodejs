@@ -9,12 +9,10 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2007Data } from './inlineResponse2007Data';
-
 export class InlineResponse2007 {
     'code': number;
     'message': string;
-    'data': InlineResponse2007Data;
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
@@ -30,9 +28,9 @@ export class InlineResponse2007 {
             type: 'string',
         },
         {
-            name: 'data',
-            baseName: 'data',
-            type: 'InlineResponse2007Data',
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

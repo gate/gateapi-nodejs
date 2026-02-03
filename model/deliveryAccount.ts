@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { FuturesAccountHistory } from './futuresAccountHistory';
+import { DeliveryAccountHistory } from './deliveryAccountHistory';
 
 export class DeliveryAccount {
     /**
@@ -112,7 +112,7 @@ export class DeliveryAccount {
      * Whether to enable tiered maintenance margin calculation
      */
     'enableTieredMm'?: boolean;
-    'history'?: FuturesAccountHistory;
+    'history'?: DeliveryAccountHistory;
 
     static discriminator: string | undefined = undefined;
 
@@ -245,7 +245,7 @@ export class DeliveryAccount {
         {
             name: 'history',
             baseName: 'history',
-            type: 'FuturesAccountHistory',
+            type: 'DeliveryAccountHistory',
         },
     ];
 

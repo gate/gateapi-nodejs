@@ -150,7 +150,7 @@ export class Order {
      */
     'stpAct'?: Order.StpAct;
     /**
-     * Order completion statuses include:  - open: Awaiting processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled due to liquidation - small: Order quantity too small - depth_not_enough: Cancelled due to insufficient market depth - trader_not_enough: Cancelled due to insufficient counterparty - ioc: Not immediately filled because tif is set to ioc - poc: Not met the order poc - fok: Not fully filled immediately because tif is set to fok - stp: Cancelled due to self-trade prevention - unknown: Unknown
+     * Order completion statuses include:  - open: Awaiting processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled due to liquidation - small: Order quantity too small - depth_not_enough: Cancelled due to insufficient market depth - trader_not_enough: Cancelled due to insufficient counterparty - ioc: Not immediately filled because tif is set to ioc - poc: Not met the order poc - fok: Not fully filled immediately because tif is set to fok - stp: Cancelled due to self-trade prevention - price_protect_cancelled: Order cancelled due to price protection- unknown: Unknown
      */
     'finishAs'?: Order.FinishAs;
     /**
@@ -395,6 +395,7 @@ export namespace Order {
         Poc = <any>'poc',
         Fok = <any>'fok',
         Stp = <any>'stp',
+        PriceProtectCancelled = <any>'price_protect_cancelled',
         Unknown = <any>'unknown',
     }
 }

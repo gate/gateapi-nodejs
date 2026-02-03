@@ -11,8 +11,8 @@
 
 /* tslint:disable:no-unused-locals */
 import { CreateUniLend } from '../model/createUniLend';
-import { InlineResponse200 } from '../model/inlineResponse200';
-import { InlineResponse2001 } from '../model/inlineResponse2001';
+import { InlineResponse2004 } from '../model/inlineResponse2004';
+import { InlineResponse2005 } from '../model/inlineResponse2005';
 import { PatchUniLend } from '../model/patchUniLend';
 import { UniCurrency } from '../model/uniCurrency';
 import { UniCurrencyInterest } from '../model/uniCurrencyInterest';
@@ -485,7 +485,7 @@ export class EarnUniApi {
         from: number,
         to: number,
         asset: string,
-    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse200> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse2004> }> {
         const localVarPath = this.client.basePath + '/earn/uni/chart';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -541,14 +541,14 @@ export class EarnUniApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse200>>(config, 'Array<InlineResponse200>', authSettings);
+        return this.client.request<Array<InlineResponse2004>>(config, 'Array<InlineResponse2004>', authSettings);
     }
 
     /**
      *
      * @summary Currency estimated annualized interest rate
      */
-    public async listUniRate(): Promise<{ response: AxiosResponse; body: Array<InlineResponse2001> }> {
+    public async listUniRate(): Promise<{ response: AxiosResponse; body: Array<InlineResponse2005> }> {
         const localVarPath = this.client.basePath + '/earn/uni/rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -568,6 +568,6 @@ export class EarnUniApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse2001>>(config, 'Array<InlineResponse2001>', authSettings);
+        return this.client.request<Array<InlineResponse2005>>(config, 'Array<InlineResponse2005>', authSettings);
     }
 }

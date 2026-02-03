@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**listFuturesPremiumIndex**](FuturesApi.md#listFuturesPremiumIndex) | **GET** /futures/{settle}/premium_index | Premium Index K-line chart
 [**listFuturesTickers**](FuturesApi.md#listFuturesTickers) | **GET** /futures/{settle}/tickers | Get all futures trading statistics
 [**listFuturesFundingRateHistory**](FuturesApi.md#listFuturesFundingRateHistory) | **GET** /futures/{settle}/funding_rate | Futures market historical funding rate
+[**listBatchFuturesFundingRates**](FuturesApi.md#listBatchFuturesFundingRates) | **POST** /futures/{settle}/funding_rates | Batch Query Historical Funding Rate Data for Perpetual Contracts
 [**listFuturesInsuranceLedger**](FuturesApi.md#listFuturesInsuranceLedger) | **GET** /futures/{settle}/insurance | Futures market insurance fund history
 [**listContractStats**](FuturesApi.md#listContractStats) | **GET** /futures/{settle}/contract_stats | Futures statistics
 [**getIndexConstituents**](FuturesApi.md#getIndexConstituents) | **GET** /futures/{settle}/index_constituents/{index} | Query index constituents
@@ -20,6 +21,7 @@ Method | HTTP request | Description
 [**listFuturesAccounts**](FuturesApi.md#listFuturesAccounts) | **GET** /futures/{settle}/accounts | Get futures account
 [**listFuturesAccountBook**](FuturesApi.md#listFuturesAccountBook) | **GET** /futures/{settle}/account_book | Query futures account change history
 [**listPositions**](FuturesApi.md#listPositions) | **GET** /futures/{settle}/positions | Get user position list
+[**listPositionsTimerange**](FuturesApi.md#listPositionsTimerange) | **GET** /futures/{settle}/positions_timerange | Get user\&#39;s historical position information list by time
 [**getPosition**](FuturesApi.md#getPosition) | **GET** /futures/{settle}/positions/{contract} | Get single position information
 [**getLeverage**](FuturesApi.md#getLeverage) | **GET** /futures/{settle}/get_leverage/{contract} | Get Leverage Information for Specified Mode
 [**updatePositionMargin**](FuturesApi.md#updatePositionMargin) | **POST** /futures/{settle}/positions/{contract}/margin | Update position margin
@@ -53,6 +55,13 @@ Method | HTTP request | Description
 [**amendBatchFutureOrders**](FuturesApi.md#amendBatchFutureOrders) | **POST** /futures/{settle}/batch_amend_orders | Batch modify orders by specified IDs
 [**getFuturesRiskLimitTable**](FuturesApi.md#getFuturesRiskLimitTable) | **GET** /futures/{settle}/risk_limit_table | Query risk limit table by table_id
 [**createFuturesBBOOrder**](FuturesApi.md#createFuturesBBOOrder) | **POST** /futures/{settle}/bbo_orders | Level-based BBO Contract Order Placement
+[**createTrailOrder**](FuturesApi.md#createTrailOrder) | **POST** /futures/{settle}/autoorder/v1/trail/create | Create trail order
+[**stopTrailOrder**](FuturesApi.md#stopTrailOrder) | **POST** /futures/{settle}/autoorder/v1/trail/stop | Terminate trail order
+[**stopAllTrailOrders**](FuturesApi.md#stopAllTrailOrders) | **POST** /futures/{settle}/autoorder/v1/trail/stop_all | Batch terminate trail orders
+[**getTrailOrders**](FuturesApi.md#getTrailOrders) | **GET** /futures/{settle}/autoorder/v1/trail/list | Get trail order list
+[**getTrailOrderDetail**](FuturesApi.md#getTrailOrderDetail) | **GET** /futures/{settle}/autoorder/v1/trail/detail | Get trail order details
+[**updateTrailOrder**](FuturesApi.md#updateTrailOrder) | **POST** /futures/{settle}/autoorder/v1/trail/update | Update trail order
+[**getTrailOrderChangeLog**](FuturesApi.md#getTrailOrderChangeLog) | **GET** /futures/{settle}/autoorder/v1/trail/change_log | Get trail order user modification records
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/{settle}/price_orders | Query auto order list
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create price-triggered order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all auto orders
@@ -339,7 +348,7 @@ const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   'limit': 100, // number | Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'interval': '5m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Time interval between data points
+  'interval': '5m' // '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Time interval between data points
 };
 api.listFuturesPremiumIndex(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -465,6 +474,49 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listBatchFuturesFundingRates
+
+> Promise<{ response: http.IncomingMessage; body: Array<BatchFundingRatesResponse>; }> listBatchFuturesFundingRates(settle, batchFundingRatesRequest)
+
+Batch Query Historical Funding Rate Data for Perpetual Contracts
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const batchFundingRatesRequest = new BatchFundingRatesRequest(); // BatchFundingRatesRequest | 
+api.listBatchFuturesFundingRates(settle, batchFundingRatesRequest)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **batchFundingRatesRequest** | [**BatchFundingRatesRequest**](BatchFundingRatesRequest.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<BatchFundingRatesResponse>; }> [BatchFundingRatesResponse](BatchFundingRatesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ## listFuturesInsuranceLedger
@@ -855,6 +907,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listPositionsTimerange
+
+> Promise<{ response: http.IncomingMessage; body: Array<PositionTimerange>; }> listPositionsTimerange(settle, contract, opts)
+
+Get user\&#39;s historical position information list by time
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const contract = "BTC_USDT"; // string | Futures contract
+const opts = {
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'limit': 100, // number | Maximum number of records returned in a single list
+  'offset': 0 // number | List offset, starting from 0
+};
+api.listPositionsTimerange(settle, contract, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **contract** | **string**| Futures contract | [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<PositionTimerange>; }> [PositionTimerange](PositionTimerange.md)
 
 ### Authorization
 
@@ -2546,6 +2653,351 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+## createTrailOrder
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse201; }> createTrailOrder(settle, createTrailOrder)
+
+Create trail order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const createTrailOrder = new CreateTrailOrder(); // CreateTrailOrder | 
+api.createTrailOrder(settle, createTrailOrder)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **createTrailOrder** | [**CreateTrailOrder**](CreateTrailOrder.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse201; }> [InlineResponse201](InlineResponse201.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## stopTrailOrder
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse200; }> stopTrailOrder(settle, stopTrailOrder)
+
+Terminate trail order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const stopTrailOrder = new StopTrailOrder(); // StopTrailOrder | 
+api.stopTrailOrder(settle, stopTrailOrder)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **stopTrailOrder** | [**StopTrailOrder**](StopTrailOrder.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse200](InlineResponse200.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## stopAllTrailOrders
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2001; }> stopAllTrailOrders(settle, stopAllTrailOrders)
+
+Batch terminate trail orders
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const stopAllTrailOrders = new StopAllTrailOrders(); // StopAllTrailOrders | 
+api.stopAllTrailOrders(settle, stopAllTrailOrders)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **stopAllTrailOrders** | [**StopAllTrailOrders**](StopAllTrailOrders.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2001](InlineResponse2001.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## getTrailOrders
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2001; }> getTrailOrders(settle, opts)
+
+Get trail order list
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const opts = {
+  'contract': "contract_example", // string | Contract name
+  'isFinished': True, // boolean | Whether historical order
+  'startAt': 56, // number | Start time of time range
+  'endAt': 56, // number | End time of time range
+  'pageNum': 1, // number | Page number, starting from 1
+  'pageSize': 20, // number | Number of items per page
+  'sortBy': 1, // 1 | 2 | Common sort field, 1-creation time, 2-end time
+  'hideCancel': True, // boolean | Hide cancelled orders
+  'relatedPosition': 56, // 1 | 2 | Associated position, if provided, only return orders associated with this position, 1-long, 2-short
+  'sortByTrigger': True, // boolean | Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions
+  'reduceOnly': 56, // 1 | 2 | Whether reduce only, 1-yes, 2-no
+  'side': 56 // 1 | 2 | Direction, 1-long position, 2-short position
+};
+api.getTrailOrders(settle, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **contract** | **string**| Contract name | [optional] [default to undefined]
+ **isFinished** | **boolean**| Whether historical order | [optional] [default to undefined]
+ **startAt** | **number**| Start time of time range | [optional] [default to undefined]
+ **endAt** | **number**| End time of time range | [optional] [default to undefined]
+ **pageNum** | **number**| Page number, starting from 1 | [optional] [default to 1]
+ **pageSize** | **number**| Number of items per page | [optional] [default to 20]
+ **sortBy** | **SortBy**| Common sort field, 1-creation time, 2-end time | [optional] [default to 1]
+ **hideCancel** | **boolean**| Hide cancelled orders | [optional] [default to undefined]
+ **relatedPosition** | **RelatedPosition**| Associated position, if provided, only return orders associated with this position, 1-long, 2-short | [optional] [default to undefined]
+ **sortByTrigger** | **boolean**| Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions | [optional] [default to undefined]
+ **reduceOnly** | **ReduceOnly**| Whether reduce only, 1-yes, 2-no | [optional] [default to undefined]
+ **side** | **Side**| Direction, 1-long position, 2-short position | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2001](InlineResponse2001.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getTrailOrderDetail
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2002; }> getTrailOrderDetail(settle, id)
+
+Get trail order details
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const id = 56; // number | Order ID
+api.getTrailOrderDetail(settle, id)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **id** | **number**| Order ID | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse2002; }> [InlineResponse2002](InlineResponse2002.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## updateTrailOrder
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse200; }> updateTrailOrder(settle, updateTrailOrder)
+
+Update trail order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const updateTrailOrder = new UpdateTrailOrder(); // UpdateTrailOrder | 
+api.updateTrailOrder(settle, updateTrailOrder)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **updateTrailOrder** | [**UpdateTrailOrder**](UpdateTrailOrder.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse200](InlineResponse200.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## getTrailOrderChangeLog
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> getTrailOrderChangeLog(settle, id, opts)
+
+Get trail order user modification records
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const id = 56; // number | Order ID
+const opts = {
+  'pageNum': 1, // number | Page number, starting from 1
+  'pageSize': 20 // number | Number of items per page
+};
+api.getTrailOrderChangeLog(settle, id, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **id** | **number**| Order ID | [default to undefined]
+ **pageNum** | **number**| Page number, starting from 1 | [optional] [default to 1]
+ **pageSize** | **number**| Number of items per page | [optional] [default to 20]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 ## listPriceTriggeredOrders

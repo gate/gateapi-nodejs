@@ -31,7 +31,7 @@ export class SubAccountTransferRecordItem {
      */
     'currency': string;
     /**
-     * Transfer amount
+     * Transfer Amount
      */
     'amount': string;
     /**

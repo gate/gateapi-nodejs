@@ -4,6 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** |  | [optional] [default to undefined]
-**tiers** | [**Array&lt;RuleRiskLimitsTiers&gt;**](RuleRiskLimitsTiers.md) |  | [optional] [default to undefined]
+**timestamp** | **number** |  | [default to undefined]
+**method** | **string** |  | [default to undefined]
+**code** | **number** |  | [default to undefined]
+**message** | **string** |  | [default to undefined]
+**data** | [**InlineResponse20020Data**](InlineResponse20020Data.md) |  | [default to undefined]
+**version** | **string** | Version number | [default to undefined]
 

@@ -12,26 +12,14 @@
 import { InlineResponse2009Data } from './inlineResponse2009Data';
 
 export class InlineResponse2009 {
-    'timestamp': number;
-    'method': string;
     'code': number;
     'message': string;
     'data': InlineResponse2009Data;
-    'version': string;
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
-        },
-        {
-            name: 'method',
-            baseName: 'method',
-            type: 'string',
-        },
         {
             name: 'code',
             baseName: 'code',
@@ -48,9 +36,9 @@ export class InlineResponse2009 {
             type: 'InlineResponse2009Data',
         },
         {
-            name: 'version',
-            baseName: 'version',
-            type: 'string',
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

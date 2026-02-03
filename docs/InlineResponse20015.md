@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **method** | **string** |  | [default to undefined]
 **code** | **number** |  | [default to undefined]
 **message** | **string** |  | [default to undefined]
-**data** | [**InlineResponse20015Data**](InlineResponse20015Data.md) |  | [default to undefined]
+**data** | [**Array&lt;InlineResponse20015Data&gt;**](InlineResponse20015Data.md) |  | [default to undefined]
 **version** | **string** |  | [default to undefined]
 

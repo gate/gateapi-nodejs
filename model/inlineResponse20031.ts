@@ -9,54 +9,73 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20031SpecialFeeList } from './inlineResponse20031SpecialFeeList';
-
 export class InlineResponse20031 {
     /**
-     * spotMakerfee rate
+     * Quote ID
      */
-    'spotMakerFee': string;
+    'quoteId': string;
     /**
-     * spotTakerfee rate
+     * Valid time (milliseconds timestamp)
      */
-    'spotTakerFee': string;
+    'validMs': string;
     /**
-     * contractMakerfee rate
+     * Asset Sold
      */
-    'futureMakerFee': string;
+    'fromCoin': string;
     /**
-     * contractTakerfee rate
+     * Asset Bought
      */
-    'futureTakerFee': string;
-    'specialFeeList': Array<InlineResponse20031SpecialFeeList>;
+    'toCoin': string;
+    /**
+     * Amount to sell
+     */
+    'fromAmount': string;
+    /**
+     * Amount to buy
+     */
+    'toAmount': string;
+    /**
+     * Price
+     */
+    'price': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'spotMakerFee',
-            baseName: 'spot_maker_fee',
+            name: 'quoteId',
+            baseName: 'quote_id',
             type: 'string',
         },
         {
-            name: 'spotTakerFee',
-            baseName: 'spot_taker_fee',
+            name: 'validMs',
+            baseName: 'valid_ms',
             type: 'string',
         },
         {
-            name: 'futureMakerFee',
-            baseName: 'future_maker_fee',
+            name: 'fromCoin',
+            baseName: 'from_coin',
             type: 'string',
         },
         {
-            name: 'futureTakerFee',
-            baseName: 'future_taker_fee',
+            name: 'toCoin',
+            baseName: 'to_coin',
             type: 'string',
         },
         {
-            name: 'specialFeeList',
-            baseName: 'special_fee_list',
-            type: 'Array<InlineResponse20031SpecialFeeList>',
+            name: 'fromAmount',
+            baseName: 'from_amount',
+            type: 'string',
+        },
+        {
+            name: 'toAmount',
+            baseName: 'to_amount',
+            type: 'string',
+        },
+        {
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
     ];
 

@@ -23,7 +23,7 @@ export class MarginTiers {
      */
     'lowerLimit'?: string;
     /**
-     * Upper limit, \"\" indicates greater than (the last tier)
+     * Upper limit, `` indicates greater than (the last tier)
      */
     'upperLimit'?: string;
     /**

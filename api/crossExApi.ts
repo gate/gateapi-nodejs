@@ -19,10 +19,6 @@ import { InlineObject25 } from '../model/inlineObject25';
 import { InlineObject26 } from '../model/inlineObject26';
 import { InlineObject27 } from '../model/inlineObject27';
 import { InlineObject28 } from '../model/inlineObject28';
-import { InlineResponse20020 } from '../model/inlineResponse20020';
-import { InlineResponse20021 } from '../model/inlineResponse20021';
-import { InlineResponse20022 } from '../model/inlineResponse20022';
-import { InlineResponse20023 } from '../model/inlineResponse20023';
 import { InlineResponse20024 } from '../model/inlineResponse20024';
 import { InlineResponse20025 } from '../model/inlineResponse20025';
 import { InlineResponse20026 } from '../model/inlineResponse20026';
@@ -41,6 +37,10 @@ import { InlineResponse20038 } from '../model/inlineResponse20038';
 import { InlineResponse20039 } from '../model/inlineResponse20039';
 import { InlineResponse20040 } from '../model/inlineResponse20040';
 import { InlineResponse20041 } from '../model/inlineResponse20041';
+import { InlineResponse20042 } from '../model/inlineResponse20042';
+import { InlineResponse20043 } from '../model/inlineResponse20043';
+import { InlineResponse20044 } from '../model/inlineResponse20044';
+import { InlineResponse20045 } from '../model/inlineResponse20045';
 import { InlineResponse202 } from '../model/inlineResponse202';
 import { InlineResponse2021 } from '../model/inlineResponse2021';
 import { Symbol } from '../model/symbol';
@@ -111,7 +111,7 @@ export class CrossExApi {
      */
     public async listCrossexRuleRiskLimits(
         symbols: string,
-    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20020> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20024> }> {
         const localVarPath = this.client.basePath + '/rule/risk_limits';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -143,7 +143,7 @@ export class CrossExApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<InlineResponse20020>>(config, 'Array<InlineResponse20020>', authSettings);
+        return this.client.request<Array<InlineResponse20024>>(config, 'Array<InlineResponse20024>', authSettings);
     }
 
     /**
@@ -154,7 +154,7 @@ export class CrossExApi {
      */
     public async listCrossexTransferCoins(opts: {
         coin?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20021> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20025> }> {
         const localVarPath = this.client.basePath + '/transfers/coin';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -184,7 +184,7 @@ export class CrossExApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<InlineResponse20021>>(config, 'Array<InlineResponse20021>', authSettings);
+        return this.client.request<Array<InlineResponse20025>>(config, 'Array<InlineResponse20025>', authSettings);
     }
 
     /**
@@ -205,7 +205,7 @@ export class CrossExApi {
         to?: number;
         page?: number;
         limit?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20022> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20026> }> {
         const localVarPath = this.client.basePath + '/transfers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -280,7 +280,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20022>>(config, 'Array<InlineResponse20022>', authSettings);
+        return this.client.request<Array<InlineResponse20026>>(config, 'Array<InlineResponse20026>', authSettings);
     }
 
     /**
@@ -291,7 +291,7 @@ export class CrossExApi {
      */
     public async createCrossexTransfer(opts: {
         inlineObject20?: InlineObject20;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20023 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20027 }> {
         const localVarPath = this.client.basePath + '/transfers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -314,7 +314,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20023>(config, 'InlineResponse20023', authSettings);
+        return this.client.request<InlineResponse20027>(config, 'InlineResponse20027', authSettings);
     }
 
     /**
@@ -325,7 +325,7 @@ export class CrossExApi {
      */
     public async createCrossexOrder(opts: {
         inlineObject21?: InlineObject21;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20024 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20028 }> {
         const localVarPath = this.client.basePath + '/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -348,7 +348,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20024>(config, 'InlineResponse20024', authSettings);
+        return this.client.request<InlineResponse20028>(config, 'InlineResponse20028', authSettings);
     }
 
     /**
@@ -356,7 +356,7 @@ export class CrossExApi {
      * @summary Query order details
      * @param orderId 1. Supports querying order IDs returned when creating orders 2. Supports custom IDs specified by users when creating orders (i.e., the text field)
      */
-    public async getCrossexOrder(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse20025 }> {
+    public async getCrossexOrder(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse20029 }> {
         const localVarPath =
             this.client.basePath +
             '/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -383,7 +383,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20025>(config, 'InlineResponse20025', authSettings);
+        return this.client.request<InlineResponse20029>(config, 'InlineResponse20029', authSettings);
     }
 
     /**
@@ -396,7 +396,7 @@ export class CrossExApi {
     public async updateCrossexOrder(
         orderId: string,
         opts: { inlineObject22?: InlineObject22 },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20026 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20030 }> {
         const localVarPath =
             this.client.basePath +
             '/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -426,7 +426,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20026>(config, 'InlineResponse20026', authSettings);
+        return this.client.request<InlineResponse20030>(config, 'InlineResponse20030', authSettings);
     }
 
     /**
@@ -480,7 +480,7 @@ export class CrossExApi {
      */
     public async createCrossexConvertQuote(opts: {
         inlineObject23?: InlineObject23;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20027 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20031 }> {
         const localVarPath = this.client.basePath + '/convert/quote';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -503,7 +503,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20027>(config, 'InlineResponse20027', authSettings);
+        return this.client.request<InlineResponse20031>(config, 'InlineResponse20031', authSettings);
     }
 
     /**
@@ -548,7 +548,7 @@ export class CrossExApi {
      */
     public async getCrossexAccount(opts: {
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20028 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20032 }> {
         const localVarPath = this.client.basePath + '/accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -578,7 +578,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20028>(config, 'InlineResponse20028', authSettings);
+        return this.client.request<InlineResponse20032>(config, 'InlineResponse20032', authSettings);
     }
 
     /**
@@ -623,7 +623,7 @@ export class CrossExApi {
      */
     public async getCrossexPositionsLeverage(opts: {
         symbols?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20029> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20033> }> {
         const localVarPath = this.client.basePath + '/positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -653,7 +653,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20029>>(config, 'Array<InlineResponse20029>', authSettings);
+        return this.client.request<Array<InlineResponse20033>>(config, 'Array<InlineResponse20033>', authSettings);
     }
 
     /**
@@ -698,7 +698,7 @@ export class CrossExApi {
      */
     public async getCrossexMarginPositionsLeverage(opts: {
         symbols?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20029> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20033> }> {
         const localVarPath = this.client.basePath + '/margin_positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -728,7 +728,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20029>>(config, 'Array<InlineResponse20029>', authSettings);
+        return this.client.request<Array<InlineResponse20033>>(config, 'Array<InlineResponse20033>', authSettings);
     }
 
     /**
@@ -773,7 +773,7 @@ export class CrossExApi {
      */
     public async closeCrossexPosition(opts: {
         inlineObject28?: InlineObject28;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20024 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20028 }> {
         const localVarPath = this.client.basePath + '/position';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -796,7 +796,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20024>(config, 'InlineResponse20024', authSettings);
+        return this.client.request<InlineResponse20028>(config, 'InlineResponse20028', authSettings);
     }
 
     /**
@@ -809,7 +809,7 @@ export class CrossExApi {
     public async getCrossexInterestRate(opts: {
         coin?: string;
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20030> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20034> }> {
         const localVarPath = this.client.basePath + '/interest_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -848,14 +848,14 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20030>>(config, 'Array<InlineResponse20030>', authSettings);
+        return this.client.request<Array<InlineResponse20034>>(config, 'Array<InlineResponse20034>', authSettings);
     }
 
     /**
      * Rate Limit: 200 requests per 10 seconds
      * @summary Query User Fee Rates
      */
-    public async getCrossexFee(): Promise<{ response: AxiosResponse; body: InlineResponse20031 }> {
+    public async getCrossexFee(): Promise<{ response: AxiosResponse; body: InlineResponse20035 }> {
         const localVarPath = this.client.basePath + '/fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -875,7 +875,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20031>(config, 'InlineResponse20031', authSettings);
+        return this.client.request<InlineResponse20035>(config, 'InlineResponse20035', authSettings);
     }
 
     /**
@@ -888,7 +888,7 @@ export class CrossExApi {
     public async listCrossexPositions(opts: {
         symbol?: string;
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20032> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20036> }> {
         const localVarPath = this.client.basePath + '/positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -927,7 +927,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20032>>(config, 'Array<InlineResponse20032>', authSettings);
+        return this.client.request<Array<InlineResponse20036>>(config, 'Array<InlineResponse20036>', authSettings);
     }
 
     /**
@@ -940,7 +940,7 @@ export class CrossExApi {
     public async listCrossexMarginPositions(opts: {
         symbol?: string;
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20033> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20037> }> {
         const localVarPath = this.client.basePath + '/margin_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -979,7 +979,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20033>>(config, 'Array<InlineResponse20033>', authSettings);
+        return this.client.request<Array<InlineResponse20037>>(config, 'Array<InlineResponse20037>', authSettings);
     }
 
     /**
@@ -989,7 +989,7 @@ export class CrossExApi {
      */
     public async listCrossexAdlRank(
         symbol: string,
-    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20034> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20038> }> {
         const localVarPath = this.client.basePath + '/adl_rank';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1021,7 +1021,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20034>>(config, 'Array<InlineResponse20034>', authSettings);
+        return this.client.request<Array<InlineResponse20038>>(config, 'Array<InlineResponse20038>', authSettings);
     }
 
     /**
@@ -1036,7 +1036,7 @@ export class CrossExApi {
         symbol?: string;
         exchangeType?: string;
         businessType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20025> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20029> }> {
         const localVarPath = this.client.basePath + '/open_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1084,7 +1084,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20025>>(config, 'Array<InlineResponse20025>', authSettings);
+        return this.client.request<Array<InlineResponse20029>>(config, 'Array<InlineResponse20029>', authSettings);
     }
 
     /**
@@ -1103,7 +1103,7 @@ export class CrossExApi {
         symbol?: string;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20035> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20039> }> {
         const localVarPath = this.client.basePath + '/history_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1169,7 +1169,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20035>>(config, 'Array<InlineResponse20035>', authSettings);
+        return this.client.request<Array<InlineResponse20039>>(config, 'Array<InlineResponse20039>', authSettings);
     }
 
     /**
@@ -1188,7 +1188,7 @@ export class CrossExApi {
         symbol?: string;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20036> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20040> }> {
         const localVarPath = this.client.basePath + '/history_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1254,7 +1254,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20036>>(config, 'Array<InlineResponse20036>', authSettings);
+        return this.client.request<Array<InlineResponse20040>>(config, 'Array<InlineResponse20040>', authSettings);
     }
 
     /**
@@ -1273,7 +1273,7 @@ export class CrossExApi {
         symbol?: string;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20037> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20041> }> {
         const localVarPath = this.client.basePath + '/history_margin_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1339,7 +1339,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20037>>(config, 'Array<InlineResponse20037>', authSettings);
+        return this.client.request<Array<InlineResponse20041>>(config, 'Array<InlineResponse20041>', authSettings);
     }
 
     /**
@@ -1360,7 +1360,7 @@ export class CrossExApi {
         page?: number;
         limit?: number;
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20038> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20042> }> {
         const localVarPath = this.client.basePath + '/history_margin_interests';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1435,7 +1435,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20038>>(config, 'Array<InlineResponse20038>', authSettings);
+        return this.client.request<Array<InlineResponse20042>>(config, 'Array<InlineResponse20042>', authSettings);
     }
 
     /**
@@ -1454,7 +1454,7 @@ export class CrossExApi {
         symbol?: string;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20039> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20043> }> {
         const localVarPath = this.client.basePath + '/history_trades';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1520,7 +1520,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20039>>(config, 'Array<InlineResponse20039>', authSettings);
+        return this.client.request<Array<InlineResponse20043>>(config, 'Array<InlineResponse20043>', authSettings);
     }
 
     /**
@@ -1539,7 +1539,7 @@ export class CrossExApi {
         coin?: string;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20040> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20044> }> {
         const localVarPath = this.client.basePath + '/account_book';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1605,7 +1605,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20040>>(config, 'Array<InlineResponse20040>', authSettings);
+        return this.client.request<Array<InlineResponse20044>>(config, 'Array<InlineResponse20044>', authSettings);
     }
 
     /**
@@ -1618,7 +1618,7 @@ export class CrossExApi {
     public async listCrossexCoinDiscountRate(opts: {
         coin?: string;
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20041> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20045> }> {
         const localVarPath = this.client.basePath + '/coin_discount_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1657,6 +1657,6 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20041>>(config, 'Array<InlineResponse20041>', authSettings);
+        return this.client.request<Array<InlineResponse20045>>(config, 'Array<InlineResponse20045>', authSettings);
     }
 }

@@ -20,7 +20,7 @@ export class SwapCoin {
     /**
      * 0 - Stake 1 - Redeem
      */
-    'side': string;
+    'side': number;
     /**
      * Size
      */
@@ -41,7 +41,7 @@ export class SwapCoin {
         {
             name: 'side',
             baseName: 'side',
-            type: 'string',
+            type: 'number',
         },
         {
             name: 'amount',

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## createOtcQuote
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2002; }> createOtcQuote(inlineObject1)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2006; }> createOtcQuote(inlineObject1)
 
 Fiat and stablecoin quote
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2002; }> [InlineResponse2002](InlineResponse2002.md)
+Promise<{ response: AxiosResponse; body: InlineResponse2006; }> [InlineResponse2006](InlineResponse2006.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2002; }> [InlineResponse2
 
 ## createOtcOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> createOtcOrder(inlineObject2)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> createOtcOrder(inlineObject2)
 
 Create fiat order
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2
 
 ## createStableCoinOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2004; }> createStableCoinOrder(inlineObject3)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2008; }> createStableCoinOrder(inlineObject3)
 
 Create stablecoin order
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2004; }> [InlineResponse2004](InlineResponse2004.md)
+Promise<{ response: AxiosResponse; body: InlineResponse2008; }> [InlineResponse2008](InlineResponse2008.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2004; }> [InlineResponse2
 
 ## getUserDefaultBank
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2005; }> getUserDefaultBank()
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2009; }> getUserDefaultBank()
 
 Get user\&#39;s default bank account information
 
@@ -180,7 +180,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2005; }> [InlineResponse2005](InlineResponse2005.md)
+Promise<{ response: AxiosResponse; body: InlineResponse2009; }> [InlineResponse2009](InlineResponse2009.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2005; }> [InlineResponse2
 
 ## markOtcOrderPaid
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> markOtcOrderPaid(inlineObject4)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> markOtcOrderPaid(inlineObject4)
 
 Mark fiat order as paid
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
 
 ### Authorization
 
@@ -238,7 +238,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2
 
 ## cancelOtcOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> cancelOtcOrder(orderId)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> cancelOtcOrder(orderId)
 
 Fiat order cancellation
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2
 
 ## listOtcOrders
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2006; }> listOtcOrders(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20010; }> listOtcOrders(opts)
 
 Fiat order list
 
@@ -331,7 +331,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2006; }> [InlineResponse2006](InlineResponse2006.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20010; }> [InlineResponse20010](InlineResponse20010.md)
 
 ### Authorization
 
@@ -344,7 +344,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2006; }> [InlineResponse2
 
 ## listStableCoinOrders
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> listStableCoinOrders(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20011; }> listStableCoinOrders(opts)
 
 Stablecoin order list
 
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse20011](InlineResponse20011.md)
 
 ### Authorization
 
@@ -401,7 +401,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2
 
 ## getOtcOrderDetail
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2008; }> getOtcOrderDetail(orderId)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20012; }> getOtcOrderDetail(orderId)
 
 Fiat order details
 
@@ -433,7 +433,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2008; }> [InlineResponse2008](InlineResponse2008.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse20012](InlineResponse20012.md)
 
 ### Authorization
 

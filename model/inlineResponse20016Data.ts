@@ -9,18 +9,46 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20016DataLists } from './inlineResponse20016DataLists';
+import { InlineResponse20016DataList } from './inlineResponse20016DataList';
+import { InlineResponse20016DataTransTime } from './inlineResponse20016DataTransTime';
 
 export class InlineResponse20016Data {
-    'lists': Array<InlineResponse20016DataLists>;
+    'list': Array<InlineResponse20016DataList>;
+    /**
+     * Countdown time
+     */
+    'transTime': Array<InlineResponse20016DataTransTime>;
+    /**
+     * Number of orders
+     */
+    'count': number;
+    /**
+     * Export count
+     */
+    'exportedNum': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'lists',
-            baseName: 'lists',
-            type: 'Array<InlineResponse20016DataLists>',
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<InlineResponse20016DataList>',
+        },
+        {
+            name: 'transTime',
+            baseName: 'trans_time',
+            type: 'Array<InlineResponse20016DataTransTime>',
+        },
+        {
+            name: 'count',
+            baseName: 'count',
+            type: 'number',
+        },
+        {
+            name: 'exportedNum',
+            baseName: 'exported_num',
+            type: 'number',
         },
     ];
 

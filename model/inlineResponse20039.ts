@@ -13,75 +13,107 @@ export class InlineResponse20039 {
     /**
      * User ID
      */
-    'userId'?: string;
-    /**
-     * filledrecordsID
-     */
-    'transactionId'?: string;
+    'userId': string;
     /**
      * Order ID
      */
-    'orderId'?: string;
+    'orderId': string;
     /**
-     * User Order ID
+     * Client Order ID
      */
-    'text'?: string;
+    'text': string;
+    /**
+     * Order Status
+     */
+    'state': string;
     /**
      * Currency pair
      */
-    'symbol'?: string;
+    'symbol': string;
+    /**
+     * Attribute COMMON: Normal Order, LIQ: Liquidation Takeover Order, REDUCE: Liquidation Reduce Order, ADL: Auto-Reduce
+     */
+    'attribute': string;
     /**
      * Exchange
      */
-    'exchangeType'?: string;
+    'exchangeType': string;
     /**
      * Business Type
      */
-    'businessType'?: string;
+    'businessType': string;
     /**
-     * Buy/Sell Direction
+     * Base Currency Quantity
      */
-    'side'?: string;
+    'qty': string;
     /**
-     * Trading size
+     * Quote Currency Quantity
      */
-    'qty'?: string;
+    'quoteQty': string;
     /**
-     * Fill Price
+     * Price
      */
-    'price'?: string;
+    'price': string;
     /**
-     * fee
+     * Time in Force Strategy
      */
-    'fee'?: string;
+    'timeInForce': string;
+    /**
+     * Filled Quantity
+     */
+    'executedQty': string;
+    /**
+     * Filled Amount
+     */
+    'executedAmount': string;
+    /**
+     * Average Filled Price
+     */
+    'executedAvgPrice': string;
     /**
      * Fee currency
      */
-    'feeCoin'?: string;
+    'feeCoin': string;
     /**
-     * Fee Rate
+     * fee
      */
-    'feeRate'?: string;
+    'fee': string;
     /**
-     * Filled Role
+     * Reduce Position Only
      */
-    'matchRole'?: string;
+    'reduceOnly': string;
     /**
-     * Realized P&L
+     * leverage
      */
-    'rpnl'?: string;
+    'leverage': string;
     /**
-     * Position Mode
+     * Reason
      */
-    'positionMode'?: string;
+    'reason': string;
+    /**
+     * Latest Filled Quantity
+     */
+    'lastExecutedQty': string;
+    /**
+     * Latest Filled Price
+     */
+    'lastExecutedPrice': string;
+    /**
+     * Latest Filled Amount
+     */
+    'lastExecutedAmount': string;
     /**
      * Position Direction
      */
-    'positionSide'?: string;
+    'positionSide': string;
     /**
      * Created time
      */
-    'createTime'?: string;
+    'createTime': string;
+    /**
+     * Update time
+     */
+    'updateTime': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -89,11 +121,6 @@ export class InlineResponse20039 {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'string',
-        },
-        {
-            name: 'transactionId',
-            baseName: 'transaction_id',
             type: 'string',
         },
         {
@@ -107,8 +134,18 @@ export class InlineResponse20039 {
             type: 'string',
         },
         {
+            name: 'state',
+            baseName: 'state',
+            type: 'string',
+        },
+        {
             name: 'symbol',
             baseName: 'symbol',
+            type: 'string',
+        },
+        {
+            name: 'attribute',
+            baseName: 'attribute',
             type: 'string',
         },
         {
@@ -122,13 +159,13 @@ export class InlineResponse20039 {
             type: 'string',
         },
         {
-            name: 'side',
-            baseName: 'side',
+            name: 'qty',
+            baseName: 'qty',
             type: 'string',
         },
         {
-            name: 'qty',
-            baseName: 'qty',
+            name: 'quoteQty',
+            baseName: 'quote_qty',
             type: 'string',
         },
         {
@@ -137,8 +174,23 @@ export class InlineResponse20039 {
             type: 'string',
         },
         {
-            name: 'fee',
-            baseName: 'fee',
+            name: 'timeInForce',
+            baseName: 'time_in_force',
+            type: 'string',
+        },
+        {
+            name: 'executedQty',
+            baseName: 'executed_qty',
+            type: 'string',
+        },
+        {
+            name: 'executedAmount',
+            baseName: 'executed_amount',
+            type: 'string',
+        },
+        {
+            name: 'executedAvgPrice',
+            baseName: 'executed_avg_price',
             type: 'string',
         },
         {
@@ -147,23 +199,38 @@ export class InlineResponse20039 {
             type: 'string',
         },
         {
-            name: 'feeRate',
-            baseName: 'fee_rate',
+            name: 'fee',
+            baseName: 'fee',
             type: 'string',
         },
         {
-            name: 'matchRole',
-            baseName: 'match_role',
+            name: 'reduceOnly',
+            baseName: 'reduce_only',
             type: 'string',
         },
         {
-            name: 'rpnl',
-            baseName: 'rpnl',
+            name: 'leverage',
+            baseName: 'leverage',
             type: 'string',
         },
         {
-            name: 'positionMode',
-            baseName: 'position_mode',
+            name: 'reason',
+            baseName: 'reason',
+            type: 'string',
+        },
+        {
+            name: 'lastExecutedQty',
+            baseName: 'last_executed_qty',
+            type: 'string',
+        },
+        {
+            name: 'lastExecutedPrice',
+            baseName: 'last_executed_price',
+            type: 'string',
+        },
+        {
+            name: 'lastExecutedAmount',
+            baseName: 'last_executed_amount',
             type: 'string',
         },
         {
@@ -174,6 +241,11 @@ export class InlineResponse20039 {
         {
             name: 'createTime',
             baseName: 'create_time',
+            type: 'string',
+        },
+        {
+            name: 'updateTime',
+            baseName: 'update_time',
             type: 'string',
         },
     ];

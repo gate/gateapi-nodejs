@@ -9,55 +9,48 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20021Data } from './inlineResponse20021Data';
+
 export class InlineResponse20021 {
-    /**
-     * Currency
-     */
-    'coin': string;
-    /**
-     * Minimum Transfer Quantity (including estimated fees)
-     */
-    'minTransAmount': number;
-    /**
-     * Estimated Fee
-     */
-    'estFee': number;
-    /**
-     * Precision
-     */
-    'precision': number;
-    /**
-     * If it is disabled. 0 means NOT being disabled
-     */
-    'isDisabled': number;
+    'timestamp': number;
+    'method': string;
+    'code': number;
+    'message': string;
+    'data': InlineResponse20021Data;
+    'version': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
+        },
+        {
+            name: 'method',
+            baseName: 'method',
             type: 'string',
         },
         {
-            name: 'minTransAmount',
-            baseName: 'min_trans_amount',
+            name: 'code',
+            baseName: 'code',
             type: 'number',
         },
         {
-            name: 'estFee',
-            baseName: 'est_fee',
-            type: 'number',
+            name: 'message',
+            baseName: 'message',
+            type: 'string',
         },
         {
-            name: 'precision',
-            baseName: 'precision',
-            type: 'number',
+            name: 'data',
+            baseName: 'data',
+            type: 'InlineResponse20021Data',
         },
         {
-            name: 'isDisabled',
-            baseName: 'is_disabled',
-            type: 'number',
+            name: 'version',
+            baseName: 'version',
+            type: 'string',
         },
     ];
 

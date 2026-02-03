@@ -430,7 +430,7 @@ Promise<{ response: AxiosResponse; body: UniCurrencyInterest; }> [UniCurrencyInt
 
 ## listUniChart
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse200>; }> listUniChart(from, to, asset)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse2004>; }> listUniChart(from, to, asset)
 
 UniLoan currency annualized trend chart
 
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse200>; }> [InlineResponse200](InlineResponse200.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse2004>; }> [InlineResponse2004](InlineResponse2004.md)
 
 ### Authorization
 
@@ -477,7 +477,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse200>; }> [InlineRes
 
 ## listUniRate
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse2001>; }> listUniRate()
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse2005>; }> listUniRate()
 
 Currency estimated annualized interest rate
 
@@ -503,7 +503,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse2001>; }> [InlineResponse2001](InlineResponse2001.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse2005>; }> [InlineResponse2005](InlineResponse2005.md)
 
 ### Authorization
 

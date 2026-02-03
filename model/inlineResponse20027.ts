@@ -11,70 +11,25 @@
 
 export class InlineResponse20027 {
     /**
-     * Quote ID
+     * Order ID
      */
-    'quoteId': string;
+    'txId': string;
     /**
-     * Valid time (milliseconds timestamp)
+     * User-defined Order ID
      */
-    'validMs': string;
-    /**
-     * Asset Sold
-     */
-    'fromCoin': string;
-    /**
-     * Asset Bought
-     */
-    'toCoin': string;
-    /**
-     * Amount to sell
-     */
-    'fromAmount': string;
-    /**
-     * Amount to buy
-     */
-    'toAmount': string;
-    /**
-     * Price
-     */
-    'price': string;
+    'text': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'quoteId',
-            baseName: 'quote_id',
+            name: 'txId',
+            baseName: 'tx_id',
             type: 'string',
         },
         {
-            name: 'validMs',
-            baseName: 'valid_ms',
-            type: 'string',
-        },
-        {
-            name: 'fromCoin',
-            baseName: 'from_coin',
-            type: 'string',
-        },
-        {
-            name: 'toCoin',
-            baseName: 'to_coin',
-            type: 'string',
-        },
-        {
-            name: 'fromAmount',
-            baseName: 'from_amount',
-            type: 'string',
-        },
-        {
-            name: 'toAmount',
-            baseName: 'to_amount',
-            type: 'string',
-        },
-        {
-            name: 'price',
-            baseName: 'price',
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
     ];

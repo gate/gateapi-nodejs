@@ -11,16 +11,16 @@
 
 export class InlineResponse20018Data {
     /**
-     * Timestamp when message was successfully sent (current timestamp)
+     * Ad status after successful update
      */
-    'sRVTM': number;
+    'status': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'sRVTM',
-            baseName: 'SRVTM',
+            name: 'status',
+            baseName: 'status',
             type: 'number',
         },
     ];

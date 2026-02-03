@@ -15,52 +15,24 @@ export class InlineResponse20038 {
      */
     'userId': string;
     /**
-     * Trading Pair
+     * Currency pair
      */
     'symbol': string;
     /**
-     * Interest Deduction ID
+     * CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
      */
-    'interestId': string;
+    'crossexAdlRank': string;
     /**
-     * Debt Source ID, can be Order ID or Position ID
+     * Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
      */
-    'liabilityId': string;
-    /**
-     * Debt Quantity
-     */
-    'liability': string;
-    /**
-     * Debt Currency
-     */
-    'liabilityCoin': string;
-    /**
-     * Interest
-     */
-    'interest': string;
-    /**
-     * interest rate
-     */
-    'interestRate': string;
-    /**
-     * Interest deduction type (`PERIODIC_POSITION`: periodic position interest; `PERIODIC_OPEN_ORDER`: periodic open-order interest; `IMMEDIATE_OPEN_ORDER`: interest charged on order opening)
-     */
-    'interestType': string;
-    /**
-     * Created time
-     */
-    'createTime': string;
-    /**
-     * Exchange
-     */
-    'exchangeType': string;
+    'exchangeAdlRank': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
             name: 'userId',
-            baseName: 'userId',
+            baseName: 'user_id',
             type: 'string',
         },
         {
@@ -69,48 +41,13 @@ export class InlineResponse20038 {
             type: 'string',
         },
         {
-            name: 'interestId',
-            baseName: 'interest_id',
+            name: 'crossexAdlRank',
+            baseName: 'crossex_adl_rank',
             type: 'string',
         },
         {
-            name: 'liabilityId',
-            baseName: 'liability_id',
-            type: 'string',
-        },
-        {
-            name: 'liability',
-            baseName: 'liability',
-            type: 'string',
-        },
-        {
-            name: 'liabilityCoin',
-            baseName: 'liability_coin',
-            type: 'string',
-        },
-        {
-            name: 'interest',
-            baseName: 'interest',
-            type: 'string',
-        },
-        {
-            name: 'interestRate',
-            baseName: 'interest_rate',
-            type: 'string',
-        },
-        {
-            name: 'interestType',
-            baseName: 'interest_type',
-            type: 'string',
-        },
-        {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'string',
-        },
-        {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
+            name: 'exchangeAdlRank',
+            baseName: 'exchange_adl_rank',
             type: 'string',
         },
     ];

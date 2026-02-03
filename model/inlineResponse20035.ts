@@ -9,244 +9,54 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20035SpecialFeeList } from './inlineResponse20035SpecialFeeList';
+
 export class InlineResponse20035 {
     /**
-     * User ID
+     * spotMakerfee rate
      */
-    'userId': string;
+    'spotMakerFee': string;
     /**
-     * Order ID
+     * spotTakerfee rate
      */
-    'orderId': string;
+    'spotTakerFee': string;
     /**
-     * Client Order ID
+     * contractMakerfee rate
      */
-    'text': string;
+    'futureMakerFee': string;
     /**
-     * Order Status
+     * contractTakerfee rate
      */
-    'state': string;
-    /**
-     * Currency pair
-     */
-    'symbol': string;
-    /**
-     * Attribute COMMON: Normal Order, LIQ: Liquidation Takeover Order, REDUCE: Liquidation Reduce Order, ADL: Auto-Reduce
-     */
-    'attribute': string;
-    /**
-     * Exchange
-     */
-    'exchangeType': string;
-    /**
-     * Business Type
-     */
-    'businessType': string;
-    /**
-     * Base Currency Quantity
-     */
-    'qty': string;
-    /**
-     * Quote Currency Quantity
-     */
-    'quoteQty': string;
-    /**
-     * Price
-     */
-    'price': string;
-    /**
-     * Time in Force Strategy
-     */
-    'timeInForce': string;
-    /**
-     * Filled Quantity
-     */
-    'executedQty': string;
-    /**
-     * Filled Amount
-     */
-    'executedAmount': string;
-    /**
-     * Average Filled Price
-     */
-    'executedAvgPrice': string;
-    /**
-     * Fee currency
-     */
-    'feeCoin': string;
-    /**
-     * fee
-     */
-    'fee': string;
-    /**
-     * Reduce Position Only
-     */
-    'reduceOnly': string;
-    /**
-     * leverage
-     */
-    'leverage': string;
-    /**
-     * Reason
-     */
-    'reason': string;
-    /**
-     * Latest Filled Quantity
-     */
-    'lastExecutedQty': string;
-    /**
-     * Latest Filled Price
-     */
-    'lastExecutedPrice': string;
-    /**
-     * Latest Filled Amount
-     */
-    'lastExecutedAmount': string;
-    /**
-     * Position Direction
-     */
-    'positionSide': string;
-    /**
-     * Created time
-     */
-    'createTime': string;
-    /**
-     * Update time
-     */
-    'updateTime': string;
+    'futureTakerFee': string;
+    'specialFeeList': Array<InlineResponse20035SpecialFeeList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
+            name: 'spotMakerFee',
+            baseName: 'spot_maker_fee',
             type: 'string',
         },
         {
-            name: 'orderId',
-            baseName: 'order_id',
+            name: 'spotTakerFee',
+            baseName: 'spot_taker_fee',
             type: 'string',
         },
         {
-            name: 'text',
-            baseName: 'text',
+            name: 'futureMakerFee',
+            baseName: 'future_maker_fee',
             type: 'string',
         },
         {
-            name: 'state',
-            baseName: 'state',
+            name: 'futureTakerFee',
+            baseName: 'future_taker_fee',
             type: 'string',
         },
         {
-            name: 'symbol',
-            baseName: 'symbol',
-            type: 'string',
-        },
-        {
-            name: 'attribute',
-            baseName: 'attribute',
-            type: 'string',
-        },
-        {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
-            type: 'string',
-        },
-        {
-            name: 'businessType',
-            baseName: 'business_type',
-            type: 'string',
-        },
-        {
-            name: 'qty',
-            baseName: 'qty',
-            type: 'string',
-        },
-        {
-            name: 'quoteQty',
-            baseName: 'quote_qty',
-            type: 'string',
-        },
-        {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
-        },
-        {
-            name: 'timeInForce',
-            baseName: 'time_in_force',
-            type: 'string',
-        },
-        {
-            name: 'executedQty',
-            baseName: 'executed_qty',
-            type: 'string',
-        },
-        {
-            name: 'executedAmount',
-            baseName: 'executed_amount',
-            type: 'string',
-        },
-        {
-            name: 'executedAvgPrice',
-            baseName: 'executed_avg_price',
-            type: 'string',
-        },
-        {
-            name: 'feeCoin',
-            baseName: 'fee_coin',
-            type: 'string',
-        },
-        {
-            name: 'fee',
-            baseName: 'fee',
-            type: 'string',
-        },
-        {
-            name: 'reduceOnly',
-            baseName: 'reduce_only',
-            type: 'string',
-        },
-        {
-            name: 'leverage',
-            baseName: 'leverage',
-            type: 'string',
-        },
-        {
-            name: 'reason',
-            baseName: 'reason',
-            type: 'string',
-        },
-        {
-            name: 'lastExecutedQty',
-            baseName: 'last_executed_qty',
-            type: 'string',
-        },
-        {
-            name: 'lastExecutedPrice',
-            baseName: 'last_executed_price',
-            type: 'string',
-        },
-        {
-            name: 'lastExecutedAmount',
-            baseName: 'last_executed_amount',
-            type: 'string',
-        },
-        {
-            name: 'positionSide',
-            baseName: 'position_side',
-            type: 'string',
-        },
-        {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'string',
-        },
-        {
-            name: 'updateTime',
-            baseName: 'update_time',
-            type: 'string',
+            name: 'specialFeeList',
+            baseName: 'special_fee_list',
+            type: 'Array<InlineResponse20035SpecialFeeList>',
         },
     ];
 

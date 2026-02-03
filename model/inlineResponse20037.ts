@@ -11,89 +11,101 @@
 
 export class InlineResponse20037 {
     /**
-     * Position ID
-     */
-    'positionId'?: string;
-    /**
      * User ID
      */
-    'userId'?: string;
+    'userId': string;
     /**
-     * Currency pair
+     * Leveraged Position ID
      */
-    'symbol'?: string;
+    'positionId': string;
     /**
-     * Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed)
+     * Trading Pair
      */
-    'closedType'?: string;
+    'symbol': string;
     /**
-     * Close Position P&L
+     * Position Direction
      */
-    'closedPnl'?: string;
+    'positionSide': string;
     /**
-     * Close Position P&L Ratio
+     * Initial position margin
      */
-    'closedPnlRate'?: string;
+    'initialMargin': string;
     /**
-     * Average Opening Price
+     * Position maintenance margin
      */
-    'openAvgPrice'?: string;
+    'maintenanceMargin': string;
     /**
-     * Average Close Price
+     * Position Asset Quantity
      */
-    'closedAvgPrice'?: string;
+    'assetQty': string;
     /**
-     * Max Trade Size
+     * Position Asset Currency
      */
-    'maxPositionQty'?: string;
+    'assetCoin': string;
     /**
-     * Close Position Quantity
+     * Position Value
      */
-    'closedQty'?: string;
+    'positionValue': string;
     /**
-     * Close Position Value
+     * Debt Quantity
      */
-    'closedValue'?: string;
+    'liability': string;
     /**
-     * Liquidation Fee
+     * Debt Currency
      */
-    'liqFee'?: string;
+    'liabilityCoin': string;
     /**
-     * Position Direction Before Close
-     */
-    'positionSide'?: string;
-    /**
-     * Leverage at Close
-     */
-    'leverage'?: string;
-    /**
-     * Total Deducted Interest
+     * Deducted Interest
      */
     'interest': string;
     /**
-     * Position Business Type
+     * Max Trade Size
      */
-    'businessType': string;
+    'maxPositionQty': string;
+    /**
+     * Position Cost Price (Average Opening Price)
+     */
+    'entryPrice': string;
+    /**
+     * Index price
+     */
+    'indexPrice': string;
+    /**
+     * Unrealized P&L
+     */
+    'upnl': string;
+    /**
+     * Unrealized P&L Ratio
+     */
+    'upnlRate': string;
+    /**
+     * Opening Leverage
+     */
+    'leverage': string;
+    /**
+     * Maximum leverage
+     */
+    'maxLeverage': string;
     /**
      * Created time
      */
-    'createTime'?: string;
+    'createTime': string;
     /**
      * Update time
      */
-    'updateTime'?: string;
+    'updateTime': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'positionId',
-            baseName: 'position_id',
+            name: 'userId',
+            baseName: 'user_id',
             type: 'string',
         },
         {
-            name: 'userId',
-            baseName: 'user_id',
+            name: 'positionId',
+            baseName: 'position_id',
             type: 'string',
         },
         {
@@ -102,58 +114,43 @@ export class InlineResponse20037 {
             type: 'string',
         },
         {
-            name: 'closedType',
-            baseName: 'closed_type',
-            type: 'string',
-        },
-        {
-            name: 'closedPnl',
-            baseName: 'closed_pnl',
-            type: 'string',
-        },
-        {
-            name: 'closedPnlRate',
-            baseName: 'closed_pnl_rate',
-            type: 'string',
-        },
-        {
-            name: 'openAvgPrice',
-            baseName: 'open_avg_price',
-            type: 'string',
-        },
-        {
-            name: 'closedAvgPrice',
-            baseName: 'closed_avg_price',
-            type: 'string',
-        },
-        {
-            name: 'maxPositionQty',
-            baseName: 'max_position_qty',
-            type: 'string',
-        },
-        {
-            name: 'closedQty',
-            baseName: 'closed_qty',
-            type: 'string',
-        },
-        {
-            name: 'closedValue',
-            baseName: 'closed_value',
-            type: 'string',
-        },
-        {
-            name: 'liqFee',
-            baseName: 'liq_fee',
-            type: 'string',
-        },
-        {
             name: 'positionSide',
             baseName: 'position_side',
             type: 'string',
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
+            name: 'initialMargin',
+            baseName: 'initial_margin',
+            type: 'string',
+        },
+        {
+            name: 'maintenanceMargin',
+            baseName: 'maintenance_margin',
+            type: 'string',
+        },
+        {
+            name: 'assetQty',
+            baseName: 'asset_qty',
+            type: 'string',
+        },
+        {
+            name: 'assetCoin',
+            baseName: 'asset_coin',
+            type: 'string',
+        },
+        {
+            name: 'positionValue',
+            baseName: 'position_value',
+            type: 'string',
+        },
+        {
+            name: 'liability',
+            baseName: 'liability',
+            type: 'string',
+        },
+        {
+            name: 'liabilityCoin',
+            baseName: 'liability_coin',
             type: 'string',
         },
         {
@@ -162,8 +159,38 @@ export class InlineResponse20037 {
             type: 'string',
         },
         {
-            name: 'businessType',
-            baseName: 'business_type',
+            name: 'maxPositionQty',
+            baseName: 'max_position_qty',
+            type: 'string',
+        },
+        {
+            name: 'entryPrice',
+            baseName: 'entry_price',
+            type: 'string',
+        },
+        {
+            name: 'indexPrice',
+            baseName: 'index_price',
+            type: 'string',
+        },
+        {
+            name: 'upnl',
+            baseName: 'upnl',
+            type: 'string',
+        },
+        {
+            name: 'upnlRate',
+            baseName: 'upnl_rate',
+            type: 'string',
+        },
+        {
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
+        },
+        {
+            name: 'maxLeverage',
+            baseName: 'max_leverage',
             type: 'string',
         },
         {

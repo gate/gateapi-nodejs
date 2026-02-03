@@ -9,28 +9,18 @@
  * Do not edit the class manually.
  */
 
+import { TrailChangeLog } from './trailChangeLog';
+
 export class InlineResponse2003 {
-    'code': number;
-    'message': string;
-    'timestamp': number;
+    'changeLog'?: Array<TrailChangeLog>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'code',
-            baseName: 'code',
-            type: 'number',
-        },
-        {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
+            name: 'changeLog',
+            baseName: 'change_log',
+            type: 'Array<TrailChangeLog>',
         },
     ];
 

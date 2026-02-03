@@ -9,36 +9,25 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2005Data } from './inlineResponse2005Data';
-
 export class InlineResponse2005 {
-    'code': number;
-    'message': string;
-    'data': InlineResponse2005Data;
-    'timestamp': number;
+    'currency'?: string;
+    /**
+     * Estimated Annualized Rate, e.g., `est_rate`: `0.8014` represents an annualized rate of 80.14%
+     */
+    'estRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'code',
-            baseName: 'code',
-            type: 'number',
-        },
-        {
-            name: 'message',
-            baseName: 'message',
+            name: 'currency',
+            baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'data',
-            baseName: 'data',
-            type: 'InlineResponse2005Data',
-        },
-        {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
+            name: 'estRate',
+            baseName: 'est_rate',
+            type: 'string',
         },
     ];
 

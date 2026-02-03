@@ -10,44 +10,20 @@
  */
 
 export class InlineResponse20030 {
-    /**
-     * Currency
-     */
-    'coin': string;
-    /**
-     * Exchange
-     */
-    'exchangeType': string;
-    /**
-     * Hourly Interest Rate
-     */
-    'hourInterestRate': string;
-    /**
-     * Millisecond Timestamp
-     */
-    'time': string;
+    'orderId': number;
+    'text': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
-            type: 'string',
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'number',
         },
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
-            type: 'string',
-        },
-        {
-            name: 'hourInterestRate',
-            baseName: 'hour_interest_rate',
-            type: 'string',
-        },
-        {
-            name: 'time',
-            baseName: 'time',
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
     ];

@@ -4,6 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time** | **number** |  | [optional] [default to undefined]
-**value** | **string** |  | [optional] [default to undefined]
+**order** | [**TrailOrder**](TrailOrder.md) |  | [optional] [default to undefined]
 

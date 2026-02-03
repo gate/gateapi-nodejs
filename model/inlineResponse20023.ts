@@ -9,27 +9,47 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20023Data } from './inlineResponse20023Data';
+
 export class InlineResponse20023 {
-    /**
-     * Order ID
-     */
-    'txId': string;
-    /**
-     * User-defined Order ID
-     */
-    'text': string;
+    'timestamp': number;
+    'method': string;
+    'code': number;
+    'message': string;
+    'data': InlineResponse20023Data;
+    'version': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'txId',
-            baseName: 'tx_id',
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
+        },
+        {
+            name: 'method',
+            baseName: 'method',
             type: 'string',
         },
         {
-            name: 'text',
-            baseName: 'text',
+            name: 'code',
+            baseName: 'code',
+            type: 'number',
+        },
+        {
+            name: 'message',
+            baseName: 'message',
+            type: 'string',
+        },
+        {
+            name: 'data',
+            baseName: 'data',
+            type: 'InlineResponse20023Data',
+        },
+        {
+            name: 'version',
+            baseName: 'version',
             type: 'string',
         },
     ];

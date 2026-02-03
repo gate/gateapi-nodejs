@@ -9,42 +9,109 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2006DataList } from './inlineResponse2006DataList';
-
 export class InlineResponse2006Data {
-    'pn': number;
-    'ps': number;
-    'totalPn': number;
-    'count': number;
-    'list': Array<InlineResponse2006DataList>;
+    /**
+     * BUY (on-ramp) or SELL (off-ramp)
+     */
+    'type': string;
+    /**
+     * Payment currency
+     */
+    'payCoin': string;
+    /**
+     * Currency
+     */
+    'getCoin': string;
+    /**
+     * Payment amount
+     */
+    'payAmount': string;
+    /**
+     * Redemption Amount
+     */
+    'getAmount': string;
+    /**
+     * Exchange rate
+     */
+    'rate': string;
+    /**
+     * Reciprocal of the exchange rate
+     */
+    'rateReci': string;
+    /**
+     * Promotion code
+     */
+    'promotionCode': string;
+    /**
+     * Quote method
+     */
+    'side': string;
+    /**
+     * Order type: FIAT (fiat) / STABLE (stablecoin)
+     */
+    'orderType': string;
+    /**
+     * Quote token required when placing an order
+     */
+    'quoteToken': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'pn',
-            baseName: 'pn',
-            type: 'number',
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
         {
-            name: 'ps',
-            baseName: 'ps',
-            type: 'number',
+            name: 'payCoin',
+            baseName: 'pay_coin',
+            type: 'string',
         },
         {
-            name: 'totalPn',
-            baseName: 'total_pn',
-            type: 'number',
+            name: 'getCoin',
+            baseName: 'get_coin',
+            type: 'string',
         },
         {
-            name: 'count',
-            baseName: 'count',
-            type: 'number',
+            name: 'payAmount',
+            baseName: 'pay_amount',
+            type: 'string',
         },
         {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<InlineResponse2006DataList>',
+            name: 'getAmount',
+            baseName: 'get_amount',
+            type: 'string',
+        },
+        {
+            name: 'rate',
+            baseName: 'rate',
+            type: 'string',
+        },
+        {
+            name: 'rateReci',
+            baseName: 'rate_reci',
+            type: 'string',
+        },
+        {
+            name: 'promotionCode',
+            baseName: 'promotion_code',
+            type: 'string',
+        },
+        {
+            name: 'side',
+            baseName: 'side',
+            type: 'string',
+        },
+        {
+            name: 'orderType',
+            baseName: 'order_type',
+            type: 'string',
+        },
+        {
+            name: 'quoteToken',
+            baseName: 'quote_token',
+            type: 'string',
         },
     ];
 

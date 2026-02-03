@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **string** | Order ID | [default to undefined]
-**text** | **string** | User-defined Order ID | [default to undefined]
+**symbol** | **string** |  | [optional] [default to undefined]
+**tiers** | [**Array&lt;RuleRiskLimitsTiers&gt;**](RuleRiskLimitsTiers.md) |  | [optional] [default to undefined]
 

@@ -11,10 +11,13 @@
 
 /* tslint:disable:no-unused-locals */
 import { BatchAmendOrderReq } from '../model/batchAmendOrderReq';
+import { BatchFundingRatesRequest } from '../model/batchFundingRatesRequest';
+import { BatchFundingRatesResponse } from '../model/batchFundingRatesResponse';
 import { BatchFuturesOrder } from '../model/batchFuturesOrder';
 import { Contract } from '../model/contract';
 import { ContractStat } from '../model/contractStat';
 import { CountdownCancelAllFuturesTask } from '../model/countdownCancelAllFuturesTask';
+import { CreateTrailOrder } from '../model/createTrailOrder';
 import { FundingRateRecord } from '../model/fundingRateRecord';
 import { FutureCancelOrderResult } from '../model/futureCancelOrderResult';
 import { FuturesAccount } from '../model/futuresAccount';
@@ -39,13 +42,22 @@ import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
 import { FuturesUpdatePriceTriggeredOrder } from '../model/futuresUpdatePriceTriggeredOrder';
 import { InlineObject } from '../model/inlineObject';
+import { InlineResponse200 } from '../model/inlineResponse200';
+import { InlineResponse2001 } from '../model/inlineResponse2001';
+import { InlineResponse2002 } from '../model/inlineResponse2002';
+import { InlineResponse2003 } from '../model/inlineResponse2003';
+import { InlineResponse201 } from '../model/inlineResponse201';
 import { InsuranceRecord } from '../model/insuranceRecord';
 import { MyFuturesTrade } from '../model/myFuturesTrade';
 import { MyFuturesTradeTimeRange } from '../model/myFuturesTradeTimeRange';
 import { Position } from '../model/position';
 import { PositionClose } from '../model/positionClose';
+import { PositionTimerange } from '../model/positionTimerange';
+import { StopAllTrailOrders } from '../model/stopAllTrailOrders';
+import { StopTrailOrder } from '../model/stopTrailOrder';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { TriggerTime } from '../model/triggerTime';
+import { UpdateTrailOrder } from '../model/updateTrailOrder';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -490,7 +502,7 @@ export class FuturesApi {
             from?: number;
             to?: number;
             limit?: number;
-            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
+            interval?: '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
         },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPremiumIndex> }> {
         const localVarPath =
@@ -554,7 +566,7 @@ export class FuturesApi {
         if (opts.interval !== undefined) {
             let intervalSerialized = ObjectSerializer.serialize(
                 opts.interval,
-                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
+                "'1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
             );
             // For array query parameters with style:form and explode:false, convert to comma-separated string
             if (Array.isArray(intervalSerialized)) {
@@ -710,6 +722,59 @@ export class FuturesApi {
 
         const authSettings = [];
         return this.client.request<Array<FundingRateRecord>>(config, 'Array<FundingRateRecord>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Batch Query Historical Funding Rate Data for Perpetual Contracts
+     * @param settle Settle currency
+     * @param batchFundingRatesRequest
+     */
+    public async listBatchFuturesFundingRates(
+        settle: 'btc' | 'usdt',
+        batchFundingRatesRequest: BatchFundingRatesRequest,
+    ): Promise<{ response: AxiosResponse; body: Array<BatchFundingRatesResponse> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/funding_rates'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error(
+                'Required parameter settle was null or undefined when calling listBatchFuturesFundingRates.',
+            );
+        }
+
+        // verify required parameter 'batchFundingRatesRequest' is not null or undefined
+        if (batchFundingRatesRequest === null || batchFundingRatesRequest === undefined) {
+            throw new Error(
+                'Required parameter batchFundingRatesRequest was null or undefined when calling listBatchFuturesFundingRates.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(batchFundingRatesRequest, 'BatchFundingRatesRequest'),
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<BatchFundingRatesResponse>>(
+            config,
+            'Array<BatchFundingRatesResponse>',
+            authSettings,
+        );
     }
 
     /**
@@ -1247,6 +1312,100 @@ export class FuturesApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<Position>>(config, 'Array<Position>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get user\'s historical position information list by time
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param opts Optional parameters
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
+     */
+    public async listPositionsTimerange(
+        settle: 'btc' | 'usdt',
+        contract: string,
+        opts: { from?: number; to?: number; limit?: number; offset?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<PositionTimerange> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/positions_timerange'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling listPositionsTimerange.');
+        }
+
+        // verify required parameter 'contract' is not null or undefined
+        if (contract === null || contract === undefined) {
+            throw new Error('Required parameter contract was null or undefined when calling listPositionsTimerange.');
+        }
+
+        opts = opts || {};
+        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(contractSerialized)) {
+            contractSerialized = contractSerialized.join(',');
+        }
+        localVarQueryParameters['contract'] = contractSerialized;
+
+        if (opts.from !== undefined) {
+            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(fromSerialized)) {
+                fromSerialized = fromSerialized.join(',');
+            }
+            localVarQueryParameters['from'] = fromSerialized;
+        }
+
+        if (opts.to !== undefined) {
+            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(toSerialized)) {
+                toSerialized = toSerialized.join(',');
+            }
+            localVarQueryParameters['to'] = toSerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        if (opts.offset !== undefined) {
+            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(offsetSerialized)) {
+                offsetSerialized = offsetSerialized.join(',');
+            }
+            localVarQueryParameters['offset'] = offsetSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<PositionTimerange>>(config, 'Array<PositionTimerange>', authSettings);
     }
 
     /**
@@ -3508,6 +3667,507 @@ export class FuturesApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<FuturesOrder>(config, 'FuturesOrder', authSettings);
+    }
+
+    /**
+     *
+     * @summary Create trail order
+     * @param settle Settle currency
+     * @param createTrailOrder
+     */
+    public async createTrailOrder(
+        settle: 'btc' | 'usdt',
+        createTrailOrder: CreateTrailOrder,
+    ): Promise<{ response: AxiosResponse; body: InlineResponse201 }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/trail/create'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling createTrailOrder.');
+        }
+
+        // verify required parameter 'createTrailOrder' is not null or undefined
+        if (createTrailOrder === null || createTrailOrder === undefined) {
+            throw new Error('Required parameter createTrailOrder was null or undefined when calling createTrailOrder.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(createTrailOrder, 'CreateTrailOrder'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse201>(config, 'InlineResponse201', authSettings);
+    }
+
+    /**
+     *
+     * @summary Terminate trail order
+     * @param settle Settle currency
+     * @param stopTrailOrder
+     */
+    public async stopTrailOrder(
+        settle: 'btc' | 'usdt',
+        stopTrailOrder: StopTrailOrder,
+    ): Promise<{ response: AxiosResponse; body: InlineResponse200 }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/trail/stop'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling stopTrailOrder.');
+        }
+
+        // verify required parameter 'stopTrailOrder' is not null or undefined
+        if (stopTrailOrder === null || stopTrailOrder === undefined) {
+            throw new Error('Required parameter stopTrailOrder was null or undefined when calling stopTrailOrder.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(stopTrailOrder, 'StopTrailOrder'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse200>(config, 'InlineResponse200', authSettings);
+    }
+
+    /**
+     *
+     * @summary Batch terminate trail orders
+     * @param settle Settle currency
+     * @param stopAllTrailOrders
+     */
+    public async stopAllTrailOrders(
+        settle: 'btc' | 'usdt',
+        stopAllTrailOrders: StopAllTrailOrders,
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2001 }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/trail/stop_all'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling stopAllTrailOrders.');
+        }
+
+        // verify required parameter 'stopAllTrailOrders' is not null or undefined
+        if (stopAllTrailOrders === null || stopAllTrailOrders === undefined) {
+            throw new Error(
+                'Required parameter stopAllTrailOrders was null or undefined when calling stopAllTrailOrders.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(stopAllTrailOrders, 'StopAllTrailOrders'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2001>(config, 'InlineResponse2001', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get trail order list
+     * @param settle Settle currency
+     * @param opts Optional parameters
+     * @param opts.contract Contract name
+     * @param opts.isFinished Whether historical order
+     * @param opts.startAt Start time of time range
+     * @param opts.endAt End time of time range
+     * @param opts.pageNum Page number, starting from 1
+     * @param opts.pageSize Number of items per page
+     * @param opts.sortBy Common sort field, 1-creation time, 2-end time
+     * @param opts.hideCancel Hide cancelled orders
+     * @param opts.relatedPosition Associated position, if provided, only return orders associated with this position, 1-long, 2-short
+     * @param opts.sortByTrigger Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions
+     * @param opts.reduceOnly Whether reduce only, 1-yes, 2-no
+     * @param opts.side Direction, 1-long position, 2-short position
+     */
+    public async getTrailOrders(
+        settle: 'btc' | 'usdt',
+        opts: {
+            contract?: string;
+            isFinished?: boolean;
+            startAt?: number;
+            endAt?: number;
+            pageNum?: number;
+            pageSize?: number;
+            sortBy?: 1 | 2;
+            hideCancel?: boolean;
+            relatedPosition?: 1 | 2;
+            sortByTrigger?: boolean;
+            reduceOnly?: 1 | 2;
+            side?: 1 | 2;
+        },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2001 }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/trail/list'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling getTrailOrders.');
+        }
+
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
+        }
+
+        if (opts.isFinished !== undefined) {
+            let isFinishedSerialized = ObjectSerializer.serialize(opts.isFinished, 'boolean');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(isFinishedSerialized)) {
+                isFinishedSerialized = isFinishedSerialized.join(',');
+            }
+            localVarQueryParameters['is_finished'] = isFinishedSerialized;
+        }
+
+        if (opts.startAt !== undefined) {
+            let startAtSerialized = ObjectSerializer.serialize(opts.startAt, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(startAtSerialized)) {
+                startAtSerialized = startAtSerialized.join(',');
+            }
+            localVarQueryParameters['start_at'] = startAtSerialized;
+        }
+
+        if (opts.endAt !== undefined) {
+            let endAtSerialized = ObjectSerializer.serialize(opts.endAt, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(endAtSerialized)) {
+                endAtSerialized = endAtSerialized.join(',');
+            }
+            localVarQueryParameters['end_at'] = endAtSerialized;
+        }
+
+        if (opts.pageNum !== undefined) {
+            let pageNumSerialized = ObjectSerializer.serialize(opts.pageNum, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageNumSerialized)) {
+                pageNumSerialized = pageNumSerialized.join(',');
+            }
+            localVarQueryParameters['page_num'] = pageNumSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
+        if (opts.sortBy !== undefined) {
+            let sortBySerialized = ObjectSerializer.serialize(opts.sortBy, '1 | 2');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sortBySerialized)) {
+                sortBySerialized = sortBySerialized.join(',');
+            }
+            localVarQueryParameters['sort_by'] = sortBySerialized;
+        }
+
+        if (opts.hideCancel !== undefined) {
+            let hideCancelSerialized = ObjectSerializer.serialize(opts.hideCancel, 'boolean');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(hideCancelSerialized)) {
+                hideCancelSerialized = hideCancelSerialized.join(',');
+            }
+            localVarQueryParameters['hide_cancel'] = hideCancelSerialized;
+        }
+
+        if (opts.relatedPosition !== undefined) {
+            let relatedPositionSerialized = ObjectSerializer.serialize(opts.relatedPosition, '1 | 2');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(relatedPositionSerialized)) {
+                relatedPositionSerialized = relatedPositionSerialized.join(',');
+            }
+            localVarQueryParameters['related_position'] = relatedPositionSerialized;
+        }
+
+        if (opts.sortByTrigger !== undefined) {
+            let sortByTriggerSerialized = ObjectSerializer.serialize(opts.sortByTrigger, 'boolean');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sortByTriggerSerialized)) {
+                sortByTriggerSerialized = sortByTriggerSerialized.join(',');
+            }
+            localVarQueryParameters['sort_by_trigger'] = sortByTriggerSerialized;
+        }
+
+        if (opts.reduceOnly !== undefined) {
+            let reduceOnlySerialized = ObjectSerializer.serialize(opts.reduceOnly, '1 | 2');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(reduceOnlySerialized)) {
+                reduceOnlySerialized = reduceOnlySerialized.join(',');
+            }
+            localVarQueryParameters['reduce_only'] = reduceOnlySerialized;
+        }
+
+        if (opts.side !== undefined) {
+            let sideSerialized = ObjectSerializer.serialize(opts.side, '1 | 2');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sideSerialized)) {
+                sideSerialized = sideSerialized.join(',');
+            }
+            localVarQueryParameters['side'] = sideSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2001>(config, 'InlineResponse2001', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get trail order details
+     * @param settle Settle currency
+     * @param id Order ID
+     */
+    public async getTrailOrderDetail(
+        settle: 'btc' | 'usdt',
+        id: number,
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2002 }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/trail/detail'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling getTrailOrderDetail.');
+        }
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getTrailOrderDetail.');
+        }
+
+        let idSerialized = ObjectSerializer.serialize(id, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(idSerialized)) {
+            idSerialized = idSerialized.join(',');
+        }
+        localVarQueryParameters['id'] = idSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2002>(config, 'InlineResponse2002', authSettings);
+    }
+
+    /**
+     *
+     * @summary Update trail order
+     * @param settle Settle currency
+     * @param updateTrailOrder
+     */
+    public async updateTrailOrder(
+        settle: 'btc' | 'usdt',
+        updateTrailOrder: UpdateTrailOrder,
+    ): Promise<{ response: AxiosResponse; body: InlineResponse200 }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/trail/update'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling updateTrailOrder.');
+        }
+
+        // verify required parameter 'updateTrailOrder' is not null or undefined
+        if (updateTrailOrder === null || updateTrailOrder === undefined) {
+            throw new Error('Required parameter updateTrailOrder was null or undefined when calling updateTrailOrder.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(updateTrailOrder, 'UpdateTrailOrder'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse200>(config, 'InlineResponse200', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get trail order user modification records
+     * @param settle Settle currency
+     * @param id Order ID
+     * @param opts Optional parameters
+     * @param opts.pageNum Page number, starting from 1
+     * @param opts.pageSize Number of items per page
+     */
+    public async getTrailOrderChangeLog(
+        settle: 'btc' | 'usdt',
+        id: number,
+        opts: { pageNum?: number; pageSize?: number },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2003 }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/trail/change_log'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling getTrailOrderChangeLog.');
+        }
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getTrailOrderChangeLog.');
+        }
+
+        opts = opts || {};
+        let idSerialized = ObjectSerializer.serialize(id, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(idSerialized)) {
+            idSerialized = idSerialized.join(',');
+        }
+        localVarQueryParameters['id'] = idSerialized;
+
+        if (opts.pageNum !== undefined) {
+            let pageNumSerialized = ObjectSerializer.serialize(opts.pageNum, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageNumSerialized)) {
+                pageNumSerialized = pageNumSerialized.join(',');
+            }
+            localVarQueryParameters['page_num'] = pageNumSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2003>(config, 'InlineResponse2003', authSettings);
     }
 
     /**

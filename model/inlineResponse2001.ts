@@ -9,25 +9,18 @@
  * Do not edit the class manually.
  */
 
+import { TrailOrder } from './trailOrder';
+
 export class InlineResponse2001 {
-    'currency'?: string;
-    /**
-     * Estimated Annualized Rate, e.g., `est_rate`: `0.8014` represents an annualized rate of 80.14%
-     */
-    'estRate'?: string;
+    'orders'?: Array<TrailOrder>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
-        },
-        {
-            name: 'estRate',
-            baseName: 'est_rate',
-            type: 'string',
+            name: 'orders',
+            baseName: 'orders',
+            type: 'Array<TrailOrder>',
         },
     ];
 

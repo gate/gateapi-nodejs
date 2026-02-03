@@ -9,507 +9,213 @@
  * Do not edit the class manually.
  */
 
+import { AnyType } from './anyType';
+import { InlineResponse20013DataMerchantInfo } from './inlineResponse20013DataMerchantInfo';
+
 export class InlineResponse20013Data {
     /**
-     * Whether sell order
+     * Whether self
      */
-    'isSell': number;
+    'isSelf': boolean;
     /**
-     * Order ID
+     * User registration time (formatted string)
      */
-    'txid': number;
+    'userTimest': string;
     /**
-     * Order ID
+     * Number of counterparties
      */
-    'orderid': number;
+    'counterpartiesNum': number;
     /**
-     * Order creation timestamp
+     * Whether email is verified
      */
-    'timest': number;
+    'emailVerified': string;
     /**
-     * Payment deadline
+     * Whether KYC verification is completed
      */
-    'lastPayTime': number;
+    'verified': string;
     /**
-     * Remaining payment time
+     * Whether phone is bound
      */
-    'remainPayTime': number;
+    'hasPhone': string;
     /**
-     * Cryptocurrency type
+     * Username
      */
-    'currencyType': string;
+    'userName': string;
     /**
-     * Fiat currency type
+     * User note information
      */
-    'wantType': string;
+    'userNote': string;
     /**
-     * Price
+     * Total completed orders
      */
-    'rate': string;
+    'completeTransactions': string;
     /**
-     * Size
+     * Number of completed buy orders
      */
-    'amount': string;
+    'paidTransactions': string;
     /**
-     * Fiat amount
+     * Number of completed sell orders
      */
-    'total': string;
+    'acceptedTransactions': string;
     /**
-     * Order Status
+     * Average time to confirm receipt
      */
-    'status': string;
+    'transactionsUsedTime': string;
     /**
-     * Cancellation reason ID
+     * Cancellation time in last 30 days
      */
-    'reasonId': string;
+    'cancelledUsedTimeMonth': string;
     /**
-     * Cancellation reason
+     * Number of completed orders in last 30 days
      */
-    'reasonDesc': string;
+    'completeTransactionsMonth': string;
     /**
-     * Popup ID
+     * Completion rate in last 30 days
      */
-    'toastId': number;
+    'completeRateMonth': number;
     /**
-     * Cancellation time
+     * Buy order ratio in last 30 days
      */
-    'cancelTime': string;
-    /**
-     * Whether seller confirmed the reason
-     */
-    'sellerConfirm': number;
-    /**
-     * Whether in dispute
-     */
-    'inAppeal': number;
-    /**
-     * Appeal time limit
-     */
-    'disputeTime': number;
-    /**
-     * Whether order cancellation is allowed
-     */
-    'cancelable': number;
-    /**
-     * Whether to hide payment method
-     */
-    'hidePayment': number;
-    /**
-     * Trading terms
-     */
-    'tradeTips': string;
-    /**
-     * Whether to display bank
-     */
-    'showBank': string;
-    /**
-     * Bank name
-     */
-    'bankname': string;
-    /**
-     * Bank branch name
-     */
-    'bankbranch': string;
-    /**
-     * Bank ID
-     */
-    'bankid': string;
-    /**
-     * Bank cardholder name
-     */
-    'bankHolderRealname': string;
-    /**
-     * Whether to display Alipay
-     */
-    'showAli': string;
-    /**
-     * Alipay account name
-     */
-    'aliname': string;
-    /**
-     * Whether Alipay QR code exists
-     */
-    'isAlicode': number;
-    /**
-     * Whether to display WeChat
-     */
-    'showWechat': string;
-    /**
-     * WeChat account name
-     */
-    'wename': string;
-    /**
-     * Whether to display other payment methods
-     */
-    'showOthers': string;
-    /**
-     * Other payment methods
-     */
-    'payOthers': Array<string>;
-    /**
-     * Payment type
-     */
-    'selPaytype': string;
-    /**
-     * Counterparty UID
-     */
-    'itsUid': string;
-    /**
-     * Whether counterparty is Blue V
-     */
-    'itsIsBlueVip': number;
-    /**
-     * Counterparty VIP tier
-     */
-    'itsTier': number;
-    /**
-     * Counterparty avatar
-     */
-    'itsAvatar': string;
-    /**
-     * Counterparty nickname
-     */
-    'itsNickname': string;
-    /**
-     * Counterparty username
-     */
-    'itsRealname': string;
-    /**
-     * Whether following
-     */
-    'isFollow': number;
+    'ordersBuyRateMonth': number;
     /**
      * Whether blocked
      */
     'isBlack': number;
     /**
-     * Whether traded before
+     * Whether following
+     */
+    'isFollow': number;
+    /**
+     * Whether traded with self
      */
     'haveTraded': number;
     /**
-     * Unread appeals
+     * Encrypted UID
      */
-    'appealUnread': number;
+    'bizUid': string;
     /**
-     * Whether appeal cancellation is allowed
+     * Blue V Crown Shield
      */
-    'appealAllowCancel': number;
+    'blueVip': number;
     /**
-     * Appeal result (including pending appeals)
+     * Merchant work status
      */
-    'appealVerdictHasOpen': string;
+    'workStatus': number;
     /**
-     * IM unread
+     * Registration days
      */
-    'imUnread': number;
+    'registrationDays': number;
     /**
-     * Review content
+     * Days since first trade
      */
-    'message': string;
+    'firstTradeDays': number;
     /**
-     * Rating
+     * Whether margin replenishment is needed
      */
-    'score': string;
-    /**
-     * Payment voucher
-     */
-    'paymentVoucherUrl': Array<string>;
-    /**
-     * Counterparty transaction volume
-     */
-    'completeNumber': number;
-    /**
-     * Counterparty completion rate
-     */
-    'completeRateMonth': string;
-    /**
-     * Whether transaction record is verified
-     */
-    'checkJournalAccount': boolean;
-    /**
-     * Whether to display transaction records
-     */
-    'showJournalAccount': boolean;
-    /**
-     * Whether margin is frozen
-     */
-    'isFreezeGuarantee': number;
-    /**
-     * Remaining USDT margin
-     */
-    'usdtLeftGuarantee': string;
-    /**
-     * Margin currency type
-     */
-    'guaranteeCurrType': string;
-    /**
-     * Payment time
-     */
-    'timestPaid': number;
-    /**
-     * Order Status
-     */
-    'state': string;
-    /**
-     * Coin release switch configuration
-     */
-    'releaseCoinSwitch': number;
-    /**
-     * Username
-     */
-    'ownRealname': string;
-    /**
-     * Average confirmation time in last 30 days
-     */
-    'confirmationUseTimeMonth': number;
-    /**
-     * Whether risk user
-     */
-    'isRiskUser': number;
-    /**
-     * Whether XT order
-     */
-    'isXt': number;
-    /**
-     * Order Type
-     */
-    'orderType': number;
-    /**
-     * Fiat currency symbol
-     */
-    'symbol': string;
-    /**
-     * Whether to show confirm receipt during appeal
-     */
-    'isShowReceive': number;
-    /**
-     * Whether regular user
-     */
-    'isTaker': number;
+    'needReplenish': number;
+    'merchantInfo': InlineResponse20013DataMerchantInfo;
     /**
      * Merchant online status
      */
-    'isOnline': number;
+    'onlineStatus': number;
     /**
-     * Whether to display seller contact information
+     * Merchant online status details
      */
-    'showSellerContactInfo': boolean;
+    'workHours': AnyType | null;
     /**
-     * Payment methods supported by current order
+     * 30-day transaction volume
      */
-    'supportedPayTypes': Array<string>;
+    'transactionsMonth': number;
+    /**
+     * Total transaction volume
+     */
+    'transactionsAll': number;
+    /**
+     * Single user or composite user
+     */
+    'tradeVersatile': boolean;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'isSell',
-            baseName: 'is_sell',
+            name: 'isSelf',
+            baseName: 'is_self',
+            type: 'boolean',
+        },
+        {
+            name: 'userTimest',
+            baseName: 'user_timest',
+            type: 'string',
+        },
+        {
+            name: 'counterpartiesNum',
+            baseName: 'counterparties_num',
             type: 'number',
         },
         {
-            name: 'txid',
-            baseName: 'txid',
+            name: 'emailVerified',
+            baseName: 'email_verified',
+            type: 'string',
+        },
+        {
+            name: 'verified',
+            baseName: 'verified',
+            type: 'string',
+        },
+        {
+            name: 'hasPhone',
+            baseName: 'has_phone',
+            type: 'string',
+        },
+        {
+            name: 'userName',
+            baseName: 'user_name',
+            type: 'string',
+        },
+        {
+            name: 'userNote',
+            baseName: 'user_note',
+            type: 'string',
+        },
+        {
+            name: 'completeTransactions',
+            baseName: 'complete_transactions',
+            type: 'string',
+        },
+        {
+            name: 'paidTransactions',
+            baseName: 'paid_transactions',
+            type: 'string',
+        },
+        {
+            name: 'acceptedTransactions',
+            baseName: 'accepted_transactions',
+            type: 'string',
+        },
+        {
+            name: 'transactionsUsedTime',
+            baseName: 'transactions_used_time',
+            type: 'string',
+        },
+        {
+            name: 'cancelledUsedTimeMonth',
+            baseName: 'cancelled_used_time_month',
+            type: 'string',
+        },
+        {
+            name: 'completeTransactionsMonth',
+            baseName: 'complete_transactions_month',
+            type: 'string',
+        },
+        {
+            name: 'completeRateMonth',
+            baseName: 'complete_rate_month',
             type: 'number',
         },
         {
-            name: 'orderid',
-            baseName: 'orderid',
-            type: 'number',
-        },
-        {
-            name: 'timest',
-            baseName: 'timest',
-            type: 'number',
-        },
-        {
-            name: 'lastPayTime',
-            baseName: 'last_pay_time',
-            type: 'number',
-        },
-        {
-            name: 'remainPayTime',
-            baseName: 'remain_pay_time',
-            type: 'number',
-        },
-        {
-            name: 'currencyType',
-            baseName: 'currencyType',
-            type: 'string',
-        },
-        {
-            name: 'wantType',
-            baseName: 'want_type',
-            type: 'string',
-        },
-        {
-            name: 'rate',
-            baseName: 'rate',
-            type: 'string',
-        },
-        {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-        {
-            name: 'total',
-            baseName: 'total',
-            type: 'string',
-        },
-        {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
-        },
-        {
-            name: 'reasonId',
-            baseName: 'reason_id',
-            type: 'string',
-        },
-        {
-            name: 'reasonDesc',
-            baseName: 'reason_desc',
-            type: 'string',
-        },
-        {
-            name: 'toastId',
-            baseName: 'toast_id',
-            type: 'number',
-        },
-        {
-            name: 'cancelTime',
-            baseName: 'cancel_time',
-            type: 'string',
-        },
-        {
-            name: 'sellerConfirm',
-            baseName: 'seller_confirm',
-            type: 'number',
-        },
-        {
-            name: 'inAppeal',
-            baseName: 'in_appeal',
-            type: 'number',
-        },
-        {
-            name: 'disputeTime',
-            baseName: 'dispute_time',
-            type: 'number',
-        },
-        {
-            name: 'cancelable',
-            baseName: 'cancelable',
-            type: 'number',
-        },
-        {
-            name: 'hidePayment',
-            baseName: 'hide_payment',
-            type: 'number',
-        },
-        {
-            name: 'tradeTips',
-            baseName: 'trade_tips',
-            type: 'string',
-        },
-        {
-            name: 'showBank',
-            baseName: 'show_bank',
-            type: 'string',
-        },
-        {
-            name: 'bankname',
-            baseName: 'bankname',
-            type: 'string',
-        },
-        {
-            name: 'bankbranch',
-            baseName: 'bankbranch',
-            type: 'string',
-        },
-        {
-            name: 'bankid',
-            baseName: 'bankid',
-            type: 'string',
-        },
-        {
-            name: 'bankHolderRealname',
-            baseName: 'bank_holder_realname',
-            type: 'string',
-        },
-        {
-            name: 'showAli',
-            baseName: 'show_ali',
-            type: 'string',
-        },
-        {
-            name: 'aliname',
-            baseName: 'aliname',
-            type: 'string',
-        },
-        {
-            name: 'isAlicode',
-            baseName: 'is_alicode',
-            type: 'number',
-        },
-        {
-            name: 'showWechat',
-            baseName: 'show_wechat',
-            type: 'string',
-        },
-        {
-            name: 'wename',
-            baseName: 'wename',
-            type: 'string',
-        },
-        {
-            name: 'showOthers',
-            baseName: 'show_others',
-            type: 'string',
-        },
-        {
-            name: 'payOthers',
-            baseName: 'pay_others',
-            type: 'Array<string>',
-        },
-        {
-            name: 'selPaytype',
-            baseName: 'sel_paytype',
-            type: 'string',
-        },
-        {
-            name: 'itsUid',
-            baseName: 'its_uid',
-            type: 'string',
-        },
-        {
-            name: 'itsIsBlueVip',
-            baseName: 'its_is_blue_vip',
-            type: 'number',
-        },
-        {
-            name: 'itsTier',
-            baseName: 'its_tier',
-            type: 'number',
-        },
-        {
-            name: 'itsAvatar',
-            baseName: 'its_avatar',
-            type: 'string',
-        },
-        {
-            name: 'itsNickname',
-            baseName: 'its_nickname',
-            type: 'string',
-        },
-        {
-            name: 'itsRealname',
-            baseName: 'its_realname',
-            type: 'string',
-        },
-        {
-            name: 'isFollow',
-            baseName: 'is_follow',
+            name: 'ordersBuyRateMonth',
+            baseName: 'orders_buy_rate_month',
             type: 'number',
         },
         {
@@ -518,149 +224,74 @@ export class InlineResponse20013Data {
             type: 'number',
         },
         {
+            name: 'isFollow',
+            baseName: 'is_follow',
+            type: 'number',
+        },
+        {
             name: 'haveTraded',
             baseName: 'have_traded',
             type: 'number',
         },
         {
-            name: 'appealUnread',
-            baseName: 'appeal_unread',
-            type: 'number',
-        },
-        {
-            name: 'appealAllowCancel',
-            baseName: 'appeal_allow_cancel',
-            type: 'number',
-        },
-        {
-            name: 'appealVerdictHasOpen',
-            baseName: 'appeal_verdict_has_open',
+            name: 'bizUid',
+            baseName: 'biz_uid',
             type: 'string',
         },
         {
-            name: 'imUnread',
-            baseName: 'im_unread',
+            name: 'blueVip',
+            baseName: 'blue_vip',
             type: 'number',
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
-            name: 'score',
-            baseName: 'score',
-            type: 'string',
-        },
-        {
-            name: 'paymentVoucherUrl',
-            baseName: 'payment_voucher_url',
-            type: 'Array<string>',
-        },
-        {
-            name: 'completeNumber',
-            baseName: 'complete_number',
+            name: 'workStatus',
+            baseName: 'work_status',
             type: 'number',
         },
         {
-            name: 'completeRateMonth',
-            baseName: 'complete_rate_month',
-            type: 'string',
+            name: 'registrationDays',
+            baseName: 'registration_days',
+            type: 'number',
         },
         {
-            name: 'checkJournalAccount',
-            baseName: 'check_journal_account',
+            name: 'firstTradeDays',
+            baseName: 'first_trade_days',
+            type: 'number',
+        },
+        {
+            name: 'needReplenish',
+            baseName: 'need_replenish',
+            type: 'number',
+        },
+        {
+            name: 'merchantInfo',
+            baseName: 'merchant_info',
+            type: 'InlineResponse20013DataMerchantInfo',
+        },
+        {
+            name: 'onlineStatus',
+            baseName: 'online_status',
+            type: 'number',
+        },
+        {
+            name: 'workHours',
+            baseName: 'work_hours',
+            type: 'AnyType',
+        },
+        {
+            name: 'transactionsMonth',
+            baseName: 'transactions_month',
+            type: 'number',
+        },
+        {
+            name: 'transactionsAll',
+            baseName: 'transactions_all',
+            type: 'number',
+        },
+        {
+            name: 'tradeVersatile',
+            baseName: 'trade_versatile',
             type: 'boolean',
-        },
-        {
-            name: 'showJournalAccount',
-            baseName: 'show_journal_account',
-            type: 'boolean',
-        },
-        {
-            name: 'isFreezeGuarantee',
-            baseName: 'is_freeze_guarantee',
-            type: 'number',
-        },
-        {
-            name: 'usdtLeftGuarantee',
-            baseName: 'usdt_left_guarantee',
-            type: 'string',
-        },
-        {
-            name: 'guaranteeCurrType',
-            baseName: 'guarantee_curr_type',
-            type: 'string',
-        },
-        {
-            name: 'timestPaid',
-            baseName: 'timest_paid',
-            type: 'number',
-        },
-        {
-            name: 'state',
-            baseName: 'state',
-            type: 'string',
-        },
-        {
-            name: 'releaseCoinSwitch',
-            baseName: 'release_coin_switch',
-            type: 'number',
-        },
-        {
-            name: 'ownRealname',
-            baseName: 'own_realname',
-            type: 'string',
-        },
-        {
-            name: 'confirmationUseTimeMonth',
-            baseName: 'confirmation_use_time_month',
-            type: 'number',
-        },
-        {
-            name: 'isRiskUser',
-            baseName: 'is_risk_user',
-            type: 'number',
-        },
-        {
-            name: 'isXt',
-            baseName: 'is_xt',
-            type: 'number',
-        },
-        {
-            name: 'orderType',
-            baseName: 'order_type',
-            type: 'number',
-        },
-        {
-            name: 'symbol',
-            baseName: 'symbol',
-            type: 'string',
-        },
-        {
-            name: 'isShowReceive',
-            baseName: 'is_show_receive',
-            type: 'number',
-        },
-        {
-            name: 'isTaker',
-            baseName: 'is_taker',
-            type: 'number',
-        },
-        {
-            name: 'isOnline',
-            baseName: 'is_online',
-            type: 'number',
-        },
-        {
-            name: 'showSellerContactInfo',
-            baseName: 'show_seller_contact_info',
-            type: 'boolean',
-        },
-        {
-            name: 'supportedPayTypes',
-            baseName: 'supported_pay_types',
-            type: 'Array<string>',
         },
     ];
 

@@ -98,6 +98,10 @@ export class Contract {
      */
     'orderSizeMin'?: string;
     /**
+     * Whether decimal string type is supported for contract lot size. When this field is set to `true`, it indicates that the contract supports decimal lot sizes (i.e., the `size` field can use a decimal string type); when set to `false`, it indicates that the contract does not support decimal lot sizes (i.e., the `size` field can only use an integer type).
+     */
+    'enableDecimal'?: boolean;
+    /**
      * Maximum order size allowed by the contract
      */
     'orderSizeMax'?: string;
@@ -293,6 +297,11 @@ export class Contract {
             name: 'orderSizeMin',
             baseName: 'order_size_min',
             type: 'string',
+        },
+        {
+            name: 'enableDecimal',
+            baseName: 'enable_decimal',
+            type: 'boolean',
         },
         {
             name: 'orderSizeMax',

@@ -9,181 +9,42 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20010DataList } from './inlineResponse20010DataList';
+
 export class InlineResponse20010Data {
-    /**
-     * User registration time (formatted string)
-     */
-    'userTimest': string;
-    /**
-     * Whether email is verified
-     */
-    'emailVerified': string;
-    /**
-     * Whether KYC verification is completed
-     */
-    'verified': string;
-    /**
-     * Whether phone is bound
-     */
-    'hasPhone': string;
-    /**
-     * Username
-     */
-    'userName': string;
-    /**
-     * User note information
-     */
-    'userNote': string;
-    /**
-     * Total completed orders
-     */
-    'completeTransactions': string;
-    /**
-     * Number of completed buy orders
-     */
-    'paidTransactions': string;
-    /**
-     * Number of completed sell orders
-     */
-    'acceptedTransactions': string;
-    /**
-     * Average time to confirm receipt
-     */
-    'transactionsUsedTime': string;
-    /**
-     * Cancellation time in last 30 days
-     */
-    'cancelledUsedTimeMonth': string;
-    /**
-     * Number of completed orders in last 30 days
-     */
-    'completeTransactionsMonth': string;
-    /**
-     * Completion rate in last 30 days
-     */
-    'completeRateMonth': number;
-    /**
-     * Whether following
-     */
-    'isFollow': number;
-    /**
-     * Whether traded with self
-     */
-    'haveTraded': number;
-    /**
-     * Encrypted UID
-     */
-    'bizUid': string;
-    /**
-     * Registration days
-     */
-    'registrationDays': number;
-    /**
-     * Days since first trade
-     */
-    'firstTradeDays': number;
-    /**
-     * Single user or composite user
-     */
-    'tradeVersatile': boolean;
+    'pn': number;
+    'ps': number;
+    'totalPn': number;
+    'count': number;
+    'list': Array<InlineResponse20010DataList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'userTimest',
-            baseName: 'user_timest',
-            type: 'string',
-        },
-        {
-            name: 'emailVerified',
-            baseName: 'email_verified',
-            type: 'string',
-        },
-        {
-            name: 'verified',
-            baseName: 'verified',
-            type: 'string',
-        },
-        {
-            name: 'hasPhone',
-            baseName: 'has_phone',
-            type: 'string',
-        },
-        {
-            name: 'userName',
-            baseName: 'user_name',
-            type: 'string',
-        },
-        {
-            name: 'userNote',
-            baseName: 'user_note',
-            type: 'string',
-        },
-        {
-            name: 'completeTransactions',
-            baseName: 'complete_transactions',
-            type: 'string',
-        },
-        {
-            name: 'paidTransactions',
-            baseName: 'paid_transactions',
-            type: 'string',
-        },
-        {
-            name: 'acceptedTransactions',
-            baseName: 'accepted_transactions',
-            type: 'string',
-        },
-        {
-            name: 'transactionsUsedTime',
-            baseName: 'transactions_used_time',
-            type: 'string',
-        },
-        {
-            name: 'cancelledUsedTimeMonth',
-            baseName: 'cancelled_used_time_month',
-            type: 'string',
-        },
-        {
-            name: 'completeTransactionsMonth',
-            baseName: 'complete_transactions_month',
-            type: 'string',
-        },
-        {
-            name: 'completeRateMonth',
-            baseName: 'complete_rate_month',
+            name: 'pn',
+            baseName: 'pn',
             type: 'number',
         },
         {
-            name: 'isFollow',
-            baseName: 'is_follow',
+            name: 'ps',
+            baseName: 'ps',
             type: 'number',
         },
         {
-            name: 'haveTraded',
-            baseName: 'have_traded',
+            name: 'totalPn',
+            baseName: 'total_pn',
             type: 'number',
         },
         {
-            name: 'bizUid',
-            baseName: 'biz_uid',
-            type: 'string',
-        },
-        {
-            name: 'registrationDays',
-            baseName: 'registration_days',
+            name: 'count',
+            baseName: 'count',
             type: 'number',
         },
         {
-            name: 'firstTradeDays',
-            baseName: 'first_trade_days',
-            type: 'number',
-        },
-        {
-            name: 'tradeVersatile',
-            baseName: 'trade_versatile',
-            type: 'boolean',
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<InlineResponse20010DataList>',
         },
     ];
 

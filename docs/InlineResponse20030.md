@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**coin** | **string** | Currency | [default to undefined]
-**exchangeType** | **string** | Exchange | [default to undefined]
-**hourInterestRate** | **string** | Hourly Interest Rate | [default to undefined]
-**time** | **string** | Millisecond Timestamp | [default to undefined]
+**orderId** | **number** |  | [default to undefined]
+**text** | **string** |  | [default to undefined]
 

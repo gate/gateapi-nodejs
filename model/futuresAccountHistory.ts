@@ -53,6 +53,10 @@ export class FuturesAccountHistory {
      * total amount of perpetual contract bonus deduction
      */
     'bonusOffset'?: string;
+    /**
+     * Represents the value of profit settlement from the futures account to the spot account under Unified Account Mode. Negative values indicate settlement from futures to spot, while positive values indicate settlement from spot to futures. This value is cumulative.
+     */
+    'crossSettle'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -105,6 +109,11 @@ export class FuturesAccountHistory {
         {
             name: 'bonusOffset',
             baseName: 'bonus_offset',
+            type: 'string',
+        },
+        {
+            name: 'crossSettle',
+            baseName: 'cross_settle',
             type: 'string',
         },
     ];

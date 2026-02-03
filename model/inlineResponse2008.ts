@@ -9,30 +9,22 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2008Data } from './inlineResponse2008Data';
-
 export class InlineResponse2008 {
-    'message': string;
     'code': number;
-    'data': InlineResponse2008Data;
+    'message': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
         {
             name: 'code',
             baseName: 'code',
             type: 'number',
         },
         {
-            name: 'data',
-            baseName: 'data',
-            type: 'InlineResponse2008Data',
+            name: 'message',
+            baseName: 'message',
+            type: 'string',
         },
     ];
 

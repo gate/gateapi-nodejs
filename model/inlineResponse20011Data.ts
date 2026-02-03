@@ -9,45 +9,42 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20011List } from './inlineResponse20011List';
+import { InlineResponse20011DataList } from './inlineResponse20011DataList';
 
 export class InlineResponse20011Data {
-    /**
-     * Payment method type
-     */
-    'payType'?: string;
-    /**
-     * Payment method name
-     */
-    'payName'?: string;
-    /**
-     * User\'s currently bound payment method (primary key ID)
-     */
-    'ids'?: Array<number>;
-    'list'?: Array<InlineResponse20011List>;
+    'total': number;
+    'pageSize': number;
+    'pageNumber': number;
+    'totalPage': number;
+    'list': Array<InlineResponse20011DataList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'payType',
-            baseName: 'pay_type',
-            type: 'string',
+            name: 'total',
+            baseName: 'total',
+            type: 'number',
         },
         {
-            name: 'payName',
-            baseName: 'pay_name',
-            type: 'string',
+            name: 'pageSize',
+            baseName: 'page_size',
+            type: 'number',
         },
         {
-            name: 'ids',
-            baseName: 'ids',
-            type: 'Array<number>',
+            name: 'pageNumber',
+            baseName: 'page_number',
+            type: 'number',
+        },
+        {
+            name: 'totalPage',
+            baseName: 'total_page',
+            type: 'number',
         },
         {
             name: 'list',
             baseName: 'list',
-            type: 'Array<InlineResponse20011List>',
+            type: 'Array<InlineResponse20011DataList>',
         },
     ];
 

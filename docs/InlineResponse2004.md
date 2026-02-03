@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **number** |  | [default to undefined]
-**message** | **string** |  | [default to undefined]
+**time** | **number** |  | [optional] [default to undefined]
+**value** | **string** |  | [optional] [default to undefined]
 

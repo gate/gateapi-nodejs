@@ -84,7 +84,7 @@ No authorization required
 
 ## listCrossexRuleRiskLimits
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20020>; }> listCrossexRuleRiskLimits(symbols)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20024>; }> listCrossexRuleRiskLimits(symbols)
 
 [Public Interface] Query Risk Limit Information
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20020>; }> [InlineResponse20020](InlineResponse20020.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20024>; }> [InlineResponse20024](InlineResponse20024.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ No authorization required
 
 ## listCrossexTransferCoins
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20021>; }> listCrossexTransferCoins(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20025>; }> listCrossexTransferCoins(opts)
 
 [Public Interface] Query Supported Transfer Currencies
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20021>; }> [InlineResponse20021](InlineResponse20021.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20025>; }> [InlineResponse20025](InlineResponse20025.md)
 
 ### Authorization
 
@@ -172,7 +172,7 @@ No authorization required
 
 ## listCrossexTransfers
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20022>; }> listCrossexTransfers(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20026>; }> listCrossexTransfers(opts)
 
 Query Fund Transfer History
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20022>; }> [InlineResponse20022](InlineResponse20022.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20026>; }> [InlineResponse20026](InlineResponse20026.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20022>; }> [InlineR
 
 ## createCrossexTransfer
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20023; }> createCrossexTransfer(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20027; }> createCrossexTransfer(opts)
 
 Fund Transfer
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20023; }> [InlineResponse20023](InlineResponse20023.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20027; }> [InlineResponse20027](InlineResponse20027.md)
 
 ### Authorization
 
@@ -276,7 +276,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20023; }> [InlineResponse
 
 ## createCrossexOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20024; }> createCrossexOrder(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20028; }> createCrossexOrder(opts)
 
 Create an order
 
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20024; }> [InlineResponse20024](InlineResponse20024.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20028; }> [InlineResponse20028](InlineResponse20028.md)
 
 ### Authorization
 
@@ -323,7 +323,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20024; }> [InlineResponse
 
 ## getCrossexOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20025; }> getCrossexOrder(orderId)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20029; }> getCrossexOrder(orderId)
 
 Query order details
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20025; }> [InlineResponse20025](InlineResponse20025.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20029; }> [InlineResponse20029](InlineResponse20029.md)
 
 ### Authorization
 
@@ -368,7 +368,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20025; }> [InlineResponse
 
 ## updateCrossexOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20026; }> updateCrossexOrder(orderId, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20030; }> updateCrossexOrder(orderId, opts)
 
 Modify Order
 
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20026; }> [InlineResponse20026](InlineResponse20026.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20030; }> [InlineResponse20030](InlineResponse20030.md)
 
 ### Authorization
 
@@ -466,7 +466,7 @@ Promise<{ response: AxiosResponse; body: object; }> [object](object.md)
 
 ## createCrossexConvertQuote
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20027; }> createCrossexConvertQuote(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20031; }> createCrossexConvertQuote(opts)
 
 Flash Swap Inquiry
 
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20027; }> [InlineResponse20027](InlineResponse20027.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20031; }> [InlineResponse20031](InlineResponse20031.md)
 
 ### Authorization
 
@@ -560,7 +560,7 @@ Promise<{ response: AxiosResponse; body: object; }> [object](object.md)
 
 ## getCrossexAccount
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20028; }> getCrossexAccount(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20032; }> getCrossexAccount(opts)
 
 Query Account Assets
 
@@ -594,7 +594,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20028; }> [InlineResponse20028](InlineResponse20028.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20032; }> [InlineResponse20032](InlineResponse20032.md)
 
 ### Authorization
 
@@ -654,7 +654,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse202; }> [InlineResponse20
 
 ## getCrossexPositionsLeverage
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20029>; }> getCrossexPositionsLeverage(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20033>; }> getCrossexPositionsLeverage(opts)
 
 Query Contract Trading Pair Leverage Multiplier
 
@@ -688,7 +688,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20029>; }> [InlineResponse20029](InlineResponse20029.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20033>; }> [InlineResponse20033](InlineResponse20033.md)
 
 ### Authorization
 
@@ -748,7 +748,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2021; }> [InlineResponse2
 
 ## getCrossexMarginPositionsLeverage
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20029>; }> getCrossexMarginPositionsLeverage(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20033>; }> getCrossexMarginPositionsLeverage(opts)
 
 Query Leveraged Trading Pair Leverage Multiplier
 
@@ -782,7 +782,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20029>; }> [InlineResponse20029](InlineResponse20029.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20033>; }> [InlineResponse20033](InlineResponse20033.md)
 
 ### Authorization
 
@@ -842,7 +842,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2021; }> [InlineResponse2
 
 ## closeCrossexPosition
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20024; }> closeCrossexPosition(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20028; }> closeCrossexPosition(opts)
 
 Full Close Position
 
@@ -876,7 +876,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20024; }> [InlineResponse20024](InlineResponse20024.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20028; }> [InlineResponse20028](InlineResponse20028.md)
 
 ### Authorization
 
@@ -889,7 +889,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20024; }> [InlineResponse
 
 ## getCrossexInterestRate
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20030>; }> getCrossexInterestRate(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20034>; }> getCrossexInterestRate(opts)
 
 Query margin asset interest rates
 
@@ -925,7 +925,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20030>; }> [InlineResponse20030](InlineResponse20030.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20034>; }> [InlineResponse20034](InlineResponse20034.md)
 
 ### Authorization
 
@@ -938,7 +938,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20030>; }> [InlineR
 
 ## getCrossexFee
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20031; }> getCrossexFee()
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20035; }> getCrossexFee()
 
 Query User Fee Rates
 
@@ -966,7 +966,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20031; }> [InlineResponse20031](InlineResponse20031.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20035; }> [InlineResponse20035](InlineResponse20035.md)
 
 ### Authorization
 
@@ -979,7 +979,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20031; }> [InlineResponse
 
 ## listCrossexPositions
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20032>; }> listCrossexPositions(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20036>; }> listCrossexPositions(opts)
 
 Query Contract Positions
 
@@ -1015,7 +1015,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20032>; }> [InlineResponse20032](InlineResponse20032.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20036>; }> [InlineResponse20036](InlineResponse20036.md)
 
 ### Authorization
 
@@ -1028,7 +1028,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20032>; }> [InlineR
 
 ## listCrossexMarginPositions
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20033>; }> listCrossexMarginPositions(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20037>; }> listCrossexMarginPositions(opts)
 
 Query Leveraged Positions
 
@@ -1064,7 +1064,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20033>; }> [InlineResponse20033](InlineResponse20033.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20037>; }> [InlineResponse20037](InlineResponse20037.md)
 
 ### Authorization
 
@@ -1077,7 +1077,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20033>; }> [InlineR
 
 ## listCrossexAdlRank
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20034>; }> listCrossexAdlRank(symbol)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20038>; }> listCrossexAdlRank(symbol)
 
 Query ADL Position Reduction Ranking
 
@@ -1109,7 +1109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20034>; }> [InlineResponse20034](InlineResponse20034.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20038>; }> [InlineResponse20038](InlineResponse20038.md)
 
 ### Authorization
 
@@ -1122,7 +1122,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20034>; }> [InlineR
 
 ## listCrossexOpenOrders
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20025>; }> listCrossexOpenOrders(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20029>; }> listCrossexOpenOrders(opts)
 
 Query All Current Open Orders
 
@@ -1160,7 +1160,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20025>; }> [InlineResponse20025](InlineResponse20025.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20029>; }> [InlineResponse20029](InlineResponse20029.md)
 
 ### Authorization
 
@@ -1173,7 +1173,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20025>; }> [InlineR
 
 ## listCrossexHistoryOrders
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20035>; }> listCrossexHistoryOrders(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20039>; }> listCrossexHistoryOrders(opts)
 
 queryorderhistory
 
@@ -1215,7 +1215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20035>; }> [InlineResponse20035](InlineResponse20035.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20039>; }> [InlineResponse20039](InlineResponse20039.md)
 
 ### Authorization
 
@@ -1228,7 +1228,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20035>; }> [InlineR
 
 ## listCrossexHistoryPositions
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20036>; }> listCrossexHistoryPositions(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20040>; }> listCrossexHistoryPositions(opts)
 
 Query Contract Position History
 
@@ -1270,7 +1270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20036>; }> [InlineResponse20036](InlineResponse20036.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20040>; }> [InlineResponse20040](InlineResponse20040.md)
 
 ### Authorization
 
@@ -1283,7 +1283,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20036>; }> [InlineR
 
 ## listCrossexHistoryMarginPositions
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20037>; }> listCrossexHistoryMarginPositions(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20041>; }> listCrossexHistoryMarginPositions(opts)
 
 Query Leveraged Position History
 
@@ -1325,7 +1325,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20037>; }> [InlineResponse20037](InlineResponse20037.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20041>; }> [InlineResponse20041](InlineResponse20041.md)
 
 ### Authorization
 
@@ -1338,7 +1338,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20037>; }> [InlineR
 
 ## listCrossexHistoryMarginInterests
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20038>; }> listCrossexHistoryMarginInterests(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20042>; }> listCrossexHistoryMarginInterests(opts)
 
 Query Leveraged Interest Deduction History
 
@@ -1382,7 +1382,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20038>; }> [InlineResponse20038](InlineResponse20038.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20042>; }> [InlineResponse20042](InlineResponse20042.md)
 
 ### Authorization
 
@@ -1395,7 +1395,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20038>; }> [InlineR
 
 ## listCrossexHistoryTrades
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20039>; }> listCrossexHistoryTrades(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20043>; }> listCrossexHistoryTrades(opts)
 
 queryfilledhistory
 
@@ -1437,7 +1437,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20039>; }> [InlineResponse20039](InlineResponse20039.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20043>; }> [InlineResponse20043](InlineResponse20043.md)
 
 ### Authorization
 
@@ -1450,7 +1450,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20039>; }> [InlineR
 
 ## listCrossexAccountBook
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20040>; }> listCrossexAccountBook(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20044>; }> listCrossexAccountBook(opts)
 
 Query Account Asset Change History
 
@@ -1492,7 +1492,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20040>; }> [InlineResponse20040](InlineResponse20040.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20044>; }> [InlineResponse20044](InlineResponse20044.md)
 
 ### Authorization
 
@@ -1505,7 +1505,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20040>; }> [InlineR
 
 ## listCrossexCoinDiscountRate
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20041>; }> listCrossexCoinDiscountRate(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20045>; }> listCrossexCoinDiscountRate(opts)
 
 Query currency discount rate (discount rate of margin currency in isolated exchange mode)
 
@@ -1541,7 +1541,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20041>; }> [InlineResponse20041](InlineResponse20041.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20045>; }> [InlineResponse20045](InlineResponse20045.md)
 
 ### Authorization
 

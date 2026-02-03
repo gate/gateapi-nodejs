@@ -11,196 +11,25 @@
 
 export class InlineResponse20033 {
     /**
-     * User ID
-     */
-    'userId': string;
-    /**
-     * Leveraged Position ID
-     */
-    'positionId': string;
-    /**
-     * Trading Pair
+     * Currency pair
      */
     'symbol': string;
     /**
-     * Position Direction
-     */
-    'positionSide': string;
-    /**
-     * Initial position margin
-     */
-    'initialMargin': string;
-    /**
-     * Position maintenance margin
-     */
-    'maintenanceMargin': string;
-    /**
-     * Position Asset Quantity
-     */
-    'assetQty': string;
-    /**
-     * Position Asset Currency
-     */
-    'assetCoin': string;
-    /**
-     * Position Value
-     */
-    'positionValue': string;
-    /**
-     * Debt Quantity
-     */
-    'liability': string;
-    /**
-     * Debt Currency
-     */
-    'liabilityCoin': string;
-    /**
-     * Deducted Interest
-     */
-    'interest': string;
-    /**
-     * Max Trade Size
-     */
-    'maxPositionQty': string;
-    /**
-     * Position Cost Price (Average Opening Price)
-     */
-    'entryPrice': string;
-    /**
-     * Index price
-     */
-    'indexPrice': string;
-    /**
-     * Unrealized P&L
-     */
-    'upnl': string;
-    /**
-     * Unrealized P&L Ratio
-     */
-    'upnlRate': string;
-    /**
-     * Opening Leverage
+     * leverage
      */
     'leverage': string;
-    /**
-     * Maximum leverage
-     */
-    'maxLeverage': string;
-    /**
-     * Created time
-     */
-    'createTime': string;
-    /**
-     * Update time
-     */
-    'updateTime': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'string',
-        },
-        {
-            name: 'positionId',
-            baseName: 'position_id',
-            type: 'string',
-        },
         {
             name: 'symbol',
             baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'positionSide',
-            baseName: 'position_side',
-            type: 'string',
-        },
-        {
-            name: 'initialMargin',
-            baseName: 'initial_margin',
-            type: 'string',
-        },
-        {
-            name: 'maintenanceMargin',
-            baseName: 'maintenance_margin',
-            type: 'string',
-        },
-        {
-            name: 'assetQty',
-            baseName: 'asset_qty',
-            type: 'string',
-        },
-        {
-            name: 'assetCoin',
-            baseName: 'asset_coin',
-            type: 'string',
-        },
-        {
-            name: 'positionValue',
-            baseName: 'position_value',
-            type: 'string',
-        },
-        {
-            name: 'liability',
-            baseName: 'liability',
-            type: 'string',
-        },
-        {
-            name: 'liabilityCoin',
-            baseName: 'liability_coin',
-            type: 'string',
-        },
-        {
-            name: 'interest',
-            baseName: 'interest',
-            type: 'string',
-        },
-        {
-            name: 'maxPositionQty',
-            baseName: 'max_position_qty',
-            type: 'string',
-        },
-        {
-            name: 'entryPrice',
-            baseName: 'entry_price',
-            type: 'string',
-        },
-        {
-            name: 'indexPrice',
-            baseName: 'index_price',
-            type: 'string',
-        },
-        {
-            name: 'upnl',
-            baseName: 'upnl',
-            type: 'string',
-        },
-        {
-            name: 'upnlRate',
-            baseName: 'upnl_rate',
-            type: 'string',
-        },
-        {
             name: 'leverage',
             baseName: 'leverage',
-            type: 'string',
-        },
-        {
-            name: 'maxLeverage',
-            baseName: 'max_leverage',
-            type: 'string',
-        },
-        {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'string',
-        },
-        {
-            name: 'updateTime',
-            baseName: 'update_time',
             type: 'string',
         },
     ];
