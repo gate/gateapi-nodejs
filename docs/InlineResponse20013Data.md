@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **needReplenish** | **number** | Whether margin replenishment is needed | [default to undefined]
 **merchantInfo** | [**InlineResponse20013DataMerchantInfo**](InlineResponse20013DataMerchantInfo.md) |  | [default to undefined]
 **onlineStatus** | **number** | Merchant online status | [default to undefined]
-**workHours** | [**AnyType**](.md) | Merchant online status details | [default to undefined]
+**workHours** | [**object**](.md) | Merchant online status details | [default to undefined]
 **transactionsMonth** | **number** | 30-day transaction volume | [default to undefined]
 **transactionsAll** | **number** | Total transaction volume | [default to undefined]
 **tradeVersatile** | **boolean** | Single user or composite user | [default to undefined]

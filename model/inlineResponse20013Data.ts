@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-import { AnyType } from './anyType';
 import { InlineResponse20013DataMerchantInfo } from './inlineResponse20013DataMerchantInfo';
 
 export class InlineResponse20013Data {
@@ -121,7 +120,7 @@ export class InlineResponse20013Data {
     /**
      * Merchant online status details
      */
-    'workHours': AnyType | null;
+    'workHours': object | null;
     /**
      * 30-day transaction volume
      */
@@ -276,7 +275,7 @@ export class InlineResponse20013Data {
         {
             name: 'workHours',
             baseName: 'work_hours',
-            type: 'AnyType',
+            type: 'object',
         },
         {
             name: 'transactionsMonth',

@@ -310,7 +310,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject20, 'InlineObject20'),
+            data: ObjectSerializer.serialize(opts.inlineObject20, 'InlineObject20'),
         };
 
         const authSettings = ['apiv4'];
@@ -344,7 +344,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject21, 'InlineObject21'),
+            data: ObjectSerializer.serialize(opts.inlineObject21, 'InlineObject21'),
         };
 
         const authSettings = ['apiv4'];
@@ -422,7 +422,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject22, 'InlineObject22'),
+            data: ObjectSerializer.serialize(opts.inlineObject22, 'InlineObject22'),
         };
 
         const authSettings = ['apiv4'];
@@ -465,7 +465,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(body, 'object'),
+            data: ObjectSerializer.serialize(opts.body, 'object'),
         };
 
         const authSettings = ['apiv4'];
@@ -499,7 +499,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject23, 'InlineObject23'),
+            data: ObjectSerializer.serialize(opts.inlineObject23, 'InlineObject23'),
         };
 
         const authSettings = ['apiv4'];
@@ -533,7 +533,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject24, 'InlineObject24'),
+            data: ObjectSerializer.serialize(opts.inlineObject24, 'InlineObject24'),
         };
 
         const authSettings = ['apiv4'];
@@ -608,7 +608,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject25, 'InlineObject25'),
+            data: ObjectSerializer.serialize(opts.inlineObject25, 'InlineObject25'),
         };
 
         const authSettings = ['apiv4'];
@@ -683,7 +683,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject26, 'InlineObject26'),
+            data: ObjectSerializer.serialize(opts.inlineObject26, 'InlineObject26'),
         };
 
         const authSettings = ['apiv4'];
@@ -758,7 +758,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject27, 'InlineObject27'),
+            data: ObjectSerializer.serialize(opts.inlineObject27, 'InlineObject27'),
         };
 
         const authSettings = ['apiv4'];
@@ -792,7 +792,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject28, 'InlineObject28'),
+            data: ObjectSerializer.serialize(opts.inlineObject28, 'InlineObject28'),
         };
 
         const authSettings = ['apiv4'];

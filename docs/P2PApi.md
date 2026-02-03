@@ -579,7 +579,7 @@ No authorization required
 
 ## p2pMerchantBooksAdsDetail
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20019; }> p2pMerchantBooksAdsDetail(advNo, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20019; }> p2pMerchantBooksAdsDetail(advNo)
 
 Query ad details
 
@@ -593,10 +593,7 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.P2PApi(client);
 const advNo = "advNo_example"; // string | 
-const opts = {
-  '': 56 // number | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
-};
-api.p2pMerchantBooksAdsDetail(advNo, opts)
+api.p2pMerchantBooksAdsDetail(advNo)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -607,7 +604,6 @@ api.p2pMerchantBooksAdsDetail(advNo, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **advNo** | **string**|  | [default to undefined]
- **** | **number**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | [optional] [default to undefined]
 
 ### Return type
 

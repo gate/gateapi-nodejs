@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 /* tslint:disable:no-unused-locals */
 import { InlineObject10 } from '../model/inlineObject10';
 import { InlineObject11 } from '../model/inlineObject11';
@@ -46,10 +45,10 @@ export class P2PApi {
     }
 
     /**
-     * 
+     *
      * @summary Get account information
      */
-    public async p2pMerchantAccountGetUserInfo() : Promise<{ response: AxiosResponse; body: InlineResponse20013; }> {
+    public async p2pMerchantAccountGetUserInfo(): Promise<{ response: AxiosResponse; body: InlineResponse20013 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/account/get_user_info';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -61,7 +60,6 @@ export class P2PApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
@@ -70,15 +68,17 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20013>(config, "InlineResponse20013", authSettings);
+        return this.client.request<InlineResponse20013>(config, 'InlineResponse20013', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get counterparty information
      * @param bizUid Counterparty UID (encrypted)
      */
-    public async p2pMerchantAccountGetCounterpartyUserInfo(bizUid: string) : Promise<{ response: AxiosResponse; body: InlineResponse20014; }> {
+    public async p2pMerchantAccountGetCounterpartyUserInfo(
+        bizUid: string,
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20014 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/account/get_counterparty_user_info';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -92,9 +92,10 @@ export class P2PApi {
 
         // verify required parameter 'bizUid' is not null or undefined
         if (bizUid === null || bizUid === undefined) {
-            throw new Error('Required parameter bizUid was null or undefined when calling p2pMerchantAccountGetCounterpartyUserInfo.');
+            throw new Error(
+                'Required parameter bizUid was null or undefined when calling p2pMerchantAccountGetCounterpartyUserInfo.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -104,16 +105,18 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20014>(config, "InlineResponse20014", authSettings);
+        return this.client.request<InlineResponse20014>(config, 'InlineResponse20014', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get payment method list
      * @param opts Optional parameters
      * @param opts.fiat Fiat currency
      */
-    public async p2pMerchantAccountGetMyselfPayment(opts: { fiat?: string,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse20015; }> {
+    public async p2pMerchantAccountGetMyselfPayment(opts: {
+        fiat?: string;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20015 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/account/get_myself_payment';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -135,11 +138,11 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20015>(config, "InlineResponse20015", authSettings);
+        return this.client.request<InlineResponse20015>(config, 'InlineResponse20015', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get pending orders
      * @param cryptoCurrency Cryptocurrency
      * @param fiatCurrency Fiat currency
@@ -151,7 +154,18 @@ export class P2PApi {
      * @param opts.startTime Start timestamp, default is 00:00 89 days ago
      * @param opts.endTime End timestamp, default is 23:59:59 today
      */
-    public async p2pMerchantTransactionGetPendingTransactionList(cryptoCurrency: string, fiatCurrency: string, opts: { orderTab?: string, selectType?: string, status?: string, txid?: number, startTime?: number, endTime?: number,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse20016; }> {
+    public async p2pMerchantTransactionGetPendingTransactionList(
+        cryptoCurrency: string,
+        fiatCurrency: string,
+        opts: {
+            orderTab?: string;
+            selectType?: string;
+            status?: string;
+            txid?: number;
+            startTime?: number;
+            endTime?: number;
+        },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20016 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/get_pending_transaction_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -165,12 +179,16 @@ export class P2PApi {
 
         // verify required parameter 'cryptoCurrency' is not null or undefined
         if (cryptoCurrency === null || cryptoCurrency === undefined) {
-            throw new Error('Required parameter cryptoCurrency was null or undefined when calling p2pMerchantTransactionGetPendingTransactionList.');
+            throw new Error(
+                'Required parameter cryptoCurrency was null or undefined when calling p2pMerchantTransactionGetPendingTransactionList.',
+            );
         }
 
         // verify required parameter 'fiatCurrency' is not null or undefined
         if (fiatCurrency === null || fiatCurrency === undefined) {
-            throw new Error('Required parameter fiatCurrency was null or undefined when calling p2pMerchantTransactionGetPendingTransactionList.');
+            throw new Error(
+                'Required parameter fiatCurrency was null or undefined when calling p2pMerchantTransactionGetPendingTransactionList.',
+            );
         }
 
         opts = opts || {};
@@ -183,11 +201,11 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20016>(config, "InlineResponse20016", authSettings);
+        return this.client.request<InlineResponse20016>(config, 'InlineResponse20016', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get all/historical orders
      * @param cryptoCurrency Cryptocurrency
      * @param fiatCurrency Fiat currency
@@ -201,7 +219,20 @@ export class P2PApi {
      * @param opts.page page number
      * @param opts.perPage Number of orders per page
      */
-    public async p2pMerchantTransactionGetCompletedTransactionList(cryptoCurrency: string, fiatCurrency: string, opts: { selectType?: string, status?: string, txid?: number, startTime?: number, endTime?: number, queryDispute?: number, page?: number, perPage?: number,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse20016; }> {
+    public async p2pMerchantTransactionGetCompletedTransactionList(
+        cryptoCurrency: string,
+        fiatCurrency: string,
+        opts: {
+            selectType?: string;
+            status?: string;
+            txid?: number;
+            startTime?: number;
+            endTime?: number;
+            queryDispute?: number;
+            page?: number;
+            perPage?: number;
+        },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20016 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/get_completed_transaction_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -215,12 +246,16 @@ export class P2PApi {
 
         // verify required parameter 'cryptoCurrency' is not null or undefined
         if (cryptoCurrency === null || cryptoCurrency === undefined) {
-            throw new Error('Required parameter cryptoCurrency was null or undefined when calling p2pMerchantTransactionGetCompletedTransactionList.');
+            throw new Error(
+                'Required parameter cryptoCurrency was null or undefined when calling p2pMerchantTransactionGetCompletedTransactionList.',
+            );
         }
 
         // verify required parameter 'fiatCurrency' is not null or undefined
         if (fiatCurrency === null || fiatCurrency === undefined) {
-            throw new Error('Required parameter fiatCurrency was null or undefined when calling p2pMerchantTransactionGetCompletedTransactionList.');
+            throw new Error(
+                'Required parameter fiatCurrency was null or undefined when calling p2pMerchantTransactionGetCompletedTransactionList.',
+            );
         }
 
         opts = opts || {};
@@ -233,17 +268,20 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20016>(config, "InlineResponse20016", authSettings);
+        return this.client.request<InlineResponse20016>(config, 'InlineResponse20016', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query order details
      * @param txid Order ID
      * @param opts Optional parameters
      * @param opts.channel Empty or web3
      */
-    public async p2pMerchantTransactionGetTransactionDetails(txid: number, opts: { channel?: string,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse20017; }> {
+    public async p2pMerchantTransactionGetTransactionDetails(
+        txid: number,
+        opts: { channel?: string },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20017 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/get_transaction_details';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -257,7 +295,9 @@ export class P2PApi {
 
         // verify required parameter 'txid' is not null or undefined
         if (txid === null || txid === undefined) {
-            throw new Error('Required parameter txid was null or undefined when calling p2pMerchantTransactionGetTransactionDetails.');
+            throw new Error(
+                'Required parameter txid was null or undefined when calling p2pMerchantTransactionGetTransactionDetails.',
+            );
         }
 
         opts = opts || {};
@@ -270,16 +310,18 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20017>(config, "InlineResponse20017", authSettings);
+        return this.client.request<InlineResponse20017>(config, 'InlineResponse20017', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Confirm payment
      * @param opts Optional parameters
-     * @param opts.inlineObject10 
+     * @param opts.inlineObject10
      */
-    public async p2pMerchantTransactionConfirmPayment(opts: { inlineObject10?: InlineObject10,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse2007; }> {
+    public async p2pMerchantTransactionConfirmPayment(opts: {
+        inlineObject10?: InlineObject10;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/confirm-payment';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -298,20 +340,22 @@ export class P2PApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject10, "InlineObject10")
+            data: ObjectSerializer.serialize(opts.inlineObject10, 'InlineObject10'),
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse2007>(config, "InlineResponse2007", authSettings);
+        return this.client.request<InlineResponse2007>(config, 'InlineResponse2007', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Confirm receipt
      * @param opts Optional parameters
-     * @param opts.inlineObject11 
+     * @param opts.inlineObject11
      */
-    public async p2pMerchantTransactionConfirmReceipt(opts: { inlineObject11?: InlineObject11,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse2007; }> {
+    public async p2pMerchantTransactionConfirmReceipt(opts: {
+        inlineObject11?: InlineObject11;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/confirm-receipt';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -330,20 +374,22 @@ export class P2PApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject11, "InlineObject11")
+            data: ObjectSerializer.serialize(opts.inlineObject11, 'InlineObject11'),
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse2007>(config, "InlineResponse2007", authSettings);
+        return this.client.request<InlineResponse2007>(config, 'InlineResponse2007', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Cancel order
      * @param opts Optional parameters
-     * @param opts.inlineObject12 
+     * @param opts.inlineObject12
      */
-    public async p2pMerchantTransactionCancel(opts: { inlineObject12?: InlineObject12,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse2007; }> {
+    public async p2pMerchantTransactionCancel(opts: {
+        inlineObject12?: InlineObject12;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/cancel';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -362,15 +408,15 @@ export class P2PApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject12, "InlineObject12")
+            data: ObjectSerializer.serialize(opts.inlineObject12, 'InlineObject12'),
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse2007>(config, "InlineResponse2007", authSettings);
+        return this.client.request<InlineResponse2007>(config, 'InlineResponse2007', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Publish ad order
      * @param currencyType Cryptocurrency
      * @param exchangeType Fiat currency
@@ -401,7 +447,37 @@ export class P2PApi {
      * @param opts.rateOffset Reference exchange rate offset
      * @param opts.floatTrend 444
      */
-    public async p2pMerchantBooksPlaceBizPushOrder(currencyType: string, exchangeType: string, type: string, unitPrice: string, number: string, minAmount: string, maxAmount: string, opts: { payType?: string, payTypeJson?: string, rateFixed?: string, oid?: string, tierLimit?: string, verifiedLimit?: string, regTimeLimit?: string, advertisersLimit?: string, hidePayment?: string, expireMin?: string, tradeTips?: string, autoReply?: string, minCompletedLimit?: string, maxCompletedLimit?: string, completedRateLimit?: string, userCountryLimit?: string, userOrderLimit?: string, rateReferenceId?: string, rateOffset?: string, floatTrend?: string,  } ) : Promise<{ response: AxiosResponse; body: object; }> {
+    public async p2pMerchantBooksPlaceBizPushOrder(
+        currencyType: string,
+        exchangeType: string,
+        type: string,
+        unitPrice: string,
+        number: string,
+        minAmount: string,
+        maxAmount: string,
+        opts: {
+            payType?: string;
+            payTypeJson?: string;
+            rateFixed?: string;
+            oid?: string;
+            tierLimit?: string;
+            verifiedLimit?: string;
+            regTimeLimit?: string;
+            advertisersLimit?: string;
+            hidePayment?: string;
+            expireMin?: string;
+            tradeTips?: string;
+            autoReply?: string;
+            minCompletedLimit?: string;
+            maxCompletedLimit?: string;
+            completedRateLimit?: string;
+            userCountryLimit?: string;
+            userOrderLimit?: string;
+            rateReferenceId?: string;
+            rateOffset?: string;
+            floatTrend?: string;
+        },
+    ): Promise<{ response: AxiosResponse; body: object }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/books/place_biz_push_order';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -415,37 +491,51 @@ export class P2PApi {
 
         // verify required parameter 'currencyType' is not null or undefined
         if (currencyType === null || currencyType === undefined) {
-            throw new Error('Required parameter currencyType was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.');
+            throw new Error(
+                'Required parameter currencyType was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.',
+            );
         }
 
         // verify required parameter 'exchangeType' is not null or undefined
         if (exchangeType === null || exchangeType === undefined) {
-            throw new Error('Required parameter exchangeType was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.');
+            throw new Error(
+                'Required parameter exchangeType was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.',
+            );
         }
 
         // verify required parameter 'type' is not null or undefined
         if (type === null || type === undefined) {
-            throw new Error('Required parameter type was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.');
+            throw new Error(
+                'Required parameter type was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.',
+            );
         }
 
         // verify required parameter 'unitPrice' is not null or undefined
         if (unitPrice === null || unitPrice === undefined) {
-            throw new Error('Required parameter unitPrice was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.');
+            throw new Error(
+                'Required parameter unitPrice was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.',
+            );
         }
 
         // verify required parameter 'number' is not null or undefined
         if (number === null || number === undefined) {
-            throw new Error('Required parameter number was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.');
+            throw new Error(
+                'Required parameter number was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.',
+            );
         }
 
         // verify required parameter 'minAmount' is not null or undefined
         if (minAmount === null || minAmount === undefined) {
-            throw new Error('Required parameter minAmount was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.');
+            throw new Error(
+                'Required parameter minAmount was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.',
+            );
         }
 
         // verify required parameter 'maxAmount' is not null or undefined
         if (maxAmount === null || maxAmount === undefined) {
-            throw new Error('Required parameter maxAmount was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.');
+            throw new Error(
+                'Required parameter maxAmount was null or undefined when calling p2pMerchantBooksPlaceBizPushOrder.',
+            );
         }
 
         opts = opts || {};
@@ -458,18 +548,22 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<object>(config, "object", authSettings);
+        return this.client.request<object>(config, 'object', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Update ad status
      * @param advNo Ad ID
      * @param advStatus Ad status: 1&#x3D;Active, 3&#x3D;Inactive, 4&#x3D;Closed
      * @param opts Optional parameters
-     * @param opts.tradeType Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
+     * @param opts.tradeType Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
      */
-    public async p2pMerchantBooksAdsUpdateStatus(advNo: number, advStatus: number, opts: { tradeType?: string,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse20018; }> {
+    public async p2pMerchantBooksAdsUpdateStatus(
+        advNo: number,
+        advStatus: number,
+        opts: { tradeType?: string },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20018 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/books/ads_update_status';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -483,24 +577,27 @@ export class P2PApi {
 
         // verify required parameter 'advNo' is not null or undefined
         if (advNo === null || advNo === undefined) {
-            throw new Error('Required parameter advNo was null or undefined when calling p2pMerchantBooksAdsUpdateStatus.');
+            throw new Error(
+                'Required parameter advNo was null or undefined when calling p2pMerchantBooksAdsUpdateStatus.',
+            );
         }
 
         // verify required parameter 'advStatus' is not null or undefined
         if (advStatus === null || advStatus === undefined) {
-            throw new Error('Required parameter advStatus was null or undefined when calling p2pMerchantBooksAdsUpdateStatus.');
+            throw new Error(
+                'Required parameter advStatus was null or undefined when calling p2pMerchantBooksAdsUpdateStatus.',
+            );
         }
 
         opts = opts || {};
         if (opts.tradeType !== undefined) {
-            let tradeTypeSerialized = ObjectSerializer.serialize(opts.tradeType, "string");
+            let tradeTypeSerialized = ObjectSerializer.serialize(opts.tradeType, 'string');
             // For array query parameters with style:form and explode:false, convert to comma-separated string
             if (Array.isArray(tradeTypeSerialized)) {
                 tradeTypeSerialized = tradeTypeSerialized.join(',');
             }
             localVarQueryParameters['trade_type'] = tradeTypeSerialized;
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -510,17 +607,17 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20018>(config, "InlineResponse20018", authSettings);
+        return this.client.request<InlineResponse20018>(config, 'InlineResponse20018', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query ad details
-     * @param advNo 
-     * @param opts Optional parameters
-     * @param opts. Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
+     * @param advNo
      */
-    public async p2pMerchantBooksAdsDetail(advNo: string, opts: { ?: number,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse20019; }> {
+    public async p2pMerchantBooksAdsDetail(
+        advNo: string,
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20019 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/books/ads_detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -537,17 +634,6 @@ export class P2PApi {
             throw new Error('Required parameter advNo was null or undefined when calling p2pMerchantBooksAdsDetail.');
         }
 
-        opts = opts || {};
-        if (opts. !== undefined) {
-            let Serialized = ObjectSerializer.serialize(opts., "number");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(Serialized)) {
-                Serialized = Serialized.join(',');
-            }
-            localVarQueryParameters['&#x3D;'] = Serialized;
-        }
-
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
@@ -556,18 +642,22 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20019>(config, "InlineResponse20019", authSettings);
+        return this.client.request<InlineResponse20019>(config, 'InlineResponse20019', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get my ad list
      * @param opts Optional parameters
      * @param opts.asset Cryptocurrency
      * @param opts.fiatUnit Fiat currency
      * @param opts.tradeType Buy/Sell
      */
-    public async p2pMerchantBooksMyAdsList(opts: { asset?: string, fiatUnit?: string, tradeType?: string,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse20020; }> {
+    public async p2pMerchantBooksMyAdsList(opts: {
+        asset?: string;
+        fiatUnit?: string;
+        tradeType?: string;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20020 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/books/my_ads_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -589,18 +679,21 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20020>(config, "InlineResponse20020", authSettings);
+        return this.client.request<InlineResponse20020>(config, 'InlineResponse20020', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get chat history
      * @param txid Order ID
      * @param opts Optional parameters
      * @param opts.lastreceived Pagination timestamp (forward)
      * @param opts.firstreceived Pagination timestamp (backward)
      */
-    public async p2pMerchantChatGetChatsList(txid: number, opts: { lastreceived?: number, firstreceived?: number,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse20021; }> {
+    public async p2pMerchantChatGetChatsList(
+        txid: number,
+        opts: { lastreceived?: number; firstreceived?: number },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20021 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/get_chats_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -627,18 +720,22 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20021>(config, "InlineResponse20021", authSettings);
+        return this.client.request<InlineResponse20021>(config, 'InlineResponse20021', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Send text message
      * @param txid Order ID
      * @param message Message content
      * @param opts Optional parameters
      * @param opts.type 0&#x3D;Text, 1&#x3D;File (video or image), default is 0 if not provided
      */
-    public async p2pMerchantChatSendChatMessage(txid: number, message: string, opts: { type?: number,  } ) : Promise<{ response: AxiosResponse; body: InlineResponse20022; }> {
+    public async p2pMerchantChatSendChatMessage(
+        txid: number,
+        message: string,
+        opts: { type?: number },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20022 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/send_chat_message';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -652,12 +749,16 @@ export class P2PApi {
 
         // verify required parameter 'txid' is not null or undefined
         if (txid === null || txid === undefined) {
-            throw new Error('Required parameter txid was null or undefined when calling p2pMerchantChatSendChatMessage.');
+            throw new Error(
+                'Required parameter txid was null or undefined when calling p2pMerchantChatSendChatMessage.',
+            );
         }
 
         // verify required parameter 'message' is not null or undefined
         if (message === null || message === undefined) {
-            throw new Error('Required parameter message was null or undefined when calling p2pMerchantChatSendChatMessage.');
+            throw new Error(
+                'Required parameter message was null or undefined when calling p2pMerchantChatSendChatMessage.',
+            );
         }
 
         opts = opts || {};
@@ -670,16 +771,19 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20022>(config, "InlineResponse20022", authSettings);
+        return this.client.request<InlineResponse20022>(config, 'InlineResponse20022', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Upload chat file
      * @param imageContentType File type, currently only images and videos are supported
      * @param base64Img File content (base64 encoded)
      */
-    public async p2pMerchantChatUploadChatFile(imageContentType: string, base64Img: string) : Promise<{ response: AxiosResponse; body: InlineResponse20023; }> {
+    public async p2pMerchantChatUploadChatFile(
+        imageContentType: string,
+        base64Img: string,
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20023 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/upload_chat_file';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -693,14 +797,17 @@ export class P2PApi {
 
         // verify required parameter 'imageContentType' is not null or undefined
         if (imageContentType === null || imageContentType === undefined) {
-            throw new Error('Required parameter imageContentType was null or undefined when calling p2pMerchantChatUploadChatFile.');
+            throw new Error(
+                'Required parameter imageContentType was null or undefined when calling p2pMerchantChatUploadChatFile.',
+            );
         }
 
         // verify required parameter 'base64Img' is not null or undefined
         if (base64Img === null || base64Img === undefined) {
-            throw new Error('Required parameter base64Img was null or undefined when calling p2pMerchantChatUploadChatFile.');
+            throw new Error(
+                'Required parameter base64Img was null or undefined when calling p2pMerchantChatUploadChatFile.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -710,6 +817,6 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20023>(config, "InlineResponse20023", authSettings);
+        return this.client.request<InlineResponse20023>(config, 'InlineResponse20023', authSettings);
     }
 }
