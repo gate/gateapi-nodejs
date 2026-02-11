@@ -1,4 +1,4 @@
-# InlineResponse20013DataMerchantInfo
+# InlineResponse20014DataMerchantInfo
 
 ## Properties
 

@@ -37,7 +37,7 @@ const api = new GateApi.RebateApi(client);
 const opts = {
   'currencyPair': "BTC_USDT", // string | Specify the trading pair. If not specified, returns all trading pairs
   'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1602120000, // number | Start time for querying records, defaults to 7 days before current time if not specified
+  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
   'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Specify the trading pair. If not specified, returns all trading pairs | [optional] [default to undefined]
  **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time for querying records, defaults to 7 days before current time if not specified | [optional] [default to undefined]
+ **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
@@ -95,7 +95,7 @@ const opts = {
   'currency': "BTC", // string | Specify the currency. If not specified, returns all currencies
   'commissionType': 1, // number | Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate
   'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1602120000, // number | Start time for querying records, defaults to 7 days before current time if not specified
+  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
   'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
  **currency** | **string**| Specify the currency. If not specified, returns all currencies | [optional] [default to undefined]
  **commissionType** | **number**| Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate | [optional] [default to undefined]
  **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time for querying records, defaults to 7 days before current time if not specified | [optional] [default to undefined]
+ **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
@@ -153,7 +153,7 @@ const api = new GateApi.RebateApi(client);
 const opts = {
   'currencyPair': "BTC_USDT", // string | Specify the trading pair. If not specified, returns all trading pairs
   'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1602120000, // number | Start time for querying records, defaults to 7 days before current time if not specified
+  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
   'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Specify the trading pair. If not specified, returns all trading pairs | [optional] [default to undefined]
  **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time for querying records, defaults to 7 days before current time if not specified | [optional] [default to undefined]
+ **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
@@ -210,7 +210,7 @@ const api = new GateApi.RebateApi(client);
 const opts = {
   'currency': "BTC", // string | Specify the currency. If not specified, returns all currencies
   'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1602120000, // number | Start time for querying records, defaults to 7 days before current time if not specified
+  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
   'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Specify the currency. If not specified, returns all currencies | [optional] [default to undefined]
  **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time for querying records, defaults to 7 days before current time if not specified | [optional] [default to undefined]
+ **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]

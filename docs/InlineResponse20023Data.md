@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**fileKey** | **string** | File key | [default to undefined]
+**sRVTM** | **number** | Timestamp when message was successfully sent (current timestamp) | [default to undefined]
 

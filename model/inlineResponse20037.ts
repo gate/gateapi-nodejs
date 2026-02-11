@@ -13,87 +13,87 @@ export class InlineResponse20037 {
     /**
      * User ID
      */
-    'userId': string;
+    'userId'?: string;
     /**
-     * Leveraged Position ID
+     * Position ID
      */
-    'positionId': string;
+    'positionId'?: string;
     /**
-     * Trading Pair
+     * Currency pair
      */
-    'symbol': string;
+    'symbol'?: string;
     /**
      * Position Direction
      */
-    'positionSide': string;
+    'positionSide'?: string;
     /**
-     * Initial position margin
+     * Initial Margin
      */
-    'initialMargin': string;
+    'initialMargin'?: string;
     /**
-     * Position maintenance margin
+     * Maintenance margin
      */
-    'maintenanceMargin': string;
+    'maintenanceMargin'?: string;
     /**
-     * Position Asset Quantity
+     * Position Quantity
      */
-    'assetQty': string;
-    /**
-     * Position Asset Currency
-     */
-    'assetCoin': string;
+    'positionQty'?: string;
     /**
      * Position Value
      */
-    'positionValue': string;
-    /**
-     * Debt Quantity
-     */
-    'liability': string;
-    /**
-     * Debt Currency
-     */
-    'liabilityCoin': string;
-    /**
-     * Deducted Interest
-     */
-    'interest': string;
-    /**
-     * Max Trade Size
-     */
-    'maxPositionQty': string;
-    /**
-     * Position Cost Price (Average Opening Price)
-     */
-    'entryPrice': string;
-    /**
-     * Index price
-     */
-    'indexPrice': string;
+    'positionValue'?: string;
     /**
      * Unrealized P&L
      */
-    'upnl': string;
+    'upnl'?: string;
     /**
      * Unrealized P&L Ratio
      */
-    'upnlRate': string;
+    'upnlRate'?: string;
     /**
-     * Opening Leverage
+     * Position Average Entry Price
      */
-    'leverage': string;
+    'entryPrice'?: string;
+    /**
+     * Mark price
+     */
+    'markPrice'?: string;
+    /**
+     * Position Leverage
+     */
+    'leverage'?: string;
     /**
      * Maximum leverage
      */
-    'maxLeverage': string;
+    'maxLeverage'?: string;
     /**
-     * Created time
+     * Position risk limit
      */
-    'createTime': string;
+    'riskLimit'?: string;
     /**
-     * Update time
+     * Position Fee
      */
-    'updateTime': string;
+    'fee'?: string;
+    /**
+     * Position Funding Fee
+     */
+    'fundingFee'?: string;
+    /**
+     * Position funding fee collection time (0 indicates it has not been collected yet)
+     */
+    'fundingTime'?: string;
+    /**
+     * Position Creation Time
+     */
+    'createTime'?: string;
+    /**
+     * Position Update Time
+     */
+    'updateTime'?: string;
+    /**
+     * Realized PnL
+     */
+    'closedPnl'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -129,48 +129,13 @@ export class InlineResponse20037 {
             type: 'string',
         },
         {
-            name: 'assetQty',
-            baseName: 'asset_qty',
-            type: 'string',
-        },
-        {
-            name: 'assetCoin',
-            baseName: 'asset_coin',
+            name: 'positionQty',
+            baseName: 'position_qty',
             type: 'string',
         },
         {
             name: 'positionValue',
             baseName: 'position_value',
-            type: 'string',
-        },
-        {
-            name: 'liability',
-            baseName: 'liability',
-            type: 'string',
-        },
-        {
-            name: 'liabilityCoin',
-            baseName: 'liability_coin',
-            type: 'string',
-        },
-        {
-            name: 'interest',
-            baseName: 'interest',
-            type: 'string',
-        },
-        {
-            name: 'maxPositionQty',
-            baseName: 'max_position_qty',
-            type: 'string',
-        },
-        {
-            name: 'entryPrice',
-            baseName: 'entry_price',
-            type: 'string',
-        },
-        {
-            name: 'indexPrice',
-            baseName: 'index_price',
             type: 'string',
         },
         {
@@ -184,6 +149,16 @@ export class InlineResponse20037 {
             type: 'string',
         },
         {
+            name: 'entryPrice',
+            baseName: 'entry_price',
+            type: 'string',
+        },
+        {
+            name: 'markPrice',
+            baseName: 'mark_price',
+            type: 'string',
+        },
+        {
             name: 'leverage',
             baseName: 'leverage',
             type: 'string',
@@ -194,6 +169,26 @@ export class InlineResponse20037 {
             type: 'string',
         },
         {
+            name: 'riskLimit',
+            baseName: 'risk_limit',
+            type: 'string',
+        },
+        {
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
+        },
+        {
+            name: 'fundingFee',
+            baseName: 'funding_fee',
+            type: 'string',
+        },
+        {
+            name: 'fundingTime',
+            baseName: 'funding_time',
+            type: 'string',
+        },
+        {
             name: 'createTime',
             baseName: 'create_time',
             type: 'string',
@@ -201,6 +196,11 @@ export class InlineResponse20037 {
         {
             name: 'updateTime',
             baseName: 'update_time',
+            type: 'string',
+        },
+        {
+            name: 'closedPnl',
+            baseName: 'closed_pnl',
             type: 'string',
         },
     ];

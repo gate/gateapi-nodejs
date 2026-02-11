@@ -12,7 +12,7 @@
 /**
  * Markets where user can place orders
  */
-export class InlineResponse20013DataMerchantInfo {
+export class InlineResponse20014DataMerchantInfo {
     'type': string;
     'market': string;
 
@@ -32,6 +32,6 @@ export class InlineResponse20013DataMerchantInfo {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20013DataMerchantInfo.attributeTypeMap;
+        return InlineResponse20014DataMerchantInfo.attributeTypeMap;
     }
 }

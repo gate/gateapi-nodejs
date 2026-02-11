@@ -13,7 +13,6 @@
 import { InlineObject10 } from '../model/inlineObject10';
 import { InlineObject11 } from '../model/inlineObject11';
 import { InlineObject12 } from '../model/inlineObject12';
-import { InlineResponse20013 } from '../model/inlineResponse20013';
 import { InlineResponse20014 } from '../model/inlineResponse20014';
 import { InlineResponse20015 } from '../model/inlineResponse20015';
 import { InlineResponse20016 } from '../model/inlineResponse20016';
@@ -24,6 +23,7 @@ import { InlineResponse20020 } from '../model/inlineResponse20020';
 import { InlineResponse20021 } from '../model/inlineResponse20021';
 import { InlineResponse20022 } from '../model/inlineResponse20022';
 import { InlineResponse20023 } from '../model/inlineResponse20023';
+import { InlineResponse20024 } from '../model/inlineResponse20024';
 import { InlineResponse2007 } from '../model/inlineResponse2007';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -48,7 +48,7 @@ export class P2PApi {
      *
      * @summary Get account information
      */
-    public async p2pMerchantAccountGetUserInfo(): Promise<{ response: AxiosResponse; body: InlineResponse20013 }> {
+    public async p2pMerchantAccountGetUserInfo(): Promise<{ response: AxiosResponse; body: InlineResponse20014 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/account/get_user_info';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -68,7 +68,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20013>(config, 'InlineResponse20013', authSettings);
+        return this.client.request<InlineResponse20014>(config, 'InlineResponse20014', authSettings);
     }
 
     /**
@@ -78,7 +78,7 @@ export class P2PApi {
      */
     public async p2pMerchantAccountGetCounterpartyUserInfo(
         bizUid: string,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20014 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20015 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/account/get_counterparty_user_info';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -105,7 +105,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20014>(config, 'InlineResponse20014', authSettings);
+        return this.client.request<InlineResponse20015>(config, 'InlineResponse20015', authSettings);
     }
 
     /**
@@ -116,7 +116,7 @@ export class P2PApi {
      */
     public async p2pMerchantAccountGetMyselfPayment(opts: {
         fiat?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20015 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20016 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/account/get_myself_payment';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -138,7 +138,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20015>(config, 'InlineResponse20015', authSettings);
+        return this.client.request<InlineResponse20016>(config, 'InlineResponse20016', authSettings);
     }
 
     /**
@@ -147,9 +147,9 @@ export class P2PApi {
      * @param cryptoCurrency Cryptocurrency
      * @param fiatCurrency Fiat currency
      * @param opts Optional parameters
-     * @param opts.orderTab Order tab, default is pending (pending: Processing (pending: AND status in (\\\&#39;OPEN\\\&#39;,  \\\&#39;PAID\\\&#39;, \\\&#39;LOCKED\\\&#39;, \\\&#39;TEMP\\\&#39;)); dispute: In dispute (status in (\\\&#39;ACCEPT\\\&#39;,  \\\&#39;BCLOSED\\\&#39;, \\\&#39;CANCEL\\\&#39;, \\\&#39;BECANCEL\\\&#39;, \\\&#39;SCLOSED\\\&#39;, \\\&#39;SCANCEL\\\&#39;)))
+     * @param opts.orderTab 订单标签页，默认pending（pending：处理中（pending:  AND status in (\\\&#39;OPEN\\\&#39;, \\\&#39;PAID\\\&#39;, \\\&#39;LOCKED\\\&#39;, \\\&#39;TEMP\\\&#39;)）；dispute：申诉中（status in (\\\&#39;ACCEPT\\\&#39;, \\\&#39;BCLOSED\\\&#39;, \\\&#39;CANCEL\\\&#39;, \\\&#39;BECANCEL\\\&#39;, \\\&#39;SCLOSED\\\&#39;, \\\&#39;SCANCEL\\\&#39;)))
      * @param opts.selectType Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All)
-     * @param opts.status 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+     * @param opts.status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
      * @param opts.txid Order ID
      * @param opts.startTime Start timestamp, default is 00:00 89 days ago
      * @param opts.endTime End timestamp, default is 23:59:59 today
@@ -165,7 +165,7 @@ export class P2PApi {
             startTime?: number;
             endTime?: number;
         },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20016 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20017 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/get_pending_transaction_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -201,7 +201,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20016>(config, 'InlineResponse20016', authSettings);
+        return this.client.request<InlineResponse20017>(config, 'InlineResponse20017', authSettings);
     }
 
     /**
@@ -211,7 +211,7 @@ export class P2PApi {
      * @param fiatCurrency Fiat currency
      * @param opts Optional parameters
      * @param opts.selectType Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All)
-     * @param opts.status 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+     * @param opts.status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
      * @param opts.txid Order ID
      * @param opts.startTime Start timestamp, default is 00:00 89 days ago
      * @param opts.endTime End timestamp, default is 23:59:59 today
@@ -232,7 +232,7 @@ export class P2PApi {
             page?: number;
             perPage?: number;
         },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20016 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20017 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/get_completed_transaction_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -268,7 +268,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20016>(config, 'InlineResponse20016', authSettings);
+        return this.client.request<InlineResponse20017>(config, 'InlineResponse20017', authSettings);
     }
 
     /**
@@ -281,7 +281,7 @@ export class P2PApi {
     public async p2pMerchantTransactionGetTransactionDetails(
         txid: number,
         opts: { channel?: string },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20017 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20018 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/get_transaction_details';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -310,7 +310,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20017>(config, 'InlineResponse20017', authSettings);
+        return this.client.request<InlineResponse20018>(config, 'InlineResponse20018', authSettings);
     }
 
     /**
@@ -563,7 +563,7 @@ export class P2PApi {
         advNo: number,
         advStatus: number,
         opts: { tradeType?: string },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20018 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20019 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/books/ads_update_status';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -607,7 +607,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20018>(config, 'InlineResponse20018', authSettings);
+        return this.client.request<InlineResponse20019>(config, 'InlineResponse20019', authSettings);
     }
 
     /**
@@ -617,7 +617,7 @@ export class P2PApi {
      */
     public async p2pMerchantBooksAdsDetail(
         advNo: string,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20019 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20020 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/books/ads_detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -642,7 +642,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20019>(config, 'InlineResponse20019', authSettings);
+        return this.client.request<InlineResponse20020>(config, 'InlineResponse20020', authSettings);
     }
 
     /**
@@ -657,7 +657,7 @@ export class P2PApi {
         asset?: string;
         fiatUnit?: string;
         tradeType?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20020 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20021 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/books/my_ads_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -679,7 +679,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20020>(config, 'InlineResponse20020', authSettings);
+        return this.client.request<InlineResponse20021>(config, 'InlineResponse20021', authSettings);
     }
 
     /**
@@ -693,7 +693,7 @@ export class P2PApi {
     public async p2pMerchantChatGetChatsList(
         txid: number,
         opts: { lastreceived?: number; firstreceived?: number },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20021 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20022 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/get_chats_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -720,7 +720,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20021>(config, 'InlineResponse20021', authSettings);
+        return this.client.request<InlineResponse20022>(config, 'InlineResponse20022', authSettings);
     }
 
     /**
@@ -735,7 +735,7 @@ export class P2PApi {
         txid: number,
         message: string,
         opts: { type?: number },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20022 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20023 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/send_chat_message';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -771,7 +771,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20022>(config, 'InlineResponse20022', authSettings);
+        return this.client.request<InlineResponse20023>(config, 'InlineResponse20023', authSettings);
     }
 
     /**
@@ -783,7 +783,7 @@ export class P2PApi {
     public async p2pMerchantChatUploadChatFile(
         imageContentType: string,
         base64Img: string,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20023 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20024 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/upload_chat_file';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -817,6 +817,6 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20023>(config, 'InlineResponse20023', authSettings);
+        return this.client.request<InlineResponse20024>(config, 'InlineResponse20024', authSettings);
     }
 }

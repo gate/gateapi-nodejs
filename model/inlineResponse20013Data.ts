@@ -9,288 +9,151 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20013DataMerchantInfo } from './inlineResponse20013DataMerchantInfo';
-
 export class InlineResponse20013Data {
     /**
-     * Whether self
+     * Order ID
      */
-    'isSelf': boolean;
+    'orderId': string;
     /**
-     * User registration time (formatted string)
+     * User ID
      */
-    'userTimest': string;
+    'uid': string;
     /**
-     * Number of counterparties
+     * Order Type
      */
-    'counterpartiesNum': number;
+    'type': string;
     /**
-     * Whether email is verified
+     * Fiat type
      */
-    'emailVerified': string;
+    'fiatCurrency': string;
     /**
-     * Whether KYC verification is completed
+     * Fiat amount
      */
-    'verified': string;
+    'fiatAmount': string;
     /**
-     * Whether phone is bound
+     * Stablecoin
      */
-    'hasPhone': string;
+    'cryptoCurrency': string;
     /**
-     * Username
+     * Stablecoin amount
      */
-    'userName': string;
+    'cryptoAmount': string;
     /**
-     * User note information
+     * Exchange rate
      */
-    'userNote': string;
+    'rate': string;
     /**
-     * Total completed orders
+     * Remark
      */
-    'completeTransactions': string;
+    'transferRemark': string;
     /**
-     * Number of completed buy orders
+     * Status
      */
-    'paidTransactions': string;
+    'status': string;
+    'dbStatus': string;
     /**
-     * Number of completed sell orders
+     * Created time
      */
-    'acceptedTransactions': string;
+    'createTime': string;
     /**
-     * Average time to confirm receipt
+     * Cancellation or rejection reason
      */
-    'transactionsUsedTime': string;
+    'memo': string;
     /**
-     * Cancellation time in last 30 days
+     * Quote direction
      */
-    'cancelledUsedTimeMonth': string;
+    'side': string;
     /**
-     * Number of completed orders in last 30 days
+     * Promotion code
      */
-    'completeTransactionsMonth': string;
+    'promotionCode': string;
     /**
-     * Completion rate in last 30 days
+     * Trade number
      */
-    'completeRateMonth': number;
-    /**
-     * Buy order ratio in last 30 days
-     */
-    'ordersBuyRateMonth': number;
-    /**
-     * Whether blocked
-     */
-    'isBlack': number;
-    /**
-     * Whether following
-     */
-    'isFollow': number;
-    /**
-     * Whether traded with self
-     */
-    'haveTraded': number;
-    /**
-     * Encrypted UID
-     */
-    'bizUid': string;
-    /**
-     * Blue V Crown Shield
-     */
-    'blueVip': number;
-    /**
-     * Merchant work status
-     */
-    'workStatus': number;
-    /**
-     * Registration days
-     */
-    'registrationDays': number;
-    /**
-     * Days since first trade
-     */
-    'firstTradeDays': number;
-    /**
-     * Whether margin replenishment is needed
-     */
-    'needReplenish': number;
-    'merchantInfo': InlineResponse20013DataMerchantInfo;
-    /**
-     * Merchant online status
-     */
-    'onlineStatus': number;
-    /**
-     * Merchant online status details
-     */
-    'workHours': object | null;
-    /**
-     * 30-day transaction volume
-     */
-    'transactionsMonth': number;
-    /**
-     * Total transaction volume
-     */
-    'transactionsAll': number;
-    /**
-     * Single user or composite user
-     */
-    'tradeVersatile': boolean;
+    'tradeNo': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'isSelf',
-            baseName: 'is_self',
-            type: 'boolean',
-        },
-        {
-            name: 'userTimest',
-            baseName: 'user_timest',
+            name: 'orderId',
+            baseName: 'order_id',
             type: 'string',
         },
         {
-            name: 'counterpartiesNum',
-            baseName: 'counterparties_num',
-            type: 'number',
-        },
-        {
-            name: 'emailVerified',
-            baseName: 'email_verified',
+            name: 'uid',
+            baseName: 'uid',
             type: 'string',
         },
         {
-            name: 'verified',
-            baseName: 'verified',
+            name: 'type',
+            baseName: 'type',
             type: 'string',
         },
         {
-            name: 'hasPhone',
-            baseName: 'has_phone',
+            name: 'fiatCurrency',
+            baseName: 'fiat_currency',
             type: 'string',
         },
         {
-            name: 'userName',
-            baseName: 'user_name',
+            name: 'fiatAmount',
+            baseName: 'fiat_amount',
             type: 'string',
         },
         {
-            name: 'userNote',
-            baseName: 'user_note',
+            name: 'cryptoCurrency',
+            baseName: 'crypto_currency',
             type: 'string',
         },
         {
-            name: 'completeTransactions',
-            baseName: 'complete_transactions',
+            name: 'cryptoAmount',
+            baseName: 'crypto_amount',
             type: 'string',
         },
         {
-            name: 'paidTransactions',
-            baseName: 'paid_transactions',
+            name: 'rate',
+            baseName: 'rate',
             type: 'string',
         },
         {
-            name: 'acceptedTransactions',
-            baseName: 'accepted_transactions',
+            name: 'transferRemark',
+            baseName: 'transfer_remark',
             type: 'string',
         },
         {
-            name: 'transactionsUsedTime',
-            baseName: 'transactions_used_time',
+            name: 'status',
+            baseName: 'status',
             type: 'string',
         },
         {
-            name: 'cancelledUsedTimeMonth',
-            baseName: 'cancelled_used_time_month',
+            name: 'dbStatus',
+            baseName: 'db_status',
             type: 'string',
         },
         {
-            name: 'completeTransactionsMonth',
-            baseName: 'complete_transactions_month',
+            name: 'createTime',
+            baseName: 'create_time',
             type: 'string',
         },
         {
-            name: 'completeRateMonth',
-            baseName: 'complete_rate_month',
-            type: 'number',
-        },
-        {
-            name: 'ordersBuyRateMonth',
-            baseName: 'orders_buy_rate_month',
-            type: 'number',
-        },
-        {
-            name: 'isBlack',
-            baseName: 'is_black',
-            type: 'number',
-        },
-        {
-            name: 'isFollow',
-            baseName: 'is_follow',
-            type: 'number',
-        },
-        {
-            name: 'haveTraded',
-            baseName: 'have_traded',
-            type: 'number',
-        },
-        {
-            name: 'bizUid',
-            baseName: 'biz_uid',
+            name: 'memo',
+            baseName: 'memo',
             type: 'string',
         },
         {
-            name: 'blueVip',
-            baseName: 'blue_vip',
-            type: 'number',
+            name: 'side',
+            baseName: 'side',
+            type: 'string',
         },
         {
-            name: 'workStatus',
-            baseName: 'work_status',
-            type: 'number',
+            name: 'promotionCode',
+            baseName: 'promotion_code',
+            type: 'string',
         },
         {
-            name: 'registrationDays',
-            baseName: 'registration_days',
-            type: 'number',
-        },
-        {
-            name: 'firstTradeDays',
-            baseName: 'first_trade_days',
-            type: 'number',
-        },
-        {
-            name: 'needReplenish',
-            baseName: 'need_replenish',
-            type: 'number',
-        },
-        {
-            name: 'merchantInfo',
-            baseName: 'merchant_info',
-            type: 'InlineResponse20013DataMerchantInfo',
-        },
-        {
-            name: 'onlineStatus',
-            baseName: 'online_status',
-            type: 'number',
-        },
-        {
-            name: 'workHours',
-            baseName: 'work_hours',
-            type: 'object',
-        },
-        {
-            name: 'transactionsMonth',
-            baseName: 'transactions_month',
-            type: 'number',
-        },
-        {
-            name: 'transactionsAll',
-            baseName: 'transactions_all',
-            type: 'number',
-        },
-        {
-            name: 'tradeVersatile',
-            baseName: 'trade_versatile',
-            type: 'boolean',
+            name: 'tradeNo',
+            baseName: 'trade_no',
+            type: 'string',
         },
     ];
 

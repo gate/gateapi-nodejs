@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## p2pMerchantAccountGetUserInfo
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20013; }> p2pMerchantAccountGetUserInfo()
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20014; }> p2pMerchantAccountGetUserInfo()
 
 Get account information
 
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20013; }> [InlineResponse20013](InlineResponse20013.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20014; }> [InlineResponse20014](InlineResponse20014.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ No authorization required
 
 ## p2pMerchantAccountGetCounterpartyUserInfo
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20014; }> p2pMerchantAccountGetCounterpartyUserInfo(bizUid)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20015; }> p2pMerchantAccountGetCounterpartyUserInfo(bizUid)
 
 Get counterparty information
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20014; }> [InlineResponse20014](InlineResponse20014.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20015; }> [InlineResponse20015](InlineResponse20015.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ No authorization required
 
 ## p2pMerchantAccountGetMyselfPayment
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20015; }> p2pMerchantAccountGetMyselfPayment(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20016; }> p2pMerchantAccountGetMyselfPayment(opts)
 
 Get payment method list
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20015; }> [InlineResponse20015](InlineResponse20015.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20016; }> [InlineResponse20016](InlineResponse20016.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ No authorization required
 
 ## p2pMerchantTransactionGetPendingTransactionList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20016; }> p2pMerchantTransactionGetPendingTransactionList(cryptoCurrency, fiatCurrency, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20017; }> p2pMerchantTransactionGetPendingTransactionList(cryptoCurrency, fiatCurrency, opts)
 
 Get pending orders
 
@@ -161,9 +161,9 @@ const api = new GateApi.P2PApi(client);
 const cryptoCurrency = "cryptoCurrency_example"; // string | Cryptocurrency
 const fiatCurrency = "fiatCurrency_example"; // string | Fiat currency
 const opts = {
-  'orderTab': "orderTab_example", // string | Order tab, default is pending (pending: Processing (pending: AND status in (\\\'OPEN\\\',  \\\'PAID\\\', \\\'LOCKED\\\', \\\'TEMP\\\')); dispute: In dispute (status in (\\\'ACCEPT\\\',  \\\'BCLOSED\\\', \\\'CANCEL\\\', \\\'BECANCEL\\\', \\\'SCLOSED\\\', \\\'SCANCEL\\\')))
+  'orderTab': "orderTab_example", // string | 订单标签页，默认pending（pending：处理中（pending:  AND status in (\\\'OPEN\\\', \\\'PAID\\\', \\\'LOCKED\\\', \\\'TEMP\\\')）；dispute：申诉中（status in (\\\'ACCEPT\\\', \\\'BCLOSED\\\', \\\'CANCEL\\\', \\\'BECANCEL\\\', \\\'SCLOSED\\\', \\\'SCANCEL\\\')))
   'selectType': "selectType_example", // string | Buy/Sell (sell=Sell, buy=Buy, others=All)
-  'status': "status_example", // string | 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+  'status': "status_example", // string | Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
   'txid': 56, // number | Order ID
   'startTime': 56, // number | Start timestamp, default is 00:00 89 days ago
   'endTime': 56 // number | End timestamp, default is 23:59:59 today
@@ -180,16 +180,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cryptoCurrency** | **string**| Cryptocurrency | [default to undefined]
  **fiatCurrency** | **string**| Fiat currency | [default to undefined]
- **orderTab** | **string**| Order tab, default is pending (pending: Processing (pending: AND status in (\\\&#39;OPEN\\\&#39;,  \\\&#39;PAID\\\&#39;, \\\&#39;LOCKED\\\&#39;, \\\&#39;TEMP\\\&#39;)); dispute: In dispute (status in (\\\&#39;ACCEPT\\\&#39;,  \\\&#39;BCLOSED\\\&#39;, \\\&#39;CANCEL\\\&#39;, \\\&#39;BECANCEL\\\&#39;, \\\&#39;SCLOSED\\\&#39;, \\\&#39;SCANCEL\\\&#39;))) | [optional] [default to undefined]
+ **orderTab** | **string**| 订单标签页，默认pending（pending：处理中（pending:  AND status in (\\\&#39;OPEN\\\&#39;, \\\&#39;PAID\\\&#39;, \\\&#39;LOCKED\\\&#39;, \\\&#39;TEMP\\\&#39;)）；dispute：申诉中（status in (\\\&#39;ACCEPT\\\&#39;, \\\&#39;BCLOSED\\\&#39;, \\\&#39;CANCEL\\\&#39;, \\\&#39;BECANCEL\\\&#39;, \\\&#39;SCLOSED\\\&#39;, \\\&#39;SCANCEL\\\&#39;))) | [optional] [default to undefined]
  **selectType** | **string**| Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | [optional] [default to undefined]
- **status** | **string**| 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED） | [optional] [default to undefined]
+ **status** | **string**| Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | [optional] [default to undefined]
  **txid** | **number**| Order ID | [optional] [default to undefined]
  **startTime** | **number**| Start timestamp, default is 00:00 89 days ago | [optional] [default to undefined]
  **endTime** | **number**| End timestamp, default is 23:59:59 today | [optional] [default to undefined]
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20016; }> [InlineResponse20016](InlineResponse20016.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20017; }> [InlineResponse20017](InlineResponse20017.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ No authorization required
 
 ## p2pMerchantTransactionGetCompletedTransactionList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20016; }> p2pMerchantTransactionGetCompletedTransactionList(cryptoCurrency, fiatCurrency, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20017; }> p2pMerchantTransactionGetCompletedTransactionList(cryptoCurrency, fiatCurrency, opts)
 
 Get all/historical orders
 
@@ -219,7 +219,7 @@ const cryptoCurrency = "cryptoCurrency_example"; // string | Cryptocurrency
 const fiatCurrency = "fiatCurrency_example"; // string | Fiat currency
 const opts = {
   'selectType': "selectType_example", // string | Buy/Sell (sell=Sell, buy=Buy, others=All)
-  'status': "status_example", // string | 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+  'status': "status_example", // string | Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
   'txid': 56, // number | Order ID
   'startTime': 56, // number | Start timestamp, default is 00:00 89 days ago
   'endTime': 56, // number | End timestamp, default is 23:59:59 today
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
  **cryptoCurrency** | **string**| Cryptocurrency | [default to undefined]
  **fiatCurrency** | **string**| Fiat currency | [default to undefined]
  **selectType** | **string**| Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | [optional] [default to undefined]
- **status** | **string**| 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED） | [optional] [default to undefined]
+ **status** | **string**| Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | [optional] [default to undefined]
  **txid** | **number**| Order ID | [optional] [default to undefined]
  **startTime** | **number**| Start timestamp, default is 00:00 89 days ago | [optional] [default to undefined]
  **endTime** | **number**| End timestamp, default is 23:59:59 today | [optional] [default to undefined]
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20016; }> [InlineResponse20016](InlineResponse20016.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20017; }> [InlineResponse20017](InlineResponse20017.md)
 
 ### Authorization
 
@@ -263,7 +263,7 @@ No authorization required
 
 ## p2pMerchantTransactionGetTransactionDetails
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20017; }> p2pMerchantTransactionGetTransactionDetails(txid, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20018; }> p2pMerchantTransactionGetTransactionDetails(txid, opts)
 
 Query order details
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20017; }> [InlineResponse20017](InlineResponse20017.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20018; }> [InlineResponse20018](InlineResponse20018.md)
 
 ### Authorization
 
@@ -532,7 +532,7 @@ No authorization required
 
 ## p2pMerchantBooksAdsUpdateStatus
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20018; }> p2pMerchantBooksAdsUpdateStatus(advNo, advStatus, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20019; }> p2pMerchantBooksAdsUpdateStatus(advNo, advStatus, opts)
 
 Update ad status
 
@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20018; }> [InlineResponse20018](InlineResponse20018.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20019; }> [InlineResponse20019](InlineResponse20019.md)
 
 ### Authorization
 
@@ -579,7 +579,7 @@ No authorization required
 
 ## p2pMerchantBooksAdsDetail
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20019; }> p2pMerchantBooksAdsDetail(advNo)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20020; }> p2pMerchantBooksAdsDetail(advNo)
 
 Query ad details
 
@@ -607,7 +607,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20019; }> [InlineResponse20019](InlineResponse20019.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20020; }> [InlineResponse20020](InlineResponse20020.md)
 
 ### Authorization
 
@@ -620,7 +620,7 @@ No authorization required
 
 ## p2pMerchantBooksMyAdsList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20020; }> p2pMerchantBooksMyAdsList(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20021; }> p2pMerchantBooksMyAdsList(opts)
 
 Get my ad list
 
@@ -654,7 +654,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20020; }> [InlineResponse20020](InlineResponse20020.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20021; }> [InlineResponse20021](InlineResponse20021.md)
 
 ### Authorization
 
@@ -667,7 +667,7 @@ No authorization required
 
 ## p2pMerchantChatGetChatsList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20021; }> p2pMerchantChatGetChatsList(txid, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20022; }> p2pMerchantChatGetChatsList(txid, opts)
 
 Get chat history
 
@@ -701,7 +701,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20021; }> [InlineResponse20021](InlineResponse20021.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20022; }> [InlineResponse20022](InlineResponse20022.md)
 
 ### Authorization
 
@@ -714,7 +714,7 @@ No authorization required
 
 ## p2pMerchantChatSendChatMessage
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20022; }> p2pMerchantChatSendChatMessage(txid, message, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20023; }> p2pMerchantChatSendChatMessage(txid, message, opts)
 
 Send text message
 
@@ -748,7 +748,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20022; }> [InlineResponse20022](InlineResponse20022.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20023; }> [InlineResponse20023](InlineResponse20023.md)
 
 ### Authorization
 
@@ -761,7 +761,7 @@ No authorization required
 
 ## p2pMerchantChatUploadChatFile
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20023; }> p2pMerchantChatUploadChatFile(imageContentType, base64Img)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20024; }> p2pMerchantChatUploadChatFile(imageContentType, base64Img)
 
 Upload chat file
 
@@ -791,7 +791,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20023; }> [InlineResponse20023](InlineResponse20023.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20024; }> [InlineResponse20024](InlineResponse20024.md)
 
 ### Authorization
 

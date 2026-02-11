@@ -4,9 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pn** | **number** |  | [default to undefined]
-**ps** | **number** |  | [default to undefined]
-**totalPn** | **number** |  | [default to undefined]
-**count** | **number** |  | [default to undefined]
-**list** | [**Array&lt;InlineResponse20010DataList&gt;**](InlineResponse20010DataList.md) |  | [default to undefined]
+**lists** | [**Array&lt;InlineResponse20010DataLists&gt;**](InlineResponse20010DataLists.md) | Bank card list | [default to undefined]
 

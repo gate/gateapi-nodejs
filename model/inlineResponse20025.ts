@@ -9,55 +9,24 @@
  * Do not edit the class manually.
  */
 
+import { RuleRiskLimitsTiers } from './ruleRiskLimitsTiers';
+
 export class InlineResponse20025 {
-    /**
-     * Currency
-     */
-    'coin': string;
-    /**
-     * Minimum Transfer Quantity (including estimated fees)
-     */
-    'minTransAmount': number;
-    /**
-     * Estimated Fee
-     */
-    'estFee': number;
-    /**
-     * Precision
-     */
-    'precision': number;
-    /**
-     * If it is disabled. 0 means NOT being disabled
-     */
-    'isDisabled': number;
+    'symbol'?: string;
+    'tiers'?: Array<RuleRiskLimitsTiers>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'minTransAmount',
-            baseName: 'min_trans_amount',
-            type: 'number',
-        },
-        {
-            name: 'estFee',
-            baseName: 'est_fee',
-            type: 'number',
-        },
-        {
-            name: 'precision',
-            baseName: 'precision',
-            type: 'number',
-        },
-        {
-            name: 'isDisabled',
-            baseName: 'is_disabled',
-            type: 'number',
+            name: 'tiers',
+            baseName: 'tiers',
+            type: 'Array<RuleRiskLimitsTiers>',
         },
     ];
 

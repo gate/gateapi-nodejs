@@ -19,6 +19,7 @@ import { Eth2Swap } from '../model/eth2Swap';
 import { FindCoin } from '../model/findCoin';
 import { OrderListStruct } from '../model/orderListStruct';
 import { PlaceDualInvestmentOrder } from '../model/placeDualInvestmentOrder';
+import { PlaceDualInvestmentOrderParams } from '../model/placeDualInvestmentOrderParams';
 import { StructuredBuy } from '../model/structuredBuy';
 import { StructuredGetProjectList } from '../model/structuredGetProjectList';
 import { StructuredOrderList } from '../model/structuredOrderList';
@@ -215,19 +216,26 @@ export class EarnApi {
     /**
      *
      * @summary Place Dual Investment order
-     * @param placeDualInvestmentOrder
+     * @param placeDualInvestmentOrderParams
      */
     public async placeDualOrder(
-        placeDualInvestmentOrder: PlaceDualInvestmentOrder,
-    ): Promise<{ response: AxiosResponse; body?: any }> {
+        placeDualInvestmentOrderParams: PlaceDualInvestmentOrderParams,
+    ): Promise<{ response: AxiosResponse; body: PlaceDualInvestmentOrder }> {
         const localVarPath = this.client.basePath + '/earn/dual/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
 
-        // verify required parameter 'placeDualInvestmentOrder' is not null or undefined
-        if (placeDualInvestmentOrder === null || placeDualInvestmentOrder === undefined) {
+        // verify required parameter 'placeDualInvestmentOrderParams' is not null or undefined
+        if (placeDualInvestmentOrderParams === null || placeDualInvestmentOrderParams === undefined) {
             throw new Error(
-                'Required parameter placeDualInvestmentOrder was null or undefined when calling placeDualOrder.',
+                'Required parameter placeDualInvestmentOrderParams was null or undefined when calling placeDualOrder.',
             );
         }
 
@@ -236,11 +244,11 @@ export class EarnApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(placeDualInvestmentOrder, 'PlaceDualInvestmentOrder'),
+            data: ObjectSerializer.serialize(placeDualInvestmentOrderParams, 'PlaceDualInvestmentOrderParams'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<PlaceDualInvestmentOrder>(config, 'PlaceDualInvestmentOrder', authSettings);
     }
 
     /**

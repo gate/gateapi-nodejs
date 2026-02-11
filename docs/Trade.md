@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **gtFee** | **string** | GT used to deduct fee, not returned in public endpoints | [optional] [default to undefined]
 **amendText** | **string** | The custom data that the user remarked when amending the order | [optional] [default to undefined]
 **sequenceId** | **string** | Consecutive trade ID within a single market. Used to track and identify trades in the specific market | [optional] [default to undefined]
-**text** | **string** | 订单的自定义信息，公共接口无此字段返回 pm_liquidate、comb_margin_liquidate、scm_liquidate 这三种场景代表全仓强平订单 liquidate 代表逐仓强平订单 | [optional] [default to undefined]
+**text** | **string** | Order\&#39;s Custom Information. This field is not returned by public interfaces. The scenarios pm_liquidate, comb_margin_liquidate, and scm_liquidate represent full-account forced liquidation orders. liquidate represents isolated-account forced liquidation orders. | [optional] [default to undefined]
 **deal** | **string** | Total Executed Value | [optional] [default to undefined]
 
 ## Enum: Trade.Side

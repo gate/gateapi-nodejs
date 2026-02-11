@@ -12,22 +12,22 @@
 import { InlineResponse20012Data } from './inlineResponse20012Data';
 
 export class InlineResponse20012 {
-    'message': string;
     'code': number;
+    'message': string;
     'data': InlineResponse20012Data;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
             name: 'code',
             baseName: 'code',
             type: 'number',
+        },
+        {
+            name: 'message',
+            baseName: 'message',
+            type: 'string',
         },
         {
             name: 'data',

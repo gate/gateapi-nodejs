@@ -12,33 +12,33 @@
 import { InlineResponse20011DataList } from './inlineResponse20011DataList';
 
 export class InlineResponse20011Data {
-    'total': number;
-    'pageSize': number;
-    'pageNumber': number;
-    'totalPage': number;
+    'pn': number;
+    'ps': number;
+    'totalPn': number;
+    'count': number;
     'list': Array<InlineResponse20011DataList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'total',
-            baseName: 'total',
+            name: 'pn',
+            baseName: 'pn',
             type: 'number',
         },
         {
-            name: 'pageSize',
-            baseName: 'page_size',
+            name: 'ps',
+            baseName: 'ps',
             type: 'number',
         },
         {
-            name: 'pageNumber',
-            baseName: 'page_number',
+            name: 'totalPn',
+            baseName: 'total_pn',
             type: 'number',
         },
         {
-            name: 'totalPage',
-            baseName: 'total_page',
+            name: 'count',
+            baseName: 'count',
             type: 'number',
         },
         {

@@ -43,7 +43,7 @@ export class CreateTrailOrder {
      */
     'positionRelated'?: boolean;
     /**
-     * 订单自定义信息，可选字段。用于标识订单来源或设置用户自定义 ID。  **如果非空**，必须满足以下规则之一：  **1. 内部保留字段（标识订单来源）**： - `apiv4`: API 调用 **2. 用户自定义字段（设置自定义 ID）**： - 必须以 `t-` 开头 - `t-` 后面的内容长度不能超过 28 字节 - 只能包含：数字、字母、下划线(_)、中划线(-) 或者点(.) - 示例：`t-my-order-001`、`t-trail_2024.01`  **注意**：用户自定义字段不能与内部保留字段冲突。
+     * Order custom information, optional field. Used to identify the order source or set a user-defined ID.  If non-empty, it must meet one of the following rules:  1. Internal Reserved Fields (identifying order source): - `apiv4`: API call 2. User-defined Fields (setting custom ID): - Must start with `t-` - The content after `t-` must not exceed 28 bytes in length - Can only contain: numbers, letters, underscores (_), hyphens (-), or dots (.) - Examples: `t-my-order-001`, `t-trail_2024.01`  Note: User-defined fields must not conflict with internal reserved fields.
      */
     'text'?: string;
     /**

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**listMultiCollateralRecords**](MultiCollateralLoanApi.md#listMultiCollateralRecords) | **GET** /loan/multi_collateral/mortgage | Query collateral adjustment records
 [**operateMultiCollateral**](MultiCollateralLoanApi.md#operateMultiCollateral) | **POST** /loan/multi_collateral/mortgage | Add or withdraw collateral
 [**listUserCurrencyQuota**](MultiCollateralLoanApi.md#listUserCurrencyQuota) | **GET** /loan/multi_collateral/currency_quota | Query user\&#39;s collateral and borrowing currency quota information
-[**listMultiCollateralCurrencies**](MultiCollateralLoanApi.md#listMultiCollateralCurrencies) | **GET** /loan/multi_collateral/currencies | Query supported borrowing and collateral currencies for multi-currency collateral
+[**listMultiCollateralCurrencies**](MultiCollateralLoanApi.md#listMultiCollateralCurrencies) | **GET** /loan/multi_collateral/currencies | Query borrow currencies and collateral currencies supported by multi-currency collateral
 [**getMultiCollateralLtv**](MultiCollateralLoanApi.md#getMultiCollateralLtv) | **GET** /loan/multi_collateral/ltv | Query collateralization ratio information
 [**getMultiCollateralFixRate**](MultiCollateralLoanApi.md#getMultiCollateralFixRate) | **GET** /loan/multi_collateral/fixed_rate | Query currency\&#39;s 7-day and 30-day fixed interest rates
 [**getMultiCollateralCurrentRate**](MultiCollateralLoanApi.md#getMultiCollateralCurrentRate) | **GET** /loan/multi_collateral/current_rate | Query currency\&#39;s current interest rate
@@ -398,7 +398,7 @@ Promise<{ response: AxiosResponse; body: Array<CurrencyQuota>; }> [CurrencyQuota
 
 > Promise<{ response: http.IncomingMessage; body: MultiCollateralCurrency; }> listMultiCollateralCurrencies()
 
-Query supported borrowing and collateral currencies for multi-currency collateral
+Query borrow currencies and collateral currencies supported by multi-currency collateral
 
 ### Example
 

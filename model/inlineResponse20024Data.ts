@@ -9,20 +9,23 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20016DataTransTime {
-    'odTime'?: number;
+export class InlineResponse20024Data {
+    /**
+     * File key
+     */
+    'fileKey': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'odTime',
-            baseName: 'od_time',
-            type: 'number',
+            name: 'fileKey',
+            baseName: 'file_key',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20016DataTransTime.attributeTypeMap;
+        return InlineResponse20024Data.attributeTypeMap;
     }
 }

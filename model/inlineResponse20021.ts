@@ -17,6 +17,9 @@ export class InlineResponse20021 {
     'code': number;
     'message': string;
     'data': InlineResponse20021Data;
+    /**
+     * Version number
+     */
     'version': string;
 
     static discriminator: string | undefined = undefined;

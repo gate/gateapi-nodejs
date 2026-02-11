@@ -9,24 +9,48 @@
  * Do not edit the class manually.
  */
 
-import { RuleRiskLimitsTiers } from './ruleRiskLimitsTiers';
+import { InlineResponse20024Data } from './inlineResponse20024Data';
 
 export class InlineResponse20024 {
-    'symbol'?: string;
-    'tiers'?: Array<RuleRiskLimitsTiers>;
+    'timestamp': number;
+    'method': string;
+    'code': number;
+    'message': string;
+    'data': InlineResponse20024Data;
+    'version': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'symbol',
-            baseName: 'symbol',
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
+        },
+        {
+            name: 'method',
+            baseName: 'method',
             type: 'string',
         },
         {
-            name: 'tiers',
-            baseName: 'tiers',
-            type: 'Array<RuleRiskLimitsTiers>',
+            name: 'code',
+            baseName: 'code',
+            type: 'number',
+        },
+        {
+            name: 'message',
+            baseName: 'message',
+            type: 'string',
+        },
+        {
+            name: 'data',
+            baseName: 'data',
+            type: 'InlineResponse20024Data',
+        },
+        {
+            name: 'version',
+            baseName: 'version',
+            type: 'string',
         },
     ];
 

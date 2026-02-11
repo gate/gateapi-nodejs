@@ -16,7 +16,7 @@ export class InlineResponse20016 {
     'method': string;
     'code': number;
     'message': string;
-    'data': InlineResponse20016Data;
+    'data': Array<InlineResponse20016Data>;
     'version': string;
 
     static discriminator: string | undefined = undefined;
@@ -45,7 +45,7 @@ export class InlineResponse20016 {
         {
             name: 'data',
             baseName: 'data',
-            type: 'InlineResponse20016Data',
+            type: 'Array<InlineResponse20016Data>',
         },
         {
             name: 'version',

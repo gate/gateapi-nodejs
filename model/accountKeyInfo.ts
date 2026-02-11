@@ -17,11 +17,11 @@ import { AccountKeyInfoPerms } from './accountKeyInfoPerms';
  */
 export class AccountKeyInfo {
     /**
-     * API Key Status: 1 - Normal, 2 - Locked, 3 - Frozen (can only be modified; default is 1 upon creation)
+     * API key status: 1 - Normal, 2 - Locked, 3 - Frozen (can only be modified, default is 1 when creating)API Key Status: 1 - Normal, 2 - Locked, 3 - Frozen (can only be modified; default is 1 upon creation)
      */
     'state'?: number;
     /**
-     * User Mode: 1 - Classic, 2 - Legacy Unified (can only be specified during creation, non-modifiable afterwards)
+     * User mode: 1 - Classic mode, 2 - Legacy unified mode (can only be specified when creating, cannot be modified)
      */
     'mode'?: number;
     /**

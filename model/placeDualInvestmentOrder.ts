@@ -9,20 +9,73 @@
  * Do not edit the class manually.
  */
 
-/**
- * Dual Investment Order
- */
 export class PlaceDualInvestmentOrder {
+    /**
+     * Order ID
+     */
+    'id'?: number;
     /**
      * Product ID
      */
-    'planId': string;
+    'planId'?: number;
     /**
-     * Subscription amount, mutually exclusive with copies field
+     * Units
      */
-    'amount': string;
+    'copies'?: string;
     /**
-     * Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
+     * Investment Quantity
+     */
+    'investAmount'?: string;
+    /**
+     * Settlement Quantity
+     */
+    'settlementAmount'?: string;
+    /**
+     * Created time
+     */
+    'createTime'?: number;
+    /**
+     * Completed Time
+     */
+    'completeTime'?: number;
+    /**
+     * Status:  `INIT`-Created `SETTLEMENT_SUCCESS`-Settlement Success `SETTLEMENT_PROCESSING`-Settlement Processing `CANCELED`-Canceled `FAILED`-Failed
+     */
+    'status'?: string;
+    /**
+     * Investment Token
+     */
+    'investCurrency'?: string;
+    /**
+     * Strike Token
+     */
+    'exerciseCurrency'?: string;
+    /**
+     * Strike price
+     */
+    'exercisePrice'?: string;
+    /**
+     * Settlement price
+     */
+    'settlementPrice'?: string;
+    /**
+     * Settlement currency
+     */
+    'settlementCurrency'?: string;
+    /**
+     * Annual Yield
+     */
+    'apyDisplay'?: string;
+    /**
+     * Settlement Annual Yield
+     */
+    'apySettlement'?: string;
+    /**
+     * Settlement time
+     */
+    'deliveryTime'?: number;
+    /**
+     * Custom order information
      */
     'text'?: string;
 
@@ -30,14 +83,84 @@ export class PlaceDualInvestmentOrder {
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
+        },
+        {
             name: 'planId',
             baseName: 'plan_id',
+            type: 'number',
+        },
+        {
+            name: 'copies',
+            baseName: 'copies',
             type: 'string',
         },
         {
-            name: 'amount',
-            baseName: 'amount',
+            name: 'investAmount',
+            baseName: 'invest_amount',
             type: 'string',
+        },
+        {
+            name: 'settlementAmount',
+            baseName: 'settlement_amount',
+            type: 'string',
+        },
+        {
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
+        },
+        {
+            name: 'completeTime',
+            baseName: 'complete_time',
+            type: 'number',
+        },
+        {
+            name: 'status',
+            baseName: 'status',
+            type: 'string',
+        },
+        {
+            name: 'investCurrency',
+            baseName: 'invest_currency',
+            type: 'string',
+        },
+        {
+            name: 'exerciseCurrency',
+            baseName: 'exercise_currency',
+            type: 'string',
+        },
+        {
+            name: 'exercisePrice',
+            baseName: 'exercise_price',
+            type: 'string',
+        },
+        {
+            name: 'settlementPrice',
+            baseName: 'settlement_price',
+            type: 'string',
+        },
+        {
+            name: 'settlementCurrency',
+            baseName: 'settlement_currency',
+            type: 'string',
+        },
+        {
+            name: 'apyDisplay',
+            baseName: 'apy_display',
+            type: 'string',
+        },
+        {
+            name: 'apySettlement',
+            baseName: 'apy_settlement',
+            type: 'string',
+        },
+        {
+            name: 'deliveryTime',
+            baseName: 'delivery_time',
+            type: 'number',
         },
         {
             name: 'text',

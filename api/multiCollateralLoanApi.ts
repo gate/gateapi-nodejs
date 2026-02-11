@@ -511,7 +511,7 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary Query supported borrowing and collateral currencies for multi-currency collateral
+     * @summary Query borrow currencies and collateral currencies supported by multi-currency collateral
      */
     public async listMultiCollateralCurrencies(): Promise<{ response: AxiosResponse; body: MultiCollateralCurrency }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/currencies';

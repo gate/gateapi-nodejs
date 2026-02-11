@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20010DataCryptoCurrencyInfo {
+export class InlineResponse20011DataCryptoCurrencyInfo {
     'name': string;
     'icon': string;
 
@@ -29,6 +29,6 @@ export class InlineResponse20010DataCryptoCurrencyInfo {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20010DataCryptoCurrencyInfo.attributeTypeMap;
+        return InlineResponse20011DataCryptoCurrencyInfo.attributeTypeMap;
     }
 }

@@ -17,6 +17,7 @@ import { InlineObject4 } from '../model/inlineObject4';
 import { InlineResponse20010 } from '../model/inlineResponse20010';
 import { InlineResponse20011 } from '../model/inlineResponse20011';
 import { InlineResponse20012 } from '../model/inlineResponse20012';
+import { InlineResponse20013 } from '../model/inlineResponse20013';
 import { InlineResponse2006 } from '../model/inlineResponse2006';
 import { InlineResponse2007 } from '../model/inlineResponse2007';
 import { InlineResponse2008 } from '../model/inlineResponse2008';
@@ -178,6 +179,33 @@ export class OTCApi {
     }
 
     /**
+     * Get user bank card list for selecting bank card when placing orders
+     * @summary Get user bank card list
+     */
+    public async getBankList(): Promise<{ response: AxiosResponse; body: InlineResponse20010 }> {
+        const localVarPath = this.client.basePath + '/otc/bank_list';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse20010>(config, 'InlineResponse20010', authSettings);
+    }
+
+    /**
      * Mark fiat order as paid
      * @summary Mark fiat order as paid
      * @param inlineObject4
@@ -262,7 +290,7 @@ export class OTCApi {
      * @param opts.cryptoCurrency Digital currency
      * @param opts.startTime starttime   for example : 2025-09-09
      * @param opts.endTime endtime  for example :2025-09-09
-     * @param opts.status DONE ：完成 CANCEL  ：取消 PROCESSING ：进行中
+     * @param opts.status DONE: Completed CANCEL: Canceled PROCESSING: In Progress
      * @param opts.pn Page number
      * @param opts.ps Number of items per page
      */
@@ -275,7 +303,7 @@ export class OTCApi {
         status?: string;
         pn?: string;
         ps?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20010 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20011 }> {
         const localVarPath = this.client.basePath + '/otc/order/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -368,7 +396,7 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20010>(config, 'InlineResponse20010', authSettings);
+        return this.client.request<InlineResponse20011>(config, 'InlineResponse20011', authSettings);
     }
 
     /**
@@ -389,7 +417,7 @@ export class OTCApi {
         startTime?: string;
         endTime?: string;
         status?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20011 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20012 }> {
         const localVarPath = this.client.basePath + '/otc/stable_coin/order/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -464,7 +492,7 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20011>(config, 'InlineResponse20011', authSettings);
+        return this.client.request<InlineResponse20012>(config, 'InlineResponse20012', authSettings);
     }
 
     /**
@@ -472,7 +500,7 @@ export class OTCApi {
      * @summary Fiat order details
      * @param orderId Order ID
      */
-    public async getOtcOrderDetail(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse20012 }> {
+    public async getOtcOrderDetail(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse20013 }> {
         const localVarPath = this.client.basePath + '/otc/order/detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -504,6 +532,6 @@ export class OTCApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20012>(config, 'InlineResponse20012', authSettings);
+        return this.client.request<InlineResponse20013>(config, 'InlineResponse20013', authSettings);
     }
 }

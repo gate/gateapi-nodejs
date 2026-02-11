@@ -139,7 +139,7 @@ const api = new GateApi.DeliveryApi(client);
 const settle = "usdt"; // 'usdt' | Settle currency
 const contract = "BTC_USDT_20200814"; // string | Futures contract
 const opts = {
-  'interval': '0', // '0' | '0.1' | '0.01' | Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+  'interval': '0', // '0' | '0.1' | '0.01' | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
   'limit': 10, // number | Number of depth levels
   'withId': false // boolean | Whether to return depth update ID. This ID increments by 1 each time the depth changes
 };
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **interval** | **Interval**| Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified | [optional] [default to &#39;0&#39;]
+ **interval** | **Interval**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **number**| Number of depth levels | [optional] [default to 10]
  **withId** | **boolean**| Whether to return depth update ID. This ID increments by 1 each time the depth changes | [optional] [default to undefined]
 

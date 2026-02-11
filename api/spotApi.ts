@@ -236,7 +236,7 @@ export class SpotApi {
      * @summary Get market depth information
      * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+     * @param opts.interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
      * @param opts.limit Number of depth levels
      * @param opts.withId Return order book update ID
      */
@@ -412,7 +412,7 @@ export class SpotApi {
     }
 
     /**
-     * Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+     * K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
      * @summary Market K-line chart
      * @param currencyPair Currency pair
      * @param opts Optional parameters

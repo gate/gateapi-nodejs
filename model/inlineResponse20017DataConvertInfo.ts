@@ -12,7 +12,7 @@
 /**
  * Flash swap order information
  */
-export class InlineResponse20016DataConvertInfo {
+export class InlineResponse20017DataConvertInfo {
     /**
      * Flash swap target currency
      */
@@ -110,6 +110,6 @@ export class InlineResponse20016DataConvertInfo {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20016DataConvertInfo.attributeTypeMap;
+        return InlineResponse20017DataConvertInfo.attributeTypeMap;
     }
 }

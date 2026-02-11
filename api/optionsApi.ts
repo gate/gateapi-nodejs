@@ -457,7 +457,7 @@ export class OptionsApi {
      * @summary Query options contract order book
      * @param contract Options contract name
      * @param opts Optional parameters
-     * @param opts.interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+     * @param opts.interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
      * @param opts.limit Number of depth levels
      * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time the depth changes
      */

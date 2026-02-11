@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**createOtcOrder**](OTCApi.md#createOtcOrder) | **POST** /otc/order/create | Create fiat order
 [**createStableCoinOrder**](OTCApi.md#createStableCoinOrder) | **POST** /otc/stable_coin/order/create | Create stablecoin order
 [**getUserDefaultBank**](OTCApi.md#getUserDefaultBank) | **GET** /otc/get_user_def_bank | Get user\&#39;s default bank account information
+[**getBankList**](OTCApi.md#getBankList) | **GET** /otc/bank_list | Get user bank card list
 [**markOtcOrderPaid**](OTCApi.md#markOtcOrderPaid) | **POST** /otc/order/paid | Mark fiat order as paid
 [**cancelOtcOrder**](OTCApi.md#cancelOtcOrder) | **POST** /otc/order/cancel | Fiat order cancellation
 [**listOtcOrders**](OTCApi.md#listOtcOrders) | **GET** /otc/order/list | Fiat order list
@@ -191,6 +192,47 @@ Promise<{ response: AxiosResponse; body: InlineResponse2009; }> [InlineResponse2
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## getBankList
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20010; }> getBankList()
+
+Get user bank card list
+
+Get user bank card list for selecting bank card when placing orders
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.OTCApi(client);
+api.getBankList()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse20010; }> [InlineResponse20010](InlineResponse20010.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 ## markOtcOrderPaid
 
 > Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> markOtcOrderPaid(inlineObject4)
@@ -283,7 +325,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2
 
 ## listOtcOrders
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20010; }> listOtcOrders(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20011; }> listOtcOrders(opts)
 
 Fiat order list
 
@@ -306,7 +348,7 @@ const opts = {
   'cryptoCurrency': "cryptoCurrency_example", // string | Digital currency
   'startTime': "startTime_example", // string | starttime   for example : 2025-09-09
   'endTime': "endTime_example", // string | endtime  for example :2025-09-09
-  'status': "status_example", // string | DONE ：完成 CANCEL  ：取消 PROCESSING ：进行中
+  'status': "status_example", // string | DONE: Completed CANCEL: Canceled PROCESSING: In Progress
   'pn': "pn_example", // string | Page number
   'ps': "ps_example" // string | Number of items per page
 };
@@ -325,13 +367,13 @@ Name | Type | Description  | Notes
  **cryptoCurrency** | **string**| Digital currency | [optional] [default to undefined]
  **startTime** | **string**| starttime   for example : 2025-09-09 | [optional] [default to undefined]
  **endTime** | **string**| endtime  for example :2025-09-09 | [optional] [default to undefined]
- **status** | **string**| DONE ：完成 CANCEL  ：取消 PROCESSING ：进行中 | [optional] [default to undefined]
+ **status** | **string**| DONE: Completed CANCEL: Canceled PROCESSING: In Progress | [optional] [default to undefined]
  **pn** | **string**| Page number | [optional] [default to undefined]
  **ps** | **string**| Number of items per page | [optional] [default to undefined]
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20010; }> [InlineResponse20010](InlineResponse20010.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse20011](InlineResponse20011.md)
 
 ### Authorization
 
@@ -344,7 +386,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20010; }> [InlineResponse
 
 ## listStableCoinOrders
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20011; }> listStableCoinOrders(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20012; }> listStableCoinOrders(opts)
 
 Stablecoin order list
 
@@ -388,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse20011](InlineResponse20011.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse20012](InlineResponse20012.md)
 
 ### Authorization
 
@@ -401,7 +443,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse
 
 ## getOtcOrderDetail
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20012; }> getOtcOrderDetail(orderId)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20013; }> getOtcOrderDetail(orderId)
 
 Fiat order details
 
@@ -433,7 +475,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse20012](InlineResponse20012.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20013; }> [InlineResponse20013](InlineResponse20013.md)
 
 ### Authorization
 

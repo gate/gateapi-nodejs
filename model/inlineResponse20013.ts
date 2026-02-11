@@ -12,24 +12,16 @@
 import { InlineResponse20013Data } from './inlineResponse20013Data';
 
 export class InlineResponse20013 {
-    'timestamp': number;
-    'method': string;
-    'code': number;
     'message': string;
+    'code': number;
     'data': InlineResponse20013Data;
-    'version': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
-        },
-        {
-            name: 'method',
-            baseName: 'method',
+            name: 'message',
+            baseName: 'message',
             type: 'string',
         },
         {
@@ -38,19 +30,9 @@ export class InlineResponse20013 {
             type: 'number',
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
             name: 'data',
             baseName: 'data',
             type: 'InlineResponse20013Data',
-        },
-        {
-            name: 'version',
-            baseName: 'version',
-            type: 'string',
         },
     ];
 

@@ -9,11 +9,21 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20014DataMerchantInfo } from './inlineResponse20014DataMerchantInfo';
+
 export class InlineResponse20014Data {
+    /**
+     * Whether self
+     */
+    'isSelf': boolean;
     /**
      * User registration time (formatted string)
      */
     'userTimest': string;
+    /**
+     * Number of counterparties
+     */
+    'counterpartiesNum': number;
     /**
      * Whether email is verified
      */
@@ -63,6 +73,14 @@ export class InlineResponse20014Data {
      */
     'completeRateMonth': number;
     /**
+     * Buy order ratio in last 30 days
+     */
+    'ordersBuyRateMonth': number;
+    /**
+     * Whether blocked
+     */
+    'isBlack': number;
+    /**
      * Whether following
      */
     'isFollow': number;
@@ -75,6 +93,14 @@ export class InlineResponse20014Data {
      */
     'bizUid': string;
     /**
+     * Blue V Crown Shield
+     */
+    'blueVip': number;
+    /**
+     * Merchant work status
+     */
+    'workStatus': number;
+    /**
      * Registration days
      */
     'registrationDays': number;
@@ -82,6 +108,27 @@ export class InlineResponse20014Data {
      * Days since first trade
      */
     'firstTradeDays': number;
+    /**
+     * Whether margin replenishment is needed
+     */
+    'needReplenish': number;
+    'merchantInfo': InlineResponse20014DataMerchantInfo;
+    /**
+     * Merchant online status
+     */
+    'onlineStatus': number;
+    /**
+     * Merchant online status details
+     */
+    'workHours': object | null;
+    /**
+     * 30-day transaction volume
+     */
+    'transactionsMonth': number;
+    /**
+     * Total transaction volume
+     */
+    'transactionsAll': number;
     /**
      * Single user or composite user
      */
@@ -91,9 +138,19 @@ export class InlineResponse20014Data {
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
+            name: 'isSelf',
+            baseName: 'is_self',
+            type: 'boolean',
+        },
+        {
             name: 'userTimest',
             baseName: 'user_timest',
             type: 'string',
+        },
+        {
+            name: 'counterpartiesNum',
+            baseName: 'counterparties_num',
+            type: 'number',
         },
         {
             name: 'emailVerified',
@@ -156,6 +213,16 @@ export class InlineResponse20014Data {
             type: 'number',
         },
         {
+            name: 'ordersBuyRateMonth',
+            baseName: 'orders_buy_rate_month',
+            type: 'number',
+        },
+        {
+            name: 'isBlack',
+            baseName: 'is_black',
+            type: 'number',
+        },
+        {
             name: 'isFollow',
             baseName: 'is_follow',
             type: 'number',
@@ -171,6 +238,16 @@ export class InlineResponse20014Data {
             type: 'string',
         },
         {
+            name: 'blueVip',
+            baseName: 'blue_vip',
+            type: 'number',
+        },
+        {
+            name: 'workStatus',
+            baseName: 'work_status',
+            type: 'number',
+        },
+        {
             name: 'registrationDays',
             baseName: 'registration_days',
             type: 'number',
@@ -178,6 +255,36 @@ export class InlineResponse20014Data {
         {
             name: 'firstTradeDays',
             baseName: 'first_trade_days',
+            type: 'number',
+        },
+        {
+            name: 'needReplenish',
+            baseName: 'need_replenish',
+            type: 'number',
+        },
+        {
+            name: 'merchantInfo',
+            baseName: 'merchant_info',
+            type: 'InlineResponse20014DataMerchantInfo',
+        },
+        {
+            name: 'onlineStatus',
+            baseName: 'online_status',
+            type: 'number',
+        },
+        {
+            name: 'workHours',
+            baseName: 'work_hours',
+            type: 'object',
+        },
+        {
+            name: 'transactionsMonth',
+            baseName: 'transactions_month',
+            type: 'number',
+        },
+        {
+            name: 'transactionsAll',
+            baseName: 'transactions_all',
             type: 'number',
         },
         {

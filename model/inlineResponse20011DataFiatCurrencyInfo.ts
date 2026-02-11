@@ -9,41 +9,32 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20035SpecialFeeList {
+export class InlineResponse20011DataFiatCurrencyInfo {
     /**
-     * Currency pair
+     * Name
      */
-    'symbol': string;
+    'name': string;
     /**
-     * Taker fee rate
+     * Image
      */
-    'takerFeeRate': string;
-    /**
-     * Maker fee rate
-     */
-    'makerFeeRate': string;
+    'icon': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'symbol',
-            baseName: 'symbol',
+            name: 'name',
+            baseName: 'name',
             type: 'string',
         },
         {
-            name: 'takerFeeRate',
-            baseName: 'taker_fee_rate',
-            type: 'string',
-        },
-        {
-            name: 'makerFeeRate',
-            baseName: 'maker_fee_rate',
+            name: 'icon',
+            baseName: 'icon',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20035SpecialFeeList.attributeTypeMap;
+        return InlineResponse20011DataFiatCurrencyInfo.attributeTypeMap;
     }
 }

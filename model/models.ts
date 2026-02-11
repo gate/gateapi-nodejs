@@ -143,29 +143,30 @@ export * from './inlineResponse200';
 export * from './inlineResponse2001';
 export * from './inlineResponse20010';
 export * from './inlineResponse20010Data';
-export * from './inlineResponse20010DataCryptoCurrencyInfo';
-export * from './inlineResponse20010DataFiatCurrencyInfo';
-export * from './inlineResponse20010DataList';
+export * from './inlineResponse20010DataLists';
 export * from './inlineResponse20011';
 export * from './inlineResponse20011Data';
+export * from './inlineResponse20011DataCryptoCurrencyInfo';
+export * from './inlineResponse20011DataFiatCurrencyInfo';
 export * from './inlineResponse20011DataList';
 export * from './inlineResponse20012';
 export * from './inlineResponse20012Data';
+export * from './inlineResponse20012DataList';
 export * from './inlineResponse20013';
 export * from './inlineResponse20013Data';
-export * from './inlineResponse20013DataMerchantInfo';
 export * from './inlineResponse20014';
 export * from './inlineResponse20014Data';
+export * from './inlineResponse20014DataMerchantInfo';
 export * from './inlineResponse20015';
 export * from './inlineResponse20015Data';
-export * from './inlineResponse20015List';
 export * from './inlineResponse20016';
 export * from './inlineResponse20016Data';
-export * from './inlineResponse20016DataConvertInfo';
-export * from './inlineResponse20016DataList';
-export * from './inlineResponse20016DataTransTime';
+export * from './inlineResponse20016List';
 export * from './inlineResponse20017';
 export * from './inlineResponse20017Data';
+export * from './inlineResponse20017DataConvertInfo';
+export * from './inlineResponse20017DataList';
+export * from './inlineResponse20017DataTransTime';
 export * from './inlineResponse20018';
 export * from './inlineResponse20018Data';
 export * from './inlineResponse20019';
@@ -173,16 +174,17 @@ export * from './inlineResponse20019Data';
 export * from './inlineResponse2002';
 export * from './inlineResponse20020';
 export * from './inlineResponse20020Data';
-export * from './inlineResponse20020DataLists';
 export * from './inlineResponse20021';
 export * from './inlineResponse20021Data';
-export * from './inlineResponse20021DataMessages';
-export * from './inlineResponse20021DataMsgObj';
+export * from './inlineResponse20021DataLists';
 export * from './inlineResponse20022';
 export * from './inlineResponse20022Data';
+export * from './inlineResponse20022DataMessages';
+export * from './inlineResponse20022DataMsgObj';
 export * from './inlineResponse20023';
 export * from './inlineResponse20023Data';
 export * from './inlineResponse20024';
+export * from './inlineResponse20024Data';
 export * from './inlineResponse20025';
 export * from './inlineResponse20026';
 export * from './inlineResponse20027';
@@ -192,12 +194,12 @@ export * from './inlineResponse2003';
 export * from './inlineResponse20030';
 export * from './inlineResponse20031';
 export * from './inlineResponse20032';
-export * from './inlineResponse20032Assets';
 export * from './inlineResponse20033';
+export * from './inlineResponse20033Assets';
 export * from './inlineResponse20034';
 export * from './inlineResponse20035';
-export * from './inlineResponse20035SpecialFeeList';
 export * from './inlineResponse20036';
+export * from './inlineResponse20036SpecialFeeList';
 export * from './inlineResponse20037';
 export * from './inlineResponse20038';
 export * from './inlineResponse20039';
@@ -208,6 +210,7 @@ export * from './inlineResponse20042';
 export * from './inlineResponse20043';
 export * from './inlineResponse20044';
 export * from './inlineResponse20045';
+export * from './inlineResponse20046';
 export * from './inlineResponse2005';
 export * from './inlineResponse2006';
 export * from './inlineResponse2006Data';
@@ -282,6 +285,7 @@ export * from './partnerSubList';
 export * from './partnerTransactionHistory';
 export * from './patchUniLend';
 export * from './placeDualInvestmentOrder';
+export * from './placeDualInvestmentOrderParams';
 export * from './position';
 export * from './positionClose';
 export * from './positionCloseOrder';
@@ -535,29 +539,30 @@ import { InlineResponse200 } from './inlineResponse200';
 import { InlineResponse2001 } from './inlineResponse2001';
 import { InlineResponse20010 } from './inlineResponse20010';
 import { InlineResponse20010Data } from './inlineResponse20010Data';
-import { InlineResponse20010DataCryptoCurrencyInfo } from './inlineResponse20010DataCryptoCurrencyInfo';
-import { InlineResponse20010DataFiatCurrencyInfo } from './inlineResponse20010DataFiatCurrencyInfo';
-import { InlineResponse20010DataList } from './inlineResponse20010DataList';
+import { InlineResponse20010DataLists } from './inlineResponse20010DataLists';
 import { InlineResponse20011 } from './inlineResponse20011';
 import { InlineResponse20011Data } from './inlineResponse20011Data';
+import { InlineResponse20011DataCryptoCurrencyInfo } from './inlineResponse20011DataCryptoCurrencyInfo';
+import { InlineResponse20011DataFiatCurrencyInfo } from './inlineResponse20011DataFiatCurrencyInfo';
 import { InlineResponse20011DataList } from './inlineResponse20011DataList';
 import { InlineResponse20012 } from './inlineResponse20012';
 import { InlineResponse20012Data } from './inlineResponse20012Data';
+import { InlineResponse20012DataList } from './inlineResponse20012DataList';
 import { InlineResponse20013 } from './inlineResponse20013';
 import { InlineResponse20013Data } from './inlineResponse20013Data';
-import { InlineResponse20013DataMerchantInfo } from './inlineResponse20013DataMerchantInfo';
 import { InlineResponse20014 } from './inlineResponse20014';
 import { InlineResponse20014Data } from './inlineResponse20014Data';
+import { InlineResponse20014DataMerchantInfo } from './inlineResponse20014DataMerchantInfo';
 import { InlineResponse20015 } from './inlineResponse20015';
 import { InlineResponse20015Data } from './inlineResponse20015Data';
-import { InlineResponse20015List } from './inlineResponse20015List';
 import { InlineResponse20016 } from './inlineResponse20016';
 import { InlineResponse20016Data } from './inlineResponse20016Data';
-import { InlineResponse20016DataConvertInfo } from './inlineResponse20016DataConvertInfo';
-import { InlineResponse20016DataList } from './inlineResponse20016DataList';
-import { InlineResponse20016DataTransTime } from './inlineResponse20016DataTransTime';
+import { InlineResponse20016List } from './inlineResponse20016List';
 import { InlineResponse20017 } from './inlineResponse20017';
 import { InlineResponse20017Data } from './inlineResponse20017Data';
+import { InlineResponse20017DataConvertInfo } from './inlineResponse20017DataConvertInfo';
+import { InlineResponse20017DataList } from './inlineResponse20017DataList';
+import { InlineResponse20017DataTransTime } from './inlineResponse20017DataTransTime';
 import { InlineResponse20018 } from './inlineResponse20018';
 import { InlineResponse20018Data } from './inlineResponse20018Data';
 import { InlineResponse20019 } from './inlineResponse20019';
@@ -565,16 +570,17 @@ import { InlineResponse20019Data } from './inlineResponse20019Data';
 import { InlineResponse2002 } from './inlineResponse2002';
 import { InlineResponse20020 } from './inlineResponse20020';
 import { InlineResponse20020Data } from './inlineResponse20020Data';
-import { InlineResponse20020DataLists } from './inlineResponse20020DataLists';
 import { InlineResponse20021 } from './inlineResponse20021';
 import { InlineResponse20021Data } from './inlineResponse20021Data';
-import { InlineResponse20021DataMessages } from './inlineResponse20021DataMessages';
-import { InlineResponse20021DataMsgObj } from './inlineResponse20021DataMsgObj';
+import { InlineResponse20021DataLists } from './inlineResponse20021DataLists';
 import { InlineResponse20022 } from './inlineResponse20022';
 import { InlineResponse20022Data } from './inlineResponse20022Data';
+import { InlineResponse20022DataMessages } from './inlineResponse20022DataMessages';
+import { InlineResponse20022DataMsgObj } from './inlineResponse20022DataMsgObj';
 import { InlineResponse20023 } from './inlineResponse20023';
 import { InlineResponse20023Data } from './inlineResponse20023Data';
 import { InlineResponse20024 } from './inlineResponse20024';
+import { InlineResponse20024Data } from './inlineResponse20024Data';
 import { InlineResponse20025 } from './inlineResponse20025';
 import { InlineResponse20026 } from './inlineResponse20026';
 import { InlineResponse20027 } from './inlineResponse20027';
@@ -584,12 +590,12 @@ import { InlineResponse2003 } from './inlineResponse2003';
 import { InlineResponse20030 } from './inlineResponse20030';
 import { InlineResponse20031 } from './inlineResponse20031';
 import { InlineResponse20032 } from './inlineResponse20032';
-import { InlineResponse20032Assets } from './inlineResponse20032Assets';
 import { InlineResponse20033 } from './inlineResponse20033';
+import { InlineResponse20033Assets } from './inlineResponse20033Assets';
 import { InlineResponse20034 } from './inlineResponse20034';
 import { InlineResponse20035 } from './inlineResponse20035';
-import { InlineResponse20035SpecialFeeList } from './inlineResponse20035SpecialFeeList';
 import { InlineResponse20036 } from './inlineResponse20036';
+import { InlineResponse20036SpecialFeeList } from './inlineResponse20036SpecialFeeList';
 import { InlineResponse20037 } from './inlineResponse20037';
 import { InlineResponse20038 } from './inlineResponse20038';
 import { InlineResponse20039 } from './inlineResponse20039';
@@ -600,6 +606,7 @@ import { InlineResponse20042 } from './inlineResponse20042';
 import { InlineResponse20043 } from './inlineResponse20043';
 import { InlineResponse20044 } from './inlineResponse20044';
 import { InlineResponse20045 } from './inlineResponse20045';
+import { InlineResponse20046 } from './inlineResponse20046';
 import { InlineResponse2005 } from './inlineResponse2005';
 import { InlineResponse2006 } from './inlineResponse2006';
 import { InlineResponse2006Data } from './inlineResponse2006Data';
@@ -674,6 +681,7 @@ import { PartnerSubList } from './partnerSubList';
 import { PartnerTransactionHistory } from './partnerTransactionHistory';
 import { PatchUniLend } from './patchUniLend';
 import { PlaceDualInvestmentOrder } from './placeDualInvestmentOrder';
+import { PlaceDualInvestmentOrderParams } from './placeDualInvestmentOrderParams';
 import { Position } from './position';
 import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
@@ -1021,29 +1029,30 @@ let typeMap: { [index: string]: any } = {
     InlineResponse2001: InlineResponse2001,
     InlineResponse20010: InlineResponse20010,
     InlineResponse20010Data: InlineResponse20010Data,
-    InlineResponse20010DataCryptoCurrencyInfo: InlineResponse20010DataCryptoCurrencyInfo,
-    InlineResponse20010DataFiatCurrencyInfo: InlineResponse20010DataFiatCurrencyInfo,
-    InlineResponse20010DataList: InlineResponse20010DataList,
+    InlineResponse20010DataLists: InlineResponse20010DataLists,
     InlineResponse20011: InlineResponse20011,
     InlineResponse20011Data: InlineResponse20011Data,
+    InlineResponse20011DataCryptoCurrencyInfo: InlineResponse20011DataCryptoCurrencyInfo,
+    InlineResponse20011DataFiatCurrencyInfo: InlineResponse20011DataFiatCurrencyInfo,
     InlineResponse20011DataList: InlineResponse20011DataList,
     InlineResponse20012: InlineResponse20012,
     InlineResponse20012Data: InlineResponse20012Data,
+    InlineResponse20012DataList: InlineResponse20012DataList,
     InlineResponse20013: InlineResponse20013,
     InlineResponse20013Data: InlineResponse20013Data,
-    InlineResponse20013DataMerchantInfo: InlineResponse20013DataMerchantInfo,
     InlineResponse20014: InlineResponse20014,
     InlineResponse20014Data: InlineResponse20014Data,
+    InlineResponse20014DataMerchantInfo: InlineResponse20014DataMerchantInfo,
     InlineResponse20015: InlineResponse20015,
     InlineResponse20015Data: InlineResponse20015Data,
-    InlineResponse20015List: InlineResponse20015List,
     InlineResponse20016: InlineResponse20016,
     InlineResponse20016Data: InlineResponse20016Data,
-    InlineResponse20016DataConvertInfo: InlineResponse20016DataConvertInfo,
-    InlineResponse20016DataList: InlineResponse20016DataList,
-    InlineResponse20016DataTransTime: InlineResponse20016DataTransTime,
+    InlineResponse20016List: InlineResponse20016List,
     InlineResponse20017: InlineResponse20017,
     InlineResponse20017Data: InlineResponse20017Data,
+    InlineResponse20017DataConvertInfo: InlineResponse20017DataConvertInfo,
+    InlineResponse20017DataList: InlineResponse20017DataList,
+    InlineResponse20017DataTransTime: InlineResponse20017DataTransTime,
     InlineResponse20018: InlineResponse20018,
     InlineResponse20018Data: InlineResponse20018Data,
     InlineResponse20019: InlineResponse20019,
@@ -1051,16 +1060,17 @@ let typeMap: { [index: string]: any } = {
     InlineResponse2002: InlineResponse2002,
     InlineResponse20020: InlineResponse20020,
     InlineResponse20020Data: InlineResponse20020Data,
-    InlineResponse20020DataLists: InlineResponse20020DataLists,
     InlineResponse20021: InlineResponse20021,
     InlineResponse20021Data: InlineResponse20021Data,
-    InlineResponse20021DataMessages: InlineResponse20021DataMessages,
-    InlineResponse20021DataMsgObj: InlineResponse20021DataMsgObj,
+    InlineResponse20021DataLists: InlineResponse20021DataLists,
     InlineResponse20022: InlineResponse20022,
     InlineResponse20022Data: InlineResponse20022Data,
+    InlineResponse20022DataMessages: InlineResponse20022DataMessages,
+    InlineResponse20022DataMsgObj: InlineResponse20022DataMsgObj,
     InlineResponse20023: InlineResponse20023,
     InlineResponse20023Data: InlineResponse20023Data,
     InlineResponse20024: InlineResponse20024,
+    InlineResponse20024Data: InlineResponse20024Data,
     InlineResponse20025: InlineResponse20025,
     InlineResponse20026: InlineResponse20026,
     InlineResponse20027: InlineResponse20027,
@@ -1070,12 +1080,12 @@ let typeMap: { [index: string]: any } = {
     InlineResponse20030: InlineResponse20030,
     InlineResponse20031: InlineResponse20031,
     InlineResponse20032: InlineResponse20032,
-    InlineResponse20032Assets: InlineResponse20032Assets,
     InlineResponse20033: InlineResponse20033,
+    InlineResponse20033Assets: InlineResponse20033Assets,
     InlineResponse20034: InlineResponse20034,
     InlineResponse20035: InlineResponse20035,
-    InlineResponse20035SpecialFeeList: InlineResponse20035SpecialFeeList,
     InlineResponse20036: InlineResponse20036,
+    InlineResponse20036SpecialFeeList: InlineResponse20036SpecialFeeList,
     InlineResponse20037: InlineResponse20037,
     InlineResponse20038: InlineResponse20038,
     InlineResponse20039: InlineResponse20039,
@@ -1086,6 +1096,7 @@ let typeMap: { [index: string]: any } = {
     InlineResponse20043: InlineResponse20043,
     InlineResponse20044: InlineResponse20044,
     InlineResponse20045: InlineResponse20045,
+    InlineResponse20046: InlineResponse20046,
     InlineResponse2005: InlineResponse2005,
     InlineResponse2006: InlineResponse2006,
     InlineResponse2006Data: InlineResponse2006Data,
@@ -1160,6 +1171,7 @@ let typeMap: { [index: string]: any } = {
     PartnerTransactionHistory: PartnerTransactionHistory,
     PatchUniLend: PatchUniLend,
     PlaceDualInvestmentOrder: PlaceDualInvestmentOrder,
+    PlaceDualInvestmentOrderParams: PlaceDualInvestmentOrderParams,
     Position: Position,
     PositionClose: PositionClose,
     PositionCloseOrder: PositionCloseOrder,

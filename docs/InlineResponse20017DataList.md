@@ -1,4 +1,4 @@
-# InlineResponse20016DataList
+# InlineResponse20017DataList
 
 ## Properties
 
@@ -64,5 +64,5 @@ Name | Type | Description | Notes
 **odTime** | **number** | Countdown time | [optional] [default to undefined]
 **orderType** | **number** | Order Type | [optional] [default to undefined]
 **orderTag** | **Array&lt;string&gt;** | Order tags | [optional] [default to undefined]
-**convertInfo** | [**InlineResponse20016DataConvertInfo**](InlineResponse20016DataConvertInfo.md) |  | [optional] [default to undefined]
+**convertInfo** | [**InlineResponse20017DataConvertInfo**](InlineResponse20017DataConvertInfo.md) |  | [optional] [default to undefined]
 

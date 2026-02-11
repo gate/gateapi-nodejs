@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;InlineResponse20016DataList&gt;**](InlineResponse20016DataList.md) |  | [default to undefined]
-**transTime** | [**Array&lt;InlineResponse20016DataTransTime&gt;**](InlineResponse20016DataTransTime.md) | Countdown time | [default to undefined]
-**count** | **number** | Number of orders | [default to undefined]
-**exportedNum** | **number** | Export count | [default to undefined]
+**payType** | **string** | Payment method type | [optional] [default to undefined]
+**payName** | **string** | Payment method name | [optional] [default to undefined]
+**ids** | **Array&lt;number&gt;** | User\&#39;s currently bound payment method (primary key ID) | [optional] [default to undefined]
+**list** | [**Array&lt;InlineResponse20016List&gt;**](InlineResponse20016List.md) |  | [optional] [default to undefined]
 

@@ -189,7 +189,7 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+     * @param opts.interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
      * @param opts.limit Number of depth levels
      * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time the depth changes
      */
@@ -380,7 +380,7 @@ export class FuturesApi {
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
      * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
      * @param opts.limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
-     * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days
+     * @param opts.interval Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month
      * @param opts.timezone Time zone: all/utc0/utc8, default utc0
      */
     public async listFuturesCandlesticks(
@@ -485,7 +485,7 @@ export class FuturesApi {
     }
 
     /**
-     * Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+     * K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
      * @summary Premium Index K-line chart
      * @param settle Settle currency
      * @param contract Futures contract
@@ -2837,7 +2837,7 @@ export class FuturesApi {
     }
 
     /**
-     * By default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/my_trades_timerange`.
+     * By default, only supports querying data within 6 months. For older data, use `GET /futures/{settle}/my_trades_timerange`
      * @summary Query personal trading records
      * @param settle Settle currency
      * @param opts Optional parameters

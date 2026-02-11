@@ -9,135 +9,73 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20032Assets } from './inlineResponse20032Assets';
-
 export class InlineResponse20032 {
     /**
-     * User ID
+     * Quote ID
      */
-    'userId': string;
+    'quoteId': string;
     /**
-     * Available Margin
+     * Valid time (milliseconds timestamp)
      */
-    'availableMargin': string;
+    'validMs': string;
     /**
-     * marginbalance
+     * Asset Sold
      */
-    'marginBalance': string;
+    'fromCoin': string;
     /**
-     * Initial Margin
+     * Asset Bought
      */
-    'initialMargin': string;
+    'toCoin': string;
     /**
-     * Maintenance margin
+     * Amount to sell
      */
-    'maintenanceMargin': string;
+    'fromAmount': string;
     /**
-     * Initial margin rate
+     * Amount to buy
      */
-    'initialMarginRate': string;
+    'toAmount': string;
     /**
-     * Maintenance margin rate
+     * Price
      */
-    'maintenanceMarginRate': string;
-    /**
-     * Contract Position Mode
-     */
-    'positionMode': string;
-    /**
-     * Account limit
-     */
-    'accountLimit'?: string;
-    /**
-     * Created time
-     */
-    'createTime': string;
-    /**
-     * Update time
-     */
-    'updateTime': string;
-    /**
-     * Account mode. CROSS_EXCHANGE: cross-exchange mode. ISOLATED_EXCHANGE: isolated exchange mode
-     */
-    'accountMode'?: string;
-    /**
-     * Exchange type. When account_mode is CROSS_EXCHANGE, this must be CROSSEX; otherwise, it represents a specific exchange
-     */
-    'exchangeType'?: string;
-    'assets': Array<InlineResponse20032Assets>;
+    'price': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
+            name: 'quoteId',
+            baseName: 'quote_id',
             type: 'string',
         },
         {
-            name: 'availableMargin',
-            baseName: 'available_margin',
+            name: 'validMs',
+            baseName: 'valid_ms',
             type: 'string',
         },
         {
-            name: 'marginBalance',
-            baseName: 'margin_balance',
+            name: 'fromCoin',
+            baseName: 'from_coin',
             type: 'string',
         },
         {
-            name: 'initialMargin',
-            baseName: 'initial_margin',
+            name: 'toCoin',
+            baseName: 'to_coin',
             type: 'string',
         },
         {
-            name: 'maintenanceMargin',
-            baseName: 'maintenance_margin',
+            name: 'fromAmount',
+            baseName: 'from_amount',
             type: 'string',
         },
         {
-            name: 'initialMarginRate',
-            baseName: 'initial_margin_rate',
+            name: 'toAmount',
+            baseName: 'to_amount',
             type: 'string',
         },
         {
-            name: 'maintenanceMarginRate',
-            baseName: 'maintenance_margin_rate',
+            name: 'price',
+            baseName: 'price',
             type: 'string',
-        },
-        {
-            name: 'positionMode',
-            baseName: 'position_mode',
-            type: 'string',
-        },
-        {
-            name: 'accountLimit',
-            baseName: 'account_limit',
-            type: 'string',
-        },
-        {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'string',
-        },
-        {
-            name: 'updateTime',
-            baseName: 'update_time',
-            type: 'string',
-        },
-        {
-            name: 'accountMode',
-            baseName: 'account_mode',
-            type: 'string',
-        },
-        {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
-            type: 'string',
-        },
-        {
-            name: 'assets',
-            baseName: 'assets',
-            type: 'Array<InlineResponse20032Assets>',
         },
     ];
 

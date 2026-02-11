@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20020DataLists {
+export class InlineResponse20021DataLists {
     /**
      * Ad buy/sell direction
      */
@@ -368,6 +368,6 @@ export class InlineResponse20020DataLists {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20020DataLists.attributeTypeMap;
+        return InlineResponse20021DataLists.attributeTypeMap;
     }
 }

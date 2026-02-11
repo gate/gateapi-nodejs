@@ -9,46 +9,45 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20016DataList } from './inlineResponse20016DataList';
-import { InlineResponse20016DataTransTime } from './inlineResponse20016DataTransTime';
+import { InlineResponse20016List } from './inlineResponse20016List';
 
 export class InlineResponse20016Data {
-    'list': Array<InlineResponse20016DataList>;
     /**
-     * Countdown time
+     * Payment method type
      */
-    'transTime': Array<InlineResponse20016DataTransTime>;
+    'payType'?: string;
     /**
-     * Number of orders
+     * Payment method name
      */
-    'count': number;
+    'payName'?: string;
     /**
-     * Export count
+     * User\'s currently bound payment method (primary key ID)
      */
-    'exportedNum': number;
+    'ids'?: Array<number>;
+    'list'?: Array<InlineResponse20016List>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
+            name: 'payType',
+            baseName: 'pay_type',
+            type: 'string',
+        },
+        {
+            name: 'payName',
+            baseName: 'pay_name',
+            type: 'string',
+        },
+        {
+            name: 'ids',
+            baseName: 'ids',
+            type: 'Array<number>',
+        },
+        {
             name: 'list',
             baseName: 'list',
-            type: 'Array<InlineResponse20016DataList>',
-        },
-        {
-            name: 'transTime',
-            baseName: 'trans_time',
-            type: 'Array<InlineResponse20016DataTransTime>',
-        },
-        {
-            name: 'count',
-            baseName: 'count',
-            type: 'number',
-        },
-        {
-            name: 'exportedNum',
-            baseName: 'exported_num',
-            type: 'number',
+            type: 'Array<InlineResponse20016List>',
         },
     ];
 

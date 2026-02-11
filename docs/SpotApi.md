@@ -262,7 +262,7 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
-  'interval': '0', // string | Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+  'interval': '0', // string | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
   'limit': 10, // number | Number of depth levels
   'withId': false // boolean | Return order book update ID
 };
@@ -277,7 +277,7 @@ api.listOrderBook(currencyPair, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [default to undefined]
- **interval** | **string**| Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified | [optional] [default to &#39;0&#39;]
+ **interval** | **string**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **number**| Number of depth levels | [optional] [default to 10]
  **withId** | **boolean**| Return order book update ID | [optional] [default to undefined]
 
@@ -357,7 +357,7 @@ No authorization required
 
 Market K-line chart
 
-Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
 
 ### Example
 

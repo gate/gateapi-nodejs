@@ -9,32 +9,20 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20010DataFiatCurrencyInfo {
-    /**
-     * Name
-     */
-    'name': string;
-    /**
-     * Image
-     */
-    'icon': string;
+export class InlineResponse20017DataTransTime {
+    'odTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'name',
-            baseName: 'name',
-            type: 'string',
-        },
-        {
-            name: 'icon',
-            baseName: 'icon',
-            type: 'string',
+            name: 'odTime',
+            baseName: 'od_time',
+            type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20010DataFiatCurrencyInfo.attributeTypeMap;
+        return InlineResponse20017DataTransTime.attributeTypeMap;
     }
 }

@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20021DataMsgObj } from './inlineResponse20021DataMsgObj';
+import { InlineResponse20022DataMsgObj } from './inlineResponse20022DataMsgObj';
 
-export class InlineResponse20021DataMessages {
+export class InlineResponse20022DataMessages {
     /**
      * Whether seller
      */
@@ -32,7 +32,7 @@ export class InlineResponse20021DataMessages {
      * Message timestamp
      */
     'timest': number;
-    'msgObj': InlineResponse20021DataMsgObj;
+    'msgObj': InlineResponse20022DataMsgObj;
     /**
      * Message sender UID
      */
@@ -93,7 +93,7 @@ export class InlineResponse20021DataMessages {
         {
             name: 'msgObj',
             baseName: 'msg_obj',
-            type: 'InlineResponse20021DataMsgObj',
+            type: 'InlineResponse20022DataMsgObj',
         },
         {
             name: 'uid',
@@ -133,6 +133,6 @@ export class InlineResponse20021DataMessages {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20021DataMessages.attributeTypeMap;
+        return InlineResponse20022DataMessages.attributeTypeMap;
     }
 }

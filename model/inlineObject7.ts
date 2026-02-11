@@ -19,7 +19,7 @@ export class InlineObject7 {
      */
     'fiatCurrency': string;
     /**
-     * Order tab, default is pending (pending: Processing (pending: AND status in (\'OPEN\',  \'PAID\', \'LOCKED\', \'TEMP\')); dispute: In dispute (status in (\'ACCEPT\',  \'BCLOSED\', \'CANCEL\', \'BECANCEL\', \'SCLOSED\', \'SCANCEL\')))
+     * 订单标签页，默认pending（pending：处理中（pending:  AND status in (\'OPEN\', \'PAID\', \'LOCKED\', \'TEMP\')）；dispute：申诉中（status in (\'ACCEPT\', \'BCLOSED\', \'CANCEL\', \'BECANCEL\', \'SCLOSED\', \'SCANCEL\')))
      */
     'orderTab'?: string;
     /**
@@ -27,7 +27,7 @@ export class InlineObject7 {
      */
     'selectType'?: string;
     /**
-     * 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+     * Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
      */
     'status'?: string;
     /**

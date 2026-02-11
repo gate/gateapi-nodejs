@@ -9,19 +9,66 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20022DataMessages } from './inlineResponse20022DataMessages';
+
 export class InlineResponse20022Data {
     /**
-     * Timestamp when message was successfully sent (current timestamp)
+     * Message List
+     */
+    'messages': Array<InlineResponse20022DataMessages>;
+    /**
+     * Payment tip (displayed on homepage only)
+     */
+    'memo': string;
+    /**
+     * Whether historical records exist
+     */
+    'hasHistory': boolean;
+    /**
+     * Order ID
+     */
+    'txid': number;
+    /**
+     * Timestamp of the latest message
      */
     'sRVTM': number;
+    /**
+     * Order Status
+     */
+    'orderStatus': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
+            name: 'messages',
+            baseName: 'messages',
+            type: 'Array<InlineResponse20022DataMessages>',
+        },
+        {
+            name: 'memo',
+            baseName: 'memo',
+            type: 'string',
+        },
+        {
+            name: 'hasHistory',
+            baseName: 'has_history',
+            type: 'boolean',
+        },
+        {
+            name: 'txid',
+            baseName: 'txid',
+            type: 'number',
+        },
+        {
             name: 'sRVTM',
             baseName: 'SRVTM',
             type: 'number',
+        },
+        {
+            name: 'orderStatus',
+            baseName: 'order_status',
+            type: 'string',
         },
     ];
 

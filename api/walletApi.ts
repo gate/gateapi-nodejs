@@ -141,7 +141,7 @@ export class WalletApi {
      * @param opts.withdrawId Withdrawal record ID starts with \&#39;w\&#39;, such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled
      * @param opts.assetClass Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone
      * @param opts.withdrawOrderId User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried
-     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.from Start time for querying records. If not specified, defaults to 7 days before current time
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
@@ -256,7 +256,7 @@ export class WalletApi {
      * @summary Get deposit records
      * @param opts Optional parameters
      * @param opts.currency Specify the currency. If not specified, returns all currencies
-     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.from Start time for querying records. If not specified, defaults to 7 days before current time
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      * @param opts.limit Maximum number of entries returned in the list, limited to 500 transactions
      * @param opts.offset List offset, starting from 0
@@ -375,7 +375,7 @@ export class WalletApi {
      * @summary Get transfer records between main and sub accounts
      * @param opts Optional parameters
      * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
-     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.from Start time for querying records. If not specified, defaults to 7 days before current time
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0

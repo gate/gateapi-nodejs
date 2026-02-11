@@ -11,36 +11,63 @@
 
 export class InlineResponse20045 {
     /**
-     * Currency
+     * Account Change Record ID
      */
-    'coin': string;
+    'id': string;
+    /**
+     * User ID
+     */
+    'userId': string;
+    /**
+     * Business ID
+     */
+    'businessId': string;
+    /**
+     * 变更类型| `TRANSACTION` 成交 `TRADING_FEE` 手续费 `FUNDING_FEE` 合约资金费 `LIQUIDATION_FEE` 强平费 `TRANSFER_IN` 资金转入 `TRANSFER_OUT` 资金转出 `BANKRUPT_COMPENSATION` 穿仓补贴 `AUTO_REPAY` 杠杆仓位自动还负债
+     */
+    'type': string;
     /**
      * Exchange
      */
     'exchangeType': string;
     /**
-     * Tier
+     * Currency
      */
-    'tier': string;
+    'coin': string;
     /**
-     * Minimum value
+     * Change amount (positive indicates transfer in; negative indicates transfer out)
      */
-    'minValue': string;
+    'change': string;
     /**
-     * Maximum value
+     * Balance after change
      */
-    'maxValue': string;
+    'balance': string;
     /**
-     * Discount rate
+     * Created time
      */
-    'discountRate': string;
+    'createTime': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
+        },
+        {
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'string',
+        },
+        {
+            name: 'businessId',
+            baseName: 'business_id',
+            type: 'string',
+        },
+        {
+            name: 'type',
+            baseName: 'type',
             type: 'string',
         },
         {
@@ -49,23 +76,23 @@ export class InlineResponse20045 {
             type: 'string',
         },
         {
-            name: 'tier',
-            baseName: 'tier',
+            name: 'coin',
+            baseName: 'coin',
             type: 'string',
         },
         {
-            name: 'minValue',
-            baseName: 'min_value',
+            name: 'change',
+            baseName: 'change',
             type: 'string',
         },
         {
-            name: 'maxValue',
-            baseName: 'max_value',
+            name: 'balance',
+            baseName: 'balance',
             type: 'string',
         },
         {
-            name: 'discountRate',
-            baseName: 'discount_rate',
+            name: 'createTime',
+            baseName: 'create_time',
             type: 'string',
         },
     ];

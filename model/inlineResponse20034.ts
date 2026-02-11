@@ -11,43 +11,25 @@
 
 export class InlineResponse20034 {
     /**
-     * Currency
+     * Currency pair
      */
-    'coin': string;
+    'symbol': string;
     /**
-     * Exchange
+     * leverage
      */
-    'exchangeType': string;
-    /**
-     * Hourly Interest Rate
-     */
-    'hourInterestRate': string;
-    /**
-     * Millisecond Timestamp
-     */
-    'time': string;
+    'leverage': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
-            type: 'string',
-        },
-        {
-            name: 'hourInterestRate',
-            baseName: 'hour_interest_rate',
-            type: 'string',
-        },
-        {
-            name: 'time',
-            baseName: 'time',
+            name: 'leverage',
+            baseName: 'leverage',
             type: 'string',
         },
     ];

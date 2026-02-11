@@ -15,105 +15,17 @@ export class InlineResponse20039 {
      */
     'userId': string;
     /**
-     * Order ID
-     */
-    'orderId': string;
-    /**
-     * Client Order ID
-     */
-    'text': string;
-    /**
-     * Order Status
-     */
-    'state': string;
-    /**
      * Currency pair
      */
     'symbol': string;
     /**
-     * Attribute COMMON: Normal Order, LIQ: Liquidation Takeover Order, REDUCE: Liquidation Reduce Order, ADL: Auto-Reduce
+     * CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
      */
-    'attribute': string;
+    'crossexAdlRank': string;
     /**
-     * Exchange
+     * Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
      */
-    'exchangeType': string;
-    /**
-     * Business Type
-     */
-    'businessType': string;
-    /**
-     * Base Currency Quantity
-     */
-    'qty': string;
-    /**
-     * Quote Currency Quantity
-     */
-    'quoteQty': string;
-    /**
-     * Price
-     */
-    'price': string;
-    /**
-     * Time in Force Strategy
-     */
-    'timeInForce': string;
-    /**
-     * Filled Quantity
-     */
-    'executedQty': string;
-    /**
-     * Filled Amount
-     */
-    'executedAmount': string;
-    /**
-     * Average Filled Price
-     */
-    'executedAvgPrice': string;
-    /**
-     * Fee currency
-     */
-    'feeCoin': string;
-    /**
-     * fee
-     */
-    'fee': string;
-    /**
-     * Reduce Position Only
-     */
-    'reduceOnly': string;
-    /**
-     * leverage
-     */
-    'leverage': string;
-    /**
-     * Reason
-     */
-    'reason': string;
-    /**
-     * Latest Filled Quantity
-     */
-    'lastExecutedQty': string;
-    /**
-     * Latest Filled Price
-     */
-    'lastExecutedPrice': string;
-    /**
-     * Latest Filled Amount
-     */
-    'lastExecutedAmount': string;
-    /**
-     * Position Direction
-     */
-    'positionSide': string;
-    /**
-     * Created time
-     */
-    'createTime': string;
-    /**
-     * Update time
-     */
-    'updateTime': string;
+    'exchangeAdlRank': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -124,128 +36,18 @@ export class InlineResponse20039 {
             type: 'string',
         },
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'string',
-        },
-        {
-            name: 'text',
-            baseName: 'text',
-            type: 'string',
-        },
-        {
-            name: 'state',
-            baseName: 'state',
-            type: 'string',
-        },
-        {
             name: 'symbol',
             baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'attribute',
-            baseName: 'attribute',
+            name: 'crossexAdlRank',
+            baseName: 'crossex_adl_rank',
             type: 'string',
         },
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
-            type: 'string',
-        },
-        {
-            name: 'businessType',
-            baseName: 'business_type',
-            type: 'string',
-        },
-        {
-            name: 'qty',
-            baseName: 'qty',
-            type: 'string',
-        },
-        {
-            name: 'quoteQty',
-            baseName: 'quote_qty',
-            type: 'string',
-        },
-        {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
-        },
-        {
-            name: 'timeInForce',
-            baseName: 'time_in_force',
-            type: 'string',
-        },
-        {
-            name: 'executedQty',
-            baseName: 'executed_qty',
-            type: 'string',
-        },
-        {
-            name: 'executedAmount',
-            baseName: 'executed_amount',
-            type: 'string',
-        },
-        {
-            name: 'executedAvgPrice',
-            baseName: 'executed_avg_price',
-            type: 'string',
-        },
-        {
-            name: 'feeCoin',
-            baseName: 'fee_coin',
-            type: 'string',
-        },
-        {
-            name: 'fee',
-            baseName: 'fee',
-            type: 'string',
-        },
-        {
-            name: 'reduceOnly',
-            baseName: 'reduce_only',
-            type: 'string',
-        },
-        {
-            name: 'leverage',
-            baseName: 'leverage',
-            type: 'string',
-        },
-        {
-            name: 'reason',
-            baseName: 'reason',
-            type: 'string',
-        },
-        {
-            name: 'lastExecutedQty',
-            baseName: 'last_executed_qty',
-            type: 'string',
-        },
-        {
-            name: 'lastExecutedPrice',
-            baseName: 'last_executed_price',
-            type: 'string',
-        },
-        {
-            name: 'lastExecutedAmount',
-            baseName: 'last_executed_amount',
-            type: 'string',
-        },
-        {
-            name: 'positionSide',
-            baseName: 'position_side',
-            type: 'string',
-        },
-        {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'string',
-        },
-        {
-            name: 'updateTime',
-            baseName: 'update_time',
+            name: 'exchangeAdlRank',
+            baseName: 'exchange_adl_rank',
             type: 'string',
         },
     ];

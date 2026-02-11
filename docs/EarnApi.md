@@ -200,7 +200,7 @@ Promise<{ response: AxiosResponse; body: Array<DualGetOrders>; }> [DualGetOrders
 
 ## placeDualOrder
 
-> Promise<{ response: http.IncomingMessage; body?: any; }> placeDualOrder(placeDualInvestmentOrder)
+> Promise<{ response: http.IncomingMessage; body: PlaceDualInvestmentOrder; }> placeDualOrder(placeDualInvestmentOrderParams)
 
 Place Dual Investment order
 
@@ -215,9 +215,9 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnApi(client);
-const placeDualInvestmentOrder = new PlaceDualInvestmentOrder(); // PlaceDualInvestmentOrder | 
-api.placeDualOrder(placeDualInvestmentOrder)
-   .then(value => console.log('API called successfully.'),
+const placeDualInvestmentOrderParams = new PlaceDualInvestmentOrderParams(); // PlaceDualInvestmentOrderParams | 
+api.placeDualOrder(placeDualInvestmentOrderParams)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
@@ -226,11 +226,11 @@ api.placeDualOrder(placeDualInvestmentOrder)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **placeDualInvestmentOrder** | [**PlaceDualInvestmentOrder**](PlaceDualInvestmentOrder.md)|  | 
+ **placeDualInvestmentOrderParams** | [**PlaceDualInvestmentOrderParams**](PlaceDualInvestmentOrderParams.md)|  | 
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body?: any; }> 
+Promise<{ response: AxiosResponse; body: PlaceDualInvestmentOrder; }> [PlaceDualInvestmentOrder](PlaceDualInvestmentOrder.md)
 
 ### Authorization
 
@@ -239,7 +239,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 ## listDualBalance
 

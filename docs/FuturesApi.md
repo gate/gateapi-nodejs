@@ -180,7 +180,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'interval': '0', // string | Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+  'interval': '0', // string | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
   'limit': 10, // number | Number of depth levels
   'withId': false // boolean | Whether to return depth update ID. This ID increments by 1 each time the depth changes
 };
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **interval** | **string**| Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified | [optional] [default to &#39;0&#39;]
+ **interval** | **string**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **number**| Number of depth levels | [optional] [default to 10]
  **withId** | **boolean**| Whether to return depth update ID. This ID increments by 1 each time the depth changes | [optional] [default to undefined]
 
@@ -291,7 +291,7 @@ const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   'limit': 100, // number | Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'interval': '5m', // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Interval time between data points. Note that `1w` means natural week(Mon-Sun), while `7d` means every 7d since unix 0. 30d represents a natural month, not 30 days
+  'interval': '5m', // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month
   'timezone': 'utc0' // string | Time zone: all/utc0/utc8, default utc0
 };
 api.listFuturesCandlesticks(settle, contract, opts)
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional] [default to undefined]
  **limit** | **number**| Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
- **interval** | **Interval**| Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days | [optional] [default to &#39;5m&#39;]
+ **interval** | **Interval**| Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month | [optional] [default to &#39;5m&#39;]
  **timezone** | **string**| Time zone: all/utc0/utc8, default utc0 | [optional] [default to &#39;utc0&#39;]
 
 ### Return type
@@ -331,7 +331,7 @@ No authorization required
 
 Premium Index K-line chart
 
-Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
 
 ### Example
 
@@ -2082,7 +2082,7 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 
 Query personal trading records
 
-By default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use &#x60;GET /futures/{settle}/my_trades_timerange&#x60;.
+By default, only supports querying data within 6 months. For older data, use &#x60;GET /futures/{settle}/my_trades_timerange&#x60;
 
 ### Example
 

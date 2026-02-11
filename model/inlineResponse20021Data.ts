@@ -9,66 +9,18 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20021DataMessages } from './inlineResponse20021DataMessages';
+import { InlineResponse20021DataLists } from './inlineResponse20021DataLists';
 
 export class InlineResponse20021Data {
-    /**
-     * Message List
-     */
-    'messages': Array<InlineResponse20021DataMessages>;
-    /**
-     * Payment tip (displayed on homepage only)
-     */
-    'memo': string;
-    /**
-     * Whether historical records exist
-     */
-    'hasHistory': boolean;
-    /**
-     * Order ID
-     */
-    'txid': number;
-    /**
-     * Timestamp of the latest message
-     */
-    'sRVTM': number;
-    /**
-     * Order Status
-     */
-    'orderStatus': string;
+    'lists': Array<InlineResponse20021DataLists>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'messages',
-            baseName: 'messages',
-            type: 'Array<InlineResponse20021DataMessages>',
-        },
-        {
-            name: 'memo',
-            baseName: 'memo',
-            type: 'string',
-        },
-        {
-            name: 'hasHistory',
-            baseName: 'has_history',
-            type: 'boolean',
-        },
-        {
-            name: 'txid',
-            baseName: 'txid',
-            type: 'number',
-        },
-        {
-            name: 'sRVTM',
-            baseName: 'SRVTM',
-            type: 'number',
-        },
-        {
-            name: 'orderStatus',
-            baseName: 'order_status',
-            type: 'string',
+            name: 'lists',
+            baseName: 'lists',
+            type: 'Array<InlineResponse20021DataLists>',
         },
     ];
 

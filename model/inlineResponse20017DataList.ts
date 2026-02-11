@@ -9,9 +9,9 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20016DataConvertInfo } from './inlineResponse20016DataConvertInfo';
+import { InlineResponse20017DataConvertInfo } from './inlineResponse20017DataConvertInfo';
 
-export class InlineResponse20016DataList {
+export class InlineResponse20017DataList {
     /**
      * 1=Buy, 0=Sell
      */
@@ -252,7 +252,7 @@ export class InlineResponse20016DataList {
      * Order tags
      */
     'orderTag'?: Array<string>;
-    'convertInfo'?: InlineResponse20016DataConvertInfo;
+    'convertInfo'?: InlineResponse20017DataConvertInfo;
 
     static discriminator: string | undefined = undefined;
 
@@ -560,11 +560,11 @@ export class InlineResponse20016DataList {
         {
             name: 'convertInfo',
             baseName: 'convert_info',
-            type: 'InlineResponse20016DataConvertInfo',
+            type: 'InlineResponse20017DataConvertInfo',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20016DataList.attributeTypeMap;
+        return InlineResponse20017DataList.attributeTypeMap;
     }
 }

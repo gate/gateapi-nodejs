@@ -9,158 +9,134 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20015List {
+export class InlineResponse20022DataMsgObj {
     /**
-     * useruID
+     * Order status when message was sent
      */
-    'uid'?: number;
+    'status'?: string;
     /**
-     * User\'s currently bound payment method (primary key ID)
+     * Message content
      */
-    'bankid'?: string;
+    'text'?: string;
     /**
-     * Cardholder UID
+     * Payment voucher
      */
-    'nickname'?: number;
+    'paymentVoucher'?: Array<string>;
     /**
-     * Bank name
+     * Cancellation reason ID
      */
-    'bankname'?: string;
+    'reasonId'?: number;
     /**
-     * Bank branch name
+     * Cancellation reason popup
      */
-    'bankbranch'?: string;
+    'toastId'?: number;
     /**
-     * Bank city
+     * Cancellation reason title
      */
-    'bankcity'?: string;
+    'reasonMemo'?: string;
     /**
-     * Bank province
+     * Cancellation time
      */
-    'bankprov'?: string;
+    'cancelTime'?: number;
     /**
-     * Bank card number
+     * Whether seller confirmed the reason
      */
-    'bankaddr'?: string;
+    'sellerConfirm'?: number;
     /**
-     * Bank note
+     * Payment method information ID
      */
-    'bankdesc'?: string;
-    /**
-     * Cardholder UID
-     */
-    'holdUid'?: number;
-    /**
-     * Cardholder name
-     */
-    'holdUsername'?: string;
-    /**
-     * userfirst name
-     */
-    'realName'?: string;
-    /**
-     * User\'s currently bound payment method (primary key ID)
-     */
-    'id'?: string;
+    'id': string;
     /**
      * Payment method description
      */
-    'accountDes'?: string;
+    'accountDes': string;
     /**
      * Payment method type
      */
-    'payType'?: string;
+    'payType': string;
     /**
      * Payment method file link
      */
-    'file'?: string;
+    'file': string;
     /**
      * Payment method file key
      */
-    'fileKey'?: string;
+    'fileKey': string;
     /**
      * Payment method name
      */
-    'account'?: string;
+    'account': string;
     /**
      * Payment method note
      */
-    'memo'?: string;
+    'memo': string;
     /**
      * Payment method code
      */
-    'code'?: string;
+    'code': string;
     /**
      * Payment method additional note
      */
-    'memoExt'?: string;
+    'memoExt': string;
     /**
-     * Payment method transaction information
+     * Payment method tip
      */
-    'tradeTips'?: string;
+    'tradeTips': string;
+    /**
+     * Payment method username
+     */
+    'realName': string;
+    /**
+     * Whether deleted
+     */
+    'isDelete': number;
+    /**
+     * Payment method full name
+     */
+    'payName': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'uid',
-            baseName: 'uid',
+            name: 'status',
+            baseName: 'status',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
+        },
+        {
+            name: 'paymentVoucher',
+            baseName: 'payment_voucher',
+            type: 'Array<string>',
+        },
+        {
+            name: 'reasonId',
+            baseName: 'reason_id',
             type: 'number',
         },
         {
-            name: 'bankid',
-            baseName: 'bankid',
-            type: 'string',
-        },
-        {
-            name: 'nickname',
-            baseName: 'nickname',
+            name: 'toastId',
+            baseName: 'toast_id',
             type: 'number',
         },
         {
-            name: 'bankname',
-            baseName: 'bankname',
+            name: 'reasonMemo',
+            baseName: 'reason_memo',
             type: 'string',
         },
         {
-            name: 'bankbranch',
-            baseName: 'bankbranch',
-            type: 'string',
-        },
-        {
-            name: 'bankcity',
-            baseName: 'bankcity',
-            type: 'string',
-        },
-        {
-            name: 'bankprov',
-            baseName: 'bankprov',
-            type: 'string',
-        },
-        {
-            name: 'bankaddr',
-            baseName: 'bankaddr',
-            type: 'string',
-        },
-        {
-            name: 'bankdesc',
-            baseName: 'bankdesc',
-            type: 'string',
-        },
-        {
-            name: 'holdUid',
-            baseName: 'holdUid',
+            name: 'cancelTime',
+            baseName: 'cancel_time',
             type: 'number',
         },
         {
-            name: 'holdUsername',
-            baseName: 'hold_username',
-            type: 'string',
-        },
-        {
-            name: 'realName',
-            baseName: 'real_name',
-            type: 'string',
+            name: 'sellerConfirm',
+            baseName: 'seller_confirm',
+            type: 'number',
         },
         {
             name: 'id',
@@ -212,9 +188,24 @@ export class InlineResponse20015List {
             baseName: 'trade_tips',
             type: 'string',
         },
+        {
+            name: 'realName',
+            baseName: 'real_name',
+            type: 'string',
+        },
+        {
+            name: 'isDelete',
+            baseName: 'is_delete',
+            type: 'number',
+        },
+        {
+            name: 'payName',
+            baseName: 'pay_name',
+            type: 'string',
+        },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20015List.attributeTypeMap;
+        return InlineResponse20022DataMsgObj.attributeTypeMap;
     }
 }

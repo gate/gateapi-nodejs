@@ -16,7 +16,7 @@ export class OptionsOrder {
     /**
      * Options order ID
      */
-    'id'?: number;
+    'id'?: bigint;
     /**
      * User ID
      */
@@ -120,7 +120,7 @@ export class OptionsOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'bigint',
         },
         {
             name: 'user',

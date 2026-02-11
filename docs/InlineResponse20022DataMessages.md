@@ -1,4 +1,4 @@
-# InlineResponse20021DataMessages
+# InlineResponse20022DataMessages
 
 ## Properties
 
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **msg** | **string** | Message content | [default to undefined]
 **username** | **string** | Message sender username | [default to undefined]
 **timest** | **number** | Message timestamp | [default to undefined]
-**msgObj** | [**InlineResponse20021DataMsgObj**](InlineResponse20021DataMsgObj.md) |  | [default to undefined]
+**msgObj** | [**InlineResponse20022DataMsgObj**](InlineResponse20022DataMsgObj.md) |  | [default to undefined]
 **uid** | **string** | Message sender UID | [default to undefined]
 **type** | **number** | Message type | [default to undefined]
 **pic** | **string** | File link | [default to undefined]

@@ -15,6 +15,7 @@ export class InlineResponse20010 {
     'code': number;
     'message': string;
     'data': InlineResponse20010Data;
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
@@ -33,6 +34,11 @@ export class InlineResponse20010 {
             name: 'data',
             baseName: 'data',
             type: 'InlineResponse20010Data',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

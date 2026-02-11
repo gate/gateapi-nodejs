@@ -43,7 +43,7 @@ export class DualGetPlans {
      */
     'maxCopies'?: number;
     /**
-     * Value Per Unit
+     * Value Per Unit (deprecated)
      */
     'perValue'?: string;
     /**
@@ -59,7 +59,7 @@ export class DualGetPlans {
      */
     'endTime'?: number;
     /**
-     * Status:   `NOTSTARTED`-Not Started  `ONGOING`-In Progress  `ENDED`-Ended
+     * 状态:  `NOTSTARTED`-未开始 `ONGOING`-进行中 `ENDED`-已结束
      */
     'status'?: string;
 

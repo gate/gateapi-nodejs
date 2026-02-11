@@ -71,7 +71,7 @@ export class Trade {
      */
     'sequenceId'?: string;
     /**
-     * 订单的自定义信息，公共接口无此字段返回 pm_liquidate、comb_margin_liquidate、scm_liquidate 这三种场景代表全仓强平订单 liquidate 代表逐仓强平订单
+     * Order\'s Custom Information. This field is not returned by public interfaces. The scenarios pm_liquidate, comb_margin_liquidate, and scm_liquidate represent full-account forced liquidation orders. liquidate represents isolated-account forced liquidation orders.
      */
     'text'?: string;
     /**

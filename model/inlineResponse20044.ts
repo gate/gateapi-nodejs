@@ -11,63 +11,104 @@
 
 export class InlineResponse20044 {
     /**
-     * Account Change Record ID
-     */
-    'id': string;
-    /**
      * User ID
      */
-    'userId': string;
+    'userId'?: string;
     /**
-     * Business ID
+     * filledrecordsID
      */
-    'businessId': string;
+    'transactionId'?: string;
     /**
-     * 变更类型| `TRANSACTION` 成交 `TRADING_FEE` 手续费 `FUNDING_FEE` 合约资金费 `LIQUIDATION_FEE` 强平费 `TRANSFER_IN` 资金转入 `TRANSFER_OUT` 资金转出 `BANKRUPT_COMPENSATION` 穿仓补贴 `AUTO_REPAY` 杠杆仓位自动还负债
+     * Order ID
      */
-    'type': string;
+    'orderId'?: string;
+    /**
+     * User Order ID
+     */
+    'text'?: string;
+    /**
+     * Currency pair
+     */
+    'symbol'?: string;
     /**
      * Exchange
      */
-    'exchangeType': string;
+    'exchangeType'?: string;
     /**
-     * Currency
+     * Business Type
      */
-    'coin': string;
+    'businessType'?: string;
     /**
-     * Change amount (positive indicates transfer in; negative indicates transfer out)
+     * Buy/Sell Direction
      */
-    'change': string;
+    'side'?: string;
     /**
-     * Balance after change
+     * Trading size
      */
-    'balance': string;
+    'qty'?: string;
+    /**
+     * Fill Price
+     */
+    'price'?: string;
+    /**
+     * fee
+     */
+    'fee'?: string;
+    /**
+     * Fee currency
+     */
+    'feeCoin'?: string;
+    /**
+     * Fee Rate
+     */
+    'feeRate'?: string;
+    /**
+     * Filled Role
+     */
+    'matchRole'?: string;
+    /**
+     * Realized P&L
+     */
+    'rpnl'?: string;
+    /**
+     * Position Mode
+     */
+    'positionMode'?: string;
+    /**
+     * Position Direction
+     */
+    'positionSide'?: string;
     /**
      * Created time
      */
-    'createTime': string;
+    'createTime'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
-        },
         {
             name: 'userId',
             baseName: 'user_id',
             type: 'string',
         },
         {
-            name: 'businessId',
-            baseName: 'business_id',
+            name: 'transactionId',
+            baseName: 'transaction_id',
             type: 'string',
         },
         {
-            name: 'type',
-            baseName: 'type',
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
+        },
+        {
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
@@ -76,18 +117,58 @@ export class InlineResponse20044 {
             type: 'string',
         },
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'businessType',
+            baseName: 'business_type',
             type: 'string',
         },
         {
-            name: 'change',
-            baseName: 'change',
+            name: 'side',
+            baseName: 'side',
             type: 'string',
         },
         {
-            name: 'balance',
-            baseName: 'balance',
+            name: 'qty',
+            baseName: 'qty',
+            type: 'string',
+        },
+        {
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
+        },
+        {
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
+        },
+        {
+            name: 'feeCoin',
+            baseName: 'fee_coin',
+            type: 'string',
+        },
+        {
+            name: 'feeRate',
+            baseName: 'fee_rate',
+            type: 'string',
+        },
+        {
+            name: 'matchRole',
+            baseName: 'match_role',
+            type: 'string',
+        },
+        {
+            name: 'rpnl',
+            baseName: 'rpnl',
+            type: 'string',
+        },
+        {
+            name: 'positionMode',
+            baseName: 'position_mode',
+            type: 'string',
+        },
+        {
+            name: 'positionSide',
+            baseName: 'position_side',
             type: 'string',
         },
         {

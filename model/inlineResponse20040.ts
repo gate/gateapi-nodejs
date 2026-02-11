@@ -11,97 +11,131 @@
 
 export class InlineResponse20040 {
     /**
-     * Position ID
-     */
-    'positionId'?: string;
-    /**
      * User ID
      */
-    'userId'?: string;
+    'userId': string;
+    /**
+     * Order ID
+     */
+    'orderId': string;
+    /**
+     * Client Order ID
+     */
+    'text': string;
+    /**
+     * Order Status
+     */
+    'state': string;
     /**
      * Currency pair
      */
-    'symbol'?: string;
+    'symbol': string;
     /**
-     * Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed)
+     * Attribute COMMON: Normal Order, LIQ: Liquidation Takeover Order, REDUCE: Liquidation Reduce Order, ADL: Auto-Reduce
      */
-    'closedType'?: string;
+    'attribute': string;
     /**
-     * Close Position P&L
+     * Exchange
      */
-    'closedPnl'?: string;
-    /**
-     * Close Position P&L Ratio
-     */
-    'closedPnlRate'?: string;
-    /**
-     * Average Opening Price
-     */
-    'openAvgPrice'?: string;
-    /**
-     * Average Close Price
-     */
-    'closedAvgPrice'?: string;
-    /**
-     * Max Trade Size
-     */
-    'maxPositionQty'?: string;
-    /**
-     * Close Position Quantity
-     */
-    'closedQty'?: string;
-    /**
-     * Close Position Value
-     */
-    'closedValue'?: string;
-    /**
-     * Position Accumulated Fees
-     */
-    'fee'?: string;
-    /**
-     * Liquidation Fee
-     */
-    'liqFee'?: string;
-    /**
-     * Funding Fee
-     */
-    'fundingFee'?: string;
-    /**
-     * Position Direction Before Close
-     */
-    'positionSide'?: string;
-    /**
-     * Position Mode at Close
-     */
-    'positionMode'?: string;
-    /**
-     * Leverage at Close
-     */
-    'leverage'?: string;
+    'exchangeType': string;
     /**
      * Business Type
      */
     'businessType': string;
     /**
+     * Base Currency Quantity
+     */
+    'qty': string;
+    /**
+     * Quote Currency Quantity
+     */
+    'quoteQty': string;
+    /**
+     * Price
+     */
+    'price': string;
+    /**
+     * Time in Force Strategy
+     */
+    'timeInForce': string;
+    /**
+     * Filled Quantity
+     */
+    'executedQty': string;
+    /**
+     * Filled Amount
+     */
+    'executedAmount': string;
+    /**
+     * Average Filled Price
+     */
+    'executedAvgPrice': string;
+    /**
+     * Fee currency
+     */
+    'feeCoin': string;
+    /**
+     * fee
+     */
+    'fee': string;
+    /**
+     * Reduce Position Only
+     */
+    'reduceOnly': string;
+    /**
+     * leverage
+     */
+    'leverage': string;
+    /**
+     * Reason
+     */
+    'reason': string;
+    /**
+     * Latest Filled Quantity
+     */
+    'lastExecutedQty': string;
+    /**
+     * Latest Filled Price
+     */
+    'lastExecutedPrice': string;
+    /**
+     * Latest Filled Amount
+     */
+    'lastExecutedAmount': string;
+    /**
+     * Position Direction
+     */
+    'positionSide': string;
+    /**
      * Created time
      */
-    'createTime'?: string;
+    'createTime': string;
     /**
      * Update time
      */
-    'updateTime'?: string;
+    'updateTime': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'positionId',
-            baseName: 'position_id',
+            name: 'userId',
+            baseName: 'user_id',
             type: 'string',
         },
         {
-            name: 'userId',
-            baseName: 'user_id',
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
+        },
+        {
+            name: 'state',
+            baseName: 'state',
             type: 'string',
         },
         {
@@ -110,43 +144,58 @@ export class InlineResponse20040 {
             type: 'string',
         },
         {
-            name: 'closedType',
-            baseName: 'closed_type',
+            name: 'attribute',
+            baseName: 'attribute',
             type: 'string',
         },
         {
-            name: 'closedPnl',
-            baseName: 'closed_pnl',
+            name: 'exchangeType',
+            baseName: 'exchange_type',
             type: 'string',
         },
         {
-            name: 'closedPnlRate',
-            baseName: 'closed_pnl_rate',
+            name: 'businessType',
+            baseName: 'business_type',
             type: 'string',
         },
         {
-            name: 'openAvgPrice',
-            baseName: 'open_avg_price',
+            name: 'qty',
+            baseName: 'qty',
             type: 'string',
         },
         {
-            name: 'closedAvgPrice',
-            baseName: 'closed_avg_price',
+            name: 'quoteQty',
+            baseName: 'quote_qty',
             type: 'string',
         },
         {
-            name: 'maxPositionQty',
-            baseName: 'max_position_qty',
+            name: 'price',
+            baseName: 'price',
             type: 'string',
         },
         {
-            name: 'closedQty',
-            baseName: 'closed_qty',
+            name: 'timeInForce',
+            baseName: 'time_in_force',
             type: 'string',
         },
         {
-            name: 'closedValue',
-            baseName: 'closed_value',
+            name: 'executedQty',
+            baseName: 'executed_qty',
+            type: 'string',
+        },
+        {
+            name: 'executedAmount',
+            baseName: 'executed_amount',
+            type: 'string',
+        },
+        {
+            name: 'executedAvgPrice',
+            baseName: 'executed_avg_price',
+            type: 'string',
+        },
+        {
+            name: 'feeCoin',
+            baseName: 'fee_coin',
             type: 'string',
         },
         {
@@ -155,23 +204,8 @@ export class InlineResponse20040 {
             type: 'string',
         },
         {
-            name: 'liqFee',
-            baseName: 'liq_fee',
-            type: 'string',
-        },
-        {
-            name: 'fundingFee',
-            baseName: 'funding_fee',
-            type: 'string',
-        },
-        {
-            name: 'positionSide',
-            baseName: 'position_side',
-            type: 'string',
-        },
-        {
-            name: 'positionMode',
-            baseName: 'position_mode',
+            name: 'reduceOnly',
+            baseName: 'reduce_only',
             type: 'string',
         },
         {
@@ -180,8 +214,28 @@ export class InlineResponse20040 {
             type: 'string',
         },
         {
-            name: 'businessType',
-            baseName: 'business_type',
+            name: 'reason',
+            baseName: 'reason',
+            type: 'string',
+        },
+        {
+            name: 'lastExecutedQty',
+            baseName: 'last_executed_qty',
+            type: 'string',
+        },
+        {
+            name: 'lastExecutedPrice',
+            baseName: 'last_executed_price',
+            type: 'string',
+        },
+        {
+            name: 'lastExecutedAmount',
+            baseName: 'last_executed_amount',
+            type: 'string',
+        },
+        {
+            name: 'positionSide',
+            baseName: 'position_side',
             type: 'string',
         },
         {

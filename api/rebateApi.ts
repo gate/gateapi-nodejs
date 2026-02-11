@@ -44,7 +44,7 @@ export class RebateApi {
      * @param opts Optional parameters
      * @param opts.currencyPair Specify the trading pair. If not specified, returns all trading pairs
      * @param opts.userId User ID. If not specified, all user records will be returned
-     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.from Start time for querying records. If not specified, defaults to 7 days before current time
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
@@ -145,7 +145,7 @@ export class RebateApi {
      * @param opts.currency Specify the currency. If not specified, returns all currencies
      * @param opts.commissionType Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate
      * @param opts.userId User ID. If not specified, all user records will be returned
-     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.from Start time for querying records. If not specified, defaults to 7 days before current time
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
@@ -255,7 +255,7 @@ export class RebateApi {
      * @param opts Optional parameters
      * @param opts.currencyPair Specify the trading pair. If not specified, returns all trading pairs
      * @param opts.userId User ID. If not specified, all user records will be returned
-     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.from Start time for querying records. If not specified, defaults to 7 days before current time
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
@@ -351,7 +351,7 @@ export class RebateApi {
      * @param opts Optional parameters
      * @param opts.currency Specify the currency. If not specified, returns all currencies
      * @param opts.userId User ID. If not specified, all user records will be returned
-     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.from Start time for querying records. If not specified, defaults to 7 days before current time
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0

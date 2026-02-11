@@ -9,151 +9,42 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20012DataList } from './inlineResponse20012DataList';
+
 export class InlineResponse20012Data {
-    /**
-     * Order ID
-     */
-    'orderId': string;
-    /**
-     * User ID
-     */
-    'uid': string;
-    /**
-     * Order Type
-     */
-    'type': string;
-    /**
-     * Fiat type
-     */
-    'fiatCurrency': string;
-    /**
-     * Fiat amount
-     */
-    'fiatAmount': string;
-    /**
-     * Stablecoin
-     */
-    'cryptoCurrency': string;
-    /**
-     * Stablecoin amount
-     */
-    'cryptoAmount': string;
-    /**
-     * Exchange rate
-     */
-    'rate': string;
-    /**
-     * Remark
-     */
-    'transferRemark': string;
-    /**
-     * Status
-     */
-    'status': string;
-    'dbStatus': string;
-    /**
-     * Created time
-     */
-    'createTime': string;
-    /**
-     * Cancellation or rejection reason
-     */
-    'memo': string;
-    /**
-     * Quote direction
-     */
-    'side': string;
-    /**
-     * Promotion code
-     */
-    'promotionCode': string;
-    /**
-     * Trade number
-     */
-    'tradeNo': string;
+    'total': number;
+    'pageSize': number;
+    'pageNumber': number;
+    'totalPage': number;
+    'list': Array<InlineResponse20012DataList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'string',
+            name: 'total',
+            baseName: 'total',
+            type: 'number',
         },
         {
-            name: 'uid',
-            baseName: 'uid',
-            type: 'string',
+            name: 'pageSize',
+            baseName: 'page_size',
+            type: 'number',
         },
         {
-            name: 'type',
-            baseName: 'type',
-            type: 'string',
+            name: 'pageNumber',
+            baseName: 'page_number',
+            type: 'number',
         },
         {
-            name: 'fiatCurrency',
-            baseName: 'fiat_currency',
-            type: 'string',
+            name: 'totalPage',
+            baseName: 'total_page',
+            type: 'number',
         },
         {
-            name: 'fiatAmount',
-            baseName: 'fiat_amount',
-            type: 'string',
-        },
-        {
-            name: 'cryptoCurrency',
-            baseName: 'crypto_currency',
-            type: 'string',
-        },
-        {
-            name: 'cryptoAmount',
-            baseName: 'crypto_amount',
-            type: 'string',
-        },
-        {
-            name: 'rate',
-            baseName: 'rate',
-            type: 'string',
-        },
-        {
-            name: 'transferRemark',
-            baseName: 'transfer_remark',
-            type: 'string',
-        },
-        {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
-        },
-        {
-            name: 'dbStatus',
-            baseName: 'db_status',
-            type: 'string',
-        },
-        {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'string',
-        },
-        {
-            name: 'memo',
-            baseName: 'memo',
-            type: 'string',
-        },
-        {
-            name: 'side',
-            baseName: 'side',
-            type: 'string',
-        },
-        {
-            name: 'promotionCode',
-            baseName: 'promotion_code',
-            type: 'string',
-        },
-        {
-            name: 'tradeNo',
-            baseName: 'trade_no',
-            type: 'string',
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<InlineResponse20012DataList>',
         },
     ];
 

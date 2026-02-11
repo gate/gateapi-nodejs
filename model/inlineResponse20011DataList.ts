@@ -9,59 +9,87 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20011DataCryptoCurrencyInfo } from './inlineResponse20011DataCryptoCurrencyInfo';
+import { InlineResponse20011DataFiatCurrencyInfo } from './inlineResponse20011DataFiatCurrencyInfo';
+
 export class InlineResponse20011DataList {
     /**
-     * Order ID
+     * Current time
      */
-    'id'?: number;
+    'time'?: string;
     /**
-     * Transaction reference number
+     * Current timestamp
+     */
+    'timestamp'?: number;
+    /**
+     * orderId
+     */
+    'orderId'?: string;
+    /**
+     * Trade number
      */
     'tradeNo'?: string;
     /**
-     * Payment currency
+     * Quote direction buy/sell/all
      */
-    'payCoin'?: string;
+    'type'?: string;
     /**
-     * Payment amount
+     * Order Status
      */
-    'payAmount'?: string;
+    'status'?: string;
+    'dbStatus'?: string;
     /**
-     * Received currency
+     * Fiat type
      */
-    'getCoin'?: string;
+    'fiatCurrency'?: string;
+    'fiatCurrencyInfo'?: InlineResponse20011DataFiatCurrencyInfo;
     /**
-     * Received amount
+     * Fiat amount
      */
-    'getAmount'?: string;
+    'fiatAmount'?: string;
+    /**
+     * Stablecoin
+     */
+    'cryptoCurrency'?: string;
+    'cryptoCurrencyInfo'?: InlineResponse20011DataCryptoCurrencyInfo;
+    /**
+     * Stablecoin amount
+     */
+    'cryptoAmount'?: string;
     /**
      * Exchange rate
      */
     'rate'?: string;
     /**
-     * Reciprocal of the exchange rate
+     * Remark
      */
-    'rateReci'?: string;
+    'transferRemark'?: string;
     /**
-     * PROCESSING: in progress / DONE: completed / FAILED: failed
+     * Bank account
      */
-    'status'?: string;
+    'gateBankAccountIban'?: string;
     /**
-     * timetimestamp
+     * Promotion code
      */
-    'createTimest'?: number;
-    /**
-     * Created time
-     */
-    'createTime'?: string;
+    'promotionCode'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'id',
-            baseName: 'id',
+            name: 'time',
+            baseName: 'time',
+            type: 'string',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
             type: 'number',
+        },
+        {
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'string',
         },
         {
             name: 'tradeNo',
@@ -69,33 +97,8 @@ export class InlineResponse20011DataList {
             type: 'string',
         },
         {
-            name: 'payCoin',
-            baseName: 'pay_coin',
-            type: 'string',
-        },
-        {
-            name: 'payAmount',
-            baseName: 'pay_amount',
-            type: 'string',
-        },
-        {
-            name: 'getCoin',
-            baseName: 'get_coin',
-            type: 'string',
-        },
-        {
-            name: 'getAmount',
-            baseName: 'get_amount',
-            type: 'string',
-        },
-        {
-            name: 'rate',
-            baseName: 'rate',
-            type: 'string',
-        },
-        {
-            name: 'rateReci',
-            baseName: 'rate_reci',
+            name: 'type',
+            baseName: 'type',
             type: 'string',
         },
         {
@@ -104,13 +107,58 @@ export class InlineResponse20011DataList {
             type: 'string',
         },
         {
-            name: 'createTimest',
-            baseName: 'create_timest',
-            type: 'number',
+            name: 'dbStatus',
+            baseName: 'db_status',
+            type: 'string',
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
+            name: 'fiatCurrency',
+            baseName: 'fiat_currency',
+            type: 'string',
+        },
+        {
+            name: 'fiatCurrencyInfo',
+            baseName: 'fiat_currency_info',
+            type: 'InlineResponse20011DataFiatCurrencyInfo',
+        },
+        {
+            name: 'fiatAmount',
+            baseName: 'fiat_amount',
+            type: 'string',
+        },
+        {
+            name: 'cryptoCurrency',
+            baseName: 'crypto_currency',
+            type: 'string',
+        },
+        {
+            name: 'cryptoCurrencyInfo',
+            baseName: 'crypto_currency_info',
+            type: 'InlineResponse20011DataCryptoCurrencyInfo',
+        },
+        {
+            name: 'cryptoAmount',
+            baseName: 'crypto_amount',
+            type: 'string',
+        },
+        {
+            name: 'rate',
+            baseName: 'rate',
+            type: 'string',
+        },
+        {
+            name: 'transferRemark',
+            baseName: 'transfer_remark',
+            type: 'string',
+        },
+        {
+            name: 'gateBankAccountIban',
+            baseName: 'gate_bank_account_iban',
+            type: 'string',
+        },
+        {
+            name: 'promotionCode',
+            baseName: 'promotion_code',
             type: 'string',
         },
     ];

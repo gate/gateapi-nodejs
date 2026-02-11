@@ -9,54 +9,46 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20035SpecialFeeList } from './inlineResponse20035SpecialFeeList';
-
 export class InlineResponse20035 {
     /**
-     * spotMakerfee rate
+     * Currency
      */
-    'spotMakerFee': string;
+    'coin': string;
     /**
-     * spotTakerfee rate
+     * Exchange
      */
-    'spotTakerFee': string;
+    'exchangeType': string;
     /**
-     * contractMakerfee rate
+     * Hourly Interest Rate
      */
-    'futureMakerFee': string;
+    'hourInterestRate': string;
     /**
-     * contractTakerfee rate
+     * Millisecond Timestamp
      */
-    'futureTakerFee': string;
-    'specialFeeList': Array<InlineResponse20035SpecialFeeList>;
+    'time': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'spotMakerFee',
-            baseName: 'spot_maker_fee',
+            name: 'coin',
+            baseName: 'coin',
             type: 'string',
         },
         {
-            name: 'spotTakerFee',
-            baseName: 'spot_taker_fee',
+            name: 'exchangeType',
+            baseName: 'exchange_type',
             type: 'string',
         },
         {
-            name: 'futureMakerFee',
-            baseName: 'future_maker_fee',
+            name: 'hourInterestRate',
+            baseName: 'hour_interest_rate',
             type: 'string',
         },
         {
-            name: 'futureTakerFee',
-            baseName: 'future_taker_fee',
+            name: 'time',
+            baseName: 'time',
             type: 'string',
-        },
-        {
-            name: 'specialFeeList',
-            baseName: 'special_fee_list',
-            type: 'Array<InlineResponse20035SpecialFeeList>',
         },
     ];
 

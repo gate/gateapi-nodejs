@@ -9,42 +9,21 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20010DataList } from './inlineResponse20010DataList';
+import { InlineResponse20010DataLists } from './inlineResponse20010DataLists';
 
 export class InlineResponse20010Data {
-    'pn': number;
-    'ps': number;
-    'totalPn': number;
-    'count': number;
-    'list': Array<InlineResponse20010DataList>;
+    /**
+     * Bank card list
+     */
+    'lists': Array<InlineResponse20010DataLists>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'pn',
-            baseName: 'pn',
-            type: 'number',
-        },
-        {
-            name: 'ps',
-            baseName: 'ps',
-            type: 'number',
-        },
-        {
-            name: 'totalPn',
-            baseName: 'total_pn',
-            type: 'number',
-        },
-        {
-            name: 'count',
-            baseName: 'count',
-            type: 'number',
-        },
-        {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<InlineResponse20010DataList>',
+            name: 'lists',
+            baseName: 'lists',
+            type: 'Array<InlineResponse20010DataLists>',
         },
     ];
 

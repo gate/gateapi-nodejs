@@ -1,4 +1,4 @@
-# InlineResponse20010DataCryptoCurrencyInfo
+# InlineResponse20011DataCryptoCurrencyInfo
 
 ## Properties
 

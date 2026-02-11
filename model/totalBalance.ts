@@ -17,7 +17,7 @@ import { AccountBalance } from './accountBalance';
 export class TotalBalance {
     'total'?: AccountBalance;
     /**
-     * 各账户总额  - cross_margin: 全仓杠杆账户 - spot: 现货账户 - finance: 金融账户 - margin: 杠杆账户 - quant: 量化账户 - futures: 永续合约账户 - delivery: 交割合约账户 - warrant: warrant 账户 - cbbc: 牛熊证账户 - meme_box: alpha账户 - options: 期权账户 - payment: 支付账户
+     * Total Balances of All Accounts  - cross_margin: Cross Margin Account - spot: Spot Account - finance: Finance Account - margin: Margin Account - quant: Quantitative Account - futures: Futures Account (Perpetual Contracts) - delivery: Delivery Account (Delivery Contracts) - warrant: Warrant Account - cbbc: CBBC Account (Covered Bull/Bear Contract) - meme_box: Alpha Account - options: Options Account - payment: Payment Account
      */
     'details'?: { [key: string]: AccountBalance };
 
