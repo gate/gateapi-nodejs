@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20033Assets {
+export class InlineResponse20034Assets {
     /**
      * User ID
      */
@@ -125,6 +125,6 @@ export class InlineResponse20033Assets {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20033Assets.attributeTypeMap;
+        return InlineResponse20034Assets.attributeTypeMap;
     }
 }

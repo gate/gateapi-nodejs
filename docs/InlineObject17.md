@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**txid** | **number** | Order ID | [default to undefined]
-**lastreceived** | **number** | Pagination timestamp (forward) | [optional] [default to undefined]
-**firstreceived** | **number** | Pagination timestamp (backward) | [optional] [default to undefined]
+**asset** | **string** | Cryptocurrency | [default to undefined]
+**fiatUnit** | **string** | Fiat currency | [default to undefined]
+**tradeType** | **string** | Buy/Sell, sell/buy | [default to undefined]
 

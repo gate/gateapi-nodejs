@@ -24,6 +24,7 @@ import { InlineResponse20021 } from '../model/inlineResponse20021';
 import { InlineResponse20022 } from '../model/inlineResponse20022';
 import { InlineResponse20023 } from '../model/inlineResponse20023';
 import { InlineResponse20024 } from '../model/inlineResponse20024';
+import { InlineResponse20025 } from '../model/inlineResponse20025';
 import { InlineResponse2007 } from '../model/inlineResponse2007';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -147,7 +148,7 @@ export class P2PApi {
      * @param cryptoCurrency Cryptocurrency
      * @param fiatCurrency Fiat currency
      * @param opts Optional parameters
-     * @param opts.orderTab 订单标签页，默认pending（pending：处理中（pending:  AND status in (\\\&#39;OPEN\\\&#39;, \\\&#39;PAID\\\&#39;, \\\&#39;LOCKED\\\&#39;, \\\&#39;TEMP\\\&#39;)）；dispute：申诉中（status in (\\\&#39;ACCEPT\\\&#39;, \\\&#39;BCLOSED\\\&#39;, \\\&#39;CANCEL\\\&#39;, \\\&#39;BECANCEL\\\&#39;, \\\&#39;SCLOSED\\\&#39;, \\\&#39;SCANCEL\\\&#39;)))
+     * @param opts.orderTab Order tab, default: pending (pending: In Progress (pending: AND status in (\\\&#39;OPEN\\\&#39;,\\\&#39;PAID\\\&#39;, \\\&#39;LOCKED\\\&#39;, \\\&#39;TEMP\\\&#39;)); dispute: In Dispute (status in (\\\&#39;ACCEPT\\\&#39;,\\\&#39;BCLOSED\\\&#39;, \\\&#39;CANCEL\\\&#39;, \\\&#39;BECANCEL\\\&#39;, \\\&#39;SCLOSED\\\&#39;, \\\&#39;SCANCEL\\\&#39;)))
      * @param opts.selectType Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All)
      * @param opts.status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
      * @param opts.txid Order ID
@@ -683,6 +684,55 @@ export class P2PApi {
     }
 
     /**
+     * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @summary Get Advertisement List
+     * @param asset Cryptocurrency
+     * @param fiatUnit Fiat currency
+     * @param tradeType Buy/Sell, sell/buy
+     */
+    public async p2pMerchantBooksAdsList(
+        asset: string,
+        fiatUnit: string,
+        tradeType: string,
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20022 }> {
+        const localVarPath = this.client.basePath + '/p2p/merchant/books/ads_list';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'asset' is not null or undefined
+        if (asset === null || asset === undefined) {
+            throw new Error('Required parameter asset was null or undefined when calling p2pMerchantBooksAdsList.');
+        }
+
+        // verify required parameter 'fiatUnit' is not null or undefined
+        if (fiatUnit === null || fiatUnit === undefined) {
+            throw new Error('Required parameter fiatUnit was null or undefined when calling p2pMerchantBooksAdsList.');
+        }
+
+        // verify required parameter 'tradeType' is not null or undefined
+        if (tradeType === null || tradeType === undefined) {
+            throw new Error('Required parameter tradeType was null or undefined when calling p2pMerchantBooksAdsList.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<InlineResponse20022>(config, 'InlineResponse20022', authSettings);
+    }
+
+    /**
      *
      * @summary Get chat history
      * @param txid Order ID
@@ -693,7 +743,7 @@ export class P2PApi {
     public async p2pMerchantChatGetChatsList(
         txid: number,
         opts: { lastreceived?: number; firstreceived?: number },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20022 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20023 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/get_chats_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -720,7 +770,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20022>(config, 'InlineResponse20022', authSettings);
+        return this.client.request<InlineResponse20023>(config, 'InlineResponse20023', authSettings);
     }
 
     /**
@@ -735,7 +785,7 @@ export class P2PApi {
         txid: number,
         message: string,
         opts: { type?: number },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20023 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20024 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/send_chat_message';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -771,7 +821,7 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20023>(config, 'InlineResponse20023', authSettings);
+        return this.client.request<InlineResponse20024>(config, 'InlineResponse20024', authSettings);
     }
 
     /**
@@ -783,7 +833,7 @@ export class P2PApi {
     public async p2pMerchantChatUploadChatFile(
         imageContentType: string,
         base64Img: string,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20024 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20025 }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/upload_chat_file';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -817,6 +867,6 @@ export class P2PApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20024>(config, 'InlineResponse20024', authSettings);
+        return this.client.request<InlineResponse20025>(config, 'InlineResponse20025', authSettings);
     }
 }

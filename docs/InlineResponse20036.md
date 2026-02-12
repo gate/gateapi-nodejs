@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**spotMakerFee** | **string** | spotMakerfee rate | [default to undefined]
-**spotTakerFee** | **string** | spotTakerfee rate | [default to undefined]
-**futureMakerFee** | **string** | contractMakerfee rate | [default to undefined]
-**futureTakerFee** | **string** | contractTakerfee rate | [default to undefined]
-**specialFeeList** | [**Array&lt;InlineResponse20036SpecialFeeList&gt;**](InlineResponse20036SpecialFeeList.md) |  | [default to undefined]
+**coin** | **string** | Currency | [default to undefined]
+**exchangeType** | **string** | Exchange | [default to undefined]
+**hourInterestRate** | **string** | Hourly Interest Rate | [default to undefined]
+**time** | **string** | Millisecond Timestamp | [default to undefined]
 

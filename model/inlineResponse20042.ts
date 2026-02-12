@@ -55,23 +55,31 @@ export class InlineResponse20042 {
      */
     'closedValue'?: string;
     /**
+     * Position Accumulated Fees
+     */
+    'fee'?: string;
+    /**
      * Liquidation Fee
      */
     'liqFee'?: string;
+    /**
+     * Funding Fee
+     */
+    'fundingFee'?: string;
     /**
      * Position Direction Before Close
      */
     'positionSide'?: string;
     /**
+     * Position Mode at Close
+     */
+    'positionMode'?: string;
+    /**
      * Leverage at Close
      */
     'leverage'?: string;
     /**
-     * Total Deducted Interest
-     */
-    'interest': string;
-    /**
-     * Position Business Type
+     * Business Type
      */
     'businessType': string;
     /**
@@ -142,8 +150,18 @@ export class InlineResponse20042 {
             type: 'string',
         },
         {
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
+        },
+        {
             name: 'liqFee',
             baseName: 'liq_fee',
+            type: 'string',
+        },
+        {
+            name: 'fundingFee',
+            baseName: 'funding_fee',
             type: 'string',
         },
         {
@@ -152,13 +170,13 @@ export class InlineResponse20042 {
             type: 'string',
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
+            name: 'positionMode',
+            baseName: 'position_mode',
             type: 'string',
         },
         {
-            name: 'interest',
-            baseName: 'interest',
+            name: 'leverage',
+            baseName: 'leverage',
             type: 'string',
         },
         {

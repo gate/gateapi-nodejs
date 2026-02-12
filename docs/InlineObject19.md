@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**imageContentType** | **string** | File type, currently only images and videos are supported | [default to undefined]
-**base64Img** | **string** | File content (base64 encoded) | [default to undefined]
+**txid** | **number** | Order ID | [default to undefined]
+**type** | **number** | 0&#x3D;Text, 1&#x3D;File (video or image), default is 0 if not provided | [optional] [default to undefined]
+**message** | **string** | Message content | [default to undefined]
 

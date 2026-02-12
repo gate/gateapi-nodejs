@@ -9,199 +9,54 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20037SpecialFeeList } from './inlineResponse20037SpecialFeeList';
+
 export class InlineResponse20037 {
     /**
-     * User ID
+     * spotMakerfee rate
      */
-    'userId'?: string;
+    'spotMakerFee': string;
     /**
-     * Position ID
+     * spotTakerfee rate
      */
-    'positionId'?: string;
+    'spotTakerFee': string;
     /**
-     * Currency pair
+     * contractMakerfee rate
      */
-    'symbol'?: string;
+    'futureMakerFee': string;
     /**
-     * Position Direction
+     * contractTakerfee rate
      */
-    'positionSide'?: string;
-    /**
-     * Initial Margin
-     */
-    'initialMargin'?: string;
-    /**
-     * Maintenance margin
-     */
-    'maintenanceMargin'?: string;
-    /**
-     * Position Quantity
-     */
-    'positionQty'?: string;
-    /**
-     * Position Value
-     */
-    'positionValue'?: string;
-    /**
-     * Unrealized P&L
-     */
-    'upnl'?: string;
-    /**
-     * Unrealized P&L Ratio
-     */
-    'upnlRate'?: string;
-    /**
-     * Position Average Entry Price
-     */
-    'entryPrice'?: string;
-    /**
-     * Mark price
-     */
-    'markPrice'?: string;
-    /**
-     * Position Leverage
-     */
-    'leverage'?: string;
-    /**
-     * Maximum leverage
-     */
-    'maxLeverage'?: string;
-    /**
-     * Position risk limit
-     */
-    'riskLimit'?: string;
-    /**
-     * Position Fee
-     */
-    'fee'?: string;
-    /**
-     * Position Funding Fee
-     */
-    'fundingFee'?: string;
-    /**
-     * Position funding fee collection time (0 indicates it has not been collected yet)
-     */
-    'fundingTime'?: string;
-    /**
-     * Position Creation Time
-     */
-    'createTime'?: string;
-    /**
-     * Position Update Time
-     */
-    'updateTime'?: string;
-    /**
-     * Realized PnL
-     */
-    'closedPnl'?: string;
+    'futureTakerFee': string;
+    'specialFeeList': Array<InlineResponse20037SpecialFeeList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
+            name: 'spotMakerFee',
+            baseName: 'spot_maker_fee',
             type: 'string',
         },
         {
-            name: 'positionId',
-            baseName: 'position_id',
+            name: 'spotTakerFee',
+            baseName: 'spot_taker_fee',
             type: 'string',
         },
         {
-            name: 'symbol',
-            baseName: 'symbol',
+            name: 'futureMakerFee',
+            baseName: 'future_maker_fee',
             type: 'string',
         },
         {
-            name: 'positionSide',
-            baseName: 'position_side',
+            name: 'futureTakerFee',
+            baseName: 'future_taker_fee',
             type: 'string',
         },
         {
-            name: 'initialMargin',
-            baseName: 'initial_margin',
-            type: 'string',
-        },
-        {
-            name: 'maintenanceMargin',
-            baseName: 'maintenance_margin',
-            type: 'string',
-        },
-        {
-            name: 'positionQty',
-            baseName: 'position_qty',
-            type: 'string',
-        },
-        {
-            name: 'positionValue',
-            baseName: 'position_value',
-            type: 'string',
-        },
-        {
-            name: 'upnl',
-            baseName: 'upnl',
-            type: 'string',
-        },
-        {
-            name: 'upnlRate',
-            baseName: 'upnl_rate',
-            type: 'string',
-        },
-        {
-            name: 'entryPrice',
-            baseName: 'entry_price',
-            type: 'string',
-        },
-        {
-            name: 'markPrice',
-            baseName: 'mark_price',
-            type: 'string',
-        },
-        {
-            name: 'leverage',
-            baseName: 'leverage',
-            type: 'string',
-        },
-        {
-            name: 'maxLeverage',
-            baseName: 'max_leverage',
-            type: 'string',
-        },
-        {
-            name: 'riskLimit',
-            baseName: 'risk_limit',
-            type: 'string',
-        },
-        {
-            name: 'fee',
-            baseName: 'fee',
-            type: 'string',
-        },
-        {
-            name: 'fundingFee',
-            baseName: 'funding_fee',
-            type: 'string',
-        },
-        {
-            name: 'fundingTime',
-            baseName: 'funding_time',
-            type: 'string',
-        },
-        {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'string',
-        },
-        {
-            name: 'updateTime',
-            baseName: 'update_time',
-            type: 'string',
-        },
-        {
-            name: 'closedPnl',
-            baseName: 'closed_pnl',
-            type: 'string',
+            name: 'specialFeeList',
+            baseName: 'special_fee_list',
+            type: 'Array<InlineResponse20037SpecialFeeList>',
         },
     ];
 

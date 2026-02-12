@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**p2pMerchantBooksAdsUpdateStatus**](P2PApi.md#p2pMerchantBooksAdsUpdateStatus) | **POST** /p2p/merchant/books/ads_update_status | Update ad status
 [**p2pMerchantBooksAdsDetail**](P2PApi.md#p2pMerchantBooksAdsDetail) | **POST** /p2p/merchant/books/ads_detail | Query ad details
 [**p2pMerchantBooksMyAdsList**](P2PApi.md#p2pMerchantBooksMyAdsList) | **POST** /p2p/merchant/books/my_ads_list | Get my ad list
+[**p2pMerchantBooksAdsList**](P2PApi.md#p2pMerchantBooksAdsList) | **POST** /p2p/merchant/books/ads_list | Get Advertisement List
 [**p2pMerchantChatGetChatsList**](P2PApi.md#p2pMerchantChatGetChatsList) | **POST** /p2p/merchant/chat/get_chats_list | Get chat history
 [**p2pMerchantChatSendChatMessage**](P2PApi.md#p2pMerchantChatSendChatMessage) | **POST** /p2p/merchant/chat/send_chat_message | Send text message
 [**p2pMerchantChatUploadChatFile**](P2PApi.md#p2pMerchantChatUploadChatFile) | **POST** /p2p/merchant/chat/upload_chat_file | Upload chat file
@@ -161,7 +162,7 @@ const api = new GateApi.P2PApi(client);
 const cryptoCurrency = "cryptoCurrency_example"; // string | Cryptocurrency
 const fiatCurrency = "fiatCurrency_example"; // string | Fiat currency
 const opts = {
-  'orderTab': "orderTab_example", // string | 订单标签页，默认pending（pending：处理中（pending:  AND status in (\\\'OPEN\\\', \\\'PAID\\\', \\\'LOCKED\\\', \\\'TEMP\\\')）；dispute：申诉中（status in (\\\'ACCEPT\\\', \\\'BCLOSED\\\', \\\'CANCEL\\\', \\\'BECANCEL\\\', \\\'SCLOSED\\\', \\\'SCANCEL\\\')))
+  'orderTab': "orderTab_example", // string | Order tab, default: pending (pending: In Progress (pending: AND status in (\\\'OPEN\\\',\\\'PAID\\\', \\\'LOCKED\\\', \\\'TEMP\\\')); dispute: In Dispute (status in (\\\'ACCEPT\\\',\\\'BCLOSED\\\', \\\'CANCEL\\\', \\\'BECANCEL\\\', \\\'SCLOSED\\\', \\\'SCANCEL\\\')))
   'selectType': "selectType_example", // string | Buy/Sell (sell=Sell, buy=Buy, others=All)
   'status': "status_example", // string | Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
   'txid': 56, // number | Order ID
@@ -180,7 +181,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cryptoCurrency** | **string**| Cryptocurrency | [default to undefined]
  **fiatCurrency** | **string**| Fiat currency | [default to undefined]
- **orderTab** | **string**| 订单标签页，默认pending（pending：处理中（pending:  AND status in (\\\&#39;OPEN\\\&#39;, \\\&#39;PAID\\\&#39;, \\\&#39;LOCKED\\\&#39;, \\\&#39;TEMP\\\&#39;)）；dispute：申诉中（status in (\\\&#39;ACCEPT\\\&#39;, \\\&#39;BCLOSED\\\&#39;, \\\&#39;CANCEL\\\&#39;, \\\&#39;BECANCEL\\\&#39;, \\\&#39;SCLOSED\\\&#39;, \\\&#39;SCANCEL\\\&#39;))) | [optional] [default to undefined]
+ **orderTab** | **string**| Order tab, default: pending (pending: In Progress (pending: AND status in (\\\&#39;OPEN\\\&#39;,\\\&#39;PAID\\\&#39;, \\\&#39;LOCKED\\\&#39;, \\\&#39;TEMP\\\&#39;)); dispute: In Dispute (status in (\\\&#39;ACCEPT\\\&#39;,\\\&#39;BCLOSED\\\&#39;, \\\&#39;CANCEL\\\&#39;, \\\&#39;BECANCEL\\\&#39;, \\\&#39;SCLOSED\\\&#39;, \\\&#39;SCANCEL\\\&#39;))) | [optional] [default to undefined]
  **selectType** | **string**| Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | [optional] [default to undefined]
  **status** | **string**| Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | [optional] [default to undefined]
  **txid** | **number**| Order ID | [optional] [default to undefined]
@@ -665,9 +666,56 @@ No authorization required
 - **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
+## p2pMerchantBooksAdsList
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20022; }> p2pMerchantBooksAdsList(asset, fiatUnit, tradeType)
+
+Get Advertisement List
+
+Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.P2PApi(client);
+const asset = "asset_example"; // string | Cryptocurrency
+const fiatUnit = "fiatUnit_example"; // string | Fiat currency
+const tradeType = "tradeType_example"; // string | Buy/Sell, sell/buy
+api.p2pMerchantBooksAdsList(asset, fiatUnit, tradeType)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **asset** | **string**| Cryptocurrency | [default to undefined]
+ **fiatUnit** | **string**| Fiat currency | [default to undefined]
+ **tradeType** | **string**| Buy/Sell, sell/buy | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse20022; }> [InlineResponse20022](InlineResponse20022.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
 ## p2pMerchantChatGetChatsList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20022; }> p2pMerchantChatGetChatsList(txid, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20023; }> p2pMerchantChatGetChatsList(txid, opts)
 
 Get chat history
 
@@ -701,7 +749,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20022; }> [InlineResponse20022](InlineResponse20022.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20023; }> [InlineResponse20023](InlineResponse20023.md)
 
 ### Authorization
 
@@ -714,7 +762,7 @@ No authorization required
 
 ## p2pMerchantChatSendChatMessage
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20023; }> p2pMerchantChatSendChatMessage(txid, message, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20024; }> p2pMerchantChatSendChatMessage(txid, message, opts)
 
 Send text message
 
@@ -748,7 +796,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20023; }> [InlineResponse20023](InlineResponse20023.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20024; }> [InlineResponse20024](InlineResponse20024.md)
 
 ### Authorization
 
@@ -761,7 +809,7 @@ No authorization required
 
 ## p2pMerchantChatUploadChatFile
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20024; }> p2pMerchantChatUploadChatFile(imageContentType, base64Img)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20025; }> p2pMerchantChatUploadChatFile(imageContentType, base64Img)
 
 Upload chat file
 
@@ -791,7 +839,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20024; }> [InlineResponse20024](InlineResponse20024.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20025; }> [InlineResponse20025](InlineResponse20025.md)
 
 ### Authorization
 

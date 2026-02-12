@@ -9,23 +9,23 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20024Data {
+export class InlineResponse20025Data {
     /**
-     * Timestamp when message was successfully sent (current timestamp)
+     * File key
      */
-    'sRVTM': number;
+    'fileKey': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'sRVTM',
-            baseName: 'SRVTM',
-            type: 'number',
+            name: 'fileKey',
+            baseName: 'file_key',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20024Data.attributeTypeMap;
+        return InlineResponse20025Data.attributeTypeMap;
     }
 }

@@ -13,7 +13,7 @@ export class InlineResponse20029 {
     /**
      * Order ID
      */
-    'orderId': string;
+    'txId': string;
     /**
      * User-defined Order ID
      */
@@ -23,8 +23,8 @@ export class InlineResponse20029 {
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
+            name: 'txId',
+            baseName: 'tx_id',
             type: 'string',
         },
         {

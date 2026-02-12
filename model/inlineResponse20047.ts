@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20036 {
+export class InlineResponse20047 {
     /**
      * Currency
      */
@@ -19,13 +19,21 @@ export class InlineResponse20036 {
      */
     'exchangeType': string;
     /**
-     * Hourly Interest Rate
+     * Tier
      */
-    'hourInterestRate': string;
+    'tier': string;
     /**
-     * Millisecond Timestamp
+     * Minimum value
      */
-    'time': string;
+    'minValue': string;
+    /**
+     * Maximum value
+     */
+    'maxValue': string;
+    /**
+     * Discount rate
+     */
+    'discountRate': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -41,18 +49,28 @@ export class InlineResponse20036 {
             type: 'string',
         },
         {
-            name: 'hourInterestRate',
-            baseName: 'hour_interest_rate',
+            name: 'tier',
+            baseName: 'tier',
             type: 'string',
         },
         {
-            name: 'time',
-            baseName: 'time',
+            name: 'minValue',
+            baseName: 'min_value',
+            type: 'string',
+        },
+        {
+            name: 'maxValue',
+            baseName: 'max_value',
+            type: 'string',
+        },
+        {
+            name: 'discountRate',
+            baseName: 'discount_rate',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20036.attributeTypeMap;
+        return InlineResponse20047.attributeTypeMap;
     }
 }

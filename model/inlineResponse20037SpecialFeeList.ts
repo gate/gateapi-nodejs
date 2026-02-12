@@ -9,50 +9,41 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20036 {
+export class InlineResponse20037SpecialFeeList {
     /**
-     * Currency
+     * Currency pair
      */
-    'coin': string;
+    'symbol': string;
     /**
-     * Exchange
+     * Taker fee rate
      */
-    'exchangeType': string;
+    'takerFeeRate': string;
     /**
-     * Hourly Interest Rate
+     * Maker fee rate
      */
-    'hourInterestRate': string;
-    /**
-     * Millisecond Timestamp
-     */
-    'time': string;
+    'makerFeeRate': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
+            name: 'takerFeeRate',
+            baseName: 'taker_fee_rate',
             type: 'string',
         },
         {
-            name: 'hourInterestRate',
-            baseName: 'hour_interest_rate',
-            type: 'string',
-        },
-        {
-            name: 'time',
-            baseName: 'time',
+            name: 'makerFeeRate',
+            baseName: 'maker_fee_rate',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20036.attributeTypeMap;
+        return InlineResponse20037SpecialFeeList.attributeTypeMap;
     }
 }

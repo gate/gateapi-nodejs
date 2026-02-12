@@ -4,5 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sRVTM** | **number** | Timestamp when message was successfully sent (current timestamp) | [default to undefined]
+**messages** | [**Array&lt;InlineResponse20023DataMessages&gt;**](InlineResponse20023DataMessages.md) | Message List | [default to undefined]
+**memo** | **string** | Payment tip (displayed on homepage only) | [default to undefined]
+**hasHistory** | **boolean** | Whether historical records exist | [default to undefined]
+**txid** | **number** | Order ID | [default to undefined]
+**sRVTM** | **number** | Timestamp of the latest message | [default to undefined]
+**orderStatus** | **string** | Order Status | [default to undefined]
 

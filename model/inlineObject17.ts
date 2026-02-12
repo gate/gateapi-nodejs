@@ -11,35 +11,35 @@
 
 export class InlineObject17 {
     /**
-     * Order ID
+     * Cryptocurrency
      */
-    'txid': number;
+    'asset': string;
     /**
-     * Pagination timestamp (forward)
+     * Fiat currency
      */
-    'lastreceived'?: number;
+    'fiatUnit': string;
     /**
-     * Pagination timestamp (backward)
+     * Buy/Sell, sell/buy
      */
-    'firstreceived'?: number;
+    'tradeType': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'txid',
-            baseName: 'txid',
-            type: 'number',
+            name: 'asset',
+            baseName: 'asset',
+            type: 'string',
         },
         {
-            name: 'lastreceived',
-            baseName: 'lastreceived',
-            type: 'number',
+            name: 'fiatUnit',
+            baseName: 'fiat_unit',
+            type: 'string',
         },
         {
-            name: 'firstreceived',
-            baseName: 'firstreceived',
-            type: 'number',
+            name: 'tradeType',
+            baseName: 'trade_type',
+            type: 'string',
         },
     ];
 

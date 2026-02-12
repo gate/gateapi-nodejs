@@ -11,25 +11,34 @@
 
 export class InlineObject26 {
     /**
-     * Currency pair
+     * Futures position mode (SINGLE/DUAL)
      */
-    'symbol': string;
+    'positionMode'?: string;
     /**
-     * leverage
+     * Account mode (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
      */
-    'leverage': string;
+    'accountMode'?: string;
+    /**
+     * Exchange (BINANCE/OKX/GATE/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+     */
+    'exchangeType'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'symbol',
-            baseName: 'symbol',
+            name: 'positionMode',
+            baseName: 'position_mode',
             type: 'string',
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
+            name: 'accountMode',
+            baseName: 'account_mode',
+            type: 'string',
+        },
+        {
+            name: 'exchangeType',
+            baseName: 'exchange_type',
             type: 'string',
         },
     ];

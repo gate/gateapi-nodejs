@@ -15,13 +15,13 @@ export class InlineObject18 {
      */
     'txid': number;
     /**
-     * 0=Text, 1=File (video or image), default is 0 if not provided
+     * Pagination timestamp (forward)
      */
-    'type'?: number;
+    'lastreceived'?: number;
     /**
-     * Message content
+     * Pagination timestamp (backward)
      */
-    'message': string;
+    'firstreceived'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -32,14 +32,14 @@ export class InlineObject18 {
             type: 'number',
         },
         {
-            name: 'type',
-            baseName: 'type',
+            name: 'lastreceived',
+            baseName: 'lastreceived',
             type: 'number',
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
+            name: 'firstreceived',
+            baseName: 'firstreceived',
+            type: 'number',
         },
     ];
 

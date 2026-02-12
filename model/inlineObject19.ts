@@ -11,25 +11,34 @@
 
 export class InlineObject19 {
     /**
-     * File type, currently only images and videos are supported
+     * Order ID
      */
-    'imageContentType': string;
+    'txid': number;
     /**
-     * File content (base64 encoded)
+     * 0=Text, 1=File (video or image), default is 0 if not provided
      */
-    'base64Img': string;
+    'type'?: number;
+    /**
+     * Message content
+     */
+    'message': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'imageContentType',
-            baseName: 'image_content_type',
-            type: 'string',
+            name: 'txid',
+            baseName: 'txid',
+            type: 'number',
         },
         {
-            name: 'base64Img',
-            baseName: 'base64_img',
+            name: 'type',
+            baseName: 'type',
+            type: 'number',
+        },
+        {
+            name: 'message',
+            baseName: 'message',
             type: 'string',
         },
     ];

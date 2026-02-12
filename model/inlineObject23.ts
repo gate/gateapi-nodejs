@@ -11,43 +11,25 @@
 
 export class InlineObject23 {
     /**
-     * Exchange Type
+     * modify amount
      */
-    'exchangeType': string;
+    'qty'?: string;
     /**
-     * Asset Sold
+     * modify price
      */
-    'fromCoin': string;
-    /**
-     * Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
-     */
-    'toCoin': string;
-    /**
-     * Amount to sell
-     */
-    'fromAmount': string;
+    'price'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
+            name: 'qty',
+            baseName: 'qty',
             type: 'string',
         },
         {
-            name: 'fromCoin',
-            baseName: 'from_coin',
-            type: 'string',
-        },
-        {
-            name: 'toCoin',
-            baseName: 'to_coin',
-            type: 'string',
-        },
-        {
-            name: 'fromAmount',
-            baseName: 'from_amount',
+            name: 'price',
+            baseName: 'price',
             type: 'string',
         },
     ];

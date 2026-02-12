@@ -1,8 +1,8 @@
-# InlineObject25
+# InlineResponse20025Data
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**quoteId** | **string** | Inquiry ID | [default to undefined]
+**fileKey** | **string** | File key | [default to undefined]
 

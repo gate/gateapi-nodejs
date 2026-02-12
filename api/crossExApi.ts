@@ -10,7 +10,6 @@
  */
 
 /* tslint:disable:no-unused-locals */
-import { InlineObject20 } from '../model/inlineObject20';
 import { InlineObject21 } from '../model/inlineObject21';
 import { InlineObject22 } from '../model/inlineObject22';
 import { InlineObject23 } from '../model/inlineObject23';
@@ -19,7 +18,7 @@ import { InlineObject25 } from '../model/inlineObject25';
 import { InlineObject26 } from '../model/inlineObject26';
 import { InlineObject27 } from '../model/inlineObject27';
 import { InlineObject28 } from '../model/inlineObject28';
-import { InlineResponse20025 } from '../model/inlineResponse20025';
+import { InlineObject29 } from '../model/inlineObject29';
 import { InlineResponse20026 } from '../model/inlineResponse20026';
 import { InlineResponse20027 } from '../model/inlineResponse20027';
 import { InlineResponse20028 } from '../model/inlineResponse20028';
@@ -41,6 +40,7 @@ import { InlineResponse20043 } from '../model/inlineResponse20043';
 import { InlineResponse20044 } from '../model/inlineResponse20044';
 import { InlineResponse20045 } from '../model/inlineResponse20045';
 import { InlineResponse20046 } from '../model/inlineResponse20046';
+import { InlineResponse20047 } from '../model/inlineResponse20047';
 import { InlineResponse202 } from '../model/inlineResponse202';
 import { InlineResponse2021 } from '../model/inlineResponse2021';
 import { Symbol } from '../model/symbol';
@@ -111,7 +111,7 @@ export class CrossExApi {
      */
     public async listCrossexRuleRiskLimits(
         symbols: string,
-    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20025> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20026> }> {
         const localVarPath = this.client.basePath + '/rule/risk_limits';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -143,7 +143,7 @@ export class CrossExApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<InlineResponse20025>>(config, 'Array<InlineResponse20025>', authSettings);
+        return this.client.request<Array<InlineResponse20026>>(config, 'Array<InlineResponse20026>', authSettings);
     }
 
     /**
@@ -154,7 +154,7 @@ export class CrossExApi {
      */
     public async listCrossexTransferCoins(opts: {
         coin?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20026> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20027> }> {
         const localVarPath = this.client.basePath + '/transfers/coin';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -184,7 +184,7 @@ export class CrossExApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<InlineResponse20026>>(config, 'Array<InlineResponse20026>', authSettings);
+        return this.client.request<Array<InlineResponse20027>>(config, 'Array<InlineResponse20027>', authSettings);
     }
 
     /**
@@ -205,7 +205,7 @@ export class CrossExApi {
         to?: number;
         page?: number;
         limit?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20027> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20028> }> {
         const localVarPath = this.client.basePath + '/transfers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -280,53 +280,19 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20027>>(config, 'Array<InlineResponse20027>', authSettings);
+        return this.client.request<Array<InlineResponse20028>>(config, 'Array<InlineResponse20028>', authSettings);
     }
 
     /**
      * Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE`
      * @summary Fund Transfer
      * @param opts Optional parameters
-     * @param opts.inlineObject20
-     */
-    public async createCrossexTransfer(opts: {
-        inlineObject20?: InlineObject20;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20028 }> {
-        const localVarPath = this.client.basePath + '/transfers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject20, 'InlineObject20'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20028>(config, 'InlineResponse20028', authSettings);
-    }
-
-    /**
-     * Rate Limit: 100 requests per 10 seconds
-     * @summary Create an order
-     * @param opts Optional parameters
      * @param opts.inlineObject21
      */
-    public async createCrossexOrder(opts: {
+    public async createCrossexTransfer(opts: {
         inlineObject21?: InlineObject21;
     }): Promise<{ response: AxiosResponse; body: InlineResponse20029 }> {
-        const localVarPath = this.client.basePath + '/orders';
+        const localVarPath = this.client.basePath + '/transfers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -352,11 +318,45 @@ export class CrossExApi {
     }
 
     /**
+     * Rate Limit: 100 requests per 10 seconds
+     * @summary Create an order
+     * @param opts Optional parameters
+     * @param opts.inlineObject22
+     */
+    public async createCrossexOrder(opts: {
+        inlineObject22?: InlineObject22;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20030 }> {
+        const localVarPath = this.client.basePath + '/orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(opts.inlineObject22, 'InlineObject22'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse20030>(config, 'InlineResponse20030', authSettings);
+    }
+
+    /**
      * Rate Limit: 200 requests per 10 seconds
      * @summary Query order details
      * @param orderId 1. Supports querying order IDs returned when creating orders 2. Supports custom IDs specified by users when creating orders (i.e., the text field)
      */
-    public async getCrossexOrder(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse20030 }> {
+    public async getCrossexOrder(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse20031 }> {
         const localVarPath =
             this.client.basePath +
             '/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -383,7 +383,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20030>(config, 'InlineResponse20030', authSettings);
+        return this.client.request<InlineResponse20031>(config, 'InlineResponse20031', authSettings);
     }
 
     /**
@@ -391,12 +391,12 @@ export class CrossExApi {
      * @summary Modify Order
      * @param orderId Support Order ID or Text for Modify Order
      * @param opts Optional parameters
-     * @param opts.inlineObject22
+     * @param opts.inlineObject23
      */
     public async updateCrossexOrder(
         orderId: string,
-        opts: { inlineObject22?: InlineObject22 },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20031 }> {
+        opts: { inlineObject23?: InlineObject23 },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20032 }> {
         const localVarPath =
             this.client.basePath +
             '/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -422,11 +422,11 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject22, 'InlineObject22'),
+            data: ObjectSerializer.serialize(opts.inlineObject23, 'InlineObject23'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20031>(config, 'InlineResponse20031', authSettings);
+        return this.client.request<InlineResponse20032>(config, 'InlineResponse20032', authSettings);
     }
 
     /**
@@ -476,46 +476,12 @@ export class CrossExApi {
      * Rate Limit: 100 requests per day
      * @summary Flash Swap Inquiry
      * @param opts Optional parameters
-     * @param opts.inlineObject23
-     */
-    public async createCrossexConvertQuote(opts: {
-        inlineObject23?: InlineObject23;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20032 }> {
-        const localVarPath = this.client.basePath + '/convert/quote';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject23, 'InlineObject23'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20032>(config, 'InlineResponse20032', authSettings);
-    }
-
-    /**
-     * Rate limit: 10 requests per 10 seconds
-     * @summary Flash Swap Transaction
-     * @param opts Optional parameters
      * @param opts.inlineObject24
      */
-    public async createCrossexConvertOrder(opts: {
+    public async createCrossexConvertQuote(opts: {
         inlineObject24?: InlineObject24;
-    }): Promise<{ response: AxiosResponse; body: object }> {
-        const localVarPath = this.client.basePath + '/convert/orders';
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20033 }> {
+        const localVarPath = this.client.basePath + '/convert/quote';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -537,6 +503,40 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse20033>(config, 'InlineResponse20033', authSettings);
+    }
+
+    /**
+     * Rate limit: 10 requests per 10 seconds
+     * @summary Flash Swap Transaction
+     * @param opts Optional parameters
+     * @param opts.inlineObject25
+     */
+    public async createCrossexConvertOrder(opts: {
+        inlineObject25?: InlineObject25;
+    }): Promise<{ response: AxiosResponse; body: object }> {
+        const localVarPath = this.client.basePath + '/convert/orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(opts.inlineObject25, 'InlineObject25'),
+        };
+
+        const authSettings = ['apiv4'];
         return this.client.request<object>(config, 'object', authSettings);
     }
 
@@ -548,7 +548,7 @@ export class CrossExApi {
      */
     public async getCrossexAccount(opts: {
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20033 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20034 }> {
         const localVarPath = this.client.basePath + '/accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -578,17 +578,17 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20033>(config, 'InlineResponse20033', authSettings);
+        return this.client.request<InlineResponse20034>(config, 'InlineResponse20034', authSettings);
     }
 
     /**
      * Rate Limit: 100 requests per 60 seconds. position_mode+exchange_type modifies contract position mode (exchange_type is required when the user\'s account mode is split exchange); account_mode modifies the user\'s account mode.
      * @summary Modify Account Contract Position Mode and Account Mode
      * @param opts Optional parameters
-     * @param opts.inlineObject25
+     * @param opts.inlineObject26
      */
     public async updateCrossexAccount(opts: {
-        inlineObject25?: InlineObject25;
+        inlineObject26?: InlineObject26;
     }): Promise<{ response: AxiosResponse; body: InlineResponse202 }> {
         const localVarPath = this.client.basePath + '/accounts';
         let localVarQueryParameters: any = {};
@@ -608,7 +608,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject25, 'InlineObject25'),
+            data: ObjectSerializer.serialize(opts.inlineObject26, 'InlineObject26'),
         };
 
         const authSettings = ['apiv4'];
@@ -623,7 +623,7 @@ export class CrossExApi {
      */
     public async getCrossexPositionsLeverage(opts: {
         symbols?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20034> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20035> }> {
         const localVarPath = this.client.basePath + '/positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -653,94 +653,19 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20034>>(config, 'Array<InlineResponse20034>', authSettings);
+        return this.client.request<Array<InlineResponse20035>>(config, 'Array<InlineResponse20035>', authSettings);
     }
 
     /**
      * Rate Limit: 100 requests per 10 seconds
      * @summary Modify Contract Trading Pair Leverage Multiplier
      * @param opts Optional parameters
-     * @param opts.inlineObject26
-     */
-    public async updateCrossexPositionsLeverage(opts: {
-        inlineObject26?: InlineObject26;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse2021 }> {
-        const localVarPath = this.client.basePath + '/positions/leverage';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject26, 'InlineObject26'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2021>(config, 'InlineResponse2021', authSettings);
-    }
-
-    /**
-     * Rate Limit: 200 requests per 10 seconds
-     * @summary Query Leveraged Trading Pair Leverage Multiplier
-     * @param opts Optional parameters
-     * @param opts.symbols Trading Pair List, multiple separated by commas
-     */
-    public async getCrossexMarginPositionsLeverage(opts: {
-        symbols?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20034> }> {
-        const localVarPath = this.client.basePath + '/margin_positions/leverage';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-        if (opts.symbols !== undefined) {
-            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(symbolsSerialized)) {
-                symbolsSerialized = symbolsSerialized.join(',');
-            }
-            localVarQueryParameters['symbols'] = symbolsSerialized;
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20034>>(config, 'Array<InlineResponse20034>', authSettings);
-    }
-
-    /**
-     * Rate Limit: 100 requests per 10 seconds
-     * @summary Modify Leveraged Trading Pair Leverage Multiplier
-     * @param opts Optional parameters
      * @param opts.inlineObject27
      */
-    public async updateCrossexMarginPositionsLeverage(opts: {
+    public async updateCrossexPositionsLeverage(opts: {
         inlineObject27?: InlineObject27;
     }): Promise<{ response: AxiosResponse; body: InlineResponse2021 }> {
-        const localVarPath = this.client.basePath + '/margin_positions/leverage';
+        const localVarPath = this.client.basePath + '/positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -766,14 +691,89 @@ export class CrossExApi {
     }
 
     /**
-     * Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FUTURE or MARGIN positions.  Prerequisites before using this interface: - No pending orders for the symbol exist in the current account. - When the system detects the position meets any of the following limits while prerequisites are met: - Less than or equal to the minimum notional amount (minNotional) - Less than or equal to the minimum order quantity (minSize)  After meeting the conditions, the system will automatically generate a close-out order and immediately fully close the position. This interface is used to avoid issues where orders are too small to be placed on the exchange, ensuring small positions can be closed smoothly when reaching the threshold.
-     * @summary Full Close Position
+     * Rate Limit: 200 requests per 10 seconds
+     * @summary Query Leveraged Trading Pair Leverage Multiplier
+     * @param opts Optional parameters
+     * @param opts.symbols Trading Pair List, multiple separated by commas
+     */
+    public async getCrossexMarginPositionsLeverage(opts: {
+        symbols?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20035> }> {
+        const localVarPath = this.client.basePath + '/margin_positions/leverage';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.symbols !== undefined) {
+            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(symbolsSerialized)) {
+                symbolsSerialized = symbolsSerialized.join(',');
+            }
+            localVarQueryParameters['symbols'] = symbolsSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<InlineResponse20035>>(config, 'Array<InlineResponse20035>', authSettings);
+    }
+
+    /**
+     * Rate Limit: 100 requests per 10 seconds
+     * @summary Modify Leveraged Trading Pair Leverage Multiplier
      * @param opts Optional parameters
      * @param opts.inlineObject28
      */
-    public async closeCrossexPosition(opts: {
+    public async updateCrossexMarginPositionsLeverage(opts: {
         inlineObject28?: InlineObject28;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20029 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse2021 }> {
+        const localVarPath = this.client.basePath + '/margin_positions/leverage';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(opts.inlineObject28, 'InlineObject28'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2021>(config, 'InlineResponse2021', authSettings);
+    }
+
+    /**
+     * Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FUTURE or MARGIN positions.  Prerequisites before using this interface: - No pending orders for the symbol exist in the current account. - When the system detects the position meets any of the following limits while prerequisites are met: - Less than or equal to the minimum notional amount (minNotional) - Less than or equal to the minimum order quantity (minSize)  After meeting the conditions, the system will automatically generate a close-out order and immediately fully close the position. This interface is used to avoid issues where orders are too small to be placed on the exchange, ensuring small positions can be closed smoothly when reaching the threshold.
+     * @summary Full Close Position
+     * @param opts Optional parameters
+     * @param opts.inlineObject29
+     */
+    public async closeCrossexPosition(opts: {
+        inlineObject29?: InlineObject29;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20030 }> {
         const localVarPath = this.client.basePath + '/position';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -792,11 +792,11 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject28, 'InlineObject28'),
+            data: ObjectSerializer.serialize(opts.inlineObject29, 'InlineObject29'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20029>(config, 'InlineResponse20029', authSettings);
+        return this.client.request<InlineResponse20030>(config, 'InlineResponse20030', authSettings);
     }
 
     /**
@@ -809,7 +809,7 @@ export class CrossExApi {
     public async getCrossexInterestRate(opts: {
         coin?: string;
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20035> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20036> }> {
         const localVarPath = this.client.basePath + '/interest_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -848,14 +848,14 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20035>>(config, 'Array<InlineResponse20035>', authSettings);
+        return this.client.request<Array<InlineResponse20036>>(config, 'Array<InlineResponse20036>', authSettings);
     }
 
     /**
      * Rate Limit: 200 requests per 10 seconds
      * @summary Query User Fee Rates
      */
-    public async getCrossexFee(): Promise<{ response: AxiosResponse; body: InlineResponse20036 }> {
+    public async getCrossexFee(): Promise<{ response: AxiosResponse; body: InlineResponse20037 }> {
         const localVarPath = this.client.basePath + '/fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -875,7 +875,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20036>(config, 'InlineResponse20036', authSettings);
+        return this.client.request<InlineResponse20037>(config, 'InlineResponse20037', authSettings);
     }
 
     /**
@@ -888,60 +888,8 @@ export class CrossExApi {
     public async listCrossexPositions(opts: {
         symbol?: string;
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20037> }> {
-        const localVarPath = this.client.basePath + '/positions';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-        if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(symbolSerialized)) {
-                symbolSerialized = symbolSerialized.join(',');
-            }
-            localVarQueryParameters['symbol'] = symbolSerialized;
-        }
-
-        if (opts.exchangeType !== undefined) {
-            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(exchangeTypeSerialized)) {
-                exchangeTypeSerialized = exchangeTypeSerialized.join(',');
-            }
-            localVarQueryParameters['exchange_type'] = exchangeTypeSerialized;
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20037>>(config, 'Array<InlineResponse20037>', authSettings);
-    }
-
-    /**
-     * Rate Limit: 200 requests per 10 seconds
-     * @summary Query Leveraged Positions
-     * @param opts Optional parameters
-     * @param opts.symbol Currency pair
-     * @param opts.exchangeType Exchange
-     */
-    public async listCrossexMarginPositions(opts: {
-        symbol?: string;
-        exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20038> }> {
-        const localVarPath = this.client.basePath + '/margin_positions';
+        const localVarPath = this.client.basePath + '/positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -984,12 +932,64 @@ export class CrossExApi {
 
     /**
      * Rate Limit: 200 requests per 10 seconds
+     * @summary Query Leveraged Positions
+     * @param opts Optional parameters
+     * @param opts.symbol Currency pair
+     * @param opts.exchangeType Exchange
+     */
+    public async listCrossexMarginPositions(opts: {
+        symbol?: string;
+        exchangeType?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20039> }> {
+        const localVarPath = this.client.basePath + '/margin_positions';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.symbol !== undefined) {
+            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(symbolSerialized)) {
+                symbolSerialized = symbolSerialized.join(',');
+            }
+            localVarQueryParameters['symbol'] = symbolSerialized;
+        }
+
+        if (opts.exchangeType !== undefined) {
+            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(exchangeTypeSerialized)) {
+                exchangeTypeSerialized = exchangeTypeSerialized.join(',');
+            }
+            localVarQueryParameters['exchange_type'] = exchangeTypeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<InlineResponse20039>>(config, 'Array<InlineResponse20039>', authSettings);
+    }
+
+    /**
+     * Rate Limit: 200 requests per 10 seconds
      * @summary Query ADL Position Reduction Ranking
      * @param symbol Trading Pair
      */
     public async listCrossexAdlRank(
         symbol: string,
-    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20039> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20040> }> {
         const localVarPath = this.client.basePath + '/adl_rank';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1021,7 +1021,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20039>>(config, 'Array<InlineResponse20039>', authSettings);
+        return this.client.request<Array<InlineResponse20040>>(config, 'Array<InlineResponse20040>', authSettings);
     }
 
     /**
@@ -1036,7 +1036,7 @@ export class CrossExApi {
         symbol?: string;
         exchangeType?: string;
         businessType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20030> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20031> }> {
         const localVarPath = this.client.basePath + '/open_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1084,7 +1084,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20030>>(config, 'Array<InlineResponse20030>', authSettings);
+        return this.client.request<Array<InlineResponse20031>>(config, 'Array<InlineResponse20031>', authSettings);
     }
 
     /**
@@ -1103,93 +1103,8 @@ export class CrossExApi {
         symbol?: string;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20040> }> {
-        const localVarPath = this.client.basePath + '/history_orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-        if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(pageSerialized)) {
-                pageSerialized = pageSerialized.join(',');
-            }
-            localVarQueryParameters['page'] = pageSerialized;
-        }
-
-        if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(limitSerialized)) {
-                limitSerialized = limitSerialized.join(',');
-            }
-            localVarQueryParameters['limit'] = limitSerialized;
-        }
-
-        if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(symbolSerialized)) {
-                symbolSerialized = symbolSerialized.join(',');
-            }
-            localVarQueryParameters['symbol'] = symbolSerialized;
-        }
-
-        if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(fromSerialized)) {
-                fromSerialized = fromSerialized.join(',');
-            }
-            localVarQueryParameters['from'] = fromSerialized;
-        }
-
-        if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(toSerialized)) {
-                toSerialized = toSerialized.join(',');
-            }
-            localVarQueryParameters['to'] = toSerialized;
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20040>>(config, 'Array<InlineResponse20040>', authSettings);
-    }
-
-    /**
-     * Rate Limit: 200 requests per 10 seconds
-     * @summary Query Contract Position History
-     * @param opts Optional parameters
-     * @param opts.page Page number
-     * @param opts.limit Maximum number returned by list, max 1000
-     * @param opts.symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-     * @param opts.from Start Millisecond Timestamp
-     * @param opts.to End Millisecond Timestamp
-     */
-    public async listCrossexHistoryPositions(opts: {
-        page?: number;
-        limit?: number;
-        symbol?: string;
-        from?: number;
-        to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20041> }> {
-        const localVarPath = this.client.basePath + '/history_positions';
+        const localVarPath = this.client.basePath + '/history_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1259,7 +1174,7 @@ export class CrossExApi {
 
     /**
      * Rate Limit: 200 requests per 10 seconds
-     * @summary Query Leveraged Position History
+     * @summary Query Contract Position History
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number returned by list, max 1000
@@ -1267,14 +1182,14 @@ export class CrossExApi {
      * @param opts.from Start Millisecond Timestamp
      * @param opts.to End Millisecond Timestamp
      */
-    public async listCrossexHistoryMarginPositions(opts: {
+    public async listCrossexHistoryPositions(opts: {
         page?: number;
         limit?: number;
         symbol?: string;
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20042> }> {
-        const localVarPath = this.client.basePath + '/history_margin_positions';
+        const localVarPath = this.client.basePath + '/history_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1344,6 +1259,91 @@ export class CrossExApi {
 
     /**
      * Rate Limit: 200 requests per 10 seconds
+     * @summary Query Leveraged Position History
+     * @param opts Optional parameters
+     * @param opts.page Page number
+     * @param opts.limit Maximum number returned by list, max 1000
+     * @param opts.symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @param opts.from Start Millisecond Timestamp
+     * @param opts.to End Millisecond Timestamp
+     */
+    public async listCrossexHistoryMarginPositions(opts: {
+        page?: number;
+        limit?: number;
+        symbol?: string;
+        from?: number;
+        to?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20043> }> {
+        const localVarPath = this.client.basePath + '/history_margin_positions';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        if (opts.symbol !== undefined) {
+            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(symbolSerialized)) {
+                symbolSerialized = symbolSerialized.join(',');
+            }
+            localVarQueryParameters['symbol'] = symbolSerialized;
+        }
+
+        if (opts.from !== undefined) {
+            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(fromSerialized)) {
+                fromSerialized = fromSerialized.join(',');
+            }
+            localVarQueryParameters['from'] = fromSerialized;
+        }
+
+        if (opts.to !== undefined) {
+            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(toSerialized)) {
+                toSerialized = toSerialized.join(',');
+            }
+            localVarQueryParameters['to'] = toSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<InlineResponse20043>>(config, 'Array<InlineResponse20043>', authSettings);
+    }
+
+    /**
+     * Rate Limit: 200 requests per 10 seconds
      * @summary Query Leveraged Interest Deduction History
      * @param opts Optional parameters
      * @param opts.symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
@@ -1360,7 +1360,7 @@ export class CrossExApi {
         page?: number;
         limit?: number;
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20043> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20044> }> {
         const localVarPath = this.client.basePath + '/history_margin_interests';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1435,7 +1435,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20043>>(config, 'Array<InlineResponse20043>', authSettings);
+        return this.client.request<Array<InlineResponse20044>>(config, 'Array<InlineResponse20044>', authSettings);
     }
 
     /**
@@ -1454,7 +1454,7 @@ export class CrossExApi {
         symbol?: string;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20044> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20045> }> {
         const localVarPath = this.client.basePath + '/history_trades';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1520,7 +1520,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20044>>(config, 'Array<InlineResponse20044>', authSettings);
+        return this.client.request<Array<InlineResponse20045>>(config, 'Array<InlineResponse20045>', authSettings);
     }
 
     /**
@@ -1539,7 +1539,7 @@ export class CrossExApi {
         coin?: string;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20045> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20046> }> {
         const localVarPath = this.client.basePath + '/account_book';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1605,7 +1605,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20045>>(config, 'Array<InlineResponse20045>', authSettings);
+        return this.client.request<Array<InlineResponse20046>>(config, 'Array<InlineResponse20046>', authSettings);
     }
 
     /**
@@ -1618,7 +1618,7 @@ export class CrossExApi {
     public async listCrossexCoinDiscountRate(opts: {
         coin?: string;
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20046> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20047> }> {
         const localVarPath = this.client.basePath + '/coin_discount_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1657,6 +1657,6 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20046>>(config, 'Array<InlineResponse20046>', authSettings);
+        return this.client.request<Array<InlineResponse20047>>(config, 'Array<InlineResponse20047>', authSettings);
     }
 }

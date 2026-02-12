@@ -11,52 +11,25 @@
 
 export class InlineObject20 {
     /**
-     * Currency
+     * File type, currently only images and videos are supported
      */
-    'coin': string;
+    'imageContentType': string;
     /**
-     * Transfer amount
+     * File content (base64 encoded)
      */
-    'amount': string;
-    /**
-     * Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
-     */
-    'from': string;
-    /**
-     * Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
-     */
-    'to': string;
-    /**
-     * User-defined ID
-     */
-    'text'?: string;
+    'base64Img': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'imageContentType',
+            baseName: 'image_content_type',
             type: 'string',
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-        {
-            name: 'from',
-            baseName: 'from',
-            type: 'string',
-        },
-        {
-            name: 'to',
-            baseName: 'to',
-            type: 'string',
-        },
-        {
-            name: 'text',
-            baseName: 'text',
+            name: 'base64Img',
+            baseName: 'base64_img',
             type: 'string',
         },
     ];

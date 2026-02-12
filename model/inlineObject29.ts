@@ -9,19 +9,15 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20036SpecialFeeList {
+export class InlineObject29 {
     /**
-     * Currency pair
+     * Trading Pair 1. Supports leveraged trading pairs, e.g., BINANCE_MARGIN_SOL_USDT 2. Supports contract trading pairs, e.g., OKX_FUTURE_ETH_USDT
      */
     'symbol': string;
     /**
-     * Taker fee rate
+     * Position Direction 1. For leveraged positions, this parameter must be passed 2. For contract positions, pass selectively based on your contract holding method
      */
-    'takerFeeRate': string;
-    /**
-     * Maker fee rate
-     */
-    'makerFeeRate': string;
+    'positionSide'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -32,18 +28,13 @@ export class InlineResponse20036SpecialFeeList {
             type: 'string',
         },
         {
-            name: 'takerFeeRate',
-            baseName: 'taker_fee_rate',
-            type: 'string',
-        },
-        {
-            name: 'makerFeeRate',
-            baseName: 'maker_fee_rate',
+            name: 'positionSide',
+            baseName: 'position_side',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20036SpecialFeeList.attributeTypeMap;
+        return InlineObject29.attributeTypeMap;
     }
 }

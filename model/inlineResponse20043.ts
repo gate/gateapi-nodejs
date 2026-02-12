@@ -11,56 +11,89 @@
 
 export class InlineResponse20043 {
     /**
+     * Position ID
+     */
+    'positionId'?: string;
+    /**
      * User ID
      */
-    'userId': string;
+    'userId'?: string;
     /**
-     * Trading Pair
+     * Currency pair
      */
-    'symbol': string;
+    'symbol'?: string;
     /**
-     * Interest Deduction ID
+     * Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed)
      */
-    'interestId': string;
+    'closedType'?: string;
     /**
-     * Debt Source ID, can be Order ID or Position ID
+     * Close Position P&L
      */
-    'liabilityId': string;
+    'closedPnl'?: string;
     /**
-     * Debt Quantity
+     * Close Position P&L Ratio
      */
-    'liability': string;
+    'closedPnlRate'?: string;
     /**
-     * Debt Currency
+     * Average Opening Price
      */
-    'liabilityCoin': string;
+    'openAvgPrice'?: string;
     /**
-     * Interest
+     * Average Close Price
+     */
+    'closedAvgPrice'?: string;
+    /**
+     * Max Trade Size
+     */
+    'maxPositionQty'?: string;
+    /**
+     * Close Position Quantity
+     */
+    'closedQty'?: string;
+    /**
+     * Close Position Value
+     */
+    'closedValue'?: string;
+    /**
+     * Liquidation Fee
+     */
+    'liqFee'?: string;
+    /**
+     * Position Direction Before Close
+     */
+    'positionSide'?: string;
+    /**
+     * Leverage at Close
+     */
+    'leverage'?: string;
+    /**
+     * Total Deducted Interest
      */
     'interest': string;
     /**
-     * interest rate
+     * Position Business Type
      */
-    'interestRate': string;
-    /**
-     * Interest deduction type (`PERIODIC_POSITION`: periodic position interest; `PERIODIC_OPEN_ORDER`: periodic open-order interest; `IMMEDIATE_OPEN_ORDER`: interest charged on order opening)
-     */
-    'interestType': string;
+    'businessType': string;
     /**
      * Created time
      */
-    'createTime': string;
+    'createTime'?: string;
     /**
-     * Exchange
+     * Update time
      */
-    'exchangeType': string;
+    'updateTime'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
+            name: 'positionId',
+            baseName: 'position_id',
+            type: 'string',
+        },
+        {
             name: 'userId',
-            baseName: 'userId',
+            baseName: 'user_id',
             type: 'string',
         },
         {
@@ -69,23 +102,58 @@ export class InlineResponse20043 {
             type: 'string',
         },
         {
-            name: 'interestId',
-            baseName: 'interest_id',
+            name: 'closedType',
+            baseName: 'closed_type',
             type: 'string',
         },
         {
-            name: 'liabilityId',
-            baseName: 'liability_id',
+            name: 'closedPnl',
+            baseName: 'closed_pnl',
             type: 'string',
         },
         {
-            name: 'liability',
-            baseName: 'liability',
+            name: 'closedPnlRate',
+            baseName: 'closed_pnl_rate',
             type: 'string',
         },
         {
-            name: 'liabilityCoin',
-            baseName: 'liability_coin',
+            name: 'openAvgPrice',
+            baseName: 'open_avg_price',
+            type: 'string',
+        },
+        {
+            name: 'closedAvgPrice',
+            baseName: 'closed_avg_price',
+            type: 'string',
+        },
+        {
+            name: 'maxPositionQty',
+            baseName: 'max_position_qty',
+            type: 'string',
+        },
+        {
+            name: 'closedQty',
+            baseName: 'closed_qty',
+            type: 'string',
+        },
+        {
+            name: 'closedValue',
+            baseName: 'closed_value',
+            type: 'string',
+        },
+        {
+            name: 'liqFee',
+            baseName: 'liq_fee',
+            type: 'string',
+        },
+        {
+            name: 'positionSide',
+            baseName: 'position_side',
+            type: 'string',
+        },
+        {
+            name: 'leverage',
+            baseName: 'leverage',
             type: 'string',
         },
         {
@@ -94,13 +162,8 @@ export class InlineResponse20043 {
             type: 'string',
         },
         {
-            name: 'interestRate',
-            baseName: 'interest_rate',
-            type: 'string',
-        },
-        {
-            name: 'interestType',
-            baseName: 'interest_type',
+            name: 'businessType',
+            baseName: 'business_type',
             type: 'string',
         },
         {
@@ -109,8 +172,8 @@ export class InlineResponse20043 {
             type: 'string',
         },
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
+            name: 'updateTime',
+            baseName: 'update_time',
             type: 'string',
         },
     ];

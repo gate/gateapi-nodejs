@@ -132,6 +132,7 @@ export * from './inlineObject25';
 export * from './inlineObject26';
 export * from './inlineObject27';
 export * from './inlineObject28';
+export * from './inlineObject29';
 export * from './inlineObject3';
 export * from './inlineObject4';
 export * from './inlineObject5';
@@ -179,13 +180,14 @@ export * from './inlineResponse20021Data';
 export * from './inlineResponse20021DataLists';
 export * from './inlineResponse20022';
 export * from './inlineResponse20022Data';
-export * from './inlineResponse20022DataMessages';
-export * from './inlineResponse20022DataMsgObj';
 export * from './inlineResponse20023';
 export * from './inlineResponse20023Data';
+export * from './inlineResponse20023DataMessages';
+export * from './inlineResponse20023DataMsgObj';
 export * from './inlineResponse20024';
 export * from './inlineResponse20024Data';
 export * from './inlineResponse20025';
+export * from './inlineResponse20025Data';
 export * from './inlineResponse20026';
 export * from './inlineResponse20027';
 export * from './inlineResponse20028';
@@ -195,12 +197,12 @@ export * from './inlineResponse20030';
 export * from './inlineResponse20031';
 export * from './inlineResponse20032';
 export * from './inlineResponse20033';
-export * from './inlineResponse20033Assets';
 export * from './inlineResponse20034';
+export * from './inlineResponse20034Assets';
 export * from './inlineResponse20035';
 export * from './inlineResponse20036';
-export * from './inlineResponse20036SpecialFeeList';
 export * from './inlineResponse20037';
+export * from './inlineResponse20037SpecialFeeList';
 export * from './inlineResponse20038';
 export * from './inlineResponse20039';
 export * from './inlineResponse2004';
@@ -211,6 +213,7 @@ export * from './inlineResponse20043';
 export * from './inlineResponse20044';
 export * from './inlineResponse20045';
 export * from './inlineResponse20046';
+export * from './inlineResponse20047';
 export * from './inlineResponse2005';
 export * from './inlineResponse2006';
 export * from './inlineResponse2006Data';
@@ -528,6 +531,7 @@ import { InlineObject25 } from './inlineObject25';
 import { InlineObject26 } from './inlineObject26';
 import { InlineObject27 } from './inlineObject27';
 import { InlineObject28 } from './inlineObject28';
+import { InlineObject29 } from './inlineObject29';
 import { InlineObject3 } from './inlineObject3';
 import { InlineObject4 } from './inlineObject4';
 import { InlineObject5 } from './inlineObject5';
@@ -575,13 +579,14 @@ import { InlineResponse20021Data } from './inlineResponse20021Data';
 import { InlineResponse20021DataLists } from './inlineResponse20021DataLists';
 import { InlineResponse20022 } from './inlineResponse20022';
 import { InlineResponse20022Data } from './inlineResponse20022Data';
-import { InlineResponse20022DataMessages } from './inlineResponse20022DataMessages';
-import { InlineResponse20022DataMsgObj } from './inlineResponse20022DataMsgObj';
 import { InlineResponse20023 } from './inlineResponse20023';
 import { InlineResponse20023Data } from './inlineResponse20023Data';
+import { InlineResponse20023DataMessages } from './inlineResponse20023DataMessages';
+import { InlineResponse20023DataMsgObj } from './inlineResponse20023DataMsgObj';
 import { InlineResponse20024 } from './inlineResponse20024';
 import { InlineResponse20024Data } from './inlineResponse20024Data';
 import { InlineResponse20025 } from './inlineResponse20025';
+import { InlineResponse20025Data } from './inlineResponse20025Data';
 import { InlineResponse20026 } from './inlineResponse20026';
 import { InlineResponse20027 } from './inlineResponse20027';
 import { InlineResponse20028 } from './inlineResponse20028';
@@ -591,12 +596,12 @@ import { InlineResponse20030 } from './inlineResponse20030';
 import { InlineResponse20031 } from './inlineResponse20031';
 import { InlineResponse20032 } from './inlineResponse20032';
 import { InlineResponse20033 } from './inlineResponse20033';
-import { InlineResponse20033Assets } from './inlineResponse20033Assets';
 import { InlineResponse20034 } from './inlineResponse20034';
+import { InlineResponse20034Assets } from './inlineResponse20034Assets';
 import { InlineResponse20035 } from './inlineResponse20035';
 import { InlineResponse20036 } from './inlineResponse20036';
-import { InlineResponse20036SpecialFeeList } from './inlineResponse20036SpecialFeeList';
 import { InlineResponse20037 } from './inlineResponse20037';
+import { InlineResponse20037SpecialFeeList } from './inlineResponse20037SpecialFeeList';
 import { InlineResponse20038 } from './inlineResponse20038';
 import { InlineResponse20039 } from './inlineResponse20039';
 import { InlineResponse2004 } from './inlineResponse2004';
@@ -607,6 +612,7 @@ import { InlineResponse20043 } from './inlineResponse20043';
 import { InlineResponse20044 } from './inlineResponse20044';
 import { InlineResponse20045 } from './inlineResponse20045';
 import { InlineResponse20046 } from './inlineResponse20046';
+import { InlineResponse20047 } from './inlineResponse20047';
 import { InlineResponse2005 } from './inlineResponse2005';
 import { InlineResponse2006 } from './inlineResponse2006';
 import { InlineResponse2006Data } from './inlineResponse2006Data';
@@ -838,11 +844,11 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
     'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
-    'InlineObject21.Side': InlineObject21.Side,
-    'InlineObject21.Type': InlineObject21.Type,
-    'InlineObject21.TimeInForce': InlineObject21.TimeInForce,
-    'InlineObject21.ReduceOnly': InlineObject21.ReduceOnly,
-    'InlineObject21.PositionSide': InlineObject21.PositionSide,
+    'InlineObject22.Side': InlineObject22.Side,
+    'InlineObject22.Type': InlineObject22.Type,
+    'InlineObject22.TimeInForce': InlineObject22.TimeInForce,
+    'InlineObject22.ReduceOnly': InlineObject22.ReduceOnly,
+    'InlineObject22.PositionSide': InlineObject22.PositionSide,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
     'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
     'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
@@ -1018,6 +1024,7 @@ let typeMap: { [index: string]: any } = {
     InlineObject26: InlineObject26,
     InlineObject27: InlineObject27,
     InlineObject28: InlineObject28,
+    InlineObject29: InlineObject29,
     InlineObject3: InlineObject3,
     InlineObject4: InlineObject4,
     InlineObject5: InlineObject5,
@@ -1065,13 +1072,14 @@ let typeMap: { [index: string]: any } = {
     InlineResponse20021DataLists: InlineResponse20021DataLists,
     InlineResponse20022: InlineResponse20022,
     InlineResponse20022Data: InlineResponse20022Data,
-    InlineResponse20022DataMessages: InlineResponse20022DataMessages,
-    InlineResponse20022DataMsgObj: InlineResponse20022DataMsgObj,
     InlineResponse20023: InlineResponse20023,
     InlineResponse20023Data: InlineResponse20023Data,
+    InlineResponse20023DataMessages: InlineResponse20023DataMessages,
+    InlineResponse20023DataMsgObj: InlineResponse20023DataMsgObj,
     InlineResponse20024: InlineResponse20024,
     InlineResponse20024Data: InlineResponse20024Data,
     InlineResponse20025: InlineResponse20025,
+    InlineResponse20025Data: InlineResponse20025Data,
     InlineResponse20026: InlineResponse20026,
     InlineResponse20027: InlineResponse20027,
     InlineResponse20028: InlineResponse20028,
@@ -1081,12 +1089,12 @@ let typeMap: { [index: string]: any } = {
     InlineResponse20031: InlineResponse20031,
     InlineResponse20032: InlineResponse20032,
     InlineResponse20033: InlineResponse20033,
-    InlineResponse20033Assets: InlineResponse20033Assets,
     InlineResponse20034: InlineResponse20034,
+    InlineResponse20034Assets: InlineResponse20034Assets,
     InlineResponse20035: InlineResponse20035,
     InlineResponse20036: InlineResponse20036,
-    InlineResponse20036SpecialFeeList: InlineResponse20036SpecialFeeList,
     InlineResponse20037: InlineResponse20037,
+    InlineResponse20037SpecialFeeList: InlineResponse20037SpecialFeeList,
     InlineResponse20038: InlineResponse20038,
     InlineResponse20039: InlineResponse20039,
     InlineResponse2004: InlineResponse2004,
@@ -1097,6 +1105,7 @@ let typeMap: { [index: string]: any } = {
     InlineResponse20044: InlineResponse20044,
     InlineResponse20045: InlineResponse20045,
     InlineResponse20046: InlineResponse20046,
+    InlineResponse20047: InlineResponse20047,
     InlineResponse2005: InlineResponse2005,
     InlineResponse2006: InlineResponse2006,
     InlineResponse2006Data: InlineResponse2006Data,

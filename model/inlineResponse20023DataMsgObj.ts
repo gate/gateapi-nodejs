@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse20022DataMsgObj {
+export class InlineResponse20023DataMsgObj {
     /**
      * Order status when message was sent
      */
@@ -206,6 +206,6 @@ export class InlineResponse20022DataMsgObj {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20022DataMsgObj.attributeTypeMap;
+        return InlineResponse20023DataMsgObj.attributeTypeMap;
     }
 }

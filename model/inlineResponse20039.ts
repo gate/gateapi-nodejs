@@ -15,17 +15,85 @@ export class InlineResponse20039 {
      */
     'userId': string;
     /**
-     * Currency pair
+     * Leveraged Position ID
+     */
+    'positionId': string;
+    /**
+     * Trading Pair
      */
     'symbol': string;
     /**
-     * CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
+     * Position Direction
      */
-    'crossexAdlRank': string;
+    'positionSide': string;
     /**
-     * Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
+     * Initial position margin
      */
-    'exchangeAdlRank': string;
+    'initialMargin': string;
+    /**
+     * Position maintenance margin
+     */
+    'maintenanceMargin': string;
+    /**
+     * Position Asset Quantity
+     */
+    'assetQty': string;
+    /**
+     * Position Asset Currency
+     */
+    'assetCoin': string;
+    /**
+     * Position Value
+     */
+    'positionValue': string;
+    /**
+     * Debt Quantity
+     */
+    'liability': string;
+    /**
+     * Debt Currency
+     */
+    'liabilityCoin': string;
+    /**
+     * Deducted Interest
+     */
+    'interest': string;
+    /**
+     * Max Trade Size
+     */
+    'maxPositionQty': string;
+    /**
+     * Position Cost Price (Average Opening Price)
+     */
+    'entryPrice': string;
+    /**
+     * Index price
+     */
+    'indexPrice': string;
+    /**
+     * Unrealized P&L
+     */
+    'upnl': string;
+    /**
+     * Unrealized P&L Ratio
+     */
+    'upnlRate': string;
+    /**
+     * Opening Leverage
+     */
+    'leverage': string;
+    /**
+     * Maximum leverage
+     */
+    'maxLeverage': string;
+    /**
+     * Created time
+     */
+    'createTime': string;
+    /**
+     * Update time
+     */
+    'updateTime': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -36,18 +104,103 @@ export class InlineResponse20039 {
             type: 'string',
         },
         {
+            name: 'positionId',
+            baseName: 'position_id',
+            type: 'string',
+        },
+        {
             name: 'symbol',
             baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'crossexAdlRank',
-            baseName: 'crossex_adl_rank',
+            name: 'positionSide',
+            baseName: 'position_side',
             type: 'string',
         },
         {
-            name: 'exchangeAdlRank',
-            baseName: 'exchange_adl_rank',
+            name: 'initialMargin',
+            baseName: 'initial_margin',
+            type: 'string',
+        },
+        {
+            name: 'maintenanceMargin',
+            baseName: 'maintenance_margin',
+            type: 'string',
+        },
+        {
+            name: 'assetQty',
+            baseName: 'asset_qty',
+            type: 'string',
+        },
+        {
+            name: 'assetCoin',
+            baseName: 'asset_coin',
+            type: 'string',
+        },
+        {
+            name: 'positionValue',
+            baseName: 'position_value',
+            type: 'string',
+        },
+        {
+            name: 'liability',
+            baseName: 'liability',
+            type: 'string',
+        },
+        {
+            name: 'liabilityCoin',
+            baseName: 'liability_coin',
+            type: 'string',
+        },
+        {
+            name: 'interest',
+            baseName: 'interest',
+            type: 'string',
+        },
+        {
+            name: 'maxPositionQty',
+            baseName: 'max_position_qty',
+            type: 'string',
+        },
+        {
+            name: 'entryPrice',
+            baseName: 'entry_price',
+            type: 'string',
+        },
+        {
+            name: 'indexPrice',
+            baseName: 'index_price',
+            type: 'string',
+        },
+        {
+            name: 'upnl',
+            baseName: 'upnl',
+            type: 'string',
+        },
+        {
+            name: 'upnlRate',
+            baseName: 'upnl_rate',
+            type: 'string',
+        },
+        {
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
+        },
+        {
+            name: 'maxLeverage',
+            baseName: 'max_leverage',
+            type: 'string',
+        },
+        {
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'string',
+        },
+        {
+            name: 'updateTime',
+            baseName: 'update_time',
             type: 'string',
         },
     ];

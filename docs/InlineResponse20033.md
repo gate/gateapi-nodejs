@@ -4,18 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **string** | User ID | [default to undefined]
-**availableMargin** | **string** | Available Margin | [default to undefined]
-**marginBalance** | **string** | marginbalance | [default to undefined]
-**initialMargin** | **string** | Initial Margin | [default to undefined]
-**maintenanceMargin** | **string** | Maintenance margin | [default to undefined]
-**initialMarginRate** | **string** | Initial margin rate | [default to undefined]
-**maintenanceMarginRate** | **string** | Maintenance margin rate | [default to undefined]
-**positionMode** | **string** | Contract Position Mode | [default to undefined]
-**accountLimit** | **string** | Account limit | [optional] [default to undefined]
-**createTime** | **string** | Created time | [default to undefined]
-**updateTime** | **string** | Update time | [default to undefined]
-**accountMode** | **string** | Account Mode. CROSS_EXCHANGE: Cross-Exchange Mode; ISOLATED_EXCHANGE: Split-Exchange Mode | [optional] [default to undefined]
-**exchangeType** | **string** | Exchange Type. When account_mode is CROSS_EXCHANGE, it must be CROSSEX; otherwise, it is another exchange. | [optional] [default to undefined]
-**assets** | [**Array&lt;InlineResponse20033Assets&gt;**](InlineResponse20033Assets.md) |  | [default to undefined]
+**quoteId** | **string** | Quote ID | [default to undefined]
+**validMs** | **string** | Valid time (milliseconds timestamp) | [default to undefined]
+**fromCoin** | **string** | Asset Sold | [default to undefined]
+**toCoin** | **string** | Asset Bought | [default to undefined]
+**fromAmount** | **string** | Amount to sell | [default to undefined]
+**toAmount** | **string** | Amount to buy | [default to undefined]
+**price** | **string** | Price | [default to undefined]
 

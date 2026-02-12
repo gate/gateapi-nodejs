@@ -13,24 +13,102 @@ export class InlineResponse20028 {
     /**
      * Order ID
      */
-    'txId': string;
+    'id': string;
     /**
-     * User-defined Order ID
+     * Client Custom ID
      */
     'text': string;
+    /**
+     * Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT)
+     */
+    'fromAccountType': string;
+    'toAccountType': string;
+    /**
+     * Currency
+     */
+    'coin': string;
+    /**
+     * Transfer amount, the amount requested for the transfer
+     */
+    'amount': string;
+    /**
+     * Actual credited amount (has a value when status = SUCCESS; empty for other statuses)
+     */
+    'actualReceive'?: string;
+    /**
+     * Transfer Status - `FAIL`: Failed - `SUCCESS`: Successful - `PENDING`: Transfer in Progress
+     */
+    'status': string;
+    /**
+     * Failure reason (has a value when status = FAIL; empty for other statuses)
+     */
+    'failReason'?: string;
+    /**
+     * Creation time of order
+     */
+    'createTime': number;
+    /**
+     * OrderUpdateTime
+     */
+    'updateTime': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'txId',
-            baseName: 'tx_id',
+            name: 'id',
+            baseName: 'id',
             type: 'string',
         },
         {
             name: 'text',
             baseName: 'text',
             type: 'string',
+        },
+        {
+            name: 'fromAccountType',
+            baseName: 'from_account_type',
+            type: 'string',
+        },
+        {
+            name: 'toAccountType',
+            baseName: 'to_account_type',
+            type: 'string',
+        },
+        {
+            name: 'coin',
+            baseName: 'coin',
+            type: 'string',
+        },
+        {
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+        {
+            name: 'actualReceive',
+            baseName: 'actual_receive',
+            type: 'string',
+        },
+        {
+            name: 'status',
+            baseName: 'status',
+            type: 'string',
+        },
+        {
+            name: 'failReason',
+            baseName: 'fail_reason',
+            type: 'string',
+        },
+        {
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
+        },
+        {
+            name: 'updateTime',
+            baseName: 'update_time',
+            type: 'number',
         },
     ];
 

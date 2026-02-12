@@ -13,97 +13,54 @@ export class InlineResponse20044 {
     /**
      * User ID
      */
-    'userId'?: string;
+    'userId': string;
     /**
-     * filledrecordsID
+     * Trading Pair
      */
-    'transactionId'?: string;
+    'symbol': string;
     /**
-     * Order ID
+     * Interest Deduction ID
      */
-    'orderId'?: string;
+    'interestId': string;
     /**
-     * User Order ID
+     * Debt Source ID, can be Order ID or Position ID
      */
-    'text'?: string;
+    'liabilityId': string;
     /**
-     * Currency pair
+     * Debt Quantity
      */
-    'symbol'?: string;
+    'liability': string;
     /**
-     * Exchange
+     * Debt Currency
      */
-    'exchangeType'?: string;
+    'liabilityCoin': string;
     /**
-     * Business Type
+     * Interest
      */
-    'businessType'?: string;
+    'interest': string;
     /**
-     * Buy/Sell Direction
+     * interest rate
      */
-    'side'?: string;
+    'interestRate': string;
     /**
-     * Trading size
+     * Interest deduction type (`PERIODIC_POSITION`: periodic position interest; `PERIODIC_OPEN_ORDER`: periodic open-order interest; `IMMEDIATE_OPEN_ORDER`: interest charged on order opening)
      */
-    'qty'?: string;
-    /**
-     * Fill Price
-     */
-    'price'?: string;
-    /**
-     * fee
-     */
-    'fee'?: string;
-    /**
-     * Fee currency
-     */
-    'feeCoin'?: string;
-    /**
-     * Fee Rate
-     */
-    'feeRate'?: string;
-    /**
-     * Filled Role
-     */
-    'matchRole'?: string;
-    /**
-     * Realized P&L
-     */
-    'rpnl'?: string;
-    /**
-     * Position Mode
-     */
-    'positionMode'?: string;
-    /**
-     * Position Direction
-     */
-    'positionSide'?: string;
+    'interestType': string;
     /**
      * Created time
      */
-    'createTime'?: string;
+    'createTime': string;
+    /**
+     * Exchange
+     */
+    'exchangeType': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
             name: 'userId',
-            baseName: 'user_id',
-            type: 'string',
-        },
-        {
-            name: 'transactionId',
-            baseName: 'transaction_id',
-            type: 'string',
-        },
-        {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'string',
-        },
-        {
-            name: 'text',
-            baseName: 'text',
+            baseName: 'userId',
             type: 'string',
         },
         {
@@ -112,68 +69,48 @@ export class InlineResponse20044 {
             type: 'string',
         },
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
+            name: 'interestId',
+            baseName: 'interest_id',
             type: 'string',
         },
         {
-            name: 'businessType',
-            baseName: 'business_type',
+            name: 'liabilityId',
+            baseName: 'liability_id',
             type: 'string',
         },
         {
-            name: 'side',
-            baseName: 'side',
+            name: 'liability',
+            baseName: 'liability',
             type: 'string',
         },
         {
-            name: 'qty',
-            baseName: 'qty',
+            name: 'liabilityCoin',
+            baseName: 'liability_coin',
             type: 'string',
         },
         {
-            name: 'price',
-            baseName: 'price',
+            name: 'interest',
+            baseName: 'interest',
             type: 'string',
         },
         {
-            name: 'fee',
-            baseName: 'fee',
+            name: 'interestRate',
+            baseName: 'interest_rate',
             type: 'string',
         },
         {
-            name: 'feeCoin',
-            baseName: 'fee_coin',
-            type: 'string',
-        },
-        {
-            name: 'feeRate',
-            baseName: 'fee_rate',
-            type: 'string',
-        },
-        {
-            name: 'matchRole',
-            baseName: 'match_role',
-            type: 'string',
-        },
-        {
-            name: 'rpnl',
-            baseName: 'rpnl',
-            type: 'string',
-        },
-        {
-            name: 'positionMode',
-            baseName: 'position_mode',
-            type: 'string',
-        },
-        {
-            name: 'positionSide',
-            baseName: 'position_side',
+            name: 'interestType',
+            baseName: 'interest_type',
             type: 'string',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
+            type: 'string',
+        },
+        {
+            name: 'exchangeType',
+            baseName: 'exchange_type',
             type: 'string',
         },
     ];
