@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**messages** | [**Array&lt;InlineResponse20023DataMessages&gt;**](InlineResponse20023DataMessages.md) | Message List | [default to undefined]
-**memo** | **string** | Payment tip (displayed on homepage only) | [default to undefined]
-**hasHistory** | **boolean** | Whether historical records exist | [default to undefined]
-**txid** | **number** | Order ID | [default to undefined]
-**sRVTM** | **number** | Timestamp of the latest message | [default to undefined]
-**orderStatus** | **string** | Order Status | [default to undefined]
+**index** | **number** | Serial number | [optional] [default to undefined]
+**asset** | **string** | Cryptocurrency | [optional] [default to undefined]
+**fiatUnit** | **string** | Fiat currency | [optional] [default to undefined]
+**advNo** | **number** | Ad ID | [optional] [default to undefined]
+**price** | **string** | Price | [optional] [default to undefined]
+**maxSingleTransAmount** | **string** | Maximum Cryptocurrency Amount | [optional] [default to undefined]
+**minSingleTransAmount** | **string** | Minimum Cryptocurrency Amount | [optional] [default to undefined]
+**nickName** | **string** | Advertiser Nickname | [optional] [default to undefined]
 

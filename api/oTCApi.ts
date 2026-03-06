@@ -10,10 +10,10 @@
  */
 
 /* tslint:disable:no-unused-locals */
-import { InlineObject1 } from '../model/inlineObject1';
-import { InlineObject2 } from '../model/inlineObject2';
-import { InlineObject3 } from '../model/inlineObject3';
-import { InlineObject4 } from '../model/inlineObject4';
+import { InlineObject6 } from '../model/inlineObject6';
+import { InlineObject7 } from '../model/inlineObject7';
+import { InlineObject8 } from '../model/inlineObject8';
+import { InlineObject9 } from '../model/inlineObject9';
 import { InlineResponse20010 } from '../model/inlineResponse20010';
 import { InlineResponse20011 } from '../model/inlineResponse20011';
 import { InlineResponse20012 } from '../model/inlineResponse20012';
@@ -44,10 +44,10 @@ export class OTCApi {
     /**
      * Create fiat and stablecoin quotes, supporting both PAY and GET directions
      * @summary Fiat and stablecoin quote
-     * @param inlineObject1
+     * @param inlineObject6
      */
     public async createOtcQuote(
-        inlineObject1: InlineObject1,
+        inlineObject6: InlineObject6,
     ): Promise<{ response: AxiosResponse; body: InlineResponse2006 }> {
         const localVarPath = this.client.basePath + '/otc/quote';
         let localVarQueryParameters: any = {};
@@ -60,9 +60,9 @@ export class OTCApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'inlineObject1' is not null or undefined
-        if (inlineObject1 === null || inlineObject1 === undefined) {
-            throw new Error('Required parameter inlineObject1 was null or undefined when calling createOtcQuote.');
+        // verify required parameter 'inlineObject6' is not null or undefined
+        if (inlineObject6 === null || inlineObject6 === undefined) {
+            throw new Error('Required parameter inlineObject6 was null or undefined when calling createOtcQuote.');
         }
 
         const config: AxiosRequestConfig = {
@@ -70,7 +70,7 @@ export class OTCApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject1, 'InlineObject1'),
+            data: ObjectSerializer.serialize(inlineObject6, 'InlineObject6'),
         };
 
         const authSettings = ['apiv4'];
@@ -80,10 +80,10 @@ export class OTCApi {
     /**
      * Create a fiat order, supporting BUY for on-ramp and SELL for off-ramp
      * @summary Create fiat order
-     * @param inlineObject2
+     * @param inlineObject7
      */
     public async createOtcOrder(
-        inlineObject2: InlineObject2,
+        inlineObject7: InlineObject7,
     ): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
         const localVarPath = this.client.basePath + '/otc/order/create';
         let localVarQueryParameters: any = {};
@@ -96,9 +96,9 @@ export class OTCApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'inlineObject2' is not null or undefined
-        if (inlineObject2 === null || inlineObject2 === undefined) {
-            throw new Error('Required parameter inlineObject2 was null or undefined when calling createOtcOrder.');
+        // verify required parameter 'inlineObject7' is not null or undefined
+        if (inlineObject7 === null || inlineObject7 === undefined) {
+            throw new Error('Required parameter inlineObject7 was null or undefined when calling createOtcOrder.');
         }
 
         const config: AxiosRequestConfig = {
@@ -106,7 +106,7 @@ export class OTCApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject2, 'InlineObject2'),
+            data: ObjectSerializer.serialize(inlineObject7, 'InlineObject7'),
         };
 
         const authSettings = ['apiv4'];
@@ -116,10 +116,10 @@ export class OTCApi {
     /**
      * Create stablecoin order
      * @summary Create stablecoin order
-     * @param inlineObject3
+     * @param inlineObject8
      */
     public async createStableCoinOrder(
-        inlineObject3: InlineObject3,
+        inlineObject8: InlineObject8,
     ): Promise<{ response: AxiosResponse; body: InlineResponse2008 }> {
         const localVarPath = this.client.basePath + '/otc/stable_coin/order/create';
         let localVarQueryParameters: any = {};
@@ -132,10 +132,10 @@ export class OTCApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'inlineObject3' is not null or undefined
-        if (inlineObject3 === null || inlineObject3 === undefined) {
+        // verify required parameter 'inlineObject8' is not null or undefined
+        if (inlineObject8 === null || inlineObject8 === undefined) {
             throw new Error(
-                'Required parameter inlineObject3 was null or undefined when calling createStableCoinOrder.',
+                'Required parameter inlineObject8 was null or undefined when calling createStableCoinOrder.',
             );
         }
 
@@ -144,7 +144,7 @@ export class OTCApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject3, 'InlineObject3'),
+            data: ObjectSerializer.serialize(inlineObject8, 'InlineObject8'),
         };
 
         const authSettings = ['apiv4'];
@@ -208,10 +208,10 @@ export class OTCApi {
     /**
      * Mark fiat order as paid
      * @summary Mark fiat order as paid
-     * @param inlineObject4
+     * @param inlineObject9
      */
     public async markOtcOrderPaid(
-        inlineObject4: InlineObject4,
+        inlineObject9: InlineObject9,
     ): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
         const localVarPath = this.client.basePath + '/otc/order/paid';
         let localVarQueryParameters: any = {};
@@ -224,9 +224,9 @@ export class OTCApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'inlineObject4' is not null or undefined
-        if (inlineObject4 === null || inlineObject4 === undefined) {
-            throw new Error('Required parameter inlineObject4 was null or undefined when calling markOtcOrderPaid.');
+        // verify required parameter 'inlineObject9' is not null or undefined
+        if (inlineObject9 === null || inlineObject9 === undefined) {
+            throw new Error('Required parameter inlineObject9 was null or undefined when calling markOtcOrderPaid.');
         }
 
         const config: AxiosRequestConfig = {
@@ -234,7 +234,7 @@ export class OTCApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject4, 'InlineObject4'),
+            data: ObjectSerializer.serialize(inlineObject9, 'InlineObject9'),
         };
 
         const authSettings = ['apiv4'];

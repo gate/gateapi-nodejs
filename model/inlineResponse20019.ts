@@ -9,29 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20019Data } from './inlineResponse20019Data';
-
 export class InlineResponse20019 {
-    'timestamp': number;
-    'method': string;
-    'code': number;
-    'message': string;
-    'data': InlineResponse20019Data;
-    'version': string;
+    'code'?: number;
+    'message'?: string;
+    'timestamp'?: number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
-        },
-        {
-            name: 'method',
-            baseName: 'method',
-            type: 'string',
-        },
         {
             name: 'code',
             baseName: 'code',
@@ -43,14 +28,9 @@ export class InlineResponse20019 {
             type: 'string',
         },
         {
-            name: 'data',
-            baseName: 'data',
-            type: 'InlineResponse20019Data',
-        },
-        {
-            name: 'version',
-            baseName: 'version',
-            type: 'string',
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

@@ -11,26 +11,17 @@
 
 export class InlineObject14 {
     /**
-     * Ad ID
+     * Inquiry ID
      */
-    'advNo': number;
-    /**
-     * Ad status: 1=Active, 3=Inactive, 4=Closed
-     */
-    'advStatus': number;
+    'quoteId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'advNo',
-            baseName: 'adv_no',
-            type: 'number',
-        },
-        {
-            name: 'advStatus',
-            baseName: 'adv_status',
-            type: 'number',
+            name: 'quoteId',
+            baseName: 'quote_id',
+            type: 'string',
         },
     ];
 

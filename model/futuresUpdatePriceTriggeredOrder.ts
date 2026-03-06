@@ -18,9 +18,9 @@ export class FuturesUpdatePriceTriggeredOrder {
      */
     'settle'?: string;
     /**
-     * The order ID of the modified price-triggered order. This ID is returned upon successful creation of the price-triggered order. Note: This ID must be passed in both the request path and request body.
+     * ID of the Pending Take-Profit/Stop-Loss Trigger Order
      */
-    'orderId': string;
+    'orderId': number;
     /**
      * Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
      */
@@ -57,7 +57,7 @@ export class FuturesUpdatePriceTriggeredOrder {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'string',
+            type: 'number',
         },
         {
             name: 'size',

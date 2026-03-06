@@ -4369,7 +4369,7 @@ export class FuturesApi {
      */
     public async getPriceTriggeredOrder(
         settle: 'btc' | 'usdt',
-        orderId: string,
+        orderId: number,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -4409,6 +4409,52 @@ export class FuturesApi {
 
     /**
      *
+     * @summary Cancel single auto order
+     * @param settle Settle currency
+     * @param orderId ID returned when order is successfully created
+     */
+    public async cancelPriceTriggeredOrder(
+        settle: 'btc' | 'usdt',
+        orderId: number,
+    ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/price_orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling cancelPriceTriggeredOrder.');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling cancelPriceTriggeredOrder.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'DELETE',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesPriceTriggeredOrder>(config, 'FuturesPriceTriggeredOrder', authSettings);
+    }
+
+    /**
+     *
      * @summary Modify a Single Auto Order
      * @param settle Settle currency
      * @param orderId ID returned when order is successfully created
@@ -4416,12 +4462,12 @@ export class FuturesApi {
      */
     public async updatePriceTriggeredOrder(
         settle: 'btc' | 'usdt',
-        orderId: string,
+        orderId: number,
         futuresUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath =
             this.client.basePath +
-            '/futures/{settle}/price_orders/{order_id}'
+            '/futures/{settle}/price_orders/amend/{order_id}'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
         let localVarQueryParameters: any = {};
@@ -4461,51 +4507,5 @@ export class FuturesApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<TriggerOrderResponse>(config, 'TriggerOrderResponse', authSettings);
-    }
-
-    /**
-     *
-     * @summary Cancel single auto order
-     * @param settle Settle currency
-     * @param orderId ID returned when order is successfully created
-     */
-    public async cancelPriceTriggeredOrder(
-        settle: 'btc' | 'usdt',
-        orderId: string,
-    ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
-        const localVarPath =
-            this.client.basePath +
-            '/futures/{settle}/price_orders/{order_id}'
-                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'settle' is not null or undefined
-        if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling cancelPriceTriggeredOrder.');
-        }
-
-        // verify required parameter 'orderId' is not null or undefined
-        if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling cancelPriceTriggeredOrder.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'DELETE',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<FuturesPriceTriggeredOrder>(config, 'FuturesPriceTriggeredOrder', authSettings);
     }
 }

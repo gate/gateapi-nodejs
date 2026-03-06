@@ -13,79 +13,79 @@ export class InlineResponse20015Data {
     /**
      * User registration time (formatted string)
      */
-    'userTimest': string;
+    'userTimest'?: string;
     /**
      * Whether email is verified
      */
-    'emailVerified': string;
+    'emailVerified'?: string;
     /**
      * Whether KYC verification is completed
      */
-    'verified': string;
+    'verified'?: string;
     /**
      * Whether phone is bound
      */
-    'hasPhone': string;
+    'hasPhone'?: string;
     /**
      * Username
      */
-    'userName': string;
+    'userName'?: string;
     /**
      * User note information
      */
-    'userNote': string;
+    'userNote'?: string;
     /**
      * Total completed orders
      */
-    'completeTransactions': string;
+    'completeTransactions'?: string;
     /**
      * Number of completed buy orders
      */
-    'paidTransactions': string;
+    'paidTransactions'?: string;
     /**
      * Number of completed sell orders
      */
-    'acceptedTransactions': string;
+    'acceptedTransactions'?: string;
     /**
      * Average time to confirm receipt
      */
-    'transactionsUsedTime': string;
+    'transactionsUsedTime'?: string;
     /**
      * Cancellation time in last 30 days
      */
-    'cancelledUsedTimeMonth': string;
+    'cancelledUsedTimeMonth'?: string;
     /**
      * Number of completed orders in last 30 days
      */
-    'completeTransactionsMonth': string;
+    'completeTransactionsMonth'?: string;
     /**
      * Completion rate in last 30 days
      */
-    'completeRateMonth': number;
+    'completeRateMonth'?: number;
     /**
      * Whether following
      */
-    'isFollow': number;
+    'isFollow'?: number;
     /**
      * Whether traded with self
      */
-    'haveTraded': number;
+    'haveTraded'?: number;
     /**
      * Encrypted UID
      */
-    'bizUid': string;
+    'bizUid'?: string;
     /**
      * Registration days
      */
-    'registrationDays': number;
+    'registrationDays'?: number;
     /**
      * Days since first trade
      */
-    'firstTradeDays': number;
+    'firstTradeDays'?: number;
     /**
      * Single user or composite user
      */
-    'tradeVersatile': boolean;
+    'tradeVersatile'?: boolean;
 
     static discriminator: string | undefined = undefined;
 

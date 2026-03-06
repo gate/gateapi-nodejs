@@ -10,16 +10,15 @@
  */
 
 /* tslint:disable:no-unused-locals */
-import { InlineObject21 } from '../model/inlineObject21';
-import { InlineObject22 } from '../model/inlineObject22';
-import { InlineObject23 } from '../model/inlineObject23';
-import { InlineObject24 } from '../model/inlineObject24';
-import { InlineObject25 } from '../model/inlineObject25';
-import { InlineObject26 } from '../model/inlineObject26';
-import { InlineObject27 } from '../model/inlineObject27';
-import { InlineObject28 } from '../model/inlineObject28';
-import { InlineObject29 } from '../model/inlineObject29';
-import { InlineResponse20026 } from '../model/inlineResponse20026';
+import { InlineObject10 } from '../model/inlineObject10';
+import { InlineObject11 } from '../model/inlineObject11';
+import { InlineObject12 } from '../model/inlineObject12';
+import { InlineObject13 } from '../model/inlineObject13';
+import { InlineObject14 } from '../model/inlineObject14';
+import { InlineObject15 } from '../model/inlineObject15';
+import { InlineObject16 } from '../model/inlineObject16';
+import { InlineObject17 } from '../model/inlineObject17';
+import { InlineObject18 } from '../model/inlineObject18';
 import { InlineResponse20027 } from '../model/inlineResponse20027';
 import { InlineResponse20028 } from '../model/inlineResponse20028';
 import { InlineResponse20029 } from '../model/inlineResponse20029';
@@ -72,7 +71,7 @@ export class CrossExApi {
     public async listCrossexRuleSymbols(opts: {
         symbols?: string;
     }): Promise<{ response: AxiosResponse; body: Array<Symbol> }> {
-        const localVarPath = this.client.basePath + '/rule/symbols';
+        const localVarPath = this.client.basePath + '/crossex/rule/symbols';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -111,8 +110,8 @@ export class CrossExApi {
      */
     public async listCrossexRuleRiskLimits(
         symbols: string,
-    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20026> }> {
-        const localVarPath = this.client.basePath + '/rule/risk_limits';
+    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20027> }> {
+        const localVarPath = this.client.basePath + '/crossex/rule/risk_limits';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -143,7 +142,7 @@ export class CrossExApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<InlineResponse20026>>(config, 'Array<InlineResponse20026>', authSettings);
+        return this.client.request<Array<InlineResponse20027>>(config, 'Array<InlineResponse20027>', authSettings);
     }
 
     /**
@@ -154,8 +153,8 @@ export class CrossExApi {
      */
     public async listCrossexTransferCoins(opts: {
         coin?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20027> }> {
-        const localVarPath = this.client.basePath + '/transfers/coin';
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20028> }> {
+        const localVarPath = this.client.basePath + '/crossex/transfers/coin';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -184,7 +183,7 @@ export class CrossExApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<InlineResponse20027>>(config, 'Array<InlineResponse20027>', authSettings);
+        return this.client.request<Array<InlineResponse20028>>(config, 'Array<InlineResponse20028>', authSettings);
     }
 
     /**
@@ -205,8 +204,8 @@ export class CrossExApi {
         to?: number;
         page?: number;
         limit?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20028> }> {
-        const localVarPath = this.client.basePath + '/transfers';
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20029> }> {
+        const localVarPath = this.client.basePath + '/crossex/transfers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -280,53 +279,19 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20028>>(config, 'Array<InlineResponse20028>', authSettings);
+        return this.client.request<Array<InlineResponse20029>>(config, 'Array<InlineResponse20029>', authSettings);
     }
 
     /**
      * Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE`
      * @summary Fund Transfer
      * @param opts Optional parameters
-     * @param opts.inlineObject21
+     * @param opts.inlineObject10
      */
     public async createCrossexTransfer(opts: {
-        inlineObject21?: InlineObject21;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20029 }> {
-        const localVarPath = this.client.basePath + '/transfers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject21, 'InlineObject21'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20029>(config, 'InlineResponse20029', authSettings);
-    }
-
-    /**
-     * Rate Limit: 100 requests per 10 seconds
-     * @summary Create an order
-     * @param opts Optional parameters
-     * @param opts.inlineObject22
-     */
-    public async createCrossexOrder(opts: {
-        inlineObject22?: InlineObject22;
+        inlineObject10?: InlineObject10;
     }): Promise<{ response: AxiosResponse; body: InlineResponse20030 }> {
-        const localVarPath = this.client.basePath + '/orders';
+        const localVarPath = this.client.basePath + '/crossex/transfers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -344,7 +309,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject22, 'InlineObject22'),
+            data: ObjectSerializer.serialize(opts.inlineObject10, 'InlineObject10'),
         };
 
         const authSettings = ['apiv4'];
@@ -352,14 +317,48 @@ export class CrossExApi {
     }
 
     /**
+     * Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
+     * @summary Create an order
+     * @param opts Optional parameters
+     * @param opts.inlineObject11
+     */
+    public async createCrossexOrder(opts: {
+        inlineObject11?: InlineObject11;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20031 }> {
+        const localVarPath = this.client.basePath + '/crossex/orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(opts.inlineObject11, 'InlineObject11'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse20031>(config, 'InlineResponse20031', authSettings);
+    }
+
+    /**
      * Rate Limit: 200 requests per 10 seconds
      * @summary Query order details
      * @param orderId 1. Supports querying order IDs returned when creating orders 2. Supports custom IDs specified by users when creating orders (i.e., the text field)
      */
-    public async getCrossexOrder(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse20031 }> {
+    public async getCrossexOrder(orderId: string): Promise<{ response: AxiosResponse; body: InlineResponse20032 }> {
         const localVarPath =
             this.client.basePath +
-            '/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+            '/crossex/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -383,7 +382,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20031>(config, 'InlineResponse20031', authSettings);
+        return this.client.request<InlineResponse20032>(config, 'InlineResponse20032', authSettings);
     }
 
     /**
@@ -391,15 +390,15 @@ export class CrossExApi {
      * @summary Modify Order
      * @param orderId Support Order ID or Text for Modify Order
      * @param opts Optional parameters
-     * @param opts.inlineObject23
+     * @param opts.inlineObject12
      */
     public async updateCrossexOrder(
         orderId: string,
-        opts: { inlineObject23?: InlineObject23 },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse20032 }> {
+        opts: { inlineObject12?: InlineObject12 },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse20033 }> {
         const localVarPath =
             this.client.basePath +
-            '/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+            '/crossex/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -422,27 +421,22 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject23, 'InlineObject23'),
+            data: ObjectSerializer.serialize(opts.inlineObject12, 'InlineObject12'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20032>(config, 'InlineResponse20032', authSettings);
+        return this.client.request<InlineResponse20033>(config, 'InlineResponse20033', authSettings);
     }
 
     /**
      * Rate Limit: 100 requests per 10 seconds
      * @summary Cancel Order
      * @param orderId Support Order ID or Text for Cancel Order
-     * @param opts Optional parameters
-     * @param opts.body
      */
-    public async cancelCrossexOrder(
-        orderId: string,
-        opts: { body?: object },
-    ): Promise<{ response: AxiosResponse; body: object }> {
+    public async cancelCrossexOrder(orderId: string): Promise<{ response: AxiosResponse; body: object }> {
         const localVarPath =
             this.client.basePath +
-            '/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+            '/crossex/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -458,14 +452,11 @@ export class CrossExApi {
             throw new Error('Required parameter orderId was null or undefined when calling cancelCrossexOrder.');
         }
 
-        opts = opts || {};
-
         const config: AxiosRequestConfig = {
             method: 'DELETE',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.body, 'object'),
         };
 
         const authSettings = ['apiv4'];
@@ -476,12 +467,12 @@ export class CrossExApi {
      * Rate Limit: 100 requests per day
      * @summary Flash Swap Inquiry
      * @param opts Optional parameters
-     * @param opts.inlineObject24
+     * @param opts.inlineObject13
      */
     public async createCrossexConvertQuote(opts: {
-        inlineObject24?: InlineObject24;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20033 }> {
-        const localVarPath = this.client.basePath + '/convert/quote';
+        inlineObject13?: InlineObject13;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20034 }> {
+        const localVarPath = this.client.basePath + '/crossex/convert/quote';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -499,23 +490,23 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject24, 'InlineObject24'),
+            data: ObjectSerializer.serialize(opts.inlineObject13, 'InlineObject13'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20033>(config, 'InlineResponse20033', authSettings);
+        return this.client.request<InlineResponse20034>(config, 'InlineResponse20034', authSettings);
     }
 
     /**
      * Rate limit: 10 requests per 10 seconds
      * @summary Flash Swap Transaction
      * @param opts Optional parameters
-     * @param opts.inlineObject25
+     * @param opts.inlineObject14
      */
     public async createCrossexConvertOrder(opts: {
-        inlineObject25?: InlineObject25;
+        inlineObject14?: InlineObject14;
     }): Promise<{ response: AxiosResponse; body: object }> {
-        const localVarPath = this.client.basePath + '/convert/orders';
+        const localVarPath = this.client.basePath + '/crossex/convert/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -533,7 +524,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject25, 'InlineObject25'),
+            data: ObjectSerializer.serialize(opts.inlineObject14, 'InlineObject14'),
         };
 
         const authSettings = ['apiv4'];
@@ -548,8 +539,8 @@ export class CrossExApi {
      */
     public async getCrossexAccount(opts: {
         exchangeType?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20034 }> {
-        const localVarPath = this.client.basePath + '/accounts';
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20035 }> {
+        const localVarPath = this.client.basePath + '/crossex/accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -578,19 +569,19 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20034>(config, 'InlineResponse20034', authSettings);
+        return this.client.request<InlineResponse20035>(config, 'InlineResponse20035', authSettings);
     }
 
     /**
      * Rate Limit: 100 requests per 60 seconds. position_mode+exchange_type modifies contract position mode (exchange_type is required when the user\'s account mode is split exchange); account_mode modifies the user\'s account mode.
      * @summary Modify Account Contract Position Mode and Account Mode
      * @param opts Optional parameters
-     * @param opts.inlineObject26
+     * @param opts.inlineObject15
      */
     public async updateCrossexAccount(opts: {
-        inlineObject26?: InlineObject26;
+        inlineObject15?: InlineObject15;
     }): Promise<{ response: AxiosResponse; body: InlineResponse202 }> {
-        const localVarPath = this.client.basePath + '/accounts';
+        const localVarPath = this.client.basePath + '/crossex/accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -608,7 +599,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject26, 'InlineObject26'),
+            data: ObjectSerializer.serialize(opts.inlineObject15, 'InlineObject15'),
         };
 
         const authSettings = ['apiv4'];
@@ -623,8 +614,8 @@ export class CrossExApi {
      */
     public async getCrossexPositionsLeverage(opts: {
         symbols?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20035> }> {
-        const localVarPath = this.client.basePath + '/positions/leverage';
+    }): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
+        const localVarPath = this.client.basePath + '/crossex/positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -653,19 +644,19 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20035>>(config, 'Array<InlineResponse20035>', authSettings);
+        return this.client.request<{ [key: string]: string }>(config, '{ [key: string]: string; }', authSettings);
     }
 
     /**
      * Rate Limit: 100 requests per 10 seconds
      * @summary Modify Contract Trading Pair Leverage Multiplier
      * @param opts Optional parameters
-     * @param opts.inlineObject27
+     * @param opts.inlineObject16
      */
     public async updateCrossexPositionsLeverage(opts: {
-        inlineObject27?: InlineObject27;
+        inlineObject16?: InlineObject16;
     }): Promise<{ response: AxiosResponse; body: InlineResponse2021 }> {
-        const localVarPath = this.client.basePath + '/positions/leverage';
+        const localVarPath = this.client.basePath + '/crossex/positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -683,7 +674,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject27, 'InlineObject27'),
+            data: ObjectSerializer.serialize(opts.inlineObject16, 'InlineObject16'),
         };
 
         const authSettings = ['apiv4'];
@@ -698,8 +689,8 @@ export class CrossExApi {
      */
     public async getCrossexMarginPositionsLeverage(opts: {
         symbols?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20035> }> {
-        const localVarPath = this.client.basePath + '/margin_positions/leverage';
+    }): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
+        const localVarPath = this.client.basePath + '/crossex/margin_positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -728,19 +719,19 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20035>>(config, 'Array<InlineResponse20035>', authSettings);
+        return this.client.request<{ [key: string]: string }>(config, '{ [key: string]: string; }', authSettings);
     }
 
     /**
      * Rate Limit: 100 requests per 10 seconds
      * @summary Modify Leveraged Trading Pair Leverage Multiplier
      * @param opts Optional parameters
-     * @param opts.inlineObject28
+     * @param opts.inlineObject17
      */
     public async updateCrossexMarginPositionsLeverage(opts: {
-        inlineObject28?: InlineObject28;
+        inlineObject17?: InlineObject17;
     }): Promise<{ response: AxiosResponse; body: InlineResponse2021 }> {
-        const localVarPath = this.client.basePath + '/margin_positions/leverage';
+        const localVarPath = this.client.basePath + '/crossex/margin_positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -758,7 +749,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject28, 'InlineObject28'),
+            data: ObjectSerializer.serialize(opts.inlineObject17, 'InlineObject17'),
         };
 
         const authSettings = ['apiv4'];
@@ -769,12 +760,12 @@ export class CrossExApi {
      * Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FUTURE or MARGIN positions.  Prerequisites before using this interface: - No pending orders for the symbol exist in the current account. - When the system detects the position meets any of the following limits while prerequisites are met: - Less than or equal to the minimum notional amount (minNotional) - Less than or equal to the minimum order quantity (minSize)  After meeting the conditions, the system will automatically generate a close-out order and immediately fully close the position. This interface is used to avoid issues where orders are too small to be placed on the exchange, ensuring small positions can be closed smoothly when reaching the threshold.
      * @summary Full Close Position
      * @param opts Optional parameters
-     * @param opts.inlineObject29
+     * @param opts.inlineObject18
      */
     public async closeCrossexPosition(opts: {
-        inlineObject29?: InlineObject29;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20030 }> {
-        const localVarPath = this.client.basePath + '/position';
+        inlineObject18?: InlineObject18;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20031 }> {
+        const localVarPath = this.client.basePath + '/crossex/position';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -788,15 +779,15 @@ export class CrossExApi {
         opts = opts || {};
 
         const config: AxiosRequestConfig = {
-            method: 'DELETE',
+            method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject29, 'InlineObject29'),
+            data: ObjectSerializer.serialize(opts.inlineObject18, 'InlineObject18'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20030>(config, 'InlineResponse20030', authSettings);
+        return this.client.request<InlineResponse20031>(config, 'InlineResponse20031', authSettings);
     }
 
     /**
@@ -810,7 +801,7 @@ export class CrossExApi {
         coin?: string;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20036> }> {
-        const localVarPath = this.client.basePath + '/interest_rate';
+        const localVarPath = this.client.basePath + '/crossex/interest_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -856,7 +847,7 @@ export class CrossExApi {
      * @summary Query User Fee Rates
      */
     public async getCrossexFee(): Promise<{ response: AxiosResponse; body: InlineResponse20037 }> {
-        const localVarPath = this.client.basePath + '/fee';
+        const localVarPath = this.client.basePath + '/crossex/fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -889,7 +880,7 @@ export class CrossExApi {
         symbol?: string;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20038> }> {
-        const localVarPath = this.client.basePath + '/positions';
+        const localVarPath = this.client.basePath + '/crossex/positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -941,7 +932,7 @@ export class CrossExApi {
         symbol?: string;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20039> }> {
-        const localVarPath = this.client.basePath + '/margin_positions';
+        const localVarPath = this.client.basePath + '/crossex/margin_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -990,7 +981,7 @@ export class CrossExApi {
     public async listCrossexAdlRank(
         symbol: string,
     ): Promise<{ response: AxiosResponse; body: Array<InlineResponse20040> }> {
-        const localVarPath = this.client.basePath + '/adl_rank';
+        const localVarPath = this.client.basePath + '/crossex/adl_rank';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1036,8 +1027,8 @@ export class CrossExApi {
         symbol?: string;
         exchangeType?: string;
         businessType?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20031> }> {
-        const localVarPath = this.client.basePath + '/open_orders';
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20032> }> {
+        const localVarPath = this.client.basePath + '/crossex/open_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1084,7 +1075,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse20031>>(config, 'Array<InlineResponse20031>', authSettings);
+        return this.client.request<Array<InlineResponse20032>>(config, 'Array<InlineResponse20032>', authSettings);
     }
 
     /**
@@ -1104,7 +1095,7 @@ export class CrossExApi {
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20041> }> {
-        const localVarPath = this.client.basePath + '/history_orders';
+        const localVarPath = this.client.basePath + '/crossex/history_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1189,7 +1180,7 @@ export class CrossExApi {
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20042> }> {
-        const localVarPath = this.client.basePath + '/history_positions';
+        const localVarPath = this.client.basePath + '/crossex/history_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1274,7 +1265,7 @@ export class CrossExApi {
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20043> }> {
-        const localVarPath = this.client.basePath + '/history_margin_positions';
+        const localVarPath = this.client.basePath + '/crossex/history_margin_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1361,7 +1352,7 @@ export class CrossExApi {
         limit?: number;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20044> }> {
-        const localVarPath = this.client.basePath + '/history_margin_interests';
+        const localVarPath = this.client.basePath + '/crossex/history_margin_interests';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1455,7 +1446,7 @@ export class CrossExApi {
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20045> }> {
-        const localVarPath = this.client.basePath + '/history_trades';
+        const localVarPath = this.client.basePath + '/crossex/history_trades';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1540,7 +1531,7 @@ export class CrossExApi {
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20046> }> {
-        const localVarPath = this.client.basePath + '/account_book';
+        const localVarPath = this.client.basePath + '/crossex/account_book';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -1619,7 +1610,7 @@ export class CrossExApi {
         coin?: string;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse20047> }> {
-        const localVarPath = this.client.basePath + '/coin_discount_rate';
+        const localVarPath = this.client.basePath + '/crossex/coin_discount_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];

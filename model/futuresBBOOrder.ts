@@ -98,10 +98,6 @@ export class FuturesBBOOrder {
      */
     'amendText'?: string;
     /**
-     * Counterparty user\'s VIP level for limit order fills. Current order will only match with orders whose VIP level is less than or equal to the specified level. Only 11~16 are supported; default is 0
-     */
-    'limitVip'?: number;
-    /**
      * Position ID
      */
     'pid'?: number;
@@ -213,11 +209,6 @@ export class FuturesBBOOrder {
             name: 'amendText',
             baseName: 'amend_text',
             type: 'string',
-        },
-        {
-            name: 'limitVip',
-            baseName: 'limit_vip',
-            type: 'number',
         },
         {
             name: 'pid',

@@ -9,82 +9,18 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20022DataLists } from './inlineResponse20022DataLists';
+
 export class InlineResponse20022Data {
-    /**
-     * Serial number
-     */
-    'index': number;
-    /**
-     * Cryptocurrency
-     */
-    'asset': string;
-    /**
-     * Fiat currency
-     */
-    'fiatUnit': string;
-    /**
-     * 广告id
-     */
-    'advNo': number;
-    /**
-     * Price
-     */
-    'price': string;
-    /**
-     * Maximum Cryptocurrency Amount
-     */
-    'maxSingleTransAmount': string;
-    /**
-     * Minimum Cryptocurrency Amount
-     */
-    'minSingleTransAmount': string;
-    /**
-     * Advertiser Nickname
-     */
-    'nickName': string;
+    'lists'?: Array<InlineResponse20022DataLists>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'index',
-            baseName: 'index',
-            type: 'number',
-        },
-        {
-            name: 'asset',
-            baseName: 'asset',
-            type: 'string',
-        },
-        {
-            name: 'fiatUnit',
-            baseName: 'fiat_unit',
-            type: 'string',
-        },
-        {
-            name: 'advNo',
-            baseName: 'adv_no',
-            type: 'number',
-        },
-        {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
-        },
-        {
-            name: 'maxSingleTransAmount',
-            baseName: 'max_single_trans_amount',
-            type: 'string',
-        },
-        {
-            name: 'minSingleTransAmount',
-            baseName: 'min_single_trans_amount',
-            type: 'string',
-        },
-        {
-            name: 'nickName',
-            baseName: 'nick_name',
-            type: 'string',
+            name: 'lists',
+            baseName: 'lists',
+            type: 'Array<InlineResponse20022DataLists>',
         },
     ];
 

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## createOtcQuote
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2006; }> createOtcQuote(inlineObject1)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2006; }> createOtcQuote(inlineObject6)
 
 Fiat and stablecoin quote
 
@@ -35,8 +35,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.OTCApi(client);
-const inlineObject1 = new InlineObject1(); // InlineObject1 | 
-api.createOtcQuote(inlineObject1)
+const inlineObject6 = new InlineObject6(); // InlineObject6 | 
+api.createOtcQuote(inlineObject6)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -46,7 +46,7 @@ api.createOtcQuote(inlineObject1)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | 
+ **inlineObject6** | [**InlineObject6**](InlineObject6.md)|  | 
 
 ### Return type
 
@@ -63,7 +63,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2006; }> [InlineResponse2
 
 ## createOtcOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> createOtcOrder(inlineObject2)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> createOtcOrder(inlineObject7)
 
 Create fiat order
 
@@ -80,8 +80,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.OTCApi(client);
-const inlineObject2 = new InlineObject2(); // InlineObject2 | 
-api.createOtcOrder(inlineObject2)
+const inlineObject7 = new InlineObject7(); // InlineObject7 | 
+api.createOtcOrder(inlineObject7)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -91,7 +91,7 @@ api.createOtcOrder(inlineObject2)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject2** | [**InlineObject2**](InlineObject2.md)|  | 
+ **inlineObject7** | [**InlineObject7**](InlineObject7.md)|  | 
 
 ### Return type
 
@@ -108,7 +108,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2
 
 ## createStableCoinOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2008; }> createStableCoinOrder(inlineObject3)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2008; }> createStableCoinOrder(inlineObject8)
 
 Create stablecoin order
 
@@ -125,8 +125,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.OTCApi(client);
-const inlineObject3 = new InlineObject3(); // InlineObject3 | 
-api.createStableCoinOrder(inlineObject3)
+const inlineObject8 = new InlineObject8(); // InlineObject8 | 
+api.createStableCoinOrder(inlineObject8)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -136,7 +136,7 @@ api.createStableCoinOrder(inlineObject3)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject3** | [**InlineObject3**](InlineObject3.md)|  | 
+ **inlineObject8** | [**InlineObject8**](InlineObject8.md)|  | 
 
 ### Return type
 
@@ -235,7 +235,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20010; }> [InlineResponse
 
 ## markOtcOrderPaid
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> markOtcOrderPaid(inlineObject4)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> markOtcOrderPaid(inlineObject9)
 
 Mark fiat order as paid
 
@@ -252,8 +252,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.OTCApi(client);
-const inlineObject4 = new InlineObject4(); // InlineObject4 | 
-api.markOtcOrderPaid(inlineObject4)
+const inlineObject9 = new InlineObject9(); // InlineObject9 | 
+api.markOtcOrderPaid(inlineObject9)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -263,7 +263,7 @@ api.markOtcOrderPaid(inlineObject4)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject4** | [**InlineObject4**](InlineObject4.md)|  | 
+ **inlineObject9** | [**InlineObject9**](InlineObject9.md)|  | 
 
 ### Return type
 

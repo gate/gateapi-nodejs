@@ -11,35 +11,26 @@
 
 export class InlineObject18 {
     /**
-     * Order ID
+     * Trading Pair 1. Supports leveraged trading pairs, e.g., BINANCE_MARGIN_SOL_USDT 2. Supports contract trading pairs, e.g., OKX_FUTURE_ETH_USDT
      */
-    'txid': number;
+    'symbol': string;
     /**
-     * Pagination timestamp (forward)
+     * Position Direction 1. For leveraged positions, this parameter must be passed 2. For contract positions, pass selectively based on your contract holding method
      */
-    'lastreceived'?: number;
-    /**
-     * Pagination timestamp (backward)
-     */
-    'firstreceived'?: number;
+    'positionSide'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'txid',
-            baseName: 'txid',
-            type: 'number',
+            name: 'symbol',
+            baseName: 'symbol',
+            type: 'string',
         },
         {
-            name: 'lastreceived',
-            baseName: 'lastreceived',
-            type: 'number',
-        },
-        {
-            name: 'firstreceived',
-            baseName: 'firstreceived',
-            type: 'number',
+            name: 'positionSide',
+            baseName: 'position_side',
+            type: 'string',
         },
     ];
 

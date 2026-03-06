@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tradeId** | **string** |  | [default to undefined]
-**reasonId** | **string** |  | [default to undefined]
-**reasonMemo** | **string** |  | [default to undefined]
+**qty** | **string** | modify amount | [optional] [default to undefined]
+**price** | **string** | modify price | [optional] [default to undefined]
 

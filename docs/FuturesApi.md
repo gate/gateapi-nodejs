@@ -66,8 +66,8 @@ Method | HTTP request | Description
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create price-triggered order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all auto orders
 [**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/{settle}/price_orders/{order_id} | Query single auto order details
-[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/{order_id} | Modify a Single Auto Order
 [**cancelPriceTriggeredOrder**](FuturesApi.md#cancelPriceTriggeredOrder) | **DELETE** /futures/{settle}/price_orders/{order_id} | Cancel single auto order
+[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/amend/{order_id} | Modify a Single Auto Order
 
 
 ## listFuturesContracts
@@ -3163,7 +3163,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const orderId = "orderId_example"; // string | ID returned when order is successfully created
+const orderId = 56; // number | ID returned when order is successfully created
 api.getPriceTriggeredOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -3175,7 +3175,52 @@ api.getPriceTriggeredOrder(settle, orderId)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **orderId** | **string**| ID returned when order is successfully created | [default to undefined]
+ **orderId** | **number**| ID returned when order is successfully created | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder; }> [FuturesPriceTriggeredOrder](FuturesPriceTriggeredOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## cancelPriceTriggeredOrder
+
+> Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder; }> cancelPriceTriggeredOrder(settle, orderId)
+
+Cancel single auto order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const orderId = 56; // number | ID returned when order is successfully created
+api.cancelPriceTriggeredOrder(settle, orderId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **orderId** | **number**| ID returned when order is successfully created | [default to undefined]
 
 ### Return type
 
@@ -3208,7 +3253,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const orderId = "orderId_example"; // string | ID returned when order is successfully created
+const orderId = 56; // number | ID returned when order is successfully created
 const futuresUpdatePriceTriggeredOrder = new FuturesUpdatePriceTriggeredOrder(); // FuturesUpdatePriceTriggeredOrder | 
 api.updatePriceTriggeredOrder(settle, orderId, futuresUpdatePriceTriggeredOrder)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -3221,7 +3266,7 @@ api.updatePriceTriggeredOrder(settle, orderId, futuresUpdatePriceTriggeredOrder)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **orderId** | **string**| ID returned when order is successfully created | [default to undefined]
+ **orderId** | **number**| ID returned when order is successfully created | [default to undefined]
  **futuresUpdatePriceTriggeredOrder** | [**FuturesUpdatePriceTriggeredOrder**](FuturesUpdatePriceTriggeredOrder.md)|  | 
 
 ### Return type
@@ -3235,49 +3280,4 @@ Promise<{ response: AxiosResponse; body: TriggerOrderResponse; }> [TriggerOrderR
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-## cancelPriceTriggeredOrder
-
-> Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder; }> cancelPriceTriggeredOrder(settle, orderId)
-
-Cancel single auto order
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const orderId = "orderId_example"; // string | ID returned when order is successfully created
-api.cancelPriceTriggeredOrder(settle, orderId)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **settle** | **Settle**| Settle currency | [default to undefined]
- **orderId** | **string**| ID returned when order is successfully created | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder; }> [FuturesPriceTriggeredOrder](FuturesPriceTriggeredOrder.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json

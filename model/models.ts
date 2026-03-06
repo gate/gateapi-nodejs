@@ -4,6 +4,9 @@ export * from './accountDetailKey';
 export * from './accountKeyInfo';
 export * from './accountKeyInfoPerms';
 export * from './accountRateLimit';
+export * from './adsDetailRequest';
+export * from './adsListRequest';
+export * from './adsUpdateStatus';
 export * from './agencyCommission';
 export * from './agencyCommissionHistory';
 export * from './agencyTransaction';
@@ -24,7 +27,11 @@ export * from './brokerCommissionSubBrokerInfo';
 export * from './brokerTransaction';
 export * from './brokerTransaction1';
 export * from './cancelBatchOrder';
+export * from './cancelOrder';
 export * from './cancelOrderResult';
+export * from './categories';
+export * from './categoriesData';
+export * from './categoriesDataList';
 export * from './collateralAdjust';
 export * from './collateralAdjustRes';
 export * from './collateralCurrency';
@@ -33,24 +40,36 @@ export * from './collateralCurrencyRes';
 export * from './collateralCurrentRate';
 export * from './collateralFixRate';
 export * from './collateralLtv';
+export * from './confirmPayment';
+export * from './confirmReceipt';
 export * from './contract';
+export * from './contractDetail';
+export * from './contractDetailData';
+export * from './contractDetailDataList';
 export * from './contractStat';
 export * from './convertSmallBalance';
 export * from './countdownCancelAllFuturesTask';
 export * from './countdownCancelAllOptionsTask';
 export * from './countdownCancelAllSpotTask';
 export * from './createMultiCollateralOrder';
+export * from './createOrder';
+export * from './createOrderData';
 export * from './createTrailOrder';
+export * from './createTransaction';
 export * from './createUniLend';
 export * from './createUniLoan';
+export * from './createUserResp';
+export * from './createUserRespData';
 export * from './crossMarginBalance';
 export * from './crossMarginLoan';
 export * from './crossMarginRepayment';
+export * from './crossexRuleRiskLimitsTiers';
 export * from './currency';
 export * from './currencyChain';
 export * from './currencyPair';
 export * from './currencyQuota';
 export * from './debitFee';
+export * from './deletePosition';
 export * from './deliveryAccount';
 export * from './deliveryAccountBook';
 export * from './deliveryAccountHistory';
@@ -109,6 +128,12 @@ export * from './futuresRiskLimitTier';
 export * from './futuresTicker';
 export * from './futuresTrade';
 export * from './futuresUpdatePriceTriggeredOrder';
+export * from './getChatsListRequest';
+export * from './getCompletedTransactionListRequest';
+export * from './getCounterpartyUserInfoRequest';
+export * from './getMyselfPaymentRequest';
+export * from './getPendingTransactionListRequest';
+export * from './getTransactionDetailsRequest';
 export * from './indexConstituent';
 export * from './inlineObject';
 export * from './inlineObject1';
@@ -121,18 +146,7 @@ export * from './inlineObject15';
 export * from './inlineObject16';
 export * from './inlineObject17';
 export * from './inlineObject18';
-export * from './inlineObject19';
 export * from './inlineObject2';
-export * from './inlineObject20';
-export * from './inlineObject21';
-export * from './inlineObject22';
-export * from './inlineObject23';
-export * from './inlineObject24';
-export * from './inlineObject25';
-export * from './inlineObject26';
-export * from './inlineObject27';
-export * from './inlineObject28';
-export * from './inlineObject29';
 export * from './inlineObject3';
 export * from './inlineObject4';
 export * from './inlineObject5';
@@ -171,24 +185,24 @@ export * from './inlineResponse20017DataTransTime';
 export * from './inlineResponse20018';
 export * from './inlineResponse20018Data';
 export * from './inlineResponse20019';
-export * from './inlineResponse20019Data';
 export * from './inlineResponse2002';
 export * from './inlineResponse20020';
 export * from './inlineResponse20020Data';
 export * from './inlineResponse20021';
 export * from './inlineResponse20021Data';
-export * from './inlineResponse20021DataLists';
 export * from './inlineResponse20022';
 export * from './inlineResponse20022Data';
+export * from './inlineResponse20022DataLists';
 export * from './inlineResponse20023';
 export * from './inlineResponse20023Data';
-export * from './inlineResponse20023DataMessages';
-export * from './inlineResponse20023DataMsgObj';
 export * from './inlineResponse20024';
 export * from './inlineResponse20024Data';
+export * from './inlineResponse20024DataMessages';
+export * from './inlineResponse20024DataMsgObj';
 export * from './inlineResponse20025';
 export * from './inlineResponse20025Data';
 export * from './inlineResponse20026';
+export * from './inlineResponse20026Data';
 export * from './inlineResponse20027';
 export * from './inlineResponse20028';
 export * from './inlineResponse20029';
@@ -198,8 +212,8 @@ export * from './inlineResponse20031';
 export * from './inlineResponse20032';
 export * from './inlineResponse20033';
 export * from './inlineResponse20034';
-export * from './inlineResponse20034Assets';
 export * from './inlineResponse20035';
+export * from './inlineResponse20035Assets';
 export * from './inlineResponse20036';
 export * from './inlineResponse20037';
 export * from './inlineResponse20037SpecialFeeList';
@@ -226,6 +240,9 @@ export * from './inlineResponse201Data';
 export * from './inlineResponse202';
 export * from './inlineResponse2021';
 export * from './insuranceRecord';
+export * from './klines';
+export * from './klinesData';
+export * from './klinesDataList';
 export * from './ledgerRecord';
 export * from './liquidateOrder';
 export * from './marginAccount';
@@ -244,6 +261,9 @@ export * from './mockOptionsPosition';
 export * from './mockRiskUnit';
 export * from './mockSpotBalance';
 export * from './mockSpotOrder';
+export * from './modelError';
+export * from './mt5Account';
+export * from './mt5AccountData';
 export * from './multiChainAddressItem';
 export * from './multiCollateralCurrency';
 export * from './multiCollateralItem';
@@ -254,6 +274,7 @@ export * from './multiLoanItem';
 export * from './multiLoanRepayItem';
 export * from './multiRepayRecord';
 export * from './multiRepayResp';
+export * from './myAdsListRequest';
 export * from './myFuturesTrade';
 export * from './myFuturesTradeTimeRange';
 export * from './openOrders';
@@ -278,6 +299,12 @@ export * from './optionsUnderlyingTicker';
 export * from './order';
 export * from './orderBook';
 export * from './orderCancel';
+export * from './orderHistoryList';
+export * from './orderHistoryListData';
+export * from './orderHistoryListDataList';
+export * from './orderList';
+export * from './orderListData';
+export * from './orderListDataList';
 export * from './orderListStruct';
 export * from './orderListStructList';
 export * from './orderPatch';
@@ -287,11 +314,20 @@ export * from './partnerSub';
 export * from './partnerSubList';
 export * from './partnerTransactionHistory';
 export * from './patchUniLend';
+export * from './placeBizPushOrder';
 export * from './placeDualInvestmentOrder';
 export * from './placeDualInvestmentOrderParams';
 export * from './position';
 export * from './positionClose';
 export * from './positionCloseOrder';
+export * from './positionHistoryList';
+export * from './positionHistoryListData';
+export * from './positionHistoryListDataCloseDetail';
+export * from './positionHistoryListDataList';
+export * from './positionHistoryListDataRealizedPnlDetail';
+export * from './positionList';
+export * from './positionListData';
+export * from './positionListDataList';
 export * from './positionTimerange';
 export * from './profitLossRange';
 export * from './rebateUserInfo';
@@ -302,8 +338,8 @@ export * from './repayRecordLeftInterest';
 export * from './repayRecordRepaidCurrency';
 export * from './repayRecordTotalInterest';
 export * from './riskUnits';
-export * from './ruleRiskLimitsTiers';
 export * from './savedAddress';
+export * from './sendChatMessageRequest';
 export * from './smallBalance';
 export * from './smallBalanceHistory';
 export * from './spotAccount';
@@ -336,14 +372,22 @@ export * from './subUserMode';
 export * from './swapCoin';
 export * from './swapCoinStruct';
 export * from './symbol';
+export * from './symbols';
+export * from './symbolsData';
+export * from './symbolsDataList';
 export * from './systemTime';
 export * from './ticker';
+export * from './ticker2';
+export * from './ticker2Data';
 export * from './totalBalance';
 export * from './trade';
 export * from './tradeFee';
 export * from './trailChangeLog';
 export * from './trailOrder';
 export * from './transactionID';
+export * from './transactionList';
+export * from './transactionListData';
+export * from './transactionListDataList';
 export * from './transfer';
 export * from './transferOrderStatus';
 export * from './transferablesResult';
@@ -385,7 +429,13 @@ export * from './unifiedPortfolioOutput';
 export * from './unifiedRiskUnits';
 export * from './unifiedSettings';
 export * from './unifiedTransferable';
+export * from './updateOrder';
+export * from './updateOrderData';
+export * from './updatePosition';
 export * from './updateTrailOrder';
+export * from './uploadChatFile';
+export * from './userAssetResp';
+export * from './userAssetRespData';
 export * from './userSub';
 export * from './userSubRelation';
 export * from './withdrawStatus';
@@ -403,6 +453,9 @@ import { AccountDetailKey } from './accountDetailKey';
 import { AccountKeyInfo } from './accountKeyInfo';
 import { AccountKeyInfoPerms } from './accountKeyInfoPerms';
 import { AccountRateLimit } from './accountRateLimit';
+import { AdsDetailRequest } from './adsDetailRequest';
+import { AdsListRequest } from './adsListRequest';
+import { AdsUpdateStatus } from './adsUpdateStatus';
 import { AgencyCommission } from './agencyCommission';
 import { AgencyCommissionHistory } from './agencyCommissionHistory';
 import { AgencyTransaction } from './agencyTransaction';
@@ -423,7 +476,11 @@ import { BrokerCommissionSubBrokerInfo } from './brokerCommissionSubBrokerInfo';
 import { BrokerTransaction } from './brokerTransaction';
 import { BrokerTransaction1 } from './brokerTransaction1';
 import { CancelBatchOrder } from './cancelBatchOrder';
+import { CancelOrder } from './cancelOrder';
 import { CancelOrderResult } from './cancelOrderResult';
+import { Categories } from './categories';
+import { CategoriesData } from './categoriesData';
+import { CategoriesDataList } from './categoriesDataList';
 import { CollateralAdjust } from './collateralAdjust';
 import { CollateralAdjustRes } from './collateralAdjustRes';
 import { CollateralCurrency } from './collateralCurrency';
@@ -432,24 +489,36 @@ import { CollateralCurrencyRes } from './collateralCurrencyRes';
 import { CollateralCurrentRate } from './collateralCurrentRate';
 import { CollateralFixRate } from './collateralFixRate';
 import { CollateralLtv } from './collateralLtv';
+import { ConfirmPayment } from './confirmPayment';
+import { ConfirmReceipt } from './confirmReceipt';
 import { Contract } from './contract';
+import { ContractDetail } from './contractDetail';
+import { ContractDetailData } from './contractDetailData';
+import { ContractDetailDataList } from './contractDetailDataList';
 import { ContractStat } from './contractStat';
 import { ConvertSmallBalance } from './convertSmallBalance';
 import { CountdownCancelAllFuturesTask } from './countdownCancelAllFuturesTask';
 import { CountdownCancelAllOptionsTask } from './countdownCancelAllOptionsTask';
 import { CountdownCancelAllSpotTask } from './countdownCancelAllSpotTask';
 import { CreateMultiCollateralOrder } from './createMultiCollateralOrder';
+import { CreateOrder } from './createOrder';
+import { CreateOrderData } from './createOrderData';
 import { CreateTrailOrder } from './createTrailOrder';
+import { CreateTransaction } from './createTransaction';
 import { CreateUniLend } from './createUniLend';
 import { CreateUniLoan } from './createUniLoan';
+import { CreateUserResp } from './createUserResp';
+import { CreateUserRespData } from './createUserRespData';
 import { CrossMarginBalance } from './crossMarginBalance';
 import { CrossMarginLoan } from './crossMarginLoan';
 import { CrossMarginRepayment } from './crossMarginRepayment';
+import { CrossexRuleRiskLimitsTiers } from './crossexRuleRiskLimitsTiers';
 import { Currency } from './currency';
 import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
 import { CurrencyQuota } from './currencyQuota';
 import { DebitFee } from './debitFee';
+import { DeletePosition } from './deletePosition';
 import { DeliveryAccount } from './deliveryAccount';
 import { DeliveryAccountBook } from './deliveryAccountBook';
 import { DeliveryAccountHistory } from './deliveryAccountHistory';
@@ -508,6 +577,12 @@ import { FuturesRiskLimitTier } from './futuresRiskLimitTier';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
 import { FuturesUpdatePriceTriggeredOrder } from './futuresUpdatePriceTriggeredOrder';
+import { GetChatsListRequest } from './getChatsListRequest';
+import { GetCompletedTransactionListRequest } from './getCompletedTransactionListRequest';
+import { GetCounterpartyUserInfoRequest } from './getCounterpartyUserInfoRequest';
+import { GetMyselfPaymentRequest } from './getMyselfPaymentRequest';
+import { GetPendingTransactionListRequest } from './getPendingTransactionListRequest';
+import { GetTransactionDetailsRequest } from './getTransactionDetailsRequest';
 import { IndexConstituent } from './indexConstituent';
 import { InlineObject } from './inlineObject';
 import { InlineObject1 } from './inlineObject1';
@@ -520,18 +595,7 @@ import { InlineObject15 } from './inlineObject15';
 import { InlineObject16 } from './inlineObject16';
 import { InlineObject17 } from './inlineObject17';
 import { InlineObject18 } from './inlineObject18';
-import { InlineObject19 } from './inlineObject19';
 import { InlineObject2 } from './inlineObject2';
-import { InlineObject20 } from './inlineObject20';
-import { InlineObject21 } from './inlineObject21';
-import { InlineObject22 } from './inlineObject22';
-import { InlineObject23 } from './inlineObject23';
-import { InlineObject24 } from './inlineObject24';
-import { InlineObject25 } from './inlineObject25';
-import { InlineObject26 } from './inlineObject26';
-import { InlineObject27 } from './inlineObject27';
-import { InlineObject28 } from './inlineObject28';
-import { InlineObject29 } from './inlineObject29';
 import { InlineObject3 } from './inlineObject3';
 import { InlineObject4 } from './inlineObject4';
 import { InlineObject5 } from './inlineObject5';
@@ -570,24 +634,24 @@ import { InlineResponse20017DataTransTime } from './inlineResponse20017DataTrans
 import { InlineResponse20018 } from './inlineResponse20018';
 import { InlineResponse20018Data } from './inlineResponse20018Data';
 import { InlineResponse20019 } from './inlineResponse20019';
-import { InlineResponse20019Data } from './inlineResponse20019Data';
 import { InlineResponse2002 } from './inlineResponse2002';
 import { InlineResponse20020 } from './inlineResponse20020';
 import { InlineResponse20020Data } from './inlineResponse20020Data';
 import { InlineResponse20021 } from './inlineResponse20021';
 import { InlineResponse20021Data } from './inlineResponse20021Data';
-import { InlineResponse20021DataLists } from './inlineResponse20021DataLists';
 import { InlineResponse20022 } from './inlineResponse20022';
 import { InlineResponse20022Data } from './inlineResponse20022Data';
+import { InlineResponse20022DataLists } from './inlineResponse20022DataLists';
 import { InlineResponse20023 } from './inlineResponse20023';
 import { InlineResponse20023Data } from './inlineResponse20023Data';
-import { InlineResponse20023DataMessages } from './inlineResponse20023DataMessages';
-import { InlineResponse20023DataMsgObj } from './inlineResponse20023DataMsgObj';
 import { InlineResponse20024 } from './inlineResponse20024';
 import { InlineResponse20024Data } from './inlineResponse20024Data';
+import { InlineResponse20024DataMessages } from './inlineResponse20024DataMessages';
+import { InlineResponse20024DataMsgObj } from './inlineResponse20024DataMsgObj';
 import { InlineResponse20025 } from './inlineResponse20025';
 import { InlineResponse20025Data } from './inlineResponse20025Data';
 import { InlineResponse20026 } from './inlineResponse20026';
+import { InlineResponse20026Data } from './inlineResponse20026Data';
 import { InlineResponse20027 } from './inlineResponse20027';
 import { InlineResponse20028 } from './inlineResponse20028';
 import { InlineResponse20029 } from './inlineResponse20029';
@@ -597,8 +661,8 @@ import { InlineResponse20031 } from './inlineResponse20031';
 import { InlineResponse20032 } from './inlineResponse20032';
 import { InlineResponse20033 } from './inlineResponse20033';
 import { InlineResponse20034 } from './inlineResponse20034';
-import { InlineResponse20034Assets } from './inlineResponse20034Assets';
 import { InlineResponse20035 } from './inlineResponse20035';
+import { InlineResponse20035Assets } from './inlineResponse20035Assets';
 import { InlineResponse20036 } from './inlineResponse20036';
 import { InlineResponse20037 } from './inlineResponse20037';
 import { InlineResponse20037SpecialFeeList } from './inlineResponse20037SpecialFeeList';
@@ -625,6 +689,9 @@ import { InlineResponse201Data } from './inlineResponse201Data';
 import { InlineResponse202 } from './inlineResponse202';
 import { InlineResponse2021 } from './inlineResponse2021';
 import { InsuranceRecord } from './insuranceRecord';
+import { Klines } from './klines';
+import { KlinesData } from './klinesData';
+import { KlinesDataList } from './klinesDataList';
 import { LedgerRecord } from './ledgerRecord';
 import { LiquidateOrder } from './liquidateOrder';
 import { MarginAccount } from './marginAccount';
@@ -643,6 +710,9 @@ import { MockOptionsPosition } from './mockOptionsPosition';
 import { MockRiskUnit } from './mockRiskUnit';
 import { MockSpotBalance } from './mockSpotBalance';
 import { MockSpotOrder } from './mockSpotOrder';
+import { ModelError } from './modelError';
+import { Mt5Account } from './mt5Account';
+import { Mt5AccountData } from './mt5AccountData';
 import { MultiChainAddressItem } from './multiChainAddressItem';
 import { MultiCollateralCurrency } from './multiCollateralCurrency';
 import { MultiCollateralItem } from './multiCollateralItem';
@@ -653,6 +723,7 @@ import { MultiLoanItem } from './multiLoanItem';
 import { MultiLoanRepayItem } from './multiLoanRepayItem';
 import { MultiRepayRecord } from './multiRepayRecord';
 import { MultiRepayResp } from './multiRepayResp';
+import { MyAdsListRequest } from './myAdsListRequest';
 import { MyFuturesTrade } from './myFuturesTrade';
 import { MyFuturesTradeTimeRange } from './myFuturesTradeTimeRange';
 import { OpenOrders } from './openOrders';
@@ -677,6 +748,12 @@ import { OptionsUnderlyingTicker } from './optionsUnderlyingTicker';
 import { Order } from './order';
 import { OrderBook } from './orderBook';
 import { OrderCancel } from './orderCancel';
+import { OrderHistoryList } from './orderHistoryList';
+import { OrderHistoryListData } from './orderHistoryListData';
+import { OrderHistoryListDataList } from './orderHistoryListDataList';
+import { OrderList } from './orderList';
+import { OrderListData } from './orderListData';
+import { OrderListDataList } from './orderListDataList';
 import { OrderListStruct } from './orderListStruct';
 import { OrderListStructList } from './orderListStructList';
 import { OrderPatch } from './orderPatch';
@@ -686,11 +763,20 @@ import { PartnerSub } from './partnerSub';
 import { PartnerSubList } from './partnerSubList';
 import { PartnerTransactionHistory } from './partnerTransactionHistory';
 import { PatchUniLend } from './patchUniLend';
+import { PlaceBizPushOrder } from './placeBizPushOrder';
 import { PlaceDualInvestmentOrder } from './placeDualInvestmentOrder';
 import { PlaceDualInvestmentOrderParams } from './placeDualInvestmentOrderParams';
 import { Position } from './position';
 import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
+import { PositionHistoryList } from './positionHistoryList';
+import { PositionHistoryListData } from './positionHistoryListData';
+import { PositionHistoryListDataCloseDetail } from './positionHistoryListDataCloseDetail';
+import { PositionHistoryListDataList } from './positionHistoryListDataList';
+import { PositionHistoryListDataRealizedPnlDetail } from './positionHistoryListDataRealizedPnlDetail';
+import { PositionList } from './positionList';
+import { PositionListData } from './positionListData';
+import { PositionListDataList } from './positionListDataList';
 import { PositionTimerange } from './positionTimerange';
 import { ProfitLossRange } from './profitLossRange';
 import { RebateUserInfo } from './rebateUserInfo';
@@ -701,8 +787,8 @@ import { RepayRecordLeftInterest } from './repayRecordLeftInterest';
 import { RepayRecordRepaidCurrency } from './repayRecordRepaidCurrency';
 import { RepayRecordTotalInterest } from './repayRecordTotalInterest';
 import { RiskUnits } from './riskUnits';
-import { RuleRiskLimitsTiers } from './ruleRiskLimitsTiers';
 import { SavedAddress } from './savedAddress';
+import { SendChatMessageRequest } from './sendChatMessageRequest';
 import { SmallBalance } from './smallBalance';
 import { SmallBalanceHistory } from './smallBalanceHistory';
 import { SpotAccount } from './spotAccount';
@@ -735,14 +821,22 @@ import { SubUserMode } from './subUserMode';
 import { SwapCoin } from './swapCoin';
 import { SwapCoinStruct } from './swapCoinStruct';
 import { Symbol } from './symbol';
+import { Symbols } from './symbols';
+import { SymbolsData } from './symbolsData';
+import { SymbolsDataList } from './symbolsDataList';
 import { SystemTime } from './systemTime';
 import { Ticker } from './ticker';
+import { Ticker2 } from './ticker2';
+import { Ticker2Data } from './ticker2Data';
 import { TotalBalance } from './totalBalance';
 import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
 import { TrailChangeLog } from './trailChangeLog';
 import { TrailOrder } from './trailOrder';
 import { TransactionID } from './transactionID';
+import { TransactionList } from './transactionList';
+import { TransactionListData } from './transactionListData';
+import { TransactionListDataList } from './transactionListDataList';
 import { Transfer } from './transfer';
 import { TransferOrderStatus } from './transferOrderStatus';
 import { TransferablesResult } from './transferablesResult';
@@ -784,7 +878,13 @@ import { UnifiedPortfolioOutput } from './unifiedPortfolioOutput';
 import { UnifiedRiskUnits } from './unifiedRiskUnits';
 import { UnifiedSettings } from './unifiedSettings';
 import { UnifiedTransferable } from './unifiedTransferable';
+import { UpdateOrder } from './updateOrder';
+import { UpdateOrderData } from './updateOrderData';
+import { UpdatePosition } from './updatePosition';
 import { UpdateTrailOrder } from './updateTrailOrder';
+import { UploadChatFile } from './uploadChatFile';
+import { UserAssetResp } from './userAssetResp';
+import { UserAssetRespData } from './userAssetRespData';
 import { UserSub } from './userSub';
 import { UserSubRelation } from './userSubRelation';
 import { WithdrawStatus } from './withdrawStatus';
@@ -844,11 +944,15 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
     'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
-    'InlineObject22.Side': InlineObject22.Side,
-    'InlineObject22.Type': InlineObject22.Type,
-    'InlineObject22.TimeInForce': InlineObject22.TimeInForce,
-    'InlineObject22.ReduceOnly': InlineObject22.ReduceOnly,
-    'InlineObject22.PositionSide': InlineObject22.PositionSide,
+    'InlineObject1.Type': InlineObject1.Type,
+    'InlineObject11.Side': InlineObject11.Side,
+    'InlineObject11.Type': InlineObject11.Type,
+    'InlineObject11.TimeInForce': InlineObject11.TimeInForce,
+    'InlineObject11.ReduceOnly': InlineObject11.ReduceOnly,
+    'InlineObject11.PositionSide': InlineObject11.PositionSide,
+    'InlineObject2.PriceType': InlineObject2.PriceType,
+    'InlineObject2.Side': InlineObject2.Side,
+    'InlineObject5.CloseType': InlineObject5.CloseType,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
     'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
     'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
@@ -869,8 +973,15 @@ let enumsMap: { [index: string]: any } = {
     'OrderCancel.TimeInForce': OrderCancel.TimeInForce,
     'OrderCancel.StpAct': OrderCancel.StpAct,
     'OrderCancel.FinishAs': OrderCancel.FinishAs,
+    'OrderHistoryListDataList.PriceType': OrderHistoryListDataList.PriceType,
+    'OrderHistoryListDataList.OrderOptType': OrderHistoryListDataList.OrderOptType,
+    'OrderHistoryListDataList.Side': OrderHistoryListDataList.Side,
+    'OrderListDataList.PriceType': OrderListDataList.PriceType,
+    'OrderListDataList.Finished': OrderListDataList.Finished,
+    'OrderListDataList.Side': OrderListDataList.Side,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
+    'PositionHistoryListDataList.PositionDir': PositionHistoryListDataList.PositionDir,
     'SpotPricePutOrder.Type': SpotPricePutOrder.Type,
     'SpotPricePutOrder.Side': SpotPricePutOrder.Side,
     'SpotPricePutOrder.Account': SpotPricePutOrder.Account,
@@ -882,6 +993,7 @@ let enumsMap: { [index: string]: any } = {
     'TrailChangeLog.PriceType': TrailChangeLog.PriceType,
     'TrailOrder.PriceType': TrailOrder.PriceType,
     'TrailOrder.Status': TrailOrder.Status,
+    'TransactionListDataList.Type': TransactionListDataList.Type,
     'Transfer.From': Transfer.From,
     'Transfer.To': Transfer.To,
     'UnifiedCollateralReq.CollateralType': UnifiedCollateralReq.CollateralType,
@@ -896,6 +1008,9 @@ let typeMap: { [index: string]: any } = {
     AccountKeyInfo: AccountKeyInfo,
     AccountKeyInfoPerms: AccountKeyInfoPerms,
     AccountRateLimit: AccountRateLimit,
+    AdsDetailRequest: AdsDetailRequest,
+    AdsListRequest: AdsListRequest,
+    AdsUpdateStatus: AdsUpdateStatus,
     AgencyCommission: AgencyCommission,
     AgencyCommissionHistory: AgencyCommissionHistory,
     AgencyTransaction: AgencyTransaction,
@@ -916,7 +1031,11 @@ let typeMap: { [index: string]: any } = {
     BrokerTransaction: BrokerTransaction,
     BrokerTransaction1: BrokerTransaction1,
     CancelBatchOrder: CancelBatchOrder,
+    CancelOrder: CancelOrder,
     CancelOrderResult: CancelOrderResult,
+    Categories: Categories,
+    CategoriesData: CategoriesData,
+    CategoriesDataList: CategoriesDataList,
     CollateralAdjust: CollateralAdjust,
     CollateralAdjustRes: CollateralAdjustRes,
     CollateralCurrency: CollateralCurrency,
@@ -925,24 +1044,36 @@ let typeMap: { [index: string]: any } = {
     CollateralCurrentRate: CollateralCurrentRate,
     CollateralFixRate: CollateralFixRate,
     CollateralLtv: CollateralLtv,
+    ConfirmPayment: ConfirmPayment,
+    ConfirmReceipt: ConfirmReceipt,
     Contract: Contract,
+    ContractDetail: ContractDetail,
+    ContractDetailData: ContractDetailData,
+    ContractDetailDataList: ContractDetailDataList,
     ContractStat: ContractStat,
     ConvertSmallBalance: ConvertSmallBalance,
     CountdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
     CountdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
     CountdownCancelAllSpotTask: CountdownCancelAllSpotTask,
     CreateMultiCollateralOrder: CreateMultiCollateralOrder,
+    CreateOrder: CreateOrder,
+    CreateOrderData: CreateOrderData,
     CreateTrailOrder: CreateTrailOrder,
+    CreateTransaction: CreateTransaction,
     CreateUniLend: CreateUniLend,
     CreateUniLoan: CreateUniLoan,
+    CreateUserResp: CreateUserResp,
+    CreateUserRespData: CreateUserRespData,
     CrossMarginBalance: CrossMarginBalance,
     CrossMarginLoan: CrossMarginLoan,
     CrossMarginRepayment: CrossMarginRepayment,
+    CrossexRuleRiskLimitsTiers: CrossexRuleRiskLimitsTiers,
     Currency: Currency,
     CurrencyChain: CurrencyChain,
     CurrencyPair: CurrencyPair,
     CurrencyQuota: CurrencyQuota,
     DebitFee: DebitFee,
+    DeletePosition: DeletePosition,
     DeliveryAccount: DeliveryAccount,
     DeliveryAccountBook: DeliveryAccountBook,
     DeliveryAccountHistory: DeliveryAccountHistory,
@@ -1001,6 +1132,12 @@ let typeMap: { [index: string]: any } = {
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
     FuturesUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
+    GetChatsListRequest: GetChatsListRequest,
+    GetCompletedTransactionListRequest: GetCompletedTransactionListRequest,
+    GetCounterpartyUserInfoRequest: GetCounterpartyUserInfoRequest,
+    GetMyselfPaymentRequest: GetMyselfPaymentRequest,
+    GetPendingTransactionListRequest: GetPendingTransactionListRequest,
+    GetTransactionDetailsRequest: GetTransactionDetailsRequest,
     IndexConstituent: IndexConstituent,
     InlineObject: InlineObject,
     InlineObject1: InlineObject1,
@@ -1013,18 +1150,7 @@ let typeMap: { [index: string]: any } = {
     InlineObject16: InlineObject16,
     InlineObject17: InlineObject17,
     InlineObject18: InlineObject18,
-    InlineObject19: InlineObject19,
     InlineObject2: InlineObject2,
-    InlineObject20: InlineObject20,
-    InlineObject21: InlineObject21,
-    InlineObject22: InlineObject22,
-    InlineObject23: InlineObject23,
-    InlineObject24: InlineObject24,
-    InlineObject25: InlineObject25,
-    InlineObject26: InlineObject26,
-    InlineObject27: InlineObject27,
-    InlineObject28: InlineObject28,
-    InlineObject29: InlineObject29,
     InlineObject3: InlineObject3,
     InlineObject4: InlineObject4,
     InlineObject5: InlineObject5,
@@ -1063,24 +1189,24 @@ let typeMap: { [index: string]: any } = {
     InlineResponse20018: InlineResponse20018,
     InlineResponse20018Data: InlineResponse20018Data,
     InlineResponse20019: InlineResponse20019,
-    InlineResponse20019Data: InlineResponse20019Data,
     InlineResponse2002: InlineResponse2002,
     InlineResponse20020: InlineResponse20020,
     InlineResponse20020Data: InlineResponse20020Data,
     InlineResponse20021: InlineResponse20021,
     InlineResponse20021Data: InlineResponse20021Data,
-    InlineResponse20021DataLists: InlineResponse20021DataLists,
     InlineResponse20022: InlineResponse20022,
     InlineResponse20022Data: InlineResponse20022Data,
+    InlineResponse20022DataLists: InlineResponse20022DataLists,
     InlineResponse20023: InlineResponse20023,
     InlineResponse20023Data: InlineResponse20023Data,
-    InlineResponse20023DataMessages: InlineResponse20023DataMessages,
-    InlineResponse20023DataMsgObj: InlineResponse20023DataMsgObj,
     InlineResponse20024: InlineResponse20024,
     InlineResponse20024Data: InlineResponse20024Data,
+    InlineResponse20024DataMessages: InlineResponse20024DataMessages,
+    InlineResponse20024DataMsgObj: InlineResponse20024DataMsgObj,
     InlineResponse20025: InlineResponse20025,
     InlineResponse20025Data: InlineResponse20025Data,
     InlineResponse20026: InlineResponse20026,
+    InlineResponse20026Data: InlineResponse20026Data,
     InlineResponse20027: InlineResponse20027,
     InlineResponse20028: InlineResponse20028,
     InlineResponse20029: InlineResponse20029,
@@ -1090,8 +1216,8 @@ let typeMap: { [index: string]: any } = {
     InlineResponse20032: InlineResponse20032,
     InlineResponse20033: InlineResponse20033,
     InlineResponse20034: InlineResponse20034,
-    InlineResponse20034Assets: InlineResponse20034Assets,
     InlineResponse20035: InlineResponse20035,
+    InlineResponse20035Assets: InlineResponse20035Assets,
     InlineResponse20036: InlineResponse20036,
     InlineResponse20037: InlineResponse20037,
     InlineResponse20037SpecialFeeList: InlineResponse20037SpecialFeeList,
@@ -1118,6 +1244,9 @@ let typeMap: { [index: string]: any } = {
     InlineResponse202: InlineResponse202,
     InlineResponse2021: InlineResponse2021,
     InsuranceRecord: InsuranceRecord,
+    Klines: Klines,
+    KlinesData: KlinesData,
+    KlinesDataList: KlinesDataList,
     LedgerRecord: LedgerRecord,
     LiquidateOrder: LiquidateOrder,
     MarginAccount: MarginAccount,
@@ -1136,6 +1265,9 @@ let typeMap: { [index: string]: any } = {
     MockRiskUnit: MockRiskUnit,
     MockSpotBalance: MockSpotBalance,
     MockSpotOrder: MockSpotOrder,
+    ModelError: ModelError,
+    Mt5Account: Mt5Account,
+    Mt5AccountData: Mt5AccountData,
     MultiChainAddressItem: MultiChainAddressItem,
     MultiCollateralCurrency: MultiCollateralCurrency,
     MultiCollateralItem: MultiCollateralItem,
@@ -1146,6 +1278,7 @@ let typeMap: { [index: string]: any } = {
     MultiLoanRepayItem: MultiLoanRepayItem,
     MultiRepayRecord: MultiRepayRecord,
     MultiRepayResp: MultiRepayResp,
+    MyAdsListRequest: MyAdsListRequest,
     MyFuturesTrade: MyFuturesTrade,
     MyFuturesTradeTimeRange: MyFuturesTradeTimeRange,
     OpenOrders: OpenOrders,
@@ -1170,6 +1303,12 @@ let typeMap: { [index: string]: any } = {
     Order: Order,
     OrderBook: OrderBook,
     OrderCancel: OrderCancel,
+    OrderHistoryList: OrderHistoryList,
+    OrderHistoryListData: OrderHistoryListData,
+    OrderHistoryListDataList: OrderHistoryListDataList,
+    OrderList: OrderList,
+    OrderListData: OrderListData,
+    OrderListDataList: OrderListDataList,
     OrderListStruct: OrderListStruct,
     OrderListStructList: OrderListStructList,
     OrderPatch: OrderPatch,
@@ -1179,11 +1318,20 @@ let typeMap: { [index: string]: any } = {
     PartnerSubList: PartnerSubList,
     PartnerTransactionHistory: PartnerTransactionHistory,
     PatchUniLend: PatchUniLend,
+    PlaceBizPushOrder: PlaceBizPushOrder,
     PlaceDualInvestmentOrder: PlaceDualInvestmentOrder,
     PlaceDualInvestmentOrderParams: PlaceDualInvestmentOrderParams,
     Position: Position,
     PositionClose: PositionClose,
     PositionCloseOrder: PositionCloseOrder,
+    PositionHistoryList: PositionHistoryList,
+    PositionHistoryListData: PositionHistoryListData,
+    PositionHistoryListDataCloseDetail: PositionHistoryListDataCloseDetail,
+    PositionHistoryListDataList: PositionHistoryListDataList,
+    PositionHistoryListDataRealizedPnlDetail: PositionHistoryListDataRealizedPnlDetail,
+    PositionList: PositionList,
+    PositionListData: PositionListData,
+    PositionListDataList: PositionListDataList,
     PositionTimerange: PositionTimerange,
     ProfitLossRange: ProfitLossRange,
     RebateUserInfo: RebateUserInfo,
@@ -1194,8 +1342,8 @@ let typeMap: { [index: string]: any } = {
     RepayRecordRepaidCurrency: RepayRecordRepaidCurrency,
     RepayRecordTotalInterest: RepayRecordTotalInterest,
     RiskUnits: RiskUnits,
-    RuleRiskLimitsTiers: RuleRiskLimitsTiers,
     SavedAddress: SavedAddress,
+    SendChatMessageRequest: SendChatMessageRequest,
     SmallBalance: SmallBalance,
     SmallBalanceHistory: SmallBalanceHistory,
     SpotAccount: SpotAccount,
@@ -1228,14 +1376,22 @@ let typeMap: { [index: string]: any } = {
     SwapCoin: SwapCoin,
     SwapCoinStruct: SwapCoinStruct,
     Symbol: Symbol,
+    Symbols: Symbols,
+    SymbolsData: SymbolsData,
+    SymbolsDataList: SymbolsDataList,
     SystemTime: SystemTime,
     Ticker: Ticker,
+    Ticker2: Ticker2,
+    Ticker2Data: Ticker2Data,
     TotalBalance: TotalBalance,
     Trade: Trade,
     TradeFee: TradeFee,
     TrailChangeLog: TrailChangeLog,
     TrailOrder: TrailOrder,
     TransactionID: TransactionID,
+    TransactionList: TransactionList,
+    TransactionListData: TransactionListData,
+    TransactionListDataList: TransactionListDataList,
     Transfer: Transfer,
     TransferOrderStatus: TransferOrderStatus,
     TransferablesResult: TransferablesResult,
@@ -1277,7 +1433,13 @@ let typeMap: { [index: string]: any } = {
     UnifiedRiskUnits: UnifiedRiskUnits,
     UnifiedSettings: UnifiedSettings,
     UnifiedTransferable: UnifiedTransferable,
+    UpdateOrder: UpdateOrder,
+    UpdateOrderData: UpdateOrderData,
+    UpdatePosition: UpdatePosition,
     UpdateTrailOrder: UpdateTrailOrder,
+    UploadChatFile: UploadChatFile,
+    UserAssetResp: UserAssetResp,
+    UserAssetRespData: UserAssetRespData,
     UserSub: UserSub,
     UserSubRelation: UserSubRelation,
     WithdrawStatus: WithdrawStatus,

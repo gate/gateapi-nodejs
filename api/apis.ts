@@ -23,14 +23,16 @@ export * from './oTCApi';
 import { OTCApi } from './oTCApi';
 export * from './optionsApi';
 import { OptionsApi } from './optionsApi';
-export * from './p2PApi';
-import { P2PApi } from './p2PApi';
+export * from './p2pApi';
+import { P2pApi } from './p2pApi';
 export * from './rebateApi';
 import { RebateApi } from './rebateApi';
 export * from './spotApi';
 import { SpotApi } from './spotApi';
 export * from './subAccountApi';
 import { SubAccountApi } from './subAccountApi';
+export * from './tradFiApi';
+import { TradFiApi } from './tradFiApi';
 export * from './unifiedApi';
 import { UnifiedApi } from './unifiedApi';
 export * from './walletApi';
@@ -51,10 +53,11 @@ export const APIS = [
     MultiCollateralLoanApi,
     OTCApi,
     OptionsApi,
-    P2PApi,
+    P2pApi,
     RebateApi,
     SpotApi,
     SubAccountApi,
+    TradFiApi,
     UnifiedApi,
     WalletApi,
     WithdrawalApi,

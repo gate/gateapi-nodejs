@@ -11,34 +11,25 @@
 
 export class InlineObject16 {
     /**
-     * Cryptocurrency
+     * Currency pair
      */
-    'asset'?: string;
+    'symbol': string;
     /**
-     * Fiat currency
+     * leverage
      */
-    'fiatUnit'?: string;
-    /**
-     * Buy/Sell
-     */
-    'tradeType'?: string;
+    'leverage': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'asset',
-            baseName: 'asset',
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'fiatUnit',
-            baseName: 'fiat_unit',
-            type: 'string',
-        },
-        {
-            name: 'tradeType',
-            baseName: 'trade_type',
+            name: 'leverage',
+            baseName: 'leverage',
             type: 'string',
         },
     ];

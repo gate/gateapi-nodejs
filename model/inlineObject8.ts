@@ -11,98 +11,71 @@
 
 export class InlineObject8 {
     /**
-     * Cryptocurrency
+     * Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
      */
-    'cryptoCurrency': string;
+    'payCoin'?: string;
     /**
-     * Fiat currency
+     * Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
      */
-    'fiatCurrency': string;
+    'getCoin'?: string;
     /**
-     * Buy/Sell (sell=Sell, buy=Buy, others=All)
+     * User payment currency amount
      */
-    'selectType'?: string;
+    'payAmount'?: string;
     /**
-     * Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
+     * Amount of currency received by the user
      */
-    'status'?: string;
+    'getAmount'?: string;
     /**
-     * Order ID
+     * Quote direction returned by the quote API (used for order validation)
      */
-    'txid'?: number;
+    'side'?: string;
     /**
-     * Start timestamp, default is 00:00 89 days ago
+     * promotion code
      */
-    'startTime'?: number;
+    'promotionCode'?: string;
     /**
-     * End timestamp, default is 23:59:59 today
+     * Parameter returned by the quote API
      */
-    'endTime'?: number;
-    /**
-     * 1: Include appeal status, 0: None
-     */
-    'queryDispute'?: number;
-    /**
-     * page number
-     */
-    'page'?: number;
-    /**
-     * Number of orders per page
-     */
-    'perPage'?: number;
+    'quoteToken'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'cryptoCurrency',
-            baseName: 'crypto_currency',
+            name: 'payCoin',
+            baseName: 'pay_coin',
             type: 'string',
         },
         {
-            name: 'fiatCurrency',
-            baseName: 'fiat_currency',
+            name: 'getCoin',
+            baseName: 'get_coin',
             type: 'string',
         },
         {
-            name: 'selectType',
-            baseName: 'select_type',
+            name: 'payAmount',
+            baseName: 'pay_amount',
             type: 'string',
         },
         {
-            name: 'status',
-            baseName: 'status',
+            name: 'getAmount',
+            baseName: 'get_amount',
             type: 'string',
         },
         {
-            name: 'txid',
-            baseName: 'txid',
-            type: 'number',
+            name: 'side',
+            baseName: 'side',
+            type: 'string',
         },
         {
-            name: 'startTime',
-            baseName: 'start_time',
-            type: 'number',
+            name: 'promotionCode',
+            baseName: 'promotion_code',
+            type: 'string',
         },
         {
-            name: 'endTime',
-            baseName: 'end_time',
-            type: 'number',
-        },
-        {
-            name: 'queryDispute',
-            baseName: 'query_dispute',
-            type: 'number',
-        },
-        {
-            name: 'page',
-            baseName: 'page',
-            type: 'number',
-        },
-        {
-            name: 'perPage',
-            baseName: 'per_page',
-            type: 'number',
+            name: 'quoteToken',
+            baseName: 'quote_token',
+            type: 'string',
         },
     ];
 

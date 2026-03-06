@@ -9,18 +9,30 @@
  * Do not edit the class manually.
  */
 
+/**
+ * Modify position take profit/stop loss parameters
+ */
 export class InlineObject4 {
     /**
-     * Order ID
+     * 止盈价格  说明： - 不传 或 传 \"0\"：将清空原有止盈价 - 如不希望清空，请传接口返回的原止盈价
      */
-    'orderId': string;
+    'priceTp'?: string | null;
+    /**
+     * 止损价格  说明： - 不传 或 传 \"0\"：将清空原有止损价 - 如不希望清空，请传接口返回的原止损价
+     */
+    'priceSl'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
+            name: 'priceTp',
+            baseName: 'price_tp',
+            type: 'string',
+        },
+        {
+            name: 'priceSl',
+            baseName: 'price_sl',
             type: 'string',
         },
     ];

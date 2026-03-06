@@ -10,14 +10,35 @@
  */
 
 export class InlineObject15 {
-    'advNo': string;
+    /**
+     * Futures position mode (SINGLE/DUAL)
+     */
+    'positionMode'?: string;
+    /**
+     * Account mode (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
+     */
+    'accountMode'?: string;
+    /**
+     * Exchange (BINANCE/OKX/GATE/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+     */
+    'exchangeType'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'advNo',
-            baseName: 'adv_no',
+            name: 'positionMode',
+            baseName: 'position_mode',
+            type: 'string',
+        },
+        {
+            name: 'accountMode',
+            baseName: 'account_mode',
+            type: 'string',
+        },
+        {
+            name: 'exchangeType',
+            baseName: 'exchange_type',
             type: 'string',
         },
     ];

@@ -11,103 +11,52 @@
 
 export class InlineResponse20028 {
     /**
-     * Order ID
-     */
-    'id': string;
-    /**
-     * Client Custom ID
-     */
-    'text': string;
-    /**
-     * Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT)
-     */
-    'fromAccountType': string;
-    'toAccountType': string;
-    /**
      * Currency
      */
     'coin': string;
     /**
-     * Transfer amount, the amount requested for the transfer
+     * Minimum Transfer Quantity (including estimated fees)
      */
-    'amount': string;
+    'minTransAmount': number;
     /**
-     * Actual credited amount (has a value when status = SUCCESS; empty for other statuses)
+     * Estimated Fee
      */
-    'actualReceive'?: string;
+    'estFee': number;
     /**
-     * Transfer Status - `FAIL`: Failed - `SUCCESS`: Successful - `PENDING`: Transfer in Progress
+     * Precision
      */
-    'status': string;
+    'precision': number;
     /**
-     * Failure reason (has a value when status = FAIL; empty for other statuses)
+     * If it is disabled. 0 means NOT being disabled
      */
-    'failReason'?: string;
-    /**
-     * Creation time of order
-     */
-    'createTime': number;
-    /**
-     * OrderUpdateTime
-     */
-    'updateTime': number;
+    'isDisabled': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
-        },
-        {
-            name: 'text',
-            baseName: 'text',
-            type: 'string',
-        },
-        {
-            name: 'fromAccountType',
-            baseName: 'from_account_type',
-            type: 'string',
-        },
-        {
-            name: 'toAccountType',
-            baseName: 'to_account_type',
-            type: 'string',
-        },
         {
             name: 'coin',
             baseName: 'coin',
             type: 'string',
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-        {
-            name: 'actualReceive',
-            baseName: 'actual_receive',
-            type: 'string',
-        },
-        {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
-        },
-        {
-            name: 'failReason',
-            baseName: 'fail_reason',
-            type: 'string',
-        },
-        {
-            name: 'createTime',
-            baseName: 'create_time',
+            name: 'minTransAmount',
+            baseName: 'min_trans_amount',
             type: 'number',
         },
         {
-            name: 'updateTime',
-            baseName: 'update_time',
+            name: 'estFee',
+            baseName: 'est_fee',
+            type: 'number',
+        },
+        {
+            name: 'precision',
+            baseName: 'precision',
+            type: 'number',
+        },
+        {
+            name: 'isDisabled',
+            baseName: 'is_disabled',
             type: 'number',
         },
     ];

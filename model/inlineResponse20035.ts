@@ -9,28 +9,135 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20035Assets } from './inlineResponse20035Assets';
+
 export class InlineResponse20035 {
     /**
-     * Currency pair
+     * User ID
      */
-    'symbol': string;
+    'userId': string;
     /**
-     * leverage
+     * Available Margin
      */
-    'leverage': string;
+    'availableMargin': string;
+    /**
+     * marginbalance
+     */
+    'marginBalance': string;
+    /**
+     * Initial Margin
+     */
+    'initialMargin': string;
+    /**
+     * Maintenance margin
+     */
+    'maintenanceMargin': string;
+    /**
+     * Initial margin rate
+     */
+    'initialMarginRate': string;
+    /**
+     * Maintenance margin rate
+     */
+    'maintenanceMarginRate': string;
+    /**
+     * Contract Position Mode
+     */
+    'positionMode': string;
+    /**
+     * Account limit
+     */
+    'accountLimit'?: string;
+    /**
+     * Created time
+     */
+    'createTime': string;
+    /**
+     * Update time
+     */
+    'updateTime': string;
+    /**
+     * Account Mode. CROSS_EXCHANGE: Cross-Exchange Mode; ISOLATED_EXCHANGE: Split-Exchange Mode
+     */
+    'accountMode'?: string;
+    /**
+     * Exchange Type. When account_mode is CROSS_EXCHANGE, it must be CROSSEX; otherwise, it is another exchange.
+     */
+    'exchangeType'?: string;
+    'assets': Array<InlineResponse20035Assets>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'symbol',
-            baseName: 'symbol',
+            name: 'userId',
+            baseName: 'user_id',
             type: 'string',
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
+            name: 'availableMargin',
+            baseName: 'available_margin',
             type: 'string',
+        },
+        {
+            name: 'marginBalance',
+            baseName: 'margin_balance',
+            type: 'string',
+        },
+        {
+            name: 'initialMargin',
+            baseName: 'initial_margin',
+            type: 'string',
+        },
+        {
+            name: 'maintenanceMargin',
+            baseName: 'maintenance_margin',
+            type: 'string',
+        },
+        {
+            name: 'initialMarginRate',
+            baseName: 'initial_margin_rate',
+            type: 'string',
+        },
+        {
+            name: 'maintenanceMarginRate',
+            baseName: 'maintenance_margin_rate',
+            type: 'string',
+        },
+        {
+            name: 'positionMode',
+            baseName: 'position_mode',
+            type: 'string',
+        },
+        {
+            name: 'accountLimit',
+            baseName: 'account_limit',
+            type: 'string',
+        },
+        {
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'string',
+        },
+        {
+            name: 'updateTime',
+            baseName: 'update_time',
+            type: 'string',
+        },
+        {
+            name: 'accountMode',
+            baseName: 'account_mode',
+            type: 'string',
+        },
+        {
+            name: 'exchangeType',
+            baseName: 'exchange_type',
+            type: 'string',
+        },
+        {
+            name: 'assets',
+            baseName: 'assets',
+            type: 'Array<InlineResponse20035Assets>',
         },
     ];
 

@@ -13,291 +13,291 @@ export class InlineResponse20018Data {
     /**
      * Whether sell order
      */
-    'isSell': number;
+    'isSell'?: number;
     /**
      * Order ID
      */
-    'txid': number;
+    'txid'?: number;
     /**
      * Order ID
      */
-    'orderid': number;
+    'orderid'?: number;
     /**
      * Order creation timestamp
      */
-    'timest': number;
+    'timest'?: number;
     /**
      * Payment deadline
      */
-    'lastPayTime': number;
+    'lastPayTime'?: number;
     /**
      * Remaining payment time
      */
-    'remainPayTime': number;
+    'remainPayTime'?: number;
     /**
      * Cryptocurrency type
      */
-    'currencyType': string;
+    'currencyType'?: string;
     /**
      * Fiat currency type
      */
-    'wantType': string;
+    'wantType'?: string;
     /**
      * Price
      */
-    'rate': string;
+    'rate'?: string;
     /**
      * Size
      */
-    'amount': string;
+    'amount'?: string;
     /**
      * Fiat amount
      */
-    'total': string;
+    'total'?: string;
     /**
      * Order Status
      */
-    'status': string;
+    'status'?: string;
     /**
      * Cancellation reason ID
      */
-    'reasonId': string;
+    'reasonId'?: string;
     /**
      * Cancellation reason
      */
-    'reasonDesc': string;
+    'reasonDesc'?: string;
     /**
      * Popup ID
      */
-    'toastId': number;
+    'toastId'?: number;
     /**
      * Cancellation time
      */
-    'cancelTime': string;
+    'cancelTime'?: string;
     /**
      * Whether seller confirmed the reason
      */
-    'sellerConfirm': number;
+    'sellerConfirm'?: number;
     /**
      * Whether in dispute
      */
-    'inAppeal': number;
+    'inAppeal'?: number;
     /**
      * Appeal time limit
      */
-    'disputeTime': number;
+    'disputeTime'?: number;
     /**
      * Whether order cancellation is allowed
      */
-    'cancelable': number;
+    'cancelable'?: number;
     /**
      * Whether to hide payment method
      */
-    'hidePayment': number;
+    'hidePayment'?: number;
     /**
      * Trading terms
      */
-    'tradeTips': string;
+    'tradeTips'?: string;
     /**
      * Whether to display bank
      */
-    'showBank': string;
+    'showBank'?: string;
     /**
      * Bank name
      */
-    'bankname': string;
+    'bankname'?: string;
     /**
      * Bank branch name
      */
-    'bankbranch': string;
+    'bankbranch'?: string;
     /**
      * Bank ID
      */
-    'bankid': string;
+    'bankid'?: string;
     /**
      * Bank cardholder name
      */
-    'bankHolderRealname': string;
+    'bankHolderRealname'?: string;
     /**
      * Whether to display Alipay
      */
-    'showAli': string;
+    'showAli'?: string;
     /**
      * Alipay account name
      */
-    'aliname': string;
+    'aliname'?: string;
     /**
      * Whether Alipay QR code exists
      */
-    'isAlicode': number;
+    'isAlicode'?: number;
     /**
      * Whether to display WeChat
      */
-    'showWechat': string;
+    'showWechat'?: string;
     /**
      * WeChat account name
      */
-    'wename': string;
+    'wename'?: string;
     /**
      * Whether to display other payment methods
      */
-    'showOthers': string;
+    'showOthers'?: string;
     /**
      * Other payment methods
      */
-    'payOthers': Array<string>;
+    'payOthers'?: Array<string>;
     /**
      * Payment type
      */
-    'selPaytype': string;
+    'selPaytype'?: string;
     /**
      * Counterparty UID
      */
-    'itsUid': string;
+    'itsUid'?: string;
     /**
      * Whether counterparty is Blue V
      */
-    'itsIsBlueVip': number;
+    'itsIsBlueVip'?: number;
     /**
      * Counterparty VIP tier
      */
-    'itsTier': number;
+    'itsTier'?: number;
     /**
      * Counterparty avatar
      */
-    'itsAvatar': string;
+    'itsAvatar'?: string;
     /**
      * Counterparty nickname
      */
-    'itsNickname': string;
+    'itsNickname'?: string;
     /**
      * Counterparty username
      */
-    'itsRealname': string;
+    'itsRealname'?: string;
     /**
      * Whether following
      */
-    'isFollow': number;
+    'isFollow'?: number;
     /**
      * Whether blocked
      */
-    'isBlack': number;
+    'isBlack'?: number;
     /**
      * Whether traded before
      */
-    'haveTraded': number;
+    'haveTraded'?: number;
     /**
      * Unread appeals
      */
-    'appealUnread': number;
+    'appealUnread'?: number;
     /**
      * Whether appeal cancellation is allowed
      */
-    'appealAllowCancel': number;
+    'appealAllowCancel'?: number;
     /**
      * Appeal result (including pending appeals)
      */
-    'appealVerdictHasOpen': string;
+    'appealVerdictHasOpen'?: string;
     /**
      * IM unread
      */
-    'imUnread': number;
+    'imUnread'?: number;
     /**
      * Review content
      */
-    'message': string;
+    'message'?: string;
     /**
      * Rating
      */
-    'score': string;
+    'score'?: string;
     /**
      * Payment voucher
      */
-    'paymentVoucherUrl': Array<string>;
+    'paymentVoucherUrl'?: Array<string>;
     /**
      * Counterparty transaction volume
      */
-    'completeNumber': number;
+    'completeNumber'?: number;
     /**
      * Counterparty completion rate
      */
-    'completeRateMonth': string;
+    'completeRateMonth'?: string;
     /**
      * Whether transaction record is verified
      */
-    'checkJournalAccount': boolean;
+    'checkJournalAccount'?: boolean;
     /**
      * Whether to display transaction records
      */
-    'showJournalAccount': boolean;
+    'showJournalAccount'?: boolean;
     /**
      * Whether margin is frozen
      */
-    'isFreezeGuarantee': number;
+    'isFreezeGuarantee'?: number;
     /**
      * Remaining USDT margin
      */
-    'usdtLeftGuarantee': string;
+    'usdtLeftGuarantee'?: string;
     /**
      * Margin currency type
      */
-    'guaranteeCurrType': string;
+    'guaranteeCurrType'?: string;
     /**
      * Payment time
      */
-    'timestPaid': number;
+    'timestPaid'?: number;
     /**
      * Order Status
      */
-    'state': string;
+    'state'?: string;
     /**
      * Coin release switch configuration
      */
-    'releaseCoinSwitch': number;
+    'releaseCoinSwitch'?: number;
     /**
      * Username
      */
-    'ownRealname': string;
+    'ownRealname'?: string;
     /**
      * Average confirmation time in last 30 days
      */
-    'confirmationUseTimeMonth': number;
+    'confirmationUseTimeMonth'?: number;
     /**
      * Whether risk user
      */
-    'isRiskUser': number;
+    'isRiskUser'?: number;
     /**
      * Whether XT order
      */
-    'isXt': number;
+    'isXt'?: number;
     /**
      * Order Type
      */
-    'orderType': number;
+    'orderType'?: number;
     /**
      * Fiat currency symbol
      */
-    'symbol': string;
+    'symbol'?: string;
     /**
      * Whether to show confirm receipt during appeal
      */
-    'isShowReceive': number;
+    'isShowReceive'?: number;
     /**
      * Whether regular user
      */
-    'isTaker': number;
+    'isTaker'?: number;
     /**
      * Merchant online status
      */
-    'isOnline': number;
+    'isOnline'?: number;
     /**
      * Whether to display seller contact information
      */
-    'showSellerContactInfo': boolean;
+    'showSellerContactInfo'?: boolean;
     /**
      * Payment methods supported by current order
      */
-    'supportedPayTypes': Array<string>;
+    'supportedPayTypes'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 

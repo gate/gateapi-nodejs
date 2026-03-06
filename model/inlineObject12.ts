@@ -10,26 +10,26 @@
  */
 
 export class InlineObject12 {
-    'tradeId': string;
-    'reasonId': string;
-    'reasonMemo': string;
+    /**
+     * modify amount
+     */
+    'qty'?: string;
+    /**
+     * modify price
+     */
+    'price'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'tradeId',
-            baseName: 'trade_id',
+            name: 'qty',
+            baseName: 'qty',
             type: 'string',
         },
         {
-            name: 'reasonId',
-            baseName: 'reason_id',
-            type: 'string',
-        },
-        {
-            name: 'reasonMemo',
-            baseName: 'reason_memo',
+            name: 'price',
+            baseName: 'price',
             type: 'string',
         },
     ];

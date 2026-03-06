@@ -4,13 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | BUY for on-ramp, SELL for off-ramp | [default to undefined]
-**side** | **string** | Quote direction returned by the quote API (used for order validation) | [default to undefined]
-**cryptoCurrency** | **string** | Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page) | [default to undefined]
-**fiatCurrency** | **string** | Fiat currency (supported currencies can be queried from the OTC web fiat quote page) | [default to undefined]
-**cryptoAmount** | **string** | Amount of cryptocurrency | [default to undefined]
-**fiatAmount** | **string** | Fiat amount | [default to undefined]
-**promotionCode** | **string** | Promotion code | [optional] [default to undefined]
-**quoteToken** | **string** | Parameter returned by the quote API | [default to undefined]
-**bankId** | **string** | Bank card ID used for the order (retrieved via the default bank card API) | [default to undefined]
+**price** | **string** | Order price | [default to undefined]
+**priceType** | **string** | Price type (trigger&#x3D;trigger price, market&#x3D;market price) | [default to undefined]
+**side** | **number** | Order side (1&#x3D;sell, 2&#x3D;buy) | [default to undefined]
+**symbol** | **string** | Trading symbol code | [default to undefined]
+**volume** | **string** | Order volume | [default to undefined]
+**priceTp** | **string** | Take profit price (optional) | [optional] [default to undefined]
+**priceSl** | **string** | Stop loss price (optional) | [optional] [default to undefined]
+
+## Enum: InlineObject2.PriceType
+
+* `Trigger` (value: `'trigger'`)
+
+* `Market` (value: `'market'`)
+
+
+## Enum: InlineObject2.Side
+
+* `NUMBER_1` (value: `1`)
+
+* `NUMBER_2` (value: `2`)
+
 

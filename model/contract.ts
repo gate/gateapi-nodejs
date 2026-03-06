@@ -189,6 +189,10 @@ export class Contract {
      * Upper and lower limits of funding rate
      */
     'fundingRateLimit'?: string;
+    /**
+     * Funding rate depth impact value
+     */
+    'fundingImpactValue'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -411,6 +415,11 @@ export class Contract {
         {
             name: 'fundingRateLimit',
             baseName: 'funding_rate_limit',
+            type: 'string',
+        },
+        {
+            name: 'fundingImpactValue',
+            baseName: 'funding_impact_value',
             type: 'string',
         },
     ];

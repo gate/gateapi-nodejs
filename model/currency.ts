@@ -52,6 +52,14 @@ export class Currency {
      * All links corresponding to coins
      */
     'chains'?: Array<SpotCurrencyChain>;
+    /**
+     * Total supply
+     */
+    'totalSupply'?: string;
+    /**
+     * Market cap
+     */
+    'marketCap'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -105,6 +113,16 @@ export class Currency {
             name: 'chains',
             baseName: 'chains',
             type: 'Array<SpotCurrencyChain>',
+        },
+        {
+            name: 'totalSupply',
+            baseName: 'total_supply',
+            type: 'string',
+        },
+        {
+            name: 'marketCap',
+            baseName: 'market_cap',
+            type: 'string',
         },
     ];
 

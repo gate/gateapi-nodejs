@@ -22,7 +22,7 @@ export class MockSpotOrder {
      */
     'orderPrice': string;
     /**
-     * Initial order quantity for spot trading pairs, not involved in actual calculation. Currently only supports BTC and ETH Currently only supports three currencies: BTC, ETH
+     * Initial order quantity for spot trading pairs, not involved in actual calculation.
      */
     'count'?: string;
     /**

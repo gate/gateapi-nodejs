@@ -9,65 +9,81 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20023DataMessages } from './inlineResponse20023DataMessages';
-
 export class InlineResponse20023Data {
     /**
-     * Message List
+     * Serial number
      */
-    'messages': Array<InlineResponse20023DataMessages>;
+    'index'?: number;
     /**
-     * Payment tip (displayed on homepage only)
+     * Cryptocurrency
      */
-    'memo': string;
+    'asset'?: string;
     /**
-     * Whether historical records exist
+     * Fiat currency
      */
-    'hasHistory': boolean;
+    'fiatUnit'?: string;
     /**
-     * Order ID
+     * Ad ID
      */
-    'txid': number;
+    'advNo'?: number;
     /**
-     * Timestamp of the latest message
+     * Price
      */
-    'sRVTM': number;
+    'price'?: string;
     /**
-     * Order Status
+     * Maximum Cryptocurrency Amount
      */
-    'orderStatus': string;
+    'maxSingleTransAmount'?: string;
+    /**
+     * Minimum Cryptocurrency Amount
+     */
+    'minSingleTransAmount'?: string;
+    /**
+     * Advertiser Nickname
+     */
+    'nickName'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'messages',
-            baseName: 'messages',
-            type: 'Array<InlineResponse20023DataMessages>',
+            name: 'index',
+            baseName: 'index',
+            type: 'number',
         },
         {
-            name: 'memo',
-            baseName: 'memo',
+            name: 'asset',
+            baseName: 'asset',
             type: 'string',
         },
         {
-            name: 'hasHistory',
-            baseName: 'has_history',
-            type: 'boolean',
+            name: 'fiatUnit',
+            baseName: 'fiat_unit',
+            type: 'string',
         },
         {
-            name: 'txid',
-            baseName: 'txid',
+            name: 'advNo',
+            baseName: 'adv_no',
             type: 'number',
         },
         {
-            name: 'sRVTM',
-            baseName: 'SRVTM',
-            type: 'number',
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            name: 'orderStatus',
-            baseName: 'order_status',
+            name: 'maxSingleTransAmount',
+            baseName: 'max_single_trans_amount',
+            type: 'string',
+        },
+        {
+            name: 'minSingleTransAmount',
+            baseName: 'min_single_trans_amount',
+            type: 'string',
+        },
+        {
+            name: 'nickName',
+            baseName: 'nick_name',
             type: 'string',
         },
     ];

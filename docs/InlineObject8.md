@@ -4,14 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cryptoCurrency** | **string** | Cryptocurrency | [default to undefined]
-**fiatCurrency** | **string** | Fiat currency | [default to undefined]
-**selectType** | **string** | Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | [optional] [default to undefined]
-**status** | **string** | Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | [optional] [default to undefined]
-**txid** | **number** | Order ID | [optional] [default to undefined]
-**startTime** | **number** | Start timestamp, default is 00:00 89 days ago | [optional] [default to undefined]
-**endTime** | **number** | End timestamp, default is 23:59:59 today | [optional] [default to undefined]
-**queryDispute** | **number** | 1: Include appeal status, 0: None | [optional] [default to undefined]
-**page** | **number** | page number | [optional] [default to undefined]
-**perPage** | **number** | Number of orders per page | [optional] [default to undefined]
+**payCoin** | **string** | Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page. | [optional] [default to undefined]
+**getCoin** | **string** | Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page. | [optional] [default to undefined]
+**payAmount** | **string** | User payment currency amount | [optional] [default to undefined]
+**getAmount** | **string** | Amount of currency received by the user | [optional] [default to undefined]
+**side** | **string** | Quote direction returned by the quote API (used for order validation) | [optional] [default to undefined]
+**promotionCode** | **string** | promotion code  | [optional] [default to undefined]
+**quoteToken** | **string** | Parameter returned by the quote API | [optional] [default to undefined]
 

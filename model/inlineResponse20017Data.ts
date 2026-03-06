@@ -13,19 +13,19 @@ import { InlineResponse20017DataList } from './inlineResponse20017DataList';
 import { InlineResponse20017DataTransTime } from './inlineResponse20017DataTransTime';
 
 export class InlineResponse20017Data {
-    'list': Array<InlineResponse20017DataList>;
+    'list'?: Array<InlineResponse20017DataList>;
     /**
      * Countdown time
      */
-    'transTime': Array<InlineResponse20017DataTransTime>;
+    'transTime'?: Array<InlineResponse20017DataTransTime>;
     /**
      * Number of orders
      */
-    'count': number;
+    'count'?: number;
     /**
      * Export count
      */
-    'exportedNum': number;
+    'exportedNum'?: number;
 
     static discriminator: string | undefined = undefined;
 

@@ -13,23 +13,14 @@ export class InlineObject9 {
     /**
      * Order ID
      */
-    'txid': number;
-    /**
-     * Empty or web3
-     */
-    'channel'?: string;
+    'orderId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'txid',
-            baseName: 'txid',
-            type: 'number',
-        },
-        {
-            name: 'channel',
-            baseName: 'channel',
+            name: 'orderId',
+            baseName: 'order_id',
             type: 'string',
         },
     ];

@@ -11,41 +11,55 @@
 
 export class InlineObject7 {
     /**
-     * Cryptocurrency
+     * BUY for on-ramp, SELL for off-ramp
+     */
+    'type': string;
+    /**
+     * Quote direction returned by the quote API (used for order validation)
+     */
+    'side': string;
+    /**
+     * Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
      */
     'cryptoCurrency': string;
     /**
-     * Fiat currency
+     * Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
      */
     'fiatCurrency': string;
     /**
-     * Order tab, default: pending (pending: In Progress (pending: AND status in (\'OPEN\',\'PAID\', \'LOCKED\', \'TEMP\')); dispute: In Dispute (status in (\'ACCEPT\',\'BCLOSED\', \'CANCEL\', \'BECANCEL\', \'SCLOSED\', \'SCANCEL\')))
+     * Amount of cryptocurrency
      */
-    'orderTab'?: string;
+    'cryptoAmount': string;
     /**
-     * Buy/Sell (sell=Sell, buy=Buy, others=All)
+     * Fiat amount
      */
-    'selectType'?: string;
+    'fiatAmount': string;
     /**
-     * Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
+     * Promotion code
      */
-    'status'?: string;
+    'promotionCode'?: string;
     /**
-     * Order ID
+     * Parameter returned by the quote API
      */
-    'txid'?: number;
+    'quoteToken': string;
     /**
-     * Start timestamp, default is 00:00 89 days ago
+     * Bank card ID used for the order (retrieved via the default bank card API)
      */
-    'startTime'?: number;
-    /**
-     * End timestamp, default is 23:59:59 today
-     */
-    'endTime'?: number;
+    'bankId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+        {
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
+        },
+        {
+            name: 'side',
+            baseName: 'side',
+            type: 'string',
+        },
         {
             name: 'cryptoCurrency',
             baseName: 'crypto_currency',
@@ -57,34 +71,29 @@ export class InlineObject7 {
             type: 'string',
         },
         {
-            name: 'orderTab',
-            baseName: 'order_tab',
+            name: 'cryptoAmount',
+            baseName: 'crypto_amount',
             type: 'string',
         },
         {
-            name: 'selectType',
-            baseName: 'select_type',
+            name: 'fiatAmount',
+            baseName: 'fiat_amount',
             type: 'string',
         },
         {
-            name: 'status',
-            baseName: 'status',
+            name: 'promotionCode',
+            baseName: 'promotion_code',
             type: 'string',
         },
         {
-            name: 'txid',
-            baseName: 'txid',
-            type: 'number',
+            name: 'quoteToken',
+            baseName: 'quote_token',
+            type: 'string',
         },
         {
-            name: 'startTime',
-            baseName: 'start_time',
-            type: 'number',
-        },
-        {
-            name: 'endTime',
-            baseName: 'end_time',
-            type: 'number',
+            name: 'bankId',
+            baseName: 'bank_id',
+            type: 'string',
         },
     ];
 

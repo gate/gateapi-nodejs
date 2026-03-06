@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**optionsName** | **string** | Option name, currently only supports USDT options for BTC and ETH | [default to undefined]
+**optionsName** | **string** | Options contract name. Currently supports all options contract markets. | [default to undefined]
 **size** | **string** | Position size, measured in contract quantity | [default to undefined]
 

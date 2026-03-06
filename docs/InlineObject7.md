@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cryptoCurrency** | **string** | Cryptocurrency | [default to undefined]
-**fiatCurrency** | **string** | Fiat currency | [default to undefined]
-**orderTab** | **string** | Order tab, default: pending (pending: In Progress (pending: AND status in (\&#39;OPEN\&#39;,\&#39;PAID\&#39;, \&#39;LOCKED\&#39;, \&#39;TEMP\&#39;)); dispute: In Dispute (status in (\&#39;ACCEPT\&#39;,\&#39;BCLOSED\&#39;, \&#39;CANCEL\&#39;, \&#39;BECANCEL\&#39;, \&#39;SCLOSED\&#39;, \&#39;SCANCEL\&#39;))) | [optional] [default to undefined]
-**selectType** | **string** | Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | [optional] [default to undefined]
-**status** | **string** | Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | [optional] [default to undefined]
-**txid** | **number** | Order ID | [optional] [default to undefined]
-**startTime** | **number** | Start timestamp, default is 00:00 89 days ago | [optional] [default to undefined]
-**endTime** | **number** | End timestamp, default is 23:59:59 today | [optional] [default to undefined]
+**type** | **string** | BUY for on-ramp, SELL for off-ramp | [default to undefined]
+**side** | **string** | Quote direction returned by the quote API (used for order validation) | [default to undefined]
+**cryptoCurrency** | **string** | Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page) | [default to undefined]
+**fiatCurrency** | **string** | Fiat currency (supported currencies can be queried from the OTC web fiat quote page) | [default to undefined]
+**cryptoAmount** | **string** | Amount of cryptocurrency | [default to undefined]
+**fiatAmount** | **string** | Fiat amount | [default to undefined]
+**promotionCode** | **string** | Promotion code | [optional] [default to undefined]
+**quoteToken** | **string** | Parameter returned by the quote API | [default to undefined]
+**bankId** | **string** | Bank card ID used for the order (retrieved via the default bank card API) | [default to undefined]
 

@@ -15,124 +15,124 @@ export class InlineResponse20014Data {
     /**
      * Whether self
      */
-    'isSelf': boolean;
+    'isSelf'?: boolean;
     /**
      * User registration time (formatted string)
      */
-    'userTimest': string;
+    'userTimest'?: string;
     /**
      * Number of counterparties
      */
-    'counterpartiesNum': number;
+    'counterpartiesNum'?: number;
     /**
      * Whether email is verified
      */
-    'emailVerified': string;
+    'emailVerified'?: string;
     /**
      * Whether KYC verification is completed
      */
-    'verified': string;
+    'verified'?: string;
     /**
      * Whether phone is bound
      */
-    'hasPhone': string;
+    'hasPhone'?: string;
     /**
      * Username
      */
-    'userName': string;
+    'userName'?: string;
     /**
      * User note information
      */
-    'userNote': string;
+    'userNote'?: string;
     /**
      * Total completed orders
      */
-    'completeTransactions': string;
+    'completeTransactions'?: string;
     /**
      * Number of completed buy orders
      */
-    'paidTransactions': string;
+    'paidTransactions'?: string;
     /**
      * Number of completed sell orders
      */
-    'acceptedTransactions': string;
+    'acceptedTransactions'?: string;
     /**
      * Average time to confirm receipt
      */
-    'transactionsUsedTime': string;
+    'transactionsUsedTime'?: string;
     /**
      * Cancellation time in last 30 days
      */
-    'cancelledUsedTimeMonth': string;
+    'cancelledUsedTimeMonth'?: string;
     /**
      * Number of completed orders in last 30 days
      */
-    'completeTransactionsMonth': string;
+    'completeTransactionsMonth'?: string;
     /**
      * Completion rate in last 30 days
      */
-    'completeRateMonth': number;
+    'completeRateMonth'?: number;
     /**
      * Buy order ratio in last 30 days
      */
-    'ordersBuyRateMonth': number;
+    'ordersBuyRateMonth'?: number;
     /**
      * Whether blocked
      */
-    'isBlack': number;
+    'isBlack'?: number;
     /**
      * Whether following
      */
-    'isFollow': number;
+    'isFollow'?: number;
     /**
      * Whether traded with self
      */
-    'haveTraded': number;
+    'haveTraded'?: number;
     /**
      * Encrypted UID
      */
-    'bizUid': string;
+    'bizUid'?: string;
     /**
      * Blue V Crown Shield
      */
-    'blueVip': number;
+    'blueVip'?: number;
     /**
      * Merchant work status
      */
-    'workStatus': number;
+    'workStatus'?: number;
     /**
      * Registration days
      */
-    'registrationDays': number;
+    'registrationDays'?: number;
     /**
      * Days since first trade
      */
-    'firstTradeDays': number;
+    'firstTradeDays'?: number;
     /**
      * Whether margin replenishment is needed
      */
-    'needReplenish': number;
-    'merchantInfo': InlineResponse20014DataMerchantInfo;
+    'needReplenish'?: number;
+    'merchantInfo'?: InlineResponse20014DataMerchantInfo;
     /**
      * Merchant online status
      */
-    'onlineStatus': number;
+    'onlineStatus'?: number;
     /**
      * Merchant online status details
      */
-    'workHours': object | null;
+    'workHours'?: object | null;
     /**
      * 30-day transaction volume
      */
-    'transactionsMonth': number;
+    'transactionsMonth'?: number;
     /**
      * Total transaction volume
      */
-    'transactionsAll': number;
+    'transactionsAll'?: number;
     /**
      * Single user or composite user
      */
-    'tradeVersatile': boolean;
+    'tradeVersatile'?: boolean;
 
     static discriminator: string | undefined = undefined;
 

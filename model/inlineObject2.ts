@@ -9,95 +9,91 @@
  * Do not edit the class manually.
  */
 
+/**
+ * Place order request parameters
+ */
 export class InlineObject2 {
     /**
-     * BUY for on-ramp, SELL for off-ramp
+     * Order price
      */
-    'type': string;
+    'price': string;
     /**
-     * Quote direction returned by the quote API (used for order validation)
+     * Price type (trigger=trigger price, market=market price)
      */
-    'side': string;
+    'priceType': InlineObject2.PriceType;
     /**
-     * Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
+     * Order side (1=sell, 2=buy)
      */
-    'cryptoCurrency': string;
+    'side': InlineObject2.Side;
     /**
-     * Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
+     * Trading symbol code
      */
-    'fiatCurrency': string;
+    'symbol': string;
     /**
-     * Amount of cryptocurrency
+     * Order volume
      */
-    'cryptoAmount': string;
+    'volume': string;
     /**
-     * Fiat amount
+     * Take profit price (optional)
      */
-    'fiatAmount': string;
+    'priceTp'?: string;
     /**
-     * Promotion code
+     * Stop loss price (optional)
      */
-    'promotionCode'?: string;
-    /**
-     * Parameter returned by the quote API
-     */
-    'quoteToken': string;
-    /**
-     * Bank card ID used for the order (retrieved via the default bank card API)
-     */
-    'bankId': string;
+    'priceSl'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'type',
-            baseName: 'type',
+            name: 'price',
+            baseName: 'price',
             type: 'string',
+        },
+        {
+            name: 'priceType',
+            baseName: 'price_type',
+            type: 'InlineObject2.PriceType',
         },
         {
             name: 'side',
             baseName: 'side',
+            type: 'InlineObject2.Side',
+        },
+        {
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'cryptoCurrency',
-            baseName: 'crypto_currency',
+            name: 'volume',
+            baseName: 'volume',
             type: 'string',
         },
         {
-            name: 'fiatCurrency',
-            baseName: 'fiat_currency',
+            name: 'priceTp',
+            baseName: 'price_tp',
             type: 'string',
         },
         {
-            name: 'cryptoAmount',
-            baseName: 'crypto_amount',
-            type: 'string',
-        },
-        {
-            name: 'fiatAmount',
-            baseName: 'fiat_amount',
-            type: 'string',
-        },
-        {
-            name: 'promotionCode',
-            baseName: 'promotion_code',
-            type: 'string',
-        },
-        {
-            name: 'quoteToken',
-            baseName: 'quote_token',
-            type: 'string',
-        },
-        {
-            name: 'bankId',
-            baseName: 'bank_id',
+            name: 'priceSl',
+            baseName: 'price_sl',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
         return InlineObject2.attributeTypeMap;
+    }
+}
+
+export namespace InlineObject2 {
+    export enum PriceType {
+        Trigger = <any>'trigger',
+        Market = <any>'market',
+    }
+    export enum Side {
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
     }
 }

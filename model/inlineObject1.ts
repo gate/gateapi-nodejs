@@ -11,75 +11,46 @@
 
 export class InlineObject1 {
     /**
-     * PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
+     * Asset type, e.g., USDT, currently only USDT is supported
      */
-    'side': string;
+    'asset': string;
     /**
-     * Currency the user pays. Supported currencies can be found on the OTC web quote page.
+     * Change Quantity, supports up to two decimal places
      */
-    'payCoin': string;
+    'change': string;
     /**
-     * Currency the user receives. Supported currencies can be found on the OTC web quote page.
+     * Transaction Type (deposit - transfer in, withdraw - transfer out)
      */
-    'getCoin': string;
-    /**
-     * User payment currency amount
-     */
-    'payAmount'?: string;
-    /**
-     * Amount of currency received by the user
-     */
-    'getAmount'?: string;
-    /**
-     * Create quote token: 0: quote preview only; 1: generate quote token for order placement.
-     */
-    'createQuoteToken'?: string;
-    /**
-     * Promotion code (optional)
-     */
-    'promotionCode'?: string;
+    'type': InlineObject1.Type;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'side',
-            baseName: 'side',
+            name: 'asset',
+            baseName: 'asset',
             type: 'string',
         },
         {
-            name: 'payCoin',
-            baseName: 'pay_coin',
+            name: 'change',
+            baseName: 'change',
             type: 'string',
         },
         {
-            name: 'getCoin',
-            baseName: 'get_coin',
-            type: 'string',
-        },
-        {
-            name: 'payAmount',
-            baseName: 'pay_amount',
-            type: 'string',
-        },
-        {
-            name: 'getAmount',
-            baseName: 'get_amount',
-            type: 'string',
-        },
-        {
-            name: 'createQuoteToken',
-            baseName: 'create_quote_token',
-            type: 'string',
-        },
-        {
-            name: 'promotionCode',
-            baseName: 'promotion_code',
-            type: 'string',
+            name: 'type',
+            baseName: 'type',
+            type: 'InlineObject1.Type',
         },
     ];
 
     static getAttributeTypeMap() {
         return InlineObject1.attributeTypeMap;
+    }
+}
+
+export namespace InlineObject1 {
+    export enum Type {
+        Deposit = <any>'deposit',
+        Withdraw = <any>'withdraw',
     }
 }

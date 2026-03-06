@@ -9,72 +9,39 @@
  * Do not edit the class manually.
  */
 
+/**
+ * Modify order price and take profit/stop loss parameters
+ */
 export class InlineObject3 {
     /**
-     * Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+     * Price Description: - Required
      */
-    'payCoin'?: string;
+    'price': string;
     /**
-     * Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+     * Take Profit Price Description: - If not provided or set to \"0\": The original take profit price will be cleared - If you do not want to clear it, pass the original take profit price returned by the interface
      */
-    'getCoin'?: string;
+    'priceTp'?: string | null;
     /**
-     * User payment currency amount
+     * Stop Loss Price Description: - If not provided or set to \"0\": The original stop loss price will be cleared - If you do not want to clear it, pass the original stop loss price returned by the interface
      */
-    'payAmount'?: string;
-    /**
-     * Amount of currency received by the user
-     */
-    'getAmount'?: string;
-    /**
-     * Quote direction returned by the quote API (used for order validation)
-     */
-    'side'?: string;
-    /**
-     * promotion code
-     */
-    'promotionCode'?: string;
-    /**
-     * Parameter returned by the quote API
-     */
-    'quoteToken'?: string;
+    'priceSl'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'payCoin',
-            baseName: 'pay_coin',
+            name: 'price',
+            baseName: 'price',
             type: 'string',
         },
         {
-            name: 'getCoin',
-            baseName: 'get_coin',
+            name: 'priceTp',
+            baseName: 'price_tp',
             type: 'string',
         },
         {
-            name: 'payAmount',
-            baseName: 'pay_amount',
-            type: 'string',
-        },
-        {
-            name: 'getAmount',
-            baseName: 'get_amount',
-            type: 'string',
-        },
-        {
-            name: 'side',
-            baseName: 'side',
-            type: 'string',
-        },
-        {
-            name: 'promotionCode',
-            baseName: 'promotion_code',
-            type: 'string',
-        },
-        {
-            name: 'quoteToken',
-            baseName: 'quote_token',
+            name: 'priceSl',
+            baseName: 'price_sl',
             type: 'string',
         },
     ];

@@ -16,43 +16,43 @@ export class InlineResponse20017DataConvertInfo {
     /**
      * Flash swap target currency
      */
-    'convertType': string;
+    'convertType'?: string;
     /**
      * Flash swap order status
      */
-    'convertStatus': string;
+    'convertStatus'?: string;
     /**
      * Expected price when placing order
      */
-    'preRate': string;
+    'preRate'?: string;
     /**
      * Execution price
      */
-    'rate': string;
+    'rate'?: string;
     /**
      * Expected fiat price when placing order
      */
-    'preFiatRate': string;
+    'preFiatRate'?: string;
     /**
      * Fiat price at execution
      */
-    'fiatRate': string;
+    'fiatRate'?: string;
     /**
      * Size
      */
-    'amount': string;
+    'amount'?: string;
     /**
      * Swap Amount
      */
-    'convertAmount': string;
+    'convertAmount'?: string;
     /**
      * Slippage calculation: slippage = (expected price when placing order - real-time price during auto swap) / expected price when placing order
      */
-    'slippage': string;
+    'slippage'?: string;
     /**
      * Flash swap order display status
      */
-    'status': string;
+    'status'?: string;
 
     static discriminator: string | undefined = undefined;
 

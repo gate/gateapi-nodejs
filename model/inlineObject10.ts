@@ -10,20 +10,53 @@
  */
 
 export class InlineObject10 {
-    'tradeId': string;
-    'paymentMethod': string;
+    /**
+     * Currency
+     */
+    'coin': string;
+    /**
+     * Transfer amount
+     */
+    'amount': string;
+    /**
+     * Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
+     */
+    'from': string;
+    /**
+     * Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
+     */
+    'to': string;
+    /**
+     * User-defined ID
+     */
+    'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'tradeId',
-            baseName: 'trade_id',
+            name: 'coin',
+            baseName: 'coin',
             type: 'string',
         },
         {
-            name: 'paymentMethod',
-            baseName: 'payment_method',
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+        {
+            name: 'from',
+            baseName: 'from',
+            type: 'string',
+        },
+        {
+            name: 'to',
+            baseName: 'to',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
     ];

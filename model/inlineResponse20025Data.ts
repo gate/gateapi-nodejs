@@ -11,17 +11,17 @@
 
 export class InlineResponse20025Data {
     /**
-     * File key
+     * Timestamp when message was successfully sent (current timestamp)
      */
-    'fileKey': string;
+    'sRVTM'?: number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'fileKey',
-            baseName: 'file_key',
-            type: 'string',
+            name: 'sRVTM',
+            baseName: 'SRVTM',
+            type: 'number',
         },
     ];
 

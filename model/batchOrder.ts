@@ -158,7 +158,7 @@ export class BatchOrder {
      */
     'stpAct'?: BatchOrder.StpAct;
     /**
-     * How the order was finished.  - open: processing - filled: filled totally - cancelled: manually cancelled - ioc: time in force is `IOC`, finish immediately - stp: cancelled because self trade prevention
+     * 订单结束方式，包括：  - open: 等待处理 - filled: 完全成交 - cancelled: 用户撤销 - liquidate_cancelled: 爆仓撤销 - small: 订单数量太小 - depth_not_enough: 深度不足导致撤单 - trader_not_enough: 对手方不足导致撤单 - ioc: 未立即成交，因为 tif 设置为 poc/rvt/rat/rpi表示只想成为maker, 经检查会成为taker被拒绝 - poc: 未满足挂单策略，因为 tif 设置为 poc - fok: 未立即完全成交，因为 tif 设置为 fok - stp: 订单发生自成交限制而被撤销 - price_protect_cancelled: 价格保护导致撤单 - unknown: 未知
      */
     'finishAs'?: BatchOrder.FinishAs;
     /**
@@ -402,7 +402,15 @@ export namespace BatchOrder {
         Open = <any>'open',
         Filled = <any>'filled',
         Cancelled = <any>'cancelled',
+        LiquidateCancelled = <any>'liquidate_cancelled',
+        DepthNotEnough = <any>'depth_not_enough',
+        TraderNotEnough = <any>'trader_not_enough',
+        Small = <any>'small',
         Ioc = <any>'ioc',
+        Poc = <any>'poc',
+        Fok = <any>'fok',
         Stp = <any>'stp',
+        PriceProtectCancelled = <any>'price_protect_cancelled',
+        Unknown = <any>'unknown',
     }
 }

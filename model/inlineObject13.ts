@@ -11,250 +11,43 @@
 
 export class InlineObject13 {
     /**
-     * Cryptocurrency
-     */
-    'currencyType': string;
-    /**
-     * Fiat currency
+     * Exchange Type
      */
     'exchangeType': string;
     /**
-     * Ad type: 0=Sell, 1=Buy, 2=Edit sell, 3=Edit buy
+     * Asset Sold
      */
-    'type': string;
+    'fromCoin': string;
     /**
-     * Unit price
+     * Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
      */
-    'unitPrice': string;
+    'toCoin': string;
     /**
-     * Size
+     * Amount to sell
      */
-    'number': string;
-    /**
-     * Payment method
-     */
-    'payType'?: string;
-    /**
-     * Payment method JSON string
-     */
-    'payTypeJson'?: string;
-    /**
-     * Price type: 0-Floating price, 1-Fixed price
-     */
-    'rateFixed'?: string;
-    /**
-     * Ad ID when editing
-     */
-    'oid'?: string;
-    /**
-     * Minimum transaction amount per order
-     */
-    'minAmount': string;
-    /**
-     * Maximum transaction amount per order
-     */
-    'maxAmount': string;
-    /**
-     * Order tier limit
-     */
-    'tierLimit'?: string;
-    /**
-     * Verification level limit
-     */
-    'verifiedLimit'?: string;
-    /**
-     * Registration time limit
-     */
-    'regTimeLimit'?: string;
-    /**
-     * Advertiser restriction
-     */
-    'advertisersLimit'?: string;
-    /**
-     * Whether to hide payment method: 1=Yes, 0=No
-     */
-    'hidePayment'?: string;
-    /**
-     * Ad expiration time (minutes)
-     */
-    'expireMin'?: string;
-    /**
-     * Trading terms
-     */
-    'tradeTips'?: string;
-    /**
-     * Auto reply
-     */
-    'autoReply'?: string;
-    /**
-     * Minimum limit of completed orders
-     */
-    'minCompletedLimit'?: string;
-    /**
-     * Maximum limit of completed orders
-     */
-    'maxCompletedLimit'?: string;
-    /**
-     * 30-day completion rate limit
-     */
-    'completedRateLimit'?: string;
-    /**
-     * KYC nationality restriction
-     */
-    'userCountryLimit'?: string;
-    /**
-     * Order count limit
-     */
-    'userOrderLimit'?: string;
-    /**
-     * Reference exchange rate ID
-     */
-    'rateReferenceId'?: string;
-    /**
-     * Reference exchange rate offset
-     */
-    'rateOffset'?: string;
-    /**
-     * 444
-     */
-    'floatTrend'?: string;
+    'fromAmount': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'currencyType',
-            baseName: 'currencyType',
-            type: 'string',
-        },
-        {
             name: 'exchangeType',
-            baseName: 'exchangeType',
+            baseName: 'exchange_type',
             type: 'string',
         },
         {
-            name: 'type',
-            baseName: 'type',
+            name: 'fromCoin',
+            baseName: 'from_coin',
             type: 'string',
         },
         {
-            name: 'unitPrice',
-            baseName: 'unitPrice',
+            name: 'toCoin',
+            baseName: 'to_coin',
             type: 'string',
         },
         {
-            name: 'number',
-            baseName: 'number',
-            type: 'string',
-        },
-        {
-            name: 'payType',
-            baseName: 'payType',
-            type: 'string',
-        },
-        {
-            name: 'payTypeJson',
-            baseName: 'pay_type_json',
-            type: 'string',
-        },
-        {
-            name: 'rateFixed',
-            baseName: 'rateFixed',
-            type: 'string',
-        },
-        {
-            name: 'oid',
-            baseName: 'oid',
-            type: 'string',
-        },
-        {
-            name: 'minAmount',
-            baseName: 'minAmount',
-            type: 'string',
-        },
-        {
-            name: 'maxAmount',
-            baseName: 'maxAmount',
-            type: 'string',
-        },
-        {
-            name: 'tierLimit',
-            baseName: 'tierLimit',
-            type: 'string',
-        },
-        {
-            name: 'verifiedLimit',
-            baseName: 'verifiedLimit',
-            type: 'string',
-        },
-        {
-            name: 'regTimeLimit',
-            baseName: 'regTimeLimit',
-            type: 'string',
-        },
-        {
-            name: 'advertisersLimit',
-            baseName: 'advertisersLimit',
-            type: 'string',
-        },
-        {
-            name: 'hidePayment',
-            baseName: 'hide_payment',
-            type: 'string',
-        },
-        {
-            name: 'expireMin',
-            baseName: 'expire_min',
-            type: 'string',
-        },
-        {
-            name: 'tradeTips',
-            baseName: 'trade_tips',
-            type: 'string',
-        },
-        {
-            name: 'autoReply',
-            baseName: 'auto_reply',
-            type: 'string',
-        },
-        {
-            name: 'minCompletedLimit',
-            baseName: 'min_completed_limit',
-            type: 'string',
-        },
-        {
-            name: 'maxCompletedLimit',
-            baseName: 'max_completed_limit',
-            type: 'string',
-        },
-        {
-            name: 'completedRateLimit',
-            baseName: 'completed_rate_limit',
-            type: 'string',
-        },
-        {
-            name: 'userCountryLimit',
-            baseName: 'user_country_limit',
-            type: 'string',
-        },
-        {
-            name: 'userOrderLimit',
-            baseName: 'user_order_limit',
-            type: 'string',
-        },
-        {
-            name: 'rateReferenceId',
-            baseName: 'rateReferenceId',
-            type: 'string',
-        },
-        {
-            name: 'rateOffset',
-            baseName: 'rateOffset',
-            type: 'string',
-        },
-        {
-            name: 'floatTrend',
-            baseName: 'float_trend',
+            name: 'fromAmount',
+            baseName: 'from_amount',
             type: 'string',
         },
     ];

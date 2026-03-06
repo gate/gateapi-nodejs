@@ -12,12 +12,12 @@
 import { InlineResponse20016Data } from './inlineResponse20016Data';
 
 export class InlineResponse20016 {
-    'timestamp': number;
-    'method': string;
-    'code': number;
-    'message': string;
-    'data': Array<InlineResponse20016Data>;
-    'version': string;
+    'timestamp'?: number;
+    'method'?: string;
+    'code'?: number;
+    'message'?: string;
+    'data'?: Array<InlineResponse20016Data>;
+    'version'?: string;
 
     static discriminator: string | undefined = undefined;
 

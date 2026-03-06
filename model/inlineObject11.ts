@@ -10,19 +10,129 @@
  */
 
 export class InlineObject11 {
-    'tradeId': string;
+    /**
+     * Client-defined Order ID, supports letters (a-z), numbers (0-9), symbols (-, _) only
+     */
+    'text'?: string;
+    /**
+     * Unique Identifier for Exchange_Business_Base_Counter Examples: - To place a spot order for ADA/USDT on Binance: Use unique identifier `BINANCE_SPOT_ADA_USDT`; - To place a USDT-margin perpetual contract order for ADA/USDT on OKX: Use unique identifier `OKX_FUTURE_ADA_USDT`; - To place a spot margin order for ADA/USDT on Gate.io: Use unique identifier `GATE_MARGIN_ADA_USDT`; Currently supports three order types: Spot Orders, USDT-margin Perpetual Contract Orders, and Spot Margin Orders
+     */
+    'symbol': string;
+    /**
+     * BUY, SELL
+     */
+    'side': InlineObject11.Side;
+    /**
+     * Order type (default: `LIMIT`; supported types: `LIMIT`, `MARKET`)
+     */
+    'type'?: InlineObject11.Type;
+    /**
+     * Default GTC, supports enumerated types: GTC, IOC, FOK, POC GTC: GoodTillCancelled IOC: ImmediateOrCancelled FOK: FillOrKill POC: PendingOrCancelled or PostOnly
+     */
+    'timeInForce'?: InlineObject11.TimeInForce;
+    /**
+     * Order quantity (required unless spot market buy)
+     */
+    'qty'?: string;
+    /**
+     * Limit Order Price (Required for Limit Orders)
+     */
+    'price'?: string;
+    /**
+     * Order quote quantity; required for spot and margin market buy orders
+     */
+    'quoteQty'?: string;
+    /**
+     * Reduce-only: `true` or `false`
+     */
+    'reduceOnly'?: InlineObject11.ReduceOnly;
+    /**
+     * Position side: `NONE`, `LONG`, `SHORT` Defaults to `NONE` (single position mode) if not specified
+     */
+    'positionSide'?: InlineObject11.PositionSide;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'tradeId',
-            baseName: 'trade_id',
+            name: 'text',
+            baseName: 'text',
             type: 'string',
+        },
+        {
+            name: 'symbol',
+            baseName: 'symbol',
+            type: 'string',
+        },
+        {
+            name: 'side',
+            baseName: 'side',
+            type: 'InlineObject11.Side',
+        },
+        {
+            name: 'type',
+            baseName: 'type',
+            type: 'InlineObject11.Type',
+        },
+        {
+            name: 'timeInForce',
+            baseName: 'time_in_force',
+            type: 'InlineObject11.TimeInForce',
+        },
+        {
+            name: 'qty',
+            baseName: 'qty',
+            type: 'string',
+        },
+        {
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
+        },
+        {
+            name: 'quoteQty',
+            baseName: 'quote_qty',
+            type: 'string',
+        },
+        {
+            name: 'reduceOnly',
+            baseName: 'reduce_only',
+            type: 'InlineObject11.ReduceOnly',
+        },
+        {
+            name: 'positionSide',
+            baseName: 'position_side',
+            type: 'InlineObject11.PositionSide',
         },
     ];
 
     static getAttributeTypeMap() {
         return InlineObject11.attributeTypeMap;
+    }
+}
+
+export namespace InlineObject11 {
+    export enum Side {
+        BUY = <any>'BUY',
+        SELL = <any>'SELL',
+    }
+    export enum Type {
+        LIMIT = <any>'LIMIT',
+        MARKET = <any>'MARKET',
+    }
+    export enum TimeInForce {
+        GTC = <any>'GTC',
+        IOC = <any>'IOC',
+        FOK = <any>'FOK',
+        POC = <any>'POC',
+    }
+    export enum ReduceOnly {
+        True = <any>'true',
+        False = <any>'false',
+    }
+    export enum PositionSide {
+        LONG = <any>'LONG',
+        SHORT = <any>'SHORT',
+        NONE = <any>'NONE',
     }
 }

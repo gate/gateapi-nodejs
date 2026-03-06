@@ -9,23 +9,42 @@
  * Do not edit the class manually.
  */
 
+/**
+ * Close position request parameters
+ */
 export class InlineObject5 {
     /**
-     * Counterparty UID (encrypted)
+     * 平仓类型  说明： - 1：部分平仓（必须传 close_volume） - 2：全平（无需传 close_volume）
      */
-    'bizUid': string;
+    'closeType': InlineObject5.CloseType;
+    /**
+     * 平仓数量  说明： - 当 close_type = 1 时必传 - 当 close_type = 2 时忽略该字段
+     */
+    'closeVolume'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'bizUid',
-            baseName: 'biz_uid',
+            name: 'closeType',
+            baseName: 'close_type',
+            type: 'InlineObject5.CloseType',
+        },
+        {
+            name: 'closeVolume',
+            baseName: 'close_volume',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
         return InlineObject5.attributeTypeMap;
+    }
+}
+
+export namespace InlineObject5 {
+    export enum CloseType {
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
     }
 }

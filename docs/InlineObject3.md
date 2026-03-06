@@ -4,11 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payCoin** | **string** | Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page. | [optional] [default to undefined]
-**getCoin** | **string** | Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page. | [optional] [default to undefined]
-**payAmount** | **string** | User payment currency amount | [optional] [default to undefined]
-**getAmount** | **string** | Amount of currency received by the user | [optional] [default to undefined]
-**side** | **string** | Quote direction returned by the quote API (used for order validation) | [optional] [default to undefined]
-**promotionCode** | **string** | promotion code  | [optional] [default to undefined]
-**quoteToken** | **string** | Parameter returned by the quote API | [optional] [default to undefined]
+**price** | **string** | Price Description: - Required | [default to undefined]
+**priceTp** | **string** | Take Profit Price Description: - If not provided or set to \&quot;0\&quot;: The original take profit price will be cleared - If you do not want to clear it, pass the original take profit price returned by the interface | [optional] [default to undefined]
+**priceSl** | **string** | Stop Loss Price Description: - If not provided or set to \&quot;0\&quot;: The original stop loss price will be cleared - If you do not want to clear it, pass the original stop loss price returned by the interface | [optional] [default to undefined]
 

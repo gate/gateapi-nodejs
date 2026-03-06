@@ -13,8 +13,8 @@
  * Markets where user can place orders
  */
 export class InlineResponse20014DataMerchantInfo {
-    'type': string;
-    'market': string;
+    'type'?: string;
+    'market'?: string;
 
     static discriminator: string | undefined = undefined;
 

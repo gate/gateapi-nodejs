@@ -4,37 +4,37 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listCrossexRuleSymbols**](CrossExApi.md#listCrossexRuleSymbols) | **GET** /rule/symbols | [Public Interface] Query Trading Pair Information
-[**listCrossexRuleRiskLimits**](CrossExApi.md#listCrossexRuleRiskLimits) | **GET** /rule/risk_limits | [Public Interface] Query Risk Limit Information
-[**listCrossexTransferCoins**](CrossExApi.md#listCrossexTransferCoins) | **GET** /transfers/coin | [Public Interface] Query Supported Transfer Currencies
-[**listCrossexTransfers**](CrossExApi.md#listCrossexTransfers) | **GET** /transfers | Query Fund Transfer History
-[**createCrossexTransfer**](CrossExApi.md#createCrossexTransfer) | **POST** /transfers | Fund Transfer
-[**createCrossexOrder**](CrossExApi.md#createCrossexOrder) | **POST** /orders | Create an order
-[**getCrossexOrder**](CrossExApi.md#getCrossexOrder) | **GET** /orders/{order_id} | Query order details
-[**updateCrossexOrder**](CrossExApi.md#updateCrossexOrder) | **PUT** /orders/{order_id} | Modify Order
-[**cancelCrossexOrder**](CrossExApi.md#cancelCrossexOrder) | **DELETE** /orders/{order_id} | Cancel Order
-[**createCrossexConvertQuote**](CrossExApi.md#createCrossexConvertQuote) | **POST** /convert/quote | Flash Swap Inquiry
-[**createCrossexConvertOrder**](CrossExApi.md#createCrossexConvertOrder) | **POST** /convert/orders | Flash Swap Transaction
-[**getCrossexAccount**](CrossExApi.md#getCrossexAccount) | **GET** /accounts | Query Account Assets
-[**updateCrossexAccount**](CrossExApi.md#updateCrossexAccount) | **PUT** /accounts | Modify Account Contract Position Mode and Account Mode
-[**getCrossexPositionsLeverage**](CrossExApi.md#getCrossexPositionsLeverage) | **GET** /positions/leverage | Query Contract Trading Pair Leverage Multiplier
-[**updateCrossexPositionsLeverage**](CrossExApi.md#updateCrossexPositionsLeverage) | **POST** /positions/leverage | Modify Contract Trading Pair Leverage Multiplier
-[**getCrossexMarginPositionsLeverage**](CrossExApi.md#getCrossexMarginPositionsLeverage) | **GET** /margin_positions/leverage | Query Leveraged Trading Pair Leverage Multiplier
-[**updateCrossexMarginPositionsLeverage**](CrossExApi.md#updateCrossexMarginPositionsLeverage) | **POST** /margin_positions/leverage | Modify Leveraged Trading Pair Leverage Multiplier
-[**closeCrossexPosition**](CrossExApi.md#closeCrossexPosition) | **DELETE** /position | Full Close Position
-[**getCrossexInterestRate**](CrossExApi.md#getCrossexInterestRate) | **GET** /interest_rate | Query margin asset interest rates
-[**getCrossexFee**](CrossExApi.md#getCrossexFee) | **GET** /fee | Query User Fee Rates
-[**listCrossexPositions**](CrossExApi.md#listCrossexPositions) | **GET** /positions | Query Contract Positions
-[**listCrossexMarginPositions**](CrossExApi.md#listCrossexMarginPositions) | **GET** /margin_positions | Query Leveraged Positions
-[**listCrossexAdlRank**](CrossExApi.md#listCrossexAdlRank) | **GET** /adl_rank | Query ADL Position Reduction Ranking
-[**listCrossexOpenOrders**](CrossExApi.md#listCrossexOpenOrders) | **GET** /open_orders | Query All Current Open Orders
-[**listCrossexHistoryOrders**](CrossExApi.md#listCrossexHistoryOrders) | **GET** /history_orders | queryorderhistory
-[**listCrossexHistoryPositions**](CrossExApi.md#listCrossexHistoryPositions) | **GET** /history_positions | Query Contract Position History
-[**listCrossexHistoryMarginPositions**](CrossExApi.md#listCrossexHistoryMarginPositions) | **GET** /history_margin_positions | Query Leveraged Position History
-[**listCrossexHistoryMarginInterests**](CrossExApi.md#listCrossexHistoryMarginInterests) | **GET** /history_margin_interests | Query Leveraged Interest Deduction History
-[**listCrossexHistoryTrades**](CrossExApi.md#listCrossexHistoryTrades) | **GET** /history_trades | queryfilledhistory
-[**listCrossexAccountBook**](CrossExApi.md#listCrossexAccountBook) | **GET** /account_book | Query Account Asset Change History
-[**listCrossexCoinDiscountRate**](CrossExApi.md#listCrossexCoinDiscountRate) | **GET** /coin_discount_rate | Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+[**listCrossexRuleSymbols**](CrossExApi.md#listCrossexRuleSymbols) | **GET** /crossex/rule/symbols | [Public Interface] Query Trading Pair Information
+[**listCrossexRuleRiskLimits**](CrossExApi.md#listCrossexRuleRiskLimits) | **GET** /crossex/rule/risk_limits | [Public Interface] Query Risk Limit Information
+[**listCrossexTransferCoins**](CrossExApi.md#listCrossexTransferCoins) | **GET** /crossex/transfers/coin | [Public Interface] Query Supported Transfer Currencies
+[**listCrossexTransfers**](CrossExApi.md#listCrossexTransfers) | **GET** /crossex/transfers | Query Fund Transfer History
+[**createCrossexTransfer**](CrossExApi.md#createCrossexTransfer) | **POST** /crossex/transfers | Fund Transfer
+[**createCrossexOrder**](CrossExApi.md#createCrossexOrder) | **POST** /crossex/orders | Create an order
+[**getCrossexOrder**](CrossExApi.md#getCrossexOrder) | **GET** /crossex/orders/{order_id} | Query order details
+[**updateCrossexOrder**](CrossExApi.md#updateCrossexOrder) | **PUT** /crossex/orders/{order_id} | Modify Order
+[**cancelCrossexOrder**](CrossExApi.md#cancelCrossexOrder) | **DELETE** /crossex/orders/{order_id} | Cancel Order
+[**createCrossexConvertQuote**](CrossExApi.md#createCrossexConvertQuote) | **POST** /crossex/convert/quote | Flash Swap Inquiry
+[**createCrossexConvertOrder**](CrossExApi.md#createCrossexConvertOrder) | **POST** /crossex/convert/orders | Flash Swap Transaction
+[**getCrossexAccount**](CrossExApi.md#getCrossexAccount) | **GET** /crossex/accounts | Query Account Assets
+[**updateCrossexAccount**](CrossExApi.md#updateCrossexAccount) | **PUT** /crossex/accounts | Modify Account Contract Position Mode and Account Mode
+[**getCrossexPositionsLeverage**](CrossExApi.md#getCrossexPositionsLeverage) | **GET** /crossex/positions/leverage | Query Contract Trading Pair Leverage Multiplier
+[**updateCrossexPositionsLeverage**](CrossExApi.md#updateCrossexPositionsLeverage) | **POST** /crossex/positions/leverage | Modify Contract Trading Pair Leverage Multiplier
+[**getCrossexMarginPositionsLeverage**](CrossExApi.md#getCrossexMarginPositionsLeverage) | **GET** /crossex/margin_positions/leverage | Query Leveraged Trading Pair Leverage Multiplier
+[**updateCrossexMarginPositionsLeverage**](CrossExApi.md#updateCrossexMarginPositionsLeverage) | **POST** /crossex/margin_positions/leverage | Modify Leveraged Trading Pair Leverage Multiplier
+[**closeCrossexPosition**](CrossExApi.md#closeCrossexPosition) | **POST** /crossex/position | Full Close Position
+[**getCrossexInterestRate**](CrossExApi.md#getCrossexInterestRate) | **GET** /crossex/interest_rate | Query margin asset interest rates
+[**getCrossexFee**](CrossExApi.md#getCrossexFee) | **GET** /crossex/fee | Query User Fee Rates
+[**listCrossexPositions**](CrossExApi.md#listCrossexPositions) | **GET** /crossex/positions | Query Contract Positions
+[**listCrossexMarginPositions**](CrossExApi.md#listCrossexMarginPositions) | **GET** /crossex/margin_positions | Query Leveraged Positions
+[**listCrossexAdlRank**](CrossExApi.md#listCrossexAdlRank) | **GET** /crossex/adl_rank | Query ADL Position Reduction Ranking
+[**listCrossexOpenOrders**](CrossExApi.md#listCrossexOpenOrders) | **GET** /crossex/open_orders | Query All Current Open Orders
+[**listCrossexHistoryOrders**](CrossExApi.md#listCrossexHistoryOrders) | **GET** /crossex/history_orders | queryorderhistory
+[**listCrossexHistoryPositions**](CrossExApi.md#listCrossexHistoryPositions) | **GET** /crossex/history_positions | Query Contract Position History
+[**listCrossexHistoryMarginPositions**](CrossExApi.md#listCrossexHistoryMarginPositions) | **GET** /crossex/history_margin_positions | Query Leveraged Position History
+[**listCrossexHistoryMarginInterests**](CrossExApi.md#listCrossexHistoryMarginInterests) | **GET** /crossex/history_margin_interests | Query Leveraged Interest Deduction History
+[**listCrossexHistoryTrades**](CrossExApi.md#listCrossexHistoryTrades) | **GET** /crossex/history_trades | queryfilledhistory
+[**listCrossexAccountBook**](CrossExApi.md#listCrossexAccountBook) | **GET** /crossex/account_book | Query Account Asset Change History
+[**listCrossexCoinDiscountRate**](CrossExApi.md#listCrossexCoinDiscountRate) | **GET** /crossex/coin_discount_rate | Query currency discount rate (discount rate of margin currency in isolated exchange mode)
 
 
 ## listCrossexRuleSymbols
@@ -84,7 +84,7 @@ No authorization required
 
 ## listCrossexRuleRiskLimits
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20026>; }> listCrossexRuleRiskLimits(symbols)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20027>; }> listCrossexRuleRiskLimits(symbols)
 
 [Public Interface] Query Risk Limit Information
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20026>; }> [InlineResponse20026](InlineResponse20026.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20027>; }> [InlineResponse20027](InlineResponse20027.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ No authorization required
 
 ## listCrossexTransferCoins
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20027>; }> listCrossexTransferCoins(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20028>; }> listCrossexTransferCoins(opts)
 
 [Public Interface] Query Supported Transfer Currencies
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20027>; }> [InlineResponse20027](InlineResponse20027.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20028>; }> [InlineResponse20028](InlineResponse20028.md)
 
 ### Authorization
 
@@ -172,7 +172,7 @@ No authorization required
 
 ## listCrossexTransfers
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20028>; }> listCrossexTransfers(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20029>; }> listCrossexTransfers(opts)
 
 Query Fund Transfer History
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20028>; }> [InlineResponse20028](InlineResponse20028.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20029>; }> [InlineResponse20029](InlineResponse20029.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20028>; }> [InlineR
 
 ## createCrossexTransfer
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20029; }> createCrossexTransfer(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20030; }> createCrossexTransfer(opts)
 
 Fund Transfer
 
@@ -247,7 +247,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject21': new InlineObject21() // InlineObject21 | 
+  'inlineObject10': new InlineObject10() // InlineObject10 | 
 };
 api.createCrossexTransfer(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -259,54 +259,7 @@ api.createCrossexTransfer(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject21** | [**InlineObject21**](InlineObject21.md)|  | [optional] 
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: InlineResponse20029; }> [InlineResponse20029](InlineResponse20029.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-## createCrossexOrder
-
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20030; }> createCrossexOrder(opts)
-
-Create an order
-
-Rate Limit: 100 requests per 10 seconds
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.CrossExApi(client);
-const opts = {
-  'inlineObject22': new InlineObject22() // InlineObject22 | 
-};
-api.createCrossexOrder(opts)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **inlineObject22** | [**InlineObject22**](InlineObject22.md)|  | [optional] 
+ **inlineObject10** | [**InlineObject10**](InlineObject10.md)|  | [optional] 
 
 ### Return type
 
@@ -321,9 +274,56 @@ Promise<{ response: AxiosResponse; body: InlineResponse20030; }> [InlineResponse
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+## createCrossexOrder
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20031; }> createCrossexOrder(opts)
+
+Create an order
+
+Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.CrossExApi(client);
+const opts = {
+  'inlineObject11': new InlineObject11() // InlineObject11 | 
+};
+api.createCrossexOrder(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inlineObject11** | [**InlineObject11**](InlineObject11.md)|  | [optional] 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse20031; }> [InlineResponse20031](InlineResponse20031.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 ## getCrossexOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20031; }> getCrossexOrder(orderId)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20032; }> getCrossexOrder(orderId)
 
 Query order details
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20031; }> [InlineResponse20031](InlineResponse20031.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20032; }> [InlineResponse20032](InlineResponse20032.md)
 
 ### Authorization
 
@@ -368,7 +368,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20031; }> [InlineResponse
 
 ## updateCrossexOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20032; }> updateCrossexOrder(orderId, opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20033; }> updateCrossexOrder(orderId, opts)
 
 Modify Order
 
@@ -387,7 +387,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.CrossExApi(client);
 const orderId = "orderId_example"; // string | Support Order ID or Text for Modify Order
 const opts = {
-  'inlineObject23': new InlineObject23() // InlineObject23 | 
+  'inlineObject12': new InlineObject12() // InlineObject12 | 
 };
 api.updateCrossexOrder(orderId, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -400,11 +400,11 @@ api.updateCrossexOrder(orderId, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **string**| Support Order ID or Text for Modify Order | [default to undefined]
- **inlineObject23** | [**InlineObject23**](InlineObject23.md)|  | [optional] 
+ **inlineObject12** | [**InlineObject12**](InlineObject12.md)|  | [optional] 
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20032; }> [InlineResponse20032](InlineResponse20032.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20033; }> [InlineResponse20033](InlineResponse20033.md)
 
 ### Authorization
 
@@ -417,7 +417,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20032; }> [InlineResponse
 
 ## cancelCrossexOrder
 
-> Promise<{ response: http.IncomingMessage; body: object; }> cancelCrossexOrder(orderId, opts)
+> Promise<{ response: http.IncomingMessage; body: object; }> cancelCrossexOrder(orderId)
 
 Cancel Order
 
@@ -435,10 +435,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const orderId = "orderId_example"; // string | Support Order ID or Text for Cancel Order
-const opts = {
-  'body': undefined // object | 
-};
-api.cancelCrossexOrder(orderId, opts)
+api.cancelCrossexOrder(orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -449,7 +446,6 @@ api.cancelCrossexOrder(orderId, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **string**| Support Order ID or Text for Cancel Order | [default to undefined]
- **body** | **object**|  | [optional] 
 
 ### Return type
 
@@ -461,12 +457,12 @@ Promise<{ response: AxiosResponse; body: object; }> [object](object.md)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 ## createCrossexConvertQuote
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20033; }> createCrossexConvertQuote(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20034; }> createCrossexConvertQuote(opts)
 
 Flash Swap Inquiry
 
@@ -484,7 +480,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject24': new InlineObject24() // InlineObject24 | 
+  'inlineObject13': new InlineObject13() // InlineObject13 | 
 };
 api.createCrossexConvertQuote(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -496,11 +492,11 @@ api.createCrossexConvertQuote(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject24** | [**InlineObject24**](InlineObject24.md)|  | [optional] 
+ **inlineObject13** | [**InlineObject13**](InlineObject13.md)|  | [optional] 
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20033; }> [InlineResponse20033](InlineResponse20033.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20034; }> [InlineResponse20034](InlineResponse20034.md)
 
 ### Authorization
 
@@ -531,7 +527,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject25': new InlineObject25() // InlineObject25 | 
+  'inlineObject14': new InlineObject14() // InlineObject14 | 
 };
 api.createCrossexConvertOrder(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -543,7 +539,7 @@ api.createCrossexConvertOrder(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject25** | [**InlineObject25**](InlineObject25.md)|  | [optional] 
+ **inlineObject14** | [**InlineObject14**](InlineObject14.md)|  | [optional] 
 
 ### Return type
 
@@ -560,7 +556,7 @@ Promise<{ response: AxiosResponse; body: object; }> [object](object.md)
 
 ## getCrossexAccount
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20034; }> getCrossexAccount(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20035; }> getCrossexAccount(opts)
 
 Query Account Assets
 
@@ -594,7 +590,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20034; }> [InlineResponse20034](InlineResponse20034.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20035; }> [InlineResponse20035](InlineResponse20035.md)
 
 ### Authorization
 
@@ -625,7 +621,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject26': new InlineObject26() // InlineObject26 | 
+  'inlineObject15': new InlineObject15() // InlineObject15 | 
 };
 api.updateCrossexAccount(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -637,7 +633,7 @@ api.updateCrossexAccount(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject26** | [**InlineObject26**](InlineObject26.md)|  | [optional] 
+ **inlineObject15** | [**InlineObject15**](InlineObject15.md)|  | [optional] 
 
 ### Return type
 
@@ -654,7 +650,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse202; }> [InlineResponse20
 
 ## getCrossexPositionsLeverage
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20035>; }> getCrossexPositionsLeverage(opts)
+> Promise<{ response: http.IncomingMessage; body: { [key: string]: string; }; }> getCrossexPositionsLeverage(opts)
 
 Query Contract Trading Pair Leverage Multiplier
 
@@ -672,7 +668,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'symbols': "BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT" // string | Trading Pair List, multiple separated by commas
+  'symbols': "BINANCE_FUTURE_BTC_USDT,OKX_FUTURE_BTC_USDT,GATE_FUTURE_BTC_USDT" // string | Trading Pair List, multiple separated by commas
 };
 api.getCrossexPositionsLeverage(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -688,7 +684,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20035>; }> [InlineResponse20035](InlineResponse20035.md)
+Promise<{ response: AxiosResponse; body: { [key: string]: string; }; }> [string](string.md)
 
 ### Authorization
 
@@ -719,7 +715,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject27': new InlineObject27() // InlineObject27 | 
+  'inlineObject16': new InlineObject16() // InlineObject16 | 
 };
 api.updateCrossexPositionsLeverage(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -731,7 +727,7 @@ api.updateCrossexPositionsLeverage(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject27** | [**InlineObject27**](InlineObject27.md)|  | [optional] 
+ **inlineObject16** | [**InlineObject16**](InlineObject16.md)|  | [optional] 
 
 ### Return type
 
@@ -748,7 +744,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2021; }> [InlineResponse2
 
 ## getCrossexMarginPositionsLeverage
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20035>; }> getCrossexMarginPositionsLeverage(opts)
+> Promise<{ response: http.IncomingMessage; body: { [key: string]: string; }; }> getCrossexMarginPositionsLeverage(opts)
 
 Query Leveraged Trading Pair Leverage Multiplier
 
@@ -766,7 +762,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'symbols': "BINANCE_MARGIN_ADA_USDT,OKX_FUTURE_ADA_USDT" // string | Trading Pair List, multiple separated by commas
+  'symbols': "BINANCE_MARGIN_BTC_USDT,OKX_MARGIN_BTC_USDT,GATE_MARGIN_BTC_USDT" // string | Trading Pair List, multiple separated by commas
 };
 api.getCrossexMarginPositionsLeverage(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -782,7 +778,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20035>; }> [InlineResponse20035](InlineResponse20035.md)
+Promise<{ response: AxiosResponse; body: { [key: string]: string; }; }> [string](string.md)
 
 ### Authorization
 
@@ -813,7 +809,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject28': new InlineObject28() // InlineObject28 | 
+  'inlineObject17': new InlineObject17() // InlineObject17 | 
 };
 api.updateCrossexMarginPositionsLeverage(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -825,7 +821,7 @@ api.updateCrossexMarginPositionsLeverage(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject28** | [**InlineObject28**](InlineObject28.md)|  | [optional] 
+ **inlineObject17** | [**InlineObject17**](InlineObject17.md)|  | [optional] 
 
 ### Return type
 
@@ -842,7 +838,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2021; }> [InlineResponse2
 
 ## closeCrossexPosition
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20030; }> closeCrossexPosition(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20031; }> closeCrossexPosition(opts)
 
 Full Close Position
 
@@ -860,7 +856,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject29': new InlineObject29() // InlineObject29 | 
+  'inlineObject18': new InlineObject18() // InlineObject18 | 
 };
 api.closeCrossexPosition(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -872,11 +868,11 @@ api.closeCrossexPosition(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject29** | [**InlineObject29**](InlineObject29.md)|  | [optional] 
+ **inlineObject18** | [**InlineObject18**](InlineObject18.md)|  | [optional] 
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20030; }> [InlineResponse20030](InlineResponse20030.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20031; }> [InlineResponse20031](InlineResponse20031.md)
 
 ### Authorization
 
@@ -1122,7 +1118,7 @@ Promise<{ response: AxiosResponse; body: Array<InlineResponse20040>; }> [InlineR
 
 ## listCrossexOpenOrders
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20031>; }> listCrossexOpenOrders(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse20032>; }> listCrossexOpenOrders(opts)
 
 Query All Current Open Orders
 
@@ -1160,7 +1156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse20031>; }> [InlineResponse20031](InlineResponse20031.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse20032>; }> [InlineResponse20032](InlineResponse20032.md)
 
 ### Authorization
 
