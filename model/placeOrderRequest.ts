@@ -9,34 +9,46 @@
  * Do not edit the class manually.
  */
 
-export class InlineObject10 {
+/**
+ * Order request
+ */
+export class PlaceOrderRequest {
     /**
-     * Currency
+     * Trading symbol
      */
-    'coin': string;
+    'currency': string;
     /**
-     * Transfer amount
+     * Buy or sell orders - buy - sell
+     */
+    'side': string;
+    /**
+     * Trade Quantity - `side` : `buy` refers to the quote currency, i.e., `USDT` - `side` : `sell` refers to the base currency
      */
     'amount': string;
     /**
-     * Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     * Trading mode affects slippage selection - `speed` : Smart mode - `custom` : Custom mode, uses `slippage` parameter
      */
-    'from': string;
+    'gasMode': string;
     /**
-     * Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     * Slippage tolerance (10 means 10% tolerance)
      */
-    'to': string;
+    'slippage'?: string;
     /**
-     * User-defined ID
+     * Quote ID returned from quotation API
      */
-    'text'?: string;
+    'quoteId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
+        },
+        {
+            name: 'side',
+            baseName: 'side',
             type: 'string',
         },
         {
@@ -45,23 +57,23 @@ export class InlineObject10 {
             type: 'string',
         },
         {
-            name: 'from',
-            baseName: 'from',
+            name: 'gasMode',
+            baseName: 'gas_mode',
             type: 'string',
         },
         {
-            name: 'to',
-            baseName: 'to',
+            name: 'slippage',
+            baseName: 'slippage',
             type: 'string',
         },
         {
-            name: 'text',
-            baseName: 'text',
+            name: 'quoteId',
+            baseName: 'quote_id',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject10.attributeTypeMap;
+        return PlaceOrderRequest.attributeTypeMap;
     }
 }

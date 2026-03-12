@@ -19,7 +19,7 @@ export class InlineResponse20029 {
      */
     'text': string;
     /**
-     * Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT)
+     * Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT)
      */
     'fromAccountType': string;
     'toAccountType': string;

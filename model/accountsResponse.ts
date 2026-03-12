@@ -9,59 +9,62 @@
  * Do not edit the class manually.
  */
 
-export class InlineObject10 {
+/**
+ * Query Position Return
+ */
+export class AccountsResponse {
     /**
-     * Currency
+     * Currency name
      */
-    'coin': string;
+    'currency'?: string;
     /**
-     * Transfer amount
+     * Available Balance
      */
-    'amount': string;
+    'available'?: string;
     /**
-     * Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     * Locked balance
      */
-    'from': string;
+    'locked'?: string;
     /**
-     * Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     * Token address
      */
-    'to': string;
+    'tokenAddress'?: string;
     /**
-     * User-defined ID
+     * Blockchain name
      */
-    'text'?: string;
+    'chain'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'currency',
+            baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'amount',
-            baseName: 'amount',
+            name: 'available',
+            baseName: 'available',
             type: 'string',
         },
         {
-            name: 'from',
-            baseName: 'from',
+            name: 'locked',
+            baseName: 'locked',
             type: 'string',
         },
         {
-            name: 'to',
-            baseName: 'to',
+            name: 'tokenAddress',
+            baseName: 'token_address',
             type: 'string',
         },
         {
-            name: 'text',
-            baseName: 'text',
+            name: 'chain',
+            baseName: 'chain',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject10.attributeTypeMap;
+        return AccountsResponse.attributeTypeMap;
     }
 }

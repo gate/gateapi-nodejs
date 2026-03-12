@@ -41,7 +41,7 @@ export class BrokerTransaction1 {
      */
     'feeAsset'?: string;
     /**
-     * Commission transaction type: Spot, Futures, Options, Alpha
+     * Commission transaction type: Spot, Futures, Options, Alpha、TradFi
      */
     'source'?: string;
     'subBrokerInfo'?: BrokerCommissionSubBrokerInfo;

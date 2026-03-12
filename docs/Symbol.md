@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** | ExchangeType_BusinessType_Base_Counter | [default to undefined]
-**exchangeType** | **string** | BINANCE,OKX,GATE,CROSSEX | [default to undefined]
+**exchangeType** | **string** | BINANCE,OKX,GATE,BYBIT,CROSSEX | [default to undefined]
 **businessType** | **string** | SPOT, FUTURE, MARGIN | [default to undefined]
 **state** | **string** | live/suspend | [default to undefined]
 **minSize** | **string** | Minimum order quantity | [default to undefined]

@@ -41,7 +41,7 @@ export class BrokerCommission1 {
      */
     'rebateFee'?: string;
     /**
-     * Commission transaction type: Spot, Futures, Options, Alpha
+     * Commission transaction type: Spot, Futures, Options, Alpha、TradFi
      */
     'source'?: string;
     /**

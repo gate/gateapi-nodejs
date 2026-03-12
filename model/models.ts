@@ -1,9 +1,11 @@
 export * from './accountBalance';
+export * from './accountBookResponse';
 export * from './accountDetail';
 export * from './accountDetailKey';
 export * from './accountKeyInfo';
 export * from './accountKeyInfoPerms';
 export * from './accountRateLimit';
+export * from './accountsResponse';
 export * from './adsDetailRequest';
 export * from './adsListRequest';
 export * from './adsUpdateStatus';
@@ -65,6 +67,7 @@ export * from './crossMarginLoan';
 export * from './crossMarginRepayment';
 export * from './crossexRuleRiskLimitsTiers';
 export * from './currency';
+export * from './currency2';
 export * from './currencyChain';
 export * from './currencyPair';
 export * from './currencyQuota';
@@ -309,6 +312,7 @@ export * from './orderListStruct';
 export * from './orderListStructList';
 export * from './orderPatch';
 export * from './orderResp';
+export * from './orderResponse';
 export * from './partnerCommissionHistory';
 export * from './partnerSub';
 export * from './partnerSubList';
@@ -317,6 +321,8 @@ export * from './patchUniLend';
 export * from './placeBizPushOrder';
 export * from './placeDualInvestmentOrder';
 export * from './placeDualInvestmentOrderParams';
+export * from './placeOrderRequest';
+export * from './placeOrderResponse';
 export * from './position';
 export * from './positionClose';
 export * from './positionCloseOrder';
@@ -330,6 +336,8 @@ export * from './positionListData';
 export * from './positionListDataList';
 export * from './positionTimerange';
 export * from './profitLossRange';
+export * from './quoteRequest';
+export * from './quoteResponse';
 export * from './rebateUserInfo';
 export * from './repayCurrencyRes';
 export * from './repayMultiLoan';
@@ -379,6 +387,7 @@ export * from './systemTime';
 export * from './ticker';
 export * from './ticker2';
 export * from './ticker2Data';
+export * from './tokens';
 export * from './totalBalance';
 export * from './trade';
 export * from './tradeFee';
@@ -448,11 +457,13 @@ import crypto = require('crypto');
 import { URL } from 'url';
 
 import { AccountBalance } from './accountBalance';
+import { AccountBookResponse } from './accountBookResponse';
 import { AccountDetail } from './accountDetail';
 import { AccountDetailKey } from './accountDetailKey';
 import { AccountKeyInfo } from './accountKeyInfo';
 import { AccountKeyInfoPerms } from './accountKeyInfoPerms';
 import { AccountRateLimit } from './accountRateLimit';
+import { AccountsResponse } from './accountsResponse';
 import { AdsDetailRequest } from './adsDetailRequest';
 import { AdsListRequest } from './adsListRequest';
 import { AdsUpdateStatus } from './adsUpdateStatus';
@@ -514,6 +525,7 @@ import { CrossMarginLoan } from './crossMarginLoan';
 import { CrossMarginRepayment } from './crossMarginRepayment';
 import { CrossexRuleRiskLimitsTiers } from './crossexRuleRiskLimitsTiers';
 import { Currency } from './currency';
+import { Currency2 } from './currency2';
 import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
 import { CurrencyQuota } from './currencyQuota';
@@ -758,6 +770,7 @@ import { OrderListStruct } from './orderListStruct';
 import { OrderListStructList } from './orderListStructList';
 import { OrderPatch } from './orderPatch';
 import { OrderResp } from './orderResp';
+import { OrderResponse } from './orderResponse';
 import { PartnerCommissionHistory } from './partnerCommissionHistory';
 import { PartnerSub } from './partnerSub';
 import { PartnerSubList } from './partnerSubList';
@@ -766,6 +779,8 @@ import { PatchUniLend } from './patchUniLend';
 import { PlaceBizPushOrder } from './placeBizPushOrder';
 import { PlaceDualInvestmentOrder } from './placeDualInvestmentOrder';
 import { PlaceDualInvestmentOrderParams } from './placeDualInvestmentOrderParams';
+import { PlaceOrderRequest } from './placeOrderRequest';
+import { PlaceOrderResponse } from './placeOrderResponse';
 import { Position } from './position';
 import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
@@ -779,6 +794,8 @@ import { PositionListData } from './positionListData';
 import { PositionListDataList } from './positionListDataList';
 import { PositionTimerange } from './positionTimerange';
 import { ProfitLossRange } from './profitLossRange';
+import { QuoteRequest } from './quoteRequest';
+import { QuoteResponse } from './quoteResponse';
 import { RebateUserInfo } from './rebateUserInfo';
 import { RepayCurrencyRes } from './repayCurrencyRes';
 import { RepayMultiLoan } from './repayMultiLoan';
@@ -828,6 +845,7 @@ import { SystemTime } from './systemTime';
 import { Ticker } from './ticker';
 import { Ticker2 } from './ticker2';
 import { Ticker2Data } from './ticker2Data';
+import { Tokens } from './tokens';
 import { TotalBalance } from './totalBalance';
 import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
@@ -1003,11 +1021,13 @@ let enumsMap: { [index: string]: any } = {
 
 let typeMap: { [index: string]: any } = {
     AccountBalance: AccountBalance,
+    AccountBookResponse: AccountBookResponse,
     AccountDetail: AccountDetail,
     AccountDetailKey: AccountDetailKey,
     AccountKeyInfo: AccountKeyInfo,
     AccountKeyInfoPerms: AccountKeyInfoPerms,
     AccountRateLimit: AccountRateLimit,
+    AccountsResponse: AccountsResponse,
     AdsDetailRequest: AdsDetailRequest,
     AdsListRequest: AdsListRequest,
     AdsUpdateStatus: AdsUpdateStatus,
@@ -1069,6 +1089,7 @@ let typeMap: { [index: string]: any } = {
     CrossMarginRepayment: CrossMarginRepayment,
     CrossexRuleRiskLimitsTiers: CrossexRuleRiskLimitsTiers,
     Currency: Currency,
+    Currency2: Currency2,
     CurrencyChain: CurrencyChain,
     CurrencyPair: CurrencyPair,
     CurrencyQuota: CurrencyQuota,
@@ -1313,6 +1334,7 @@ let typeMap: { [index: string]: any } = {
     OrderListStructList: OrderListStructList,
     OrderPatch: OrderPatch,
     OrderResp: OrderResp,
+    OrderResponse: OrderResponse,
     PartnerCommissionHistory: PartnerCommissionHistory,
     PartnerSub: PartnerSub,
     PartnerSubList: PartnerSubList,
@@ -1321,6 +1343,8 @@ let typeMap: { [index: string]: any } = {
     PlaceBizPushOrder: PlaceBizPushOrder,
     PlaceDualInvestmentOrder: PlaceDualInvestmentOrder,
     PlaceDualInvestmentOrderParams: PlaceDualInvestmentOrderParams,
+    PlaceOrderRequest: PlaceOrderRequest,
+    PlaceOrderResponse: PlaceOrderResponse,
     Position: Position,
     PositionClose: PositionClose,
     PositionCloseOrder: PositionCloseOrder,
@@ -1334,6 +1358,8 @@ let typeMap: { [index: string]: any } = {
     PositionListDataList: PositionListDataList,
     PositionTimerange: PositionTimerange,
     ProfitLossRange: ProfitLossRange,
+    QuoteRequest: QuoteRequest,
+    QuoteResponse: QuoteResponse,
     RebateUserInfo: RebateUserInfo,
     RepayCurrencyRes: RepayCurrencyRes,
     RepayMultiLoan: RepayMultiLoan,
@@ -1383,6 +1409,7 @@ let typeMap: { [index: string]: any } = {
     Ticker: Ticker,
     Ticker2: Ticker2,
     Ticker2Data: Ticker2Data,
+    Tokens: Tokens,
     TotalBalance: TotalBalance,
     Trade: Trade,
     TradeFee: TradeFee,

@@ -15,7 +15,7 @@ export class Symbol {
      */
     'symbol': string;
     /**
-     * BINANCE,OKX,GATE,CROSSEX
+     * BINANCE,OKX,GATE,BYBIT,CROSSEX
      */
     'exchangeType': string;
     /**

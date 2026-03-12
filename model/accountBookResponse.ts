@@ -9,59 +9,62 @@
  * Do not edit the class manually.
  */
 
-export class InlineObject10 {
+/**
+ * Query Asset Flow Return
+ */
+export class AccountBookResponse {
     /**
-     * Currency
+     * Order ID
      */
-    'coin': string;
+    'id'?: number;
     /**
-     * Transfer amount
+     * Operation timestamp
      */
-    'amount': string;
+    'time'?: number;
     /**
-     * Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     * Currency name
      */
-    'from': string;
+    'currency'?: string;
     /**
-     * Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     * Change amount
      */
-    'to': string;
+    'change'?: string;
     /**
-     * User-defined ID
+     * Balance after change
      */
-    'text'?: string;
+    'balance'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
+        },
+        {
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
+        },
+        {
+            name: 'currency',
+            baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'amount',
-            baseName: 'amount',
+            name: 'change',
+            baseName: 'change',
             type: 'string',
         },
         {
-            name: 'from',
-            baseName: 'from',
-            type: 'string',
-        },
-        {
-            name: 'to',
-            baseName: 'to',
-            type: 'string',
-        },
-        {
-            name: 'text',
-            baseName: 'text',
+            name: 'balance',
+            baseName: 'balance',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject10.attributeTypeMap;
+        return AccountBookResponse.attributeTypeMap;
     }
 }

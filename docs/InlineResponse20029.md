@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Order ID | [default to undefined]
 **text** | **string** | Client Custom ID | [default to undefined]
-**fromAccountType** | **string** | Source &#x60;from&#x60; account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT) | [default to undefined]
+**fromAccountType** | **string** | Source &#x60;from&#x60; account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT) | [default to undefined]
 **toAccountType** | **string** |  | [default to undefined]
 **coin** | **string** | Currency | [default to undefined]
 **amount** | **string** | Transfer amount, the amount requested for the transfer | [default to undefined]

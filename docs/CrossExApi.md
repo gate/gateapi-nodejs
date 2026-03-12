@@ -55,7 +55,7 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'symbols': "symbols_example" // string | Trading Pair List, multiple separated by commas  Example values: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+  'symbols': "symbols_example" // string | 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
 };
 api.listCrossexRuleSymbols(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -67,7 +67,7 @@ api.listCrossexRuleSymbols(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbols** | **string**| Trading Pair List, multiple separated by commas  Example values: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | [optional] [default to undefined]
+ **symbols** | **string**| 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | [optional] [default to undefined]
 
 ### Return type
 
@@ -574,7 +574,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'exchangeType': "BINANCE,OKX,GATE" // string | Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE)
+  'exchangeType': "BINANCE,OKX,GATE,BYBIT" // string | Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT)
 };
 api.getCrossexAccount(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -586,7 +586,7 @@ api.getCrossexAccount(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeType** | **string**| Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE) | [optional] [default to undefined]
+ **exchangeType** | **string**| Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT) | [optional] [default to undefined]
 
 ### Return type
 
@@ -904,7 +904,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.CrossExApi(client);
 const opts = {
   'coin': "SOL", // string | Currency
-  'exchangeType': "OKX" // string | Exchange
+  'exchangeType': "BINANCE,OKX,GATE,BYBIT" // string | Exchange
 };
 api.getCrossexInterestRate(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -994,7 +994,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.CrossExApi(client);
 const opts = {
   'symbol': "BINANCE_FUTURE_ADA_USDT", // string | Trading Pair
-  'exchangeType': "BINANCE" // string | Exchange
+  'exchangeType': "BINANCE,OKX,GATE,BYBIT" // string | Exchange
 };
 api.listCrossexPositions(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1520,7 +1520,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.CrossExApi(client);
 const opts = {
   'coin': "SOL", // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
-  'exchangeType': "OKX" // string | OKX/GATE/BINANCE
+  'exchangeType': "OKX" // string | OKX/GATE/BINANCE/BYBIT
 };
 api.listCrossexCoinDiscountRate(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1533,7 +1533,7 @@ api.listCrossexCoinDiscountRate(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coin** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | [optional] [default to undefined]
- **exchangeType** | **string**| OKX/GATE/BINANCE | [optional] [default to undefined]
+ **exchangeType** | **string**| OKX/GATE/BINANCE/BYBIT | [optional] [default to undefined]
 
 ### Return type
 

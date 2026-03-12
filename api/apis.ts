@@ -1,6 +1,8 @@
 export * from './apiClient';
 export * from './accountApi';
 import { AccountApi } from './accountApi';
+export * from './alphaApi';
+import { AlphaApi } from './alphaApi';
 export * from './crossExApi';
 import { CrossExApi } from './crossExApi';
 export * from './deliveryApi';
@@ -42,6 +44,7 @@ import { WithdrawalApi } from './withdrawalApi';
 
 export const APIS = [
     AccountApi,
+    AlphaApi,
     CrossExApi,
     DeliveryApi,
     EarnApi,
