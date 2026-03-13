@@ -11,6 +11,7 @@
 
 /* tslint:disable:no-unused-locals */
 import { CountdownCancelAllOptionsTask } from '../model/countdownCancelAllOptionsTask';
+import { InlineObject6 } from '../model/inlineObject6';
 import { OptionsAccount } from '../model/optionsAccount';
 import { OptionsAccountBook } from '../model/optionsAccountBook';
 import { OptionsCandlestick } from '../model/optionsCandlestick';
@@ -1357,6 +1358,51 @@ export class OptionsApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OptionsOrder>(config, 'OptionsOrder', authSettings);
+    }
+
+    /**
+     * Modify the order price and/or quantity of a specified order; only orders with status \'open\' are supported
+     * @summary Option Order Modification
+     * @param orderId Order ID returned when order is successfully created
+     * @param inlineObject6
+     */
+    public async amendOptionsOrder(
+        orderId: number,
+        inlineObject6: InlineObject6,
+    ): Promise<{ response: AxiosResponse; body: OptionsOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/options/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling amendOptionsOrder.');
+        }
+
+        // verify required parameter 'inlineObject6' is not null or undefined
+        if (inlineObject6 === null || inlineObject6 === undefined) {
+            throw new Error('Required parameter inlineObject6 was null or undefined when calling amendOptionsOrder.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'PUT',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(inlineObject6, 'InlineObject6'),
         };
 
         const authSettings = ['apiv4'];

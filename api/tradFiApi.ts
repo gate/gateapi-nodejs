@@ -75,7 +75,7 @@ export class TradFiApi {
             url: localVarPath,
         };
 
-        const authSettings = [];
+        const authSettings = ['apiv4'];
         return this.client.request<Mt5Account>(config, 'Mt5Account', authSettings);
     }
 

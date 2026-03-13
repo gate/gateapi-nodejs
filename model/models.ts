@@ -149,6 +149,7 @@ export * from './inlineObject15';
 export * from './inlineObject16';
 export * from './inlineObject17';
 export * from './inlineObject18';
+export * from './inlineObject19';
 export * from './inlineObject2';
 export * from './inlineObject3';
 export * from './inlineObject4';
@@ -607,6 +608,7 @@ import { InlineObject15 } from './inlineObject15';
 import { InlineObject16 } from './inlineObject16';
 import { InlineObject17 } from './inlineObject17';
 import { InlineObject18 } from './inlineObject18';
+import { InlineObject19 } from './inlineObject19';
 import { InlineObject2 } from './inlineObject2';
 import { InlineObject3 } from './inlineObject3';
 import { InlineObject4 } from './inlineObject4';
@@ -963,11 +965,11 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
     'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
     'InlineObject1.Type': InlineObject1.Type,
-    'InlineObject11.Side': InlineObject11.Side,
-    'InlineObject11.Type': InlineObject11.Type,
-    'InlineObject11.TimeInForce': InlineObject11.TimeInForce,
-    'InlineObject11.ReduceOnly': InlineObject11.ReduceOnly,
-    'InlineObject11.PositionSide': InlineObject11.PositionSide,
+    'InlineObject12.Side': InlineObject12.Side,
+    'InlineObject12.Type': InlineObject12.Type,
+    'InlineObject12.TimeInForce': InlineObject12.TimeInForce,
+    'InlineObject12.ReduceOnly': InlineObject12.ReduceOnly,
+    'InlineObject12.PositionSide': InlineObject12.PositionSide,
     'InlineObject2.PriceType': InlineObject2.PriceType,
     'InlineObject2.Side': InlineObject2.Side,
     'InlineObject5.CloseType': InlineObject5.CloseType,
@@ -1171,6 +1173,7 @@ let typeMap: { [index: string]: any } = {
     InlineObject16: InlineObject16,
     InlineObject17: InlineObject17,
     InlineObject18: InlineObject18,
+    InlineObject19: InlineObject19,
     InlineObject2: InlineObject2,
     InlineObject3: InlineObject3,
     InlineObject4: InlineObject4,

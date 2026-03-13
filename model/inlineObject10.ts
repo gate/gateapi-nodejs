@@ -11,52 +11,16 @@
 
 export class InlineObject10 {
     /**
-     * Currency
+     * Order ID
      */
-    'coin': string;
-    /**
-     * Transfer amount
-     */
-    'amount': string;
-    /**
-     * Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
-     */
-    'from': string;
-    /**
-     * Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
-     */
-    'to': string;
-    /**
-     * User-defined ID
-     */
-    'text'?: string;
+    'orderId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'coin',
-            baseName: 'coin',
-            type: 'string',
-        },
-        {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-        {
-            name: 'from',
-            baseName: 'from',
-            type: 'string',
-        },
-        {
-            name: 'to',
-            baseName: 'to',
-            type: 'string',
-        },
-        {
-            name: 'text',
-            baseName: 'text',
+            name: 'orderId',
+            baseName: 'order_id',
             type: 'string',
         },
     ];

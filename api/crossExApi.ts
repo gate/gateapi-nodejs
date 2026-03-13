@@ -10,7 +10,6 @@
  */
 
 /* tslint:disable:no-unused-locals */
-import { InlineObject10 } from '../model/inlineObject10';
 import { InlineObject11 } from '../model/inlineObject11';
 import { InlineObject12 } from '../model/inlineObject12';
 import { InlineObject13 } from '../model/inlineObject13';
@@ -19,6 +18,7 @@ import { InlineObject15 } from '../model/inlineObject15';
 import { InlineObject16 } from '../model/inlineObject16';
 import { InlineObject17 } from '../model/inlineObject17';
 import { InlineObject18 } from '../model/inlineObject18';
+import { InlineObject19 } from '../model/inlineObject19';
 import { InlineResponse20027 } from '../model/inlineResponse20027';
 import { InlineResponse20028 } from '../model/inlineResponse20028';
 import { InlineResponse20029 } from '../model/inlineResponse20029';
@@ -286,10 +286,10 @@ export class CrossExApi {
      * Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE`
      * @summary Fund Transfer
      * @param opts Optional parameters
-     * @param opts.inlineObject10
+     * @param opts.inlineObject11
      */
     public async createCrossexTransfer(opts: {
-        inlineObject10?: InlineObject10;
+        inlineObject11?: InlineObject11;
     }): Promise<{ response: AxiosResponse; body: InlineResponse20030 }> {
         const localVarPath = this.client.basePath + '/crossex/transfers';
         let localVarQueryParameters: any = {};
@@ -309,7 +309,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject10, 'InlineObject10'),
+            data: ObjectSerializer.serialize(opts.inlineObject11, 'InlineObject11'),
         };
 
         const authSettings = ['apiv4'];
@@ -320,10 +320,10 @@ export class CrossExApi {
      * Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
      * @summary Create an order
      * @param opts Optional parameters
-     * @param opts.inlineObject11
+     * @param opts.inlineObject12
      */
     public async createCrossexOrder(opts: {
-        inlineObject11?: InlineObject11;
+        inlineObject12?: InlineObject12;
     }): Promise<{ response: AxiosResponse; body: InlineResponse20031 }> {
         const localVarPath = this.client.basePath + '/crossex/orders';
         let localVarQueryParameters: any = {};
@@ -343,7 +343,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject11, 'InlineObject11'),
+            data: ObjectSerializer.serialize(opts.inlineObject12, 'InlineObject12'),
         };
 
         const authSettings = ['apiv4'];
@@ -390,11 +390,11 @@ export class CrossExApi {
      * @summary Modify Order
      * @param orderId Support Order ID or Text for Modify Order
      * @param opts Optional parameters
-     * @param opts.inlineObject12
+     * @param opts.inlineObject13
      */
     public async updateCrossexOrder(
         orderId: string,
-        opts: { inlineObject12?: InlineObject12 },
+        opts: { inlineObject13?: InlineObject13 },
     ): Promise<{ response: AxiosResponse; body: InlineResponse20033 }> {
         const localVarPath =
             this.client.basePath +
@@ -421,7 +421,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject12, 'InlineObject12'),
+            data: ObjectSerializer.serialize(opts.inlineObject13, 'InlineObject13'),
         };
 
         const authSettings = ['apiv4'];
@@ -467,10 +467,10 @@ export class CrossExApi {
      * Rate Limit: 100 requests per day
      * @summary Flash Swap Inquiry
      * @param opts Optional parameters
-     * @param opts.inlineObject13
+     * @param opts.inlineObject14
      */
     public async createCrossexConvertQuote(opts: {
-        inlineObject13?: InlineObject13;
+        inlineObject14?: InlineObject14;
     }): Promise<{ response: AxiosResponse; body: InlineResponse20034 }> {
         const localVarPath = this.client.basePath + '/crossex/convert/quote';
         let localVarQueryParameters: any = {};
@@ -490,7 +490,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject13, 'InlineObject13'),
+            data: ObjectSerializer.serialize(opts.inlineObject14, 'InlineObject14'),
         };
 
         const authSettings = ['apiv4'];
@@ -501,10 +501,10 @@ export class CrossExApi {
      * Rate limit: 10 requests per 10 seconds
      * @summary Flash Swap Transaction
      * @param opts Optional parameters
-     * @param opts.inlineObject14
+     * @param opts.inlineObject15
      */
     public async createCrossexConvertOrder(opts: {
-        inlineObject14?: InlineObject14;
+        inlineObject15?: InlineObject15;
     }): Promise<{ response: AxiosResponse; body: object }> {
         const localVarPath = this.client.basePath + '/crossex/convert/orders';
         let localVarQueryParameters: any = {};
@@ -524,7 +524,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject14, 'InlineObject14'),
+            data: ObjectSerializer.serialize(opts.inlineObject15, 'InlineObject15'),
         };
 
         const authSettings = ['apiv4'];
@@ -576,10 +576,10 @@ export class CrossExApi {
      * Rate Limit: 100 requests per 60 seconds. position_mode+exchange_type modifies contract position mode (exchange_type is required when the user\'s account mode is split exchange); account_mode modifies the user\'s account mode.
      * @summary Modify Account Contract Position Mode and Account Mode
      * @param opts Optional parameters
-     * @param opts.inlineObject15
+     * @param opts.inlineObject16
      */
     public async updateCrossexAccount(opts: {
-        inlineObject15?: InlineObject15;
+        inlineObject16?: InlineObject16;
     }): Promise<{ response: AxiosResponse; body: InlineResponse202 }> {
         const localVarPath = this.client.basePath + '/crossex/accounts';
         let localVarQueryParameters: any = {};
@@ -599,7 +599,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject15, 'InlineObject15'),
+            data: ObjectSerializer.serialize(opts.inlineObject16, 'InlineObject16'),
         };
 
         const authSettings = ['apiv4'];
@@ -651,10 +651,10 @@ export class CrossExApi {
      * Rate Limit: 100 requests per 10 seconds
      * @summary Modify Contract Trading Pair Leverage Multiplier
      * @param opts Optional parameters
-     * @param opts.inlineObject16
+     * @param opts.inlineObject17
      */
     public async updateCrossexPositionsLeverage(opts: {
-        inlineObject16?: InlineObject16;
+        inlineObject17?: InlineObject17;
     }): Promise<{ response: AxiosResponse; body: InlineResponse2021 }> {
         const localVarPath = this.client.basePath + '/crossex/positions/leverage';
         let localVarQueryParameters: any = {};
@@ -674,7 +674,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject16, 'InlineObject16'),
+            data: ObjectSerializer.serialize(opts.inlineObject17, 'InlineObject17'),
         };
 
         const authSettings = ['apiv4'];
@@ -726,10 +726,10 @@ export class CrossExApi {
      * Rate Limit: 100 requests per 10 seconds
      * @summary Modify Leveraged Trading Pair Leverage Multiplier
      * @param opts Optional parameters
-     * @param opts.inlineObject17
+     * @param opts.inlineObject18
      */
     public async updateCrossexMarginPositionsLeverage(opts: {
-        inlineObject17?: InlineObject17;
+        inlineObject18?: InlineObject18;
     }): Promise<{ response: AxiosResponse; body: InlineResponse2021 }> {
         const localVarPath = this.client.basePath + '/crossex/margin_positions/leverage';
         let localVarQueryParameters: any = {};
@@ -749,7 +749,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject17, 'InlineObject17'),
+            data: ObjectSerializer.serialize(opts.inlineObject18, 'InlineObject18'),
         };
 
         const authSettings = ['apiv4'];
@@ -760,10 +760,10 @@ export class CrossExApi {
      * Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FUTURE or MARGIN positions.  Prerequisites before using this interface: - No pending orders for the symbol exist in the current account. - When the system detects the position meets any of the following limits while prerequisites are met: - Less than or equal to the minimum notional amount (minNotional) - Less than or equal to the minimum order quantity (minSize)  After meeting the conditions, the system will automatically generate a close-out order and immediately fully close the position. This interface is used to avoid issues where orders are too small to be placed on the exchange, ensuring small positions can be closed smoothly when reaching the threshold.
      * @summary Full Close Position
      * @param opts Optional parameters
-     * @param opts.inlineObject18
+     * @param opts.inlineObject19
      */
     public async closeCrossexPosition(opts: {
-        inlineObject18?: InlineObject18;
+        inlineObject19?: InlineObject19;
     }): Promise<{ response: AxiosResponse; body: InlineResponse20031 }> {
         const localVarPath = this.client.basePath + '/crossex/position';
         let localVarQueryParameters: any = {};
@@ -783,7 +783,7 @@ export class CrossExApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject18, 'InlineObject18'),
+            data: ObjectSerializer.serialize(opts.inlineObject19, 'InlineObject19'),
         };
 
         const authSettings = ['apiv4'];

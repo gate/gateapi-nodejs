@@ -38,6 +38,8 @@ const GateApi = require('gate-api');
 const client = new GateApi.ApiClient();
 // uncomment the next line to change base path
 // client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.TradFiApi(client);
 api.queryMt5AccountInfo()
@@ -55,7 +57,7 @@ Promise<{ response: AxiosResponse; body: Mt5Account; }> [Mt5Account](Mt5Account.
 
 ### Authorization
 
-No authorization required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 

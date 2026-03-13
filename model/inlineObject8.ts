@@ -11,60 +11,73 @@
 
 export class InlineObject8 {
     /**
-     * Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+     * BUY for on-ramp, SELL for off-ramp
      */
-    'payCoin'?: string;
-    /**
-     * Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
-     */
-    'getCoin'?: string;
-    /**
-     * User payment currency amount
-     */
-    'payAmount'?: string;
-    /**
-     * Amount of currency received by the user
-     */
-    'getAmount'?: string;
+    'type': string;
     /**
      * Quote direction returned by the quote API (used for order validation)
      */
-    'side'?: string;
+    'side': string;
     /**
-     * promotion code
+     * Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
+     */
+    'cryptoCurrency': string;
+    /**
+     * Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
+     */
+    'fiatCurrency': string;
+    /**
+     * Amount of cryptocurrency
+     */
+    'cryptoAmount': string;
+    /**
+     * Fiat amount
+     */
+    'fiatAmount': string;
+    /**
+     * Promotion code
      */
     'promotionCode'?: string;
     /**
      * Parameter returned by the quote API
      */
-    'quoteToken'?: string;
+    'quoteToken': string;
+    /**
+     * Bank card ID used for the order (retrieved via the default bank card API)
+     */
+    'bankId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'payCoin',
-            baseName: 'pay_coin',
-            type: 'string',
-        },
-        {
-            name: 'getCoin',
-            baseName: 'get_coin',
-            type: 'string',
-        },
-        {
-            name: 'payAmount',
-            baseName: 'pay_amount',
-            type: 'string',
-        },
-        {
-            name: 'getAmount',
-            baseName: 'get_amount',
+            name: 'type',
+            baseName: 'type',
             type: 'string',
         },
         {
             name: 'side',
             baseName: 'side',
+            type: 'string',
+        },
+        {
+            name: 'cryptoCurrency',
+            baseName: 'crypto_currency',
+            type: 'string',
+        },
+        {
+            name: 'fiatCurrency',
+            baseName: 'fiat_currency',
+            type: 'string',
+        },
+        {
+            name: 'cryptoAmount',
+            baseName: 'crypto_amount',
+            type: 'string',
+        },
+        {
+            name: 'fiatAmount',
+            baseName: 'fiat_amount',
             type: 'string',
         },
         {
@@ -75,6 +88,11 @@ export class InlineObject8 {
         {
             name: 'quoteToken',
             baseName: 'quote_token',
+            type: 'string',
+        },
+        {
+            name: 'bankId',
+            baseName: 'bank_id',
             type: 'string',
         },
     ];

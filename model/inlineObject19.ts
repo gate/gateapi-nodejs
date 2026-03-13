@@ -9,15 +9,15 @@
  * Do not edit the class manually.
  */
 
-export class InlineObject18 {
+export class InlineObject19 {
     /**
-     * Currency pair
+     * Trading Pair 1. Supports leveraged trading pairs, e.g., BINANCE_MARGIN_SOL_USDT 2. Supports contract trading pairs, e.g., OKX_FUTURE_ETH_USDT
      */
     'symbol': string;
     /**
-     * leverage
+     * Position Direction 1. For leveraged positions, this parameter must be passed 2. For contract positions, pass selectively based on your contract holding method
      */
-    'leverage': string;
+    'positionSide'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -28,13 +28,13 @@ export class InlineObject18 {
             type: 'string',
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
+            name: 'positionSide',
+            baseName: 'position_side',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject18.attributeTypeMap;
+        return InlineObject19.attributeTypeMap;
     }
 }

@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**createOptionsOrder**](OptionsApi.md#createOptionsOrder) | **POST** /options/orders | Create an options order
 [**cancelOptionsOrders**](OptionsApi.md#cancelOptionsOrders) | **DELETE** /options/orders | Cancel all orders with \&#39;open\&#39; status
 [**getOptionsOrder**](OptionsApi.md#getOptionsOrder) | **GET** /options/orders/{order_id} | Query single order details
+[**amendOptionsOrder**](OptionsApi.md#amendOptionsOrder) | **PUT** /options/orders/{order_id} | Option Order Modification
 [**cancelOptionsOrder**](OptionsApi.md#cancelOptionsOrder) | **DELETE** /options/orders/{order_id} | Cancel single order
 [**countdownCancelAllOptions**](OptionsApi.md#countdownCancelAllOptions) | **POST** /options/countdown_cancel_all | Countdown cancel orders
 [**listMyOptionsTrades**](OptionsApi.md#listMyOptionsTrades) | **GET** /options/my_trades | Query personal trading records
@@ -1056,6 +1057,53 @@ Promise<{ response: AxiosResponse; body: OptionsOrder; }> [OptionsOrder](Options
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+## amendOptionsOrder
+
+> Promise<{ response: http.IncomingMessage; body: OptionsOrder; }> amendOptionsOrder(orderId, inlineObject6)
+
+Option Order Modification
+
+Modify the order price and/or quantity of a specified order; only orders with status \&#39;open\&#39; are supported
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.OptionsApi(client);
+const orderId = 12345; // number | Order ID returned when order is successfully created
+const inlineObject6 = new InlineObject6(); // InlineObject6 | 
+api.amendOptionsOrder(orderId, inlineObject6)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **number**| Order ID returned when order is successfully created | [default to undefined]
+ **inlineObject6** | [**InlineObject6**](InlineObject6.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: OptionsOrder; }> [OptionsOrder](OptionsOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ## cancelOptionsOrder

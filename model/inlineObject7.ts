@@ -11,88 +11,70 @@
 
 export class InlineObject7 {
     /**
-     * BUY for on-ramp, SELL for off-ramp
-     */
-    'type': string;
-    /**
-     * Quote direction returned by the quote API (used for order validation)
+     * PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
      */
     'side': string;
     /**
-     * Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
+     * Currency the user pays. Supported currencies can be found on the OTC web quote page.
      */
-    'cryptoCurrency': string;
+    'payCoin': string;
     /**
-     * Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
+     * Currency the user receives. Supported currencies can be found on the OTC web quote page.
      */
-    'fiatCurrency': string;
+    'getCoin': string;
     /**
-     * Amount of cryptocurrency
+     * User payment currency amount
      */
-    'cryptoAmount': string;
+    'payAmount'?: string;
     /**
-     * Fiat amount
+     * Amount of currency received by the user
      */
-    'fiatAmount': string;
+    'getAmount'?: string;
     /**
-     * Promotion code
+     * Create quote token: 0: quote preview only; 1: generate quote token for order placement.
+     */
+    'createQuoteToken'?: string;
+    /**
+     * Promotion code (optional)
      */
     'promotionCode'?: string;
-    /**
-     * Parameter returned by the quote API
-     */
-    'quoteToken': string;
-    /**
-     * Bank card ID used for the order (retrieved via the default bank card API)
-     */
-    'bankId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'type',
-            baseName: 'type',
-            type: 'string',
-        },
         {
             name: 'side',
             baseName: 'side',
             type: 'string',
         },
         {
-            name: 'cryptoCurrency',
-            baseName: 'crypto_currency',
+            name: 'payCoin',
+            baseName: 'pay_coin',
             type: 'string',
         },
         {
-            name: 'fiatCurrency',
-            baseName: 'fiat_currency',
+            name: 'getCoin',
+            baseName: 'get_coin',
             type: 'string',
         },
         {
-            name: 'cryptoAmount',
-            baseName: 'crypto_amount',
+            name: 'payAmount',
+            baseName: 'pay_amount',
             type: 'string',
         },
         {
-            name: 'fiatAmount',
-            baseName: 'fiat_amount',
+            name: 'getAmount',
+            baseName: 'get_amount',
+            type: 'string',
+        },
+        {
+            name: 'createQuoteToken',
+            baseName: 'create_quote_token',
             type: 'string',
         },
         {
             name: 'promotionCode',
             baseName: 'promotion_code',
-            type: 'string',
-        },
-        {
-            name: 'quoteToken',
-            baseName: 'quote_token',
-            type: 'string',
-        },
-        {
-            name: 'bankId',
-            baseName: 'bank_id',
             type: 'string',
         },
     ];

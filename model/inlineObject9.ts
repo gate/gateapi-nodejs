@@ -11,16 +11,70 @@
 
 export class InlineObject9 {
     /**
-     * Order ID
+     * Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
      */
-    'orderId': string;
+    'payCoin'?: string;
+    /**
+     * Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+     */
+    'getCoin'?: string;
+    /**
+     * User payment currency amount
+     */
+    'payAmount'?: string;
+    /**
+     * Amount of currency received by the user
+     */
+    'getAmount'?: string;
+    /**
+     * Quote direction returned by the quote API (used for order validation)
+     */
+    'side'?: string;
+    /**
+     * promotion code
+     */
+    'promotionCode'?: string;
+    /**
+     * Parameter returned by the quote API
+     */
+    'quoteToken'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
+            name: 'payCoin',
+            baseName: 'pay_coin',
+            type: 'string',
+        },
+        {
+            name: 'getCoin',
+            baseName: 'get_coin',
+            type: 'string',
+        },
+        {
+            name: 'payAmount',
+            baseName: 'pay_amount',
+            type: 'string',
+        },
+        {
+            name: 'getAmount',
+            baseName: 'get_amount',
+            type: 'string',
+        },
+        {
+            name: 'side',
+            baseName: 'side',
+            type: 'string',
+        },
+        {
+            name: 'promotionCode',
+            baseName: 'promotion_code',
+            type: 'string',
+        },
+        {
+            name: 'quoteToken',
+            baseName: 'quote_token',
             type: 'string',
         },
     ];
