@@ -1061,7 +1061,7 @@ Promise<{ response: AxiosResponse; body: OptionsOrder; }> [OptionsOrder](Options
 
 ## amendOptionsOrder
 
-> Promise<{ response: http.IncomingMessage; body: OptionsOrder; }> amendOptionsOrder(orderId, inlineObject6)
+> Promise<{ response: http.IncomingMessage; body: OptionsOrder; }> amendOptionsOrder(orderId, inlineObject1)
 
 Option Order Modification
 
@@ -1079,8 +1079,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.OptionsApi(client);
 const orderId = 12345; // number | Order ID returned when order is successfully created
-const inlineObject6 = new InlineObject6(); // InlineObject6 | 
-api.amendOptionsOrder(orderId, inlineObject6)
+const inlineObject1 = new InlineObject1(); // InlineObject1 | 
+api.amendOptionsOrder(orderId, inlineObject1)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -1091,7 +1091,7 @@ api.amendOptionsOrder(orderId, inlineObject6)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **number**| Order ID returned when order is successfully created | [default to undefined]
- **inlineObject6** | [**InlineObject6**](InlineObject6.md)|  | 
+ **inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | 
 
 ### Return type
 

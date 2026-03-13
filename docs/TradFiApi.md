@@ -406,7 +406,7 @@ Promise<{ response: AxiosResponse; body: TransactionList; }> [TransactionList](T
 
 ## createTransaction
 
-> Promise<{ response: http.IncomingMessage; body: CreateTransaction; }> createTransaction(inlineObject1)
+> Promise<{ response: http.IncomingMessage; body: CreateTransaction; }> createTransaction(tradFiTransactionRequest)
 
 Fund Deposit and Withdrawal
 
@@ -421,8 +421,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.TradFiApi(client);
-const inlineObject1 = new InlineObject1(); // InlineObject1 | 
-api.createTransaction(inlineObject1)
+const tradFiTransactionRequest = new TradFiTransactionRequest(); // TradFiTransactionRequest | 
+api.createTransaction(tradFiTransactionRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -432,7 +432,7 @@ api.createTransaction(inlineObject1)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | 
+ **tradFiTransactionRequest** | [**TradFiTransactionRequest**](TradFiTransactionRequest.md)|  | 
 
 ### Return type
 
@@ -488,7 +488,7 @@ Promise<{ response: AxiosResponse; body: OrderList; }> [OrderList](OrderList.md)
 
 ## createTradFiOrder
 
-> Promise<{ response: http.IncomingMessage; body: CreateOrder; }> createTradFiOrder(inlineObject2)
+> Promise<{ response: http.IncomingMessage; body: CreateOrder; }> createTradFiOrder(tradFiOrderRequest)
 
 Create an order
 
@@ -503,8 +503,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.TradFiApi(client);
-const inlineObject2 = new InlineObject2(); // InlineObject2 | 
-api.createTradFiOrder(inlineObject2)
+const tradFiOrderRequest = new TradFiOrderRequest(); // TradFiOrderRequest | 
+api.createTradFiOrder(tradFiOrderRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -514,7 +514,7 @@ api.createTradFiOrder(inlineObject2)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject2** | [**InlineObject2**](InlineObject2.md)|  | 
+ **tradFiOrderRequest** | [**TradFiOrderRequest**](TradFiOrderRequest.md)|  | 
 
 ### Return type
 
@@ -531,7 +531,7 @@ Promise<{ response: AxiosResponse; body: CreateOrder; }> [CreateOrder](CreateOrd
 
 ## updateOrder
 
-> Promise<{ response: http.IncomingMessage; body: UpdateOrder; }> updateOrder(orderId, inlineObject3)
+> Promise<{ response: http.IncomingMessage; body: UpdateOrder; }> updateOrder(orderId, tradFiOrderUpdateRequest)
 
 Modify order
 
@@ -547,8 +547,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.TradFiApi(client);
 const orderId = 1223; // number | Order ID
-const inlineObject3 = new InlineObject3(); // InlineObject3 | 
-api.updateOrder(orderId, inlineObject3)
+const tradFiOrderUpdateRequest = new TradFiOrderUpdateRequest(); // TradFiOrderUpdateRequest | 
+api.updateOrder(orderId, tradFiOrderUpdateRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -559,7 +559,7 @@ api.updateOrder(orderId, inlineObject3)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **number**| Order ID | [default to undefined]
- **inlineObject3** | [**InlineObject3**](InlineObject3.md)|  | 
+ **tradFiOrderUpdateRequest** | [**TradFiOrderUpdateRequest**](TradFiOrderUpdateRequest.md)|  | 
 
 ### Return type
 
@@ -709,7 +709,7 @@ Promise<{ response: AxiosResponse; body: PositionList; }> [PositionList](Positio
 
 ## updatePosition
 
-> Promise<{ response: http.IncomingMessage; body: UpdatePosition; }> updatePosition(positionId, inlineObject4)
+> Promise<{ response: http.IncomingMessage; body: UpdatePosition; }> updatePosition(positionId, tradFiPositionUpdateRequest)
 
 Modify position
 
@@ -725,8 +725,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.TradFiApi(client);
 const positionId = 1223; // number | Position ID
-const inlineObject4 = new InlineObject4(); // InlineObject4 | 
-api.updatePosition(positionId, inlineObject4)
+const tradFiPositionUpdateRequest = new TradFiPositionUpdateRequest(); // TradFiPositionUpdateRequest | 
+api.updatePosition(positionId, tradFiPositionUpdateRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -737,7 +737,7 @@ api.updatePosition(positionId, inlineObject4)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **positionId** | **number**| Position ID | [default to undefined]
- **inlineObject4** | [**InlineObject4**](InlineObject4.md)|  | 
+ **tradFiPositionUpdateRequest** | [**TradFiPositionUpdateRequest**](TradFiPositionUpdateRequest.md)|  | 
 
 ### Return type
 
@@ -754,7 +754,7 @@ Promise<{ response: AxiosResponse; body: UpdatePosition; }> [UpdatePosition](Upd
 
 ## closePosition
 
-> Promise<{ response: http.IncomingMessage; body: DeletePosition; }> closePosition(positionId, inlineObject5)
+> Promise<{ response: http.IncomingMessage; body: DeletePosition; }> closePosition(positionId, tradFiClosePositionRequest)
 
 Close position
 
@@ -770,8 +770,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.TradFiApi(client);
 const positionId = 1223; // number | Position ID
-const inlineObject5 = new InlineObject5(); // InlineObject5 | 
-api.closePosition(positionId, inlineObject5)
+const tradFiClosePositionRequest = new TradFiClosePositionRequest(); // TradFiClosePositionRequest | 
+api.closePosition(positionId, tradFiClosePositionRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -782,7 +782,7 @@ api.closePosition(positionId, inlineObject5)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **positionId** | **number**| Position ID | [default to undefined]
- **inlineObject5** | [**InlineObject5**](InlineObject5.md)|  | 
+ **tradFiClosePositionRequest** | [**TradFiClosePositionRequest**](TradFiClosePositionRequest.md)|  | 
 
 ### Return type
 

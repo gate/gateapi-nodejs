@@ -10,34 +10,34 @@
  */
 
 /**
- * Order Modification Request Body
+ * 完全平仓请求体
  */
-export class InlineObject1 {
+export class CrossexClosePositionRequest {
     /**
-     * Order Price
+     * Trading Pair 1. Supports leveraged trading pairs, e.g., BINANCE_MARGIN_SOL_USDT 2. Supports contract trading pairs, e.g., OKX_FUTURE_ETH_USDT
      */
-    'price': string;
+    'symbol': string;
     /**
-     * Trade amount
+     * Position Direction 1. For leveraged positions, this parameter must be passed 2. For contract positions, pass selectively based on your contract holding method
      */
-    'size': number;
+    'positionSide'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'price',
-            baseName: 'price',
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
+            name: 'positionSide',
+            baseName: 'position_side',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject1.attributeTypeMap;
+        return CrossexClosePositionRequest.attributeTypeMap;
     }
 }

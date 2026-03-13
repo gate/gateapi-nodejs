@@ -10,34 +10,25 @@
  */
 
 /**
- * Order Modification Request Body
+ * 闪兑交易请求体
  */
-export class InlineObject1 {
+export class CrossexConvertOrderRequest {
     /**
-     * Order Price
+     * Inquiry ID
      */
-    'price': string;
-    /**
-     * Trade amount
-     */
-    'size': number;
+    'quoteId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'price',
-            baseName: 'price',
+            name: 'quoteId',
+            baseName: 'quote_id',
             type: 'string',
-        },
-        {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject1.attributeTypeMap;
+        return CrossexConvertOrderRequest.attributeTypeMap;
     }
 }

@@ -11,7 +11,7 @@
 
 /* tslint:disable:no-unused-locals */
 import { CountdownCancelAllOptionsTask } from '../model/countdownCancelAllOptionsTask';
-import { InlineObject6 } from '../model/inlineObject6';
+import { InlineObject1 } from '../model/inlineObject1';
 import { OptionsAccount } from '../model/optionsAccount';
 import { OptionsAccountBook } from '../model/optionsAccountBook';
 import { OptionsCandlestick } from '../model/optionsCandlestick';
@@ -1368,11 +1368,11 @@ export class OptionsApi {
      * Modify the order price and/or quantity of a specified order; only orders with status \'open\' are supported
      * @summary Option Order Modification
      * @param orderId Order ID returned when order is successfully created
-     * @param inlineObject6
+     * @param inlineObject1
      */
     public async amendOptionsOrder(
         orderId: number,
-        inlineObject6: InlineObject6,
+        inlineObject1: InlineObject1,
     ): Promise<{ response: AxiosResponse; body: OptionsOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -1392,9 +1392,9 @@ export class OptionsApi {
             throw new Error('Required parameter orderId was null or undefined when calling amendOptionsOrder.');
         }
 
-        // verify required parameter 'inlineObject6' is not null or undefined
-        if (inlineObject6 === null || inlineObject6 === undefined) {
-            throw new Error('Required parameter inlineObject6 was null or undefined when calling amendOptionsOrder.');
+        // verify required parameter 'inlineObject1' is not null or undefined
+        if (inlineObject1 === null || inlineObject1 === undefined) {
+            throw new Error('Required parameter inlineObject1 was null or undefined when calling amendOptionsOrder.');
         }
 
         const config: AxiosRequestConfig = {
@@ -1402,7 +1402,7 @@ export class OptionsApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject6, 'InlineObject6'),
+            data: ObjectSerializer.serialize(inlineObject1, 'InlineObject1'),
         };
 
         const authSettings = ['apiv4'];

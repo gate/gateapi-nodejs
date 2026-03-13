@@ -16,11 +16,6 @@ import { CreateOrder } from '../model/createOrder';
 import { CreateTransaction } from '../model/createTransaction';
 import { CreateUserResp } from '../model/createUserResp';
 import { DeletePosition } from '../model/deletePosition';
-import { InlineObject1 } from '../model/inlineObject1';
-import { InlineObject2 } from '../model/inlineObject2';
-import { InlineObject3 } from '../model/inlineObject3';
-import { InlineObject4 } from '../model/inlineObject4';
-import { InlineObject5 } from '../model/inlineObject5';
 import { Klines } from '../model/klines';
 import { Mt5Account } from '../model/mt5Account';
 import { OrderHistoryList } from '../model/orderHistoryList';
@@ -29,6 +24,11 @@ import { PositionHistoryList } from '../model/positionHistoryList';
 import { PositionList } from '../model/positionList';
 import { Symbols } from '../model/symbols';
 import { Ticker2 } from '../model/ticker2';
+import { TradFiClosePositionRequest } from '../model/tradFiClosePositionRequest';
+import { TradFiOrderRequest } from '../model/tradFiOrderRequest';
+import { TradFiOrderUpdateRequest } from '../model/tradFiOrderUpdateRequest';
+import { TradFiPositionUpdateRequest } from '../model/tradFiPositionUpdateRequest';
+import { TradFiTransactionRequest } from '../model/tradFiTransactionRequest';
 import { TransactionList } from '../model/transactionList';
 import { UpdateOrder } from '../model/updateOrder';
 import { UpdatePosition } from '../model/updatePosition';
@@ -440,10 +440,10 @@ export class TradFiApi {
     /**
      *
      * @summary Fund Deposit and Withdrawal
-     * @param inlineObject1
+     * @param tradFiTransactionRequest
      */
     public async createTransaction(
-        inlineObject1: InlineObject1,
+        tradFiTransactionRequest: TradFiTransactionRequest,
     ): Promise<{ response: AxiosResponse; body: CreateTransaction }> {
         const localVarPath = this.client.basePath + '/tradfi/transactions';
         let localVarQueryParameters: any = {};
@@ -456,9 +456,11 @@ export class TradFiApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'inlineObject1' is not null or undefined
-        if (inlineObject1 === null || inlineObject1 === undefined) {
-            throw new Error('Required parameter inlineObject1 was null or undefined when calling createTransaction.');
+        // verify required parameter 'tradFiTransactionRequest' is not null or undefined
+        if (tradFiTransactionRequest === null || tradFiTransactionRequest === undefined) {
+            throw new Error(
+                'Required parameter tradFiTransactionRequest was null or undefined when calling createTransaction.',
+            );
         }
 
         const config: AxiosRequestConfig = {
@@ -466,7 +468,7 @@ export class TradFiApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject1, 'InlineObject1'),
+            data: ObjectSerializer.serialize(tradFiTransactionRequest, 'TradFiTransactionRequest'),
         };
 
         const authSettings = ['apiv4'];
@@ -503,10 +505,10 @@ export class TradFiApi {
     /**
      *
      * @summary Create an order
-     * @param inlineObject2
+     * @param tradFiOrderRequest
      */
     public async createTradFiOrder(
-        inlineObject2: InlineObject2,
+        tradFiOrderRequest: TradFiOrderRequest,
     ): Promise<{ response: AxiosResponse; body: CreateOrder }> {
         const localVarPath = this.client.basePath + '/tradfi/orders';
         let localVarQueryParameters: any = {};
@@ -519,9 +521,11 @@ export class TradFiApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'inlineObject2' is not null or undefined
-        if (inlineObject2 === null || inlineObject2 === undefined) {
-            throw new Error('Required parameter inlineObject2 was null or undefined when calling createTradFiOrder.');
+        // verify required parameter 'tradFiOrderRequest' is not null or undefined
+        if (tradFiOrderRequest === null || tradFiOrderRequest === undefined) {
+            throw new Error(
+                'Required parameter tradFiOrderRequest was null or undefined when calling createTradFiOrder.',
+            );
         }
 
         const config: AxiosRequestConfig = {
@@ -529,7 +533,7 @@ export class TradFiApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject2, 'InlineObject2'),
+            data: ObjectSerializer.serialize(tradFiOrderRequest, 'TradFiOrderRequest'),
         };
 
         const authSettings = ['apiv4'];
@@ -540,11 +544,11 @@ export class TradFiApi {
      *
      * @summary Modify order
      * @param orderId Order ID
-     * @param inlineObject3
+     * @param tradFiOrderUpdateRequest
      */
     public async updateOrder(
         orderId: number,
-        inlineObject3: InlineObject3,
+        tradFiOrderUpdateRequest: TradFiOrderUpdateRequest,
     ): Promise<{ response: AxiosResponse; body: UpdateOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -564,9 +568,11 @@ export class TradFiApi {
             throw new Error('Required parameter orderId was null or undefined when calling updateOrder.');
         }
 
-        // verify required parameter 'inlineObject3' is not null or undefined
-        if (inlineObject3 === null || inlineObject3 === undefined) {
-            throw new Error('Required parameter inlineObject3 was null or undefined when calling updateOrder.');
+        // verify required parameter 'tradFiOrderUpdateRequest' is not null or undefined
+        if (tradFiOrderUpdateRequest === null || tradFiOrderUpdateRequest === undefined) {
+            throw new Error(
+                'Required parameter tradFiOrderUpdateRequest was null or undefined when calling updateOrder.',
+            );
         }
 
         const config: AxiosRequestConfig = {
@@ -574,7 +580,7 @@ export class TradFiApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject3, 'InlineObject3'),
+            data: ObjectSerializer.serialize(tradFiOrderUpdateRequest, 'TradFiOrderUpdateRequest'),
         };
 
         const authSettings = ['apiv4'];
@@ -721,11 +727,11 @@ export class TradFiApi {
      *
      * @summary Modify position
      * @param positionId Position ID
-     * @param inlineObject4
+     * @param tradFiPositionUpdateRequest
      */
     public async updatePosition(
         positionId: number,
-        inlineObject4: InlineObject4,
+        tradFiPositionUpdateRequest: TradFiPositionUpdateRequest,
     ): Promise<{ response: AxiosResponse; body: UpdatePosition }> {
         const localVarPath =
             this.client.basePath +
@@ -748,9 +754,11 @@ export class TradFiApi {
             throw new Error('Required parameter positionId was null or undefined when calling updatePosition.');
         }
 
-        // verify required parameter 'inlineObject4' is not null or undefined
-        if (inlineObject4 === null || inlineObject4 === undefined) {
-            throw new Error('Required parameter inlineObject4 was null or undefined when calling updatePosition.');
+        // verify required parameter 'tradFiPositionUpdateRequest' is not null or undefined
+        if (tradFiPositionUpdateRequest === null || tradFiPositionUpdateRequest === undefined) {
+            throw new Error(
+                'Required parameter tradFiPositionUpdateRequest was null or undefined when calling updatePosition.',
+            );
         }
 
         const config: AxiosRequestConfig = {
@@ -758,7 +766,7 @@ export class TradFiApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject4, 'InlineObject4'),
+            data: ObjectSerializer.serialize(tradFiPositionUpdateRequest, 'TradFiPositionUpdateRequest'),
         };
 
         const authSettings = ['apiv4'];
@@ -769,11 +777,11 @@ export class TradFiApi {
      *
      * @summary Close position
      * @param positionId Position ID
-     * @param inlineObject5
+     * @param tradFiClosePositionRequest
      */
     public async closePosition(
         positionId: number,
-        inlineObject5: InlineObject5,
+        tradFiClosePositionRequest: TradFiClosePositionRequest,
     ): Promise<{ response: AxiosResponse; body: DeletePosition }> {
         const localVarPath =
             this.client.basePath +
@@ -796,9 +804,11 @@ export class TradFiApi {
             throw new Error('Required parameter positionId was null or undefined when calling closePosition.');
         }
 
-        // verify required parameter 'inlineObject5' is not null or undefined
-        if (inlineObject5 === null || inlineObject5 === undefined) {
-            throw new Error('Required parameter inlineObject5 was null or undefined when calling closePosition.');
+        // verify required parameter 'tradFiClosePositionRequest' is not null or undefined
+        if (tradFiClosePositionRequest === null || tradFiClosePositionRequest === undefined) {
+            throw new Error(
+                'Required parameter tradFiClosePositionRequest was null or undefined when calling closePosition.',
+            );
         }
 
         const config: AxiosRequestConfig = {
@@ -806,7 +816,7 @@ export class TradFiApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject5, 'InlineObject5'),
+            data: ObjectSerializer.serialize(tradFiClosePositionRequest, 'TradFiClosePositionRequest'),
         };
 
         const authSettings = ['apiv4'];

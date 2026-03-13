@@ -247,7 +247,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject11': new InlineObject11() // InlineObject11 | 
+  'crossexTransferRequest': new CrossexTransferRequest() // CrossexTransferRequest | 
 };
 api.createCrossexTransfer(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -259,7 +259,7 @@ api.createCrossexTransfer(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject11** | [**InlineObject11**](InlineObject11.md)|  | [optional] 
+ **crossexTransferRequest** | [**CrossexTransferRequest**](CrossexTransferRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -294,7 +294,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject12': new InlineObject12() // InlineObject12 | 
+  'crossexOrderRequest': new CrossexOrderRequest() // CrossexOrderRequest | 
 };
 api.createCrossexOrder(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -306,7 +306,7 @@ api.createCrossexOrder(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject12** | [**InlineObject12**](InlineObject12.md)|  | [optional] 
+ **crossexOrderRequest** | [**CrossexOrderRequest**](CrossexOrderRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -387,7 +387,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.CrossExApi(client);
 const orderId = "orderId_example"; // string | Support Order ID or Text for Modify Order
 const opts = {
-  'inlineObject13': new InlineObject13() // InlineObject13 | 
+  'crossexOrderUpdateRequest': new CrossexOrderUpdateRequest() // CrossexOrderUpdateRequest | 
 };
 api.updateCrossexOrder(orderId, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -400,7 +400,7 @@ api.updateCrossexOrder(orderId, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **string**| Support Order ID or Text for Modify Order | [default to undefined]
- **inlineObject13** | [**InlineObject13**](InlineObject13.md)|  | [optional] 
+ **crossexOrderUpdateRequest** | [**CrossexOrderUpdateRequest**](CrossexOrderUpdateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -480,7 +480,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject14': new InlineObject14() // InlineObject14 | 
+  'crossexConvertQuoteRequest': new CrossexConvertQuoteRequest() // CrossexConvertQuoteRequest | 
 };
 api.createCrossexConvertQuote(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -492,7 +492,7 @@ api.createCrossexConvertQuote(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject14** | [**InlineObject14**](InlineObject14.md)|  | [optional] 
+ **crossexConvertQuoteRequest** | [**CrossexConvertQuoteRequest**](CrossexConvertQuoteRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -527,7 +527,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject15': new InlineObject15() // InlineObject15 | 
+  'crossexConvertOrderRequest': new CrossexConvertOrderRequest() // CrossexConvertOrderRequest | 
 };
 api.createCrossexConvertOrder(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -539,7 +539,7 @@ api.createCrossexConvertOrder(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject15** | [**InlineObject15**](InlineObject15.md)|  | [optional] 
+ **crossexConvertOrderRequest** | [**CrossexConvertOrderRequest**](CrossexConvertOrderRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -621,7 +621,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject16': new InlineObject16() // InlineObject16 | 
+  'crossexAccountUpdateRequest': new CrossexAccountUpdateRequest() // CrossexAccountUpdateRequest | 
 };
 api.updateCrossexAccount(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -633,7 +633,7 @@ api.updateCrossexAccount(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject16** | [**InlineObject16**](InlineObject16.md)|  | [optional] 
+ **crossexAccountUpdateRequest** | [**CrossexAccountUpdateRequest**](CrossexAccountUpdateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -715,7 +715,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject17': new InlineObject17() // InlineObject17 | 
+  'crossexLeverageRequest': new CrossexLeverageRequest() // CrossexLeverageRequest | 
 };
 api.updateCrossexPositionsLeverage(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -727,7 +727,7 @@ api.updateCrossexPositionsLeverage(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject17** | [**InlineObject17**](InlineObject17.md)|  | [optional] 
+ **crossexLeverageRequest** | [**CrossexLeverageRequest**](CrossexLeverageRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -809,7 +809,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject18': new InlineObject18() // InlineObject18 | 
+  'crossexLeverageRequest': new CrossexLeverageRequest() // CrossexLeverageRequest | 
 };
 api.updateCrossexMarginPositionsLeverage(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -821,7 +821,7 @@ api.updateCrossexMarginPositionsLeverage(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject18** | [**InlineObject18**](InlineObject18.md)|  | [optional] 
+ **crossexLeverageRequest** | [**CrossexLeverageRequest**](CrossexLeverageRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -856,7 +856,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'inlineObject19': new InlineObject19() // InlineObject19 | 
+  'crossexClosePositionRequest': new CrossexClosePositionRequest() // CrossexClosePositionRequest | 
 };
 api.closeCrossexPosition(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -868,7 +868,7 @@ api.closeCrossexPosition(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject19** | [**InlineObject19**](InlineObject19.md)|  | [optional] 
+ **crossexClosePositionRequest** | [**CrossexClosePositionRequest**](CrossexClosePositionRequest.md)|  | [optional] 
 
 ### Return type
 

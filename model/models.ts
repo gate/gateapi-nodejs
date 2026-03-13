@@ -65,7 +65,15 @@ export * from './createUserRespData';
 export * from './crossMarginBalance';
 export * from './crossMarginLoan';
 export * from './crossMarginRepayment';
+export * from './crossexAccountUpdateRequest';
+export * from './crossexClosePositionRequest';
+export * from './crossexConvertOrderRequest';
+export * from './crossexConvertQuoteRequest';
+export * from './crossexLeverageRequest';
+export * from './crossexOrderRequest';
+export * from './crossexOrderUpdateRequest';
 export * from './crossexRuleRiskLimitsTiers';
+export * from './crossexTransferRequest';
 export * from './currency';
 export * from './currency2';
 export * from './currencyChain';
@@ -140,24 +148,6 @@ export * from './getTransactionDetailsRequest';
 export * from './indexConstituent';
 export * from './inlineObject';
 export * from './inlineObject1';
-export * from './inlineObject10';
-export * from './inlineObject11';
-export * from './inlineObject12';
-export * from './inlineObject13';
-export * from './inlineObject14';
-export * from './inlineObject15';
-export * from './inlineObject16';
-export * from './inlineObject17';
-export * from './inlineObject18';
-export * from './inlineObject19';
-export * from './inlineObject2';
-export * from './inlineObject3';
-export * from './inlineObject4';
-export * from './inlineObject5';
-export * from './inlineObject6';
-export * from './inlineObject7';
-export * from './inlineObject8';
-export * from './inlineObject9';
 export * from './inlineResponse200';
 export * from './inlineResponse2001';
 export * from './inlineResponse20010';
@@ -314,6 +304,10 @@ export * from './orderListStructList';
 export * from './orderPatch';
 export * from './orderResp';
 export * from './orderResponse';
+export * from './otcMarkOrderPaidRequest';
+export * from './otcOrderRequest';
+export * from './otcQuoteRequest';
+export * from './otcStableCoinOrderRequest';
 export * from './partnerCommissionHistory';
 export * from './partnerSub';
 export * from './partnerSubList';
@@ -390,6 +384,11 @@ export * from './ticker2';
 export * from './ticker2Data';
 export * from './tokens';
 export * from './totalBalance';
+export * from './tradFiClosePositionRequest';
+export * from './tradFiOrderRequest';
+export * from './tradFiOrderUpdateRequest';
+export * from './tradFiPositionUpdateRequest';
+export * from './tradFiTransactionRequest';
 export * from './trade';
 export * from './tradeFee';
 export * from './trailChangeLog';
@@ -524,7 +523,15 @@ import { CreateUserRespData } from './createUserRespData';
 import { CrossMarginBalance } from './crossMarginBalance';
 import { CrossMarginLoan } from './crossMarginLoan';
 import { CrossMarginRepayment } from './crossMarginRepayment';
+import { CrossexAccountUpdateRequest } from './crossexAccountUpdateRequest';
+import { CrossexClosePositionRequest } from './crossexClosePositionRequest';
+import { CrossexConvertOrderRequest } from './crossexConvertOrderRequest';
+import { CrossexConvertQuoteRequest } from './crossexConvertQuoteRequest';
+import { CrossexLeverageRequest } from './crossexLeverageRequest';
+import { CrossexOrderRequest } from './crossexOrderRequest';
+import { CrossexOrderUpdateRequest } from './crossexOrderUpdateRequest';
 import { CrossexRuleRiskLimitsTiers } from './crossexRuleRiskLimitsTiers';
+import { CrossexTransferRequest } from './crossexTransferRequest';
 import { Currency } from './currency';
 import { Currency2 } from './currency2';
 import { CurrencyChain } from './currencyChain';
@@ -599,24 +606,6 @@ import { GetTransactionDetailsRequest } from './getTransactionDetailsRequest';
 import { IndexConstituent } from './indexConstituent';
 import { InlineObject } from './inlineObject';
 import { InlineObject1 } from './inlineObject1';
-import { InlineObject10 } from './inlineObject10';
-import { InlineObject11 } from './inlineObject11';
-import { InlineObject12 } from './inlineObject12';
-import { InlineObject13 } from './inlineObject13';
-import { InlineObject14 } from './inlineObject14';
-import { InlineObject15 } from './inlineObject15';
-import { InlineObject16 } from './inlineObject16';
-import { InlineObject17 } from './inlineObject17';
-import { InlineObject18 } from './inlineObject18';
-import { InlineObject19 } from './inlineObject19';
-import { InlineObject2 } from './inlineObject2';
-import { InlineObject3 } from './inlineObject3';
-import { InlineObject4 } from './inlineObject4';
-import { InlineObject5 } from './inlineObject5';
-import { InlineObject6 } from './inlineObject6';
-import { InlineObject7 } from './inlineObject7';
-import { InlineObject8 } from './inlineObject8';
-import { InlineObject9 } from './inlineObject9';
 import { InlineResponse200 } from './inlineResponse200';
 import { InlineResponse2001 } from './inlineResponse2001';
 import { InlineResponse20010 } from './inlineResponse20010';
@@ -773,6 +762,10 @@ import { OrderListStructList } from './orderListStructList';
 import { OrderPatch } from './orderPatch';
 import { OrderResp } from './orderResp';
 import { OrderResponse } from './orderResponse';
+import { OtcMarkOrderPaidRequest } from './otcMarkOrderPaidRequest';
+import { OtcOrderRequest } from './otcOrderRequest';
+import { OtcQuoteRequest } from './otcQuoteRequest';
+import { OtcStableCoinOrderRequest } from './otcStableCoinOrderRequest';
 import { PartnerCommissionHistory } from './partnerCommissionHistory';
 import { PartnerSub } from './partnerSub';
 import { PartnerSubList } from './partnerSubList';
@@ -849,6 +842,11 @@ import { Ticker2 } from './ticker2';
 import { Ticker2Data } from './ticker2Data';
 import { Tokens } from './tokens';
 import { TotalBalance } from './totalBalance';
+import { TradFiClosePositionRequest } from './tradFiClosePositionRequest';
+import { TradFiOrderRequest } from './tradFiOrderRequest';
+import { TradFiOrderUpdateRequest } from './tradFiOrderUpdateRequest';
+import { TradFiPositionUpdateRequest } from './tradFiPositionUpdateRequest';
+import { TradFiTransactionRequest } from './tradFiTransactionRequest';
 import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
 import { TrailChangeLog } from './trailChangeLog';
@@ -935,6 +933,11 @@ let enumsMap: { [index: string]: any } = {
     'CreateUniLend.Type': CreateUniLend.Type,
     'CreateUniLoan.Type': CreateUniLoan.Type,
     'CrossMarginLoan.Status': CrossMarginLoan.Status,
+    'CrossexOrderRequest.Side': CrossexOrderRequest.Side,
+    'CrossexOrderRequest.Type': CrossexOrderRequest.Type,
+    'CrossexOrderRequest.TimeInForce': CrossexOrderRequest.TimeInForce,
+    'CrossexOrderRequest.ReduceOnly': CrossexOrderRequest.ReduceOnly,
+    'CrossexOrderRequest.PositionSide': CrossexOrderRequest.PositionSide,
     'CurrencyPair.TradeStatus': CurrencyPair.TradeStatus,
     'DeliveryAccountBook.Type': DeliveryAccountBook.Type,
     'DeliveryContract.Cycle': DeliveryContract.Cycle,
@@ -964,15 +967,6 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
     'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
-    'InlineObject1.Type': InlineObject1.Type,
-    'InlineObject12.Side': InlineObject12.Side,
-    'InlineObject12.Type': InlineObject12.Type,
-    'InlineObject12.TimeInForce': InlineObject12.TimeInForce,
-    'InlineObject12.ReduceOnly': InlineObject12.ReduceOnly,
-    'InlineObject12.PositionSide': InlineObject12.PositionSide,
-    'InlineObject2.PriceType': InlineObject2.PriceType,
-    'InlineObject2.Side': InlineObject2.Side,
-    'InlineObject5.CloseType': InlineObject5.CloseType,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
     'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
     'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
@@ -1008,6 +1002,10 @@ let enumsMap: { [index: string]: any } = {
     'SpotPricePutOrder.TimeInForce': SpotPricePutOrder.TimeInForce,
     'SpotPriceTrigger.Rule': SpotPriceTrigger.Rule,
     'StopAllTrailOrders.RelatedPosition': StopAllTrailOrders.RelatedPosition,
+    'TradFiClosePositionRequest.CloseType': TradFiClosePositionRequest.CloseType,
+    'TradFiOrderRequest.PriceType': TradFiOrderRequest.PriceType,
+    'TradFiOrderRequest.Side': TradFiOrderRequest.Side,
+    'TradFiTransactionRequest.Type': TradFiTransactionRequest.Type,
     'Trade.Side': Trade.Side,
     'Trade.Role': Trade.Role,
     'TrailChangeLog.PriceType': TrailChangeLog.PriceType,
@@ -1089,7 +1087,15 @@ let typeMap: { [index: string]: any } = {
     CrossMarginBalance: CrossMarginBalance,
     CrossMarginLoan: CrossMarginLoan,
     CrossMarginRepayment: CrossMarginRepayment,
+    CrossexAccountUpdateRequest: CrossexAccountUpdateRequest,
+    CrossexClosePositionRequest: CrossexClosePositionRequest,
+    CrossexConvertOrderRequest: CrossexConvertOrderRequest,
+    CrossexConvertQuoteRequest: CrossexConvertQuoteRequest,
+    CrossexLeverageRequest: CrossexLeverageRequest,
+    CrossexOrderRequest: CrossexOrderRequest,
+    CrossexOrderUpdateRequest: CrossexOrderUpdateRequest,
     CrossexRuleRiskLimitsTiers: CrossexRuleRiskLimitsTiers,
+    CrossexTransferRequest: CrossexTransferRequest,
     Currency: Currency,
     Currency2: Currency2,
     CurrencyChain: CurrencyChain,
@@ -1164,24 +1170,6 @@ let typeMap: { [index: string]: any } = {
     IndexConstituent: IndexConstituent,
     InlineObject: InlineObject,
     InlineObject1: InlineObject1,
-    InlineObject10: InlineObject10,
-    InlineObject11: InlineObject11,
-    InlineObject12: InlineObject12,
-    InlineObject13: InlineObject13,
-    InlineObject14: InlineObject14,
-    InlineObject15: InlineObject15,
-    InlineObject16: InlineObject16,
-    InlineObject17: InlineObject17,
-    InlineObject18: InlineObject18,
-    InlineObject19: InlineObject19,
-    InlineObject2: InlineObject2,
-    InlineObject3: InlineObject3,
-    InlineObject4: InlineObject4,
-    InlineObject5: InlineObject5,
-    InlineObject6: InlineObject6,
-    InlineObject7: InlineObject7,
-    InlineObject8: InlineObject8,
-    InlineObject9: InlineObject9,
     InlineResponse200: InlineResponse200,
     InlineResponse2001: InlineResponse2001,
     InlineResponse20010: InlineResponse20010,
@@ -1338,6 +1326,10 @@ let typeMap: { [index: string]: any } = {
     OrderPatch: OrderPatch,
     OrderResp: OrderResp,
     OrderResponse: OrderResponse,
+    OtcMarkOrderPaidRequest: OtcMarkOrderPaidRequest,
+    OtcOrderRequest: OtcOrderRequest,
+    OtcQuoteRequest: OtcQuoteRequest,
+    OtcStableCoinOrderRequest: OtcStableCoinOrderRequest,
     PartnerCommissionHistory: PartnerCommissionHistory,
     PartnerSub: PartnerSub,
     PartnerSubList: PartnerSubList,
@@ -1414,6 +1406,11 @@ let typeMap: { [index: string]: any } = {
     Ticker2Data: Ticker2Data,
     Tokens: Tokens,
     TotalBalance: TotalBalance,
+    TradFiClosePositionRequest: TradFiClosePositionRequest,
+    TradFiOrderRequest: TradFiOrderRequest,
+    TradFiOrderUpdateRequest: TradFiOrderUpdateRequest,
+    TradFiPositionUpdateRequest: TradFiPositionUpdateRequest,
+    TradFiTransactionRequest: TradFiTransactionRequest,
     Trade: Trade,
     TradeFee: TradeFee,
     TrailChangeLog: TrailChangeLog,

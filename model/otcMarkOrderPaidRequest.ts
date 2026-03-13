@@ -10,34 +10,25 @@
  */
 
 /**
- * Order Modification Request Body
+ * 法币订单设置已付款请求体
  */
-export class InlineObject1 {
+export class OtcMarkOrderPaidRequest {
     /**
-     * Order Price
+     * Order ID
      */
-    'price': string;
-    /**
-     * Trade amount
-     */
-    'size': number;
+    'orderId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'price',
-            baseName: 'price',
+            name: 'orderId',
+            baseName: 'order_id',
             type: 'string',
-        },
-        {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject1.attributeTypeMap;
+        return OtcMarkOrderPaidRequest.attributeTypeMap;
     }
 }

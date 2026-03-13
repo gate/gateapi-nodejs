@@ -12,32 +12,32 @@
 /**
  * Order Modification Request Body
  */
-export class InlineObject1 {
+export class CrossexOrderUpdateRequest {
     /**
-     * Order Price
+     * modify amount
      */
-    'price': string;
+    'qty'?: string;
     /**
-     * Trade amount
+     * modify price
      */
-    'size': number;
+    'price'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
+            name: 'qty',
+            baseName: 'qty',
+            type: 'string',
+        },
+        {
             name: 'price',
             baseName: 'price',
             type: 'string',
         },
-        {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
-        },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject1.attributeTypeMap;
+        return CrossexOrderUpdateRequest.attributeTypeMap;
     }
 }

@@ -10,34 +10,34 @@
  */
 
 /**
- * Order Modification Request Body
+ * 更改杠杆请求体（合约/杠杆通用）
  */
-export class InlineObject1 {
+export class CrossexLeverageRequest {
     /**
-     * Order Price
+     * Currency pair
      */
-    'price': string;
+    'symbol': string;
     /**
-     * Trade amount
+     * leverage
      */
-    'size': number;
+    'leverage': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'price',
-            baseName: 'price',
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject1.attributeTypeMap;
+        return CrossexLeverageRequest.attributeTypeMap;
     }
 }

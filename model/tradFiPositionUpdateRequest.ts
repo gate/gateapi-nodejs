@@ -10,34 +10,34 @@
  */
 
 /**
- * Order Modification Request Body
+ * Modify position take profit/stop loss parameters
  */
-export class InlineObject1 {
+export class TradFiPositionUpdateRequest {
     /**
-     * Order Price
+     * 止盈价格  说明： - 不传 或 传 \"0\"：将清空原有止盈价 - 如不希望清空，请传接口返回的原止盈价
      */
-    'price': string;
+    'priceTp'?: string | null;
     /**
-     * Trade amount
+     * 止损价格  说明： - 不传 或 传 \"0\"：将清空原有止损价 - 如不希望清空，请传接口返回的原止损价
      */
-    'size': number;
+    'priceSl'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'price',
-            baseName: 'price',
+            name: 'priceTp',
+            baseName: 'price_tp',
             type: 'string',
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
+            name: 'priceSl',
+            baseName: 'price_sl',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject1.attributeTypeMap;
+        return TradFiPositionUpdateRequest.attributeTypeMap;
     }
 }
