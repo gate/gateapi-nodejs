@@ -12,13 +12,13 @@
 /* tslint:disable:no-unused-locals */
 import { AccountBookResponse } from '../model/accountBookResponse';
 import { AccountsResponse } from '../model/accountsResponse';
+import { AlphaTicker } from '../model/alphaTicker';
 import { Currency2 } from '../model/currency2';
 import { OrderResponse } from '../model/orderResponse';
 import { PlaceOrderRequest } from '../model/placeOrderRequest';
 import { PlaceOrderResponse } from '../model/placeOrderResponse';
 import { QuoteRequest } from '../model/quoteRequest';
 import { QuoteResponse } from '../model/quoteResponse';
-import { Ticker2 } from '../model/ticker2';
 import { Tokens } from '../model/tokens';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -435,7 +435,7 @@ export class AlphaApi {
         currency?: string;
         limit?: number;
         page?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<Ticker2> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<AlphaTicker> }> {
         const localVarPath = this.client.basePath + '/alpha/tickers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -483,7 +483,7 @@ export class AlphaApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<Ticker2>>(config, 'Array<Ticker2>', authSettings);
+        return this.client.request<Array<AlphaTicker>>(config, 'Array<AlphaTicker>', authSettings);
     }
 
     /**

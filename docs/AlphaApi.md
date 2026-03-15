@@ -350,7 +350,7 @@ No authorization required
 
 ## listAlphaTickers
 
-> Promise<{ response: http.IncomingMessage; body: Array<Ticker2>; }> listAlphaTickers(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<AlphaTicker>; }> listAlphaTickers(opts)
 
 Query currency ticker
 
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<Ticker2>; }> [Ticker2](Ticker2.md)
+Promise<{ response: AxiosResponse; body: Array<AlphaTicker>; }> [AlphaTicker](AlphaTicker.md)
 
 ### Authorization
 

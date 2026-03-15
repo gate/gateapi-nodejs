@@ -9,53 +9,59 @@
  * Do not edit the class manually.
  */
 
-/**
- * Flash Swap Quote Request Body
- */
-export class CrossexConvertQuoteRequest {
+export class AlphaTicker {
     /**
-     * Exchange Type
+     * Currency symbol
      */
-    'exchangeType': string;
+    'currency'?: string;
     /**
-     * Asset Sold
+     * Last trading price
      */
-    'fromCoin': string;
+    'last'?: string;
     /**
-     * Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
+     * 24h price change percentage (negative for decrease, e.g., -7.45)
      */
-    'toCoin': string;
+    'change'?: string;
     /**
-     * Amount to sell
+     * 24h Trading Volume (USDT)
      */
-    'fromAmount': string;
+    'volume'?: string;
+    /**
+     * Current Token Market Cap
+     */
+    'marketCap'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'exchangeType',
-            baseName: 'exchange_type',
+            name: 'currency',
+            baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'fromCoin',
-            baseName: 'from_coin',
+            name: 'last',
+            baseName: 'last',
             type: 'string',
         },
         {
-            name: 'toCoin',
-            baseName: 'to_coin',
+            name: 'change',
+            baseName: 'change',
             type: 'string',
         },
         {
-            name: 'fromAmount',
-            baseName: 'from_amount',
+            name: 'volume',
+            baseName: 'volume',
+            type: 'string',
+        },
+        {
+            name: 'marketCap',
+            baseName: 'market_cap',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return CrossexConvertQuoteRequest.attributeTypeMap;
+        return AlphaTicker.attributeTypeMap;
     }
 }

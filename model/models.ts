@@ -13,6 +13,7 @@ export * from './agencyCommission';
 export * from './agencyCommissionHistory';
 export * from './agencyTransaction';
 export * from './agencyTransactionHistory';
+export * from './alphaTicker';
 export * from './autoRepaySetting';
 export * from './awardListStruct';
 export * from './awardListStructList';
@@ -471,6 +472,7 @@ import { AgencyCommission } from './agencyCommission';
 import { AgencyCommissionHistory } from './agencyCommissionHistory';
 import { AgencyTransaction } from './agencyTransaction';
 import { AgencyTransactionHistory } from './agencyTransactionHistory';
+import { AlphaTicker } from './alphaTicker';
 import { AutoRepaySetting } from './autoRepaySetting';
 import { AwardListStruct } from './awardListStruct';
 import { AwardListStructList } from './awardListStructList';
@@ -1035,6 +1037,7 @@ let typeMap: { [index: string]: any } = {
     AgencyCommissionHistory: AgencyCommissionHistory,
     AgencyTransaction: AgencyTransaction,
     AgencyTransactionHistory: AgencyTransactionHistory,
+    AlphaTicker: AlphaTicker,
     AutoRepaySetting: AutoRepaySetting,
     AwardListStruct: AwardListStruct,
     AwardListStructList: AwardListStructList,

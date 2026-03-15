@@ -10,7 +10,7 @@
  */
 
 /**
- * 法币下单请求体
+ * Fiat Order Request Body
  */
 export class OtcOrderRequest {
     /**

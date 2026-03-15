@@ -38,7 +38,7 @@ export class QuoteResponse {
      */
     'estimateGasFeeAmountUsdt'?: string;
     /**
-     * Slippage tolerance (10 means 10% tolerance)
+     * Trading fee
      */
     'orderFee'?: string;
     /**

@@ -14,6 +14,10 @@
  */
 export class InlineObject1 {
     /**
+     * Options contract name
+     */
+    'contract': string;
+    /**
      * Order Price
      */
     'price': string;
@@ -25,6 +29,11 @@ export class InlineObject1 {
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+        {
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
+        },
         {
             name: 'price',
             baseName: 'price',

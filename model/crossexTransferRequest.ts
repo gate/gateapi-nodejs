@@ -10,7 +10,7 @@
  */
 
 /**
- * 资金划转请求体
+ * Fund Transfer Request Body
  */
 export class CrossexTransferRequest {
     /**
