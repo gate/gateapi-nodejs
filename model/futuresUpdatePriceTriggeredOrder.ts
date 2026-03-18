@@ -20,7 +20,7 @@ export class FuturesUpdatePriceTriggeredOrder {
     /**
      * ID of the Pending Take-Profit/Stop-Loss Trigger Order
      */
-    'orderId': number;
+    'orderId': bigint;
     /**
      * Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
      */
@@ -57,7 +57,7 @@ export class FuturesUpdatePriceTriggeredOrder {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'bigint',
         },
         {
             name: 'size',

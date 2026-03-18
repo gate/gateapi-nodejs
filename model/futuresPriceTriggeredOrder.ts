@@ -21,7 +21,7 @@ export class FuturesPriceTriggeredOrder {
     /**
      * Auto order ID
      */
-    'id'?: number;
+    'id'?: bigint;
     /**
      * User ID
      */
@@ -57,7 +57,7 @@ export class FuturesPriceTriggeredOrder {
     /**
      * Corresponding order ID for order take-profit/stop-loss orders
      */
-    'meOrderId'?: number;
+    'meOrderId'?: bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -75,7 +75,7 @@ export class FuturesPriceTriggeredOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'bigint',
         },
         {
             name: 'user',
@@ -120,7 +120,7 @@ export class FuturesPriceTriggeredOrder {
         {
             name: 'meOrderId',
             baseName: 'me_order_id',
-            type: 'number',
+            type: 'bigint',
         },
     ];
 
