@@ -1258,7 +1258,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder>; }> [
 
 ## createPriceTriggeredDeliveryOrder
 
-> Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse; }> createPriceTriggeredDeliveryOrder(settle, futuresPriceTriggeredOrder)
+> Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse1; }> createPriceTriggeredDeliveryOrder(settle, futuresPriceTriggeredOrder)
 
 Create price-triggered order
 
@@ -1290,7 +1290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: TriggerOrderResponse; }> [TriggerOrderResponse](TriggerOrderResponse.md)
+Promise<{ response: AxiosResponse; body: TriggerOrderResponse1; }> [TriggerOrderResponse1](TriggerOrderResponse1.md)
 
 ### Authorization
 

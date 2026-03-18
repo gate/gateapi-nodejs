@@ -9,11 +9,11 @@
  * Do not edit the class manually.
  */
 
-export class TriggerOrderResponse {
+export class TriggerOrderResponse1 {
     /**
      * Auto order ID
      */
-    'id'?: bigint;
+    'id'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -21,11 +21,11 @@ export class TriggerOrderResponse {
         {
             name: 'id',
             baseName: 'id',
-            type: 'bigint',
+            type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return TriggerOrderResponse.attributeTypeMap;
+        return TriggerOrderResponse1.attributeTypeMap;
     }
 }

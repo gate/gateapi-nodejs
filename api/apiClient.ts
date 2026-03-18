@@ -11,10 +11,49 @@
 
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { Authentication, GateApiV4Auth, HttpBasicAuth, HttpBearerAuth, OAuth, ObjectSerializer } from '../model/models';
+import {
+    Authentication,
+    GateApiV4Auth,
+    HttpBasicAuth,
+    HttpBearerAuth,
+    OAuth,
+    ObjectSerializer,
+    serializeRequestData,
+} from '../model/models';
 
 import JSONBig from 'json-bigint';
 import globalAxios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+
+const JSONBigInt = JSONBig({ useNativeBigInt: true });
+
+function isJsonRequestBody(data: any): boolean {
+    if (data === undefined || data === null) {
+        return false;
+    }
+    if (typeof data === 'string' || Buffer.isBuffer(data) || data instanceof ArrayBuffer || ArrayBuffer.isView(data)) {
+        return false;
+    }
+    if (typeof FormData !== 'undefined' && data instanceof FormData) {
+        return false;
+    }
+    if (typeof data.pipe === 'function') {
+        return false;
+    }
+    return true;
+}
+
+function ensureJsonContentType(headers: any): void {
+    if (!headers) {
+        return;
+    }
+    if (typeof headers.setContentType === 'function') {
+        headers.setContentType('application/json');
+        return;
+    }
+    if (headers['Content-Type'] === undefined && headers['content-type'] === undefined) {
+        headers['Content-Type'] = 'application/json';
+    }
+}
 
 export class ApiClient {
     protected _basePath: string = 'https://api.gateio.ws/api/v4';
@@ -36,11 +75,19 @@ export class ApiClient {
         this.axiosInstance.defaults.transformResponse = [
             (data) => {
                 try {
-                    return JSONBig.parse(data);
+                    return JSONBigInt.parse(data);
                 } catch (error) {
                     console.error('Failed to parse JSON:', error);
                     return data;
                 }
+            },
+        ];
+        this.axiosInstance.defaults.transformRequest = [
+            (data, headers) => {
+                if (isJsonRequestBody(data)) {
+                    ensureJsonContentType(headers);
+                }
+                return serializeRequestData(data);
             },
         ];
     }

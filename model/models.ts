@@ -402,6 +402,7 @@ export * from './transfer';
 export * from './transferOrderStatus';
 export * from './transferablesResult';
 export * from './triggerOrderResponse';
+export * from './triggerOrderResponse1';
 export * from './triggerTime';
 export * from './uidPushOrder';
 export * from './uidPushWithdrawal';
@@ -452,6 +453,7 @@ export * from './withdrawStatus';
 export * from './withdrawalRecord';
 export * from './withdrawalsDel';
 
+import JSONBig from 'json-bigint';
 import { AxiosRequestConfig } from 'axios';
 import querystring = require('querystring');
 import crypto = require('crypto');
@@ -861,6 +863,7 @@ import { Transfer } from './transfer';
 import { TransferOrderStatus } from './transferOrderStatus';
 import { TransferablesResult } from './transferablesResult';
 import { TriggerOrderResponse } from './triggerOrderResponse';
+import { TriggerOrderResponse1 } from './triggerOrderResponse1';
 import { TriggerTime } from './triggerTime';
 import { UidPushOrder } from './uidPushOrder';
 import { UidPushWithdrawal } from './uidPushWithdrawal';
@@ -1426,6 +1429,7 @@ let typeMap: { [index: string]: any } = {
     TransferOrderStatus: TransferOrderStatus,
     TransferablesResult: TransferablesResult,
     TriggerOrderResponse: TriggerOrderResponse,
+    TriggerOrderResponse1: TriggerOrderResponse1,
     TriggerTime: TriggerTime,
     UidPushOrder: UidPushOrder,
     UidPushWithdrawal: UidPushWithdrawal,
@@ -1477,6 +1481,15 @@ let typeMap: { [index: string]: any } = {
     WithdrawalsDel: WithdrawalsDel,
 };
 
+const JSONBigInt = JSONBig({ useNativeBigInt: true });
+
+export function serializeRequestData(data: any) {
+    if (data === undefined || data === null || typeof data === 'string') {
+        return data;
+    }
+    return JSONBigInt.stringify(data);
+}
+
 export class ObjectSerializer {
     public static findCorrectType(data: any, expectedType: string) {
         if (data == undefined) {
@@ -1517,9 +1530,6 @@ export class ObjectSerializer {
         if (data == undefined) {
             return data;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
-            if (type.toLowerCase() === 'bigint') {
-                return data.toString();
-            }
             return data;
         } else if (type.lastIndexOf('Array<', 0) === 0) {
             // string.startsWith pre es6
@@ -1685,11 +1695,7 @@ export class GateApiV4Auth implements Authentication {
         const queryString: string = unescape(querystring.stringify(config.params));
         let bodyParam = '';
         if (config.data) {
-            if (typeof config.data == 'string') {
-                bodyParam = config.data;
-            } else {
-                bodyParam = JSON.stringify(config.data);
-            }
+            bodyParam = serializeRequestData(config.data);
         }
         const hashedPayload = crypto.createHash('sha512').update(bodyParam).digest('hex');
         const signatureString = [config.method, resourcePath, queryString, hashedPayload, timestamp].join('\n');

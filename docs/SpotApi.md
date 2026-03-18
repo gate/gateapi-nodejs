@@ -1416,7 +1416,7 @@ Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder>; }> [Spo
 
 ## createSpotPriceTriggeredOrder
 
-> Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse; }> createSpotPriceTriggeredOrder(spotPriceTriggeredOrder)
+> Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse1; }> createSpotPriceTriggeredOrder(spotPriceTriggeredOrder)
 
 Create price-triggered order
 
@@ -1446,7 +1446,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: TriggerOrderResponse; }> [TriggerOrderResponse](TriggerOrderResponse.md)
+Promise<{ response: AxiosResponse; body: TriggerOrderResponse1; }> [TriggerOrderResponse1](TriggerOrderResponse1.md)
 
 ### Authorization
 
