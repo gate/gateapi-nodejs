@@ -122,7 +122,7 @@ export class AccountApi {
      * @param opts Optional parameters
      * @param opts.name Fuzzy search by name
      */
-    public async listSTPGroups(opts: { name?: string }): Promise<{ response: AxiosResponse; body: Array<StpGroup> }> {
+    public async listSTPGroups(opts?: { name?: string }): Promise<{ response: AxiosResponse; body: Array<StpGroup> }> {
         const localVarPath = this.client.basePath + '/account/stp_groups';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

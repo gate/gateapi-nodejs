@@ -13,7 +13,9 @@
 import { AgencyCommissionHistory } from '../model/agencyCommissionHistory';
 import { AgencyTransactionHistory } from '../model/agencyTransactionHistory';
 import { BrokerCommission } from '../model/brokerCommission';
-import { BrokerTransaction } from '../model/brokerTransaction';
+import { BrokerTransactionHistory } from '../model/brokerTransactionHistory';
+import { EligibilityResponse } from '../model/eligibilityResponse';
+import { PartnerApplicationResponse } from '../model/partnerApplicationResponse';
 import { PartnerCommissionHistory } from '../model/partnerCommissionHistory';
 import { PartnerSubList } from '../model/partnerSubList';
 import { PartnerTransactionHistory } from '../model/partnerTransactionHistory';
@@ -49,7 +51,7 @@ export class RebateApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async agencyTransactionHistory(opts: {
+    public async agencyTransactionHistory(opts?: {
         currencyPair?: string;
         userId?: number;
         from?: number;
@@ -150,7 +152,7 @@ export class RebateApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async agencyCommissionsHistory(opts: {
+    public async agencyCommissionsHistory(opts?: {
         currency?: string;
         commissionType?: number;
         userId?: number;
@@ -260,7 +262,7 @@ export class RebateApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async partnerTransactionHistory(opts: {
+    public async partnerTransactionHistory(opts?: {
         currencyPair?: string;
         userId?: number;
         from?: number;
@@ -356,7 +358,7 @@ export class RebateApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async partnerCommissionsHistory(opts: {
+    public async partnerCommissionsHistory(opts?: {
         currency?: string;
         userId?: number;
         from?: number;
@@ -449,7 +451,7 @@ export class RebateApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async partnerSubList(opts: {
+    public async partnerSubList(opts?: {
         userId?: number;
         limit?: number;
         offset?: number;
@@ -514,7 +516,7 @@ export class RebateApi {
      * @param opts.from Start time of the query record. If not specified, defaults to 30 days before the current time
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      */
-    public async rebateBrokerCommissionHistory(opts: {
+    public async rebateBrokerCommissionHistory(opts?: {
         limit?: number;
         offset?: number;
         userId?: number;
@@ -599,13 +601,13 @@ export class RebateApi {
      * @param opts.from Start time of the query record. If not specified, defaults to 30 days before the current time
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      */
-    public async rebateBrokerTransactionHistory(opts: {
+    public async rebateBrokerTransactionHistory(opts?: {
         limit?: number;
         offset?: number;
         userId?: number;
         from?: number;
         to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<BrokerTransaction> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<BrokerTransactionHistory> }> {
         const localVarPath = this.client.basePath + '/rebate/broker/transaction_history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -671,7 +673,11 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<BrokerTransaction>>(config, 'Array<BrokerTransaction>', authSettings);
+        return this.client.request<Array<BrokerTransactionHistory>>(
+            config,
+            'Array<BrokerTransactionHistory>',
+            authSettings,
+        );
     }
 
     /**
@@ -739,5 +745,59 @@ export class RebateApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<UserSubRelation>(config, 'UserSubRelation', authSettings);
+    }
+
+    /**
+     * 获取当前用户最近的合伙人申请记录。  此接口返回用户最近 30 天内的申请记录，包括申请状态、审核信息、申请材料等详细信息。
+     * @summary Get recent partner application records
+     */
+    public async getPartnerApplicationRecent(): Promise<{ response: AxiosResponse; body: PartnerApplicationResponse }> {
+        const localVarPath = this.client.basePath + '/rebate/partner/applications/recent';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<PartnerApplicationResponse>(config, 'PartnerApplicationResponse', authSettings);
+    }
+
+    /**
+     * 检查当前用户是否有资格申请成为合伙人。  此接口会检查多个条件： - 账户状态（是否被封禁） - 是否为子账号 - 是否已经是合伙人 - KYC 认证状态 - 是否在其他代理商的邀请链下 - 是否在黑名单中 - 其他业务规则限制
+     * @summary Check partner application eligibility
+     */
+    public async getPartnerEligibility(): Promise<{ response: AxiosResponse; body: EligibilityResponse }> {
+        const localVarPath = this.client.basePath + '/rebate/partner/eligibility';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<EligibilityResponse>(config, 'EligibilityResponse', authSettings);
     }
 }

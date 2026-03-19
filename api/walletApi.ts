@@ -146,7 +146,7 @@ export class WalletApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async listWithdrawals(opts: {
+    public async listWithdrawals(opts?: {
         currency?: string;
         withdrawId?: string;
         assetClass?: string;
@@ -261,7 +261,7 @@ export class WalletApi {
      * @param opts.limit Maximum number of entries returned in the list, limited to 500 transactions
      * @param opts.offset List offset, starting from 0
      */
-    public async listDeposits(opts: {
+    public async listDeposits(opts?: {
         currency?: string;
         from?: number;
         to?: number;
@@ -380,7 +380,7 @@ export class WalletApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async listSubAccountTransfers(opts: {
+    public async listSubAccountTransfers(opts?: {
         subUid?: string;
         from?: number;
         to?: number;
@@ -542,7 +542,7 @@ export class WalletApi {
      * @param opts.clientOrderId Customer-defined ID to prevent duplicate transfers. Can be a combination of letters (case-sensitive), numbers, hyphens \&#39;-\&#39;, and underscores \&#39;_\&#39;. Can be pure letters or pure numbers with length between 1-64 characters
      * @param opts.txId Transfer operation number, cannot be empty at the same time as client_order_id
      */
-    public async getTransferOrderStatus(opts: {
+    public async getTransferOrderStatus(opts?: {
         clientOrderId?: string;
         txId?: string;
     }): Promise<{ response: AxiosResponse; body: TransferOrderStatus }> {
@@ -593,7 +593,7 @@ export class WalletApi {
      * @param opts Optional parameters
      * @param opts.currency Query by specified currency name
      */
-    public async listWithdrawStatus(opts: {
+    public async listWithdrawStatus(opts?: {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<WithdrawStatus> }> {
         const localVarPath = this.client.basePath + '/wallet/withdraw_status';
@@ -634,7 +634,7 @@ export class WalletApi {
      * @param opts Optional parameters
      * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
      */
-    public async listSubAccountBalances(opts: {
+    public async listSubAccountBalances(opts?: {
         subUid?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_balances';
@@ -675,7 +675,7 @@ export class WalletApi {
      * @param opts Optional parameters
      * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
      */
-    public async listSubAccountMarginBalances(opts: {
+    public async listSubAccountMarginBalances(opts?: {
         subUid?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountMarginBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_margin_balances';
@@ -721,7 +721,7 @@ export class WalletApi {
      * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
      * @param opts.settle Query balance of specified settlement currency
      */
-    public async listSubAccountFuturesBalances(opts: {
+    public async listSubAccountFuturesBalances(opts?: {
         subUid?: string;
         settle?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountFuturesBalance> }> {
@@ -776,7 +776,7 @@ export class WalletApi {
      * @param opts Optional parameters
      * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
      */
-    public async listSubAccountCrossMarginBalances(opts: {
+    public async listSubAccountCrossMarginBalances(opts?: {
         subUid?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountCrossMarginBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_cross_margin_balances';
@@ -826,7 +826,7 @@ export class WalletApi {
      */
     public async listSavedAddress(
         currency: string,
-        opts: { chain?: string; limit?: string; page?: number },
+        opts?: { chain?: string; limit?: string; page?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SavedAddress> }> {
         const localVarPath = this.client.basePath + '/wallet/saved_address';
         let localVarQueryParameters: any = {};
@@ -897,7 +897,7 @@ export class WalletApi {
      * @param opts.currencyPair Specify currency pair to get more accurate fee settings.  This field is optional. Usually fee settings are the same for all currency pairs.
      * @param opts.settle Specify the settlement currency of the contract to get more accurate fee settings.  This field is optional. Generally, the fee settings for all settlement currencies are the same.
      */
-    public async getTradeFee(opts: {
+    public async getTradeFee(opts?: {
         currencyPair?: string;
         settle?: 'BTC' | 'USDT' | 'USD';
     }): Promise<{ response: AxiosResponse; body: TradeFee }> {
@@ -948,7 +948,7 @@ export class WalletApi {
      * @param opts Optional parameters
      * @param opts.currency Target currency type for statistical conversion. Accepts BTC, CNY, USD, and USDT. USDT is the default value
      */
-    public async getTotalBalance(opts: {
+    public async getTotalBalance(opts?: {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: TotalBalance }> {
         const localVarPath = this.client.basePath + '/wallet/total_balance';
@@ -1049,7 +1049,7 @@ export class WalletApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
-    public async listSmallBalanceHistory(opts: {
+    public async listSmallBalanceHistory(opts?: {
         currency?: string;
         page?: number;
         limit?: number;
@@ -1115,7 +1115,7 @@ export class WalletApi {
      * @param opts.offset List offset, starting from 0
      * @param opts.transactionType Order type returned in the list: &#x60;withdraw&#x60;, &#x60;deposit&#x60;. Default is &#x60;withdraw&#x60;.
      */
-    public async listPushOrders(opts: {
+    public async listPushOrders(opts?: {
         id?: number;
         from?: number;
         to?: number;

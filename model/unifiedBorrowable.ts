@@ -9,6 +9,9 @@
  * Do not edit the class manually.
  */
 
+/**
+ * 统一账户最多可借入额度
+ */
 export class UnifiedBorrowable {
     /**
      * Currency detail

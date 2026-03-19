@@ -15,7 +15,6 @@ import { UniLoan } from '../model/uniLoan';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
 import { UnifiedAccount } from '../model/unifiedAccount';
 import { UnifiedBorrowable } from '../model/unifiedBorrowable';
-import { UnifiedBorrowable1 } from '../model/unifiedBorrowable1';
 import { UnifiedCollateralReq } from '../model/unifiedCollateralReq';
 import { UnifiedCollateralRes } from '../model/unifiedCollateralRes';
 import { UnifiedCurrency } from '../model/unifiedCurrency';
@@ -58,7 +57,7 @@ export class UnifiedApi {
      * @param opts.currency Query by specified currency name
      * @param opts.subUid Sub account user ID
      */
-    public async listUnifiedAccounts(opts: {
+    public async listUnifiedAccounts(opts?: {
         currency?: string;
         subUid?: string;
     }): Promise<{ response: AxiosResponse; body: UnifiedAccount }> {
@@ -236,7 +235,7 @@ export class UnifiedApi {
      */
     public async getUnifiedBorrowableList(
         currencies: Array<string>,
-    ): Promise<{ response: AxiosResponse; body: Array<UnifiedBorrowable1> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<UnifiedBorrowable> }> {
         const localVarPath = this.client.basePath + '/unified/batch_borrowable';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -270,7 +269,7 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<UnifiedBorrowable1>>(config, 'Array<UnifiedBorrowable1>', authSettings);
+        return this.client.request<Array<UnifiedBorrowable>>(config, 'Array<UnifiedBorrowable>', authSettings);
     }
 
     /**
@@ -282,7 +281,7 @@ export class UnifiedApi {
      * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      * @param opts.type Loan type: platform borrowing - platform, margin borrowing - margin
      */
-    public async listUnifiedLoans(opts: {
+    public async listUnifiedLoans(opts?: {
         currency?: string;
         page?: number;
         limit?: number;
@@ -392,7 +391,7 @@ export class UnifiedApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
-    public async listUnifiedLoanRecords(opts: {
+    public async listUnifiedLoanRecords(opts?: {
         type?: string;
         currency?: string;
         page?: number;
@@ -468,7 +467,7 @@ export class UnifiedApi {
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      * @param opts.type Loan type: platform borrowing - platform, margin borrowing - margin. Defaults to margin if not specified
      */
-    public async listUnifiedLoanInterestRecords(opts: {
+    public async listUnifiedLoanInterestRecords(opts?: {
         currency?: string;
         page?: number;
         limit?: number;
@@ -818,7 +817,7 @@ export class UnifiedApi {
      * @param opts Optional parameters
      * @param opts.currency Currency
      */
-    public async getUserLeverageCurrencySetting(opts: {
+    public async getUserLeverageCurrencySetting(opts?: {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<UnifiedLeverageSetting> }> {
         const localVarPath = this.client.basePath + '/unified/leverage/user_currency_setting';
@@ -894,7 +893,7 @@ export class UnifiedApi {
      * @param opts Optional parameters
      * @param opts.currency Currency
      */
-    public async listUnifiedCurrencies(opts: {
+    public async listUnifiedCurrencies(opts?: {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<UnifiedCurrency> }> {
         const localVarPath = this.client.basePath + '/unified/currencies';
@@ -940,7 +939,7 @@ export class UnifiedApi {
      */
     public async getHistoryLoanRate(
         currency: string,
-        opts: { tier?: string; page?: number; limit?: number },
+        opts?: { tier?: string; page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: UnifiedHistoryLoanRate }> {
         const localVarPath = this.client.basePath + '/unified/history_loan_rate';
         let localVarQueryParameters: any = {};

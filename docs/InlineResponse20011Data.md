@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pn** | **number** |  | [default to undefined]
-**ps** | **number** |  | [default to undefined]
-**totalPn** | **number** |  | [default to undefined]
-**count** | **number** |  | [default to undefined]
-**list** | [**Array&lt;InlineResponse20011DataList&gt;**](InlineResponse20011DataList.md) |  | [default to undefined]
+**iconUrl** | **string** | Activity entry icon URL (light mode) | [default to undefined]
+**iconUrlDark** | **string** | Activity entry icon URL (dark mode) | [default to undefined]
+**sourceType** | **string** | Source type, e.g., activity for campaign | [default to undefined]
+**title** | **string** | Activity entry title | [default to undefined]
+**urlType** | **string** | Redirect link type, e.g., h5 for H5 page | [default to undefined]
+**url** | **string** | Activity entry redirect URL | [default to undefined]
 

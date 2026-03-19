@@ -44,7 +44,7 @@ export class MarginApi {
      * @param opts Optional parameters
      * @param opts.currencyPair Currency pair
      */
-    public async listMarginAccounts(opts: {
+    public async listMarginAccounts(opts?: {
         currencyPair?: string;
     }): Promise<{ response: AxiosResponse; body: Array<MarginAccount> }> {
         const localVarPath = this.client.basePath + '/margin/accounts';
@@ -91,7 +91,7 @@ export class MarginApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in a single list
      */
-    public async listMarginAccountBook(opts: {
+    public async listMarginAccountBook(opts?: {
         currency?: string;
         currencyPair?: string;
         type?: string;
@@ -192,7 +192,7 @@ export class MarginApi {
      * @param opts Optional parameters
      * @param opts.currency Query by specified currency name
      */
-    public async listFundingAccounts(opts: {
+    public async listFundingAccounts(opts?: {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<FundingAccount> }> {
         const localVarPath = this.client.basePath + '/margin/funding_accounts';
@@ -303,7 +303,7 @@ export class MarginApi {
      */
     public async getMarginTransferable(
         currency: string,
-        opts: { currencyPair?: string },
+        opts?: { currencyPair?: string },
     ): Promise<{ response: AxiosResponse; body: MarginTransferable }> {
         const localVarPath = this.client.basePath + '/margin/transferable';
         let localVarQueryParameters: any = {};
@@ -470,7 +470,7 @@ export class MarginApi {
      * @param opts Optional parameters
      * @param opts.currencyPair Currency pair
      */
-    public async listMarginUserAccount(opts: {
+    public async listMarginUserAccount(opts?: {
         currencyPair?: string;
     }): Promise<{ response: AxiosResponse; body: Array<MarginAccount> }> {
         const localVarPath = this.client.basePath + '/margin/user/account';
@@ -517,7 +517,7 @@ export class MarginApi {
      */
     public async listCrossMarginLoans(
         status: number,
-        opts: { currency?: string; limit?: number; offset?: number; reverse?: boolean },
+        opts?: { currency?: string; limit?: number; offset?: number; reverse?: boolean },
     ): Promise<{ response: AxiosResponse; body: Array<CrossMarginLoan> }> {
         const localVarPath = this.client.basePath + '/margin/cross/loans';
         let localVarQueryParameters: any = {};
@@ -600,7 +600,7 @@ export class MarginApi {
      * @param opts.offset List offset, starting from 0
      * @param opts.reverse Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results
      */
-    public async listCrossMarginRepayments(opts: {
+    public async listCrossMarginRepayments(opts?: {
         currency?: string;
         loanId?: string;
         limit?: number;

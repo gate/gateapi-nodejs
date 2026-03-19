@@ -9,18 +9,45 @@
  * Do not edit the class manually.
  */
 
-import { TrailOrder } from './trailOrder';
+import { InlineResponse2001Data } from './inlineResponse2001Data';
 
 export class InlineResponse2001 {
-    'orders'?: Array<TrailOrder>;
+    /**
+     * Return code, 0 means success
+     */
+    'code': number;
+    /**
+     * Response message
+     */
+    'message': string;
+    'data': InlineResponse2001Data;
+    /**
+     * Response timestamp (in seconds)
+     */
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'orders',
-            baseName: 'orders',
-            type: 'Array<TrailOrder>',
+            name: 'code',
+            baseName: 'code',
+            type: 'number',
+        },
+        {
+            name: 'message',
+            baseName: 'message',
+            type: 'string',
+        },
+        {
+            name: 'data',
+            baseName: 'data',
+            type: 'InlineResponse2001Data',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

@@ -12,8 +12,8 @@
 /* tslint:disable:no-unused-locals */
 import { AccountBookResponse } from '../model/accountBookResponse';
 import { AccountsResponse } from '../model/accountsResponse';
+import { AlphaCurrency } from '../model/alphaCurrency';
 import { AlphaTicker } from '../model/alphaTicker';
-import { Currency2 } from '../model/currency2';
 import { OrderResponse } from '../model/orderResponse';
 import { PlaceOrderRequest } from '../model/placeOrderRequest';
 import { PlaceOrderResponse } from '../model/placeOrderResponse';
@@ -77,7 +77,7 @@ export class AlphaApi {
      */
     public async listAlphaAccountBook(
         from: number,
-        opts: { to?: number; page?: number; limit?: number },
+        opts?: { to?: number; page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<AccountBookResponse> }> {
         const localVarPath = this.client.basePath + '/alpha/account_book';
         let localVarQueryParameters: any = {};
@@ -189,7 +189,7 @@ export class AlphaApi {
      * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      * @param opts.page Page number
      */
-    public async listAlphaOrder(opts: {
+    public async listAlphaOrder(opts?: {
         currency?: string;
         side?: string;
         status?: number;
@@ -368,11 +368,11 @@ export class AlphaApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.page Page number
      */
-    public async listAlphaCurrencies(opts: {
+    public async listAlphaCurrencies(opts?: {
         currency?: string;
         limit?: number;
         page?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<Currency2> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<AlphaCurrency> }> {
         const localVarPath = this.client.basePath + '/alpha/currencies';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -420,7 +420,7 @@ export class AlphaApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<Currency2>>(config, 'Array<Currency2>', authSettings);
+        return this.client.request<Array<AlphaCurrency>>(config, 'Array<AlphaCurrency>', authSettings);
     }
 
     /**
@@ -431,7 +431,7 @@ export class AlphaApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.page Page number
      */
-    public async listAlphaTickers(opts: {
+    public async listAlphaTickers(opts?: {
         currency?: string;
         limit?: number;
         page?: number;
@@ -495,7 +495,7 @@ export class AlphaApi {
      * @param opts.address Query Token List by Contract Address
      * @param opts.page Page number
      */
-    public async listAlphaTokens(opts: {
+    public async listAlphaTokens(opts?: {
         chain?: string;
         launchPlatform?: string;
         address?: string;

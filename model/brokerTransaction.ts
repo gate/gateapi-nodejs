@@ -9,30 +9,99 @@
  * Do not edit the class manually.
  */
 
-import { BrokerTransaction1 } from './brokerTransaction1';
+import { BrokerCommissionSubBrokerInfo } from './brokerCommissionSubBrokerInfo';
 
 export class BrokerTransaction {
     /**
-     * Total
+     * Transaction Time. (unix timestamp)
      */
-    'total'?: number;
+    'transactionTime'?: number;
     /**
-     * List of transaction history
+     * User ID
      */
-    'list'?: Array<BrokerTransaction1>;
+    'userId'?: number;
+    /**
+     * Group name
+     */
+    'groupName'?: string;
+    /**
+     * Fee amount (USDT)
+     */
+    'fee'?: string;
+    /**
+     * Currency pair
+     */
+    'currencyPair'?: string;
+    /**
+     * Transaction amount
+     */
+    'amount'?: string;
+    /**
+     * Fee currency
+     */
+    'feeAsset'?: string;
+    /**
+     * Commission transaction type: Spot, Futures, Options, Alpha、TradFi
+     */
+    'source'?: string;
+    'subBrokerInfo'?: BrokerCommissionSubBrokerInfo;
+    /**
+     * Alpha contract address
+     */
+    'alphaContractAddr'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'total',
-            baseName: 'total',
+            name: 'transactionTime',
+            baseName: 'transaction_time',
             type: 'number',
         },
         {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<BrokerTransaction1>',
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'number',
+        },
+        {
+            name: 'groupName',
+            baseName: 'group_name',
+            type: 'string',
+        },
+        {
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
+        },
+        {
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
+        },
+        {
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+        {
+            name: 'feeAsset',
+            baseName: 'fee_asset',
+            type: 'string',
+        },
+        {
+            name: 'source',
+            baseName: 'source',
+            type: 'string',
+        },
+        {
+            name: 'subBrokerInfo',
+            baseName: 'sub_broker_info',
+            type: 'BrokerCommissionSubBrokerInfo',
+        },
+        {
+            name: 'alphaContractAddr',
+            baseName: 'alpha_contract_addr',
+            type: 'string',
         },
     ];
 

@@ -52,7 +52,7 @@ export class MultiCollateralLoanApi {
      * @param opts.sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio
      * @param opts.orderType Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
      */
-    public async listMultiCollateralOrders(opts: {
+    public async listMultiCollateralOrders(opts?: {
         page?: number;
         limit?: number;
         sort?: string;
@@ -210,7 +210,7 @@ export class MultiCollateralLoanApi {
      */
     public async listMultiRepayRecords(
         type: string,
-        opts: { borrowCurrency?: string; page?: number; limit?: number; from?: number; to?: number },
+        opts?: { borrowCurrency?: string; page?: number; limit?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<MultiRepayRecord> }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/repay';
         let localVarQueryParameters: any = {};
@@ -340,7 +340,7 @@ export class MultiCollateralLoanApi {
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      * @param opts.collateralCurrency Collateral currency
      */
-    public async listMultiCollateralRecords(opts: {
+    public async listMultiCollateralRecords(opts?: {
         page?: number;
         limit?: number;
         from?: number;
@@ -599,7 +599,7 @@ export class MultiCollateralLoanApi {
      */
     public async getMultiCollateralCurrentRate(
         currencies: Array<string>,
-        opts: { vipLevel?: string },
+        opts?: { vipLevel?: string },
     ): Promise<{ response: AxiosResponse; body: Array<CollateralCurrentRate> }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/current_rate';
         let localVarQueryParameters: any = {};

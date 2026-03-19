@@ -11,11 +11,11 @@
 
 /* tslint:disable:no-unused-locals */
 import { CreateUniLend } from '../model/createUniLend';
-import { InlineResponse2004 } from '../model/inlineResponse2004';
-import { InlineResponse2005 } from '../model/inlineResponse2005';
 import { PatchUniLend } from '../model/patchUniLend';
+import { UniChartPoint } from '../model/uniChartPoint';
 import { UniCurrency } from '../model/uniCurrency';
 import { UniCurrencyInterest } from '../model/uniCurrencyInterest';
+import { UniEstimatedRate } from '../model/uniEstimatedRate';
 import { UniInterestRecord } from '../model/uniInterestRecord';
 import { UniLend } from '../model/uniLend';
 import { UniLendInterest } from '../model/uniLendInterest';
@@ -109,7 +109,7 @@ export class EarnUniApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
-    public async listUserUniLends(opts: {
+    public async listUserUniLends(opts?: {
         currency?: string;
         page?: number;
         limit?: number;
@@ -229,7 +229,7 @@ export class EarnUniApi {
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.type Operation type: lend - Lend, redeem - Redeem
      */
-    public async listUniLendRecords(opts: {
+    public async listUniLendRecords(opts?: {
         currency?: string;
         page?: number;
         limit?: number;
@@ -359,7 +359,7 @@ export class EarnUniApi {
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
-    public async listUniInterestRecords(opts: {
+    public async listUniInterestRecords(opts?: {
         currency?: string;
         page?: number;
         limit?: number;
@@ -485,7 +485,7 @@ export class EarnUniApi {
         from: number,
         to: number,
         asset: string,
-    ): Promise<{ response: AxiosResponse; body: Array<InlineResponse2004> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<UniChartPoint> }> {
         const localVarPath = this.client.basePath + '/earn/uni/chart';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -541,14 +541,14 @@ export class EarnUniApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse2004>>(config, 'Array<InlineResponse2004>', authSettings);
+        return this.client.request<Array<UniChartPoint>>(config, 'Array<UniChartPoint>', authSettings);
     }
 
     /**
      *
      * @summary Currency estimated annualized interest rate
      */
-    public async listUniRate(): Promise<{ response: AxiosResponse; body: Array<InlineResponse2005> }> {
+    public async listUniRate(): Promise<{ response: AxiosResponse; body: Array<UniEstimatedRate> }> {
         const localVarPath = this.client.basePath + '/earn/uni/rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -568,6 +568,6 @@ export class EarnUniApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse2005>>(config, 'Array<InlineResponse2005>', authSettings);
+        return this.client.request<Array<UniEstimatedRate>>(config, 'Array<UniEstimatedRate>', authSettings);
     }
 }

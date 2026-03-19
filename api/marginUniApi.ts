@@ -153,7 +153,7 @@ export class MarginUniApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
-    public async listUniLoans(opts: {
+    public async listUniLoans(opts?: {
         currencyPair?: string;
         currency?: string;
         page?: number;
@@ -255,7 +255,7 @@ export class MarginUniApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
-    public async listUniLoanRecords(opts: {
+    public async listUniLoanRecords(opts?: {
         type?: 'borrow' | 'repay';
         currency?: string;
         currencyPair?: string;
@@ -341,7 +341,7 @@ export class MarginUniApi {
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
-    public async listUniLoanInterestRecords(opts: {
+    public async listUniLoanInterestRecords(opts?: {
         currencyPair?: string;
         currency?: string;
         page?: number;

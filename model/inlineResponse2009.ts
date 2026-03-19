@@ -12,10 +12,23 @@
 import { InlineResponse2009Data } from './inlineResponse2009Data';
 
 export class InlineResponse2009 {
-    'code': number;
-    'message': string;
-    'data': InlineResponse2009Data;
-    'timestamp': number;
+    /**
+     * Status code, 200 = success
+     */
+    'code'?: number;
+    /**
+     * Status label
+     */
+    'label'?: string;
+    /**
+     * Status message
+     */
+    'message'?: string;
+    /**
+     * Request ID
+     */
+    'requestId'?: string;
+    'data'?: InlineResponse2009Data;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,19 +39,24 @@ export class InlineResponse2009 {
             type: 'number',
         },
         {
+            name: 'label',
+            baseName: 'label',
+            type: 'string',
+        },
+        {
             name: 'message',
             baseName: 'message',
+            type: 'string',
+        },
+        {
+            name: 'requestId',
+            baseName: 'request_id',
             type: 'string',
         },
         {
             name: 'data',
             baseName: 'data',
             type: 'InlineResponse2009Data',
-        },
-        {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
         },
     ];
 

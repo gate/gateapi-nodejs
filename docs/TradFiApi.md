@@ -232,7 +232,7 @@ No authorization required
 
 ## querySymbolTicker
 
-> Promise<{ response: http.IncomingMessage; body: Ticker2; }> querySymbolTicker(symbol)
+> Promise<{ response: http.IncomingMessage; body: TradFiTicker; }> querySymbolTicker(symbol)
 
 Query trading symbol ticker
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Ticker2; }> [Ticker2](Ticker2.md)
+Promise<{ response: AxiosResponse; body: TradFiTicker; }> [TradFiTicker](TradFiTicker.md)
 
 ### Authorization
 

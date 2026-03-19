@@ -301,7 +301,7 @@ Promise<{ response: AxiosResponse; body: OrderResponse; }> [OrderResponse](Order
 
 ## listAlphaCurrencies
 
-> Promise<{ response: http.IncomingMessage; body: Array<Currency2>; }> listAlphaCurrencies(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<AlphaCurrency>; }> listAlphaCurrencies(opts)
 
 Query currency information
 
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<Currency2>; }> [Currency2](Currency2.md)
+Promise<{ response: AxiosResponse; body: Array<AlphaCurrency>; }> [AlphaCurrency](AlphaCurrency.md)
 
 ### Authorization
 

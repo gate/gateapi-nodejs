@@ -142,7 +142,7 @@ export class DeliveryApi {
     public async listDeliveryOrderBook(
         settle: 'usdt',
         contract: string,
-        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
+        opts?: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: DeliveryOrderBook }> {
         const localVarPath =
             this.client.basePath +
@@ -227,7 +227,7 @@ export class DeliveryApi {
     public async listDeliveryTrades(
         settle: 'usdt',
         contract: string,
-        opts: { limit?: number; lastId?: string; from?: number; to?: number },
+        opts?: { limit?: number; lastId?: string; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<DeliveryTrade> }> {
         const localVarPath =
             this.client.basePath +
@@ -321,7 +321,7 @@ export class DeliveryApi {
     public async listDeliveryCandlesticks(
         settle: 'usdt',
         contract: string,
-        opts: {
+        opts?: {
             from?: number;
             to?: number;
             limit?: number;
@@ -434,7 +434,7 @@ export class DeliveryApi {
      */
     public async listDeliveryTickers(
         settle: 'usdt',
-        opts: { contract?: string },
+        opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<DeliveryTicker> }> {
         const localVarPath =
             this.client.basePath +
@@ -484,7 +484,7 @@ export class DeliveryApi {
      */
     public async listDeliveryInsuranceLedger(
         settle: 'usdt',
-        opts: { limit?: number },
+        opts?: { limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<InsuranceRecord> }> {
         const localVarPath =
             this.client.basePath +
@@ -574,7 +574,7 @@ export class DeliveryApi {
      */
     public async listDeliveryAccountBook(
         settle: 'usdt',
-        opts: {
+        opts?: {
             limit?: number;
             from?: number;
             to?: number;
@@ -946,7 +946,7 @@ export class DeliveryApi {
     public async listDeliveryOrders(
         settle: 'usdt',
         status: 'open' | 'finished',
-        opts: { contract?: string; limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
+        opts?: { contract?: string; limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
     ): Promise<{ response: AxiosResponse; body: Array<DeliveryOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1091,7 +1091,7 @@ export class DeliveryApi {
     public async cancelDeliveryOrders(
         settle: 'usdt',
         contract: string,
-        opts: { side?: 'ask' | 'bid' },
+        opts?: { side?: 'ask' | 'bid' },
     ): Promise<{ response: AxiosResponse; body: Array<DeliveryOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1250,7 +1250,7 @@ export class DeliveryApi {
      */
     public async getMyDeliveryTrades(
         settle: 'usdt',
-        opts: {
+        opts?: {
             contract?: string;
             order?: number;
             limit?: number;
@@ -1353,7 +1353,7 @@ export class DeliveryApi {
      */
     public async listDeliveryPositionClose(
         settle: 'usdt',
-        opts: { contract?: string; limit?: number },
+        opts?: { contract?: string; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<DeliveryPositionClose> }> {
         const localVarPath =
             this.client.basePath +
@@ -1414,7 +1414,7 @@ export class DeliveryApi {
      */
     public async listDeliveryLiquidates(
         settle: 'usdt',
-        opts: { contract?: string; limit?: number; at?: number },
+        opts?: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<DeliveryLiquidate> }> {
         const localVarPath =
             this.client.basePath +
@@ -1484,7 +1484,7 @@ export class DeliveryApi {
      */
     public async listDeliverySettlements(
         settle: 'usdt',
-        opts: { contract?: string; limit?: number; at?: number },
+        opts?: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<DeliverySettlement> }> {
         const localVarPath =
             this.client.basePath +
@@ -1554,7 +1554,7 @@ export class DeliveryApi {
      */
     public async listDeliveryRiskLimitTiers(
         settle: 'usdt',
-        opts: { contract?: string; limit?: number; offset?: number },
+        opts?: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<DeliveryLimitRiskTiers> }> {
         const localVarPath =
             this.client.basePath +
@@ -1630,7 +1630,7 @@ export class DeliveryApi {
     public async listPriceTriggeredDeliveryOrders(
         settle: 'usdt',
         status: 'open' | 'finished',
-        opts: { contract?: string; limit?: number; offset?: number },
+        opts?: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
         const localVarPath =
             this.client.basePath +

@@ -11,25 +11,16 @@
 
 export class InlineObject {
     /**
-     * Cross/isolated margin mode. ISOLATED - isolated margin, CROSS - cross margin
+     * Order ID
      */
-    'mode': string;
-    /**
-     * Futures market
-     */
-    'contract': string;
+    'orderId': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'mode',
-            baseName: 'mode',
-            type: 'string',
-        },
-        {
-            name: 'contract',
-            baseName: 'contract',
+            name: 'orderId',
+            baseName: 'order_id',
             type: 'string',
         },
     ];

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **number** | Status code, 0 means success | [optional] [default to undefined]
-**message** | **string** | Response message | [optional] [default to undefined]
-**data** | [**InlineResponse200**](InlineResponse200.md) |  | [optional] [default to undefined]
-**timestamp** | **number** | Response timestamp (milliseconds) | [optional] [default to undefined]
+**code** | **number** | Return code, 0 means success | [default to undefined]
+**message** | **string** | Response message | [default to undefined]
+**data** | [**InlineResponse2002Data**](InlineResponse2002Data.md) |  | [default to undefined]
+**timestamp** | **number** | Response timestamp (in seconds) | [default to undefined]
 

@@ -9,22 +9,22 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse200 } from './inlineResponse200';
+import { InlineResponse2002Data } from './inlineResponse2002Data';
 
 export class InlineResponse2002 {
     /**
-     * Status code, 0 means success
+     * Return code, 0 means success
      */
-    'code'?: number;
+    'code': number;
     /**
      * Response message
      */
-    'message'?: string;
-    'data'?: InlineResponse200;
+    'message': string;
+    'data': InlineResponse2002Data;
     /**
-     * Response timestamp (milliseconds)
+     * Response timestamp (in seconds)
      */
-    'timestamp'?: number;
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
@@ -42,7 +42,7 @@ export class InlineResponse2002 {
         {
             name: 'data',
             baseName: 'data',
-            type: 'InlineResponse200',
+            type: 'InlineResponse2002Data',
         },
         {
             name: 'timestamp',

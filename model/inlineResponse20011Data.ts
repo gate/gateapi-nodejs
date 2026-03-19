@@ -9,42 +9,67 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20011DataList } from './inlineResponse20011DataList';
-
+/**
+ * Activity entry data
+ */
 export class InlineResponse20011Data {
-    'pn': number;
-    'ps': number;
-    'totalPn': number;
-    'count': number;
-    'list': Array<InlineResponse20011DataList>;
+    /**
+     * Activity entry icon URL (light mode)
+     */
+    'iconUrl': string;
+    /**
+     * Activity entry icon URL (dark mode)
+     */
+    'iconUrlDark': string;
+    /**
+     * Source type, e.g., activity for campaign
+     */
+    'sourceType': string;
+    /**
+     * Activity entry title
+     */
+    'title': string;
+    /**
+     * Redirect link type, e.g., h5 for H5 page
+     */
+    'urlType': string;
+    /**
+     * Activity entry redirect URL
+     */
+    'url': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'pn',
-            baseName: 'pn',
-            type: 'number',
+            name: 'iconUrl',
+            baseName: 'icon_url',
+            type: 'string',
         },
         {
-            name: 'ps',
-            baseName: 'ps',
-            type: 'number',
+            name: 'iconUrlDark',
+            baseName: 'icon_url_dark',
+            type: 'string',
         },
         {
-            name: 'totalPn',
-            baseName: 'total_pn',
-            type: 'number',
+            name: 'sourceType',
+            baseName: 'source_type',
+            type: 'string',
         },
         {
-            name: 'count',
-            baseName: 'count',
-            type: 'number',
+            name: 'title',
+            baseName: 'title',
+            type: 'string',
         },
         {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<InlineResponse20011DataList>',
+            name: 'urlType',
+            baseName: 'url_type',
+            type: 'string',
+        },
+        {
+            name: 'url',
+            baseName: 'url',
+            type: 'string',
         },
     ];
 

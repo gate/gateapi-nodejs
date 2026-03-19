@@ -4,6 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | **number** | Total | [optional] [default to undefined]
-**list** | [**Array&lt;BrokerTransaction1&gt;**](BrokerTransaction1.md) | List of transaction history | [optional] [default to undefined]
+**transactionTime** | **number** | Transaction Time. (unix timestamp) | [optional] [default to undefined]
+**userId** | **number** | User ID | [optional] [default to undefined]
+**groupName** | **string** | Group name | [optional] [default to undefined]
+**fee** | **string** | Fee amount (USDT) | [optional] [default to undefined]
+**currencyPair** | **string** | Currency pair | [optional] [default to undefined]
+**amount** | **string** | Transaction amount | [optional] [default to undefined]
+**feeAsset** | **string** | Fee currency | [optional] [default to undefined]
+**source** | **string** | Commission transaction type: Spot, Futures, Options, Alpha、TradFi | [optional] [default to undefined]
+**subBrokerInfo** | [**BrokerCommissionSubBrokerInfo**](BrokerCommissionSubBrokerInfo.md) |  | [optional] [default to undefined]
+**alphaContractAddr** | **string** | Alpha contract address | [optional] [default to undefined]
 

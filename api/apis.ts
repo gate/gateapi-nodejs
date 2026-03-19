@@ -1,8 +1,12 @@
 export * from './apiClient';
+export * from './defaultApi';
+import { DefaultApi } from './defaultApi';
 export * from './accountApi';
 import { AccountApi } from './accountApi';
 export * from './alphaApi';
 import { AlphaApi } from './alphaApi';
+export * from './couponApi';
+import { CouponApi } from './couponApi';
 export * from './crossExApi';
 import { CrossExApi } from './crossExApi';
 export * from './deliveryApi';
@@ -15,6 +19,8 @@ export * from './flashSwapApi';
 import { FlashSwapApi } from './flashSwapApi';
 export * from './futuresApi';
 import { FuturesApi } from './futuresApi';
+export * from './launchApi';
+import { LaunchApi } from './launchApi';
 export * from './marginApi';
 import { MarginApi } from './marginApi';
 export * from './marginUniApi';
@@ -31,6 +37,8 @@ export * from './rebateApi';
 import { RebateApi } from './rebateApi';
 export * from './spotApi';
 import { SpotApi } from './spotApi';
+export * from './squareApi';
+import { SquareApi } from './squareApi';
 export * from './subAccountApi';
 import { SubAccountApi } from './subAccountApi';
 export * from './tradFiApi';
@@ -39,18 +47,23 @@ export * from './unifiedApi';
 import { UnifiedApi } from './unifiedApi';
 export * from './walletApi';
 import { WalletApi } from './walletApi';
+export * from './welfareApi';
+import { WelfareApi } from './welfareApi';
 export * from './withdrawalApi';
 import { WithdrawalApi } from './withdrawalApi';
 
 export const APIS = [
+    DefaultApi,
     AccountApi,
     AlphaApi,
+    CouponApi,
     CrossExApi,
     DeliveryApi,
     EarnApi,
     EarnUniApi,
     FlashSwapApi,
     FuturesApi,
+    LaunchApi,
     MarginApi,
     MarginUniApi,
     MultiCollateralLoanApi,
@@ -59,9 +72,11 @@ export const APIS = [
     P2pApi,
     RebateApi,
     SpotApi,
+    SquareApi,
     SubAccountApi,
     TradFiApi,
     UnifiedApi,
     WalletApi,
+    WelfareApi,
     WithdrawalApi,
 ];

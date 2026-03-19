@@ -11,8 +11,20 @@
 
 /* tslint:disable:no-unused-locals */
 import { FlashSwapCurrencyPair } from '../model/flashSwapCurrencyPair';
+import { FlashSwapErrorResponse } from '../model/flashSwapErrorResponse';
+import { FlashSwapMultiCurrencyManyToOneOrderCreateReq } from '../model/flashSwapMultiCurrencyManyToOneOrderCreateReq';
+import { FlashSwapMultiCurrencyManyToOneOrderCreateResp } from '../model/flashSwapMultiCurrencyManyToOneOrderCreateResp';
+import { FlashSwapMultiCurrencyManyToOneOrderPreviewReq } from '../model/flashSwapMultiCurrencyManyToOneOrderPreviewReq';
+import { FlashSwapMultiCurrencyManyToOneOrderPreviewResp } from '../model/flashSwapMultiCurrencyManyToOneOrderPreviewResp';
+import { FlashSwapMultiCurrencyOneToManyOrderCreateReq } from '../model/flashSwapMultiCurrencyOneToManyOrderCreateReq';
+import { FlashSwapMultiCurrencyOneToManyOrderCreateResp } from '../model/flashSwapMultiCurrencyOneToManyOrderCreateResp';
+import { FlashSwapMultiCurrencyOneToManyOrderPreviewReq } from '../model/flashSwapMultiCurrencyOneToManyOrderPreviewReq';
+import { FlashSwapMultiCurrencyOneToManyOrderPreviewResp } from '../model/flashSwapMultiCurrencyOneToManyOrderPreviewResp';
 import { FlashSwapOrder } from '../model/flashSwapOrder';
+import { FlashSwapOrderCreateReq } from '../model/flashSwapOrderCreateReq';
+import { FlashSwapOrderCreateResp } from '../model/flashSwapOrderCreateResp';
 import { FlashSwapOrderPreview } from '../model/flashSwapOrderPreview';
+import { FlashSwapOrderPreviewResp } from '../model/flashSwapOrderPreviewResp';
 import { FlashSwapOrderRequest } from '../model/flashSwapOrderRequest';
 import { FlashSwapPreviewRequest } from '../model/flashSwapPreviewRequest';
 import { ObjectSerializer } from '../model/models';
@@ -42,7 +54,7 @@ export class FlashSwapApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of items returned. Default: 1000, minimum: 1, maximum: 1000
      */
-    public async listFlashSwapCurrencyPair(opts: {
+    public async listFlashSwapCurrencyPair(opts?: {
         currency?: string;
         page?: number;
         limit?: number;
@@ -108,7 +120,7 @@ export class FlashSwapApi {
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.page Page number
      */
-    public async listFlashSwapOrders(opts: {
+    public async listFlashSwapOrders(opts?: {
         status?: number;
         sellCurrency?: string;
         buyCurrency?: string;
@@ -302,5 +314,314 @@ export class FlashSwapApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<FlashSwapOrderPreview>(config, 'FlashSwapOrderPreview', authSettings);
+    }
+
+    /**
+     * Create a multi-currency to single target currency exchange order
+     * @summary Flash Swap - Multi-currency exchange - Place order (many-to-one)
+     * @param flashSwapMultiCurrencyManyToOneOrderCreateReq
+     */
+    public async createFlashSwapMultiCurrencyManyToOneOrder(
+        flashSwapMultiCurrencyManyToOneOrderCreateReq: FlashSwapMultiCurrencyManyToOneOrderCreateReq,
+    ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyManyToOneOrderCreateResp }> {
+        const localVarPath = this.client.basePath + '/flash-swap/multi-currency/many-to-one/order/create';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'flashSwapMultiCurrencyManyToOneOrderCreateReq' is not null or undefined
+        if (
+            flashSwapMultiCurrencyManyToOneOrderCreateReq === null ||
+            flashSwapMultiCurrencyManyToOneOrderCreateReq === undefined
+        ) {
+            throw new Error(
+                'Required parameter flashSwapMultiCurrencyManyToOneOrderCreateReq was null or undefined when calling createFlashSwapMultiCurrencyManyToOneOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(
+                flashSwapMultiCurrencyManyToOneOrderCreateReq,
+                'FlashSwapMultiCurrencyManyToOneOrderCreateReq',
+            ),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FlashSwapMultiCurrencyManyToOneOrderCreateResp>(
+            config,
+            'FlashSwapMultiCurrencyManyToOneOrderCreateResp',
+            authSettings,
+        );
+    }
+
+    /**
+     * Preview quote for multi-currency to single target currency exchange
+     * @summary Flash Swap - Multi-currency exchange - Preview (many-to-one)
+     * @param flashSwapMultiCurrencyManyToOneOrderPreviewReq
+     */
+    public async previewFlashSwapMultiCurrencyManyToOneOrder(
+        flashSwapMultiCurrencyManyToOneOrderPreviewReq: FlashSwapMultiCurrencyManyToOneOrderPreviewReq,
+    ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyManyToOneOrderPreviewResp }> {
+        const localVarPath = this.client.basePath + '/flash-swap/multi-currency/many-to-one/order/preview';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'flashSwapMultiCurrencyManyToOneOrderPreviewReq' is not null or undefined
+        if (
+            flashSwapMultiCurrencyManyToOneOrderPreviewReq === null ||
+            flashSwapMultiCurrencyManyToOneOrderPreviewReq === undefined
+        ) {
+            throw new Error(
+                'Required parameter flashSwapMultiCurrencyManyToOneOrderPreviewReq was null or undefined when calling previewFlashSwapMultiCurrencyManyToOneOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(
+                flashSwapMultiCurrencyManyToOneOrderPreviewReq,
+                'FlashSwapMultiCurrencyManyToOneOrderPreviewReq',
+            ),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FlashSwapMultiCurrencyManyToOneOrderPreviewResp>(
+            config,
+            'FlashSwapMultiCurrencyManyToOneOrderPreviewResp',
+            authSettings,
+        );
+    }
+
+    /**
+     * Submit a one-to-one flash swap order. A quote_id must be obtained from the preview endpoint first
+     * @summary Flash Swap - Place order (one-to-one)
+     * @param flashSwapOrderCreateReq
+     */
+    public async createFlashSwapOrderV1(
+        flashSwapOrderCreateReq: FlashSwapOrderCreateReq,
+    ): Promise<{ response: AxiosResponse; body: FlashSwapOrderCreateResp }> {
+        const localVarPath = this.client.basePath + '/flash-swap/order/create';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'flashSwapOrderCreateReq' is not null or undefined
+        if (flashSwapOrderCreateReq === null || flashSwapOrderCreateReq === undefined) {
+            throw new Error(
+                'Required parameter flashSwapOrderCreateReq was null or undefined when calling createFlashSwapOrderV1.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(flashSwapOrderCreateReq, 'FlashSwapOrderCreateReq'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FlashSwapOrderCreateResp>(config, 'FlashSwapOrderCreateResp', authSettings);
+    }
+
+    /**
+     * Create a single currency to multiple target currencies exchange order
+     * @summary Flash Swap - Multi-currency exchange - Place order (one-to-many)
+     * @param flashSwapMultiCurrencyOneToManyOrderCreateReq
+     */
+    public async createFlashSwapMultiCurrencyOneToManyOrder(
+        flashSwapMultiCurrencyOneToManyOrderCreateReq: FlashSwapMultiCurrencyOneToManyOrderCreateReq,
+    ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyOneToManyOrderCreateResp }> {
+        const localVarPath = this.client.basePath + '/flash-swap/multi-currency/one-to-many/order/create';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'flashSwapMultiCurrencyOneToManyOrderCreateReq' is not null or undefined
+        if (
+            flashSwapMultiCurrencyOneToManyOrderCreateReq === null ||
+            flashSwapMultiCurrencyOneToManyOrderCreateReq === undefined
+        ) {
+            throw new Error(
+                'Required parameter flashSwapMultiCurrencyOneToManyOrderCreateReq was null or undefined when calling createFlashSwapMultiCurrencyOneToManyOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(
+                flashSwapMultiCurrencyOneToManyOrderCreateReq,
+                'FlashSwapMultiCurrencyOneToManyOrderCreateReq',
+            ),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FlashSwapMultiCurrencyOneToManyOrderCreateResp>(
+            config,
+            'FlashSwapMultiCurrencyOneToManyOrderCreateResp',
+            authSettings,
+        );
+    }
+
+    /**
+     * Preview quote for single currency to multiple target currencies exchange
+     * @summary Flash Swap - Multi-currency exchange - Preview (one-to-many)
+     * @param flashSwapMultiCurrencyOneToManyOrderPreviewReq
+     */
+    public async previewFlashSwapMultiCurrencyOneToManyOrder(
+        flashSwapMultiCurrencyOneToManyOrderPreviewReq: FlashSwapMultiCurrencyOneToManyOrderPreviewReq,
+    ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyOneToManyOrderPreviewResp }> {
+        const localVarPath = this.client.basePath + '/flash-swap/multi-currency/one-to-many/order/preview';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'flashSwapMultiCurrencyOneToManyOrderPreviewReq' is not null or undefined
+        if (
+            flashSwapMultiCurrencyOneToManyOrderPreviewReq === null ||
+            flashSwapMultiCurrencyOneToManyOrderPreviewReq === undefined
+        ) {
+            throw new Error(
+                'Required parameter flashSwapMultiCurrencyOneToManyOrderPreviewReq was null or undefined when calling previewFlashSwapMultiCurrencyOneToManyOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(
+                flashSwapMultiCurrencyOneToManyOrderPreviewReq,
+                'FlashSwapMultiCurrencyOneToManyOrderPreviewReq',
+            ),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FlashSwapMultiCurrencyOneToManyOrderPreviewResp>(
+            config,
+            'FlashSwapMultiCurrencyOneToManyOrderPreviewResp',
+            authSettings,
+        );
+    }
+
+    /**
+     * Get one-to-one flash swap quote. Either sell_amount or buy_amount must be specified
+     * @summary Flash Swap - Preview (one-to-one)
+     * @param sellAsset Currency to sell
+     * @param buyAsset Currency to buy
+     * @param opts Optional parameters
+     * @param opts.sellAmount Sell amount, either this or buy_amount must be specified
+     * @param opts.buyAmount Buy amount, either this or sell_amount must be specified
+     */
+    public async previewFlashSwapOrderV1(
+        sellAsset: string,
+        buyAsset: string,
+        opts?: { sellAmount?: string; buyAmount?: string },
+    ): Promise<{ response: AxiosResponse; body: FlashSwapOrderPreviewResp }> {
+        const localVarPath = this.client.basePath + '/flash-swap/order/preview';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'sellAsset' is not null or undefined
+        if (sellAsset === null || sellAsset === undefined) {
+            throw new Error('Required parameter sellAsset was null or undefined when calling previewFlashSwapOrderV1.');
+        }
+
+        // verify required parameter 'buyAsset' is not null or undefined
+        if (buyAsset === null || buyAsset === undefined) {
+            throw new Error('Required parameter buyAsset was null or undefined when calling previewFlashSwapOrderV1.');
+        }
+
+        opts = opts || {};
+        let sellAssetSerialized = ObjectSerializer.serialize(sellAsset, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(sellAssetSerialized)) {
+            sellAssetSerialized = sellAssetSerialized.join(',');
+        }
+        localVarQueryParameters['sell_asset'] = sellAssetSerialized;
+
+        if (opts.sellAmount !== undefined) {
+            let sellAmountSerialized = ObjectSerializer.serialize(opts.sellAmount, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sellAmountSerialized)) {
+                sellAmountSerialized = sellAmountSerialized.join(',');
+            }
+            localVarQueryParameters['sell_amount'] = sellAmountSerialized;
+        }
+
+        let buyAssetSerialized = ObjectSerializer.serialize(buyAsset, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(buyAssetSerialized)) {
+            buyAssetSerialized = buyAssetSerialized.join(',');
+        }
+        localVarQueryParameters['buy_asset'] = buyAssetSerialized;
+
+        if (opts.buyAmount !== undefined) {
+            let buyAmountSerialized = ObjectSerializer.serialize(opts.buyAmount, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(buyAmountSerialized)) {
+                buyAmountSerialized = buyAmountSerialized.join(',');
+            }
+            localVarQueryParameters['buy_amount'] = buyAmountSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FlashSwapOrderPreviewResp>(config, 'FlashSwapOrderPreviewResp', authSettings);
     }
 }

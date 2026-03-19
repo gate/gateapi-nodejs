@@ -11,40 +11,67 @@
 
 import { InlineResponse20012DataList } from './inlineResponse20012DataList';
 
+/**
+ * Activity list data
+ */
 export class InlineResponse20012Data {
-    'total': number;
-    'pageSize': number;
-    'pageNumber': number;
-    'totalPage': number;
+    /**
+     * Activity list
+     */
     'list': Array<InlineResponse20012DataList>;
+    /**
+     * Current page number
+     */
+    'page': number;
+    /**
+     * Items per page
+     */
+    'pageSize': number;
+    /**
+     * Total pages
+     */
+    'pageCount': number;
+    /**
+     * Total Records
+     */
+    'totalCount': number;
+    /**
+     * Activity Center page link
+     */
+    'url': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'total',
-            baseName: 'total',
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<InlineResponse20012DataList>',
+        },
+        {
+            name: 'page',
+            baseName: 'page',
             type: 'number',
         },
         {
             name: 'pageSize',
-            baseName: 'page_size',
+            baseName: 'pageSize',
             type: 'number',
         },
         {
-            name: 'pageNumber',
-            baseName: 'page_number',
+            name: 'pageCount',
+            baseName: 'pageCount',
             type: 'number',
         },
         {
-            name: 'totalPage',
-            baseName: 'total_page',
+            name: 'totalCount',
+            baseName: 'totalCount',
             type: 'number',
         },
         {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<InlineResponse20012DataList>',
+            name: 'url',
+            baseName: 'url',
+            type: 'string',
         },
     ];
 

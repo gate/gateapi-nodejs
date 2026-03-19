@@ -10,8 +10,8 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { AmendOptionsOrderRequest } from '../model/amendOptionsOrderRequest';
 import { CountdownCancelAllOptionsTask } from '../model/countdownCancelAllOptionsTask';
-import { InlineObject1 } from '../model/inlineObject1';
 import { OptionsAccount } from '../model/optionsAccount';
 import { OptionsAccountBook } from '../model/optionsAccountBook';
 import { OptionsCandlestick } from '../model/optionsCandlestick';
@@ -125,7 +125,7 @@ export class OptionsApi {
      */
     public async listOptionsContracts(
         underlying: string,
-        opts: { expiration?: number },
+        opts?: { expiration?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsContract> }> {
         const localVarPath = this.client.basePath + '/options/contracts';
         let localVarQueryParameters: any = {};
@@ -218,7 +218,7 @@ export class OptionsApi {
      */
     public async listOptionsSettlements(
         underlying: string,
-        opts: { limit?: number; offset?: number; from?: number; to?: number },
+        opts?: { limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsSettlement> }> {
         const localVarPath = this.client.basePath + '/options/settlements';
         let localVarQueryParameters: any = {};
@@ -369,7 +369,7 @@ export class OptionsApi {
      */
     public async listMyOptionsSettlements(
         underlying: string,
-        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
+        opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsMySettlements> }> {
         const localVarPath = this.client.basePath + '/options/my_settlements';
         let localVarQueryParameters: any = {};
@@ -464,7 +464,7 @@ export class OptionsApi {
      */
     public async listOptionsOrderBook(
         contract: string,
-        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
+        opts?: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: OptionsOrderBook }> {
         const localVarPath = this.client.basePath + '/options/order_book';
         let localVarQueryParameters: any = {};
@@ -624,7 +624,7 @@ export class OptionsApi {
      */
     public async listOptionsCandlesticks(
         contract: string,
-        opts: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
+        opts?: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsCandlestick> }> {
         const localVarPath = this.client.basePath + '/options/candlesticks';
         let localVarQueryParameters: any = {};
@@ -709,7 +709,7 @@ export class OptionsApi {
      */
     public async listOptionsUnderlyingCandlesticks(
         underlying: string,
-        opts: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
+        opts?: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsCandlestick> }> {
         const localVarPath = this.client.basePath + '/options/underlying/candlesticks';
         let localVarQueryParameters: any = {};
@@ -795,7 +795,7 @@ export class OptionsApi {
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
-    public async listOptionsTrades(opts: {
+    public async listOptionsTrades(opts?: {
         contract?: string;
         type?: string;
         limit?: number;
@@ -917,7 +917,7 @@ export class OptionsApi {
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.type Change types: - dnw: Deposit &amp; Withdrawal - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - set: Settlement P&amp;L
      */
-    public async listOptionsAccountBook(opts: {
+    public async listOptionsAccountBook(opts?: {
         limit?: number;
         offset?: number;
         from?: number;
@@ -998,7 +998,7 @@ export class OptionsApi {
      * @param opts Optional parameters
      * @param opts.underlying Underlying
      */
-    public async listOptionsPositions(opts: {
+    public async listOptionsPositions(opts?: {
         underlying?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OptionsPosition> }> {
         const localVarPath = this.client.basePath + '/options/positions';
@@ -1077,7 +1077,7 @@ export class OptionsApi {
      */
     public async listOptionsPositionClose(
         underlying: string,
-        opts: { contract?: string },
+        opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsPositionClose> }> {
         const localVarPath = this.client.basePath + '/options/position_close';
         let localVarQueryParameters: any = {};
@@ -1139,7 +1139,7 @@ export class OptionsApi {
      */
     public async listOptionsOrders(
         status: 'open' | 'finished',
-        opts: { contract?: string; underlying?: string; limit?: number; offset?: number; from?: number; to?: number },
+        opts?: { contract?: string; underlying?: string; limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsOrder> }> {
         const localVarPath = this.client.basePath + '/options/orders';
         let localVarQueryParameters: any = {};
@@ -1274,7 +1274,7 @@ export class OptionsApi {
      * @param opts.underlying Underlying
      * @param opts.side Specify all bids or all asks, both included if not specified
      */
-    public async cancelOptionsOrders(opts: {
+    public async cancelOptionsOrders(opts?: {
         contract?: string;
         underlying?: string;
         side?: 'ask' | 'bid';
@@ -1368,11 +1368,11 @@ export class OptionsApi {
      * Modify the order price and/or quantity of a specified order; only orders with status \'open\' are supported
      * @summary Option Order Modification
      * @param orderId Order ID returned when order is successfully created
-     * @param inlineObject1
+     * @param amendOptionsOrderRequest
      */
     public async amendOptionsOrder(
         orderId: number,
-        inlineObject1: InlineObject1,
+        amendOptionsOrderRequest: AmendOptionsOrderRequest,
     ): Promise<{ response: AxiosResponse; body: OptionsOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -1392,9 +1392,11 @@ export class OptionsApi {
             throw new Error('Required parameter orderId was null or undefined when calling amendOptionsOrder.');
         }
 
-        // verify required parameter 'inlineObject1' is not null or undefined
-        if (inlineObject1 === null || inlineObject1 === undefined) {
-            throw new Error('Required parameter inlineObject1 was null or undefined when calling amendOptionsOrder.');
+        // verify required parameter 'amendOptionsOrderRequest' is not null or undefined
+        if (amendOptionsOrderRequest === null || amendOptionsOrderRequest === undefined) {
+            throw new Error(
+                'Required parameter amendOptionsOrderRequest was null or undefined when calling amendOptionsOrder.',
+            );
         }
 
         const config: AxiosRequestConfig = {
@@ -1402,7 +1404,7 @@ export class OptionsApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject1, 'InlineObject1'),
+            data: ObjectSerializer.serialize(amendOptionsOrderRequest, 'AmendOptionsOrderRequest'),
         };
 
         const authSettings = ['apiv4'];
@@ -1495,7 +1497,7 @@ export class OptionsApi {
      */
     public async listMyOptionsTrades(
         underlying: string,
-        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
+        opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsMyTrade> }> {
         const localVarPath = this.client.basePath + '/options/my_trades';
         let localVarQueryParameters: any = {};
@@ -1583,7 +1585,7 @@ export class OptionsApi {
      * @param opts Optional parameters
      * @param opts.underlying Underlying
      */
-    public async getOptionsMMP(opts: {
+    public async getOptionsMMP(opts?: {
         underlying?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OptionsMMP> }> {
         const localVarPath = this.client.basePath + '/options/mmp';

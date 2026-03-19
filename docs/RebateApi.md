@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**rebateBrokerTransactionHistory**](RebateApi.md#rebateBrokerTransactionHistory) | **GET** /rebate/broker/transaction_history | Broker obtains user\&#39;s trading history
 [**rebateUserInfo**](RebateApi.md#rebateUserInfo) | **GET** /rebate/user/info | User obtains rebate information
 [**userSubRelation**](RebateApi.md#userSubRelation) | **GET** /rebate/user/sub_relation | User subordinate relationship
+[**getPartnerApplicationRecent**](RebateApi.md#getPartnerApplicationRecent) | **GET** /rebate/partner/applications/recent | Get recent partner application records
+[**getPartnerEligibility**](RebateApi.md#getPartnerEligibility) | **GET** /rebate/partner/eligibility | Check partner application eligibility
 
 
 ## agencyTransactionHistory
@@ -353,7 +355,7 @@ Promise<{ response: AxiosResponse; body: Array<BrokerCommission>; }> [BrokerComm
 
 ## rebateBrokerTransactionHistory
 
-> Promise<{ response: http.IncomingMessage; body: Array<BrokerTransaction>; }> rebateBrokerTransactionHistory(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<BrokerTransactionHistory>; }> rebateBrokerTransactionHistory(opts)
 
 Broker obtains user\&#39;s trading history
 
@@ -395,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<BrokerTransaction>; }> [BrokerTransaction](BrokerTransaction.md)
+Promise<{ response: AxiosResponse; body: Array<BrokerTransactionHistory>; }> [BrokerTransactionHistory](BrokerTransactionHistory.md)
 
 ### Authorization
 
@@ -480,6 +482,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: UserSubRelation; }> [UserSubRelation](UserSubRelation.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getPartnerApplicationRecent
+
+> Promise<{ response: http.IncomingMessage; body: PartnerApplicationResponse; }> getPartnerApplicationRecent()
+
+Get recent partner application records
+
+获取当前用户最近的合伙人申请记录。  此接口返回用户最近 30 天内的申请记录，包括申请状态、审核信息、申请材料等详细信息。
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.RebateApi(client);
+api.getPartnerApplicationRecent()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: PartnerApplicationResponse; }> [PartnerApplicationResponse](PartnerApplicationResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getPartnerEligibility
+
+> Promise<{ response: http.IncomingMessage; body: EligibilityResponse; }> getPartnerEligibility()
+
+Check partner application eligibility
+
+检查当前用户是否有资格申请成为合伙人。  此接口会检查多个条件： - 账户状态（是否被封禁） - 是否为子账号 - 是否已经是合伙人 - KYC 认证状态 - 是否在其他代理商的邀请链下 - 是否在黑名单中 - 其他业务规则限制
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.RebateApi(client);
+api.getPartnerEligibility()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: EligibilityResponse; }> [EligibilityResponse](EligibilityResponse.md)
 
 ### Authorization
 

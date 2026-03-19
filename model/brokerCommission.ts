@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { BrokerCommission1 } from './brokerCommission1';
+import { BrokerCommissionItem } from './brokerCommissionItem';
 
 export class BrokerCommission {
     /**
@@ -19,7 +19,7 @@ export class BrokerCommission {
     /**
      * List of commission history
      */
-    'list'?: Array<BrokerCommission1>;
+    'list'?: Array<BrokerCommissionItem>;
 
     static discriminator: string | undefined = undefined;
 
@@ -32,7 +32,7 @@ export class BrokerCommission {
         {
             name: 'list',
             baseName: 'list',
-            type: 'Array<BrokerCommission1>',
+            type: 'Array<BrokerCommissionItem>',
         },
     ];
 

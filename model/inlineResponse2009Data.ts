@@ -9,55 +9,21 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse2009DataList } from './inlineResponse2009DataList';
+
 export class InlineResponse2009Data {
     /**
-     * Bank ID (required for order placement)
+     * Live stream/replay list
      */
-    'id': string;
-    'bankAccountName': string;
-    'bankName': string;
-    'bankCountry': string;
-    'bankAddress': string;
-    'bankCode': string;
-    'branchCode': string;
+    'list'?: Array<InlineResponse2009DataList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
-        },
-        {
-            name: 'bankAccountName',
-            baseName: 'bank_account_name',
-            type: 'string',
-        },
-        {
-            name: 'bankName',
-            baseName: 'bank_name',
-            type: 'string',
-        },
-        {
-            name: 'bankCountry',
-            baseName: 'bank_country',
-            type: 'string',
-        },
-        {
-            name: 'bankAddress',
-            baseName: 'bank_address',
-            type: 'string',
-        },
-        {
-            name: 'bankCode',
-            baseName: 'bank_code',
-            type: 'string',
-        },
-        {
-            name: 'branchCode',
-            baseName: 'branch_code',
-            type: 'string',
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<InlineResponse2009DataList>',
         },
     ];
 

@@ -12,9 +12,19 @@
 import { InlineResponse20012Data } from './inlineResponse20012Data';
 
 export class InlineResponse20012 {
+    /**
+     * Response status code, 0 means success
+     */
     'code': number;
+    /**
+     * 响应消息，成功时为 \"success\"
+     */
     'message': string;
     'data': InlineResponse20012Data;
+    /**
+     * Server timestamp (milliseconds)
+     */
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
@@ -33,6 +43,11 @@ export class InlineResponse20012 {
             name: 'data',
             baseName: 'data',
             type: 'InlineResponse20012Data',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

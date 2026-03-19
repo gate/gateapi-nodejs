@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**currency** | **string** |  | [optional] [default to undefined]
-**estRate** | **string** | Estimated Annualized Rate, e.g., &#x60;est_rate&#x60;: &#x60;0.8014&#x60; represents an annualized rate of 80.14% | [optional] [default to undefined]
+**code** | **number** | Return code, 0 means success | [optional] [default to undefined]
+**message** | **string** | Response message | [optional] [default to undefined]
+**data** | [**InlineResponse2005Data**](InlineResponse2005Data.md) |  | [optional] [default to undefined]
+**timestamp** | **number** | Response timestamp (in seconds) | [optional] [default to undefined]
 

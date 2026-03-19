@@ -23,11 +23,12 @@ import { OrderList } from '../model/orderList';
 import { PositionHistoryList } from '../model/positionHistoryList';
 import { PositionList } from '../model/positionList';
 import { Symbols } from '../model/symbols';
-import { Ticker2 } from '../model/ticker2';
 import { TradFiClosePositionRequest } from '../model/tradFiClosePositionRequest';
+import { TradFiError } from '../model/tradFiError';
 import { TradFiOrderRequest } from '../model/tradFiOrderRequest';
 import { TradFiOrderUpdateRequest } from '../model/tradFiOrderUpdateRequest';
 import { TradFiPositionUpdateRequest } from '../model/tradFiPositionUpdateRequest';
+import { TradFiTicker } from '../model/tradFiTicker';
 import { TradFiTransactionRequest } from '../model/tradFiTransactionRequest';
 import { TransactionList } from '../model/transactionList';
 import { UpdateOrder } from '../model/updateOrder';
@@ -186,7 +187,7 @@ export class TradFiApi {
     public async querySymbolKline(
         symbol: string,
         klineType: '1m' | '15m' | '1h' | '4h' | '1d' | '7d' | '30d',
-        opts: { beginTime?: number; endTime?: number; limit?: number },
+        opts?: { beginTime?: number; endTime?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Klines }> {
         const localVarPath =
             this.client.basePath +
@@ -265,7 +266,7 @@ export class TradFiApi {
      * @summary Query trading symbol ticker
      * @param symbol Trading symbol code
      */
-    public async querySymbolTicker(symbol: string): Promise<{ response: AxiosResponse; body: Ticker2 }> {
+    public async querySymbolTicker(symbol: string): Promise<{ response: AxiosResponse; body: TradFiTicker }> {
         const localVarPath =
             this.client.basePath +
             '/tradfi/symbols/{symbol}/tickers'.replace('{' + 'symbol' + '}', encodeURIComponent(String(symbol)));
@@ -292,7 +293,7 @@ export class TradFiApi {
         };
 
         const authSettings = [];
-        return this.client.request<Ticker2>(config, 'Ticker2', authSettings);
+        return this.client.request<TradFiTicker>(config, 'TradFiTicker', authSettings);
     }
 
     /**
@@ -359,7 +360,7 @@ export class TradFiApi {
      * @param opts.page page number
      * @param opts.pageSize Number per page, default 10, maximum 50
      */
-    public async queryTransaction(opts: {
+    public async queryTransaction(opts?: {
         beginTime?: number;
         endTime?: number;
         type?: 'deposit' | 'withdraw' | 'dividend' | 'fill_negative';
@@ -631,7 +632,7 @@ export class TradFiApi {
      * @param opts.symbol Currency pair
      * @param opts.side Order side (1&#x3D;sell, 2&#x3D;buy)
      */
-    public async queryOrderHistoryList(opts: {
+    public async queryOrderHistoryList(opts?: {
         beginTime?: number;
         endTime?: number;
         symbol?: string;
@@ -832,7 +833,7 @@ export class TradFiApi {
      * @param opts.symbol Trading symbol (e.g., EURUSD)
      * @param opts.positionDir Position direction (Long&#x3D;long position, Short&#x3D;short position)
      */
-    public async queryPositionHistoryList(opts: {
+    public async queryPositionHistoryList(opts?: {
         beginTime?: number;
         endTime?: number;
         symbol?: string;

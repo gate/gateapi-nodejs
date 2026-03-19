@@ -18,6 +18,12 @@ Method | HTTP request | Description
 [**orderList**](EarnApi.md#orderList) | **GET** /earn/staking/order_list | List of on-chain coin-earning orders
 [**awardList**](EarnApi.md#awardList) | **GET** /earn/staking/award_list | On-chain coin-earning dividend records
 [**assetList**](EarnApi.md#assetList) | **GET** /earn/staking/assets | On-chain coin-earning assets
+[**listEarnFixedTermProducts**](EarnApi.md#listEarnFixedTermProducts) | **GET** /earn/fixed-term/product | Get product list
+[**listEarnFixedTermProductsByAsset**](EarnApi.md#listEarnFixedTermProductsByAsset) | **GET** /earn/fixed-term/product/{asset}/list | Get product list by single currency
+[**listEarnFixedTermLends**](EarnApi.md#listEarnFixedTermLends) | **GET** /earn/fixed-term/user/lend | Subscription list
+[**createEarnFixedTermLend**](EarnApi.md#createEarnFixedTermLend) | **POST** /earn/fixed-term/user/lend | Subscription
+[**createEarnFixedTermPreRedeem**](EarnApi.md#createEarnFixedTermPreRedeem) | **POST** /earn/fixed-term/user/pre-redeem | Redeem
+[**listEarnFixedTermHistory**](EarnApi.md#listEarnFixedTermHistory) | **GET** /earn/fixed-term/user/history | Subscription history
 
 
 ## swapETH2
@@ -644,6 +650,324 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<object>; }> [object](object.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listEarnFixedTermProducts
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse200; }> listEarnFixedTermProducts(page, limit, opts)
+
+Get product list
+
+Query fixed-term earn product list. Supports filtering by currency, product type, status, etc. Returns product interest rate, lock-up period, quota, and reward campaign information
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.EarnApi(client);
+const page = 1; // number | Page number
+const limit = 100; // number | Page size
+const opts = {
+  'asset': "USDT", // string | Currency
+  'type': 1 // number | Product type: 1 for regular, 2 for VIP
+};
+api.listEarnFixedTermProducts(page, limit, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **number**| Page number | [default to undefined]
+ **limit** | **number**| Page size | [default to undefined]
+ **asset** | **string**| Currency | [optional] [default to undefined]
+ **type** | **number**| Product type: 1 for regular, 2 for VIP | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse200](InlineResponse200.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listEarnFixedTermProductsByAsset
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2001; }> listEarnFixedTermProductsByAsset(asset, opts)
+
+Get product list by single currency
+
+Sort by product term in ascending order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.EarnApi(client);
+const asset = "USDT"; // string | Currency name, e.g., USDT, BTC
+const opts = {
+  'type': "1" // string | Product type: \"\" or 1 for regular product list, 2 for VIP product list, 0 for all products
+};
+api.listEarnFixedTermProductsByAsset(asset, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **asset** | **string**| Currency name, e.g., USDT, BTC | [default to undefined]
+ **type** | **string**| Product type: \&quot;\&quot; or 1 for regular product list, 2 for VIP product list, 0 for all products | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2001](InlineResponse2001.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listEarnFixedTermLends
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2002; }> listEarnFixedTermLends(orderType, page, limit, opts)
+
+Subscription list
+
+Query the user\&#39;s fixed-term earn subscription order list. Supports filtering by product, currency, order type, etc. Returns order details, earnings, rewards, and interest rate boost coupon information
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const orderType = "1"; // string | Order type: 1 for current orders, 2 for historical orders
+const page = 1; // number | Page number
+const limit = 10; // number | Page size
+const opts = {
+  'productId': 56, // number | Product ID
+  'orderId': 56, // number | Order ID
+  'asset': "asset_example", // string | Currency
+  'subBusiness': 56, // number | Sub-business
+  'businessFilter': "[{\"business\":1, \"sub_business\": 0},{\"business\":2, \"sub_business\": 0}]" // string | Business filter conditions, JSON array format, e.g., [{\"business\":1, \"sub_business\": 0}]. business: 1 for regular, 2 for VIP
+};
+api.listEarnFixedTermLends(orderType, page, limit, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderType** | **string**| Order type: 1 for current orders, 2 for historical orders | [default to undefined]
+ **page** | **number**| Page number | [default to undefined]
+ **limit** | **number**| Page size | [default to undefined]
+ **productId** | **number**| Product ID | [optional] [default to undefined]
+ **orderId** | **number**| Order ID | [optional] [default to undefined]
+ **asset** | **string**| Currency | [optional] [default to undefined]
+ **subBusiness** | **number**| Sub-business | [optional] [default to undefined]
+ **businessFilter** | **string**| Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse2002; }> [InlineResponse2002](InlineResponse2002.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## createEarnFixedTermLend
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> createEarnFixedTermLend(opts)
+
+Subscription
+
+Subscribe to a fixed-term earn product by specifying the product ID and subscription amount. Optionally enable auto-renewal and apply an interest rate boost coupon
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const opts = {
+  'fixedTermLendRequest': new FixedTermLendRequest() // FixedTermLendRequest | 
+};
+api.createEarnFixedTermLend(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fixedTermLendRequest** | [**FixedTermLendRequest**](FixedTermLendRequest.md)|  | [optional] 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## createEarnFixedTermPreRedeem
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2004; }> createEarnFixedTermPreRedeem(opts)
+
+Redeem
+
+Early redemption of a fixed-term earn order, order ID is required
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const opts = {
+  'inlineObject': new InlineObject() // InlineObject | 
+};
+api.createEarnFixedTermPreRedeem(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inlineObject** | [**InlineObject**](InlineObject.md)|  | [optional] 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse2004; }> [InlineResponse2004](InlineResponse2004.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## listEarnFixedTermHistory
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse2005; }> listEarnFixedTermHistory(type, page, limit, opts)
+
+Subscription history
+
+Query the user\&#39;s fixed-term earn history records. Supports filtering by type (subscription, redemption, interest, bonus rewards) and time range
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const type = "1"; // string | 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward
+const page = 1; // number | Page number
+const limit = 10; // number | Page size
+const opts = {
+  'productId': 56, // number | Product ID
+  'orderId': "orderId_example", // string | Order ID
+  'asset': "asset_example", // string | Currency
+  'startAt': 56, // number | Start timestamp
+  'endAt': 56, // number | End Timestamp
+  'subBusiness': 56, // number | Sub-business
+  'businessFilter': "[{\"business\":1, \"sub_business\": 0},{\"business\":2, \"sub_business\": 0}]" // string | Business filter conditions, JSON array format, e.g., [{\"business\":1, \"sub_business\": 0}]. business: 1 for regular, 2 for VIP
+};
+api.listEarnFixedTermHistory(type, page, limit, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward | [default to undefined]
+ **page** | **number**| Page number | [default to undefined]
+ **limit** | **number**| Page size | [default to undefined]
+ **productId** | **number**| Product ID | [optional] [default to undefined]
+ **orderId** | **string**| Order ID | [optional] [default to undefined]
+ **asset** | **string**| Currency | [optional] [default to undefined]
+ **startAt** | **number**| Start timestamp | [optional] [default to undefined]
+ **endAt** | **number**| End Timestamp | [optional] [default to undefined]
+ **subBusiness** | **number**| Sub-business | [optional] [default to undefined]
+ **businessFilter** | **string**| Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse2005; }> [InlineResponse2005](InlineResponse2005.md)
 
 ### Authorization
 

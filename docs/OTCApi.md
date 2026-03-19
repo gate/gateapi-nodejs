@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## createOtcQuote
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2006; }> createOtcQuote(otcQuoteRequest)
+> Promise<{ response: http.IncomingMessage; body: OtcQuoteResponse; }> createOtcQuote(otcQuoteRequest)
 
 Fiat and stablecoin quote
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2006; }> [InlineResponse2006](InlineResponse2006.md)
+Promise<{ response: AxiosResponse; body: OtcQuoteResponse; }> [OtcQuoteResponse](OtcQuoteResponse.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2006; }> [InlineResponse2
 
 ## createOtcOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> createOtcOrder(otcOrderRequest)
+> Promise<{ response: http.IncomingMessage; body: OtcActionResponse; }> createOtcOrder(otcOrderRequest)
 
 Create fiat order
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
+Promise<{ response: AxiosResponse; body: OtcActionResponse; }> [OtcActionResponse](OtcActionResponse.md)
 
 ### Authorization
 
@@ -108,7 +108,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2
 
 ## createStableCoinOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2008; }> createStableCoinOrder(otcStableCoinOrderRequest)
+> Promise<{ response: http.IncomingMessage; body: OtcStableCoinOrderCreateResponse; }> createStableCoinOrder(otcStableCoinOrderRequest)
 
 Create stablecoin order
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2008; }> [InlineResponse2008](InlineResponse2008.md)
+Promise<{ response: AxiosResponse; body: OtcStableCoinOrderCreateResponse; }> [OtcStableCoinOrderCreateResponse](OtcStableCoinOrderCreateResponse.md)
 
 ### Authorization
 
@@ -153,7 +153,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2008; }> [InlineResponse2
 
 ## getUserDefaultBank
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2009; }> getUserDefaultBank()
+> Promise<{ response: http.IncomingMessage; body: OtcUserDefaultBankResponse; }> getUserDefaultBank()
 
 Get user\&#39;s default bank account information
 
@@ -181,7 +181,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2009; }> [InlineResponse2009](InlineResponse2009.md)
+Promise<{ response: AxiosResponse; body: OtcUserDefaultBankResponse; }> [OtcUserDefaultBankResponse](OtcUserDefaultBankResponse.md)
 
 ### Authorization
 
@@ -194,7 +194,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2009; }> [InlineResponse2
 
 ## getBankList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20010; }> getBankList()
+> Promise<{ response: http.IncomingMessage; body: OtcBankListResponse; }> getBankList()
 
 Get user bank card list
 
@@ -222,7 +222,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20010; }> [InlineResponse20010](InlineResponse20010.md)
+Promise<{ response: AxiosResponse; body: OtcBankListResponse; }> [OtcBankListResponse](OtcBankListResponse.md)
 
 ### Authorization
 
@@ -235,7 +235,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20010; }> [InlineResponse
 
 ## markOtcOrderPaid
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> markOtcOrderPaid(otcMarkOrderPaidRequest)
+> Promise<{ response: http.IncomingMessage; body: OtcActionResponse; }> markOtcOrderPaid(otcMarkOrderPaidRequest)
 
 Mark fiat order as paid
 
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
+Promise<{ response: AxiosResponse; body: OtcActionResponse; }> [OtcActionResponse](OtcActionResponse.md)
 
 ### Authorization
 
@@ -280,7 +280,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2
 
 ## cancelOtcOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> cancelOtcOrder(orderId)
+> Promise<{ response: http.IncomingMessage; body: OtcActionResponse; }> cancelOtcOrder(orderId)
 
 Fiat order cancellation
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
+Promise<{ response: AxiosResponse; body: OtcActionResponse; }> [OtcActionResponse](OtcActionResponse.md)
 
 ### Authorization
 
@@ -325,7 +325,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2
 
 ## listOtcOrders
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20011; }> listOtcOrders(opts)
+> Promise<{ response: http.IncomingMessage; body: OtcOrderListResponse; }> listOtcOrders(opts)
 
 Fiat order list
 
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse20011](InlineResponse20011.md)
+Promise<{ response: AxiosResponse; body: OtcOrderListResponse; }> [OtcOrderListResponse](OtcOrderListResponse.md)
 
 ### Authorization
 
@@ -386,7 +386,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse
 
 ## listStableCoinOrders
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20012; }> listStableCoinOrders(opts)
+> Promise<{ response: http.IncomingMessage; body: OtcStableCoinOrderListResponse; }> listStableCoinOrders(opts)
 
 Stablecoin order list
 
@@ -430,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse20012](InlineResponse20012.md)
+Promise<{ response: AxiosResponse; body: OtcStableCoinOrderListResponse; }> [OtcStableCoinOrderListResponse](OtcStableCoinOrderListResponse.md)
 
 ### Authorization
 
@@ -443,7 +443,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse
 
 ## getOtcOrderDetail
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20013; }> getOtcOrderDetail(orderId)
+> Promise<{ response: http.IncomingMessage; body: OtcOrderDetailResponse; }> getOtcOrderDetail(orderId)
 
 Fiat order details
 
@@ -475,7 +475,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20013; }> [InlineResponse20013](InlineResponse20013.md)
+Promise<{ response: AxiosResponse; body: OtcOrderDetailResponse; }> [OtcOrderDetailResponse](OtcOrderDetailResponse.md)
 
 ### Authorization
 

@@ -38,7 +38,7 @@ export class SubAccountApi {
      * @param opts Optional parameters
      * @param opts.type Enter &#x60;0&#x60; to list all types of sub-accounts (currently supporting cross-margin sub-accounts and regular sub-accounts). Enter &#x60;1&#x60; to query regular sub-accounts only. If no parameter is passed, only regular sub-accounts will be queried by default.
      */
-    public async listSubAccounts(opts: {
+    public async listSubAccounts(opts?: {
         type?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccount> }> {
         const localVarPath = this.client.basePath + '/sub_accounts';

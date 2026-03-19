@@ -9,36 +9,19 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20010Data } from './inlineResponse20010Data';
-
 export class InlineResponse20010 {
-    'code': number;
-    'message': string;
-    'data': InlineResponse20010Data;
-    'timestamp': number;
+    /**
+     * Whether redemption was successful
+     */
+    'success'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'code',
-            baseName: 'code',
-            type: 'number',
-        },
-        {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
-            name: 'data',
-            baseName: 'data',
-            type: 'InlineResponse20010Data',
-        },
-        {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
+            name: 'success',
+            baseName: 'success',
+            type: 'boolean',
         },
     ];
 

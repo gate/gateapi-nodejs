@@ -186,7 +186,7 @@ export class SpotApi {
      * @param opts.currencyPair Currency pair
      * @param opts.timezone Timezone
      */
-    public async listTickers(opts: {
+    public async listTickers(opts?: {
         currencyPair?: string;
         timezone?: 'utc0' | 'utc8' | 'all';
     }): Promise<{ response: AxiosResponse; body: Array<Ticker> }> {
@@ -242,7 +242,7 @@ export class SpotApi {
      */
     public async listOrderBook(
         currencyPair: string,
-        opts: { interval?: string; limit?: number; withId?: boolean },
+        opts?: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: OrderBook }> {
         const localVarPath = this.client.basePath + '/spot/order_book';
         let localVarQueryParameters: any = {};
@@ -320,7 +320,7 @@ export class SpotApi {
      */
     public async listTrades(
         currencyPair: string,
-        opts: { limit?: number; lastId?: string; reverse?: boolean; from?: number; to?: number; page?: number },
+        opts?: { limit?: number; lastId?: string; reverse?: boolean; from?: number; to?: number; page?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/trades';
         let localVarQueryParameters: any = {};
@@ -423,7 +423,7 @@ export class SpotApi {
      */
     public async listCandlesticks(
         currencyPair: string,
-        opts: {
+        opts?: {
             limit?: number;
             from?: number;
             to?: number;
@@ -510,7 +510,7 @@ export class SpotApi {
      * @param opts Optional parameters
      * @param opts.currencyPair Specify currency pair to get more accurate fee settings.  This field is optional. Usually fee settings are the same for all currency pairs.
      */
-    public async getFee(opts: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: SpotFee }> {
+    public async getFee(opts?: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: SpotFee }> {
         const localVarPath = this.client.basePath + '/spot/fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -591,7 +591,7 @@ export class SpotApi {
      * @param opts Optional parameters
      * @param opts.currency Query by specified currency name
      */
-    public async listSpotAccounts(opts: {
+    public async listSpotAccounts(opts?: {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SpotAccount> }> {
         const localVarPath = this.client.basePath + '/spot/accounts';
@@ -638,7 +638,7 @@ export class SpotApi {
      * @param opts.type Query by specified account change type. If not specified, all change types will be included.
      * @param opts.code Specify account change code for query. If not specified, all change types are included. This parameter has higher priority than &#x60;type&#x60;
      */
-    public async listSpotAccountBook(opts: {
+    public async listSpotAccountBook(opts?: {
         currency?: string;
         from?: number;
         to?: number;
@@ -742,7 +742,7 @@ export class SpotApi {
      */
     public async createBatchOrders(
         order: Array<Order>,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/batch_orders';
         let localVarQueryParameters: any = {};
@@ -785,7 +785,7 @@ export class SpotApi {
      * @param opts.limit Maximum number of records returned in one page in each currency pair
      * @param opts.account Specify query account
      */
-    public async listAllOpenOrders(opts: {
+    public async listAllOpenOrders(opts?: {
         page?: number;
         limit?: number;
         account?: string;
@@ -894,7 +894,7 @@ export class SpotApi {
     public async listOrders(
         currencyPair: string,
         status: string,
-        opts: { page?: number; limit?: number; account?: string; from?: number; to?: number; side?: string },
+        opts?: { page?: number; limit?: number; account?: string; from?: number; to?: number; side?: string },
     ): Promise<{ response: AxiosResponse; body: Array<Order> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         let localVarQueryParameters: any = {};
@@ -1006,7 +1006,7 @@ export class SpotApi {
      */
     public async createOrder(
         order: Order,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         let localVarQueryParameters: any = {};
@@ -1051,7 +1051,7 @@ export class SpotApi {
      * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default)
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
-    public async cancelOrders(opts: {
+    public async cancelOrders(opts?: {
         currencyPair?: string;
         side?: string;
         account?: string;
@@ -1130,7 +1130,7 @@ export class SpotApi {
      */
     public async cancelBatchOrders(
         cancelBatchOrder: Array<CancelBatchOrder>,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<CancelOrderResult> }> {
         const localVarPath = this.client.basePath + '/spot/cancel_batch_orders';
         let localVarQueryParameters: any = {};
@@ -1178,7 +1178,7 @@ export class SpotApi {
     public async getOrder(
         orderId: string,
         currencyPair: string,
-        opts: { account?: string },
+        opts?: { account?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath =
             this.client.basePath +
@@ -1244,7 +1244,7 @@ export class SpotApi {
     public async cancelOrder(
         orderId: string,
         currencyPair: string,
-        opts: { account?: string; actionMode?: string; xGateExptime?: string },
+        opts?: { account?: string; actionMode?: string; xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath =
             this.client.basePath +
@@ -1323,7 +1323,7 @@ export class SpotApi {
     public async amendOrder(
         orderId: string,
         orderPatch: OrderPatch,
-        opts: { currencyPair?: string; account?: string; xGateExptime?: string },
+        opts?: { currencyPair?: string; account?: string; xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath =
             this.client.basePath +
@@ -1395,7 +1395,7 @@ export class SpotApi {
      * @param opts.from Start timestamp for the query
      * @param opts.to End timestamp for the query, defaults to current time if not specified
      */
-    public async listMyTrades(opts: {
+    public async listMyTrades(opts?: {
         currencyPair?: string;
         limit?: number;
         page?: number;
@@ -1564,7 +1564,7 @@ export class SpotApi {
      */
     public async amendBatchOrders(
         batchAmendItem: Array<BatchAmendItem>,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/amend_batch_orders';
         let localVarQueryParameters: any = {};
@@ -1615,7 +1615,7 @@ export class SpotApi {
         currency: string,
         from: number,
         to: number,
-        opts: { page?: number; limit?: number },
+        opts?: { page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SpotInsuranceHistory> }> {
         const localVarPath = this.client.basePath + '/spot/insurance_history';
         let localVarQueryParameters: any = {};
@@ -1718,7 +1718,7 @@ export class SpotApi {
      */
     public async listSpotPriceTriggeredOrders(
         status: 'open' | 'finished',
-        opts: { market?: string; account?: 'normal' | 'margin' | 'unified'; limit?: number; offset?: number },
+        opts?: { market?: string; account?: 'normal' | 'margin' | 'unified'; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
         let localVarQueryParameters: any = {};
@@ -1842,7 +1842,7 @@ export class SpotApi {
      * @param opts.market Trading market
      * @param opts.account Trading account type. Unified account must be set to &#x60;unified&#x60;
      */
-    public async cancelSpotPriceTriggeredOrderList(opts: {
+    public async cancelSpotPriceTriggeredOrderList(opts?: {
         market?: string;
         account?: 'normal' | 'margin' | 'unified';
     }): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {

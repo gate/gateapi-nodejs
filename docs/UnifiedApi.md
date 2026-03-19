@@ -208,7 +208,7 @@ Promise<{ response: AxiosResponse; body: Array<TransferablesResult>; }> [Transfe
 
 ## getUnifiedBorrowableList
 
-> Promise<{ response: http.IncomingMessage; body: Array<UnifiedBorrowable1>; }> getUnifiedBorrowableList(currencies)
+> Promise<{ response: http.IncomingMessage; body: Array<UnifiedBorrowable>; }> getUnifiedBorrowableList(currencies)
 
 Batch query unified account maximum borrowable amount
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<UnifiedBorrowable1>; }> [UnifiedBorrowable1](UnifiedBorrowable1.md)
+Promise<{ response: AxiosResponse; body: Array<UnifiedBorrowable>; }> [UnifiedBorrowable](UnifiedBorrowable.md)
 
 ### Authorization
 

@@ -17,6 +17,14 @@ import { DualGetPlans } from '../model/dualGetPlans';
 import { Eth2RateList } from '../model/eth2RateList';
 import { Eth2Swap } from '../model/eth2Swap';
 import { FindCoin } from '../model/findCoin';
+import { FixedTermLendRequest } from '../model/fixedTermLendRequest';
+import { InlineObject } from '../model/inlineObject';
+import { InlineResponse200 } from '../model/inlineResponse200';
+import { InlineResponse2001 } from '../model/inlineResponse2001';
+import { InlineResponse2002 } from '../model/inlineResponse2002';
+import { InlineResponse2003 } from '../model/inlineResponse2003';
+import { InlineResponse2004 } from '../model/inlineResponse2004';
+import { InlineResponse2005 } from '../model/inlineResponse2005';
 import { OrderListStruct } from '../model/orderListStruct';
 import { PlaceDualInvestmentOrder } from '../model/placeDualInvestmentOrder';
 import { PlaceDualInvestmentOrderParams } from '../model/placeDualInvestmentOrderParams';
@@ -104,7 +112,7 @@ export class EarnApi {
      * @param opts Optional parameters
      * @param opts.planId Financial project ID
      */
-    public async listDualInvestmentPlans(opts: {
+    public async listDualInvestmentPlans(opts?: {
         planId?: number;
     }): Promise<{ response: AxiosResponse; body: Array<DualGetPlans> }> {
         const localVarPath = this.client.basePath + '/earn/dual/investment_plan';
@@ -148,7 +156,7 @@ export class EarnApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in a single list
      */
-    public async listDualOrders(opts: {
+    public async listDualOrders(opts?: {
         from?: number;
         to?: number;
         page?: number;
@@ -289,7 +297,7 @@ export class EarnApi {
      */
     public async listStructuredProducts(
         status: string,
-        opts: { type?: string; page?: number; limit?: number },
+        opts?: { type?: string; page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<StructuredGetProjectList> }> {
         const localVarPath = this.client.basePath + '/earn/structured/products';
         let localVarQueryParameters: any = {};
@@ -366,7 +374,7 @@ export class EarnApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in a single list
      */
-    public async listStructuredOrders(opts: {
+    public async listStructuredOrders(opts?: {
         from?: number;
         to?: number;
         page?: number;
@@ -537,7 +545,7 @@ export class EarnApi {
      * @param opts.type Type 0-staking 1-redemption
      * @param opts.page Page number
      */
-    public async orderList(opts: {
+    public async orderList(opts?: {
         pid?: number;
         coin?: string;
         type?: number;
@@ -610,7 +618,7 @@ export class EarnApi {
      * @param opts.coin Currency name
      * @param opts.page Page number
      */
-    public async awardList(opts: {
+    public async awardList(opts?: {
         pid?: number;
         coin?: string;
         page?: number;
@@ -671,7 +679,7 @@ export class EarnApi {
      * @param opts Optional parameters
      * @param opts.coin Currency name
      */
-    public async assetList(opts: { coin?: string }): Promise<{ response: AxiosResponse; body: Array<object> }> {
+    public async assetList(opts?: { coin?: string }): Promise<{ response: AxiosResponse; body: Array<object> }> {
         const localVarPath = this.client.basePath + '/earn/staking/assets';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -702,5 +710,478 @@ export class EarnApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<object>>(config, 'Array<object>', authSettings);
+    }
+
+    /**
+     * Query fixed-term earn product list. Supports filtering by currency, product type, status, etc. Returns product interest rate, lock-up period, quota, and reward campaign information
+     * @summary Get product list
+     * @param page Page number
+     * @param limit Page size
+     * @param opts Optional parameters
+     * @param opts.asset Currency
+     * @param opts.type Product type: 1 for regular, 2 for VIP
+     */
+    public async listEarnFixedTermProducts(
+        page: number,
+        limit: number,
+        opts?: { asset?: string; type?: number },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse200 }> {
+        const localVarPath = this.client.basePath + '/earn/fixed-term/product';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'page' is not null or undefined
+        if (page === null || page === undefined) {
+            throw new Error('Required parameter page was null or undefined when calling listEarnFixedTermProducts.');
+        }
+
+        // verify required parameter 'limit' is not null or undefined
+        if (limit === null || limit === undefined) {
+            throw new Error('Required parameter limit was null or undefined when calling listEarnFixedTermProducts.');
+        }
+
+        opts = opts || {};
+        if (opts.asset !== undefined) {
+            let assetSerialized = ObjectSerializer.serialize(opts.asset, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(assetSerialized)) {
+                assetSerialized = assetSerialized.join(',');
+            }
+            localVarQueryParameters['asset'] = assetSerialized;
+        }
+
+        if (opts.type !== undefined) {
+            let typeSerialized = ObjectSerializer.serialize(opts.type, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        let pageSerialized = ObjectSerializer.serialize(page, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(pageSerialized)) {
+            pageSerialized = pageSerialized.join(',');
+        }
+        localVarQueryParameters['page'] = pageSerialized;
+
+        let limitSerialized = ObjectSerializer.serialize(limit, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(limitSerialized)) {
+            limitSerialized = limitSerialized.join(',');
+        }
+        localVarQueryParameters['limit'] = limitSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<InlineResponse200>(config, 'InlineResponse200', authSettings);
+    }
+
+    /**
+     * Sort by product term in ascending order
+     * @summary Get product list by single currency
+     * @param asset Currency name, e.g., USDT, BTC
+     * @param opts Optional parameters
+     * @param opts.type Product type: \&quot;\&quot; or 1 for regular product list, 2 for VIP product list, 0 for all products
+     */
+    public async listEarnFixedTermProductsByAsset(
+        asset: string,
+        opts?: { type?: string },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2001 }> {
+        const localVarPath =
+            this.client.basePath +
+            '/earn/fixed-term/product/{asset}/list'.replace('{' + 'asset' + '}', encodeURIComponent(String(asset)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'asset' is not null or undefined
+        if (asset === null || asset === undefined) {
+            throw new Error(
+                'Required parameter asset was null or undefined when calling listEarnFixedTermProductsByAsset.',
+            );
+        }
+
+        opts = opts || {};
+        if (opts.type !== undefined) {
+            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<InlineResponse2001>(config, 'InlineResponse2001', authSettings);
+    }
+
+    /**
+     * Query the user\'s fixed-term earn subscription order list. Supports filtering by product, currency, order type, etc. Returns order details, earnings, rewards, and interest rate boost coupon information
+     * @summary Subscription list
+     * @param orderType Order type: 1 for current orders, 2 for historical orders
+     * @param page Page number
+     * @param limit Page size
+     * @param opts Optional parameters
+     * @param opts.productId Product ID
+     * @param opts.orderId Order ID
+     * @param opts.asset Currency
+     * @param opts.subBusiness Sub-business
+     * @param opts.businessFilter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP
+     */
+    public async listEarnFixedTermLends(
+        orderType: string,
+        page: number,
+        limit: number,
+        opts?: { productId?: number; orderId?: number; asset?: string; subBusiness?: number; businessFilter?: string },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2002 }> {
+        const localVarPath = this.client.basePath + '/earn/fixed-term/user/lend';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderType' is not null or undefined
+        if (orderType === null || orderType === undefined) {
+            throw new Error('Required parameter orderType was null or undefined when calling listEarnFixedTermLends.');
+        }
+
+        // verify required parameter 'page' is not null or undefined
+        if (page === null || page === undefined) {
+            throw new Error('Required parameter page was null or undefined when calling listEarnFixedTermLends.');
+        }
+
+        // verify required parameter 'limit' is not null or undefined
+        if (limit === null || limit === undefined) {
+            throw new Error('Required parameter limit was null or undefined when calling listEarnFixedTermLends.');
+        }
+
+        opts = opts || {};
+        if (opts.productId !== undefined) {
+            let productIdSerialized = ObjectSerializer.serialize(opts.productId, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(productIdSerialized)) {
+                productIdSerialized = productIdSerialized.join(',');
+            }
+            localVarQueryParameters['product_id'] = productIdSerialized;
+        }
+
+        if (opts.orderId !== undefined) {
+            let orderIdSerialized = ObjectSerializer.serialize(opts.orderId, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(orderIdSerialized)) {
+                orderIdSerialized = orderIdSerialized.join(',');
+            }
+            localVarQueryParameters['order_id'] = orderIdSerialized;
+        }
+
+        if (opts.asset !== undefined) {
+            let assetSerialized = ObjectSerializer.serialize(opts.asset, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(assetSerialized)) {
+                assetSerialized = assetSerialized.join(',');
+            }
+            localVarQueryParameters['asset'] = assetSerialized;
+        }
+
+        let orderTypeSerialized = ObjectSerializer.serialize(orderType, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(orderTypeSerialized)) {
+            orderTypeSerialized = orderTypeSerialized.join(',');
+        }
+        localVarQueryParameters['order_type'] = orderTypeSerialized;
+
+        let pageSerialized = ObjectSerializer.serialize(page, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(pageSerialized)) {
+            pageSerialized = pageSerialized.join(',');
+        }
+        localVarQueryParameters['page'] = pageSerialized;
+
+        let limitSerialized = ObjectSerializer.serialize(limit, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(limitSerialized)) {
+            limitSerialized = limitSerialized.join(',');
+        }
+        localVarQueryParameters['limit'] = limitSerialized;
+
+        if (opts.subBusiness !== undefined) {
+            let subBusinessSerialized = ObjectSerializer.serialize(opts.subBusiness, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(subBusinessSerialized)) {
+                subBusinessSerialized = subBusinessSerialized.join(',');
+            }
+            localVarQueryParameters['sub_business'] = subBusinessSerialized;
+        }
+
+        if (opts.businessFilter !== undefined) {
+            let businessFilterSerialized = ObjectSerializer.serialize(opts.businessFilter, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(businessFilterSerialized)) {
+                businessFilterSerialized = businessFilterSerialized.join(',');
+            }
+            localVarQueryParameters['business_filter'] = businessFilterSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2002>(config, 'InlineResponse2002', authSettings);
+    }
+
+    /**
+     * Subscribe to a fixed-term earn product by specifying the product ID and subscription amount. Optionally enable auto-renewal and apply an interest rate boost coupon
+     * @summary Subscription
+     * @param opts Optional parameters
+     * @param opts.fixedTermLendRequest
+     */
+    public async createEarnFixedTermLend(opts?: {
+        fixedTermLendRequest?: FixedTermLendRequest;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse2003 }> {
+        const localVarPath = this.client.basePath + '/earn/fixed-term/user/lend';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(opts.fixedTermLendRequest, 'FixedTermLendRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2003>(config, 'InlineResponse2003', authSettings);
+    }
+
+    /**
+     * Early redemption of a fixed-term earn order, order ID is required
+     * @summary Redeem
+     * @param opts Optional parameters
+     * @param opts.inlineObject
+     */
+    public async createEarnFixedTermPreRedeem(opts?: {
+        inlineObject?: InlineObject;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse2004 }> {
+        const localVarPath = this.client.basePath + '/earn/fixed-term/user/pre-redeem';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(opts.inlineObject, 'InlineObject'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2004>(config, 'InlineResponse2004', authSettings);
+    }
+
+    /**
+     * Query the user\'s fixed-term earn history records. Supports filtering by type (subscription, redemption, interest, bonus rewards) and time range
+     * @summary Subscription history
+     * @param type 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward
+     * @param page Page number
+     * @param limit Page size
+     * @param opts Optional parameters
+     * @param opts.productId Product ID
+     * @param opts.orderId Order ID
+     * @param opts.asset Currency
+     * @param opts.startAt Start timestamp
+     * @param opts.endAt End Timestamp
+     * @param opts.subBusiness Sub-business
+     * @param opts.businessFilter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP
+     */
+    public async listEarnFixedTermHistory(
+        type: string,
+        page: number,
+        limit: number,
+        opts?: {
+            productId?: number;
+            orderId?: string;
+            asset?: string;
+            startAt?: number;
+            endAt?: number;
+            subBusiness?: number;
+            businessFilter?: string;
+        },
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2005 }> {
+        const localVarPath = this.client.basePath + '/earn/fixed-term/user/history';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'type' is not null or undefined
+        if (type === null || type === undefined) {
+            throw new Error('Required parameter type was null or undefined when calling listEarnFixedTermHistory.');
+        }
+
+        // verify required parameter 'page' is not null or undefined
+        if (page === null || page === undefined) {
+            throw new Error('Required parameter page was null or undefined when calling listEarnFixedTermHistory.');
+        }
+
+        // verify required parameter 'limit' is not null or undefined
+        if (limit === null || limit === undefined) {
+            throw new Error('Required parameter limit was null or undefined when calling listEarnFixedTermHistory.');
+        }
+
+        opts = opts || {};
+        if (opts.productId !== undefined) {
+            let productIdSerialized = ObjectSerializer.serialize(opts.productId, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(productIdSerialized)) {
+                productIdSerialized = productIdSerialized.join(',');
+            }
+            localVarQueryParameters['product_id'] = productIdSerialized;
+        }
+
+        if (opts.orderId !== undefined) {
+            let orderIdSerialized = ObjectSerializer.serialize(opts.orderId, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(orderIdSerialized)) {
+                orderIdSerialized = orderIdSerialized.join(',');
+            }
+            localVarQueryParameters['order_id'] = orderIdSerialized;
+        }
+
+        if (opts.asset !== undefined) {
+            let assetSerialized = ObjectSerializer.serialize(opts.asset, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(assetSerialized)) {
+                assetSerialized = assetSerialized.join(',');
+            }
+            localVarQueryParameters['asset'] = assetSerialized;
+        }
+
+        let typeSerialized = ObjectSerializer.serialize(type, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(typeSerialized)) {
+            typeSerialized = typeSerialized.join(',');
+        }
+        localVarQueryParameters['type'] = typeSerialized;
+
+        let pageSerialized = ObjectSerializer.serialize(page, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(pageSerialized)) {
+            pageSerialized = pageSerialized.join(',');
+        }
+        localVarQueryParameters['page'] = pageSerialized;
+
+        let limitSerialized = ObjectSerializer.serialize(limit, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(limitSerialized)) {
+            limitSerialized = limitSerialized.join(',');
+        }
+        localVarQueryParameters['limit'] = limitSerialized;
+
+        if (opts.startAt !== undefined) {
+            let startAtSerialized = ObjectSerializer.serialize(opts.startAt, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(startAtSerialized)) {
+                startAtSerialized = startAtSerialized.join(',');
+            }
+            localVarQueryParameters['start_at'] = startAtSerialized;
+        }
+
+        if (opts.endAt !== undefined) {
+            let endAtSerialized = ObjectSerializer.serialize(opts.endAt, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(endAtSerialized)) {
+                endAtSerialized = endAtSerialized.join(',');
+            }
+            localVarQueryParameters['end_at'] = endAtSerialized;
+        }
+
+        if (opts.subBusiness !== undefined) {
+            let subBusinessSerialized = ObjectSerializer.serialize(opts.subBusiness, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(subBusinessSerialized)) {
+                subBusinessSerialized = subBusinessSerialized.join(',');
+            }
+            localVarQueryParameters['sub_business'] = subBusinessSerialized;
+        }
+
+        if (opts.businessFilter !== undefined) {
+            let businessFilterSerialized = ObjectSerializer.serialize(opts.businessFilter, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(businessFilterSerialized)) {
+                businessFilterSerialized = businessFilterSerialized.join(',');
+            }
+            localVarQueryParameters['business_filter'] = businessFilterSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2005>(config, 'InlineResponse2005', authSettings);
     }
 }

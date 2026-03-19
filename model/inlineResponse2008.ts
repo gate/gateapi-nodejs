@@ -9,9 +9,22 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse2008Data } from './inlineResponse2008Data';
+
 export class InlineResponse2008 {
-    'code': number;
-    'message': string;
+    /**
+     * Status code, 0 = success
+     */
+    'code'?: number;
+    /**
+     * Error identifier code. Empty string on success, machine-readable error label on error
+     */
+    'label'?: string;
+    /**
+     * Status message
+     */
+    'msg'?: string;
+    'data'?: InlineResponse2008Data;
 
     static discriminator: string | undefined = undefined;
 
@@ -22,9 +35,19 @@ export class InlineResponse2008 {
             type: 'number',
         },
         {
-            name: 'message',
-            baseName: 'message',
+            name: 'label',
+            baseName: 'label',
             type: 'string',
+        },
+        {
+            name: 'msg',
+            baseName: 'msg',
+            type: 'string',
+        },
+        {
+            name: 'data',
+            baseName: 'data',
+            type: 'InlineResponse2008Data',
         },
     ];
 

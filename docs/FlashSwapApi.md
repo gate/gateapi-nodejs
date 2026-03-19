@@ -9,6 +9,12 @@ Method | HTTP request | Description
 [**createFlashSwapOrder**](FlashSwapApi.md#createFlashSwapOrder) | **POST** /flash_swap/orders | Create a flash swap order
 [**getFlashSwapOrder**](FlashSwapApi.md#getFlashSwapOrder) | **GET** /flash_swap/orders/{order_id} | Query single flash swap order
 [**previewFlashSwapOrder**](FlashSwapApi.md#previewFlashSwapOrder) | **POST** /flash_swap/orders/preview | Flash swap order preview
+[**createFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#createFlashSwapMultiCurrencyManyToOneOrder) | **POST** /flash-swap/multi-currency/many-to-one/order/create | Flash Swap - Multi-currency exchange - Place order (many-to-one)
+[**previewFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#previewFlashSwapMultiCurrencyManyToOneOrder) | **POST** /flash-swap/multi-currency/many-to-one/order/preview | Flash Swap - Multi-currency exchange - Preview (many-to-one)
+[**createFlashSwapOrderV1**](FlashSwapApi.md#createFlashSwapOrderV1) | **POST** /flash-swap/order/create | Flash Swap - Place order (one-to-one)
+[**createFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#createFlashSwapMultiCurrencyOneToManyOrder) | **POST** /flash-swap/multi-currency/one-to-many/order/create | Flash Swap - Multi-currency exchange - Place order (one-to-many)
+[**previewFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#previewFlashSwapMultiCurrencyOneToManyOrder) | **POST** /flash-swap/multi-currency/one-to-many/order/preview | Flash Swap - Multi-currency exchange - Preview (one-to-many)
+[**previewFlashSwapOrderV1**](FlashSwapApi.md#previewFlashSwapOrderV1) | **GET** /flash-swap/order/preview | Flash Swap - Preview (one-to-one)
 
 
 ## listFlashSwapCurrencyPair
@@ -244,4 +250,282 @@ Promise<{ response: AxiosResponse; body: FlashSwapOrderPreview; }> [FlashSwapOrd
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+## createFlashSwapMultiCurrencyManyToOneOrder
+
+> Promise<{ response: http.IncomingMessage; body: FlashSwapMultiCurrencyManyToOneOrderCreateResp; }> createFlashSwapMultiCurrencyManyToOneOrder(flashSwapMultiCurrencyManyToOneOrderCreateReq)
+
+Flash Swap - Multi-currency exchange - Place order (many-to-one)
+
+Create a multi-currency to single target currency exchange order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FlashSwapApi(client);
+const flashSwapMultiCurrencyManyToOneOrderCreateReq = new FlashSwapMultiCurrencyManyToOneOrderCreateReq(); // FlashSwapMultiCurrencyManyToOneOrderCreateReq | 
+api.createFlashSwapMultiCurrencyManyToOneOrder(flashSwapMultiCurrencyManyToOneOrderCreateReq)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flashSwapMultiCurrencyManyToOneOrderCreateReq** | [**FlashSwapMultiCurrencyManyToOneOrderCreateReq**](FlashSwapMultiCurrencyManyToOneOrderCreateReq.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyManyToOneOrderCreateResp; }> [FlashSwapMultiCurrencyManyToOneOrderCreateResp](FlashSwapMultiCurrencyManyToOneOrderCreateResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## previewFlashSwapMultiCurrencyManyToOneOrder
+
+> Promise<{ response: http.IncomingMessage; body: FlashSwapMultiCurrencyManyToOneOrderPreviewResp; }> previewFlashSwapMultiCurrencyManyToOneOrder(flashSwapMultiCurrencyManyToOneOrderPreviewReq)
+
+Flash Swap - Multi-currency exchange - Preview (many-to-one)
+
+Preview quote for multi-currency to single target currency exchange
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FlashSwapApi(client);
+const flashSwapMultiCurrencyManyToOneOrderPreviewReq = new FlashSwapMultiCurrencyManyToOneOrderPreviewReq(); // FlashSwapMultiCurrencyManyToOneOrderPreviewReq | 
+api.previewFlashSwapMultiCurrencyManyToOneOrder(flashSwapMultiCurrencyManyToOneOrderPreviewReq)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flashSwapMultiCurrencyManyToOneOrderPreviewReq** | [**FlashSwapMultiCurrencyManyToOneOrderPreviewReq**](FlashSwapMultiCurrencyManyToOneOrderPreviewReq.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyManyToOneOrderPreviewResp; }> [FlashSwapMultiCurrencyManyToOneOrderPreviewResp](FlashSwapMultiCurrencyManyToOneOrderPreviewResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## createFlashSwapOrderV1
+
+> Promise<{ response: http.IncomingMessage; body: FlashSwapOrderCreateResp; }> createFlashSwapOrderV1(flashSwapOrderCreateReq)
+
+Flash Swap - Place order (one-to-one)
+
+Submit a one-to-one flash swap order. A quote_id must be obtained from the preview endpoint first
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FlashSwapApi(client);
+const flashSwapOrderCreateReq = new FlashSwapOrderCreateReq(); // FlashSwapOrderCreateReq | 
+api.createFlashSwapOrderV1(flashSwapOrderCreateReq)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flashSwapOrderCreateReq** | [**FlashSwapOrderCreateReq**](FlashSwapOrderCreateReq.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FlashSwapOrderCreateResp; }> [FlashSwapOrderCreateResp](FlashSwapOrderCreateResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## createFlashSwapMultiCurrencyOneToManyOrder
+
+> Promise<{ response: http.IncomingMessage; body: FlashSwapMultiCurrencyOneToManyOrderCreateResp; }> createFlashSwapMultiCurrencyOneToManyOrder(flashSwapMultiCurrencyOneToManyOrderCreateReq)
+
+Flash Swap - Multi-currency exchange - Place order (one-to-many)
+
+Create a single currency to multiple target currencies exchange order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FlashSwapApi(client);
+const flashSwapMultiCurrencyOneToManyOrderCreateReq = new FlashSwapMultiCurrencyOneToManyOrderCreateReq(); // FlashSwapMultiCurrencyOneToManyOrderCreateReq | 
+api.createFlashSwapMultiCurrencyOneToManyOrder(flashSwapMultiCurrencyOneToManyOrderCreateReq)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flashSwapMultiCurrencyOneToManyOrderCreateReq** | [**FlashSwapMultiCurrencyOneToManyOrderCreateReq**](FlashSwapMultiCurrencyOneToManyOrderCreateReq.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyOneToManyOrderCreateResp; }> [FlashSwapMultiCurrencyOneToManyOrderCreateResp](FlashSwapMultiCurrencyOneToManyOrderCreateResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## previewFlashSwapMultiCurrencyOneToManyOrder
+
+> Promise<{ response: http.IncomingMessage; body: FlashSwapMultiCurrencyOneToManyOrderPreviewResp; }> previewFlashSwapMultiCurrencyOneToManyOrder(flashSwapMultiCurrencyOneToManyOrderPreviewReq)
+
+Flash Swap - Multi-currency exchange - Preview (one-to-many)
+
+Preview quote for single currency to multiple target currencies exchange
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FlashSwapApi(client);
+const flashSwapMultiCurrencyOneToManyOrderPreviewReq = new FlashSwapMultiCurrencyOneToManyOrderPreviewReq(); // FlashSwapMultiCurrencyOneToManyOrderPreviewReq | 
+api.previewFlashSwapMultiCurrencyOneToManyOrder(flashSwapMultiCurrencyOneToManyOrderPreviewReq)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flashSwapMultiCurrencyOneToManyOrderPreviewReq** | [**FlashSwapMultiCurrencyOneToManyOrderPreviewReq**](FlashSwapMultiCurrencyOneToManyOrderPreviewReq.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyOneToManyOrderPreviewResp; }> [FlashSwapMultiCurrencyOneToManyOrderPreviewResp](FlashSwapMultiCurrencyOneToManyOrderPreviewResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## previewFlashSwapOrderV1
+
+> Promise<{ response: http.IncomingMessage; body: FlashSwapOrderPreviewResp; }> previewFlashSwapOrderV1(sellAsset, buyAsset, opts)
+
+Flash Swap - Preview (one-to-one)
+
+Get one-to-one flash swap quote. Either sell_amount or buy_amount must be specified
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FlashSwapApi(client);
+const sellAsset = "sellAsset_example"; // string | Currency to sell
+const buyAsset = "buyAsset_example"; // string | Currency to buy
+const opts = {
+  'sellAmount': "sellAmount_example", // string | Sell amount, either this or buy_amount must be specified
+  'buyAmount': "buyAmount_example" // string | Buy amount, either this or sell_amount must be specified
+};
+api.previewFlashSwapOrderV1(sellAsset, buyAsset, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellAsset** | **string**| Currency to sell | [default to undefined]
+ **buyAsset** | **string**| Currency to buy | [default to undefined]
+ **sellAmount** | **string**| Sell amount, either this or buy_amount must be specified | [optional] [default to undefined]
+ **buyAmount** | **string**| Buy amount, either this or sell_amount must be specified | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FlashSwapOrderPreviewResp; }> [FlashSwapOrderPreviewResp](FlashSwapOrderPreviewResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json

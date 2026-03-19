@@ -4,11 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Bank ID (required for order placement) | [default to undefined]
-**bankAccountName** | **string** |  | [default to undefined]
-**bankName** | **string** |  | [default to undefined]
-**bankCountry** | **string** |  | [default to undefined]
-**bankAddress** | **string** |  | [default to undefined]
-**bankCode** | **string** |  | [default to undefined]
-**branchCode** | **string** |  | [default to undefined]
+**list** | [**Array&lt;InlineResponse2009DataList&gt;**](InlineResponse2009DataList.md) | Live stream/replay list | [optional] [default to undefined]
 

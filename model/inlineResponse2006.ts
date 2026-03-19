@@ -12,9 +12,16 @@
 import { InlineResponse2006Data } from './inlineResponse2006Data';
 
 export class InlineResponse2006 {
-    'code': number;
-    'message': string;
-    'data': InlineResponse2006Data;
+    /**
+     * Response Code. `0` = Success; `2002` = User not logged in; `50105` = Input parameter validation failed
+     */
+    'code'?: InlineResponse2006.Code;
+    /**
+     * Error identifier code. Empty string on success, machine-readable error label on error
+     */
+    'label'?: string;
+    'message'?: string;
+    'data'?: InlineResponse2006Data;
 
     static discriminator: string | undefined = undefined;
 
@@ -22,7 +29,12 @@ export class InlineResponse2006 {
         {
             name: 'code',
             baseName: 'code',
-            type: 'number',
+            type: 'InlineResponse2006.Code',
+        },
+        {
+            name: 'label',
+            baseName: 'label',
+            type: 'string',
         },
         {
             name: 'message',
@@ -38,5 +50,13 @@ export class InlineResponse2006 {
 
     static getAttributeTypeMap() {
         return InlineResponse2006.attributeTypeMap;
+    }
+}
+
+export namespace InlineResponse2006 {
+    export enum Code {
+        NUMBER_0 = <any>0,
+        NUMBER_2002 = <any>2002,
+        NUMBER_50105 = <any>50105,
     }
 }

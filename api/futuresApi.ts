@@ -18,6 +18,7 @@ import { Contract } from '../model/contract';
 import { ContractStat } from '../model/contractStat';
 import { CountdownCancelAllFuturesTask } from '../model/countdownCancelAllFuturesTask';
 import { CreateTrailOrder } from '../model/createTrailOrder';
+import { CreateTrailOrderResponse } from '../model/createTrailOrderResponse';
 import { FundingRateRecord } from '../model/fundingRateRecord';
 import { FutureCancelOrderResult } from '../model/futureCancelOrderResult';
 import { FuturesAccount } from '../model/futuresAccount';
@@ -41,12 +42,6 @@ import { FuturesRiskLimitTier } from '../model/futuresRiskLimitTier';
 import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
 import { FuturesUpdatePriceTriggeredOrder } from '../model/futuresUpdatePriceTriggeredOrder';
-import { InlineObject } from '../model/inlineObject';
-import { InlineResponse200 } from '../model/inlineResponse200';
-import { InlineResponse2001 } from '../model/inlineResponse2001';
-import { InlineResponse2002 } from '../model/inlineResponse2002';
-import { InlineResponse2003 } from '../model/inlineResponse2003';
-import { InlineResponse201 } from '../model/inlineResponse201';
 import { InsuranceRecord } from '../model/insuranceRecord';
 import { MyFuturesTrade } from '../model/myFuturesTrade';
 import { MyFuturesTradeTimeRange } from '../model/myFuturesTradeTimeRange';
@@ -55,8 +50,13 @@ import { PositionClose } from '../model/positionClose';
 import { PositionTimerange } from '../model/positionTimerange';
 import { StopAllTrailOrders } from '../model/stopAllTrailOrders';
 import { StopTrailOrder } from '../model/stopTrailOrder';
+import { TrailOrderChangeLogResponse } from '../model/trailOrderChangeLogResponse';
+import { TrailOrderDetailResponse } from '../model/trailOrderDetailResponse';
+import { TrailOrderListResponse } from '../model/trailOrderListResponse';
+import { TrailOrderResponse } from '../model/trailOrderResponse';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { TriggerTime } from '../model/triggerTime';
+import { UpdateDualCompPositionCrossModeRequest } from '../model/updateDualCompPositionCrossModeRequest';
 import { UpdateTrailOrder } from '../model/updateTrailOrder';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -87,7 +87,7 @@ export class FuturesApi {
      */
     public async listFuturesContracts(
         settle: 'btc' | 'usdt',
-        opts: { limit?: number; offset?: number },
+        opts?: { limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Contract> }> {
         const localVarPath =
             this.client.basePath +
@@ -196,7 +196,7 @@ export class FuturesApi {
     public async listFuturesOrderBook(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { interval?: string; limit?: number; withId?: boolean },
+        opts?: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
         const localVarPath =
             this.client.basePath +
@@ -282,7 +282,7 @@ export class FuturesApi {
     public async listFuturesTrades(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { limit?: number; offset?: number; lastId?: string; from?: number; to?: number },
+        opts?: { limit?: number; offset?: number; lastId?: string; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
         const localVarPath =
             this.client.basePath +
@@ -386,7 +386,7 @@ export class FuturesApi {
     public async listFuturesCandlesticks(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: {
+        opts?: {
             from?: number;
             to?: number;
             limit?: number;
@@ -498,7 +498,7 @@ export class FuturesApi {
     public async listFuturesPremiumIndex(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: {
+        opts?: {
             from?: number;
             to?: number;
             limit?: number;
@@ -595,7 +595,7 @@ export class FuturesApi {
      */
     public async listFuturesTickers(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string },
+        opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTicker> }> {
         const localVarPath =
             this.client.basePath +
@@ -649,7 +649,7 @@ export class FuturesApi {
     public async listFuturesFundingRateHistory(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { limit?: number; from?: number; to?: number },
+        opts?: { limit?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FundingRateRecord> }> {
         const localVarPath =
             this.client.basePath +
@@ -786,7 +786,7 @@ export class FuturesApi {
      */
     public async listFuturesInsuranceLedger(
         settle: 'btc' | 'usdt',
-        opts: { limit?: number },
+        opts?: { limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<InsuranceRecord> }> {
         const localVarPath =
             this.client.basePath +
@@ -840,7 +840,7 @@ export class FuturesApi {
     public async listContractStats(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { from?: number; interval?: string; limit?: number },
+        opts?: { from?: number; interval?: string; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<ContractStat> }> {
         const localVarPath =
             this.client.basePath +
@@ -969,7 +969,7 @@ export class FuturesApi {
      */
     public async listLiquidatedOrders(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; from?: number; to?: number; limit?: number },
+        opts?: { contract?: string; from?: number; to?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiqOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1048,7 +1048,7 @@ export class FuturesApi {
      */
     public async listFuturesRiskLimitTiers(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; limit?: number; offset?: number },
+        opts?: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLimitRiskTiers> }> {
         const localVarPath =
             this.client.basePath +
@@ -1158,7 +1158,7 @@ export class FuturesApi {
      */
     public async listFuturesAccountBook(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; type?: string },
+        opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; type?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook> }> {
         const localVarPath =
             this.client.basePath +
@@ -1255,7 +1255,7 @@ export class FuturesApi {
      */
     public async listPositions(
         settle: 'btc' | 'usdt',
-        opts: { holding?: boolean; limit?: number; offset?: number },
+        opts?: { holding?: boolean; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
@@ -1328,7 +1328,7 @@ export class FuturesApi {
     public async listPositionsTimerange(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { from?: number; to?: number; limit?: number; offset?: number },
+        opts?: { from?: number; to?: number; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<PositionTimerange> }> {
         const localVarPath =
             this.client.basePath +
@@ -1459,14 +1459,14 @@ export class FuturesApi {
      * @summary Get Leverage Information for Specified Mode
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param opts Optional parameters
-     * @param opts.posMarginMode Position Margin Mode, required for split position mode, values: isolated/cross.
-     * @param opts.dualSide dual_long - Long, dual_short - Short
+     * @param posMarginMode Position Margin Mode, required for split position mode, values: isolated/cross.
+     * @param dualSide dual_long - Long, dual_short - Short
      */
     public async getLeverage(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { posMarginMode?: string; dualSide?: string },
+        posMarginMode: string,
+        dualSide: string,
     ): Promise<{ response: AxiosResponse; body: FuturesLeverage }> {
         const localVarPath =
             this.client.basePath +
@@ -1493,24 +1493,29 @@ export class FuturesApi {
             throw new Error('Required parameter contract was null or undefined when calling getLeverage.');
         }
 
-        opts = opts || {};
-        if (opts.posMarginMode !== undefined) {
-            let posMarginModeSerialized = ObjectSerializer.serialize(opts.posMarginMode, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(posMarginModeSerialized)) {
-                posMarginModeSerialized = posMarginModeSerialized.join(',');
-            }
-            localVarQueryParameters['pos_margin_mode'] = posMarginModeSerialized;
+        // verify required parameter 'posMarginMode' is not null or undefined
+        if (posMarginMode === null || posMarginMode === undefined) {
+            throw new Error('Required parameter posMarginMode was null or undefined when calling getLeverage.');
         }
 
-        if (opts.dualSide !== undefined) {
-            let dualSideSerialized = ObjectSerializer.serialize(opts.dualSide, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(dualSideSerialized)) {
-                dualSideSerialized = dualSideSerialized.join(',');
-            }
-            localVarQueryParameters['dual_side'] = dualSideSerialized;
+        // verify required parameter 'dualSide' is not null or undefined
+        if (dualSide === null || dualSide === undefined) {
+            throw new Error('Required parameter dualSide was null or undefined when calling getLeverage.');
         }
+
+        let posMarginModeSerialized = ObjectSerializer.serialize(posMarginMode, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(posMarginModeSerialized)) {
+            posMarginModeSerialized = posMarginModeSerialized.join(',');
+        }
+        localVarQueryParameters['pos_margin_mode'] = posMarginModeSerialized;
+
+        let dualSideSerialized = ObjectSerializer.serialize(dualSide, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(dualSideSerialized)) {
+            dualSideSerialized = dualSideSerialized.join(',');
+        }
+        localVarQueryParameters['dual_side'] = dualSideSerialized;
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1597,7 +1602,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt',
         contract: string,
         leverage: string,
-        opts: { crossLeverageLimit?: string; pid?: number },
+        opts?: { crossLeverageLimit?: string; pid?: number },
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
             this.client.basePath +
@@ -1681,7 +1686,7 @@ export class FuturesApi {
         contract: string,
         leverage: string,
         marginMode: string,
-        opts: { dualSide?: string },
+        opts?: { dualSide?: string },
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
             this.client.basePath +
@@ -1812,11 +1817,11 @@ export class FuturesApi {
      *
      * @summary Switch Between Cross and Isolated Margin Modes Under Hedge Mode
      * @param settle Settle currency
-     * @param inlineObject
+     * @param updateDualCompPositionCrossModeRequest
      */
     public async updateDualCompPositionCrossMode(
         settle: 'btc' | 'usdt',
-        inlineObject: InlineObject,
+        updateDualCompPositionCrossModeRequest: UpdateDualCompPositionCrossModeRequest,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
@@ -1841,10 +1846,10 @@ export class FuturesApi {
             );
         }
 
-        // verify required parameter 'inlineObject' is not null or undefined
-        if (inlineObject === null || inlineObject === undefined) {
+        // verify required parameter 'updateDualCompPositionCrossModeRequest' is not null or undefined
+        if (updateDualCompPositionCrossModeRequest === null || updateDualCompPositionCrossModeRequest === undefined) {
             throw new Error(
-                'Required parameter inlineObject was null or undefined when calling updateDualCompPositionCrossMode.',
+                'Required parameter updateDualCompPositionCrossModeRequest was null or undefined when calling updateDualCompPositionCrossMode.',
             );
         }
 
@@ -1853,7 +1858,10 @@ export class FuturesApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject, 'InlineObject'),
+            data: ObjectSerializer.serialize(
+                updateDualCompPositionCrossModeRequest,
+                'UpdateDualCompPositionCrossModeRequest',
+            ),
         };
 
         const authSettings = ['apiv4'];
@@ -2163,7 +2171,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt',
         contract: string,
         leverage: string,
-        opts: { crossLeverageLimit?: string },
+        opts?: { crossLeverageLimit?: string },
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
@@ -2309,7 +2317,7 @@ export class FuturesApi {
     public async listFuturesOrders(
         settle: 'btc' | 'usdt',
         status: string,
-        opts: { contract?: string; limit?: number; offset?: number; lastId?: string },
+        opts?: { contract?: string; limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -2400,7 +2408,7 @@ export class FuturesApi {
     public async createFuturesOrder(
         settle: 'btc' | 'usdt',
         futuresOrder: FuturesOrder,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -2455,7 +2463,7 @@ export class FuturesApi {
      */
     public async cancelFuturesOrders(
         settle: 'btc' | 'usdt',
-        opts: { xGateExptime?: string; contract?: string; side?: string; excludeReduceOnly?: boolean; text?: string },
+        opts?: { xGateExptime?: string; contract?: string; side?: string; excludeReduceOnly?: boolean; text?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -2540,7 +2548,7 @@ export class FuturesApi {
      */
     public async getOrdersWithTimeRange(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; from?: number; to?: number; limit?: number; offset?: number },
+        opts?: { contract?: string; from?: number; to?: number; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -2628,7 +2636,7 @@ export class FuturesApi {
     public async createBatchFuturesOrder(
         settle: 'btc' | 'usdt',
         futuresOrder: Array<FuturesOrder>,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -2731,7 +2739,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt',
         orderId: string,
         futuresOrderAmendment: FuturesOrderAmendment,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -2793,7 +2801,7 @@ export class FuturesApi {
     public async cancelFuturesOrder(
         settle: 'btc' | 'usdt',
         orderId: string,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -2849,7 +2857,7 @@ export class FuturesApi {
      */
     public async getMyTrades(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; order?: number; limit?: number; offset?: number; lastId?: string },
+        opts?: { contract?: string; order?: number; limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade> }> {
         const localVarPath =
             this.client.basePath +
@@ -2940,7 +2948,7 @@ export class FuturesApi {
      */
     public async getMyTradesWithTimeRange(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; from?: number; to?: number; limit?: number; offset?: number; role?: string },
+        opts?: { contract?: string; from?: number; to?: number; limit?: number; offset?: number; role?: string },
     ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTradeTimeRange> }> {
         const localVarPath =
             this.client.basePath +
@@ -3045,7 +3053,7 @@ export class FuturesApi {
      */
     public async listPositionClose(
         settle: 'btc' | 'usdt',
-        opts: {
+        opts?: {
             contract?: string;
             limit?: number;
             offset?: number;
@@ -3162,7 +3170,7 @@ export class FuturesApi {
      */
     public async listLiquidates(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
+        opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
         const localVarPath =
             this.client.basePath +
@@ -3262,7 +3270,7 @@ export class FuturesApi {
      */
     public async listAutoDeleverages(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
+        opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesAutoDeleverage> }> {
         const localVarPath =
             this.client.basePath +
@@ -3404,7 +3412,7 @@ export class FuturesApi {
      */
     public async getFuturesFee(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string },
+        opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: { [key: string]: FuturesFee } }> {
         const localVarPath =
             this.client.basePath +
@@ -3460,7 +3468,7 @@ export class FuturesApi {
     public async cancelBatchFutureOrders(
         settle: 'btc' | 'usdt',
         requestBody: Array<string>,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FutureCancelOrderResult> }> {
         const localVarPath =
             this.client.basePath +
@@ -3519,7 +3527,7 @@ export class FuturesApi {
     public async amendBatchFutureOrders(
         settle: 'btc' | 'usdt',
         batchAmendOrderReq: Array<BatchAmendOrderReq>,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -3625,7 +3633,7 @@ export class FuturesApi {
     public async createFuturesBBOOrder(
         settle: 'btc' | 'usdt',
         futuresBBOOrder: FuturesBBOOrder,
-        opts: { xGateExptime?: string },
+        opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -3678,7 +3686,7 @@ export class FuturesApi {
     public async createTrailOrder(
         settle: 'btc' | 'usdt',
         createTrailOrder: CreateTrailOrder,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse201 }> {
+    ): Promise<{ response: AxiosResponse; body: CreateTrailOrderResponse }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/create'.replace(
@@ -3714,7 +3722,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse201>(config, 'InlineResponse201', authSettings);
+        return this.client.request<CreateTrailOrderResponse>(config, 'CreateTrailOrderResponse', authSettings);
     }
 
     /**
@@ -3726,7 +3734,7 @@ export class FuturesApi {
     public async stopTrailOrder(
         settle: 'btc' | 'usdt',
         stopTrailOrder: StopTrailOrder,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse200 }> {
+    ): Promise<{ response: AxiosResponse; body: TrailOrderResponse }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/stop'.replace(
@@ -3762,7 +3770,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse200>(config, 'InlineResponse200', authSettings);
+        return this.client.request<TrailOrderResponse>(config, 'TrailOrderResponse', authSettings);
     }
 
     /**
@@ -3774,7 +3782,7 @@ export class FuturesApi {
     public async stopAllTrailOrders(
         settle: 'btc' | 'usdt',
         stopAllTrailOrders: StopAllTrailOrders,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2001 }> {
+    ): Promise<{ response: AxiosResponse; body: TrailOrderListResponse }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/stop_all'.replace(
@@ -3812,7 +3820,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2001>(config, 'InlineResponse2001', authSettings);
+        return this.client.request<TrailOrderListResponse>(config, 'TrailOrderListResponse', authSettings);
     }
 
     /**
@@ -3835,7 +3843,7 @@ export class FuturesApi {
      */
     public async getTrailOrders(
         settle: 'btc' | 'usdt',
-        opts: {
+        opts?: {
             contract?: string;
             isFinished?: boolean;
             startAt?: number;
@@ -3849,7 +3857,7 @@ export class FuturesApi {
             reduceOnly?: 1 | 2;
             side?: 1 | 2;
         },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2001 }> {
+    ): Promise<{ response: AxiosResponse; body: TrailOrderListResponse }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/list'.replace(
@@ -3988,7 +3996,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2001>(config, 'InlineResponse2001', authSettings);
+        return this.client.request<TrailOrderListResponse>(config, 'TrailOrderListResponse', authSettings);
     }
 
     /**
@@ -4000,7 +4008,7 @@ export class FuturesApi {
     public async getTrailOrderDetail(
         settle: 'btc' | 'usdt',
         id: number,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2002 }> {
+    ): Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/detail'.replace(
@@ -4042,7 +4050,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2002>(config, 'InlineResponse2002', authSettings);
+        return this.client.request<TrailOrderDetailResponse>(config, 'TrailOrderDetailResponse', authSettings);
     }
 
     /**
@@ -4054,7 +4062,7 @@ export class FuturesApi {
     public async updateTrailOrder(
         settle: 'btc' | 'usdt',
         updateTrailOrder: UpdateTrailOrder,
-    ): Promise<{ response: AxiosResponse; body: InlineResponse200 }> {
+    ): Promise<{ response: AxiosResponse; body: TrailOrderResponse }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/update'.replace(
@@ -4090,7 +4098,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse200>(config, 'InlineResponse200', authSettings);
+        return this.client.request<TrailOrderResponse>(config, 'TrailOrderResponse', authSettings);
     }
 
     /**
@@ -4105,8 +4113,8 @@ export class FuturesApi {
     public async getTrailOrderChangeLog(
         settle: 'btc' | 'usdt',
         id: number,
-        opts: { pageNum?: number; pageSize?: number },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2003 }> {
+        opts?: { pageNum?: number; pageSize?: number },
+    ): Promise<{ response: AxiosResponse; body: TrailOrderChangeLogResponse }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/change_log'.replace(
@@ -4167,7 +4175,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2003>(config, 'InlineResponse2003', authSettings);
+        return this.client.request<TrailOrderChangeLogResponse>(config, 'TrailOrderChangeLogResponse', authSettings);
     }
 
     /**
@@ -4183,7 +4191,7 @@ export class FuturesApi {
     public async listPriceTriggeredOrders(
         settle: 'btc' | 'usdt',
         status: 'open' | 'finished',
-        opts: { contract?: string; limit?: number; offset?: number },
+        opts?: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -4314,7 +4322,7 @@ export class FuturesApi {
      */
     public async cancelPriceTriggeredOrderList(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string },
+        opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
         const localVarPath =
             this.client.basePath +

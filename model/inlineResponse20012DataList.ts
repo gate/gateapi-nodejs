@@ -11,49 +11,85 @@
 
 export class InlineResponse20012DataList {
     /**
-     * Order ID
+     * Activity ID
      */
-    'id'?: number;
+    'id': number;
     /**
-     * Transaction reference number
+     * Activity type ID
      */
-    'tradeNo'?: string;
+    'typeId': number;
     /**
-     * Payment currency
+     * Activity type name
      */
-    'payCoin'?: string;
+    'typeName': string;
     /**
-     * Payment amount
+     * Activity name
      */
-    'payAmount'?: string;
+    'competitionName': string;
     /**
-     * Received currency
+     * Activity start time (Unix timestamp, in seconds)
      */
-    'getCoin'?: string;
+    'startAt': number;
     /**
-     * Received amount
+     * Activity end time (Unix timestamp, in seconds)
      */
-    'getAmount'?: string;
+    'endAt': number;
     /**
-     * Exchange rate
+     * Activity image URL (light mode)
      */
-    'rate'?: string;
+    'img': string;
     /**
-     * Reciprocal of the exchange rate
+     * Activity image URL (dark mode)
      */
-    'rateReci'?: string;
+    'imgDark': string;
     /**
-     * PROCESSING: in progress / DONE: completed / FAILED: failed
+     * Activity redirect link
      */
-    'status'?: string;
+    'url': string;
     /**
-     * timetimestamp
+     * Popularity score
      */
-    'createTimest'?: number;
+    'hot': number;
     /**
-     * Created time
+     * Main title first line
      */
-    'createTime'?: string;
+    'masterOneLine': string;
+    /**
+     * Main title second line
+     */
+    'masterTwoLine': string;
+    /**
+     * Subtitle first line
+     */
+    'slaveOneLine': string;
+    /**
+     * Subtitle second line
+     */
+    'slaveTwoLine': string;
+    /**
+     * Activity title
+     */
+    'competitionTitle': string;
+    /**
+     * Pin ID, 0 means not pinned
+     */
+    'topId': number;
+    /**
+     * Parent activity ID, 0 means no parent activity
+     */
+    'parentId': number;
+    /**
+     * New activity image URL (light mode)
+     */
+    'newImg': string;
+    /**
+     * New activity image URL (dark mode)
+     */
+    'newImgDark': string;
+    /**
+     * Activity tag list
+     */
+    'tag': Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -64,54 +100,99 @@ export class InlineResponse20012DataList {
             type: 'number',
         },
         {
-            name: 'tradeNo',
-            baseName: 'trade_no',
-            type: 'string',
-        },
-        {
-            name: 'payCoin',
-            baseName: 'pay_coin',
-            type: 'string',
-        },
-        {
-            name: 'payAmount',
-            baseName: 'pay_amount',
-            type: 'string',
-        },
-        {
-            name: 'getCoin',
-            baseName: 'get_coin',
-            type: 'string',
-        },
-        {
-            name: 'getAmount',
-            baseName: 'get_amount',
-            type: 'string',
-        },
-        {
-            name: 'rate',
-            baseName: 'rate',
-            type: 'string',
-        },
-        {
-            name: 'rateReci',
-            baseName: 'rate_reci',
-            type: 'string',
-        },
-        {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
-        },
-        {
-            name: 'createTimest',
-            baseName: 'create_timest',
+            name: 'typeId',
+            baseName: 'type_id',
             type: 'number',
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
+            name: 'typeName',
+            baseName: 'type_name',
             type: 'string',
+        },
+        {
+            name: 'competitionName',
+            baseName: 'competition_name',
+            type: 'string',
+        },
+        {
+            name: 'startAt',
+            baseName: 'start_at',
+            type: 'number',
+        },
+        {
+            name: 'endAt',
+            baseName: 'end_at',
+            type: 'number',
+        },
+        {
+            name: 'img',
+            baseName: 'img',
+            type: 'string',
+        },
+        {
+            name: 'imgDark',
+            baseName: 'img_dark',
+            type: 'string',
+        },
+        {
+            name: 'url',
+            baseName: 'url',
+            type: 'string',
+        },
+        {
+            name: 'hot',
+            baseName: 'hot',
+            type: 'number',
+        },
+        {
+            name: 'masterOneLine',
+            baseName: 'master_one_line',
+            type: 'string',
+        },
+        {
+            name: 'masterTwoLine',
+            baseName: 'master_two_line',
+            type: 'string',
+        },
+        {
+            name: 'slaveOneLine',
+            baseName: 'slave_one_line',
+            type: 'string',
+        },
+        {
+            name: 'slaveTwoLine',
+            baseName: 'slave_two_line',
+            type: 'string',
+        },
+        {
+            name: 'competitionTitle',
+            baseName: 'competition_title',
+            type: 'string',
+        },
+        {
+            name: 'topId',
+            baseName: 'top_id',
+            type: 'number',
+        },
+        {
+            name: 'parentId',
+            baseName: 'parent_id',
+            type: 'number',
+        },
+        {
+            name: 'newImg',
+            baseName: 'new_img',
+            type: 'string',
+        },
+        {
+            name: 'newImgDark',
+            baseName: 'new_img_dark',
+            type: 'string',
+        },
+        {
+            name: 'tag',
+            baseName: 'tag',
+            type: 'Array<string>',
         },
     ];
 

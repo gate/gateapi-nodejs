@@ -9,109 +9,33 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse2006DataList } from './inlineResponse2006DataList';
+
+/**
+ * Returned when code=0; empty object {} otherwise
+ */
 export class InlineResponse2006Data {
     /**
-     * BUY (on-ramp) or SELL (off-ramp)
+     * Whether there is a next page. `true` means more data is available. Pass the `id` of the last record as `last_id` and `expire_time_order_by` as `expire_time` in the next request
      */
-    'type': string;
+    'nextPage'?: boolean;
     /**
-     * Payment currency
+     * Coupon object array, see field details below
      */
-    'payCoin': string;
-    /**
-     * Currency
-     */
-    'getCoin': string;
-    /**
-     * Payment amount
-     */
-    'payAmount': string;
-    /**
-     * Redemption Amount
-     */
-    'getAmount': string;
-    /**
-     * Exchange rate
-     */
-    'rate': string;
-    /**
-     * Reciprocal of the exchange rate
-     */
-    'rateReci': string;
-    /**
-     * Promotion code
-     */
-    'promotionCode': string;
-    /**
-     * Quote method
-     */
-    'side': string;
-    /**
-     * Order type: FIAT (fiat) / STABLE (stablecoin)
-     */
-    'orderType': string;
-    /**
-     * Quote token required when placing an order
-     */
-    'quoteToken': string;
+    'list'?: Array<InlineResponse2006DataList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'type',
-            baseName: 'type',
-            type: 'string',
+            name: 'nextPage',
+            baseName: 'next_page',
+            type: 'boolean',
         },
         {
-            name: 'payCoin',
-            baseName: 'pay_coin',
-            type: 'string',
-        },
-        {
-            name: 'getCoin',
-            baseName: 'get_coin',
-            type: 'string',
-        },
-        {
-            name: 'payAmount',
-            baseName: 'pay_amount',
-            type: 'string',
-        },
-        {
-            name: 'getAmount',
-            baseName: 'get_amount',
-            type: 'string',
-        },
-        {
-            name: 'rate',
-            baseName: 'rate',
-            type: 'string',
-        },
-        {
-            name: 'rateReci',
-            baseName: 'rate_reci',
-            type: 'string',
-        },
-        {
-            name: 'promotionCode',
-            baseName: 'promotion_code',
-            type: 'string',
-        },
-        {
-            name: 'side',
-            baseName: 'side',
-            type: 'string',
-        },
-        {
-            name: 'orderType',
-            baseName: 'order_type',
-            type: 'string',
-        },
-        {
-            name: 'quoteToken',
-            baseName: 'quote_token',
-            type: 'string',
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<InlineResponse2006DataList>',
         },
     ];
 

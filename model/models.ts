@@ -13,10 +13,17 @@ export * from './agencyCommission';
 export * from './agencyCommissionHistory';
 export * from './agencyTransaction';
 export * from './agencyTransactionHistory';
+export * from './alphaCurrency';
 export * from './alphaTicker';
+export * from './amendOptionsOrderRequest';
+export * from './apiResponseExSkillGetBeginnerTaskListResp';
+export * from './apiResponseExSkillGetBeginnerTaskListRespData';
+export * from './apiResponseExSkillGetBeginnerTaskListRespDataTasks';
+export * from './apiResponseExSkillGetUserIdentityResp';
 export * from './autoRepaySetting';
 export * from './awardListStruct';
 export * from './awardListStructList';
+export * from './baseResponse';
 export * from './batchAmendItem';
 export * from './batchAmendOrderReq';
 export * from './batchFundingRatesRequest';
@@ -25,10 +32,10 @@ export * from './batchFuturesOrder';
 export * from './batchOrder';
 export * from './borrowCurrencyInfo';
 export * from './brokerCommission';
-export * from './brokerCommission1';
+export * from './brokerCommissionItem';
 export * from './brokerCommissionSubBrokerInfo';
 export * from './brokerTransaction';
-export * from './brokerTransaction1';
+export * from './brokerTransactionHistory';
 export * from './cancelBatchOrder';
 export * from './cancelOrder';
 export * from './cancelOrderResult';
@@ -57,7 +64,10 @@ export * from './countdownCancelAllSpotTask';
 export * from './createMultiCollateralOrder';
 export * from './createOrder';
 export * from './createOrderData';
+export * from './createOrderV4';
 export * from './createTrailOrder';
+export * from './createTrailOrderResponse';
+export * from './createTrailOrderResult';
 export * from './createTransaction';
 export * from './createUniLend';
 export * from './createUniLoan';
@@ -66,17 +76,39 @@ export * from './createUserRespData';
 export * from './crossMarginBalance';
 export * from './crossMarginLoan';
 export * from './crossMarginRepayment';
+export * from './crossexAccount';
+export * from './crossexAccountAsset';
+export * from './crossexAccountBookRecord';
 export * from './crossexAccountUpdateRequest';
+export * from './crossexAccountUpdateResponse';
+export * from './crossexAdlRank';
 export * from './crossexClosePositionRequest';
+export * from './crossexCoinDiscountRate';
 export * from './crossexConvertOrderRequest';
 export * from './crossexConvertQuoteRequest';
+export * from './crossexConvertQuoteResponse';
+export * from './crossexFee';
+export * from './crossexHistoricalMarginPosition';
+export * from './crossexHistoricalPosition';
+export * from './crossexInterestRate';
 export * from './crossexLeverageRequest';
+export * from './crossexLeverageResponse';
+export * from './crossexMarginInterestRecord';
+export * from './crossexMarginPosition';
+export * from './crossexOrder';
+export * from './crossexOrderActionResponse';
 export * from './crossexOrderRequest';
 export * from './crossexOrderUpdateRequest';
-export * from './crossexRuleRiskLimitsTiers';
+export * from './crossexPosition';
+export * from './crossexRiskLimit';
+export * from './crossexRiskLimitTier';
+export * from './crossexSpecialFee';
+export * from './crossexTrade';
+export * from './crossexTransferCoin';
+export * from './crossexTransferRecord';
 export * from './crossexTransferRequest';
+export * from './crossexTransferResponse';
 export * from './currency';
-export * from './currency2';
 export * from './currencyChain';
 export * from './currencyPair';
 export * from './currencyQuota';
@@ -92,6 +124,7 @@ export * from './deliveryLiquidate';
 export * from './deliveryMyTrade';
 export * from './deliveryOrder';
 export * from './deliveryOrderBook';
+export * from './deliveryOrderBookItem';
 export * from './deliveryPosition';
 export * from './deliveryPositionClose';
 export * from './deliverySettlement';
@@ -102,12 +135,46 @@ export * from './depositRecord';
 export * from './dualGetBalance';
 export * from './dualGetOrders';
 export * from './dualGetPlans';
+export * from './eligibility';
+export * from './eligibilityResponse';
+export * from './eligibilityResponseAllOf';
+export * from './errCodeMsg';
 export * from './eth2RateList';
 export * from './eth2Swap';
 export * from './findCoin';
+export * from './fixedTermBonusInfo';
+export * from './fixedTermCouponInfo';
+export * from './fixedTermHistoryRecord';
+export * from './fixedTermLendOrder';
+export * from './fixedTermLendRequest';
+export * from './fixedTermProduct';
+export * from './fixedTermProductInfo';
+export * from './fixedTermProductSimple';
 export * from './flashSwapCurrencyPair';
+export * from './flashSwapErrorResponse';
+export * from './flashSwapMultiCurrencyCreateParam';
+export * from './flashSwapMultiCurrencyManyToOneOrderCreateReq';
+export * from './flashSwapMultiCurrencyManyToOneOrderCreateResp';
+export * from './flashSwapMultiCurrencyManyToOneOrderCreateRespData';
+export * from './flashSwapMultiCurrencyManyToOneOrderPreviewReq';
+export * from './flashSwapMultiCurrencyManyToOneOrderPreviewResp';
+export * from './flashSwapMultiCurrencyManyToOneOrderPreviewRespData';
+export * from './flashSwapMultiCurrencyOneToManyOrderCreateReq';
+export * from './flashSwapMultiCurrencyOneToManyOrderCreateResp';
+export * from './flashSwapMultiCurrencyOneToManyOrderCreateRespData';
+export * from './flashSwapMultiCurrencyOneToManyOrderPreviewReq';
+export * from './flashSwapMultiCurrencyOneToManyOrderPreviewResp';
+export * from './flashSwapMultiCurrencyOneToManyOrderPreviewRespData';
+export * from './flashSwapMultiCurrencyOrder';
+export * from './flashSwapMultiCurrencyPreviewOrder';
+export * from './flashSwapMultiCurrencyPreviewParam';
 export * from './flashSwapOrder';
+export * from './flashSwapOrderCreateReq';
+export * from './flashSwapOrderCreateResp';
+export * from './flashSwapOrderCreateRespData';
 export * from './flashSwapOrderPreview';
+export * from './flashSwapOrderPreviewResp';
+export * from './flashSwapOrderPreviewRespData';
 export * from './flashSwapOrderRequest';
 export * from './flashSwapPreviewRequest';
 export * from './fundingAccount';
@@ -131,7 +198,6 @@ export * from './futuresOrder';
 export * from './futuresOrderAmendment';
 export * from './futuresOrderBook';
 export * from './futuresOrderBookItem';
-export * from './futuresOrderBookItem1';
 export * from './futuresPositionCrossMode';
 export * from './futuresPremiumIndex';
 export * from './futuresPriceTrigger';
@@ -148,96 +214,55 @@ export * from './getPendingTransactionListRequest';
 export * from './getTransactionDetailsRequest';
 export * from './indexConstituent';
 export * from './inlineObject';
-export * from './inlineObject1';
 export * from './inlineResponse200';
 export * from './inlineResponse2001';
 export * from './inlineResponse20010';
-export * from './inlineResponse20010Data';
-export * from './inlineResponse20010DataLists';
 export * from './inlineResponse20011';
 export * from './inlineResponse20011Data';
-export * from './inlineResponse20011DataCryptoCurrencyInfo';
-export * from './inlineResponse20011DataFiatCurrencyInfo';
-export * from './inlineResponse20011DataList';
 export * from './inlineResponse20012';
 export * from './inlineResponse20012Data';
 export * from './inlineResponse20012DataList';
 export * from './inlineResponse20013';
 export * from './inlineResponse20013Data';
-export * from './inlineResponse20014';
-export * from './inlineResponse20014Data';
-export * from './inlineResponse20014DataMerchantInfo';
-export * from './inlineResponse20015';
-export * from './inlineResponse20015Data';
-export * from './inlineResponse20016';
-export * from './inlineResponse20016Data';
-export * from './inlineResponse20016List';
-export * from './inlineResponse20017';
-export * from './inlineResponse20017Data';
-export * from './inlineResponse20017DataConvertInfo';
-export * from './inlineResponse20017DataList';
-export * from './inlineResponse20017DataTransTime';
-export * from './inlineResponse20018';
-export * from './inlineResponse20018Data';
-export * from './inlineResponse20019';
+export * from './inlineResponse20013DataList';
+export * from './inlineResponse2001Data';
 export * from './inlineResponse2002';
-export * from './inlineResponse20020';
-export * from './inlineResponse20020Data';
-export * from './inlineResponse20021';
-export * from './inlineResponse20021Data';
-export * from './inlineResponse20022';
-export * from './inlineResponse20022Data';
-export * from './inlineResponse20022DataLists';
-export * from './inlineResponse20023';
-export * from './inlineResponse20023Data';
-export * from './inlineResponse20024';
-export * from './inlineResponse20024Data';
-export * from './inlineResponse20024DataMessages';
-export * from './inlineResponse20024DataMsgObj';
-export * from './inlineResponse20025';
-export * from './inlineResponse20025Data';
-export * from './inlineResponse20026';
-export * from './inlineResponse20026Data';
-export * from './inlineResponse20027';
-export * from './inlineResponse20028';
-export * from './inlineResponse20029';
+export * from './inlineResponse2002Data';
 export * from './inlineResponse2003';
-export * from './inlineResponse20030';
-export * from './inlineResponse20031';
-export * from './inlineResponse20032';
-export * from './inlineResponse20033';
-export * from './inlineResponse20034';
-export * from './inlineResponse20035';
-export * from './inlineResponse20035Assets';
-export * from './inlineResponse20036';
-export * from './inlineResponse20037';
-export * from './inlineResponse20037SpecialFeeList';
-export * from './inlineResponse20038';
-export * from './inlineResponse20039';
+export * from './inlineResponse2003Data';
 export * from './inlineResponse2004';
-export * from './inlineResponse20040';
-export * from './inlineResponse20041';
-export * from './inlineResponse20042';
-export * from './inlineResponse20043';
-export * from './inlineResponse20044';
-export * from './inlineResponse20045';
-export * from './inlineResponse20046';
-export * from './inlineResponse20047';
 export * from './inlineResponse2005';
+export * from './inlineResponse2005Data';
 export * from './inlineResponse2006';
 export * from './inlineResponse2006Data';
+export * from './inlineResponse2006DataHelpUrl';
+export * from './inlineResponse2006DataJumpUrl';
+export * from './inlineResponse2006DataList';
+export * from './inlineResponse2006DataProgressConfig';
 export * from './inlineResponse2007';
+export * from './inlineResponse2007Data';
 export * from './inlineResponse2008';
+export * from './inlineResponse2008Data';
+export * from './inlineResponse2008DataItems';
 export * from './inlineResponse2009';
 export * from './inlineResponse2009Data';
-export * from './inlineResponse201';
-export * from './inlineResponse201Data';
-export * from './inlineResponse202';
-export * from './inlineResponse2021';
+export * from './inlineResponse2009DataList';
+export * from './inlineResponse2009DataLive';
+export * from './inlineResponse2009DataLiveHost';
+export * from './inlineResponse2009DataVideo';
+export * from './inlineResponse200Data';
+export * from './inlineResponse400';
 export * from './insuranceRecord';
 export * from './klines';
 export * from './klinesData';
 export * from './klinesDataList';
+export * from './ladderApr';
+export * from './launchPoolV4CreateOrderResponse';
+export * from './launchPoolV4ErrorResponse';
+export * from './launchPoolV4PledgeRecord';
+export * from './launchPoolV4Project';
+export * from './launchPoolV4RewardPool';
+export * from './launchPoolV4RewardRecord';
 export * from './ledgerRecord';
 export * from './liquidateOrder';
 export * from './marginAccount';
@@ -256,7 +281,6 @@ export * from './mockOptionsPosition';
 export * from './mockRiskUnit';
 export * from './mockSpotBalance';
 export * from './mockSpotOrder';
-export * from './modelError';
 export * from './mt5Account';
 export * from './mt5AccountData';
 export * from './multiChainAddressItem';
@@ -305,10 +329,66 @@ export * from './orderListStructList';
 export * from './orderPatch';
 export * from './orderResp';
 export * from './orderResponse';
+export * from './otcActionResponse';
+export * from './otcBankListItem';
+export * from './otcBankListResponse';
+export * from './otcBankListResult';
 export * from './otcMarkOrderPaidRequest';
+export * from './otcOrderDetail';
+export * from './otcOrderDetailResponse';
+export * from './otcOrderListCryptoCurrencyInfo';
+export * from './otcOrderListFiatCurrencyInfo';
+export * from './otcOrderListItem';
+export * from './otcOrderListResponse';
+export * from './otcOrderListResult';
 export * from './otcOrderRequest';
 export * from './otcQuoteRequest';
+export * from './otcQuoteResponse';
+export * from './otcQuoteResult';
+export * from './otcStableCoinOrderCreateResponse';
+export * from './otcStableCoinOrderListItem';
+export * from './otcStableCoinOrderListResponse';
+export * from './otcStableCoinOrderListResult';
 export * from './otcStableCoinOrderRequest';
+export * from './otcUserDefaultBank';
+export * from './otcUserDefaultBankResponse';
+export * from './otherContact';
+export * from './p2pAdDetail';
+export * from './p2pAdDetailResponse';
+export * from './p2pAdsListItem';
+export * from './p2pAdsListResponse';
+export * from './p2pAdsUpdateStatusResponse';
+export * from './p2pAdsUpdateStatusResult';
+export * from './p2pChatListResponse';
+export * from './p2pChatListResult';
+export * from './p2pChatMessage';
+export * from './p2pChatMessagePayload';
+export * from './p2pCounterpartyUserInfo';
+export * from './p2pCounterpartyUserInfoResponse';
+export * from './p2pMerchantMarketInfo';
+export * from './p2pMerchantUserInfo';
+export * from './p2pMerchantUserInfoResponse';
+export * from './p2pMyAd';
+export * from './p2pMyAdsListResponse';
+export * from './p2pMyAdsListResult';
+export * from './p2pPaymentMethodAccount';
+export * from './p2pPaymentMethodGroup';
+export * from './p2pPaymentMethodsResponse';
+export * from './p2pSendChatMessageResponse';
+export * from './p2pSendChatMessageResult';
+export * from './p2pTransactionActionResponse';
+export * from './p2pTransactionConvertInfo';
+export * from './p2pTransactionDetail';
+export * from './p2pTransactionDetailResponse';
+export * from './p2pTransactionListItem';
+export * from './p2pTransactionListResponse';
+export * from './p2pTransactionListResult';
+export * from './p2pTransactionTimeMarker';
+export * from './p2pUploadChatFileResponse';
+export * from './p2pUploadChatFileResult';
+export * from './partnerApplication';
+export * from './partnerApplicationResponse';
+export * from './partnerApplicationResponseAllOf';
 export * from './partnerCommissionHistory';
 export * from './partnerSub';
 export * from './partnerSubList';
@@ -335,6 +415,7 @@ export * from './profitLossRange';
 export * from './quoteRequest';
 export * from './quoteResponse';
 export * from './rebateUserInfo';
+export * from './redeemV4';
 export * from './repayCurrencyRes';
 export * from './repayMultiLoan';
 export * from './repayRecordCurrency';
@@ -381,19 +462,25 @@ export * from './symbolsData';
 export * from './symbolsDataList';
 export * from './systemTime';
 export * from './ticker';
-export * from './ticker2';
-export * from './ticker2Data';
 export * from './tokens';
 export * from './totalBalance';
 export * from './tradFiClosePositionRequest';
+export * from './tradFiError';
 export * from './tradFiOrderRequest';
 export * from './tradFiOrderUpdateRequest';
 export * from './tradFiPositionUpdateRequest';
+export * from './tradFiTicker';
+export * from './tradFiTickerData';
 export * from './tradFiTransactionRequest';
 export * from './trade';
 export * from './tradeFee';
 export * from './trailChangeLog';
 export * from './trailOrder';
+export * from './trailOrderChangeLogResponse';
+export * from './trailOrderDetailResponse';
+export * from './trailOrderListResponse';
+export * from './trailOrderResponse';
+export * from './transactionConfig';
 export * from './transactionID';
 export * from './transactionList';
 export * from './transactionListData';
@@ -407,9 +494,11 @@ export * from './triggerTime';
 export * from './uidPushOrder';
 export * from './uidPushWithdrawal';
 export * from './uidPushWithdrawalResp';
+export * from './uniChartPoint';
 export * from './uniCurrency';
 export * from './uniCurrencyInterest';
 export * from './uniCurrencyPair';
+export * from './uniEstimatedRate';
 export * from './uniInterestRecord';
 export * from './uniLend';
 export * from './uniLendInterest';
@@ -420,7 +509,6 @@ export * from './uniLoanRecord';
 export * from './unifiedAccount';
 export * from './unifiedBalance';
 export * from './unifiedBorrowable';
-export * from './unifiedBorrowable1';
 export * from './unifiedCollateralReq';
 export * from './unifiedCollateralRes';
 export * from './unifiedCurrency';
@@ -440,6 +528,7 @@ export * from './unifiedPortfolioOutput';
 export * from './unifiedRiskUnits';
 export * from './unifiedSettings';
 export * from './unifiedTransferable';
+export * from './updateDualCompPositionCrossModeRequest';
 export * from './updateOrder';
 export * from './updateOrderData';
 export * from './updatePosition';
@@ -474,10 +563,17 @@ import { AgencyCommission } from './agencyCommission';
 import { AgencyCommissionHistory } from './agencyCommissionHistory';
 import { AgencyTransaction } from './agencyTransaction';
 import { AgencyTransactionHistory } from './agencyTransactionHistory';
+import { AlphaCurrency } from './alphaCurrency';
 import { AlphaTicker } from './alphaTicker';
+import { AmendOptionsOrderRequest } from './amendOptionsOrderRequest';
+import { ApiResponseExSkillGetBeginnerTaskListResp } from './apiResponseExSkillGetBeginnerTaskListResp';
+import { ApiResponseExSkillGetBeginnerTaskListRespData } from './apiResponseExSkillGetBeginnerTaskListRespData';
+import { ApiResponseExSkillGetBeginnerTaskListRespDataTasks } from './apiResponseExSkillGetBeginnerTaskListRespDataTasks';
+import { ApiResponseExSkillGetUserIdentityResp } from './apiResponseExSkillGetUserIdentityResp';
 import { AutoRepaySetting } from './autoRepaySetting';
 import { AwardListStruct } from './awardListStruct';
 import { AwardListStructList } from './awardListStructList';
+import { BaseResponse } from './baseResponse';
 import { BatchAmendItem } from './batchAmendItem';
 import { BatchAmendOrderReq } from './batchAmendOrderReq';
 import { BatchFundingRatesRequest } from './batchFundingRatesRequest';
@@ -486,10 +582,10 @@ import { BatchFuturesOrder } from './batchFuturesOrder';
 import { BatchOrder } from './batchOrder';
 import { BorrowCurrencyInfo } from './borrowCurrencyInfo';
 import { BrokerCommission } from './brokerCommission';
-import { BrokerCommission1 } from './brokerCommission1';
+import { BrokerCommissionItem } from './brokerCommissionItem';
 import { BrokerCommissionSubBrokerInfo } from './brokerCommissionSubBrokerInfo';
 import { BrokerTransaction } from './brokerTransaction';
-import { BrokerTransaction1 } from './brokerTransaction1';
+import { BrokerTransactionHistory } from './brokerTransactionHistory';
 import { CancelBatchOrder } from './cancelBatchOrder';
 import { CancelOrder } from './cancelOrder';
 import { CancelOrderResult } from './cancelOrderResult';
@@ -518,7 +614,10 @@ import { CountdownCancelAllSpotTask } from './countdownCancelAllSpotTask';
 import { CreateMultiCollateralOrder } from './createMultiCollateralOrder';
 import { CreateOrder } from './createOrder';
 import { CreateOrderData } from './createOrderData';
+import { CreateOrderV4 } from './createOrderV4';
 import { CreateTrailOrder } from './createTrailOrder';
+import { CreateTrailOrderResponse } from './createTrailOrderResponse';
+import { CreateTrailOrderResult } from './createTrailOrderResult';
 import { CreateTransaction } from './createTransaction';
 import { CreateUniLend } from './createUniLend';
 import { CreateUniLoan } from './createUniLoan';
@@ -527,17 +626,39 @@ import { CreateUserRespData } from './createUserRespData';
 import { CrossMarginBalance } from './crossMarginBalance';
 import { CrossMarginLoan } from './crossMarginLoan';
 import { CrossMarginRepayment } from './crossMarginRepayment';
+import { CrossexAccount } from './crossexAccount';
+import { CrossexAccountAsset } from './crossexAccountAsset';
+import { CrossexAccountBookRecord } from './crossexAccountBookRecord';
 import { CrossexAccountUpdateRequest } from './crossexAccountUpdateRequest';
+import { CrossexAccountUpdateResponse } from './crossexAccountUpdateResponse';
+import { CrossexAdlRank } from './crossexAdlRank';
 import { CrossexClosePositionRequest } from './crossexClosePositionRequest';
+import { CrossexCoinDiscountRate } from './crossexCoinDiscountRate';
 import { CrossexConvertOrderRequest } from './crossexConvertOrderRequest';
 import { CrossexConvertQuoteRequest } from './crossexConvertQuoteRequest';
+import { CrossexConvertQuoteResponse } from './crossexConvertQuoteResponse';
+import { CrossexFee } from './crossexFee';
+import { CrossexHistoricalMarginPosition } from './crossexHistoricalMarginPosition';
+import { CrossexHistoricalPosition } from './crossexHistoricalPosition';
+import { CrossexInterestRate } from './crossexInterestRate';
 import { CrossexLeverageRequest } from './crossexLeverageRequest';
+import { CrossexLeverageResponse } from './crossexLeverageResponse';
+import { CrossexMarginInterestRecord } from './crossexMarginInterestRecord';
+import { CrossexMarginPosition } from './crossexMarginPosition';
+import { CrossexOrder } from './crossexOrder';
+import { CrossexOrderActionResponse } from './crossexOrderActionResponse';
 import { CrossexOrderRequest } from './crossexOrderRequest';
 import { CrossexOrderUpdateRequest } from './crossexOrderUpdateRequest';
-import { CrossexRuleRiskLimitsTiers } from './crossexRuleRiskLimitsTiers';
+import { CrossexPosition } from './crossexPosition';
+import { CrossexRiskLimit } from './crossexRiskLimit';
+import { CrossexRiskLimitTier } from './crossexRiskLimitTier';
+import { CrossexSpecialFee } from './crossexSpecialFee';
+import { CrossexTrade } from './crossexTrade';
+import { CrossexTransferCoin } from './crossexTransferCoin';
+import { CrossexTransferRecord } from './crossexTransferRecord';
 import { CrossexTransferRequest } from './crossexTransferRequest';
+import { CrossexTransferResponse } from './crossexTransferResponse';
 import { Currency } from './currency';
-import { Currency2 } from './currency2';
 import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
 import { CurrencyQuota } from './currencyQuota';
@@ -553,6 +674,7 @@ import { DeliveryLiquidate } from './deliveryLiquidate';
 import { DeliveryMyTrade } from './deliveryMyTrade';
 import { DeliveryOrder } from './deliveryOrder';
 import { DeliveryOrderBook } from './deliveryOrderBook';
+import { DeliveryOrderBookItem } from './deliveryOrderBookItem';
 import { DeliveryPosition } from './deliveryPosition';
 import { DeliveryPositionClose } from './deliveryPositionClose';
 import { DeliverySettlement } from './deliverySettlement';
@@ -563,12 +685,46 @@ import { DepositRecord } from './depositRecord';
 import { DualGetBalance } from './dualGetBalance';
 import { DualGetOrders } from './dualGetOrders';
 import { DualGetPlans } from './dualGetPlans';
+import { Eligibility } from './eligibility';
+import { EligibilityResponse } from './eligibilityResponse';
+import { EligibilityResponseAllOf } from './eligibilityResponseAllOf';
+import { ErrCodeMsg } from './errCodeMsg';
 import { Eth2RateList } from './eth2RateList';
 import { Eth2Swap } from './eth2Swap';
 import { FindCoin } from './findCoin';
+import { FixedTermBonusInfo } from './fixedTermBonusInfo';
+import { FixedTermCouponInfo } from './fixedTermCouponInfo';
+import { FixedTermHistoryRecord } from './fixedTermHistoryRecord';
+import { FixedTermLendOrder } from './fixedTermLendOrder';
+import { FixedTermLendRequest } from './fixedTermLendRequest';
+import { FixedTermProduct } from './fixedTermProduct';
+import { FixedTermProductInfo } from './fixedTermProductInfo';
+import { FixedTermProductSimple } from './fixedTermProductSimple';
 import { FlashSwapCurrencyPair } from './flashSwapCurrencyPair';
+import { FlashSwapErrorResponse } from './flashSwapErrorResponse';
+import { FlashSwapMultiCurrencyCreateParam } from './flashSwapMultiCurrencyCreateParam';
+import { FlashSwapMultiCurrencyManyToOneOrderCreateReq } from './flashSwapMultiCurrencyManyToOneOrderCreateReq';
+import { FlashSwapMultiCurrencyManyToOneOrderCreateResp } from './flashSwapMultiCurrencyManyToOneOrderCreateResp';
+import { FlashSwapMultiCurrencyManyToOneOrderCreateRespData } from './flashSwapMultiCurrencyManyToOneOrderCreateRespData';
+import { FlashSwapMultiCurrencyManyToOneOrderPreviewReq } from './flashSwapMultiCurrencyManyToOneOrderPreviewReq';
+import { FlashSwapMultiCurrencyManyToOneOrderPreviewResp } from './flashSwapMultiCurrencyManyToOneOrderPreviewResp';
+import { FlashSwapMultiCurrencyManyToOneOrderPreviewRespData } from './flashSwapMultiCurrencyManyToOneOrderPreviewRespData';
+import { FlashSwapMultiCurrencyOneToManyOrderCreateReq } from './flashSwapMultiCurrencyOneToManyOrderCreateReq';
+import { FlashSwapMultiCurrencyOneToManyOrderCreateResp } from './flashSwapMultiCurrencyOneToManyOrderCreateResp';
+import { FlashSwapMultiCurrencyOneToManyOrderCreateRespData } from './flashSwapMultiCurrencyOneToManyOrderCreateRespData';
+import { FlashSwapMultiCurrencyOneToManyOrderPreviewReq } from './flashSwapMultiCurrencyOneToManyOrderPreviewReq';
+import { FlashSwapMultiCurrencyOneToManyOrderPreviewResp } from './flashSwapMultiCurrencyOneToManyOrderPreviewResp';
+import { FlashSwapMultiCurrencyOneToManyOrderPreviewRespData } from './flashSwapMultiCurrencyOneToManyOrderPreviewRespData';
+import { FlashSwapMultiCurrencyOrder } from './flashSwapMultiCurrencyOrder';
+import { FlashSwapMultiCurrencyPreviewOrder } from './flashSwapMultiCurrencyPreviewOrder';
+import { FlashSwapMultiCurrencyPreviewParam } from './flashSwapMultiCurrencyPreviewParam';
 import { FlashSwapOrder } from './flashSwapOrder';
+import { FlashSwapOrderCreateReq } from './flashSwapOrderCreateReq';
+import { FlashSwapOrderCreateResp } from './flashSwapOrderCreateResp';
+import { FlashSwapOrderCreateRespData } from './flashSwapOrderCreateRespData';
 import { FlashSwapOrderPreview } from './flashSwapOrderPreview';
+import { FlashSwapOrderPreviewResp } from './flashSwapOrderPreviewResp';
+import { FlashSwapOrderPreviewRespData } from './flashSwapOrderPreviewRespData';
 import { FlashSwapOrderRequest } from './flashSwapOrderRequest';
 import { FlashSwapPreviewRequest } from './flashSwapPreviewRequest';
 import { FundingAccount } from './fundingAccount';
@@ -592,7 +748,6 @@ import { FuturesOrder } from './futuresOrder';
 import { FuturesOrderAmendment } from './futuresOrderAmendment';
 import { FuturesOrderBook } from './futuresOrderBook';
 import { FuturesOrderBookItem } from './futuresOrderBookItem';
-import { FuturesOrderBookItem1 } from './futuresOrderBookItem1';
 import { FuturesPositionCrossMode } from './futuresPositionCrossMode';
 import { FuturesPremiumIndex } from './futuresPremiumIndex';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
@@ -609,96 +764,55 @@ import { GetPendingTransactionListRequest } from './getPendingTransactionListReq
 import { GetTransactionDetailsRequest } from './getTransactionDetailsRequest';
 import { IndexConstituent } from './indexConstituent';
 import { InlineObject } from './inlineObject';
-import { InlineObject1 } from './inlineObject1';
 import { InlineResponse200 } from './inlineResponse200';
 import { InlineResponse2001 } from './inlineResponse2001';
 import { InlineResponse20010 } from './inlineResponse20010';
-import { InlineResponse20010Data } from './inlineResponse20010Data';
-import { InlineResponse20010DataLists } from './inlineResponse20010DataLists';
 import { InlineResponse20011 } from './inlineResponse20011';
 import { InlineResponse20011Data } from './inlineResponse20011Data';
-import { InlineResponse20011DataCryptoCurrencyInfo } from './inlineResponse20011DataCryptoCurrencyInfo';
-import { InlineResponse20011DataFiatCurrencyInfo } from './inlineResponse20011DataFiatCurrencyInfo';
-import { InlineResponse20011DataList } from './inlineResponse20011DataList';
 import { InlineResponse20012 } from './inlineResponse20012';
 import { InlineResponse20012Data } from './inlineResponse20012Data';
 import { InlineResponse20012DataList } from './inlineResponse20012DataList';
 import { InlineResponse20013 } from './inlineResponse20013';
 import { InlineResponse20013Data } from './inlineResponse20013Data';
-import { InlineResponse20014 } from './inlineResponse20014';
-import { InlineResponse20014Data } from './inlineResponse20014Data';
-import { InlineResponse20014DataMerchantInfo } from './inlineResponse20014DataMerchantInfo';
-import { InlineResponse20015 } from './inlineResponse20015';
-import { InlineResponse20015Data } from './inlineResponse20015Data';
-import { InlineResponse20016 } from './inlineResponse20016';
-import { InlineResponse20016Data } from './inlineResponse20016Data';
-import { InlineResponse20016List } from './inlineResponse20016List';
-import { InlineResponse20017 } from './inlineResponse20017';
-import { InlineResponse20017Data } from './inlineResponse20017Data';
-import { InlineResponse20017DataConvertInfo } from './inlineResponse20017DataConvertInfo';
-import { InlineResponse20017DataList } from './inlineResponse20017DataList';
-import { InlineResponse20017DataTransTime } from './inlineResponse20017DataTransTime';
-import { InlineResponse20018 } from './inlineResponse20018';
-import { InlineResponse20018Data } from './inlineResponse20018Data';
-import { InlineResponse20019 } from './inlineResponse20019';
+import { InlineResponse20013DataList } from './inlineResponse20013DataList';
+import { InlineResponse2001Data } from './inlineResponse2001Data';
 import { InlineResponse2002 } from './inlineResponse2002';
-import { InlineResponse20020 } from './inlineResponse20020';
-import { InlineResponse20020Data } from './inlineResponse20020Data';
-import { InlineResponse20021 } from './inlineResponse20021';
-import { InlineResponse20021Data } from './inlineResponse20021Data';
-import { InlineResponse20022 } from './inlineResponse20022';
-import { InlineResponse20022Data } from './inlineResponse20022Data';
-import { InlineResponse20022DataLists } from './inlineResponse20022DataLists';
-import { InlineResponse20023 } from './inlineResponse20023';
-import { InlineResponse20023Data } from './inlineResponse20023Data';
-import { InlineResponse20024 } from './inlineResponse20024';
-import { InlineResponse20024Data } from './inlineResponse20024Data';
-import { InlineResponse20024DataMessages } from './inlineResponse20024DataMessages';
-import { InlineResponse20024DataMsgObj } from './inlineResponse20024DataMsgObj';
-import { InlineResponse20025 } from './inlineResponse20025';
-import { InlineResponse20025Data } from './inlineResponse20025Data';
-import { InlineResponse20026 } from './inlineResponse20026';
-import { InlineResponse20026Data } from './inlineResponse20026Data';
-import { InlineResponse20027 } from './inlineResponse20027';
-import { InlineResponse20028 } from './inlineResponse20028';
-import { InlineResponse20029 } from './inlineResponse20029';
+import { InlineResponse2002Data } from './inlineResponse2002Data';
 import { InlineResponse2003 } from './inlineResponse2003';
-import { InlineResponse20030 } from './inlineResponse20030';
-import { InlineResponse20031 } from './inlineResponse20031';
-import { InlineResponse20032 } from './inlineResponse20032';
-import { InlineResponse20033 } from './inlineResponse20033';
-import { InlineResponse20034 } from './inlineResponse20034';
-import { InlineResponse20035 } from './inlineResponse20035';
-import { InlineResponse20035Assets } from './inlineResponse20035Assets';
-import { InlineResponse20036 } from './inlineResponse20036';
-import { InlineResponse20037 } from './inlineResponse20037';
-import { InlineResponse20037SpecialFeeList } from './inlineResponse20037SpecialFeeList';
-import { InlineResponse20038 } from './inlineResponse20038';
-import { InlineResponse20039 } from './inlineResponse20039';
+import { InlineResponse2003Data } from './inlineResponse2003Data';
 import { InlineResponse2004 } from './inlineResponse2004';
-import { InlineResponse20040 } from './inlineResponse20040';
-import { InlineResponse20041 } from './inlineResponse20041';
-import { InlineResponse20042 } from './inlineResponse20042';
-import { InlineResponse20043 } from './inlineResponse20043';
-import { InlineResponse20044 } from './inlineResponse20044';
-import { InlineResponse20045 } from './inlineResponse20045';
-import { InlineResponse20046 } from './inlineResponse20046';
-import { InlineResponse20047 } from './inlineResponse20047';
 import { InlineResponse2005 } from './inlineResponse2005';
+import { InlineResponse2005Data } from './inlineResponse2005Data';
 import { InlineResponse2006 } from './inlineResponse2006';
 import { InlineResponse2006Data } from './inlineResponse2006Data';
+import { InlineResponse2006DataHelpUrl } from './inlineResponse2006DataHelpUrl';
+import { InlineResponse2006DataJumpUrl } from './inlineResponse2006DataJumpUrl';
+import { InlineResponse2006DataList } from './inlineResponse2006DataList';
+import { InlineResponse2006DataProgressConfig } from './inlineResponse2006DataProgressConfig';
 import { InlineResponse2007 } from './inlineResponse2007';
+import { InlineResponse2007Data } from './inlineResponse2007Data';
 import { InlineResponse2008 } from './inlineResponse2008';
+import { InlineResponse2008Data } from './inlineResponse2008Data';
+import { InlineResponse2008DataItems } from './inlineResponse2008DataItems';
 import { InlineResponse2009 } from './inlineResponse2009';
 import { InlineResponse2009Data } from './inlineResponse2009Data';
-import { InlineResponse201 } from './inlineResponse201';
-import { InlineResponse201Data } from './inlineResponse201Data';
-import { InlineResponse202 } from './inlineResponse202';
-import { InlineResponse2021 } from './inlineResponse2021';
+import { InlineResponse2009DataList } from './inlineResponse2009DataList';
+import { InlineResponse2009DataLive } from './inlineResponse2009DataLive';
+import { InlineResponse2009DataLiveHost } from './inlineResponse2009DataLiveHost';
+import { InlineResponse2009DataVideo } from './inlineResponse2009DataVideo';
+import { InlineResponse200Data } from './inlineResponse200Data';
+import { InlineResponse400 } from './inlineResponse400';
 import { InsuranceRecord } from './insuranceRecord';
 import { Klines } from './klines';
 import { KlinesData } from './klinesData';
 import { KlinesDataList } from './klinesDataList';
+import { LadderApr } from './ladderApr';
+import { LaunchPoolV4CreateOrderResponse } from './launchPoolV4CreateOrderResponse';
+import { LaunchPoolV4ErrorResponse } from './launchPoolV4ErrorResponse';
+import { LaunchPoolV4PledgeRecord } from './launchPoolV4PledgeRecord';
+import { LaunchPoolV4Project } from './launchPoolV4Project';
+import { LaunchPoolV4RewardPool } from './launchPoolV4RewardPool';
+import { LaunchPoolV4RewardRecord } from './launchPoolV4RewardRecord';
 import { LedgerRecord } from './ledgerRecord';
 import { LiquidateOrder } from './liquidateOrder';
 import { MarginAccount } from './marginAccount';
@@ -717,7 +831,6 @@ import { MockOptionsPosition } from './mockOptionsPosition';
 import { MockRiskUnit } from './mockRiskUnit';
 import { MockSpotBalance } from './mockSpotBalance';
 import { MockSpotOrder } from './mockSpotOrder';
-import { ModelError } from './modelError';
 import { Mt5Account } from './mt5Account';
 import { Mt5AccountData } from './mt5AccountData';
 import { MultiChainAddressItem } from './multiChainAddressItem';
@@ -766,10 +879,66 @@ import { OrderListStructList } from './orderListStructList';
 import { OrderPatch } from './orderPatch';
 import { OrderResp } from './orderResp';
 import { OrderResponse } from './orderResponse';
+import { OtcActionResponse } from './otcActionResponse';
+import { OtcBankListItem } from './otcBankListItem';
+import { OtcBankListResponse } from './otcBankListResponse';
+import { OtcBankListResult } from './otcBankListResult';
 import { OtcMarkOrderPaidRequest } from './otcMarkOrderPaidRequest';
+import { OtcOrderDetail } from './otcOrderDetail';
+import { OtcOrderDetailResponse } from './otcOrderDetailResponse';
+import { OtcOrderListCryptoCurrencyInfo } from './otcOrderListCryptoCurrencyInfo';
+import { OtcOrderListFiatCurrencyInfo } from './otcOrderListFiatCurrencyInfo';
+import { OtcOrderListItem } from './otcOrderListItem';
+import { OtcOrderListResponse } from './otcOrderListResponse';
+import { OtcOrderListResult } from './otcOrderListResult';
 import { OtcOrderRequest } from './otcOrderRequest';
 import { OtcQuoteRequest } from './otcQuoteRequest';
+import { OtcQuoteResponse } from './otcQuoteResponse';
+import { OtcQuoteResult } from './otcQuoteResult';
+import { OtcStableCoinOrderCreateResponse } from './otcStableCoinOrderCreateResponse';
+import { OtcStableCoinOrderListItem } from './otcStableCoinOrderListItem';
+import { OtcStableCoinOrderListResponse } from './otcStableCoinOrderListResponse';
+import { OtcStableCoinOrderListResult } from './otcStableCoinOrderListResult';
 import { OtcStableCoinOrderRequest } from './otcStableCoinOrderRequest';
+import { OtcUserDefaultBank } from './otcUserDefaultBank';
+import { OtcUserDefaultBankResponse } from './otcUserDefaultBankResponse';
+import { OtherContact } from './otherContact';
+import { P2pAdDetail } from './p2pAdDetail';
+import { P2pAdDetailResponse } from './p2pAdDetailResponse';
+import { P2pAdsListItem } from './p2pAdsListItem';
+import { P2pAdsListResponse } from './p2pAdsListResponse';
+import { P2pAdsUpdateStatusResponse } from './p2pAdsUpdateStatusResponse';
+import { P2pAdsUpdateStatusResult } from './p2pAdsUpdateStatusResult';
+import { P2pChatListResponse } from './p2pChatListResponse';
+import { P2pChatListResult } from './p2pChatListResult';
+import { P2pChatMessage } from './p2pChatMessage';
+import { P2pChatMessagePayload } from './p2pChatMessagePayload';
+import { P2pCounterpartyUserInfo } from './p2pCounterpartyUserInfo';
+import { P2pCounterpartyUserInfoResponse } from './p2pCounterpartyUserInfoResponse';
+import { P2pMerchantMarketInfo } from './p2pMerchantMarketInfo';
+import { P2pMerchantUserInfo } from './p2pMerchantUserInfo';
+import { P2pMerchantUserInfoResponse } from './p2pMerchantUserInfoResponse';
+import { P2pMyAd } from './p2pMyAd';
+import { P2pMyAdsListResponse } from './p2pMyAdsListResponse';
+import { P2pMyAdsListResult } from './p2pMyAdsListResult';
+import { P2pPaymentMethodAccount } from './p2pPaymentMethodAccount';
+import { P2pPaymentMethodGroup } from './p2pPaymentMethodGroup';
+import { P2pPaymentMethodsResponse } from './p2pPaymentMethodsResponse';
+import { P2pSendChatMessageResponse } from './p2pSendChatMessageResponse';
+import { P2pSendChatMessageResult } from './p2pSendChatMessageResult';
+import { P2pTransactionActionResponse } from './p2pTransactionActionResponse';
+import { P2pTransactionConvertInfo } from './p2pTransactionConvertInfo';
+import { P2pTransactionDetail } from './p2pTransactionDetail';
+import { P2pTransactionDetailResponse } from './p2pTransactionDetailResponse';
+import { P2pTransactionListItem } from './p2pTransactionListItem';
+import { P2pTransactionListResponse } from './p2pTransactionListResponse';
+import { P2pTransactionListResult } from './p2pTransactionListResult';
+import { P2pTransactionTimeMarker } from './p2pTransactionTimeMarker';
+import { P2pUploadChatFileResponse } from './p2pUploadChatFileResponse';
+import { P2pUploadChatFileResult } from './p2pUploadChatFileResult';
+import { PartnerApplication } from './partnerApplication';
+import { PartnerApplicationResponse } from './partnerApplicationResponse';
+import { PartnerApplicationResponseAllOf } from './partnerApplicationResponseAllOf';
 import { PartnerCommissionHistory } from './partnerCommissionHistory';
 import { PartnerSub } from './partnerSub';
 import { PartnerSubList } from './partnerSubList';
@@ -796,6 +965,7 @@ import { ProfitLossRange } from './profitLossRange';
 import { QuoteRequest } from './quoteRequest';
 import { QuoteResponse } from './quoteResponse';
 import { RebateUserInfo } from './rebateUserInfo';
+import { RedeemV4 } from './redeemV4';
 import { RepayCurrencyRes } from './repayCurrencyRes';
 import { RepayMultiLoan } from './repayMultiLoan';
 import { RepayRecordCurrency } from './repayRecordCurrency';
@@ -842,19 +1012,25 @@ import { SymbolsData } from './symbolsData';
 import { SymbolsDataList } from './symbolsDataList';
 import { SystemTime } from './systemTime';
 import { Ticker } from './ticker';
-import { Ticker2 } from './ticker2';
-import { Ticker2Data } from './ticker2Data';
 import { Tokens } from './tokens';
 import { TotalBalance } from './totalBalance';
 import { TradFiClosePositionRequest } from './tradFiClosePositionRequest';
+import { TradFiError } from './tradFiError';
 import { TradFiOrderRequest } from './tradFiOrderRequest';
 import { TradFiOrderUpdateRequest } from './tradFiOrderUpdateRequest';
 import { TradFiPositionUpdateRequest } from './tradFiPositionUpdateRequest';
+import { TradFiTicker } from './tradFiTicker';
+import { TradFiTickerData } from './tradFiTickerData';
 import { TradFiTransactionRequest } from './tradFiTransactionRequest';
 import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
 import { TrailChangeLog } from './trailChangeLog';
 import { TrailOrder } from './trailOrder';
+import { TrailOrderChangeLogResponse } from './trailOrderChangeLogResponse';
+import { TrailOrderDetailResponse } from './trailOrderDetailResponse';
+import { TrailOrderListResponse } from './trailOrderListResponse';
+import { TrailOrderResponse } from './trailOrderResponse';
+import { TransactionConfig } from './transactionConfig';
 import { TransactionID } from './transactionID';
 import { TransactionList } from './transactionList';
 import { TransactionListData } from './transactionListData';
@@ -868,9 +1044,11 @@ import { TriggerTime } from './triggerTime';
 import { UidPushOrder } from './uidPushOrder';
 import { UidPushWithdrawal } from './uidPushWithdrawal';
 import { UidPushWithdrawalResp } from './uidPushWithdrawalResp';
+import { UniChartPoint } from './uniChartPoint';
 import { UniCurrency } from './uniCurrency';
 import { UniCurrencyInterest } from './uniCurrencyInterest';
 import { UniCurrencyPair } from './uniCurrencyPair';
+import { UniEstimatedRate } from './uniEstimatedRate';
 import { UniInterestRecord } from './uniInterestRecord';
 import { UniLend } from './uniLend';
 import { UniLendInterest } from './uniLendInterest';
@@ -881,7 +1059,6 @@ import { UniLoanRecord } from './uniLoanRecord';
 import { UnifiedAccount } from './unifiedAccount';
 import { UnifiedBalance } from './unifiedBalance';
 import { UnifiedBorrowable } from './unifiedBorrowable';
-import { UnifiedBorrowable1 } from './unifiedBorrowable1';
 import { UnifiedCollateralReq } from './unifiedCollateralReq';
 import { UnifiedCollateralRes } from './unifiedCollateralRes';
 import { UnifiedCurrency } from './unifiedCurrency';
@@ -901,6 +1078,7 @@ import { UnifiedPortfolioOutput } from './unifiedPortfolioOutput';
 import { UnifiedRiskUnits } from './unifiedRiskUnits';
 import { UnifiedSettings } from './unifiedSettings';
 import { UnifiedTransferable } from './unifiedTransferable';
+import { UpdateDualCompPositionCrossModeRequest } from './updateDualCompPositionCrossModeRequest';
 import { UpdateOrder } from './updateOrder';
 import { UpdateOrderData } from './updateOrderData';
 import { UpdatePosition } from './updatePosition';
@@ -919,6 +1097,10 @@ let primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'nu
 
 let enumsMap: { [index: string]: any } = {
     'AccountBalance.Currency': AccountBalance.Currency,
+    'ApiResponseExSkillGetBeginnerTaskListRespDataTasks.PrizeType':
+        ApiResponseExSkillGetBeginnerTaskListRespDataTasks.PrizeType,
+    'ApiResponseExSkillGetBeginnerTaskListRespDataTasks.Status':
+        ApiResponseExSkillGetBeginnerTaskListRespDataTasks.Status,
     'AutoRepaySetting.Status': AutoRepaySetting.Status,
     'BatchFuturesOrder.FinishAs': BatchFuturesOrder.FinishAs,
     'BatchFuturesOrder.Status': BatchFuturesOrder.Status,
@@ -956,6 +1138,7 @@ let enumsMap: { [index: string]: any } = {
     'DeliveryOrder.StpAct': DeliveryOrder.StpAct,
     'DeliveryPosition.Mode': DeliveryPosition.Mode,
     'DeliveryPositionClose.Side': DeliveryPositionClose.Side,
+    'Eligibility.BlockReasonCodes': Eligibility.BlockReasonCodes,
     'FuturesAccountBook.Type': FuturesAccountBook.Type,
     'FuturesBBOOrder.Tif': FuturesBBOOrder.Tif,
     'FuturesBBOOrder.AutoSize': FuturesBBOOrder.AutoSize,
@@ -972,6 +1155,14 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
     'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
+    'InlineResponse2006.Code': InlineResponse2006.Code,
+    'InlineResponse2006DataList.Status': InlineResponse2006DataList.Status,
+    'InlineResponse2006DataList.IsTaskCoupon': InlineResponse2006DataList.IsTaskCoupon,
+    'InlineResponse2007.Code': InlineResponse2007.Code,
+    'InlineResponse2007Data.Status': InlineResponse2007Data.Status,
+    'InlineResponse2007Data.IsTaskCoupon': InlineResponse2007Data.IsTaskCoupon,
+    'LaunchPoolV4ErrorResponse.Label': LaunchPoolV4ErrorResponse.Label,
+    'LaunchPoolV4Project.ProjectState': LaunchPoolV4Project.ProjectState,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
     'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
     'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
@@ -1040,10 +1231,17 @@ let typeMap: { [index: string]: any } = {
     AgencyCommissionHistory: AgencyCommissionHistory,
     AgencyTransaction: AgencyTransaction,
     AgencyTransactionHistory: AgencyTransactionHistory,
+    AlphaCurrency: AlphaCurrency,
     AlphaTicker: AlphaTicker,
+    AmendOptionsOrderRequest: AmendOptionsOrderRequest,
+    ApiResponseExSkillGetBeginnerTaskListResp: ApiResponseExSkillGetBeginnerTaskListResp,
+    ApiResponseExSkillGetBeginnerTaskListRespData: ApiResponseExSkillGetBeginnerTaskListRespData,
+    ApiResponseExSkillGetBeginnerTaskListRespDataTasks: ApiResponseExSkillGetBeginnerTaskListRespDataTasks,
+    ApiResponseExSkillGetUserIdentityResp: ApiResponseExSkillGetUserIdentityResp,
     AutoRepaySetting: AutoRepaySetting,
     AwardListStruct: AwardListStruct,
     AwardListStructList: AwardListStructList,
+    BaseResponse: BaseResponse,
     BatchAmendItem: BatchAmendItem,
     BatchAmendOrderReq: BatchAmendOrderReq,
     BatchFundingRatesRequest: BatchFundingRatesRequest,
@@ -1052,10 +1250,10 @@ let typeMap: { [index: string]: any } = {
     BatchOrder: BatchOrder,
     BorrowCurrencyInfo: BorrowCurrencyInfo,
     BrokerCommission: BrokerCommission,
-    BrokerCommission1: BrokerCommission1,
+    BrokerCommissionItem: BrokerCommissionItem,
     BrokerCommissionSubBrokerInfo: BrokerCommissionSubBrokerInfo,
     BrokerTransaction: BrokerTransaction,
-    BrokerTransaction1: BrokerTransaction1,
+    BrokerTransactionHistory: BrokerTransactionHistory,
     CancelBatchOrder: CancelBatchOrder,
     CancelOrder: CancelOrder,
     CancelOrderResult: CancelOrderResult,
@@ -1084,7 +1282,10 @@ let typeMap: { [index: string]: any } = {
     CreateMultiCollateralOrder: CreateMultiCollateralOrder,
     CreateOrder: CreateOrder,
     CreateOrderData: CreateOrderData,
+    CreateOrderV4: CreateOrderV4,
     CreateTrailOrder: CreateTrailOrder,
+    CreateTrailOrderResponse: CreateTrailOrderResponse,
+    CreateTrailOrderResult: CreateTrailOrderResult,
     CreateTransaction: CreateTransaction,
     CreateUniLend: CreateUniLend,
     CreateUniLoan: CreateUniLoan,
@@ -1093,17 +1294,39 @@ let typeMap: { [index: string]: any } = {
     CrossMarginBalance: CrossMarginBalance,
     CrossMarginLoan: CrossMarginLoan,
     CrossMarginRepayment: CrossMarginRepayment,
+    CrossexAccount: CrossexAccount,
+    CrossexAccountAsset: CrossexAccountAsset,
+    CrossexAccountBookRecord: CrossexAccountBookRecord,
     CrossexAccountUpdateRequest: CrossexAccountUpdateRequest,
+    CrossexAccountUpdateResponse: CrossexAccountUpdateResponse,
+    CrossexAdlRank: CrossexAdlRank,
     CrossexClosePositionRequest: CrossexClosePositionRequest,
+    CrossexCoinDiscountRate: CrossexCoinDiscountRate,
     CrossexConvertOrderRequest: CrossexConvertOrderRequest,
     CrossexConvertQuoteRequest: CrossexConvertQuoteRequest,
+    CrossexConvertQuoteResponse: CrossexConvertQuoteResponse,
+    CrossexFee: CrossexFee,
+    CrossexHistoricalMarginPosition: CrossexHistoricalMarginPosition,
+    CrossexHistoricalPosition: CrossexHistoricalPosition,
+    CrossexInterestRate: CrossexInterestRate,
     CrossexLeverageRequest: CrossexLeverageRequest,
+    CrossexLeverageResponse: CrossexLeverageResponse,
+    CrossexMarginInterestRecord: CrossexMarginInterestRecord,
+    CrossexMarginPosition: CrossexMarginPosition,
+    CrossexOrder: CrossexOrder,
+    CrossexOrderActionResponse: CrossexOrderActionResponse,
     CrossexOrderRequest: CrossexOrderRequest,
     CrossexOrderUpdateRequest: CrossexOrderUpdateRequest,
-    CrossexRuleRiskLimitsTiers: CrossexRuleRiskLimitsTiers,
+    CrossexPosition: CrossexPosition,
+    CrossexRiskLimit: CrossexRiskLimit,
+    CrossexRiskLimitTier: CrossexRiskLimitTier,
+    CrossexSpecialFee: CrossexSpecialFee,
+    CrossexTrade: CrossexTrade,
+    CrossexTransferCoin: CrossexTransferCoin,
+    CrossexTransferRecord: CrossexTransferRecord,
     CrossexTransferRequest: CrossexTransferRequest,
+    CrossexTransferResponse: CrossexTransferResponse,
     Currency: Currency,
-    Currency2: Currency2,
     CurrencyChain: CurrencyChain,
     CurrencyPair: CurrencyPair,
     CurrencyQuota: CurrencyQuota,
@@ -1119,6 +1342,7 @@ let typeMap: { [index: string]: any } = {
     DeliveryMyTrade: DeliveryMyTrade,
     DeliveryOrder: DeliveryOrder,
     DeliveryOrderBook: DeliveryOrderBook,
+    DeliveryOrderBookItem: DeliveryOrderBookItem,
     DeliveryPosition: DeliveryPosition,
     DeliveryPositionClose: DeliveryPositionClose,
     DeliverySettlement: DeliverySettlement,
@@ -1129,12 +1353,46 @@ let typeMap: { [index: string]: any } = {
     DualGetBalance: DualGetBalance,
     DualGetOrders: DualGetOrders,
     DualGetPlans: DualGetPlans,
+    Eligibility: Eligibility,
+    EligibilityResponse: EligibilityResponse,
+    EligibilityResponseAllOf: EligibilityResponseAllOf,
+    ErrCodeMsg: ErrCodeMsg,
     Eth2RateList: Eth2RateList,
     Eth2Swap: Eth2Swap,
     FindCoin: FindCoin,
+    FixedTermBonusInfo: FixedTermBonusInfo,
+    FixedTermCouponInfo: FixedTermCouponInfo,
+    FixedTermHistoryRecord: FixedTermHistoryRecord,
+    FixedTermLendOrder: FixedTermLendOrder,
+    FixedTermLendRequest: FixedTermLendRequest,
+    FixedTermProduct: FixedTermProduct,
+    FixedTermProductInfo: FixedTermProductInfo,
+    FixedTermProductSimple: FixedTermProductSimple,
     FlashSwapCurrencyPair: FlashSwapCurrencyPair,
+    FlashSwapErrorResponse: FlashSwapErrorResponse,
+    FlashSwapMultiCurrencyCreateParam: FlashSwapMultiCurrencyCreateParam,
+    FlashSwapMultiCurrencyManyToOneOrderCreateReq: FlashSwapMultiCurrencyManyToOneOrderCreateReq,
+    FlashSwapMultiCurrencyManyToOneOrderCreateResp: FlashSwapMultiCurrencyManyToOneOrderCreateResp,
+    FlashSwapMultiCurrencyManyToOneOrderCreateRespData: FlashSwapMultiCurrencyManyToOneOrderCreateRespData,
+    FlashSwapMultiCurrencyManyToOneOrderPreviewReq: FlashSwapMultiCurrencyManyToOneOrderPreviewReq,
+    FlashSwapMultiCurrencyManyToOneOrderPreviewResp: FlashSwapMultiCurrencyManyToOneOrderPreviewResp,
+    FlashSwapMultiCurrencyManyToOneOrderPreviewRespData: FlashSwapMultiCurrencyManyToOneOrderPreviewRespData,
+    FlashSwapMultiCurrencyOneToManyOrderCreateReq: FlashSwapMultiCurrencyOneToManyOrderCreateReq,
+    FlashSwapMultiCurrencyOneToManyOrderCreateResp: FlashSwapMultiCurrencyOneToManyOrderCreateResp,
+    FlashSwapMultiCurrencyOneToManyOrderCreateRespData: FlashSwapMultiCurrencyOneToManyOrderCreateRespData,
+    FlashSwapMultiCurrencyOneToManyOrderPreviewReq: FlashSwapMultiCurrencyOneToManyOrderPreviewReq,
+    FlashSwapMultiCurrencyOneToManyOrderPreviewResp: FlashSwapMultiCurrencyOneToManyOrderPreviewResp,
+    FlashSwapMultiCurrencyOneToManyOrderPreviewRespData: FlashSwapMultiCurrencyOneToManyOrderPreviewRespData,
+    FlashSwapMultiCurrencyOrder: FlashSwapMultiCurrencyOrder,
+    FlashSwapMultiCurrencyPreviewOrder: FlashSwapMultiCurrencyPreviewOrder,
+    FlashSwapMultiCurrencyPreviewParam: FlashSwapMultiCurrencyPreviewParam,
     FlashSwapOrder: FlashSwapOrder,
+    FlashSwapOrderCreateReq: FlashSwapOrderCreateReq,
+    FlashSwapOrderCreateResp: FlashSwapOrderCreateResp,
+    FlashSwapOrderCreateRespData: FlashSwapOrderCreateRespData,
     FlashSwapOrderPreview: FlashSwapOrderPreview,
+    FlashSwapOrderPreviewResp: FlashSwapOrderPreviewResp,
+    FlashSwapOrderPreviewRespData: FlashSwapOrderPreviewRespData,
     FlashSwapOrderRequest: FlashSwapOrderRequest,
     FlashSwapPreviewRequest: FlashSwapPreviewRequest,
     FundingAccount: FundingAccount,
@@ -1158,7 +1416,6 @@ let typeMap: { [index: string]: any } = {
     FuturesOrderAmendment: FuturesOrderAmendment,
     FuturesOrderBook: FuturesOrderBook,
     FuturesOrderBookItem: FuturesOrderBookItem,
-    FuturesOrderBookItem1: FuturesOrderBookItem1,
     FuturesPositionCrossMode: FuturesPositionCrossMode,
     FuturesPremiumIndex: FuturesPremiumIndex,
     FuturesPriceTrigger: FuturesPriceTrigger,
@@ -1175,96 +1432,55 @@ let typeMap: { [index: string]: any } = {
     GetTransactionDetailsRequest: GetTransactionDetailsRequest,
     IndexConstituent: IndexConstituent,
     InlineObject: InlineObject,
-    InlineObject1: InlineObject1,
     InlineResponse200: InlineResponse200,
     InlineResponse2001: InlineResponse2001,
     InlineResponse20010: InlineResponse20010,
-    InlineResponse20010Data: InlineResponse20010Data,
-    InlineResponse20010DataLists: InlineResponse20010DataLists,
     InlineResponse20011: InlineResponse20011,
     InlineResponse20011Data: InlineResponse20011Data,
-    InlineResponse20011DataCryptoCurrencyInfo: InlineResponse20011DataCryptoCurrencyInfo,
-    InlineResponse20011DataFiatCurrencyInfo: InlineResponse20011DataFiatCurrencyInfo,
-    InlineResponse20011DataList: InlineResponse20011DataList,
     InlineResponse20012: InlineResponse20012,
     InlineResponse20012Data: InlineResponse20012Data,
     InlineResponse20012DataList: InlineResponse20012DataList,
     InlineResponse20013: InlineResponse20013,
     InlineResponse20013Data: InlineResponse20013Data,
-    InlineResponse20014: InlineResponse20014,
-    InlineResponse20014Data: InlineResponse20014Data,
-    InlineResponse20014DataMerchantInfo: InlineResponse20014DataMerchantInfo,
-    InlineResponse20015: InlineResponse20015,
-    InlineResponse20015Data: InlineResponse20015Data,
-    InlineResponse20016: InlineResponse20016,
-    InlineResponse20016Data: InlineResponse20016Data,
-    InlineResponse20016List: InlineResponse20016List,
-    InlineResponse20017: InlineResponse20017,
-    InlineResponse20017Data: InlineResponse20017Data,
-    InlineResponse20017DataConvertInfo: InlineResponse20017DataConvertInfo,
-    InlineResponse20017DataList: InlineResponse20017DataList,
-    InlineResponse20017DataTransTime: InlineResponse20017DataTransTime,
-    InlineResponse20018: InlineResponse20018,
-    InlineResponse20018Data: InlineResponse20018Data,
-    InlineResponse20019: InlineResponse20019,
+    InlineResponse20013DataList: InlineResponse20013DataList,
+    InlineResponse2001Data: InlineResponse2001Data,
     InlineResponse2002: InlineResponse2002,
-    InlineResponse20020: InlineResponse20020,
-    InlineResponse20020Data: InlineResponse20020Data,
-    InlineResponse20021: InlineResponse20021,
-    InlineResponse20021Data: InlineResponse20021Data,
-    InlineResponse20022: InlineResponse20022,
-    InlineResponse20022Data: InlineResponse20022Data,
-    InlineResponse20022DataLists: InlineResponse20022DataLists,
-    InlineResponse20023: InlineResponse20023,
-    InlineResponse20023Data: InlineResponse20023Data,
-    InlineResponse20024: InlineResponse20024,
-    InlineResponse20024Data: InlineResponse20024Data,
-    InlineResponse20024DataMessages: InlineResponse20024DataMessages,
-    InlineResponse20024DataMsgObj: InlineResponse20024DataMsgObj,
-    InlineResponse20025: InlineResponse20025,
-    InlineResponse20025Data: InlineResponse20025Data,
-    InlineResponse20026: InlineResponse20026,
-    InlineResponse20026Data: InlineResponse20026Data,
-    InlineResponse20027: InlineResponse20027,
-    InlineResponse20028: InlineResponse20028,
-    InlineResponse20029: InlineResponse20029,
+    InlineResponse2002Data: InlineResponse2002Data,
     InlineResponse2003: InlineResponse2003,
-    InlineResponse20030: InlineResponse20030,
-    InlineResponse20031: InlineResponse20031,
-    InlineResponse20032: InlineResponse20032,
-    InlineResponse20033: InlineResponse20033,
-    InlineResponse20034: InlineResponse20034,
-    InlineResponse20035: InlineResponse20035,
-    InlineResponse20035Assets: InlineResponse20035Assets,
-    InlineResponse20036: InlineResponse20036,
-    InlineResponse20037: InlineResponse20037,
-    InlineResponse20037SpecialFeeList: InlineResponse20037SpecialFeeList,
-    InlineResponse20038: InlineResponse20038,
-    InlineResponse20039: InlineResponse20039,
+    InlineResponse2003Data: InlineResponse2003Data,
     InlineResponse2004: InlineResponse2004,
-    InlineResponse20040: InlineResponse20040,
-    InlineResponse20041: InlineResponse20041,
-    InlineResponse20042: InlineResponse20042,
-    InlineResponse20043: InlineResponse20043,
-    InlineResponse20044: InlineResponse20044,
-    InlineResponse20045: InlineResponse20045,
-    InlineResponse20046: InlineResponse20046,
-    InlineResponse20047: InlineResponse20047,
     InlineResponse2005: InlineResponse2005,
+    InlineResponse2005Data: InlineResponse2005Data,
     InlineResponse2006: InlineResponse2006,
     InlineResponse2006Data: InlineResponse2006Data,
+    InlineResponse2006DataHelpUrl: InlineResponse2006DataHelpUrl,
+    InlineResponse2006DataJumpUrl: InlineResponse2006DataJumpUrl,
+    InlineResponse2006DataList: InlineResponse2006DataList,
+    InlineResponse2006DataProgressConfig: InlineResponse2006DataProgressConfig,
     InlineResponse2007: InlineResponse2007,
+    InlineResponse2007Data: InlineResponse2007Data,
     InlineResponse2008: InlineResponse2008,
+    InlineResponse2008Data: InlineResponse2008Data,
+    InlineResponse2008DataItems: InlineResponse2008DataItems,
     InlineResponse2009: InlineResponse2009,
     InlineResponse2009Data: InlineResponse2009Data,
-    InlineResponse201: InlineResponse201,
-    InlineResponse201Data: InlineResponse201Data,
-    InlineResponse202: InlineResponse202,
-    InlineResponse2021: InlineResponse2021,
+    InlineResponse2009DataList: InlineResponse2009DataList,
+    InlineResponse2009DataLive: InlineResponse2009DataLive,
+    InlineResponse2009DataLiveHost: InlineResponse2009DataLiveHost,
+    InlineResponse2009DataVideo: InlineResponse2009DataVideo,
+    InlineResponse200Data: InlineResponse200Data,
+    InlineResponse400: InlineResponse400,
     InsuranceRecord: InsuranceRecord,
     Klines: Klines,
     KlinesData: KlinesData,
     KlinesDataList: KlinesDataList,
+    LadderApr: LadderApr,
+    LaunchPoolV4CreateOrderResponse: LaunchPoolV4CreateOrderResponse,
+    LaunchPoolV4ErrorResponse: LaunchPoolV4ErrorResponse,
+    LaunchPoolV4PledgeRecord: LaunchPoolV4PledgeRecord,
+    LaunchPoolV4Project: LaunchPoolV4Project,
+    LaunchPoolV4RewardPool: LaunchPoolV4RewardPool,
+    LaunchPoolV4RewardRecord: LaunchPoolV4RewardRecord,
     LedgerRecord: LedgerRecord,
     LiquidateOrder: LiquidateOrder,
     MarginAccount: MarginAccount,
@@ -1283,7 +1499,6 @@ let typeMap: { [index: string]: any } = {
     MockRiskUnit: MockRiskUnit,
     MockSpotBalance: MockSpotBalance,
     MockSpotOrder: MockSpotOrder,
-    ModelError: ModelError,
     Mt5Account: Mt5Account,
     Mt5AccountData: Mt5AccountData,
     MultiChainAddressItem: MultiChainAddressItem,
@@ -1332,10 +1547,66 @@ let typeMap: { [index: string]: any } = {
     OrderPatch: OrderPatch,
     OrderResp: OrderResp,
     OrderResponse: OrderResponse,
+    OtcActionResponse: OtcActionResponse,
+    OtcBankListItem: OtcBankListItem,
+    OtcBankListResponse: OtcBankListResponse,
+    OtcBankListResult: OtcBankListResult,
     OtcMarkOrderPaidRequest: OtcMarkOrderPaidRequest,
+    OtcOrderDetail: OtcOrderDetail,
+    OtcOrderDetailResponse: OtcOrderDetailResponse,
+    OtcOrderListCryptoCurrencyInfo: OtcOrderListCryptoCurrencyInfo,
+    OtcOrderListFiatCurrencyInfo: OtcOrderListFiatCurrencyInfo,
+    OtcOrderListItem: OtcOrderListItem,
+    OtcOrderListResponse: OtcOrderListResponse,
+    OtcOrderListResult: OtcOrderListResult,
     OtcOrderRequest: OtcOrderRequest,
     OtcQuoteRequest: OtcQuoteRequest,
+    OtcQuoteResponse: OtcQuoteResponse,
+    OtcQuoteResult: OtcQuoteResult,
+    OtcStableCoinOrderCreateResponse: OtcStableCoinOrderCreateResponse,
+    OtcStableCoinOrderListItem: OtcStableCoinOrderListItem,
+    OtcStableCoinOrderListResponse: OtcStableCoinOrderListResponse,
+    OtcStableCoinOrderListResult: OtcStableCoinOrderListResult,
     OtcStableCoinOrderRequest: OtcStableCoinOrderRequest,
+    OtcUserDefaultBank: OtcUserDefaultBank,
+    OtcUserDefaultBankResponse: OtcUserDefaultBankResponse,
+    OtherContact: OtherContact,
+    P2pAdDetail: P2pAdDetail,
+    P2pAdDetailResponse: P2pAdDetailResponse,
+    P2pAdsListItem: P2pAdsListItem,
+    P2pAdsListResponse: P2pAdsListResponse,
+    P2pAdsUpdateStatusResponse: P2pAdsUpdateStatusResponse,
+    P2pAdsUpdateStatusResult: P2pAdsUpdateStatusResult,
+    P2pChatListResponse: P2pChatListResponse,
+    P2pChatListResult: P2pChatListResult,
+    P2pChatMessage: P2pChatMessage,
+    P2pChatMessagePayload: P2pChatMessagePayload,
+    P2pCounterpartyUserInfo: P2pCounterpartyUserInfo,
+    P2pCounterpartyUserInfoResponse: P2pCounterpartyUserInfoResponse,
+    P2pMerchantMarketInfo: P2pMerchantMarketInfo,
+    P2pMerchantUserInfo: P2pMerchantUserInfo,
+    P2pMerchantUserInfoResponse: P2pMerchantUserInfoResponse,
+    P2pMyAd: P2pMyAd,
+    P2pMyAdsListResponse: P2pMyAdsListResponse,
+    P2pMyAdsListResult: P2pMyAdsListResult,
+    P2pPaymentMethodAccount: P2pPaymentMethodAccount,
+    P2pPaymentMethodGroup: P2pPaymentMethodGroup,
+    P2pPaymentMethodsResponse: P2pPaymentMethodsResponse,
+    P2pSendChatMessageResponse: P2pSendChatMessageResponse,
+    P2pSendChatMessageResult: P2pSendChatMessageResult,
+    P2pTransactionActionResponse: P2pTransactionActionResponse,
+    P2pTransactionConvertInfo: P2pTransactionConvertInfo,
+    P2pTransactionDetail: P2pTransactionDetail,
+    P2pTransactionDetailResponse: P2pTransactionDetailResponse,
+    P2pTransactionListItem: P2pTransactionListItem,
+    P2pTransactionListResponse: P2pTransactionListResponse,
+    P2pTransactionListResult: P2pTransactionListResult,
+    P2pTransactionTimeMarker: P2pTransactionTimeMarker,
+    P2pUploadChatFileResponse: P2pUploadChatFileResponse,
+    P2pUploadChatFileResult: P2pUploadChatFileResult,
+    PartnerApplication: PartnerApplication,
+    PartnerApplicationResponse: PartnerApplicationResponse,
+    PartnerApplicationResponseAllOf: PartnerApplicationResponseAllOf,
     PartnerCommissionHistory: PartnerCommissionHistory,
     PartnerSub: PartnerSub,
     PartnerSubList: PartnerSubList,
@@ -1362,6 +1633,7 @@ let typeMap: { [index: string]: any } = {
     QuoteRequest: QuoteRequest,
     QuoteResponse: QuoteResponse,
     RebateUserInfo: RebateUserInfo,
+    RedeemV4: RedeemV4,
     RepayCurrencyRes: RepayCurrencyRes,
     RepayMultiLoan: RepayMultiLoan,
     RepayRecordCurrency: RepayRecordCurrency,
@@ -1408,19 +1680,25 @@ let typeMap: { [index: string]: any } = {
     SymbolsDataList: SymbolsDataList,
     SystemTime: SystemTime,
     Ticker: Ticker,
-    Ticker2: Ticker2,
-    Ticker2Data: Ticker2Data,
     Tokens: Tokens,
     TotalBalance: TotalBalance,
     TradFiClosePositionRequest: TradFiClosePositionRequest,
+    TradFiError: TradFiError,
     TradFiOrderRequest: TradFiOrderRequest,
     TradFiOrderUpdateRequest: TradFiOrderUpdateRequest,
     TradFiPositionUpdateRequest: TradFiPositionUpdateRequest,
+    TradFiTicker: TradFiTicker,
+    TradFiTickerData: TradFiTickerData,
     TradFiTransactionRequest: TradFiTransactionRequest,
     Trade: Trade,
     TradeFee: TradeFee,
     TrailChangeLog: TrailChangeLog,
     TrailOrder: TrailOrder,
+    TrailOrderChangeLogResponse: TrailOrderChangeLogResponse,
+    TrailOrderDetailResponse: TrailOrderDetailResponse,
+    TrailOrderListResponse: TrailOrderListResponse,
+    TrailOrderResponse: TrailOrderResponse,
+    TransactionConfig: TransactionConfig,
     TransactionID: TransactionID,
     TransactionList: TransactionList,
     TransactionListData: TransactionListData,
@@ -1434,9 +1712,11 @@ let typeMap: { [index: string]: any } = {
     UidPushOrder: UidPushOrder,
     UidPushWithdrawal: UidPushWithdrawal,
     UidPushWithdrawalResp: UidPushWithdrawalResp,
+    UniChartPoint: UniChartPoint,
     UniCurrency: UniCurrency,
     UniCurrencyInterest: UniCurrencyInterest,
     UniCurrencyPair: UniCurrencyPair,
+    UniEstimatedRate: UniEstimatedRate,
     UniInterestRecord: UniInterestRecord,
     UniLend: UniLend,
     UniLendInterest: UniLendInterest,
@@ -1447,7 +1727,6 @@ let typeMap: { [index: string]: any } = {
     UnifiedAccount: UnifiedAccount,
     UnifiedBalance: UnifiedBalance,
     UnifiedBorrowable: UnifiedBorrowable,
-    UnifiedBorrowable1: UnifiedBorrowable1,
     UnifiedCollateralReq: UnifiedCollateralReq,
     UnifiedCollateralRes: UnifiedCollateralRes,
     UnifiedCurrency: UnifiedCurrency,
@@ -1467,6 +1746,7 @@ let typeMap: { [index: string]: any } = {
     UnifiedRiskUnits: UnifiedRiskUnits,
     UnifiedSettings: UnifiedSettings,
     UnifiedTransferable: UnifiedTransferable,
+    UpdateDualCompPositionCrossModeRequest: UpdateDualCompPositionCrossModeRequest,
     UpdateOrder: UpdateOrder,
     UpdateOrderData: UpdateOrderData,
     UpdatePosition: UpdatePosition,

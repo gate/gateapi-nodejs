@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 ## p2pMerchantAccountGetUserInfo
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20014; }> p2pMerchantAccountGetUserInfo()
+> Promise<{ response: http.IncomingMessage; body: P2pMerchantUserInfoResponse; }> p2pMerchantAccountGetUserInfo()
 
 Get account information
 
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20014; }> [InlineResponse20014](InlineResponse20014.md)
+Promise<{ response: AxiosResponse; body: P2pMerchantUserInfoResponse; }> [P2pMerchantUserInfoResponse](P2pMerchantUserInfoResponse.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20014; }> [InlineResponse
 
 ## p2pMerchantAccountGetCounterpartyUserInfo
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20015; }> p2pMerchantAccountGetCounterpartyUserInfo(getCounterpartyUserInfoRequest)
+> Promise<{ response: http.IncomingMessage; body: P2pCounterpartyUserInfoResponse; }> p2pMerchantAccountGetCounterpartyUserInfo(getCounterpartyUserInfoRequest)
 
 Get counterparty information
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20015; }> [InlineResponse20015](InlineResponse20015.md)
+Promise<{ response: AxiosResponse; body: P2pCounterpartyUserInfoResponse; }> [P2pCounterpartyUserInfoResponse](P2pCounterpartyUserInfoResponse.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20015; }> [InlineResponse
 
 ## p2pMerchantAccountGetMyselfPayment
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20016; }> p2pMerchantAccountGetMyselfPayment(opts)
+> Promise<{ response: http.IncomingMessage; body: P2pPaymentMethodsResponse; }> p2pMerchantAccountGetMyselfPayment(opts)
 
 Get payment method list
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20016; }> [InlineResponse20016](InlineResponse20016.md)
+Promise<{ response: AxiosResponse; body: P2pPaymentMethodsResponse; }> [P2pPaymentMethodsResponse](P2pPaymentMethodsResponse.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20016; }> [InlineResponse
 
 ## p2pMerchantTransactionGetPendingTransactionList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20017; }> p2pMerchantTransactionGetPendingTransactionList(getPendingTransactionListRequest)
+> Promise<{ response: http.IncomingMessage; body: P2pTransactionListResponse; }> p2pMerchantTransactionGetPendingTransactionList(getPendingTransactionListRequest)
 
 Get pending orders
 
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20017; }> [InlineResponse20017](InlineResponse20017.md)
+Promise<{ response: AxiosResponse; body: P2pTransactionListResponse; }> [P2pTransactionListResponse](P2pTransactionListResponse.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20017; }> [InlineResponse
 
 ## p2pMerchantTransactionGetCompletedTransactionList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20017; }> p2pMerchantTransactionGetCompletedTransactionList(getCompletedTransactionListRequest)
+> Promise<{ response: http.IncomingMessage; body: P2pTransactionListResponse; }> p2pMerchantTransactionGetCompletedTransactionList(getCompletedTransactionListRequest)
 
 Get all/historical orders
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20017; }> [InlineResponse20017](InlineResponse20017.md)
+Promise<{ response: AxiosResponse; body: P2pTransactionListResponse; }> [P2pTransactionListResponse](P2pTransactionListResponse.md)
 
 ### Authorization
 
@@ -238,7 +238,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20017; }> [InlineResponse
 
 ## p2pMerchantTransactionGetTransactionDetails
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20018; }> p2pMerchantTransactionGetTransactionDetails(getTransactionDetailsRequest)
+> Promise<{ response: http.IncomingMessage; body: P2pTransactionDetailResponse; }> p2pMerchantTransactionGetTransactionDetails(getTransactionDetailsRequest)
 
 Query order details
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20018; }> [InlineResponse20018](InlineResponse20018.md)
+Promise<{ response: AxiosResponse; body: P2pTransactionDetailResponse; }> [P2pTransactionDetailResponse](P2pTransactionDetailResponse.md)
 
 ### Authorization
 
@@ -281,7 +281,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20018; }> [InlineResponse
 
 ## p2pMerchantTransactionConfirmPayment
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20019; }> p2pMerchantTransactionConfirmPayment(confirmPayment)
+> Promise<{ response: http.IncomingMessage; body: P2pTransactionActionResponse; }> p2pMerchantTransactionConfirmPayment(confirmPayment)
 
 Confirm payment
 
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20019; }> [InlineResponse20019](InlineResponse20019.md)
+Promise<{ response: AxiosResponse; body: P2pTransactionActionResponse; }> [P2pTransactionActionResponse](P2pTransactionActionResponse.md)
 
 ### Authorization
 
@@ -324,7 +324,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20019; }> [InlineResponse
 
 ## p2pMerchantTransactionConfirmReceipt
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20019; }> p2pMerchantTransactionConfirmReceipt(confirmReceipt)
+> Promise<{ response: http.IncomingMessage; body: P2pTransactionActionResponse; }> p2pMerchantTransactionConfirmReceipt(confirmReceipt)
 
 Confirm receipt
 
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20019; }> [InlineResponse20019](InlineResponse20019.md)
+Promise<{ response: AxiosResponse; body: P2pTransactionActionResponse; }> [P2pTransactionActionResponse](P2pTransactionActionResponse.md)
 
 ### Authorization
 
@@ -367,7 +367,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20019; }> [InlineResponse
 
 ## p2pMerchantTransactionCancel
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20019; }> p2pMerchantTransactionCancel(cancelOrder)
+> Promise<{ response: http.IncomingMessage; body: P2pTransactionActionResponse; }> p2pMerchantTransactionCancel(cancelOrder)
 
 Cancel order
 
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20019; }> [InlineResponse20019](InlineResponse20019.md)
+Promise<{ response: AxiosResponse; body: P2pTransactionActionResponse; }> [P2pTransactionActionResponse](P2pTransactionActionResponse.md)
 
 ### Authorization
 
@@ -453,7 +453,7 @@ Promise<{ response: AxiosResponse; body: object; }> [object](object.md)
 
 ## p2pMerchantBooksAdsUpdateStatus
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20020; }> p2pMerchantBooksAdsUpdateStatus(adsUpdateStatus, opts)
+> Promise<{ response: http.IncomingMessage; body: P2pAdsUpdateStatusResponse; }> p2pMerchantBooksAdsUpdateStatus(adsUpdateStatus, opts)
 
 Update ad status
 
@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20020; }> [InlineResponse20020](InlineResponse20020.md)
+Promise<{ response: AxiosResponse; body: P2pAdsUpdateStatusResponse; }> [P2pAdsUpdateStatusResponse](P2pAdsUpdateStatusResponse.md)
 
 ### Authorization
 
@@ -500,7 +500,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20020; }> [InlineResponse
 
 ## p2pMerchantBooksAdsDetail
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20021; }> p2pMerchantBooksAdsDetail(adsDetailRequest)
+> Promise<{ response: http.IncomingMessage; body: P2pAdDetailResponse; }> p2pMerchantBooksAdsDetail(adsDetailRequest)
 
 Query ad details
 
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20021; }> [InlineResponse20021](InlineResponse20021.md)
+Promise<{ response: AxiosResponse; body: P2pAdDetailResponse; }> [P2pAdDetailResponse](P2pAdDetailResponse.md)
 
 ### Authorization
 
@@ -543,7 +543,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20021; }> [InlineResponse
 
 ## p2pMerchantBooksMyAdsList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20022; }> p2pMerchantBooksMyAdsList(opts)
+> Promise<{ response: http.IncomingMessage; body: P2pMyAdsListResponse; }> p2pMerchantBooksMyAdsList(opts)
 
 Get my ad list
 
@@ -575,7 +575,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20022; }> [InlineResponse20022](InlineResponse20022.md)
+Promise<{ response: AxiosResponse; body: P2pMyAdsListResponse; }> [P2pMyAdsListResponse](P2pMyAdsListResponse.md)
 
 ### Authorization
 
@@ -588,7 +588,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20022; }> [InlineResponse
 
 ## p2pMerchantBooksAdsList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20023; }> p2pMerchantBooksAdsList(adsListRequest)
+> Promise<{ response: http.IncomingMessage; body: P2pAdsListResponse; }> p2pMerchantBooksAdsList(adsListRequest)
 
 Get Advertisement List
 
@@ -620,7 +620,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20023; }> [InlineResponse20023](InlineResponse20023.md)
+Promise<{ response: AxiosResponse; body: P2pAdsListResponse; }> [P2pAdsListResponse](P2pAdsListResponse.md)
 
 ### Authorization
 
@@ -633,7 +633,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20023; }> [InlineResponse
 
 ## p2pMerchantChatGetChatsList
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20024; }> p2pMerchantChatGetChatsList(getChatsListRequest)
+> Promise<{ response: http.IncomingMessage; body: P2pChatListResponse; }> p2pMerchantChatGetChatsList(getChatsListRequest)
 
 Get chat history
 
@@ -663,7 +663,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20024; }> [InlineResponse20024](InlineResponse20024.md)
+Promise<{ response: AxiosResponse; body: P2pChatListResponse; }> [P2pChatListResponse](P2pChatListResponse.md)
 
 ### Authorization
 
@@ -676,7 +676,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20024; }> [InlineResponse
 
 ## p2pMerchantChatSendChatMessage
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20025; }> p2pMerchantChatSendChatMessage(sendChatMessageRequest)
+> Promise<{ response: http.IncomingMessage; body: P2pSendChatMessageResponse; }> p2pMerchantChatSendChatMessage(sendChatMessageRequest)
 
 Send text message
 
@@ -706,7 +706,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20025; }> [InlineResponse20025](InlineResponse20025.md)
+Promise<{ response: AxiosResponse; body: P2pSendChatMessageResponse; }> [P2pSendChatMessageResponse](P2pSendChatMessageResponse.md)
 
 ### Authorization
 
@@ -719,7 +719,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20025; }> [InlineResponse
 
 ## p2pMerchantChatUploadChatFile
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20026; }> p2pMerchantChatUploadChatFile(uploadChatFile)
+> Promise<{ response: http.IncomingMessage; body: P2pUploadChatFileResponse; }> p2pMerchantChatUploadChatFile(uploadChatFile)
 
 Upload chat file
 
@@ -749,7 +749,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20026; }> [InlineResponse20026](InlineResponse20026.md)
+Promise<{ response: AxiosResponse; body: P2pUploadChatFileResponse; }> [P2pUploadChatFileResponse](P2pUploadChatFileResponse.md)
 
 ### Authorization
 

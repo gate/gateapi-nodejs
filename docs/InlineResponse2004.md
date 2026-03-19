@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time** | **number** |  | [optional] [default to undefined]
-**value** | **string** |  | [optional] [default to undefined]
+**code** | **number** | Return code, 0 means success | [optional] [default to undefined]
+**message** | **string** | Response message | [optional] [default to undefined]
+**data** | [**object**](.md) | Redemption result (empty object on success) | [optional] [default to undefined]
+**timestamp** | **number** | Response timestamp (in seconds) | [optional] [default to undefined]
 

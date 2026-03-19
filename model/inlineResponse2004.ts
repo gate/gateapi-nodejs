@@ -10,21 +10,45 @@
  */
 
 export class InlineResponse2004 {
-    'time'?: number;
-    'value'?: string;
+    /**
+     * Return code, 0 means success
+     */
+    'code'?: number;
+    /**
+     * Response message
+     */
+    'message'?: string;
+    /**
+     * Redemption result (empty object on success)
+     */
+    'data'?: object;
+    /**
+     * Response timestamp (in seconds)
+     */
+    'timestamp'?: number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'time',
-            baseName: 'time',
+            name: 'code',
+            baseName: 'code',
             type: 'number',
         },
         {
-            name: 'value',
-            baseName: 'value',
+            name: 'message',
+            baseName: 'message',
             type: 'string',
+        },
+        {
+            name: 'data',
+            baseName: 'data',
+            type: 'object',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

@@ -1021,7 +1021,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ## getLeverage
 
-> Promise<{ response: http.IncomingMessage; body: FuturesLeverage; }> getLeverage(settle, contract, opts)
+> Promise<{ response: http.IncomingMessage; body: FuturesLeverage; }> getLeverage(settle, contract, posMarginMode, dualSide)
 
 Get Leverage Information for Specified Mode
 
@@ -1040,11 +1040,9 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
-const opts = {
-  'posMarginMode': "isolated", // string | Position Margin Mode, required for split position mode, values: isolated/cross.
-  'dualSide': "dual_long" // string | dual_long - Long, dual_short - Short
-};
-api.getLeverage(settle, contract, opts)
+const posMarginMode = "isolated"; // string | Position Margin Mode, required for split position mode, values: isolated/cross.
+const dualSide = "dual_long"; // string | dual_long - Long, dual_short - Short
+api.getLeverage(settle, contract, posMarginMode, dualSide)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -1056,8 +1054,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **posMarginMode** | **string**| Position Margin Mode, required for split position mode, values: isolated/cross. | [optional] [default to undefined]
- **dualSide** | **string**| dual_long - Long, dual_short - Short | [optional] [default to undefined]
+ **posMarginMode** | **string**| Position Margin Mode, required for split position mode, values: isolated/cross. | [default to undefined]
+ **dualSide** | **string**| dual_long - Long, dual_short - Short | [default to undefined]
 
 ### Return type
 
@@ -1278,7 +1276,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ## updateDualCompPositionCrossMode
 
-> Promise<{ response: http.IncomingMessage; body: Array<Position>; }> updateDualCompPositionCrossMode(settle, inlineObject)
+> Promise<{ response: http.IncomingMessage; body: Array<Position>; }> updateDualCompPositionCrossMode(settle, updateDualCompPositionCrossModeRequest)
 
 Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 
@@ -1294,8 +1292,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const inlineObject = new InlineObject(); // InlineObject | 
-api.updateDualCompPositionCrossMode(settle, inlineObject)
+const updateDualCompPositionCrossModeRequest = new UpdateDualCompPositionCrossModeRequest(); // UpdateDualCompPositionCrossModeRequest | 
+api.updateDualCompPositionCrossMode(settle, updateDualCompPositionCrossModeRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -1306,7 +1304,7 @@ api.updateDualCompPositionCrossMode(settle, inlineObject)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **inlineObject** | [**InlineObject**](InlineObject.md)|  | 
+ **updateDualCompPositionCrossModeRequest** | [**UpdateDualCompPositionCrossModeRequest**](UpdateDualCompPositionCrossModeRequest.md)|  | 
 
 ### Return type
 
@@ -2657,7 +2655,7 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 
 ## createTrailOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse201; }> createTrailOrder(settle, createTrailOrder)
+> Promise<{ response: http.IncomingMessage; body: CreateTrailOrderResponse; }> createTrailOrder(settle, createTrailOrder)
 
 Create trail order
 
@@ -2689,7 +2687,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse201; }> [InlineResponse201](InlineResponse201.md)
+Promise<{ response: AxiosResponse; body: CreateTrailOrderResponse; }> [CreateTrailOrderResponse](CreateTrailOrderResponse.md)
 
 ### Authorization
 
@@ -2702,7 +2700,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse201; }> [InlineResponse20
 
 ## stopTrailOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse200; }> stopTrailOrder(settle, stopTrailOrder)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderResponse; }> stopTrailOrder(settle, stopTrailOrder)
 
 Terminate trail order
 
@@ -2734,7 +2732,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse200](InlineResponse200.md)
+Promise<{ response: AxiosResponse; body: TrailOrderResponse; }> [TrailOrderResponse](TrailOrderResponse.md)
 
 ### Authorization
 
@@ -2747,7 +2745,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse20
 
 ## stopAllTrailOrders
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2001; }> stopAllTrailOrders(settle, stopAllTrailOrders)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderListResponse; }> stopAllTrailOrders(settle, stopAllTrailOrders)
 
 Batch terminate trail orders
 
@@ -2779,7 +2777,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2001](InlineResponse2001.md)
+Promise<{ response: AxiosResponse; body: TrailOrderListResponse; }> [TrailOrderListResponse](TrailOrderListResponse.md)
 
 ### Authorization
 
@@ -2792,7 +2790,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2
 
 ## getTrailOrders
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2001; }> getTrailOrders(settle, opts)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderListResponse; }> getTrailOrders(settle, opts)
 
 Get trail order list
 
@@ -2848,7 +2846,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2001](InlineResponse2001.md)
+Promise<{ response: AxiosResponse; body: TrailOrderListResponse; }> [TrailOrderListResponse](TrailOrderListResponse.md)
 
 ### Authorization
 
@@ -2861,7 +2859,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2
 
 ## getTrailOrderDetail
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2002; }> getTrailOrderDetail(settle, id)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderDetailResponse; }> getTrailOrderDetail(settle, id)
 
 Get trail order details
 
@@ -2893,7 +2891,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2002; }> [InlineResponse2002](InlineResponse2002.md)
+Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse; }> [TrailOrderDetailResponse](TrailOrderDetailResponse.md)
 
 ### Authorization
 
@@ -2906,7 +2904,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2002; }> [InlineResponse2
 
 ## updateTrailOrder
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse200; }> updateTrailOrder(settle, updateTrailOrder)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderResponse; }> updateTrailOrder(settle, updateTrailOrder)
 
 Update trail order
 
@@ -2938,7 +2936,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse200](InlineResponse200.md)
+Promise<{ response: AxiosResponse; body: TrailOrderResponse; }> [TrailOrderResponse](TrailOrderResponse.md)
 
 ### Authorization
 
@@ -2951,7 +2949,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse20
 
 ## getTrailOrderChangeLog
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> getTrailOrderChangeLog(settle, id, opts)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderChangeLogResponse; }> getTrailOrderChangeLog(settle, id, opts)
 
 Get trail order user modification records
 
@@ -2989,7 +2987,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+Promise<{ response: AxiosResponse; body: TrailOrderChangeLogResponse; }> [TrailOrderChangeLogResponse](TrailOrderChangeLogResponse.md)
 
 ### Authorization
 

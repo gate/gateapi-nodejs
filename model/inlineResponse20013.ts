@@ -12,27 +12,42 @@
 import { InlineResponse20013Data } from './inlineResponse20013Data';
 
 export class InlineResponse20013 {
-    'message': string;
+    /**
+     * Response status code, 0 means success
+     */
     'code': number;
+    /**
+     * 响应消息，成功时为 \"success\"
+     */
+    'message': string;
     'data': InlineResponse20013Data;
+    /**
+     * Server timestamp (milliseconds)
+     */
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
         {
             name: 'code',
             baseName: 'code',
             type: 'number',
         },
         {
+            name: 'message',
+            baseName: 'message',
+            type: 'string',
+        },
+        {
             name: 'data',
             baseName: 'data',
             type: 'InlineResponse20013Data',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

@@ -9,10 +9,19 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse2007Data } from './inlineResponse2007Data';
+
 export class InlineResponse2007 {
-    'code': number;
-    'message': string;
-    'timestamp': number;
+    /**
+     * Response code. `0` = success; `2002` = user not logged in; `50105` = parameter validation failed; `10001` = coupon record does not exist or does not belong to current user; `10000` = invalid parameter (e.g., task coupon missing coupon_info)
+     */
+    'code'?: InlineResponse2007.Code;
+    /**
+     * Error identifier code. Empty string on success, machine-readable error label on error
+     */
+    'label'?: string;
+    'message'?: string;
+    'data'?: InlineResponse2007Data;
 
     static discriminator: string | undefined = undefined;
 
@@ -20,7 +29,12 @@ export class InlineResponse2007 {
         {
             name: 'code',
             baseName: 'code',
-            type: 'number',
+            type: 'InlineResponse2007.Code',
+        },
+        {
+            name: 'label',
+            baseName: 'label',
+            type: 'string',
         },
         {
             name: 'message',
@@ -28,13 +42,23 @@ export class InlineResponse2007 {
             type: 'string',
         },
         {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
+            name: 'data',
+            baseName: 'data',
+            type: 'InlineResponse2007Data',
         },
     ];
 
     static getAttributeTypeMap() {
         return InlineResponse2007.attributeTypeMap;
+    }
+}
+
+export namespace InlineResponse2007 {
+    export enum Code {
+        NUMBER_0 = <any>0,
+        NUMBER_2002 = <any>2002,
+        NUMBER_50105 = <any>50105,
+        NUMBER_10001 = <any>10001,
+        NUMBER_10000 = <any>10000,
     }
 }

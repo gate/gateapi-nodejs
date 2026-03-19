@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { FuturesOrderBookItem1 } from './futuresOrderBookItem1';
+import { DeliveryOrderBookItem } from './deliveryOrderBookItem';
 
 export class OptionsOrderBook {
     /**
@@ -27,11 +27,11 @@ export class OptionsOrderBook {
     /**
      * Ask Depth
      */
-    'asks': Array<FuturesOrderBookItem1>;
+    'asks': Array<DeliveryOrderBookItem>;
     /**
      * Bid Depth
      */
-    'bids': Array<FuturesOrderBookItem1>;
+    'bids': Array<DeliveryOrderBookItem>;
 
     static discriminator: string | undefined = undefined;
 
@@ -54,12 +54,12 @@ export class OptionsOrderBook {
         {
             name: 'asks',
             baseName: 'asks',
-            type: 'Array<FuturesOrderBookItem1>',
+            type: 'Array<DeliveryOrderBookItem>',
         },
         {
             name: 'bids',
             baseName: 'bids',
-            type: 'Array<FuturesOrderBookItem1>',
+            type: 'Array<DeliveryOrderBookItem>',
         },
     ];
 
