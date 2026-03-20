@@ -12,7 +12,7 @@
 /**
  * Progress bar configuration. All fields are empty strings when has_progress is false
  */
-export class InlineResponse2006DataProgressConfig {
+export class InlineResponse2007DataProgressConfig {
     /**
      * Total Required Amount
      */
@@ -56,6 +56,6 @@ export class InlineResponse2006DataProgressConfig {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2006DataProgressConfig.attributeTypeMap;
+        return InlineResponse2007DataProgressConfig.attributeTypeMap;
     }
 }

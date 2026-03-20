@@ -12,7 +12,7 @@
 /**
  * Replay video information (has value when content_type=video)
  */
-export class InlineResponse2009DataVideo {
+export class InlineResponse20010DataVideo {
     /**
      * Video ID
      */
@@ -182,6 +182,6 @@ export class InlineResponse2009DataVideo {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2009DataVideo.attributeTypeMap;
+        return InlineResponse20010DataVideo.attributeTypeMap;
     }
 }

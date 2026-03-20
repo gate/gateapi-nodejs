@@ -9,19 +9,22 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2007Data } from './inlineResponse2007Data';
+import { InlineResponse20014Data } from './inlineResponse20014Data';
 
-export class InlineResponse2007 {
+export class InlineResponse20014 {
     /**
-     * Response Code. `0` = Success; `2002` = User not logged in; `50105` = Input parameter validation failed
+     * Response status code, 0 means success
      */
-    'code'?: InlineResponse2007.Code;
+    'code': number;
     /**
-     * Error identifier code. Empty string on success, machine-readable error label on error
+     * 响应消息，成功时为 \"success\"
      */
-    'label'?: string;
-    'message'?: string;
-    'data'?: InlineResponse2007Data;
+    'message': string;
+    'data': InlineResponse20014Data;
+    /**
+     * Server timestamp (milliseconds)
+     */
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
@@ -29,12 +32,7 @@ export class InlineResponse2007 {
         {
             name: 'code',
             baseName: 'code',
-            type: 'InlineResponse2007.Code',
-        },
-        {
-            name: 'label',
-            baseName: 'label',
-            type: 'string',
+            type: 'number',
         },
         {
             name: 'message',
@@ -44,19 +42,16 @@ export class InlineResponse2007 {
         {
             name: 'data',
             baseName: 'data',
-            type: 'InlineResponse2007Data',
+            type: 'InlineResponse20014Data',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2007.attributeTypeMap;
-    }
-}
-
-export namespace InlineResponse2007 {
-    export enum Code {
-        NUMBER_0 = <any>0,
-        NUMBER_2002 = <any>2002,
-        NUMBER_50105 = <any>50105,
+        return InlineResponse20014.attributeTypeMap;
     }
 }

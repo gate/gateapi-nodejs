@@ -9,30 +9,15 @@
  * Do not edit the class manually.
  */
 
-/**
- * Streamer information
- */
-export class InlineResponse2009DataLiveHost {
+export class InlineResponse20014DataList {
     /**
-     * Streamer ID
+     * Activity type ID
      */
-    'id'?: string;
+    'id': number;
     /**
-     * Streamer nickname
+     * Activity type name
      */
-    'name'?: string;
-    /**
-     * Streamer avatar URL
-     */
-    'avatar'?: string;
-    /**
-     * Follower count
-     */
-    'fans'?: number;
-    /**
-     * Streamer level
-     */
-    'tier'?: number;
+    'name': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -40,31 +25,16 @@ export class InlineResponse2009DataLiveHost {
         {
             name: 'id',
             baseName: 'id',
-            type: 'string',
+            type: 'number',
         },
         {
             name: 'name',
             baseName: 'name',
             type: 'string',
         },
-        {
-            name: 'avatar',
-            baseName: 'avatar',
-            type: 'string',
-        },
-        {
-            name: 'fans',
-            baseName: 'fans',
-            type: 'number',
-        },
-        {
-            name: 'tier',
-            baseName: 'tier',
-            type: 'number',
-        },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2009DataLiveHost.attributeTypeMap;
+        return InlineResponse20014DataList.attributeTypeMap;
     }
 }

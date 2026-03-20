@@ -9,71 +9,77 @@
  * Do not edit the class manually.
  */
 
-/**
- * Activity entry data
- */
-export class InlineResponse20011Data {
+export class InlineResponse2009DataItems {
     /**
-     * Activity entry icon URL (light mode)
+     * Post ID
      */
-    'iconUrl': string;
+    'id'?: number;
     /**
-     * Activity entry icon URL (dark mode)
+     * Post content
      */
-    'iconUrlDark': string;
+    'content'?: string;
     /**
-     * Source type, e.g., activity for campaign
+     * First image URL
      */
-    'sourceType': string;
+    'image'?: string;
     /**
-     * Activity entry title
+     * Author avatar
      */
-    'title': string;
+    'avatar'?: string;
     /**
-     * Redirect link type, e.g., h5 for H5 page
+     * Author nickname
      */
-    'urlType': string;
+    'nickname'?: string;
     /**
-     * Activity entry redirect URL
+     * Like count
      */
-    'url': string;
+    'likeCount'?: number;
+    /**
+     * View count
+     */
+    'pageView'?: number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'iconUrl',
-            baseName: 'icon_url',
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
+        },
+        {
+            name: 'content',
+            baseName: 'content',
             type: 'string',
         },
         {
-            name: 'iconUrlDark',
-            baseName: 'icon_url_dark',
+            name: 'image',
+            baseName: 'image',
             type: 'string',
         },
         {
-            name: 'sourceType',
-            baseName: 'source_type',
+            name: 'avatar',
+            baseName: 'avatar',
             type: 'string',
         },
         {
-            name: 'title',
-            baseName: 'title',
+            name: 'nickname',
+            baseName: 'nickname',
             type: 'string',
         },
         {
-            name: 'urlType',
-            baseName: 'url_type',
-            type: 'string',
+            name: 'likeCount',
+            baseName: 'like_count',
+            type: 'number',
         },
         {
-            name: 'url',
-            baseName: 'url',
-            type: 'string',
+            name: 'pageView',
+            baseName: 'page_view',
+            type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse20011Data.attributeTypeMap;
+        return InlineResponse2009DataItems.attributeTypeMap;
     }
 }

@@ -85,9 +85,9 @@ export * from './crossexAdlRank';
 export * from './crossexClosePositionRequest';
 export * from './crossexCoinDiscountRate';
 export * from './crossexConvertOrderRequest';
+export * from './crossexConvertOrderResponse';
 export * from './crossexConvertQuoteRequest';
 export * from './crossexConvertQuoteResponse';
-export * from './crossexFee';
 export * from './crossexHistoricalMarginPosition';
 export * from './crossexHistoricalPosition';
 export * from './crossexInterestRate';
@@ -217,14 +217,20 @@ export * from './inlineObject';
 export * from './inlineResponse200';
 export * from './inlineResponse2001';
 export * from './inlineResponse20010';
+export * from './inlineResponse20010Data';
+export * from './inlineResponse20010DataList';
+export * from './inlineResponse20010DataLive';
+export * from './inlineResponse20010DataLiveHost';
+export * from './inlineResponse20010DataVideo';
 export * from './inlineResponse20011';
-export * from './inlineResponse20011Data';
 export * from './inlineResponse20012';
 export * from './inlineResponse20012Data';
-export * from './inlineResponse20012DataList';
 export * from './inlineResponse20013';
 export * from './inlineResponse20013Data';
 export * from './inlineResponse20013DataList';
+export * from './inlineResponse20014';
+export * from './inlineResponse20014Data';
+export * from './inlineResponse20014DataList';
 export * from './inlineResponse2001Data';
 export * from './inlineResponse2002';
 export * from './inlineResponse2002Data';
@@ -234,22 +240,17 @@ export * from './inlineResponse2004';
 export * from './inlineResponse2005';
 export * from './inlineResponse2005Data';
 export * from './inlineResponse2006';
-export * from './inlineResponse2006Data';
-export * from './inlineResponse2006DataHelpUrl';
-export * from './inlineResponse2006DataJumpUrl';
-export * from './inlineResponse2006DataList';
-export * from './inlineResponse2006DataProgressConfig';
 export * from './inlineResponse2007';
 export * from './inlineResponse2007Data';
+export * from './inlineResponse2007DataHelpUrl';
+export * from './inlineResponse2007DataJumpUrl';
+export * from './inlineResponse2007DataList';
+export * from './inlineResponse2007DataProgressConfig';
 export * from './inlineResponse2008';
 export * from './inlineResponse2008Data';
-export * from './inlineResponse2008DataItems';
 export * from './inlineResponse2009';
 export * from './inlineResponse2009Data';
-export * from './inlineResponse2009DataList';
-export * from './inlineResponse2009DataLive';
-export * from './inlineResponse2009DataLiveHost';
-export * from './inlineResponse2009DataVideo';
+export * from './inlineResponse2009DataItems';
 export * from './inlineResponse200Data';
 export * from './inlineResponse400';
 export * from './insuranceRecord';
@@ -635,9 +636,9 @@ import { CrossexAdlRank } from './crossexAdlRank';
 import { CrossexClosePositionRequest } from './crossexClosePositionRequest';
 import { CrossexCoinDiscountRate } from './crossexCoinDiscountRate';
 import { CrossexConvertOrderRequest } from './crossexConvertOrderRequest';
+import { CrossexConvertOrderResponse } from './crossexConvertOrderResponse';
 import { CrossexConvertQuoteRequest } from './crossexConvertQuoteRequest';
 import { CrossexConvertQuoteResponse } from './crossexConvertQuoteResponse';
-import { CrossexFee } from './crossexFee';
 import { CrossexHistoricalMarginPosition } from './crossexHistoricalMarginPosition';
 import { CrossexHistoricalPosition } from './crossexHistoricalPosition';
 import { CrossexInterestRate } from './crossexInterestRate';
@@ -767,14 +768,20 @@ import { InlineObject } from './inlineObject';
 import { InlineResponse200 } from './inlineResponse200';
 import { InlineResponse2001 } from './inlineResponse2001';
 import { InlineResponse20010 } from './inlineResponse20010';
+import { InlineResponse20010Data } from './inlineResponse20010Data';
+import { InlineResponse20010DataList } from './inlineResponse20010DataList';
+import { InlineResponse20010DataLive } from './inlineResponse20010DataLive';
+import { InlineResponse20010DataLiveHost } from './inlineResponse20010DataLiveHost';
+import { InlineResponse20010DataVideo } from './inlineResponse20010DataVideo';
 import { InlineResponse20011 } from './inlineResponse20011';
-import { InlineResponse20011Data } from './inlineResponse20011Data';
 import { InlineResponse20012 } from './inlineResponse20012';
 import { InlineResponse20012Data } from './inlineResponse20012Data';
-import { InlineResponse20012DataList } from './inlineResponse20012DataList';
 import { InlineResponse20013 } from './inlineResponse20013';
 import { InlineResponse20013Data } from './inlineResponse20013Data';
 import { InlineResponse20013DataList } from './inlineResponse20013DataList';
+import { InlineResponse20014 } from './inlineResponse20014';
+import { InlineResponse20014Data } from './inlineResponse20014Data';
+import { InlineResponse20014DataList } from './inlineResponse20014DataList';
 import { InlineResponse2001Data } from './inlineResponse2001Data';
 import { InlineResponse2002 } from './inlineResponse2002';
 import { InlineResponse2002Data } from './inlineResponse2002Data';
@@ -784,22 +791,17 @@ import { InlineResponse2004 } from './inlineResponse2004';
 import { InlineResponse2005 } from './inlineResponse2005';
 import { InlineResponse2005Data } from './inlineResponse2005Data';
 import { InlineResponse2006 } from './inlineResponse2006';
-import { InlineResponse2006Data } from './inlineResponse2006Data';
-import { InlineResponse2006DataHelpUrl } from './inlineResponse2006DataHelpUrl';
-import { InlineResponse2006DataJumpUrl } from './inlineResponse2006DataJumpUrl';
-import { InlineResponse2006DataList } from './inlineResponse2006DataList';
-import { InlineResponse2006DataProgressConfig } from './inlineResponse2006DataProgressConfig';
 import { InlineResponse2007 } from './inlineResponse2007';
 import { InlineResponse2007Data } from './inlineResponse2007Data';
+import { InlineResponse2007DataHelpUrl } from './inlineResponse2007DataHelpUrl';
+import { InlineResponse2007DataJumpUrl } from './inlineResponse2007DataJumpUrl';
+import { InlineResponse2007DataList } from './inlineResponse2007DataList';
+import { InlineResponse2007DataProgressConfig } from './inlineResponse2007DataProgressConfig';
 import { InlineResponse2008 } from './inlineResponse2008';
 import { InlineResponse2008Data } from './inlineResponse2008Data';
-import { InlineResponse2008DataItems } from './inlineResponse2008DataItems';
 import { InlineResponse2009 } from './inlineResponse2009';
 import { InlineResponse2009Data } from './inlineResponse2009Data';
-import { InlineResponse2009DataList } from './inlineResponse2009DataList';
-import { InlineResponse2009DataLive } from './inlineResponse2009DataLive';
-import { InlineResponse2009DataLiveHost } from './inlineResponse2009DataLiveHost';
-import { InlineResponse2009DataVideo } from './inlineResponse2009DataVideo';
+import { InlineResponse2009DataItems } from './inlineResponse2009DataItems';
 import { InlineResponse200Data } from './inlineResponse200Data';
 import { InlineResponse400 } from './inlineResponse400';
 import { InsuranceRecord } from './insuranceRecord';
@@ -1155,12 +1157,12 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
     'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
-    'InlineResponse2006.Code': InlineResponse2006.Code,
-    'InlineResponse2006DataList.Status': InlineResponse2006DataList.Status,
-    'InlineResponse2006DataList.IsTaskCoupon': InlineResponse2006DataList.IsTaskCoupon,
     'InlineResponse2007.Code': InlineResponse2007.Code,
-    'InlineResponse2007Data.Status': InlineResponse2007Data.Status,
-    'InlineResponse2007Data.IsTaskCoupon': InlineResponse2007Data.IsTaskCoupon,
+    'InlineResponse2007DataList.Status': InlineResponse2007DataList.Status,
+    'InlineResponse2007DataList.IsTaskCoupon': InlineResponse2007DataList.IsTaskCoupon,
+    'InlineResponse2008.Code': InlineResponse2008.Code,
+    'InlineResponse2008Data.Status': InlineResponse2008Data.Status,
+    'InlineResponse2008Data.IsTaskCoupon': InlineResponse2008Data.IsTaskCoupon,
     'LaunchPoolV4ErrorResponse.Label': LaunchPoolV4ErrorResponse.Label,
     'LaunchPoolV4Project.ProjectState': LaunchPoolV4Project.ProjectState,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
@@ -1303,9 +1305,9 @@ let typeMap: { [index: string]: any } = {
     CrossexClosePositionRequest: CrossexClosePositionRequest,
     CrossexCoinDiscountRate: CrossexCoinDiscountRate,
     CrossexConvertOrderRequest: CrossexConvertOrderRequest,
+    CrossexConvertOrderResponse: CrossexConvertOrderResponse,
     CrossexConvertQuoteRequest: CrossexConvertQuoteRequest,
     CrossexConvertQuoteResponse: CrossexConvertQuoteResponse,
-    CrossexFee: CrossexFee,
     CrossexHistoricalMarginPosition: CrossexHistoricalMarginPosition,
     CrossexHistoricalPosition: CrossexHistoricalPosition,
     CrossexInterestRate: CrossexInterestRate,
@@ -1435,14 +1437,20 @@ let typeMap: { [index: string]: any } = {
     InlineResponse200: InlineResponse200,
     InlineResponse2001: InlineResponse2001,
     InlineResponse20010: InlineResponse20010,
+    InlineResponse20010Data: InlineResponse20010Data,
+    InlineResponse20010DataList: InlineResponse20010DataList,
+    InlineResponse20010DataLive: InlineResponse20010DataLive,
+    InlineResponse20010DataLiveHost: InlineResponse20010DataLiveHost,
+    InlineResponse20010DataVideo: InlineResponse20010DataVideo,
     InlineResponse20011: InlineResponse20011,
-    InlineResponse20011Data: InlineResponse20011Data,
     InlineResponse20012: InlineResponse20012,
     InlineResponse20012Data: InlineResponse20012Data,
-    InlineResponse20012DataList: InlineResponse20012DataList,
     InlineResponse20013: InlineResponse20013,
     InlineResponse20013Data: InlineResponse20013Data,
     InlineResponse20013DataList: InlineResponse20013DataList,
+    InlineResponse20014: InlineResponse20014,
+    InlineResponse20014Data: InlineResponse20014Data,
+    InlineResponse20014DataList: InlineResponse20014DataList,
     InlineResponse2001Data: InlineResponse2001Data,
     InlineResponse2002: InlineResponse2002,
     InlineResponse2002Data: InlineResponse2002Data,
@@ -1452,22 +1460,17 @@ let typeMap: { [index: string]: any } = {
     InlineResponse2005: InlineResponse2005,
     InlineResponse2005Data: InlineResponse2005Data,
     InlineResponse2006: InlineResponse2006,
-    InlineResponse2006Data: InlineResponse2006Data,
-    InlineResponse2006DataHelpUrl: InlineResponse2006DataHelpUrl,
-    InlineResponse2006DataJumpUrl: InlineResponse2006DataJumpUrl,
-    InlineResponse2006DataList: InlineResponse2006DataList,
-    InlineResponse2006DataProgressConfig: InlineResponse2006DataProgressConfig,
     InlineResponse2007: InlineResponse2007,
     InlineResponse2007Data: InlineResponse2007Data,
+    InlineResponse2007DataHelpUrl: InlineResponse2007DataHelpUrl,
+    InlineResponse2007DataJumpUrl: InlineResponse2007DataJumpUrl,
+    InlineResponse2007DataList: InlineResponse2007DataList,
+    InlineResponse2007DataProgressConfig: InlineResponse2007DataProgressConfig,
     InlineResponse2008: InlineResponse2008,
     InlineResponse2008Data: InlineResponse2008Data,
-    InlineResponse2008DataItems: InlineResponse2008DataItems,
     InlineResponse2009: InlineResponse2009,
     InlineResponse2009Data: InlineResponse2009Data,
-    InlineResponse2009DataList: InlineResponse2009DataList,
-    InlineResponse2009DataLive: InlineResponse2009DataLive,
-    InlineResponse2009DataLiveHost: InlineResponse2009DataLiveHost,
-    InlineResponse2009DataVideo: InlineResponse2009DataVideo,
+    InlineResponse2009DataItems: InlineResponse2009DataItems,
     InlineResponse200Data: InlineResponse200Data,
     InlineResponse400: InlineResponse400,
     InsuranceRecord: InsuranceRecord,

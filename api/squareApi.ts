@@ -10,7 +10,7 @@
  */
 
 /* tslint:disable:no-unused-locals */
-import { InlineResponse2008 } from '../model/inlineResponse2008';
+import { InlineResponse20010 } from '../model/inlineResponse20010';
 import { InlineResponse2009 } from '../model/inlineResponse2009';
 import { InlineResponse400 } from '../model/inlineResponse400';
 import { ObjectSerializer } from '../model/models';
@@ -50,7 +50,7 @@ export class SquareApi {
         sort?: 0 | 1;
         limit?: number;
         page?: number;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse2008 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse2009 }> {
         const localVarPath = this.client.basePath + '/social/message/search';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -125,7 +125,7 @@ export class SquareApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse2008>(config, 'InlineResponse2008', authSettings);
+        return this.client.request<InlineResponse2009>(config, 'InlineResponse2009', authSettings);
     }
 
     /**
@@ -142,7 +142,7 @@ export class SquareApi {
         coin?: string;
         sort?: 'hot' | 'new';
         limit?: number;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse2009 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20010 }> {
         const localVarPath = this.client.basePath + '/social/live/tag_coin_live_replay';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -199,6 +199,6 @@ export class SquareApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse2009>(config, 'InlineResponse2009', authSettings);
+        return this.client.request<InlineResponse20010>(config, 'InlineResponse20010', authSettings);
     }
 }

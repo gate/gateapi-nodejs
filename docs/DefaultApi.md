@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## getMyActivityEntry
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20011; }> getMyActivityEntry()
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20012; }> getMyActivityEntry()
 
 My activity entry
 
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse20011](InlineResponse20011.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse20012](InlineResponse20012.md)
 
 ### Authorization
 
@@ -52,7 +52,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse
 
 ## listActivities
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20012; }> listActivities(opts)
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20013; }> listActivities(opts)
 
 Recommended activity list
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse20012](InlineResponse20012.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20013; }> [InlineResponse20013](InlineResponse20013.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse20012; }> [InlineResponse
 
 ## listActivityTypes
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20013; }> listActivityTypes()
+> Promise<{ response: http.IncomingMessage; body: InlineResponse20014; }> listActivityTypes()
 
 Activity type list
 
@@ -135,7 +135,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20013; }> [InlineResponse20013](InlineResponse20013.md)
+Promise<{ response: AxiosResponse; body: InlineResponse20014; }> [InlineResponse20014](InlineResponse20014.md)
 
 ### Authorization
 

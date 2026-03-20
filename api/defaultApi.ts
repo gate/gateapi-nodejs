@@ -10,9 +10,9 @@
  */
 
 /* tslint:disable:no-unused-locals */
-import { InlineResponse20011 } from '../model/inlineResponse20011';
 import { InlineResponse20012 } from '../model/inlineResponse20012';
 import { InlineResponse20013 } from '../model/inlineResponse20013';
+import { InlineResponse20014 } from '../model/inlineResponse20014';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -36,7 +36,7 @@ export class DefaultApi {
      * Query user\'s Activity Center entry information, including activity icon and redirect link
      * @summary My activity entry
      */
-    public async getMyActivityEntry(): Promise<{ response: AxiosResponse; body: InlineResponse20011 }> {
+    public async getMyActivityEntry(): Promise<{ response: AxiosResponse; body: InlineResponse20012 }> {
         const localVarPath = this.client.basePath + '/rewards/activity/my-activity-entry';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -56,7 +56,7 @@ export class DefaultApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20011>(config, 'InlineResponse20011', authSettings);
+        return this.client.request<InlineResponse20012>(config, 'InlineResponse20012', authSettings);
     }
 
     /**
@@ -77,7 +77,7 @@ export class DefaultApi {
         page?: number;
         pageSize?: number;
         sortBy?: string;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20012 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse20013 }> {
         const localVarPath = this.client.basePath + '/rewards/activity/activity-list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -152,14 +152,14 @@ export class DefaultApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20012>(config, 'InlineResponse20012', authSettings);
+        return this.client.request<InlineResponse20013>(config, 'InlineResponse20013', authSettings);
     }
 
     /**
      * Query all activity types supported by Activity Center
      * @summary Activity type list
      */
-    public async listActivityTypes(): Promise<{ response: AxiosResponse; body: InlineResponse20013 }> {
+    public async listActivityTypes(): Promise<{ response: AxiosResponse; body: InlineResponse20014 }> {
         const localVarPath = this.client.basePath + '/rewards/activity/activity-type';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -179,6 +179,6 @@ export class DefaultApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20013>(config, 'InlineResponse20013', authSettings);
+        return this.client.request<InlineResponse20014>(config, 'InlineResponse20014', authSettings);
     }
 }

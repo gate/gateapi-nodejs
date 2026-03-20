@@ -13,17 +13,14 @@ import { InlineResponse2008Data } from './inlineResponse2008Data';
 
 export class InlineResponse2008 {
     /**
-     * Status code, 0 = success
+     * Response code. `0` = success; `2002` = user not logged in; `50105` = parameter validation failed; `10001` = coupon record does not exist or does not belong to current user; `10000` = invalid parameter (e.g., task coupon missing coupon_info)
      */
-    'code'?: number;
+    'code'?: InlineResponse2008.Code;
     /**
      * Error identifier code. Empty string on success, machine-readable error label on error
      */
     'label'?: string;
-    /**
-     * Status message
-     */
-    'msg'?: string;
+    'message'?: string;
     'data'?: InlineResponse2008Data;
 
     static discriminator: string | undefined = undefined;
@@ -32,7 +29,7 @@ export class InlineResponse2008 {
         {
             name: 'code',
             baseName: 'code',
-            type: 'number',
+            type: 'InlineResponse2008.Code',
         },
         {
             name: 'label',
@@ -40,8 +37,8 @@ export class InlineResponse2008 {
             type: 'string',
         },
         {
-            name: 'msg',
-            baseName: 'msg',
+            name: 'message',
+            baseName: 'message',
             type: 'string',
         },
         {
@@ -53,5 +50,15 @@ export class InlineResponse2008 {
 
     static getAttributeTypeMap() {
         return InlineResponse2008.attributeTypeMap;
+    }
+}
+
+export namespace InlineResponse2008 {
+    export enum Code {
+        NUMBER_0 = <any>0,
+        NUMBER_2002 = <any>2002,
+        NUMBER_50105 = <any>50105,
+        NUMBER_10001 = <any>10001,
+        NUMBER_10000 = <any>10000,
     }
 }

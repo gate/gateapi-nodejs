@@ -1,4 +1,4 @@
-# InlineResponse2006DataProgressConfig
+# InlineResponse2007DataProgressConfig
 
 ## Properties
 

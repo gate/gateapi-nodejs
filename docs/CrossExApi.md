@@ -509,7 +509,7 @@ Promise<{ response: AxiosResponse; body: CrossexConvertQuoteResponse; }> [Crosse
 
 ## createCrossexConvertOrder
 
-> Promise<{ response: http.IncomingMessage; body: object; }> createCrossexConvertOrder(opts)
+> Promise<{ response: http.IncomingMessage; body: CrossexConvertOrderResponse; }> createCrossexConvertOrder(opts)
 
 Flash Swap Transaction
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: object; }> [object](object.md)
+Promise<{ response: AxiosResponse; body: CrossexConvertOrderResponse; }> [CrossexConvertOrderResponse](CrossexConvertOrderResponse.md)
 
 ### Authorization
 
@@ -934,7 +934,7 @@ Promise<{ response: AxiosResponse; body: Array<CrossexInterestRate>; }> [Crossex
 
 ## getCrossexFee
 
-> Promise<{ response: http.IncomingMessage; body: CrossexFee; }> getCrossexFee()
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse2006>; }> getCrossexFee()
 
 Query User Fee Rates
 
@@ -962,7 +962,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: CrossexFee; }> [CrossexFee](CrossexFee.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse2006>; }> [InlineResponse2006](InlineResponse2006.md)
 
 ### Authorization
 

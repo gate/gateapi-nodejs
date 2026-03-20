@@ -11,13 +11,85 @@
 
 export class InlineResponse20013DataList {
     /**
-     * Activity type ID
+     * Activity ID
      */
     'id': number;
     /**
+     * Activity type ID
+     */
+    'typeId': number;
+    /**
      * Activity type name
      */
-    'name': string;
+    'typeName': string;
+    /**
+     * Activity name
+     */
+    'competitionName': string;
+    /**
+     * Activity start time (Unix timestamp, in seconds)
+     */
+    'startAt': number;
+    /**
+     * Activity end time (Unix timestamp, in seconds)
+     */
+    'endAt': number;
+    /**
+     * Activity image URL (light mode)
+     */
+    'img': string;
+    /**
+     * Activity image URL (dark mode)
+     */
+    'imgDark': string;
+    /**
+     * Activity redirect link
+     */
+    'url': string;
+    /**
+     * Popularity score
+     */
+    'hot': number;
+    /**
+     * Main title first line
+     */
+    'masterOneLine': string;
+    /**
+     * Main title second line
+     */
+    'masterTwoLine': string;
+    /**
+     * Subtitle first line
+     */
+    'slaveOneLine': string;
+    /**
+     * Subtitle second line
+     */
+    'slaveTwoLine': string;
+    /**
+     * Activity title
+     */
+    'competitionTitle': string;
+    /**
+     * Pin ID, 0 means not pinned
+     */
+    'topId': number;
+    /**
+     * Parent activity ID, 0 means no parent activity
+     */
+    'parentId': number;
+    /**
+     * New activity image URL (light mode)
+     */
+    'newImg': string;
+    /**
+     * New activity image URL (dark mode)
+     */
+    'newImgDark': string;
+    /**
+     * Activity tag list
+     */
+    'tag': Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -28,9 +100,99 @@ export class InlineResponse20013DataList {
             type: 'number',
         },
         {
-            name: 'name',
-            baseName: 'name',
+            name: 'typeId',
+            baseName: 'type_id',
+            type: 'number',
+        },
+        {
+            name: 'typeName',
+            baseName: 'type_name',
             type: 'string',
+        },
+        {
+            name: 'competitionName',
+            baseName: 'competition_name',
+            type: 'string',
+        },
+        {
+            name: 'startAt',
+            baseName: 'start_at',
+            type: 'number',
+        },
+        {
+            name: 'endAt',
+            baseName: 'end_at',
+            type: 'number',
+        },
+        {
+            name: 'img',
+            baseName: 'img',
+            type: 'string',
+        },
+        {
+            name: 'imgDark',
+            baseName: 'img_dark',
+            type: 'string',
+        },
+        {
+            name: 'url',
+            baseName: 'url',
+            type: 'string',
+        },
+        {
+            name: 'hot',
+            baseName: 'hot',
+            type: 'number',
+        },
+        {
+            name: 'masterOneLine',
+            baseName: 'master_one_line',
+            type: 'string',
+        },
+        {
+            name: 'masterTwoLine',
+            baseName: 'master_two_line',
+            type: 'string',
+        },
+        {
+            name: 'slaveOneLine',
+            baseName: 'slave_one_line',
+            type: 'string',
+        },
+        {
+            name: 'slaveTwoLine',
+            baseName: 'slave_two_line',
+            type: 'string',
+        },
+        {
+            name: 'competitionTitle',
+            baseName: 'competition_title',
+            type: 'string',
+        },
+        {
+            name: 'topId',
+            baseName: 'top_id',
+            type: 'number',
+        },
+        {
+            name: 'parentId',
+            baseName: 'parent_id',
+            type: 'number',
+        },
+        {
+            name: 'newImg',
+            baseName: 'new_img',
+            type: 'string',
+        },
+        {
+            name: 'newImgDark',
+            baseName: 'new_img_dark',
+            type: 'string',
+        },
+        {
+            name: 'tag',
+            baseName: 'tag',
+            type: 'Array<string>',
         },
     ];
 

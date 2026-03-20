@@ -1,4 +1,4 @@
-# InlineResponse2009DataLive
+# InlineResponse20010DataLive
 
 ## Properties
 
@@ -14,6 +14,6 @@ Name | Type | Description | Notes
 **hotWeight** | **number** | Popularity weight | [optional] [default to undefined]
 **liveType** | **number** | Live stream type | [optional] [default to undefined]
 **sessionId** | **string** | Session ID | [optional] [default to undefined]
-**host** | [**InlineResponse2009DataLiveHost**](InlineResponse2009DataLiveHost.md) |  | [optional] [default to undefined]
+**host** | [**InlineResponse20010DataLiveHost**](InlineResponse20010DataLiveHost.md) |  | [optional] [default to undefined]
 **status** | **string** | Live stream status (e.g., streaming) | [optional] [default to undefined]
 

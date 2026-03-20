@@ -9,37 +9,44 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2006DataList } from './inlineResponse2006DataList';
-
 /**
- * Returned when code=0; empty object {} otherwise
+ * Redirect Link
  */
-export class InlineResponse2006Data {
+export class InlineResponse2007DataJumpUrl {
     /**
-     * Whether there is a next page. `true` means more data is available. Pass the `id` of the last record as `last_id` and `expire_time_order_by` as `expire_time` in the next request
+     * Web Redirect Link
      */
-    'nextPage'?: boolean;
+    'web'?: string;
     /**
-     * Coupon object array, see field details below
+     * App Redirect Link
      */
-    'list'?: Array<InlineResponse2006DataList>;
+    'app'?: string;
+    /**
+     * Mini Program Redirect Link (empty string for most types)
+     */
+    'miniApp'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'nextPage',
-            baseName: 'next_page',
-            type: 'boolean',
+            name: 'web',
+            baseName: 'web',
+            type: 'string',
         },
         {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<InlineResponse2006DataList>',
+            name: 'app',
+            baseName: 'app',
+            type: 'string',
+        },
+        {
+            name: 'miniApp',
+            baseName: 'mini_app',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2006Data.attributeTypeMap;
+        return InlineResponse2007DataJumpUrl.attributeTypeMap;
     }
 }

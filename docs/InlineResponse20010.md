@@ -4,5 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **boolean** | Whether redemption was successful | [optional] [default to undefined]
+**code** | **number** | Status code, 200 &#x3D; success | [optional] [default to undefined]
+**label** | **string** | Status label | [optional] [default to undefined]
+**message** | **string** | Status message | [optional] [default to undefined]
+**requestId** | **string** | Request ID | [optional] [default to undefined]
+**data** | [**InlineResponse20010Data**](InlineResponse20010Data.md) |  | [optional] [default to undefined]
 

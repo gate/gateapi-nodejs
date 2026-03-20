@@ -9,37 +9,25 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2007DataList } from './inlineResponse2007DataList';
+import { InlineResponse20010DataList } from './inlineResponse20010DataList';
 
-/**
- * Returned when code=0; empty object {} otherwise
- */
-export class InlineResponse2007Data {
+export class InlineResponse20010Data {
     /**
-     * Whether there is a next page. `true` means more data is available. Pass the `id` of the last record as `last_id` and `expire_time_order_by` as `expire_time` in the next request
+     * Live stream/replay list
      */
-    'nextPage'?: boolean;
-    /**
-     * Coupon object array, see field details below
-     */
-    'list'?: Array<InlineResponse2007DataList>;
+    'list'?: Array<InlineResponse20010DataList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'nextPage',
-            baseName: 'next_page',
-            type: 'boolean',
-        },
-        {
             name: 'list',
             baseName: 'list',
-            type: 'Array<InlineResponse2007DataList>',
+            type: 'Array<InlineResponse20010DataList>',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2007Data.attributeTypeMap;
+        return InlineResponse20010Data.attributeTypeMap;
     }
 }

@@ -18,9 +18,9 @@ import { CrossexAdlRank } from '../model/crossexAdlRank';
 import { CrossexClosePositionRequest } from '../model/crossexClosePositionRequest';
 import { CrossexCoinDiscountRate } from '../model/crossexCoinDiscountRate';
 import { CrossexConvertOrderRequest } from '../model/crossexConvertOrderRequest';
+import { CrossexConvertOrderResponse } from '../model/crossexConvertOrderResponse';
 import { CrossexConvertQuoteRequest } from '../model/crossexConvertQuoteRequest';
 import { CrossexConvertQuoteResponse } from '../model/crossexConvertQuoteResponse';
-import { CrossexFee } from '../model/crossexFee';
 import { CrossexHistoricalMarginPosition } from '../model/crossexHistoricalMarginPosition';
 import { CrossexHistoricalPosition } from '../model/crossexHistoricalPosition';
 import { CrossexInterestRate } from '../model/crossexInterestRate';
@@ -39,6 +39,7 @@ import { CrossexTransferCoin } from '../model/crossexTransferCoin';
 import { CrossexTransferRecord } from '../model/crossexTransferRecord';
 import { CrossexTransferRequest } from '../model/crossexTransferRequest';
 import { CrossexTransferResponse } from '../model/crossexTransferResponse';
+import { InlineResponse2006 } from '../model/inlineResponse2006';
 import { Symbol } from '../model/symbol';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -504,7 +505,7 @@ export class CrossExApi {
      */
     public async createCrossexConvertOrder(opts?: {
         crossexConvertOrderRequest?: CrossexConvertOrderRequest;
-    }): Promise<{ response: AxiosResponse; body: object }> {
+    }): Promise<{ response: AxiosResponse; body: CrossexConvertOrderResponse }> {
         const localVarPath = this.client.basePath + '/crossex/convert/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -527,7 +528,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<object>(config, 'object', authSettings);
+        return this.client.request<CrossexConvertOrderResponse>(config, 'CrossexConvertOrderResponse', authSettings);
     }
 
     /**
@@ -845,7 +846,7 @@ export class CrossExApi {
      * Rate Limit: 200 requests per 10 seconds
      * @summary Query User Fee Rates
      */
-    public async getCrossexFee(): Promise<{ response: AxiosResponse; body: CrossexFee }> {
+    public async getCrossexFee(): Promise<{ response: AxiosResponse; body: Array<InlineResponse2006> }> {
         const localVarPath = this.client.basePath + '/crossex/fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -865,7 +866,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<CrossexFee>(config, 'CrossexFee', authSettings);
+        return this.client.request<Array<InlineResponse2006>>(config, 'Array<InlineResponse2006>', authSettings);
     }
 
     /**

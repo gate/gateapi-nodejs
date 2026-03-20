@@ -9,23 +9,32 @@
  * Do not edit the class manually.
  */
 
-export class UidPushWithdrawalResp {
+export class CrossexConvertOrderResponse {
     /**
      * Order ID
      */
-    'id'?: string;
+    'orderId': string;
+    /**
+     * Order ID (cannot be customized)
+     */
+    'text': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'id',
-            baseName: 'id',
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return UidPushWithdrawalResp.attributeTypeMap;
+        return CrossexConvertOrderResponse.attributeTypeMap;
     }
 }

@@ -9,44 +9,28 @@
  * Do not edit the class manually.
  */
 
+import { InlineResponse20014DataList } from './inlineResponse20014DataList';
+
 /**
- * Redirect Link
+ * Activity type data
  */
-export class InlineResponse2006DataJumpUrl {
+export class InlineResponse20014Data {
     /**
-     * Web Redirect Link
+     * Activity type list
      */
-    'web'?: string;
-    /**
-     * App Redirect Link
-     */
-    'app'?: string;
-    /**
-     * Mini Program Redirect Link (empty string for most types)
-     */
-    'miniApp'?: string;
+    'list': Array<InlineResponse20014DataList>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'web',
-            baseName: 'web',
-            type: 'string',
-        },
-        {
-            name: 'app',
-            baseName: 'app',
-            type: 'string',
-        },
-        {
-            name: 'miniApp',
-            baseName: 'mini_app',
-            type: 'string',
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<InlineResponse20014DataList>',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2006DataJumpUrl.attributeTypeMap;
+        return InlineResponse20014Data.attributeTypeMap;
     }
 }

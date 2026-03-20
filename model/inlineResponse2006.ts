@@ -9,54 +9,67 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2006Data } from './inlineResponse2006Data';
+import { CrossexSpecialFee } from './crossexSpecialFee';
 
 export class InlineResponse2006 {
     /**
-     * Response Code. `0` = Success; `2002` = User not logged in; `50105` = Input parameter validation failed
+     * Exchange
      */
-    'code'?: InlineResponse2006.Code;
+    'exchangeType'?: string;
     /**
-     * Error identifier code. Empty string on success, machine-readable error label on error
+     * spotMakerfee rate
      */
-    'label'?: string;
-    'message'?: string;
-    'data'?: InlineResponse2006Data;
+    'spotMakerFee': string;
+    /**
+     * spotTakerfee rate
+     */
+    'spotTakerFee': string;
+    /**
+     * contractMakerfee rate
+     */
+    'futureMakerFee': string;
+    /**
+     * contractTakerfee rate
+     */
+    'futureTakerFee': string;
+    'specialFeeList': Array<CrossexSpecialFee>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'code',
-            baseName: 'code',
-            type: 'InlineResponse2006.Code',
-        },
-        {
-            name: 'label',
-            baseName: 'label',
+            name: 'exchangeType',
+            baseName: 'exchange_type',
             type: 'string',
         },
         {
-            name: 'message',
-            baseName: 'message',
+            name: 'spotMakerFee',
+            baseName: 'spot_maker_fee',
             type: 'string',
         },
         {
-            name: 'data',
-            baseName: 'data',
-            type: 'InlineResponse2006Data',
+            name: 'spotTakerFee',
+            baseName: 'spot_taker_fee',
+            type: 'string',
+        },
+        {
+            name: 'futureMakerFee',
+            baseName: 'future_maker_fee',
+            type: 'string',
+        },
+        {
+            name: 'futureTakerFee',
+            baseName: 'future_taker_fee',
+            type: 'string',
+        },
+        {
+            name: 'specialFeeList',
+            baseName: 'special_fee_list',
+            type: 'Array<CrossexSpecialFee>',
         },
     ];
 
     static getAttributeTypeMap() {
         return InlineResponse2006.attributeTypeMap;
-    }
-}
-
-export namespace InlineResponse2006 {
-    export enum Code {
-        NUMBER_0 = <any>0,
-        NUMBER_2002 = <any>2002,
-        NUMBER_50105 = <any>50105,
     }
 }

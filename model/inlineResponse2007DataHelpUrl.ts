@@ -12,7 +12,7 @@
 /**
  * Help Center Link
  */
-export class InlineResponse2006DataHelpUrl {
+export class InlineResponse2007DataHelpUrl {
     /**
      * Web Help Link
      */
@@ -38,6 +38,6 @@ export class InlineResponse2006DataHelpUrl {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2006DataHelpUrl.attributeTypeMap;
+        return InlineResponse2007DataHelpUrl.attributeTypeMap;
     }
 }

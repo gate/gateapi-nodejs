@@ -4,5 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;InlineResponse2009DataList&gt;**](InlineResponse2009DataList.md) | Live stream/replay list | [optional] [default to undefined]
+**total** | **number** | Total number of results | [optional] [default to undefined]
+**items** | [**Array&lt;InlineResponse2009DataItems&gt;**](InlineResponse2009DataItems.md) | Search result list | [optional] [default to undefined]
 

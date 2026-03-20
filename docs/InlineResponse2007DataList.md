@@ -1,4 +1,4 @@
-# InlineResponse2006DataList
+# InlineResponse2007DataList
 
 ## Properties
 
@@ -13,14 +13,14 @@ Name | Type | Description | Notes
 **currency** | **string** | Denomination unit. Point card &#x3D; \&#39;POINT\&#39;, interest rate boost coupon &#x3D; \&#39;APR\&#39;, VIP trial card &#x3D; \&#39;VIP\&#39;, Alpha cash coupon &#x3D; base currency, others &#x3D; uppercase currency symbol (e.g., \&#39;USDT\&#39;/\&#39;GT\&#39;) | [optional] [default to undefined]
 **ruleNew** | **string** | Coupon usage rule text. List endpoint always returns empty string \&quot;\&quot;, only detail endpoint returns actual value | [optional] [default to undefined]
 **status** | **string** | Coupon status. Regular coupon: NOT_ACTIVE (pending activation), ACTIVATED (activated), TO_BE_USED (to be used), EXPIRED (expired), RECYCLED (recycled), INVALID (invalidated), USED (used), UNKNOWN (unknown), LOCKED (locked, P2P only). Task coupon: TASK_START (task not started), TASK_WAIT (task in progress), TASK_DONE (task completed, processing), TASK_EXPIRED (task not completed, expired), TASK_NOT_STARTED_EXPIRED (not started, expired), TASK_RECEIVE_SUCCESS (reward claimed successfully), TASK_RECEIVE_FAIL (reward claim failed) | [optional] [default to undefined]
-**jumpUrl** | [**InlineResponse2006DataJumpUrl**](InlineResponse2006DataJumpUrl.md) |  | [optional] [default to undefined]
-**helpUrl** | [**InlineResponse2006DataHelpUrl**](InlineResponse2006DataHelpUrl.md) |  | [optional] [default to undefined]
+**jumpUrl** | [**InlineResponse2007DataJumpUrl**](InlineResponse2007DataJumpUrl.md) |  | [optional] [default to undefined]
+**helpUrl** | [**InlineResponse2007DataHelpUrl**](InlineResponse2007DataHelpUrl.md) |  | [optional] [default to undefined]
 **expireTime** | **number** | Expiration time (Unix timestamp). Some types replace this with actual expiration time after activation or use (e.g., contract_bonus uses expired_timest after activation). Point card type returns 0 | [optional] [default to undefined]
 **expireTimeOrderBy** | **number** | Sorting expiration time (from the original expiration time of the distribution record, unaffected by activation). Used as the &#x60;expire_time&#x60; parameter for the next request in cursor-based pagination | [optional] [default to undefined]
 **expireSecond** | **number** | Seconds remaining until expiration. Returns 0 for expired or Point Card types | [optional] [default to undefined]
 **hasUsageHistory** | **boolean** | Whether there is a usage history. Fixed as true for point card type, determined by type for others | [optional] [default to undefined]
 **hasProgress** | **boolean** | Whether to display a progress bar. Only true for commission_rebate, interest_voucher, and qualifying task coupons | [optional] [default to undefined]
-**progressConfig** | [**InlineResponse2006DataProgressConfig**](InlineResponse2006DataProgressConfig.md) |  | [optional] [default to undefined]
+**progressConfig** | [**InlineResponse2007DataProgressConfig**](InlineResponse2007DataProgressConfig.md) |  | [optional] [default to undefined]
 **activationInfo** | [**object**](.md) | Type-specific activation information. Types without specific fields return empty object {}. Fields by type: interest_voucher&#x3D;{supported_pairs,transaction_type}; contract_bonus_new&#x3D;{received_expired_hour}; contract_bonus&#x3D;{check_unified_account_mode,received_expired_days,abtest}; commission_rebate&#x3D;{market,market_name}; robot_bonus&#x3D;{designated_bots}; position_voucher&#x3D;{symbols,leverage,need_user_funds,user_funds_amount,position_bonus}; tradfi_position_voucher&#x3D;{symbols,leverage,position_bonus}; etf_voucher&#x3D;{currency_markets,amount} | [optional] [default to undefined]
 **isTaskCoupon** | **number** | Whether it is a task coupon. &#x60;0&#x60; &#x3D; regular coupon; &#x60;1&#x60; &#x3D; task coupon | [optional] [default to undefined]
 **upgradeToast** | **boolean** | Whether to prompt the user to upgrade the App (true when app version is too old to support the coupon). Triggered types: copy_trading/alpha_voucher (Android&lt;7320000/iOS&lt;202507320000), commission_rebate subtype tradfi (Android&lt;8040000/iOS&lt;202608040000), etf_voucher (Android&lt;8090000/iOS&lt;202608090000), tradfi_position_voucher (Android&lt;8100000/iOS&lt;202508240000) | [optional] [default to undefined]
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **taskCompletedAt** | **number** | Task completion timestamp (Unix). Currently fixed at 0, reserved field | [optional] [default to undefined]
 **extra** | **Array&lt;object&gt;** | Extension fields. List endpoint always returns empty array [], only the detail endpoint has values | [optional] [default to undefined]
 
-## Enum: InlineResponse2006DataList.Status
+## Enum: InlineResponse2007DataList.Status
 
 * `NOTACTIVE` (value: `'NOT_ACTIVE'`)
 
@@ -66,7 +66,7 @@ Name | Type | Description | Notes
 * `TASKRECEIVEFAIL` (value: `'TASK_RECEIVE_FAIL'`)
 
 
-## Enum: InlineResponse2006DataList.IsTaskCoupon
+## Enum: InlineResponse2007DataList.IsTaskCoupon
 
 * `NUMBER_0` (value: `0`)
 

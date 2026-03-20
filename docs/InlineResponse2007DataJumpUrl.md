@@ -1,4 +1,4 @@
-# InlineResponse2006DataJumpUrl
+# InlineResponse2007DataJumpUrl
 
 ## Properties
 

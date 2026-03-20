@@ -9,35 +9,30 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse2008DataItems {
+/**
+ * Streamer information
+ */
+export class InlineResponse20010DataLiveHost {
     /**
-     * Post ID
+     * Streamer ID
      */
-    'id'?: number;
+    'id'?: string;
     /**
-     * Post content
+     * Streamer nickname
      */
-    'content'?: string;
+    'name'?: string;
     /**
-     * First image URL
-     */
-    'image'?: string;
-    /**
-     * Author avatar
+     * Streamer avatar URL
      */
     'avatar'?: string;
     /**
-     * Author nickname
+     * Follower count
      */
-    'nickname'?: string;
+    'fans'?: number;
     /**
-     * Like count
+     * Streamer level
      */
-    'likeCount'?: number;
-    /**
-     * View count
-     */
-    'pageView'?: number;
+    'tier'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -45,16 +40,11 @@ export class InlineResponse2008DataItems {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
-        },
-        {
-            name: 'content',
-            baseName: 'content',
             type: 'string',
         },
         {
-            name: 'image',
-            baseName: 'image',
+            name: 'name',
+            baseName: 'name',
             type: 'string',
         },
         {
@@ -63,23 +53,18 @@ export class InlineResponse2008DataItems {
             type: 'string',
         },
         {
-            name: 'nickname',
-            baseName: 'nickname',
-            type: 'string',
-        },
-        {
-            name: 'likeCount',
-            baseName: 'like_count',
+            name: 'fans',
+            baseName: 'fans',
             type: 'number',
         },
         {
-            name: 'pageView',
-            baseName: 'page_view',
+            name: 'tier',
+            baseName: 'tier',
             type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2008DataItems.attributeTypeMap;
+        return InlineResponse20010DataLiveHost.attributeTypeMap;
     }
 }

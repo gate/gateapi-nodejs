@@ -9,45 +9,19 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20011Data } from './inlineResponse20011Data';
-
 export class InlineResponse20011 {
     /**
-     * Response status code, 0 means success
+     * Whether redemption was successful
      */
-    'code': number;
-    /**
-     * 响应消息，成功时为 \"success\"
-     */
-    'message': string;
-    'data': InlineResponse20011Data;
-    /**
-     * Server timestamp (milliseconds)
-     */
-    'timestamp': number;
+    'success'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'code',
-            baseName: 'code',
-            type: 'number',
-        },
-        {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
-            name: 'data',
-            baseName: 'data',
-            type: 'InlineResponse20011Data',
-        },
-        {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
+            name: 'success',
+            baseName: 'success',
+            type: 'boolean',
         },
     ];
 

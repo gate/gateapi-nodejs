@@ -10,8 +10,8 @@
  */
 
 /* tslint:disable:no-unused-locals */
-import { InlineResponse2006 } from '../model/inlineResponse2006';
 import { InlineResponse2007 } from '../model/inlineResponse2007';
+import { InlineResponse2008 } from '../model/inlineResponse2008';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -69,7 +69,7 @@ export class CouponApi {
             | 'alpha_voucher'
             | 'etf_voucher';
         isTaskCoupon?: 0 | 1;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse2006 }> {
+    }): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
         const localVarPath = this.client.basePath + '/coupon/user-coupon-list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -156,7 +156,7 @@ export class CouponApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2006>(config, 'InlineResponse2006', authSettings);
+        return this.client.request<InlineResponse2007>(config, 'InlineResponse2007', authSettings);
     }
 
     /**
@@ -189,7 +189,7 @@ export class CouponApi {
             | 'etf_voucher',
         detailId: number,
         opts?: { isTaskCoupon?: 0 | 1 },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2007 }> {
+    ): Promise<{ response: AxiosResponse; body: InlineResponse2008 }> {
         const localVarPath = this.client.basePath + '/coupon/user-coupon-detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -246,6 +246,6 @@ export class CouponApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2007>(config, 'InlineResponse2007', authSettings);
+        return this.client.request<InlineResponse2008>(config, 'InlineResponse2008', authSettings);
     }
 }

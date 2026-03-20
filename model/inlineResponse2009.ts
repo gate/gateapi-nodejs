@@ -13,21 +13,17 @@ import { InlineResponse2009Data } from './inlineResponse2009Data';
 
 export class InlineResponse2009 {
     /**
-     * Status code, 200 = success
+     * Status code, 0 = success
      */
     'code'?: number;
     /**
-     * Status label
+     * Error identifier code. Empty string on success, machine-readable error label on error
      */
     'label'?: string;
     /**
      * Status message
      */
-    'message'?: string;
-    /**
-     * Request ID
-     */
-    'requestId'?: string;
+    'msg'?: string;
     'data'?: InlineResponse2009Data;
 
     static discriminator: string | undefined = undefined;
@@ -44,13 +40,8 @@ export class InlineResponse2009 {
             type: 'string',
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
-            name: 'requestId',
-            baseName: 'request_id',
+            name: 'msg',
+            baseName: 'msg',
             type: 'string',
         },
         {

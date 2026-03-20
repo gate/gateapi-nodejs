@@ -9,34 +9,32 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse20012DataList } from './inlineResponse20012DataList';
-
 /**
- * Activity list data
+ * Activity entry data
  */
 export class InlineResponse20012Data {
     /**
-     * Activity list
+     * Activity entry icon URL (light mode)
      */
-    'list': Array<InlineResponse20012DataList>;
+    'iconUrl': string;
     /**
-     * Current page number
+     * Activity entry icon URL (dark mode)
      */
-    'page': number;
+    'iconUrlDark': string;
     /**
-     * Items per page
+     * Source type, e.g., activity for campaign
      */
-    'pageSize': number;
+    'sourceType': string;
     /**
-     * Total pages
+     * Activity entry title
      */
-    'pageCount': number;
+    'title': string;
     /**
-     * Total Records
+     * Redirect link type, e.g., h5 for H5 page
      */
-    'totalCount': number;
+    'urlType': string;
     /**
-     * Activity Center page link
+     * Activity entry redirect URL
      */
     'url': string;
 
@@ -44,29 +42,29 @@ export class InlineResponse20012Data {
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<InlineResponse20012DataList>',
+            name: 'iconUrl',
+            baseName: 'icon_url',
+            type: 'string',
         },
         {
-            name: 'page',
-            baseName: 'page',
-            type: 'number',
+            name: 'iconUrlDark',
+            baseName: 'icon_url_dark',
+            type: 'string',
         },
         {
-            name: 'pageSize',
-            baseName: 'pageSize',
-            type: 'number',
+            name: 'sourceType',
+            baseName: 'source_type',
+            type: 'string',
         },
         {
-            name: 'pageCount',
-            baseName: 'pageCount',
-            type: 'number',
+            name: 'title',
+            baseName: 'title',
+            type: 'string',
         },
         {
-            name: 'totalCount',
-            baseName: 'totalCount',
-            type: 'number',
+            name: 'urlType',
+            baseName: 'url_type',
+            type: 'string',
         },
         {
             name: 'url',

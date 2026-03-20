@@ -9,21 +9,30 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2009DataList } from './inlineResponse2009DataList';
+import { InlineResponse2009DataItems } from './inlineResponse2009DataItems';
 
 export class InlineResponse2009Data {
     /**
-     * Live stream/replay list
+     * Total number of results
      */
-    'list'?: Array<InlineResponse2009DataList>;
+    'total'?: number;
+    /**
+     * Search result list
+     */
+    'items'?: Array<InlineResponse2009DataItems>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<InlineResponse2009DataList>',
+            name: 'total',
+            baseName: 'total',
+            type: 'number',
+        },
+        {
+            name: 'items',
+            baseName: 'items',
+            type: 'Array<InlineResponse2009DataItems>',
         },
     ];
 

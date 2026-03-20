@@ -12,13 +12,33 @@
 import { InlineResponse20013DataList } from './inlineResponse20013DataList';
 
 /**
- * Activity type data
+ * Activity list data
  */
 export class InlineResponse20013Data {
     /**
-     * Activity type list
+     * Activity list
      */
     'list': Array<InlineResponse20013DataList>;
+    /**
+     * Current page number
+     */
+    'page': number;
+    /**
+     * Items per page
+     */
+    'pageSize': number;
+    /**
+     * Total pages
+     */
+    'pageCount': number;
+    /**
+     * Total Records
+     */
+    'totalCount': number;
+    /**
+     * Activity Center page link
+     */
+    'url': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -27,6 +47,31 @@ export class InlineResponse20013Data {
             name: 'list',
             baseName: 'list',
             type: 'Array<InlineResponse20013DataList>',
+        },
+        {
+            name: 'page',
+            baseName: 'page',
+            type: 'number',
+        },
+        {
+            name: 'pageSize',
+            baseName: 'pageSize',
+            type: 'number',
+        },
+        {
+            name: 'pageCount',
+            baseName: 'pageCount',
+            type: 'number',
+        },
+        {
+            name: 'totalCount',
+            baseName: 'totalCount',
+            type: 'number',
+        },
+        {
+            name: 'url',
+            baseName: 'url',
+            type: 'string',
         },
     ];
 

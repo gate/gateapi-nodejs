@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **number** | Status code, 200 &#x3D; success | [optional] [default to undefined]
-**label** | **string** | Status label | [optional] [default to undefined]
-**message** | **string** | Status message | [optional] [default to undefined]
-**requestId** | **string** | Request ID | [optional] [default to undefined]
+**code** | **number** | Status code, 0 &#x3D; success | [optional] [default to undefined]
+**label** | **string** | Error identifier code. Empty string on success, machine-readable error label on error | [optional] [default to undefined]
+**msg** | **string** | Status message | [optional] [default to undefined]
 **data** | [**InlineResponse2009Data**](InlineResponse2009Data.md) |  | [optional] [default to undefined]
 

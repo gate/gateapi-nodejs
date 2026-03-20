@@ -9,12 +9,12 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2009DataLiveHost } from './inlineResponse2009DataLiveHost';
+import { InlineResponse20010DataLiveHost } from './inlineResponse20010DataLiveHost';
 
 /**
  * Live stream information (has value when content_type=streaming)
  */
-export class InlineResponse2009DataLive {
+export class InlineResponse20010DataLive {
     /**
      * Live ID
      */
@@ -55,7 +55,7 @@ export class InlineResponse2009DataLive {
      * Session ID
      */
     'sessionId'?: string;
-    'host'?: InlineResponse2009DataLiveHost;
+    'host'?: InlineResponse20010DataLiveHost;
     /**
      * Live stream status (e.g., streaming)
      */
@@ -117,7 +117,7 @@ export class InlineResponse2009DataLive {
         {
             name: 'host',
             baseName: 'host',
-            type: 'InlineResponse2009DataLiveHost',
+            type: 'InlineResponse20010DataLiveHost',
         },
         {
             name: 'status',
@@ -127,6 +127,6 @@ export class InlineResponse2009DataLive {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2009DataLive.attributeTypeMap;
+        return InlineResponse20010DataLive.attributeTypeMap;
     }
 }

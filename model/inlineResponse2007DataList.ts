@@ -9,11 +9,11 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2006DataHelpUrl } from './inlineResponse2006DataHelpUrl';
-import { InlineResponse2006DataJumpUrl } from './inlineResponse2006DataJumpUrl';
-import { InlineResponse2006DataProgressConfig } from './inlineResponse2006DataProgressConfig';
+import { InlineResponse2007DataHelpUrl } from './inlineResponse2007DataHelpUrl';
+import { InlineResponse2007DataJumpUrl } from './inlineResponse2007DataJumpUrl';
+import { InlineResponse2007DataProgressConfig } from './inlineResponse2007DataProgressConfig';
 
-export class InlineResponse2006DataList {
+export class InlineResponse2007DataList {
     /**
      * Coupon distribution record ID (coupon_send_issuing_log.id), used as `last_id` for cursor-based pagination
      */
@@ -49,9 +49,9 @@ export class InlineResponse2006DataList {
     /**
      * Coupon status. Regular coupon: NOT_ACTIVE (pending activation), ACTIVATED (activated), TO_BE_USED (to be used), EXPIRED (expired), RECYCLED (recycled), INVALID (invalidated), USED (used), UNKNOWN (unknown), LOCKED (locked, P2P only). Task coupon: TASK_START (task not started), TASK_WAIT (task in progress), TASK_DONE (task completed, processing), TASK_EXPIRED (task not completed, expired), TASK_NOT_STARTED_EXPIRED (not started, expired), TASK_RECEIVE_SUCCESS (reward claimed successfully), TASK_RECEIVE_FAIL (reward claim failed)
      */
-    'status'?: InlineResponse2006DataList.Status;
-    'jumpUrl'?: InlineResponse2006DataJumpUrl;
-    'helpUrl'?: InlineResponse2006DataHelpUrl;
+    'status'?: InlineResponse2007DataList.Status;
+    'jumpUrl'?: InlineResponse2007DataJumpUrl;
+    'helpUrl'?: InlineResponse2007DataHelpUrl;
     /**
      * Expiration time (Unix timestamp). Some types replace this with actual expiration time after activation or use (e.g., contract_bonus uses expired_timest after activation). Point card type returns 0
      */
@@ -72,7 +72,7 @@ export class InlineResponse2006DataList {
      * Whether to display a progress bar. Only true for commission_rebate, interest_voucher, and qualifying task coupons
      */
     'hasProgress'?: boolean;
-    'progressConfig'?: InlineResponse2006DataProgressConfig;
+    'progressConfig'?: InlineResponse2007DataProgressConfig;
     /**
      * Type-specific activation information. Types without specific fields return empty object {}. Fields by type: interest_voucher={supported_pairs,transaction_type}; contract_bonus_new={received_expired_hour}; contract_bonus={check_unified_account_mode,received_expired_days,abtest}; commission_rebate={market,market_name}; robot_bonus={designated_bots}; position_voucher={symbols,leverage,need_user_funds,user_funds_amount,position_bonus}; tradfi_position_voucher={symbols,leverage,position_bonus}; etf_voucher={currency_markets,amount}
      */
@@ -80,7 +80,7 @@ export class InlineResponse2006DataList {
     /**
      * Whether it is a task coupon. `0` = regular coupon; `1` = task coupon
      */
-    'isTaskCoupon'?: InlineResponse2006DataList.IsTaskCoupon;
+    'isTaskCoupon'?: InlineResponse2007DataList.IsTaskCoupon;
     /**
      * Whether to prompt the user to upgrade the App (true when app version is too old to support the coupon). Triggered types: copy_trading/alpha_voucher (Android<7320000/iOS<202507320000), commission_rebate subtype tradfi (Android<8040000/iOS<202608040000), etf_voucher (Android<8090000/iOS<202608090000), tradfi_position_voucher (Android<8100000/iOS<202508240000)
      */
@@ -156,17 +156,17 @@ export class InlineResponse2006DataList {
         {
             name: 'status',
             baseName: 'status',
-            type: 'InlineResponse2006DataList.Status',
+            type: 'InlineResponse2007DataList.Status',
         },
         {
             name: 'jumpUrl',
             baseName: 'jump_url',
-            type: 'InlineResponse2006DataJumpUrl',
+            type: 'InlineResponse2007DataJumpUrl',
         },
         {
             name: 'helpUrl',
             baseName: 'help_url',
-            type: 'InlineResponse2006DataHelpUrl',
+            type: 'InlineResponse2007DataHelpUrl',
         },
         {
             name: 'expireTime',
@@ -196,7 +196,7 @@ export class InlineResponse2006DataList {
         {
             name: 'progressConfig',
             baseName: 'progress_config',
-            type: 'InlineResponse2006DataProgressConfig',
+            type: 'InlineResponse2007DataProgressConfig',
         },
         {
             name: 'activationInfo',
@@ -206,7 +206,7 @@ export class InlineResponse2006DataList {
         {
             name: 'isTaskCoupon',
             baseName: 'is_task_coupon',
-            type: 'InlineResponse2006DataList.IsTaskCoupon',
+            type: 'InlineResponse2007DataList.IsTaskCoupon',
         },
         {
             name: 'upgradeToast',
@@ -246,11 +246,11 @@ export class InlineResponse2006DataList {
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2006DataList.attributeTypeMap;
+        return InlineResponse2007DataList.attributeTypeMap;
     }
 }
 
-export namespace InlineResponse2006DataList {
+export namespace InlineResponse2007DataList {
     export enum Status {
         NOTACTIVE = <any>'NOT_ACTIVE',
         ACTIVATED = <any>'ACTIVATED',

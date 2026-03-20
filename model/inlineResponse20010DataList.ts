@@ -9,16 +9,16 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2009DataLive } from './inlineResponse2009DataLive';
-import { InlineResponse2009DataVideo } from './inlineResponse2009DataVideo';
+import { InlineResponse20010DataLive } from './inlineResponse20010DataLive';
+import { InlineResponse20010DataVideo } from './inlineResponse20010DataVideo';
 
-export class InlineResponse2009DataList {
+export class InlineResponse20010DataList {
     /**
      * Content type: streaming = live broadcast, video = replay video
      */
     'contentType'?: string;
-    'live'?: InlineResponse2009DataLive;
-    'video'?: InlineResponse2009DataVideo;
+    'live'?: InlineResponse20010DataLive;
+    'video'?: InlineResponse20010DataVideo;
 
     static discriminator: string | undefined = undefined;
 
@@ -31,16 +31,16 @@ export class InlineResponse2009DataList {
         {
             name: 'live',
             baseName: 'live',
-            type: 'InlineResponse2009DataLive',
+            type: 'InlineResponse20010DataLive',
         },
         {
             name: 'video',
             baseName: 'video',
-            type: 'InlineResponse2009DataVideo',
+            type: 'InlineResponse20010DataVideo',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2009DataList.attributeTypeMap;
+        return InlineResponse20010DataList.attributeTypeMap;
     }
 }
