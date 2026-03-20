@@ -170,7 +170,7 @@ export class TradFiApi {
             url: localVarPath,
         };
 
-        const authSettings = [];
+        const authSettings = ['apiv4'];
         return this.client.request<ContractDetail>(config, 'ContractDetail', authSettings);
     }
 

@@ -13,6 +13,10 @@ import { UnifiedBalance } from './unifiedBalance';
 
 export class UnifiedAccount {
     /**
+     * Unified account mode: - classic: Classic account mode - multi_currency: Multi-currency margin mode - portfolio: Portfolio margin mode - single_currency: Single-currency margin mode
+     */
+    'mode'?: string;
+    /**
      * User ID
      */
     'userId'?: number;
@@ -34,23 +38,23 @@ export class UnifiedAccount {
      */
     'borrowed'?: string;
     /**
-     * Total initial margin, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     * Total initial margin (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
      */
     'totalInitialMargin'?: string;
     /**
-     * Total margin balance, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     * Total margin balance (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
      */
     'totalMarginBalance'?: string;
     /**
-     * Total maintenance margin is valid in cross-currency margin/combined margin mode, and is 0 in other modes such as single-currency margin mode
+     * Total maintenance margin (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
      */
     'totalMaintenanceMargin'?: string;
     /**
-     * Total initial margin rate, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     * Total initial margin rate (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
      */
     'totalInitialMarginRate'?: string;
     /**
-     * Total maintenance margin rate, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     * Total maintenance margin rate (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
      */
     'totalMaintenanceMarginRate'?: string;
     /**
@@ -58,19 +62,19 @@ export class UnifiedAccount {
      */
     'totalAvailableMargin'?: string;
     /**
-     * Total unified account assets, valid in single currency margin/cross-currency margin/combined margin mode
+     * Total unified account assets, includes both cross and isolated total assets in single-currency/multi-currency mode, only cross total assets in portfolio margin mode
      */
     'unifiedAccountTotal'?: string;
     /**
-     * Total unified account borrowed amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     * Total unified account borrowed, i.e. total cross borrowed, effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
      */
     'unifiedAccountTotalLiab'?: string;
     /**
-     * Total unified account equity, valid in single currency margin/cross-currency margin/combined margin mode
+     * Total unified account equity, includes both cross and isolated total equity in single-currency/multi-currency mode, only cross total equity in portfolio margin mode
      */
     'unifiedAccountTotalEquity'?: string;
     /**
-     * Actual leverage ratio, valid in cross-currency margin/combined margin mode
+     * Account leverage multiplier, effective in multi-currency/portfolio margin mode (deprecated). Currency leverage query API: GET /unified/leverage/user_currency_setting
      */
     'leverage'?: string;
     /**
@@ -97,6 +101,11 @@ export class UnifiedAccount {
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+        {
+            name: 'mode',
+            baseName: 'mode',
+            type: 'string',
+        },
         {
             name: 'userId',
             baseName: 'user_id',

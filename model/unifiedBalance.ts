@@ -11,11 +11,11 @@
 
 export class UnifiedBalance {
     /**
-     * Available balance, valid in single currency margin/cross-currency margin/combined margin mode, calculation varies by mode
+     * Cross available balance, deducted futures isolated margin occupation and frozen amount (futures isolated occupation, i.e. futures isolated balance), effective in single-currency/multi-currency/portfolio margin mode.
      */
     'available'?: string;
     /**
-     * Locked balance, valid in single currency margin/cross-currency margin/combined margin mode
+     * Frozen amount, effective in single-currency/multi-currency/portfolio margin mode
      */
     'freeze'?: string;
     /**
@@ -31,7 +31,7 @@ export class UnifiedBalance {
      */
     'futuresPosLiab'?: string;
     /**
-     * Equity, valid in single currency margin/cross currency margin/combined margin mode
+     * Currency equity amount (cross), effective in single-currency/multi-currency/portfolio margin mode
      */
     'equity'?: string;
     /**
@@ -59,37 +59,41 @@ export class UnifiedBalance {
      */
     'crossBalance'?: string;
     /**
-     * Isolated Margin Balance applies to Single-Currency Margin Mode and Cross-Currency Margin Mode, and is 0 in other modes such as Portfolio Margin Mode.
+     * Futures isolated balance, effective in single-currency and multi-currency margin mode, 0 in portfolio margin mode
      */
     'isoBalance'?: string;
     /**
-     * Full-position initial margin is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+     * Cross initial margin, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      */
     'im'?: string;
     /**
-     * Cross margin maintenance margin, valid in single-currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode
+     * Cross maintenance margin, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      */
     'mm'?: string;
     /**
-     * Full-position initial margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+     * Cross initial margin rate, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      */
     'imr'?: string;
     /**
-     * Full-position maintenance margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+     * Cross maintenance margin rate, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      */
     'mmr'?: string;
     /**
-     * Full margin balance is valid in single currency margin mode and is 0 in other modes such as cross currency margin/combined margin mode
+     * Cross margin balance, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      */
     'marginBalance'?: string;
     /**
-     * Cross margin available balance, valid in single currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode
+     * Cross available margin, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      */
     'availableMargin'?: string;
     /**
      * Currency enabled as margin: true - Enabled, false - Disabled
      */
     'enabledCollateral'?: boolean;
+    /**
+     * Balance version number
+     */
+    'balanceVersion'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -193,6 +197,11 @@ export class UnifiedBalance {
             name: 'enabledCollateral',
             baseName: 'enabled_collateral',
             type: 'boolean',
+        },
+        {
+            name: 'balanceVersion',
+            baseName: 'balance_version',
+            type: 'number',
         },
     ];
 
