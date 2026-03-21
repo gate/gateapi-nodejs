@@ -61,6 +61,9 @@ export * from './convertSmallBalance';
 export * from './countdownCancelAllFuturesTask';
 export * from './countdownCancelAllOptionsTask';
 export * from './countdownCancelAllSpotTask';
+export * from './createEarnFixedTermLendResponse';
+export * from './createEarnFixedTermLendResponseData';
+export * from './createEarnFixedTermPreRedeemResponse';
 export * from './createMultiCollateralOrder';
 export * from './createOrder';
 export * from './createOrderData';
@@ -135,6 +138,7 @@ export * from './depositRecord';
 export * from './dualGetBalance';
 export * from './dualGetOrders';
 export * from './dualGetPlans';
+export * from './earnFixedTermPreRedeemRequest';
 export * from './eligibility';
 export * from './eligibilityResponse';
 export * from './eligibilityResponseAllOf';
@@ -206,53 +210,20 @@ export * from './futuresRiskLimitTier';
 export * from './futuresTicker';
 export * from './futuresTrade';
 export * from './futuresUpdatePriceTriggeredOrder';
+export * from './getBeginnerTaskListError';
 export * from './getChatsListRequest';
 export * from './getCompletedTransactionListRequest';
 export * from './getCounterpartyUserInfoRequest';
+export * from './getMyActivityEntryResponse';
+export * from './getMyActivityEntryResponseData';
 export * from './getMyselfPaymentRequest';
 export * from './getPendingTransactionListRequest';
 export * from './getTransactionDetailsRequest';
+export * from './getUserCouponDetailResponse';
+export * from './getUserCouponDetailResponseData';
+export * from './getUserIdentityError';
 export * from './indexConstituent';
-export * from './inlineObject';
 export * from './inlineResponse200';
-export * from './inlineResponse2001';
-export * from './inlineResponse20010';
-export * from './inlineResponse20010Data';
-export * from './inlineResponse20010DataList';
-export * from './inlineResponse20010DataLive';
-export * from './inlineResponse20010DataLiveHost';
-export * from './inlineResponse20010DataVideo';
-export * from './inlineResponse20011';
-export * from './inlineResponse20012';
-export * from './inlineResponse20012Data';
-export * from './inlineResponse20013';
-export * from './inlineResponse20013Data';
-export * from './inlineResponse20013DataList';
-export * from './inlineResponse20014';
-export * from './inlineResponse20014Data';
-export * from './inlineResponse20014DataList';
-export * from './inlineResponse2001Data';
-export * from './inlineResponse2002';
-export * from './inlineResponse2002Data';
-export * from './inlineResponse2003';
-export * from './inlineResponse2003Data';
-export * from './inlineResponse2004';
-export * from './inlineResponse2005';
-export * from './inlineResponse2005Data';
-export * from './inlineResponse2006';
-export * from './inlineResponse2007';
-export * from './inlineResponse2007Data';
-export * from './inlineResponse2007DataHelpUrl';
-export * from './inlineResponse2007DataJumpUrl';
-export * from './inlineResponse2007DataList';
-export * from './inlineResponse2007DataProgressConfig';
-export * from './inlineResponse2008';
-export * from './inlineResponse2008Data';
-export * from './inlineResponse2009';
-export * from './inlineResponse2009Data';
-export * from './inlineResponse2009DataItems';
-export * from './inlineResponse200Data';
-export * from './inlineResponse400';
 export * from './insuranceRecord';
 export * from './klines';
 export * from './klinesData';
@@ -266,6 +237,37 @@ export * from './launchPoolV4RewardPool';
 export * from './launchPoolV4RewardRecord';
 export * from './ledgerRecord';
 export * from './liquidateOrder';
+export * from './listActivitiesResponse';
+export * from './listActivitiesResponseData';
+export * from './listActivitiesResponseDataList';
+export * from './listActivityTypesResponse';
+export * from './listActivityTypesResponseData';
+export * from './listActivityTypesResponseDataList';
+export * from './listEarnFixedTermHistoryResponse';
+export * from './listEarnFixedTermHistoryResponseData';
+export * from './listEarnFixedTermLendsResponse';
+export * from './listEarnFixedTermLendsResponseData';
+export * from './listEarnFixedTermProductsByAssetResponse';
+export * from './listEarnFixedTermProductsByAssetResponseData';
+export * from './listEarnFixedTermProductsResponse';
+export * from './listEarnFixedTermProductsResponseData';
+export * from './listLiveReplayError';
+export * from './listLiveReplayResponse';
+export * from './listLiveReplayResponseData';
+export * from './listLiveReplayResponseDataList';
+export * from './listLiveReplayResponseDataLive';
+export * from './listLiveReplayResponseDataLiveHost';
+export * from './listLiveReplayResponseDataVideo';
+export * from './listSquareAiSearchError';
+export * from './listSquareAiSearchResponse';
+export * from './listSquareAiSearchResponseData';
+export * from './listSquareAiSearchResponseDataItems';
+export * from './listUserCouponsResponse';
+export * from './listUserCouponsResponseData';
+export * from './listUserCouponsResponseDataHelpUrl';
+export * from './listUserCouponsResponseDataJumpUrl';
+export * from './listUserCouponsResponseDataList';
+export * from './listUserCouponsResponseDataProgressConfig';
 export * from './marginAccount';
 export * from './marginAccountBook';
 export * from './marginAccountCurrency';
@@ -416,6 +418,7 @@ export * from './profitLossRange';
 export * from './quoteRequest';
 export * from './quoteResponse';
 export * from './rebateUserInfo';
+export * from './redeemLaunchPoolResponse';
 export * from './redeemV4';
 export * from './repayCurrencyRes';
 export * from './repayMultiLoan';
@@ -490,7 +493,6 @@ export * from './transfer';
 export * from './transferOrderStatus';
 export * from './transferablesResult';
 export * from './triggerOrderResponse';
-export * from './triggerOrderResponse1';
 export * from './triggerTime';
 export * from './uidPushOrder';
 export * from './uidPushWithdrawal';
@@ -612,6 +614,9 @@ import { ConvertSmallBalance } from './convertSmallBalance';
 import { CountdownCancelAllFuturesTask } from './countdownCancelAllFuturesTask';
 import { CountdownCancelAllOptionsTask } from './countdownCancelAllOptionsTask';
 import { CountdownCancelAllSpotTask } from './countdownCancelAllSpotTask';
+import { CreateEarnFixedTermLendResponse } from './createEarnFixedTermLendResponse';
+import { CreateEarnFixedTermLendResponseData } from './createEarnFixedTermLendResponseData';
+import { CreateEarnFixedTermPreRedeemResponse } from './createEarnFixedTermPreRedeemResponse';
 import { CreateMultiCollateralOrder } from './createMultiCollateralOrder';
 import { CreateOrder } from './createOrder';
 import { CreateOrderData } from './createOrderData';
@@ -686,6 +691,7 @@ import { DepositRecord } from './depositRecord';
 import { DualGetBalance } from './dualGetBalance';
 import { DualGetOrders } from './dualGetOrders';
 import { DualGetPlans } from './dualGetPlans';
+import { EarnFixedTermPreRedeemRequest } from './earnFixedTermPreRedeemRequest';
 import { Eligibility } from './eligibility';
 import { EligibilityResponse } from './eligibilityResponse';
 import { EligibilityResponseAllOf } from './eligibilityResponseAllOf';
@@ -757,53 +763,20 @@ import { FuturesRiskLimitTier } from './futuresRiskLimitTier';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
 import { FuturesUpdatePriceTriggeredOrder } from './futuresUpdatePriceTriggeredOrder';
+import { GetBeginnerTaskListError } from './getBeginnerTaskListError';
 import { GetChatsListRequest } from './getChatsListRequest';
 import { GetCompletedTransactionListRequest } from './getCompletedTransactionListRequest';
 import { GetCounterpartyUserInfoRequest } from './getCounterpartyUserInfoRequest';
+import { GetMyActivityEntryResponse } from './getMyActivityEntryResponse';
+import { GetMyActivityEntryResponseData } from './getMyActivityEntryResponseData';
 import { GetMyselfPaymentRequest } from './getMyselfPaymentRequest';
 import { GetPendingTransactionListRequest } from './getPendingTransactionListRequest';
 import { GetTransactionDetailsRequest } from './getTransactionDetailsRequest';
+import { GetUserCouponDetailResponse } from './getUserCouponDetailResponse';
+import { GetUserCouponDetailResponseData } from './getUserCouponDetailResponseData';
+import { GetUserIdentityError } from './getUserIdentityError';
 import { IndexConstituent } from './indexConstituent';
-import { InlineObject } from './inlineObject';
 import { InlineResponse200 } from './inlineResponse200';
-import { InlineResponse2001 } from './inlineResponse2001';
-import { InlineResponse20010 } from './inlineResponse20010';
-import { InlineResponse20010Data } from './inlineResponse20010Data';
-import { InlineResponse20010DataList } from './inlineResponse20010DataList';
-import { InlineResponse20010DataLive } from './inlineResponse20010DataLive';
-import { InlineResponse20010DataLiveHost } from './inlineResponse20010DataLiveHost';
-import { InlineResponse20010DataVideo } from './inlineResponse20010DataVideo';
-import { InlineResponse20011 } from './inlineResponse20011';
-import { InlineResponse20012 } from './inlineResponse20012';
-import { InlineResponse20012Data } from './inlineResponse20012Data';
-import { InlineResponse20013 } from './inlineResponse20013';
-import { InlineResponse20013Data } from './inlineResponse20013Data';
-import { InlineResponse20013DataList } from './inlineResponse20013DataList';
-import { InlineResponse20014 } from './inlineResponse20014';
-import { InlineResponse20014Data } from './inlineResponse20014Data';
-import { InlineResponse20014DataList } from './inlineResponse20014DataList';
-import { InlineResponse2001Data } from './inlineResponse2001Data';
-import { InlineResponse2002 } from './inlineResponse2002';
-import { InlineResponse2002Data } from './inlineResponse2002Data';
-import { InlineResponse2003 } from './inlineResponse2003';
-import { InlineResponse2003Data } from './inlineResponse2003Data';
-import { InlineResponse2004 } from './inlineResponse2004';
-import { InlineResponse2005 } from './inlineResponse2005';
-import { InlineResponse2005Data } from './inlineResponse2005Data';
-import { InlineResponse2006 } from './inlineResponse2006';
-import { InlineResponse2007 } from './inlineResponse2007';
-import { InlineResponse2007Data } from './inlineResponse2007Data';
-import { InlineResponse2007DataHelpUrl } from './inlineResponse2007DataHelpUrl';
-import { InlineResponse2007DataJumpUrl } from './inlineResponse2007DataJumpUrl';
-import { InlineResponse2007DataList } from './inlineResponse2007DataList';
-import { InlineResponse2007DataProgressConfig } from './inlineResponse2007DataProgressConfig';
-import { InlineResponse2008 } from './inlineResponse2008';
-import { InlineResponse2008Data } from './inlineResponse2008Data';
-import { InlineResponse2009 } from './inlineResponse2009';
-import { InlineResponse2009Data } from './inlineResponse2009Data';
-import { InlineResponse2009DataItems } from './inlineResponse2009DataItems';
-import { InlineResponse200Data } from './inlineResponse200Data';
-import { InlineResponse400 } from './inlineResponse400';
 import { InsuranceRecord } from './insuranceRecord';
 import { Klines } from './klines';
 import { KlinesData } from './klinesData';
@@ -817,6 +790,37 @@ import { LaunchPoolV4RewardPool } from './launchPoolV4RewardPool';
 import { LaunchPoolV4RewardRecord } from './launchPoolV4RewardRecord';
 import { LedgerRecord } from './ledgerRecord';
 import { LiquidateOrder } from './liquidateOrder';
+import { ListActivitiesResponse } from './listActivitiesResponse';
+import { ListActivitiesResponseData } from './listActivitiesResponseData';
+import { ListActivitiesResponseDataList } from './listActivitiesResponseDataList';
+import { ListActivityTypesResponse } from './listActivityTypesResponse';
+import { ListActivityTypesResponseData } from './listActivityTypesResponseData';
+import { ListActivityTypesResponseDataList } from './listActivityTypesResponseDataList';
+import { ListEarnFixedTermHistoryResponse } from './listEarnFixedTermHistoryResponse';
+import { ListEarnFixedTermHistoryResponseData } from './listEarnFixedTermHistoryResponseData';
+import { ListEarnFixedTermLendsResponse } from './listEarnFixedTermLendsResponse';
+import { ListEarnFixedTermLendsResponseData } from './listEarnFixedTermLendsResponseData';
+import { ListEarnFixedTermProductsByAssetResponse } from './listEarnFixedTermProductsByAssetResponse';
+import { ListEarnFixedTermProductsByAssetResponseData } from './listEarnFixedTermProductsByAssetResponseData';
+import { ListEarnFixedTermProductsResponse } from './listEarnFixedTermProductsResponse';
+import { ListEarnFixedTermProductsResponseData } from './listEarnFixedTermProductsResponseData';
+import { ListLiveReplayError } from './listLiveReplayError';
+import { ListLiveReplayResponse } from './listLiveReplayResponse';
+import { ListLiveReplayResponseData } from './listLiveReplayResponseData';
+import { ListLiveReplayResponseDataList } from './listLiveReplayResponseDataList';
+import { ListLiveReplayResponseDataLive } from './listLiveReplayResponseDataLive';
+import { ListLiveReplayResponseDataLiveHost } from './listLiveReplayResponseDataLiveHost';
+import { ListLiveReplayResponseDataVideo } from './listLiveReplayResponseDataVideo';
+import { ListSquareAiSearchError } from './listSquareAiSearchError';
+import { ListSquareAiSearchResponse } from './listSquareAiSearchResponse';
+import { ListSquareAiSearchResponseData } from './listSquareAiSearchResponseData';
+import { ListSquareAiSearchResponseDataItems } from './listSquareAiSearchResponseDataItems';
+import { ListUserCouponsResponse } from './listUserCouponsResponse';
+import { ListUserCouponsResponseData } from './listUserCouponsResponseData';
+import { ListUserCouponsResponseDataHelpUrl } from './listUserCouponsResponseDataHelpUrl';
+import { ListUserCouponsResponseDataJumpUrl } from './listUserCouponsResponseDataJumpUrl';
+import { ListUserCouponsResponseDataList } from './listUserCouponsResponseDataList';
+import { ListUserCouponsResponseDataProgressConfig } from './listUserCouponsResponseDataProgressConfig';
 import { MarginAccount } from './marginAccount';
 import { MarginAccountBook } from './marginAccountBook';
 import { MarginAccountCurrency } from './marginAccountCurrency';
@@ -967,6 +971,7 @@ import { ProfitLossRange } from './profitLossRange';
 import { QuoteRequest } from './quoteRequest';
 import { QuoteResponse } from './quoteResponse';
 import { RebateUserInfo } from './rebateUserInfo';
+import { RedeemLaunchPoolResponse } from './redeemLaunchPoolResponse';
 import { RedeemV4 } from './redeemV4';
 import { RepayCurrencyRes } from './repayCurrencyRes';
 import { RepayMultiLoan } from './repayMultiLoan';
@@ -1041,7 +1046,6 @@ import { Transfer } from './transfer';
 import { TransferOrderStatus } from './transferOrderStatus';
 import { TransferablesResult } from './transferablesResult';
 import { TriggerOrderResponse } from './triggerOrderResponse';
-import { TriggerOrderResponse1 } from './triggerOrderResponse1';
 import { TriggerTime } from './triggerTime';
 import { UidPushOrder } from './uidPushOrder';
 import { UidPushWithdrawal } from './uidPushWithdrawal';
@@ -1157,14 +1161,14 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
     'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
-    'InlineResponse2007.Code': InlineResponse2007.Code,
-    'InlineResponse2007DataList.Status': InlineResponse2007DataList.Status,
-    'InlineResponse2007DataList.IsTaskCoupon': InlineResponse2007DataList.IsTaskCoupon,
-    'InlineResponse2008.Code': InlineResponse2008.Code,
-    'InlineResponse2008Data.Status': InlineResponse2008Data.Status,
-    'InlineResponse2008Data.IsTaskCoupon': InlineResponse2008Data.IsTaskCoupon,
+    'GetUserCouponDetailResponse.Code': GetUserCouponDetailResponse.Code,
+    'GetUserCouponDetailResponseData.Status': GetUserCouponDetailResponseData.Status,
+    'GetUserCouponDetailResponseData.IsTaskCoupon': GetUserCouponDetailResponseData.IsTaskCoupon,
     'LaunchPoolV4ErrorResponse.Label': LaunchPoolV4ErrorResponse.Label,
     'LaunchPoolV4Project.ProjectState': LaunchPoolV4Project.ProjectState,
+    'ListUserCouponsResponse.Code': ListUserCouponsResponse.Code,
+    'ListUserCouponsResponseDataList.Status': ListUserCouponsResponseDataList.Status,
+    'ListUserCouponsResponseDataList.IsTaskCoupon': ListUserCouponsResponseDataList.IsTaskCoupon,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
     'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
     'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
@@ -1281,6 +1285,9 @@ let typeMap: { [index: string]: any } = {
     CountdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
     CountdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
     CountdownCancelAllSpotTask: CountdownCancelAllSpotTask,
+    CreateEarnFixedTermLendResponse: CreateEarnFixedTermLendResponse,
+    CreateEarnFixedTermLendResponseData: CreateEarnFixedTermLendResponseData,
+    CreateEarnFixedTermPreRedeemResponse: CreateEarnFixedTermPreRedeemResponse,
     CreateMultiCollateralOrder: CreateMultiCollateralOrder,
     CreateOrder: CreateOrder,
     CreateOrderData: CreateOrderData,
@@ -1355,6 +1362,7 @@ let typeMap: { [index: string]: any } = {
     DualGetBalance: DualGetBalance,
     DualGetOrders: DualGetOrders,
     DualGetPlans: DualGetPlans,
+    EarnFixedTermPreRedeemRequest: EarnFixedTermPreRedeemRequest,
     Eligibility: Eligibility,
     EligibilityResponse: EligibilityResponse,
     EligibilityResponseAllOf: EligibilityResponseAllOf,
@@ -1426,53 +1434,20 @@ let typeMap: { [index: string]: any } = {
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
     FuturesUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
+    GetBeginnerTaskListError: GetBeginnerTaskListError,
     GetChatsListRequest: GetChatsListRequest,
     GetCompletedTransactionListRequest: GetCompletedTransactionListRequest,
     GetCounterpartyUserInfoRequest: GetCounterpartyUserInfoRequest,
+    GetMyActivityEntryResponse: GetMyActivityEntryResponse,
+    GetMyActivityEntryResponseData: GetMyActivityEntryResponseData,
     GetMyselfPaymentRequest: GetMyselfPaymentRequest,
     GetPendingTransactionListRequest: GetPendingTransactionListRequest,
     GetTransactionDetailsRequest: GetTransactionDetailsRequest,
+    GetUserCouponDetailResponse: GetUserCouponDetailResponse,
+    GetUserCouponDetailResponseData: GetUserCouponDetailResponseData,
+    GetUserIdentityError: GetUserIdentityError,
     IndexConstituent: IndexConstituent,
-    InlineObject: InlineObject,
     InlineResponse200: InlineResponse200,
-    InlineResponse2001: InlineResponse2001,
-    InlineResponse20010: InlineResponse20010,
-    InlineResponse20010Data: InlineResponse20010Data,
-    InlineResponse20010DataList: InlineResponse20010DataList,
-    InlineResponse20010DataLive: InlineResponse20010DataLive,
-    InlineResponse20010DataLiveHost: InlineResponse20010DataLiveHost,
-    InlineResponse20010DataVideo: InlineResponse20010DataVideo,
-    InlineResponse20011: InlineResponse20011,
-    InlineResponse20012: InlineResponse20012,
-    InlineResponse20012Data: InlineResponse20012Data,
-    InlineResponse20013: InlineResponse20013,
-    InlineResponse20013Data: InlineResponse20013Data,
-    InlineResponse20013DataList: InlineResponse20013DataList,
-    InlineResponse20014: InlineResponse20014,
-    InlineResponse20014Data: InlineResponse20014Data,
-    InlineResponse20014DataList: InlineResponse20014DataList,
-    InlineResponse2001Data: InlineResponse2001Data,
-    InlineResponse2002: InlineResponse2002,
-    InlineResponse2002Data: InlineResponse2002Data,
-    InlineResponse2003: InlineResponse2003,
-    InlineResponse2003Data: InlineResponse2003Data,
-    InlineResponse2004: InlineResponse2004,
-    InlineResponse2005: InlineResponse2005,
-    InlineResponse2005Data: InlineResponse2005Data,
-    InlineResponse2006: InlineResponse2006,
-    InlineResponse2007: InlineResponse2007,
-    InlineResponse2007Data: InlineResponse2007Data,
-    InlineResponse2007DataHelpUrl: InlineResponse2007DataHelpUrl,
-    InlineResponse2007DataJumpUrl: InlineResponse2007DataJumpUrl,
-    InlineResponse2007DataList: InlineResponse2007DataList,
-    InlineResponse2007DataProgressConfig: InlineResponse2007DataProgressConfig,
-    InlineResponse2008: InlineResponse2008,
-    InlineResponse2008Data: InlineResponse2008Data,
-    InlineResponse2009: InlineResponse2009,
-    InlineResponse2009Data: InlineResponse2009Data,
-    InlineResponse2009DataItems: InlineResponse2009DataItems,
-    InlineResponse200Data: InlineResponse200Data,
-    InlineResponse400: InlineResponse400,
     InsuranceRecord: InsuranceRecord,
     Klines: Klines,
     KlinesData: KlinesData,
@@ -1486,6 +1461,37 @@ let typeMap: { [index: string]: any } = {
     LaunchPoolV4RewardRecord: LaunchPoolV4RewardRecord,
     LedgerRecord: LedgerRecord,
     LiquidateOrder: LiquidateOrder,
+    ListActivitiesResponse: ListActivitiesResponse,
+    ListActivitiesResponseData: ListActivitiesResponseData,
+    ListActivitiesResponseDataList: ListActivitiesResponseDataList,
+    ListActivityTypesResponse: ListActivityTypesResponse,
+    ListActivityTypesResponseData: ListActivityTypesResponseData,
+    ListActivityTypesResponseDataList: ListActivityTypesResponseDataList,
+    ListEarnFixedTermHistoryResponse: ListEarnFixedTermHistoryResponse,
+    ListEarnFixedTermHistoryResponseData: ListEarnFixedTermHistoryResponseData,
+    ListEarnFixedTermLendsResponse: ListEarnFixedTermLendsResponse,
+    ListEarnFixedTermLendsResponseData: ListEarnFixedTermLendsResponseData,
+    ListEarnFixedTermProductsByAssetResponse: ListEarnFixedTermProductsByAssetResponse,
+    ListEarnFixedTermProductsByAssetResponseData: ListEarnFixedTermProductsByAssetResponseData,
+    ListEarnFixedTermProductsResponse: ListEarnFixedTermProductsResponse,
+    ListEarnFixedTermProductsResponseData: ListEarnFixedTermProductsResponseData,
+    ListLiveReplayError: ListLiveReplayError,
+    ListLiveReplayResponse: ListLiveReplayResponse,
+    ListLiveReplayResponseData: ListLiveReplayResponseData,
+    ListLiveReplayResponseDataList: ListLiveReplayResponseDataList,
+    ListLiveReplayResponseDataLive: ListLiveReplayResponseDataLive,
+    ListLiveReplayResponseDataLiveHost: ListLiveReplayResponseDataLiveHost,
+    ListLiveReplayResponseDataVideo: ListLiveReplayResponseDataVideo,
+    ListSquareAiSearchError: ListSquareAiSearchError,
+    ListSquareAiSearchResponse: ListSquareAiSearchResponse,
+    ListSquareAiSearchResponseData: ListSquareAiSearchResponseData,
+    ListSquareAiSearchResponseDataItems: ListSquareAiSearchResponseDataItems,
+    ListUserCouponsResponse: ListUserCouponsResponse,
+    ListUserCouponsResponseData: ListUserCouponsResponseData,
+    ListUserCouponsResponseDataHelpUrl: ListUserCouponsResponseDataHelpUrl,
+    ListUserCouponsResponseDataJumpUrl: ListUserCouponsResponseDataJumpUrl,
+    ListUserCouponsResponseDataList: ListUserCouponsResponseDataList,
+    ListUserCouponsResponseDataProgressConfig: ListUserCouponsResponseDataProgressConfig,
     MarginAccount: MarginAccount,
     MarginAccountBook: MarginAccountBook,
     MarginAccountCurrency: MarginAccountCurrency,
@@ -1636,6 +1642,7 @@ let typeMap: { [index: string]: any } = {
     QuoteRequest: QuoteRequest,
     QuoteResponse: QuoteResponse,
     RebateUserInfo: RebateUserInfo,
+    RedeemLaunchPoolResponse: RedeemLaunchPoolResponse,
     RedeemV4: RedeemV4,
     RepayCurrencyRes: RepayCurrencyRes,
     RepayMultiLoan: RepayMultiLoan,
@@ -1710,7 +1717,6 @@ let typeMap: { [index: string]: any } = {
     TransferOrderStatus: TransferOrderStatus,
     TransferablesResult: TransferablesResult,
     TriggerOrderResponse: TriggerOrderResponse,
-    TriggerOrderResponse1: TriggerOrderResponse1,
     TriggerTime: TriggerTime,
     UidPushOrder: UidPushOrder,
     UidPushWithdrawal: UidPushWithdrawal,

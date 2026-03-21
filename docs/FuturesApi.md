@@ -2475,7 +2475,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const requestBody = undefined; // Array<string> | 
+const requestBody = [["1","2","3"]]; // Array<string> | 
 const opts = {
   'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };

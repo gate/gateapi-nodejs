@@ -115,7 +115,7 @@ Promise<{ response: AxiosResponse; body: LaunchPoolV4CreateOrderResponse; }> [La
 
 ## redeemLaunchPool
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20011; }> redeemLaunchPool(redeemV4)
+> Promise<{ response: http.IncomingMessage; body: RedeemLaunchPoolResponse; }> redeemLaunchPool(redeemV4)
 
 Redeem LaunchPool staked assets
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20011; }> [InlineResponse20011](InlineResponse20011.md)
+Promise<{ response: AxiosResponse; body: RedeemLaunchPoolResponse; }> [RedeemLaunchPoolResponse](RedeemLaunchPoolResponse.md)
 
 ### Authorization
 

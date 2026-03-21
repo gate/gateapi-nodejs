@@ -12,7 +12,8 @@
 /* tslint:disable:no-unused-locals */
 import { ApiResponseExSkillGetBeginnerTaskListResp } from '../model/apiResponseExSkillGetBeginnerTaskListResp';
 import { ApiResponseExSkillGetUserIdentityResp } from '../model/apiResponseExSkillGetUserIdentityResp';
-import { InlineResponse400 } from '../model/inlineResponse400';
+import { GetBeginnerTaskListError } from '../model/getBeginnerTaskListError';
+import { GetUserIdentityError } from '../model/getUserIdentityError';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';

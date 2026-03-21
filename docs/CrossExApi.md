@@ -934,7 +934,7 @@ Promise<{ response: AxiosResponse; body: Array<CrossexInterestRate>; }> [Crossex
 
 ## getCrossexFee
 
-> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse2006>; }> getCrossexFee()
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse200>; }> getCrossexFee()
 
 Query User Fee Rates
 
@@ -962,7 +962,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<InlineResponse2006>; }> [InlineResponse2006](InlineResponse2006.md)
+Promise<{ response: AxiosResponse; body: Array<InlineResponse200>; }> [InlineResponse200](InlineResponse200.md)
 
 ### Authorization
 

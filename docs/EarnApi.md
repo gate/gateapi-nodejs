@@ -662,7 +662,7 @@ Promise<{ response: AxiosResponse; body: Array<object>; }> [object](object.md)
 
 ## listEarnFixedTermProducts
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse200; }> listEarnFixedTermProducts(page, limit, opts)
+> Promise<{ response: http.IncomingMessage; body: ListEarnFixedTermProductsResponse; }> listEarnFixedTermProducts(page, limit, opts)
 
 Get product list
 
@@ -700,7 +700,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse200](InlineResponse200.md)
+Promise<{ response: AxiosResponse; body: ListEarnFixedTermProductsResponse; }> [ListEarnFixedTermProductsResponse](ListEarnFixedTermProductsResponse.md)
 
 ### Authorization
 
@@ -713,7 +713,7 @@ No authorization required
 
 ## listEarnFixedTermProductsByAsset
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2001; }> listEarnFixedTermProductsByAsset(asset, opts)
+> Promise<{ response: http.IncomingMessage; body: ListEarnFixedTermProductsByAssetResponse; }> listEarnFixedTermProductsByAsset(asset, opts)
 
 Get product list by single currency
 
@@ -747,7 +747,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2001](InlineResponse2001.md)
+Promise<{ response: AxiosResponse; body: ListEarnFixedTermProductsByAssetResponse; }> [ListEarnFixedTermProductsByAssetResponse](ListEarnFixedTermProductsByAssetResponse.md)
 
 ### Authorization
 
@@ -760,7 +760,7 @@ No authorization required
 
 ## listEarnFixedTermLends
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2002; }> listEarnFixedTermLends(orderType, page, limit, opts)
+> Promise<{ response: http.IncomingMessage; body: ListEarnFixedTermLendsResponse; }> listEarnFixedTermLends(orderType, page, limit, opts)
 
 Subscription list
 
@@ -808,7 +808,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2002; }> [InlineResponse2002](InlineResponse2002.md)
+Promise<{ response: AxiosResponse; body: ListEarnFixedTermLendsResponse; }> [ListEarnFixedTermLendsResponse](ListEarnFixedTermLendsResponse.md)
 
 ### Authorization
 
@@ -821,7 +821,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2002; }> [InlineResponse2
 
 ## createEarnFixedTermLend
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2003; }> createEarnFixedTermLend(opts)
+> Promise<{ response: http.IncomingMessage; body: CreateEarnFixedTermLendResponse; }> createEarnFixedTermLend(opts)
 
 Subscription
 
@@ -855,7 +855,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2003](InlineResponse2003.md)
+Promise<{ response: AxiosResponse; body: CreateEarnFixedTermLendResponse; }> [CreateEarnFixedTermLendResponse](CreateEarnFixedTermLendResponse.md)
 
 ### Authorization
 
@@ -868,7 +868,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2003; }> [InlineResponse2
 
 ## createEarnFixedTermPreRedeem
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2004; }> createEarnFixedTermPreRedeem(opts)
+> Promise<{ response: http.IncomingMessage; body: CreateEarnFixedTermPreRedeemResponse; }> createEarnFixedTermPreRedeem(opts)
 
 Redeem
 
@@ -886,7 +886,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnApi(client);
 const opts = {
-  'inlineObject': new InlineObject() // InlineObject | 
+  'earnFixedTermPreRedeemRequest': new EarnFixedTermPreRedeemRequest() // EarnFixedTermPreRedeemRequest | 
 };
 api.createEarnFixedTermPreRedeem(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -898,11 +898,11 @@ api.createEarnFixedTermPreRedeem(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject** | [**InlineObject**](InlineObject.md)|  | [optional] 
+ **earnFixedTermPreRedeemRequest** | [**EarnFixedTermPreRedeemRequest**](EarnFixedTermPreRedeemRequest.md)|  | [optional] 
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2004; }> [InlineResponse2004](InlineResponse2004.md)
+Promise<{ response: AxiosResponse; body: CreateEarnFixedTermPreRedeemResponse; }> [CreateEarnFixedTermPreRedeemResponse](CreateEarnFixedTermPreRedeemResponse.md)
 
 ### Authorization
 
@@ -915,7 +915,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2004; }> [InlineResponse2
 
 ## listEarnFixedTermHistory
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2005; }> listEarnFixedTermHistory(type, page, limit, opts)
+> Promise<{ response: http.IncomingMessage; body: ListEarnFixedTermHistoryResponse; }> listEarnFixedTermHistory(type, page, limit, opts)
 
 Subscription history
 
@@ -967,7 +967,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2005; }> [InlineResponse2005](InlineResponse2005.md)
+Promise<{ response: AxiosResponse; body: ListEarnFixedTermHistoryResponse; }> [ListEarnFixedTermHistoryResponse](ListEarnFixedTermHistoryResponse.md)
 
 ### Authorization
 

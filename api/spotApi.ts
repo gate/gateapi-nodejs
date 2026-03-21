@@ -31,7 +31,7 @@ import { SpotPriceTriggeredOrder } from '../model/spotPriceTriggeredOrder';
 import { SystemTime } from '../model/systemTime';
 import { Ticker } from '../model/ticker';
 import { Trade } from '../model/trade';
-import { TriggerOrderResponse1 } from '../model/triggerOrderResponse1';
+import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { TriggerTime } from '../model/triggerTime';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -1804,7 +1804,7 @@ export class SpotApi {
      */
     public async createSpotPriceTriggeredOrder(
         spotPriceTriggeredOrder: SpotPriceTriggeredOrder,
-    ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse1 }> {
+    ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1832,7 +1832,7 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TriggerOrderResponse1>(config, 'TriggerOrderResponse1', authSettings);
+        return this.client.request<TriggerOrderResponse>(config, 'TriggerOrderResponse', authSettings);
     }
 
     /**

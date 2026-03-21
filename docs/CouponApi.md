@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## listUserCoupons
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2007; }> listUserCoupons(opts)
+> Promise<{ response: http.IncomingMessage; body: ListUserCouponsResponse; }> listUserCoupons(opts)
 
 Coupon Center list
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2007](InlineResponse2007.md)
+Promise<{ response: AxiosResponse; body: ListUserCouponsResponse; }> [ListUserCouponsResponse](ListUserCouponsResponse.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Promise<{ response: AxiosResponse; body: InlineResponse2007; }> [InlineResponse2
 
 ## getUserCouponDetail
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2008; }> getUserCouponDetail(couponType, detailId, opts)
+> Promise<{ response: http.IncomingMessage; body: GetUserCouponDetailResponse; }> getUserCouponDetail(couponType, detailId, opts)
 
 Coupon Center details
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2008; }> [InlineResponse2008](InlineResponse2008.md)
+Promise<{ response: AxiosResponse; body: GetUserCouponDetailResponse; }> [GetUserCouponDetailResponse](GetUserCouponDetailResponse.md)
 
 ### Authorization
 

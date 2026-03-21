@@ -39,7 +39,7 @@ import { CrossexTransferCoin } from '../model/crossexTransferCoin';
 import { CrossexTransferRecord } from '../model/crossexTransferRecord';
 import { CrossexTransferRequest } from '../model/crossexTransferRequest';
 import { CrossexTransferResponse } from '../model/crossexTransferResponse';
-import { InlineResponse2006 } from '../model/inlineResponse2006';
+import { InlineResponse200 } from '../model/inlineResponse200';
 import { Symbol } from '../model/symbol';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -846,7 +846,7 @@ export class CrossExApi {
      * Rate Limit: 200 requests per 10 seconds
      * @summary Query User Fee Rates
      */
-    public async getCrossexFee(): Promise<{ response: AxiosResponse; body: Array<InlineResponse2006> }> {
+    public async getCrossexFee(): Promise<{ response: AxiosResponse; body: Array<InlineResponse200> }> {
         const localVarPath = this.client.basePath + '/crossex/fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -866,7 +866,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<InlineResponse2006>>(config, 'Array<InlineResponse2006>', authSettings);
+        return this.client.request<Array<InlineResponse200>>(config, 'Array<InlineResponse200>', authSettings);
     }
 
     /**

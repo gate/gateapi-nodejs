@@ -13,7 +13,7 @@ export class TriggerOrderResponse {
     /**
      * Auto order ID
      */
-    'id'?: bigint;
+    'id'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -21,7 +21,7 @@ export class TriggerOrderResponse {
         {
             name: 'id',
             baseName: 'id',
-            type: 'bigint',
+            type: 'number',
         },
     ];
 

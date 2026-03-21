@@ -26,7 +26,7 @@ import { DeliveryTicker } from '../model/deliveryTicker';
 import { DeliveryTrade } from '../model/deliveryTrade';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
 import { InsuranceRecord } from '../model/insuranceRecord';
-import { TriggerOrderResponse1 } from '../model/triggerOrderResponse1';
+import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -1718,7 +1718,7 @@ export class DeliveryApi {
     public async createPriceTriggeredDeliveryOrder(
         settle: 'usdt',
         futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder,
-    ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse1 }> {
+    ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1755,7 +1755,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TriggerOrderResponse1>(config, 'TriggerOrderResponse1', authSettings);
+        return this.client.request<TriggerOrderResponse>(config, 'TriggerOrderResponse', authSettings);
     }
 
     /**

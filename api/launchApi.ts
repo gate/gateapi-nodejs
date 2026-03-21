@@ -11,12 +11,12 @@
 
 /* tslint:disable:no-unused-locals */
 import { CreateOrderV4 } from '../model/createOrderV4';
-import { InlineResponse20011 } from '../model/inlineResponse20011';
 import { LaunchPoolV4CreateOrderResponse } from '../model/launchPoolV4CreateOrderResponse';
 import { LaunchPoolV4ErrorResponse } from '../model/launchPoolV4ErrorResponse';
 import { LaunchPoolV4PledgeRecord } from '../model/launchPoolV4PledgeRecord';
 import { LaunchPoolV4Project } from '../model/launchPoolV4Project';
 import { LaunchPoolV4RewardRecord } from '../model/launchPoolV4RewardRecord';
+import { RedeemLaunchPoolResponse } from '../model/redeemLaunchPoolResponse';
 import { RedeemV4 } from '../model/redeemV4';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -191,7 +191,9 @@ export class LaunchApi {
      * @summary Redeem LaunchPool staked assets
      * @param redeemV4
      */
-    public async redeemLaunchPool(redeemV4: RedeemV4): Promise<{ response: AxiosResponse; body: InlineResponse20011 }> {
+    public async redeemLaunchPool(
+        redeemV4: RedeemV4,
+    ): Promise<{ response: AxiosResponse; body: RedeemLaunchPoolResponse }> {
         const localVarPath = this.client.basePath + '/launch/redeem';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -217,7 +219,7 @@ export class LaunchApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse20011>(config, 'InlineResponse20011', authSettings);
+        return this.client.request<RedeemLaunchPoolResponse>(config, 'RedeemLaunchPoolResponse', authSettings);
     }
 
     /**

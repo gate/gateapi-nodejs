@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## listSquareAiSearch
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2009; }> listSquareAiSearch(opts)
+> Promise<{ response: http.IncomingMessage; body: ListSquareAiSearchResponse; }> listSquareAiSearch(opts)
 
 AI MCP Dynamic Search
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2009; }> [InlineResponse2009](InlineResponse2009.md)
+Promise<{ response: AxiosResponse; body: ListSquareAiSearchResponse; }> [ListSquareAiSearchResponse](ListSquareAiSearchResponse.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ No authorization required
 
 ## listLiveReplay
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse20010; }> listLiveReplay(opts)
+> Promise<{ response: http.IncomingMessage; body: ListLiveReplayResponse; }> listLiveReplay(opts)
 
 Gate AI Assistant live stream data retrieval
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse20010; }> [InlineResponse20010](InlineResponse20010.md)
+Promise<{ response: AxiosResponse; body: ListLiveReplayResponse; }> [ListLiveReplayResponse](ListLiveReplayResponse.md)
 
 ### Authorization
 

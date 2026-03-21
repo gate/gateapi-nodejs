@@ -9,45 +9,63 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse200Data } from './inlineResponse200Data';
+import { CrossexSpecialFee } from './crossexSpecialFee';
 
 export class InlineResponse200 {
     /**
-     * Return code, 0 means success
+     * Exchange
      */
-    'code': number;
+    'exchangeType'?: string;
     /**
-     * Response message
+     * spotMakerfee rate
      */
-    'message': string;
-    'data': InlineResponse200Data;
+    'spotMakerFee': string;
     /**
-     * Response timestamp (in seconds)
+     * spotTakerfee rate
      */
-    'timestamp': number;
+    'spotTakerFee': string;
+    /**
+     * contractMakerfee rate
+     */
+    'futureMakerFee': string;
+    /**
+     * contractTakerfee rate
+     */
+    'futureTakerFee': string;
+    'specialFeeList': Array<CrossexSpecialFee>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'code',
-            baseName: 'code',
-            type: 'number',
-        },
-        {
-            name: 'message',
-            baseName: 'message',
+            name: 'exchangeType',
+            baseName: 'exchange_type',
             type: 'string',
         },
         {
-            name: 'data',
-            baseName: 'data',
-            type: 'InlineResponse200Data',
+            name: 'spotMakerFee',
+            baseName: 'spot_maker_fee',
+            type: 'string',
         },
         {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
+            name: 'spotTakerFee',
+            baseName: 'spot_taker_fee',
+            type: 'string',
+        },
+        {
+            name: 'futureMakerFee',
+            baseName: 'future_maker_fee',
+            type: 'string',
+        },
+        {
+            name: 'futureTakerFee',
+            baseName: 'future_taker_fee',
+            type: 'string',
+        },
+        {
+            name: 'specialFeeList',
+            baseName: 'special_fee_list',
+            type: 'Array<CrossexSpecialFee>',
         },
     ];
 

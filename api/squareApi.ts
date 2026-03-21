@@ -10,9 +10,10 @@
  */
 
 /* tslint:disable:no-unused-locals */
-import { InlineResponse20010 } from '../model/inlineResponse20010';
-import { InlineResponse2009 } from '../model/inlineResponse2009';
-import { InlineResponse400 } from '../model/inlineResponse400';
+import { ListLiveReplayError } from '../model/listLiveReplayError';
+import { ListLiveReplayResponse } from '../model/listLiveReplayResponse';
+import { ListSquareAiSearchError } from '../model/listSquareAiSearchError';
+import { ListSquareAiSearchResponse } from '../model/listSquareAiSearchResponse';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -50,7 +51,7 @@ export class SquareApi {
         sort?: 0 | 1;
         limit?: number;
         page?: number;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse2009 }> {
+    }): Promise<{ response: AxiosResponse; body: ListSquareAiSearchResponse }> {
         const localVarPath = this.client.basePath + '/social/message/search';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -125,7 +126,7 @@ export class SquareApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse2009>(config, 'InlineResponse2009', authSettings);
+        return this.client.request<ListSquareAiSearchResponse>(config, 'ListSquareAiSearchResponse', authSettings);
     }
 
     /**
@@ -142,7 +143,7 @@ export class SquareApi {
         coin?: string;
         sort?: 'hot' | 'new';
         limit?: number;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse20010 }> {
+    }): Promise<{ response: AxiosResponse; body: ListLiveReplayResponse }> {
         const localVarPath = this.client.basePath + '/social/live/tag_coin_live_replay';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -199,6 +200,6 @@ export class SquareApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse20010>(config, 'InlineResponse20010', authSettings);
+        return this.client.request<ListLiveReplayResponse>(config, 'ListLiveReplayResponse', authSettings);
     }
 }

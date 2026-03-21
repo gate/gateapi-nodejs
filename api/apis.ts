@@ -1,8 +1,8 @@
 export * from './apiClient';
-export * from './defaultApi';
-import { DefaultApi } from './defaultApi';
 export * from './accountApi';
 import { AccountApi } from './accountApi';
+export * from './activityApi';
+import { ActivityApi } from './activityApi';
 export * from './alphaApi';
 import { AlphaApi } from './alphaApi';
 export * from './couponApi';
@@ -53,8 +53,8 @@ export * from './withdrawalApi';
 import { WithdrawalApi } from './withdrawalApi';
 
 export const APIS = [
-    DefaultApi,
     AccountApi,
+    ActivityApi,
     AlphaApi,
     CouponApi,
     CrossExApi,

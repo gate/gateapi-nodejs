@@ -11,20 +11,20 @@
 
 /* tslint:disable:no-unused-locals */
 import { AwardListStruct } from '../model/awardListStruct';
+import { CreateEarnFixedTermLendResponse } from '../model/createEarnFixedTermLendResponse';
+import { CreateEarnFixedTermPreRedeemResponse } from '../model/createEarnFixedTermPreRedeemResponse';
 import { DualGetBalance } from '../model/dualGetBalance';
 import { DualGetOrders } from '../model/dualGetOrders';
 import { DualGetPlans } from '../model/dualGetPlans';
+import { EarnFixedTermPreRedeemRequest } from '../model/earnFixedTermPreRedeemRequest';
 import { Eth2RateList } from '../model/eth2RateList';
 import { Eth2Swap } from '../model/eth2Swap';
 import { FindCoin } from '../model/findCoin';
 import { FixedTermLendRequest } from '../model/fixedTermLendRequest';
-import { InlineObject } from '../model/inlineObject';
-import { InlineResponse200 } from '../model/inlineResponse200';
-import { InlineResponse2001 } from '../model/inlineResponse2001';
-import { InlineResponse2002 } from '../model/inlineResponse2002';
-import { InlineResponse2003 } from '../model/inlineResponse2003';
-import { InlineResponse2004 } from '../model/inlineResponse2004';
-import { InlineResponse2005 } from '../model/inlineResponse2005';
+import { ListEarnFixedTermHistoryResponse } from '../model/listEarnFixedTermHistoryResponse';
+import { ListEarnFixedTermLendsResponse } from '../model/listEarnFixedTermLendsResponse';
+import { ListEarnFixedTermProductsByAssetResponse } from '../model/listEarnFixedTermProductsByAssetResponse';
+import { ListEarnFixedTermProductsResponse } from '../model/listEarnFixedTermProductsResponse';
 import { OrderListStruct } from '../model/orderListStruct';
 import { PlaceDualInvestmentOrder } from '../model/placeDualInvestmentOrder';
 import { PlaceDualInvestmentOrderParams } from '../model/placeDualInvestmentOrderParams';
@@ -725,7 +725,7 @@ export class EarnApi {
         page: number,
         limit: number,
         opts?: { asset?: string; type?: number },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse200 }> {
+    ): Promise<{ response: AxiosResponse; body: ListEarnFixedTermProductsResponse }> {
         const localVarPath = this.client.basePath + '/earn/fixed-term/product';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -788,7 +788,11 @@ export class EarnApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse200>(config, 'InlineResponse200', authSettings);
+        return this.client.request<ListEarnFixedTermProductsResponse>(
+            config,
+            'ListEarnFixedTermProductsResponse',
+            authSettings,
+        );
     }
 
     /**
@@ -801,7 +805,7 @@ export class EarnApi {
     public async listEarnFixedTermProductsByAsset(
         asset: string,
         opts?: { type?: string },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2001 }> {
+    ): Promise<{ response: AxiosResponse; body: ListEarnFixedTermProductsByAssetResponse }> {
         const localVarPath =
             this.client.basePath +
             '/earn/fixed-term/product/{asset}/list'.replace('{' + 'asset' + '}', encodeURIComponent(String(asset)));
@@ -840,7 +844,11 @@ export class EarnApi {
         };
 
         const authSettings = [];
-        return this.client.request<InlineResponse2001>(config, 'InlineResponse2001', authSettings);
+        return this.client.request<ListEarnFixedTermProductsByAssetResponse>(
+            config,
+            'ListEarnFixedTermProductsByAssetResponse',
+            authSettings,
+        );
     }
 
     /**
@@ -861,7 +869,7 @@ export class EarnApi {
         page: number,
         limit: number,
         opts?: { productId?: number; orderId?: number; asset?: string; subBusiness?: number; businessFilter?: string },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2002 }> {
+    ): Promise<{ response: AxiosResponse; body: ListEarnFixedTermLendsResponse }> {
         const localVarPath = this.client.basePath + '/earn/fixed-term/user/lend';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -963,7 +971,11 @@ export class EarnApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2002>(config, 'InlineResponse2002', authSettings);
+        return this.client.request<ListEarnFixedTermLendsResponse>(
+            config,
+            'ListEarnFixedTermLendsResponse',
+            authSettings,
+        );
     }
 
     /**
@@ -974,7 +986,7 @@ export class EarnApi {
      */
     public async createEarnFixedTermLend(opts?: {
         fixedTermLendRequest?: FixedTermLendRequest;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse2003 }> {
+    }): Promise<{ response: AxiosResponse; body: CreateEarnFixedTermLendResponse }> {
         const localVarPath = this.client.basePath + '/earn/fixed-term/user/lend';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -997,18 +1009,22 @@ export class EarnApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2003>(config, 'InlineResponse2003', authSettings);
+        return this.client.request<CreateEarnFixedTermLendResponse>(
+            config,
+            'CreateEarnFixedTermLendResponse',
+            authSettings,
+        );
     }
 
     /**
      * Early redemption of a fixed-term earn order, order ID is required
      * @summary Redeem
      * @param opts Optional parameters
-     * @param opts.inlineObject
+     * @param opts.earnFixedTermPreRedeemRequest
      */
     public async createEarnFixedTermPreRedeem(opts?: {
-        inlineObject?: InlineObject;
-    }): Promise<{ response: AxiosResponse; body: InlineResponse2004 }> {
+        earnFixedTermPreRedeemRequest?: EarnFixedTermPreRedeemRequest;
+    }): Promise<{ response: AxiosResponse; body: CreateEarnFixedTermPreRedeemResponse }> {
         const localVarPath = this.client.basePath + '/earn/fixed-term/user/pre-redeem';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1027,11 +1043,15 @@ export class EarnApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(opts.inlineObject, 'InlineObject'),
+            data: ObjectSerializer.serialize(opts.earnFixedTermPreRedeemRequest, 'EarnFixedTermPreRedeemRequest'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2004>(config, 'InlineResponse2004', authSettings);
+        return this.client.request<CreateEarnFixedTermPreRedeemResponse>(
+            config,
+            'CreateEarnFixedTermPreRedeemResponse',
+            authSettings,
+        );
     }
 
     /**
@@ -1062,7 +1082,7 @@ export class EarnApi {
             subBusiness?: number;
             businessFilter?: string;
         },
-    ): Promise<{ response: AxiosResponse; body: InlineResponse2005 }> {
+    ): Promise<{ response: AxiosResponse; body: ListEarnFixedTermHistoryResponse }> {
         const localVarPath = this.client.basePath + '/earn/fixed-term/user/history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1182,6 +1202,10 @@ export class EarnApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2005>(config, 'InlineResponse2005', authSettings);
+        return this.client.request<ListEarnFixedTermHistoryResponse>(
+            config,
+            'ListEarnFixedTermHistoryResponse',
+            authSettings,
+        );
     }
 }
