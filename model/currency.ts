@@ -60,6 +60,10 @@ export class Currency {
      * Market cap
      */
     'marketCap'?: string;
+    /**
+     * 币种分类  - stocks: 股票 - metals: 金属 - indices: 指数 - forex: 外汇 - commodities: 大宗商品
+     */
+    'category'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -123,6 +127,11 @@ export class Currency {
             name: 'marketCap',
             baseName: 'market_cap',
             type: 'string',
+        },
+        {
+            name: 'category',
+            baseName: 'category',
+            type: 'Array<string>',
         },
     ];
 

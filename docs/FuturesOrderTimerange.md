@@ -1,4 +1,4 @@
-# FuturesOrder
+# FuturesOrderTimerange
 
 ## Properties
 
@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **id** | **number** | Futures order ID | [optional] [readonly] [default to undefined]
 **user** | **number** | User ID | [optional] [readonly] [default to undefined]
 **createTime** | **number** | Creation time of order | [optional] [readonly] [default to undefined]
-**updateTime** | **number** | OrderUpdateTime | [optional] [readonly] [default to undefined]
-**finishTime** | **number** | Order finished time. Not returned if order is open | [optional] [readonly] [default to undefined]
+**updateTime** | **string** | OrderUpdateTime | [optional] [readonly] [default to undefined]
+**finishTime** | **string** | Order finished time. Not returned if order is open | [optional] [readonly] [default to undefined]
 **finishAs** | **string** | How the order was finished:  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is &#x60;IOC&#x60;, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while &#x60;reduce-only&#x60; set - position_closed: cancelled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention | [optional] [readonly] [default to undefined]
 **status** | **string** | Order status  - &#x60;open&#x60;: Pending - &#x60;finished&#x60;: Completed | [optional] [readonly] [default to undefined]
 **contract** | **string** | Futures contract | [default to undefined]
@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 **marketOrderSlipRatio** | **string** | Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used | [optional] [default to undefined]
 **posMarginMode** | **string** | Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode | [optional] [default to undefined]
 
-## Enum: FuturesOrder.FinishAs
+## Enum: FuturesOrderTimerange.FinishAs
 
 * `Filled` (value: `'filled'`)
 
@@ -56,14 +56,14 @@ Name | Type | Description | Notes
 * `Stp` (value: `'stp'`)
 
 
-## Enum: FuturesOrder.Status
+## Enum: FuturesOrderTimerange.Status
 
 * `Open` (value: `'open'`)
 
 * `Finished` (value: `'finished'`)
 
 
-## Enum: FuturesOrder.Tif
+## Enum: FuturesOrderTimerange.Tif
 
 * `Gtc` (value: `'gtc'`)
 
@@ -74,14 +74,14 @@ Name | Type | Description | Notes
 * `Fok` (value: `'fok'`)
 
 
-## Enum: FuturesOrder.AutoSize
+## Enum: FuturesOrderTimerange.AutoSize
 
 * `Long` (value: `'close_long'`)
 
 * `Short` (value: `'close_short'`)
 
 
-## Enum: FuturesOrder.StpAct
+## Enum: FuturesOrderTimerange.StpAct
 
 * `Co` (value: `'co'`)
 

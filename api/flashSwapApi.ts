@@ -324,7 +324,7 @@ export class FlashSwapApi {
     public async createFlashSwapMultiCurrencyManyToOneOrder(
         flashSwapMultiCurrencyManyToOneOrderCreateReq: FlashSwapMultiCurrencyManyToOneOrderCreateReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyManyToOneOrderCreateResp }> {
-        const localVarPath = this.client.basePath + '/flash-swap/multi-currency/many-to-one/order/create';
+        const localVarPath = this.client.basePath + '/flash_swap/multi-currency/many-to-one/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -372,7 +372,7 @@ export class FlashSwapApi {
     public async previewFlashSwapMultiCurrencyManyToOneOrder(
         flashSwapMultiCurrencyManyToOneOrderPreviewReq: FlashSwapMultiCurrencyManyToOneOrderPreviewReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyManyToOneOrderPreviewResp }> {
-        const localVarPath = this.client.basePath + '/flash-swap/multi-currency/many-to-one/order/preview';
+        const localVarPath = this.client.basePath + '/flash_swap/multi-currency/many-to-one/order/preview';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -420,7 +420,7 @@ export class FlashSwapApi {
     public async createFlashSwapOrderV1(
         flashSwapOrderCreateReq: FlashSwapOrderCreateReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapOrderCreateResp }> {
-        const localVarPath = this.client.basePath + '/flash-swap/order/create';
+        const localVarPath = this.client.basePath + '/flash_swap/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -458,7 +458,7 @@ export class FlashSwapApi {
     public async createFlashSwapMultiCurrencyOneToManyOrder(
         flashSwapMultiCurrencyOneToManyOrderCreateReq: FlashSwapMultiCurrencyOneToManyOrderCreateReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyOneToManyOrderCreateResp }> {
-        const localVarPath = this.client.basePath + '/flash-swap/multi-currency/one-to-many/order/create';
+        const localVarPath = this.client.basePath + '/flash_swap/multi-currency/one-to-many/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -506,7 +506,7 @@ export class FlashSwapApi {
     public async previewFlashSwapMultiCurrencyOneToManyOrder(
         flashSwapMultiCurrencyOneToManyOrderPreviewReq: FlashSwapMultiCurrencyOneToManyOrderPreviewReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyOneToManyOrderPreviewResp }> {
-        const localVarPath = this.client.basePath + '/flash-swap/multi-currency/one-to-many/order/preview';
+        const localVarPath = this.client.basePath + '/flash_swap/multi-currency/one-to-many/order/preview';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -560,7 +560,7 @@ export class FlashSwapApi {
         buyAsset: string,
         opts?: { sellAmount?: string; buyAmount?: string },
     ): Promise<{ response: AxiosResponse; body: FlashSwapOrderPreviewResp }> {
-        const localVarPath = this.client.basePath + '/flash-swap/order/preview';
+        const localVarPath = this.client.basePath + '/flash_swap/order/preview';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];

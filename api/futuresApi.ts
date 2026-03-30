@@ -35,6 +35,7 @@ import { FuturesLiquidate } from '../model/futuresLiquidate';
 import { FuturesOrder } from '../model/futuresOrder';
 import { FuturesOrderAmendment } from '../model/futuresOrderAmendment';
 import { FuturesOrderBook } from '../model/futuresOrderBook';
+import { FuturesOrderTimerange } from '../model/futuresOrderTimerange';
 import { FuturesPositionCrossMode } from '../model/futuresPositionCrossMode';
 import { FuturesPremiumIndex } from '../model/futuresPremiumIndex';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
@@ -2549,7 +2550,7 @@ export class FuturesApi {
     public async getOrdersWithTimeRange(
         settle: 'btc' | 'usdt',
         opts?: { contract?: string; from?: number; to?: number; limit?: number; offset?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesOrderTimerange> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders_timerange'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -2622,7 +2623,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesOrder>>(config, 'Array<FuturesOrder>', authSettings);
+        return this.client.request<Array<FuturesOrderTimerange>>(config, 'Array<FuturesOrderTimerange>', authSettings);
     }
 
     /**
@@ -2684,7 +2685,7 @@ export class FuturesApi {
      * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.
      * @summary Query single order details
      * @param settle Settle currency
-     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
+     * @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely.
      */
     public async getFuturesOrder(
         settle: 'btc' | 'usdt',
@@ -2730,7 +2731,7 @@ export class FuturesApi {
      *
      * @summary Amend single order
      * @param settle Settle currency
-     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
+     * @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely.
      * @param futuresOrderAmendment
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -2794,7 +2795,7 @@ export class FuturesApi {
      *
      * @summary Cancel single order
      * @param settle Settle currency
-     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
+     * @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely.
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */

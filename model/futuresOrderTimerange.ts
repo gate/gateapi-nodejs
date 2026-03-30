@@ -12,7 +12,7 @@
 /**
  * Futures order details
  */
-export class FuturesOrder {
+export class FuturesOrderTimerange {
     /**
      * Futures order ID
      */
@@ -28,19 +28,19 @@ export class FuturesOrder {
     /**
      * OrderUpdateTime
      */
-    'updateTime'?: number;
+    'updateTime'?: string;
     /**
      * Order finished time. Not returned if order is open
      */
-    'finishTime'?: number;
+    'finishTime'?: string;
     /**
      * How the order was finished:  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set - position_closed: cancelled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention
      */
-    'finishAs'?: FuturesOrder.FinishAs;
+    'finishAs'?: FuturesOrderTimerange.FinishAs;
     /**
      * Order status  - `open`: Pending - `finished`: Completed
      */
-    'status'?: FuturesOrder.Status;
+    'status'?: FuturesOrderTimerange.Status;
     /**
      * Futures contract
      */
@@ -80,7 +80,7 @@ export class FuturesOrder {
     /**
      * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
      */
-    'tif'?: FuturesOrder.Tif;
+    'tif'?: FuturesOrderTimerange.Tif;
     /**
      * Unfilled quantity
      */
@@ -108,7 +108,7 @@ export class FuturesOrder {
     /**
      * Set side to close dual-mode position. `close_long` closes the long side; while `close_short` the short one. Note `size` also needs to be set to 0
      */
-    'autoSize'?: FuturesOrder.AutoSize;
+    'autoSize'?: FuturesOrderTimerange.AutoSize;
     /**
      * Orders between users in the same `stp_id` group are not allowed to be self-traded  1. If the `stp_id` of two orders being matched is non-zero and equal, they will not be executed. Instead, the corresponding strategy will be executed based on the `stp_act` of the taker. 2. `stp_id` returns `0` by default for orders that have not been set for `STP group`
      */
@@ -116,7 +116,7 @@ export class FuturesOrder {
     /**
      * Self-Trading Prevention Action. Users can use this field to set self-trade prevention strategies  1. After users join the `STP Group`, they can pass `stp_act` to limit the user\'s self-trade prevention strategy. If `stp_act` is not passed, the default is `cn` strategy. 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter. 3. If the user did not use `stp_act` when placing the order, `stp_act` will return \'-\'  - cn: Cancel newest, cancel new orders and keep old ones - co: Cancel oldest, cancel old orders and keep new ones - cb: Cancel both, both old and new orders will be cancelled
      */
-    'stpAct'?: FuturesOrder.StpAct;
+    'stpAct'?: FuturesOrderTimerange.StpAct;
     /**
      * The custom data that the user remarked when amending the order
      */
@@ -155,22 +155,22 @@ export class FuturesOrder {
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'finishTime',
             baseName: 'finish_time',
-            type: 'number',
+            type: 'string',
         },
         {
             name: 'finishAs',
             baseName: 'finish_as',
-            type: 'FuturesOrder.FinishAs',
+            type: 'FuturesOrderTimerange.FinishAs',
         },
         {
             name: 'status',
             baseName: 'status',
-            type: 'FuturesOrder.Status',
+            type: 'FuturesOrderTimerange.Status',
         },
         {
             name: 'contract',
@@ -220,7 +220,7 @@ export class FuturesOrder {
         {
             name: 'tif',
             baseName: 'tif',
-            type: 'FuturesOrder.Tif',
+            type: 'FuturesOrderTimerange.Tif',
         },
         {
             name: 'left',
@@ -255,7 +255,7 @@ export class FuturesOrder {
         {
             name: 'autoSize',
             baseName: 'auto_size',
-            type: 'FuturesOrder.AutoSize',
+            type: 'FuturesOrderTimerange.AutoSize',
         },
         {
             name: 'stpId',
@@ -265,7 +265,7 @@ export class FuturesOrder {
         {
             name: 'stpAct',
             baseName: 'stp_act',
-            type: 'FuturesOrder.StpAct',
+            type: 'FuturesOrderTimerange.StpAct',
         },
         {
             name: 'amendText',
@@ -290,11 +290,11 @@ export class FuturesOrder {
     ];
 
     static getAttributeTypeMap() {
-        return FuturesOrder.attributeTypeMap;
+        return FuturesOrderTimerange.attributeTypeMap;
     }
 }
 
-export namespace FuturesOrder {
+export namespace FuturesOrderTimerange {
     export enum FinishAs {
         Filled = <any>'filled',
         Cancelled = <any>'cancelled',

@@ -16,4 +16,5 @@ Name | Type | Description | Notes
 **chains** | [**Array&lt;SpotCurrencyChain&gt;**](SpotCurrencyChain.md) | All links corresponding to coins | [optional] [default to undefined]
 **totalSupply** | **string** | Total supply | [optional] [default to undefined]
 **marketCap** | **string** | Market cap | [optional] [default to undefined]
+**category** | **Array&lt;string&gt;** | 币种分类  - stocks: 股票 - metals: 金属 - indices: 指数 - forex: 外汇 - commodities: 大宗商品 | [optional] [default to undefined]
 

@@ -33,7 +33,7 @@ export class SpotPricePutOrder {
     /**
      * time_in_force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only
      */
-    'timeInForce'?: SpotPricePutOrder.TimeInForce;
+    'timeInForce': SpotPricePutOrder.TimeInForce;
     /**
      * Whether to borrow coins automatically
      */

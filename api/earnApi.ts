@@ -17,8 +17,6 @@ import { DualGetBalance } from '../model/dualGetBalance';
 import { DualGetOrders } from '../model/dualGetOrders';
 import { DualGetPlans } from '../model/dualGetPlans';
 import { EarnFixedTermPreRedeemRequest } from '../model/earnFixedTermPreRedeemRequest';
-import { Eth2RateList } from '../model/eth2RateList';
-import { Eth2Swap } from '../model/eth2Swap';
 import { FindCoin } from '../model/findCoin';
 import { FixedTermLendRequest } from '../model/fixedTermLendRequest';
 import { ListEarnFixedTermHistoryResponse } from '../model/listEarnFixedTermHistoryResponse';
@@ -28,9 +26,6 @@ import { ListEarnFixedTermProductsResponse } from '../model/listEarnFixedTermPro
 import { OrderListStruct } from '../model/orderListStruct';
 import { PlaceDualInvestmentOrder } from '../model/placeDualInvestmentOrder';
 import { PlaceDualInvestmentOrderParams } from '../model/placeDualInvestmentOrderParams';
-import { StructuredBuy } from '../model/structuredBuy';
-import { StructuredGetProjectList } from '../model/structuredGetProjectList';
-import { StructuredOrderList } from '../model/structuredOrderList';
 import { SwapCoin } from '../model/swapCoin';
 import { SwapCoinStruct } from '../model/swapCoinStruct';
 import { ObjectSerializer } from '../model/models';
@@ -50,60 +45,6 @@ export class EarnApi {
         } else {
             this.client = new ApiClient();
         }
-    }
-
-    /**
-     *
-     * @summary ETH swap
-     * @param eth2Swap
-     */
-    public async swapETH2(eth2Swap: Eth2Swap): Promise<{ response: AxiosResponse; body?: any }> {
-        const localVarPath = this.client.basePath + '/earn/staking/eth2/swap';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-
-        // verify required parameter 'eth2Swap' is not null or undefined
-        if (eth2Swap === null || eth2Swap === undefined) {
-            throw new Error('Required parameter eth2Swap was null or undefined when calling swapETH2.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(eth2Swap, 'Eth2Swap'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
-    }
-
-    /**
-     * Query ETH earnings rate records for the last 31 days
-     * @summary GTETH historical return rate query
-     */
-    public async rateListETH2(): Promise<{ response: AxiosResponse; body: Array<Eth2RateList> }> {
-        const localVarPath = this.client.basePath + '/earn/staking/eth2/rate_records';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<Eth2RateList>>(config, 'Array<Eth2RateList>', authSettings);
     }
 
     /**
@@ -284,188 +225,6 @@ export class EarnApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<DualGetBalance>(config, 'DualGetBalance', authSettings);
-    }
-
-    /**
-     *
-     * @summary Structured Product List
-     * @param status Status (Default empty to query all)  &#x60;in_process&#x60;-In progress &#x60;will_begin&#x60;-Not started &#x60;wait_settlement&#x60;-Pending settlement &#x60;done&#x60;-Completed
-     * @param opts Optional parameters
-     * @param opts.type Product Type (Default empty to query all)  &#x60;SharkFin2.0&#x60;-Shark Fin &#x60;BullishSharkFin&#x60;-Bullish Treasure &#x60;BearishSharkFin&#x60;-Bearish Treasure &#x60;DoubleNoTouch&#x60;-Volatility Treasure &#x60;RangeAccrual&#x60;-Range Smart Yield &#x60;SnowBall&#x60;-Snowball
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records returned in a single list
-     */
-    public async listStructuredProducts(
-        status: string,
-        opts?: { type?: string; page?: number; limit?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<StructuredGetProjectList> }> {
-        const localVarPath = this.client.basePath + '/earn/structured/products';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'status' is not null or undefined
-        if (status === null || status === undefined) {
-            throw new Error('Required parameter status was null or undefined when calling listStructuredProducts.');
-        }
-
-        opts = opts || {};
-        if (opts.type !== undefined) {
-            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(typeSerialized)) {
-                typeSerialized = typeSerialized.join(',');
-            }
-            localVarQueryParameters['type'] = typeSerialized;
-        }
-
-        let statusSerialized = ObjectSerializer.serialize(status, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
-        if (Array.isArray(statusSerialized)) {
-            statusSerialized = statusSerialized.join(',');
-        }
-        localVarQueryParameters['status'] = statusSerialized;
-
-        if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(pageSerialized)) {
-                pageSerialized = pageSerialized.join(',');
-            }
-            localVarQueryParameters['page'] = pageSerialized;
-        }
-
-        if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(limitSerialized)) {
-                limitSerialized = limitSerialized.join(',');
-            }
-            localVarQueryParameters['limit'] = limitSerialized;
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = [];
-        return this.client.request<Array<StructuredGetProjectList>>(
-            config,
-            'Array<StructuredGetProjectList>',
-            authSettings,
-        );
-    }
-
-    /**
-     *
-     * @summary Structured Product Order List
-     * @param opts Optional parameters
-     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records returned in a single list
-     */
-    public async listStructuredOrders(opts?: {
-        from?: number;
-        to?: number;
-        page?: number;
-        limit?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<StructuredOrderList> }> {
-        const localVarPath = this.client.basePath + '/earn/structured/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-        if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(fromSerialized)) {
-                fromSerialized = fromSerialized.join(',');
-            }
-            localVarQueryParameters['from'] = fromSerialized;
-        }
-
-        if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(toSerialized)) {
-                toSerialized = toSerialized.join(',');
-            }
-            localVarQueryParameters['to'] = toSerialized;
-        }
-
-        if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(pageSerialized)) {
-                pageSerialized = pageSerialized.join(',');
-            }
-            localVarQueryParameters['page'] = pageSerialized;
-        }
-
-        if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(limitSerialized)) {
-                limitSerialized = limitSerialized.join(',');
-            }
-            localVarQueryParameters['limit'] = limitSerialized;
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<StructuredOrderList>>(config, 'Array<StructuredOrderList>', authSettings);
-    }
-
-    /**
-     *
-     * @summary Place Structured Product Order
-     * @param structuredBuy
-     */
-    public async placeStructuredOrder(structuredBuy: StructuredBuy): Promise<{ response: AxiosResponse; body?: any }> {
-        const localVarPath = this.client.basePath + '/earn/structured/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-
-        // verify required parameter 'structuredBuy' is not null or undefined
-        if (structuredBuy === null || structuredBuy === undefined) {
-            throw new Error(
-                'Required parameter structuredBuy was null or undefined when calling placeStructuredOrder.',
-            );
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(structuredBuy, 'StructuredBuy'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
     }
 
     /**

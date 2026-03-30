@@ -26,6 +26,10 @@ export class FuturesUpdatePriceTriggeredOrder {
      */
     'size'?: number;
     /**
+     * Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
+     */
+    'amount'?: string;
+    /**
      * Represents the modified trading price. A value of 0 indicates a market order.
      */
     'price'?: string;
@@ -63,6 +67,11 @@ export class FuturesUpdatePriceTriggeredOrder {
             name: 'size',
             baseName: 'size',
             type: 'number',
+        },
+        {
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
             name: 'price',

@@ -143,8 +143,6 @@ export * from './eligibility';
 export * from './eligibilityResponse';
 export * from './eligibilityResponseAllOf';
 export * from './errCodeMsg';
-export * from './eth2RateList';
-export * from './eth2Swap';
 export * from './findCoin';
 export * from './fixedTermBonusInfo';
 export * from './fixedTermCouponInfo';
@@ -202,6 +200,7 @@ export * from './futuresOrder';
 export * from './futuresOrderAmendment';
 export * from './futuresOrderBook';
 export * from './futuresOrderBookItem';
+export * from './futuresOrderTimerange';
 export * from './futuresPositionCrossMode';
 export * from './futuresPremiumIndex';
 export * from './futuresPriceTrigger';
@@ -443,9 +442,6 @@ export * from './stopAllTrailOrders';
 export * from './stopTrailOrder';
 export * from './stpGroup';
 export * from './stpGroupUser';
-export * from './structuredBuy';
-export * from './structuredGetProjectList';
-export * from './structuredOrderList';
 export * from './subAccount';
 export * from './subAccountBalance';
 export * from './subAccountCrossMarginBalance';
@@ -696,8 +692,6 @@ import { Eligibility } from './eligibility';
 import { EligibilityResponse } from './eligibilityResponse';
 import { EligibilityResponseAllOf } from './eligibilityResponseAllOf';
 import { ErrCodeMsg } from './errCodeMsg';
-import { Eth2RateList } from './eth2RateList';
-import { Eth2Swap } from './eth2Swap';
 import { FindCoin } from './findCoin';
 import { FixedTermBonusInfo } from './fixedTermBonusInfo';
 import { FixedTermCouponInfo } from './fixedTermCouponInfo';
@@ -755,6 +749,7 @@ import { FuturesOrder } from './futuresOrder';
 import { FuturesOrderAmendment } from './futuresOrderAmendment';
 import { FuturesOrderBook } from './futuresOrderBook';
 import { FuturesOrderBookItem } from './futuresOrderBookItem';
+import { FuturesOrderTimerange } from './futuresOrderTimerange';
 import { FuturesPositionCrossMode } from './futuresPositionCrossMode';
 import { FuturesPremiumIndex } from './futuresPremiumIndex';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
@@ -996,9 +991,6 @@ import { StopAllTrailOrders } from './stopAllTrailOrders';
 import { StopTrailOrder } from './stopTrailOrder';
 import { StpGroup } from './stpGroup';
 import { StpGroupUser } from './stpGroupUser';
-import { StructuredBuy } from './structuredBuy';
-import { StructuredGetProjectList } from './structuredGetProjectList';
-import { StructuredOrderList } from './structuredOrderList';
 import { SubAccount } from './subAccount';
 import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountCrossMarginBalance } from './subAccountCrossMarginBalance';
@@ -1155,6 +1147,11 @@ let enumsMap: { [index: string]: any } = {
     'FuturesOrder.Tif': FuturesOrder.Tif,
     'FuturesOrder.AutoSize': FuturesOrder.AutoSize,
     'FuturesOrder.StpAct': FuturesOrder.StpAct,
+    'FuturesOrderTimerange.FinishAs': FuturesOrderTimerange.FinishAs,
+    'FuturesOrderTimerange.Status': FuturesOrderTimerange.Status,
+    'FuturesOrderTimerange.Tif': FuturesOrderTimerange.Tif,
+    'FuturesOrderTimerange.AutoSize': FuturesOrderTimerange.AutoSize,
+    'FuturesOrderTimerange.StpAct': FuturesOrderTimerange.StpAct,
     'FuturesPriceTrigger.StrategyType': FuturesPriceTrigger.StrategyType,
     'FuturesPriceTrigger.PriceType': FuturesPriceTrigger.PriceType,
     'FuturesPriceTrigger.Rule': FuturesPriceTrigger.Rule,
@@ -1367,8 +1364,6 @@ let typeMap: { [index: string]: any } = {
     EligibilityResponse: EligibilityResponse,
     EligibilityResponseAllOf: EligibilityResponseAllOf,
     ErrCodeMsg: ErrCodeMsg,
-    Eth2RateList: Eth2RateList,
-    Eth2Swap: Eth2Swap,
     FindCoin: FindCoin,
     FixedTermBonusInfo: FixedTermBonusInfo,
     FixedTermCouponInfo: FixedTermCouponInfo,
@@ -1426,6 +1421,7 @@ let typeMap: { [index: string]: any } = {
     FuturesOrderAmendment: FuturesOrderAmendment,
     FuturesOrderBook: FuturesOrderBook,
     FuturesOrderBookItem: FuturesOrderBookItem,
+    FuturesOrderTimerange: FuturesOrderTimerange,
     FuturesPositionCrossMode: FuturesPositionCrossMode,
     FuturesPremiumIndex: FuturesPremiumIndex,
     FuturesPriceTrigger: FuturesPriceTrigger,
@@ -1667,9 +1663,6 @@ let typeMap: { [index: string]: any } = {
     StopTrailOrder: StopTrailOrder,
     StpGroup: StpGroup,
     StpGroupUser: StpGroupUser,
-    StructuredBuy: StructuredBuy,
-    StructuredGetProjectList: StructuredGetProjectList,
-    StructuredOrderList: StructuredOrderList,
     SubAccount: SubAccount,
     SubAccountBalance: SubAccountBalance,
     SubAccountCrossMarginBalance: SubAccountCrossMarginBalance,

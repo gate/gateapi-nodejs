@@ -19,6 +19,10 @@ export class FuturesInitialOrder {
      */
     'size'?: number;
     /**
+     * Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
+     */
+    'amount'?: string;
+    /**
      * Order price. Set to 0 to use market price
      */
     'price': string;
@@ -63,6 +67,11 @@ export class FuturesInitialOrder {
             name: 'size',
             baseName: 'size',
             type: 'number',
+        },
+        {
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
             name: 'price',
