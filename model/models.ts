@@ -1233,7 +1233,6 @@ let enumsMap: { [index: string]: any } = {
     'OrderListDataList.Finished': OrderListDataList.Finished,
     'OrderListDataList.Side': OrderListDataList.Side,
     'PartnerDataAggregated.BusinessType': PartnerDataAggregated.BusinessType,
-    'PartnerDataAggregated.BusinessTypeDesc': PartnerDataAggregated.BusinessTypeDesc,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'PositionHistoryListDataList.PositionDir': PositionHistoryListDataList.PositionDir,

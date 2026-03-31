@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **tradingUserCount** | **string** | 交易人数，字符串形式（与线上 JSON 序列化一致）  仅在 business_type&#x3D;0（全部）时返回具体数值，其他业务类型返回 null | [default to undefined]
 **timeRangeDesc** | **string** | Time range description | [default to undefined]
 **businessType** | **number** | Business Type | [default to undefined]
-**businessTypeDesc** | **string** | Business type description | [default to undefined]
+**businessTypeDesc** | **string** | 业务类型描述，可取值：全部, 现货, 合约, Alpha, Web3, Perps(DEX), Exchange All, Web3 All, TradFi | [default to undefined]
 
 ## Enum: PartnerDataAggregated.BusinessType
 
@@ -32,26 +32,5 @@ Name | Type | Description | Notes
 * `NUMBER_7` (value: `7`)
 
 * `NUMBER_8` (value: `8`)
-
-
-## Enum: PartnerDataAggregated.BusinessTypeDesc
-
-* `` (value: `'全部'`)
-
-* `` (value: `'现货'`)
-
-* `` (value: `'合约'`)
-
-* `Alpha` (value: `'Alpha'`)
-
-* `Web3` (value: `'Web3'`)
-
-* `PerpsDEX` (value: `'Perps(DEX)'`)
-
-* `ExchangeAll` (value: `'Exchange All'`)
-
-* `Web3All` (value: `'Web3 All'`)
-
-* `TradFi` (value: `'TradFi'`)
 
 
