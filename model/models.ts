@@ -20,6 +20,23 @@ export * from './apiResponseExSkillGetBeginnerTaskListResp';
 export * from './apiResponseExSkillGetBeginnerTaskListRespData';
 export * from './apiResponseExSkillGetBeginnerTaskListRespDataTasks';
 export * from './apiResponseExSkillGetUserIdentityResp';
+export * from './autoInvestCoinsItem';
+export * from './autoInvestConfigItem';
+export * from './autoInvestMinInvestAmount';
+export * from './autoInvestMinInvestAmountItems';
+export * from './autoInvestMinInvestAmountResp';
+export * from './autoInvestOrderItem';
+export * from './autoInvestPlanAddPosition';
+export * from './autoInvestPlanCreate';
+export * from './autoInvestPlanCreateItems';
+export * from './autoInvestPlanCreateResp';
+export * from './autoInvestPlanDetail';
+export * from './autoInvestPlanListInfoResp';
+export * from './autoInvestPlanRecordItem';
+export * from './autoInvestPlanRecordsResp';
+export * from './autoInvestPlanStop';
+export * from './autoInvestPlanUpdate';
+export * from './autoInvestPortfolioItem';
 export * from './autoRepaySetting';
 export * from './awardListStruct';
 export * from './awardListStructList';
@@ -143,7 +160,7 @@ export * from './eligibility';
 export * from './eligibilityResponse';
 export * from './eligibilityResponseAllOf';
 export * from './errCodeMsg';
-export * from './findCoin';
+export * from './errorResponse';
 export * from './fixedTermBonusInfo';
 export * from './fixedTermCouponInfo';
 export * from './fixedTermHistoryRecord';
@@ -392,6 +409,9 @@ export * from './partnerApplication';
 export * from './partnerApplicationResponse';
 export * from './partnerApplicationResponseAllOf';
 export * from './partnerCommissionHistory';
+export * from './partnerDataAggregated';
+export * from './partnerDataAggregatedResponse';
+export * from './partnerDataAggregatedResponseAllOf';
 export * from './partnerSub';
 export * from './partnerSubList';
 export * from './partnerTransactionHistory';
@@ -569,6 +589,23 @@ import { ApiResponseExSkillGetBeginnerTaskListResp } from './apiResponseExSkillG
 import { ApiResponseExSkillGetBeginnerTaskListRespData } from './apiResponseExSkillGetBeginnerTaskListRespData';
 import { ApiResponseExSkillGetBeginnerTaskListRespDataTasks } from './apiResponseExSkillGetBeginnerTaskListRespDataTasks';
 import { ApiResponseExSkillGetUserIdentityResp } from './apiResponseExSkillGetUserIdentityResp';
+import { AutoInvestCoinsItem } from './autoInvestCoinsItem';
+import { AutoInvestConfigItem } from './autoInvestConfigItem';
+import { AutoInvestMinInvestAmount } from './autoInvestMinInvestAmount';
+import { AutoInvestMinInvestAmountItems } from './autoInvestMinInvestAmountItems';
+import { AutoInvestMinInvestAmountResp } from './autoInvestMinInvestAmountResp';
+import { AutoInvestOrderItem } from './autoInvestOrderItem';
+import { AutoInvestPlanAddPosition } from './autoInvestPlanAddPosition';
+import { AutoInvestPlanCreate } from './autoInvestPlanCreate';
+import { AutoInvestPlanCreateItems } from './autoInvestPlanCreateItems';
+import { AutoInvestPlanCreateResp } from './autoInvestPlanCreateResp';
+import { AutoInvestPlanDetail } from './autoInvestPlanDetail';
+import { AutoInvestPlanListInfoResp } from './autoInvestPlanListInfoResp';
+import { AutoInvestPlanRecordItem } from './autoInvestPlanRecordItem';
+import { AutoInvestPlanRecordsResp } from './autoInvestPlanRecordsResp';
+import { AutoInvestPlanStop } from './autoInvestPlanStop';
+import { AutoInvestPlanUpdate } from './autoInvestPlanUpdate';
+import { AutoInvestPortfolioItem } from './autoInvestPortfolioItem';
 import { AutoRepaySetting } from './autoRepaySetting';
 import { AwardListStruct } from './awardListStruct';
 import { AwardListStructList } from './awardListStructList';
@@ -692,7 +729,7 @@ import { Eligibility } from './eligibility';
 import { EligibilityResponse } from './eligibilityResponse';
 import { EligibilityResponseAllOf } from './eligibilityResponseAllOf';
 import { ErrCodeMsg } from './errCodeMsg';
-import { FindCoin } from './findCoin';
+import { ErrorResponse } from './errorResponse';
 import { FixedTermBonusInfo } from './fixedTermBonusInfo';
 import { FixedTermCouponInfo } from './fixedTermCouponInfo';
 import { FixedTermHistoryRecord } from './fixedTermHistoryRecord';
@@ -941,6 +978,9 @@ import { PartnerApplication } from './partnerApplication';
 import { PartnerApplicationResponse } from './partnerApplicationResponse';
 import { PartnerApplicationResponseAllOf } from './partnerApplicationResponseAllOf';
 import { PartnerCommissionHistory } from './partnerCommissionHistory';
+import { PartnerDataAggregated } from './partnerDataAggregated';
+import { PartnerDataAggregatedResponse } from './partnerDataAggregatedResponse';
+import { PartnerDataAggregatedResponseAllOf } from './partnerDataAggregatedResponseAllOf';
 import { PartnerSub } from './partnerSub';
 import { PartnerSubList } from './partnerSubList';
 import { PartnerTransactionHistory } from './partnerTransactionHistory';
@@ -1192,6 +1232,8 @@ let enumsMap: { [index: string]: any } = {
     'OrderListDataList.PriceType': OrderListDataList.PriceType,
     'OrderListDataList.Finished': OrderListDataList.Finished,
     'OrderListDataList.Side': OrderListDataList.Side,
+    'PartnerDataAggregated.BusinessType': PartnerDataAggregated.BusinessType,
+    'PartnerDataAggregated.BusinessTypeDesc': PartnerDataAggregated.BusinessTypeDesc,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'PositionHistoryListDataList.PositionDir': PositionHistoryListDataList.PositionDir,
@@ -1241,6 +1283,23 @@ let typeMap: { [index: string]: any } = {
     ApiResponseExSkillGetBeginnerTaskListRespData: ApiResponseExSkillGetBeginnerTaskListRespData,
     ApiResponseExSkillGetBeginnerTaskListRespDataTasks: ApiResponseExSkillGetBeginnerTaskListRespDataTasks,
     ApiResponseExSkillGetUserIdentityResp: ApiResponseExSkillGetUserIdentityResp,
+    AutoInvestCoinsItem: AutoInvestCoinsItem,
+    AutoInvestConfigItem: AutoInvestConfigItem,
+    AutoInvestMinInvestAmount: AutoInvestMinInvestAmount,
+    AutoInvestMinInvestAmountItems: AutoInvestMinInvestAmountItems,
+    AutoInvestMinInvestAmountResp: AutoInvestMinInvestAmountResp,
+    AutoInvestOrderItem: AutoInvestOrderItem,
+    AutoInvestPlanAddPosition: AutoInvestPlanAddPosition,
+    AutoInvestPlanCreate: AutoInvestPlanCreate,
+    AutoInvestPlanCreateItems: AutoInvestPlanCreateItems,
+    AutoInvestPlanCreateResp: AutoInvestPlanCreateResp,
+    AutoInvestPlanDetail: AutoInvestPlanDetail,
+    AutoInvestPlanListInfoResp: AutoInvestPlanListInfoResp,
+    AutoInvestPlanRecordItem: AutoInvestPlanRecordItem,
+    AutoInvestPlanRecordsResp: AutoInvestPlanRecordsResp,
+    AutoInvestPlanStop: AutoInvestPlanStop,
+    AutoInvestPlanUpdate: AutoInvestPlanUpdate,
+    AutoInvestPortfolioItem: AutoInvestPortfolioItem,
     AutoRepaySetting: AutoRepaySetting,
     AwardListStruct: AwardListStruct,
     AwardListStructList: AwardListStructList,
@@ -1364,7 +1423,7 @@ let typeMap: { [index: string]: any } = {
     EligibilityResponse: EligibilityResponse,
     EligibilityResponseAllOf: EligibilityResponseAllOf,
     ErrCodeMsg: ErrCodeMsg,
-    FindCoin: FindCoin,
+    ErrorResponse: ErrorResponse,
     FixedTermBonusInfo: FixedTermBonusInfo,
     FixedTermCouponInfo: FixedTermCouponInfo,
     FixedTermHistoryRecord: FixedTermHistoryRecord,
@@ -1613,6 +1672,9 @@ let typeMap: { [index: string]: any } = {
     PartnerApplicationResponse: PartnerApplicationResponse,
     PartnerApplicationResponseAllOf: PartnerApplicationResponseAllOf,
     PartnerCommissionHistory: PartnerCommissionHistory,
+    PartnerDataAggregated: PartnerDataAggregated,
+    PartnerDataAggregatedResponse: PartnerDataAggregatedResponse,
+    PartnerDataAggregatedResponseAllOf: PartnerDataAggregatedResponseAllOf,
     PartnerSub: PartnerSub,
     PartnerSubList: PartnerSubList,
     PartnerTransactionHistory: PartnerTransactionHistory,

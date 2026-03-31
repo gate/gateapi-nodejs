@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**userSubRelation**](RebateApi.md#userSubRelation) | **GET** /rebate/user/sub_relation | User subordinate relationship
 [**getPartnerApplicationRecent**](RebateApi.md#getPartnerApplicationRecent) | **GET** /rebate/partner/applications/recent | Get recent partner application records
 [**getPartnerEligibility**](RebateApi.md#getPartnerEligibility) | **GET** /rebate/partner/eligibility | Check partner application eligibility
+[**getPartnerAgentDataAggregated**](RebateApi.md#getPartnerAgentDataAggregated) | **GET** /rebate/partner/data/aggregated | Aggregated partner agent statistics
 
 
 ## agencyTransactionHistory
@@ -564,6 +565,57 @@ This endpoint does not need any parameter.
 ### Return type
 
 Promise<{ response: AxiosResponse; body: EligibilityResponse; }> [EligibilityResponse](EligibilityResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getPartnerAgentDataAggregated
+
+> Promise<{ response: http.IncomingMessage; body: PartnerDataAggregatedResponse; }> getPartnerAgentDataAggregated(opts)
+
+Aggregated partner agent statistics
+
+查询指定时间范围内合伙人代理的数据聚合统计，包括返佣金额、交易量、净手续费、客户数和交易人数。  **注意事项：** - 交易人数 &#x60;trading_user_count&#x60; 仅在 &#x60;business_type&#x3D;0&#x60;（全部）时返回 - 时间参数使用 UTC+8 时区 - 如不传时间参数，默认查询近 7 天数据 - 仅限合伙人代理访问，子账号无权限
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.RebateApi(client);
+const opts = {
+  'startDate': "2024-01-01 00:00:00", // string | 查询开始时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日开始时间
+  'endDate': "2024-01-07 23:59:59", // string | 查询结束时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日结束时间
+  'businessType': 0 // 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | Business type filter: - 0: All (default) - 1: Spot - 2: Futures - 3: Alpha - 4: Web3 - 5: Perps (DEX) - 6: Exchange All - 7: Web3 All - 8: TradFi
+};
+api.getPartnerAgentDataAggregated(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **startDate** | **string**| 查询开始时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日开始时间 | [optional] [default to undefined]
+ **endDate** | **string**| 查询结束时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日结束时间 | [optional] [default to undefined]
+ **businessType** | **BusinessType**| Business type filter: - 0: All (default) - 1: Spot - 2: Futures - 3: Alpha - 4: Web3 - 5: Perps (DEX) - 6: Exchange All - 7: Web3 All - 8: TradFi | [optional] [default to 0]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: PartnerDataAggregatedResponse; }> [PartnerDataAggregatedResponse](PartnerDataAggregatedResponse.md)
 
 ### Authorization
 

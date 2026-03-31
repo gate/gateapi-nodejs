@@ -13,6 +13,17 @@ Method | HTTP request | Description
 [**orderList**](EarnApi.md#orderList) | **GET** /earn/staking/order_list | List of on-chain coin-earning orders
 [**awardList**](EarnApi.md#awardList) | **GET** /earn/staking/award_list | On-chain coin-earning dividend records
 [**assetList**](EarnApi.md#assetList) | **GET** /earn/staking/assets | On-chain coin-earning assets
+[**createAutoInvestPlan**](EarnApi.md#createAutoInvestPlan) | **POST** /earn/autoinvest/plans/create | Create auto invest plan
+[**updateAutoInvestPlan**](EarnApi.md#updateAutoInvestPlan) | **POST** /earn/autoinvest/plans/update | UpdateAuto invest plan
+[**stopAutoInvestPlan**](EarnApi.md#stopAutoInvestPlan) | **POST** /earn/autoinvest/plans/stop | StopAuto invest plan
+[**addPositionAutoInvestPlan**](EarnApi.md#addPositionAutoInvestPlan) | **POST** /earn/autoinvest/plans/add_position | Add position immediately
+[**listAutoInvestCoins**](EarnApi.md#listAutoInvestCoins) | **GET** /earn/autoinvest/coins | QueryCurrencies supporting auto invest
+[**getAutoInvestMinAmount**](EarnApi.md#getAutoInvestMinAmount) | **POST** /earn/autoinvest/min_invest_amount | Get minimum investment amount
+[**listAutoInvestPlanRecords**](EarnApi.md#listAutoInvestPlanRecords) | **GET** /earn/autoinvest/plans/records | List plan execution records
+[**listAutoInvestOrders**](EarnApi.md#listAutoInvestOrders) | **GET** /earn/autoinvest/orders | List plan execution recordsDetails（OrderDetails）
+[**listAutoInvestConfig**](EarnApi.md#listAutoInvestConfig) | **GET** /earn/autoinvest/config | List investment currency configuration
+[**getAutoInvestPlanDetail**](EarnApi.md#getAutoInvestPlanDetail) | **GET** /earn/autoinvest/plans/detail | QueryAuto invest planDetails
+[**listAutoInvestPlans**](EarnApi.md#listAutoInvestPlans) | **GET** /earn/autoinvest/plans/list_info | QueryAuto invest planList
 [**listEarnFixedTermProducts**](EarnApi.md#listEarnFixedTermProducts) | **GET** /earn/fixed-term/product | Get product list
 [**listEarnFixedTermProductsByAsset**](EarnApi.md#listEarnFixedTermProductsByAsset) | **GET** /earn/fixed-term/product/{asset}/list | Get product list by single currency
 [**listEarnFixedTermLends**](EarnApi.md#listEarnFixedTermLends) | **GET** /earn/fixed-term/user/lend | Subscription list
@@ -199,7 +210,7 @@ Promise<{ response: AxiosResponse; body: DualGetBalance; }> [DualGetBalance](Dua
 
 ## findCoin
 
-> Promise<{ response: http.IncomingMessage; body: Array<object>; }> findCoin(findCoin)
+> Promise<{ response: http.IncomingMessage; body: Array<object>; }> findCoin(opts)
 
 Staking coins
 
@@ -214,8 +225,10 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnApi(client);
-const findCoin = new FindCoin(); // FindCoin | 
-api.findCoin(findCoin)
+const opts = {
+  'cointype': "cointype_example" // string | Currency type: swap - voucher; lock - locked position; debt - US Treasury bond.
+};
+api.findCoin(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -225,7 +238,7 @@ api.findCoin(findCoin)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **findCoin** | [**FindCoin**](FindCoin.md)|  | 
+ **cointype** | **string**| Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. | [optional] [default to undefined]
 
 ### Return type
 
@@ -237,7 +250,7 @@ Promise<{ response: AxiosResponse; body: Array<object>; }> [object](object.md)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 ## swapStakingCoin
@@ -418,6 +431,491 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<object>; }> [object](object.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## createAutoInvestPlan
+
+> Promise<{ response: http.IncomingMessage; body: AutoInvestPlanCreateResp; }> createAutoInvestPlan(autoInvestPlanCreate)
+
+Create auto invest plan
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const autoInvestPlanCreate = new AutoInvestPlanCreate(); // AutoInvestPlanCreate | 
+api.createAutoInvestPlan(autoInvestPlanCreate)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **autoInvestPlanCreate** | [**AutoInvestPlanCreate**](AutoInvestPlanCreate.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AutoInvestPlanCreateResp; }> [AutoInvestPlanCreateResp](AutoInvestPlanCreateResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## updateAutoInvestPlan
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> updateAutoInvestPlan(autoInvestPlanUpdate)
+
+UpdateAuto invest plan
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const autoInvestPlanUpdate = new AutoInvestPlanUpdate(); // AutoInvestPlanUpdate | 
+api.updateAutoInvestPlan(autoInvestPlanUpdate)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **autoInvestPlanUpdate** | [**AutoInvestPlanUpdate**](AutoInvestPlanUpdate.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## stopAutoInvestPlan
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> stopAutoInvestPlan(autoInvestPlanStop)
+
+StopAuto invest plan
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const autoInvestPlanStop = new AutoInvestPlanStop(); // AutoInvestPlanStop | 
+api.stopAutoInvestPlan(autoInvestPlanStop)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **autoInvestPlanStop** | [**AutoInvestPlanStop**](AutoInvestPlanStop.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## addPositionAutoInvestPlan
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> addPositionAutoInvestPlan(autoInvestPlanAddPosition)
+
+Add position immediately
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const autoInvestPlanAddPosition = new AutoInvestPlanAddPosition(); // AutoInvestPlanAddPosition | 
+api.addPositionAutoInvestPlan(autoInvestPlanAddPosition)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **autoInvestPlanAddPosition** | [**AutoInvestPlanAddPosition**](AutoInvestPlanAddPosition.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## listAutoInvestCoins
+
+> Promise<{ response: http.IncomingMessage; body: Array<AutoInvestCoinsItem>; }> listAutoInvestCoins(opts)
+
+QueryCurrencies supporting auto invest
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const opts = {
+  'planMoney': "USDT" // string | Pricing currency，Optional: USDT or BTC，Default: USDT
+};
+api.listAutoInvestCoins(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **planMoney** | **string**| Pricing currency，Optional: USDT or BTC，Default: USDT | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<AutoInvestCoinsItem>; }> [AutoInvestCoinsItem](AutoInvestCoinsItem.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getAutoInvestMinAmount
+
+> Promise<{ response: http.IncomingMessage; body: AutoInvestMinInvestAmountResp; }> getAutoInvestMinAmount(autoInvestMinInvestAmount)
+
+Get minimum investment amount
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const autoInvestMinInvestAmount = new AutoInvestMinInvestAmount(); // AutoInvestMinInvestAmount | 
+api.getAutoInvestMinAmount(autoInvestMinInvestAmount)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **autoInvestMinInvestAmount** | [**AutoInvestMinInvestAmount**](AutoInvestMinInvestAmount.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AutoInvestMinInvestAmountResp; }> [AutoInvestMinInvestAmountResp](AutoInvestMinInvestAmountResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## listAutoInvestPlanRecords
+
+> Promise<{ response: http.IncomingMessage; body: AutoInvestPlanRecordsResp; }> listAutoInvestPlanRecords(planId, opts)
+
+List plan execution records
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const planId = 141378; // number | Plan ID
+const opts = {
+  'page': 1, // number | page number
+  'pageSize': 10 // number | Items per page，Maximum 100
+};
+api.listAutoInvestPlanRecords(planId, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **planId** | **number**| Plan ID | [default to undefined]
+ **page** | **number**| page number | [optional] [default to undefined]
+ **pageSize** | **number**| Items per page，Maximum 100 | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AutoInvestPlanRecordsResp; }> [AutoInvestPlanRecordsResp](AutoInvestPlanRecordsResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listAutoInvestOrders
+
+> Promise<{ response: http.IncomingMessage; body: Array<AutoInvestOrderItem>; }> listAutoInvestOrders(planId, recordId)
+
+List plan execution recordsDetails（OrderDetails）
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const planId = 142583; // number | Plan ID
+const recordId = 1770805384904919; // number | Record ID
+api.listAutoInvestOrders(planId, recordId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **planId** | **number**| Plan ID | [default to undefined]
+ **recordId** | **number**| Record ID | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<AutoInvestOrderItem>; }> [AutoInvestOrderItem](AutoInvestOrderItem.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listAutoInvestConfig
+
+> Promise<{ response: http.IncomingMessage; body: Array<AutoInvestConfigItem>; }> listAutoInvestConfig()
+
+List investment currency configuration
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+api.listAutoInvestConfig()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<AutoInvestConfigItem>; }> [AutoInvestConfigItem](AutoInvestConfigItem.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getAutoInvestPlanDetail
+
+> Promise<{ response: http.IncomingMessage; body: AutoInvestPlanDetail; }> getAutoInvestPlanDetail(planId)
+
+QueryAuto invest planDetails
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const planId = 142609; // number | Plan ID
+api.getAutoInvestPlanDetail(planId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **planId** | **number**| Plan ID | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AutoInvestPlanDetail; }> [AutoInvestPlanDetail](AutoInvestPlanDetail.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listAutoInvestPlans
+
+> Promise<{ response: http.IncomingMessage; body: AutoInvestPlanListInfoResp; }> listAutoInvestPlans(status, opts)
+
+QueryAuto invest planList
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const status = "active"; // string | Plan status，History history，Active active
+const opts = {
+  'page': 56, // number | page number
+  'pageSize': 56 // number | Items per page，Maximum 100
+};
+api.listAutoInvestPlans(status, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **string**| Plan status，History history，Active active | [default to undefined]
+ **page** | **number**| page number | [optional] [default to undefined]
+ **pageSize** | **number**| Items per page，Maximum 100 | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AutoInvestPlanListInfoResp; }> [AutoInvestPlanListInfoResp](AutoInvestPlanListInfoResp.md)
 
 ### Authorization
 

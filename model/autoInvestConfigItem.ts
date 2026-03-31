@@ -9,23 +9,35 @@
  * Do not edit the class manually.
  */
 
-export class FindCoin {
+/**
+ * Investment currency configuration item
+ */
+export class AutoInvestConfigItem {
     /**
-     * Currency type: swap - voucher; lock - locked position; debt - US Treasury bond.
+     * Currency
      */
-    'cointype'?: string;
+    'coin': string;
+    /**
+     * InvestmentLimit
+     */
+    'maxLimit': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'cointype',
-            baseName: 'cointype',
+            name: 'coin',
+            baseName: 'coin',
+            type: 'string',
+        },
+        {
+            name: 'maxLimit',
+            baseName: 'max_limit',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return FindCoin.attributeTypeMap;
+        return AutoInvestConfigItem.attributeTypeMap;
     }
 }

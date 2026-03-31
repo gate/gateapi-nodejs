@@ -15,8 +15,10 @@ import { AgencyTransactionHistory } from '../model/agencyTransactionHistory';
 import { BrokerCommission } from '../model/brokerCommission';
 import { BrokerTransactionHistory } from '../model/brokerTransactionHistory';
 import { EligibilityResponse } from '../model/eligibilityResponse';
+import { ErrorResponse } from '../model/errorResponse';
 import { PartnerApplicationResponse } from '../model/partnerApplicationResponse';
 import { PartnerCommissionHistory } from '../model/partnerCommissionHistory';
+import { PartnerDataAggregatedResponse } from '../model/partnerDataAggregatedResponse';
 import { PartnerSubList } from '../model/partnerSubList';
 import { PartnerTransactionHistory } from '../model/partnerTransactionHistory';
 import { RebateUserInfo } from '../model/rebateUserInfo';
@@ -799,5 +801,75 @@ export class RebateApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<EligibilityResponse>(config, 'EligibilityResponse', authSettings);
+    }
+
+    /**
+     * 查询指定时间范围内合伙人代理的数据聚合统计，包括返佣金额、交易量、净手续费、客户数和交易人数。  **注意事项：** - 交易人数 `trading_user_count` 仅在 `business_type=0`（全部）时返回 - 时间参数使用 UTC+8 时区 - 如不传时间参数，默认查询近 7 天数据 - 仅限合伙人代理访问，子账号无权限
+     * @summary Aggregated partner agent statistics
+     * @param opts Optional parameters
+     * @param opts.startDate 查询开始时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日开始时间
+     * @param opts.endDate 查询结束时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日结束时间
+     * @param opts.businessType Business type filter: - 0: All (default) - 1: Spot - 2: Futures - 3: Alpha - 4: Web3 - 5: Perps (DEX) - 6: Exchange All - 7: Web3 All - 8: TradFi
+     */
+    public async getPartnerAgentDataAggregated(opts?: {
+        startDate?: string;
+        endDate?: string;
+        businessType?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+    }): Promise<{ response: AxiosResponse; body: PartnerDataAggregatedResponse }> {
+        const localVarPath = this.client.basePath + '/rebate/partner/data/aggregated';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.startDate !== undefined) {
+            let startDateSerialized = ObjectSerializer.serialize(opts.startDate, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(startDateSerialized)) {
+                startDateSerialized = startDateSerialized.join(',');
+            }
+            localVarQueryParameters['start_date'] = startDateSerialized;
+        }
+
+        if (opts.endDate !== undefined) {
+            let endDateSerialized = ObjectSerializer.serialize(opts.endDate, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(endDateSerialized)) {
+                endDateSerialized = endDateSerialized.join(',');
+            }
+            localVarQueryParameters['end_date'] = endDateSerialized;
+        }
+
+        if (opts.businessType !== undefined) {
+            let businessTypeSerialized = ObjectSerializer.serialize(
+                opts.businessType,
+                '0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8',
+            );
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(businessTypeSerialized)) {
+                businessTypeSerialized = businessTypeSerialized.join(',');
+            }
+            localVarQueryParameters['business_type'] = businessTypeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<PartnerDataAggregatedResponse>(
+            config,
+            'PartnerDataAggregatedResponse',
+            authSettings,
+        );
     }
 }

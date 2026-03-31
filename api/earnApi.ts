@@ -10,6 +10,19 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { AutoInvestCoinsItem } from '../model/autoInvestCoinsItem';
+import { AutoInvestConfigItem } from '../model/autoInvestConfigItem';
+import { AutoInvestMinInvestAmount } from '../model/autoInvestMinInvestAmount';
+import { AutoInvestMinInvestAmountResp } from '../model/autoInvestMinInvestAmountResp';
+import { AutoInvestOrderItem } from '../model/autoInvestOrderItem';
+import { AutoInvestPlanAddPosition } from '../model/autoInvestPlanAddPosition';
+import { AutoInvestPlanCreate } from '../model/autoInvestPlanCreate';
+import { AutoInvestPlanCreateResp } from '../model/autoInvestPlanCreateResp';
+import { AutoInvestPlanDetail } from '../model/autoInvestPlanDetail';
+import { AutoInvestPlanListInfoResp } from '../model/autoInvestPlanListInfoResp';
+import { AutoInvestPlanRecordsResp } from '../model/autoInvestPlanRecordsResp';
+import { AutoInvestPlanStop } from '../model/autoInvestPlanStop';
+import { AutoInvestPlanUpdate } from '../model/autoInvestPlanUpdate';
 import { AwardListStruct } from '../model/awardListStruct';
 import { CreateEarnFixedTermLendResponse } from '../model/createEarnFixedTermLendResponse';
 import { CreateEarnFixedTermPreRedeemResponse } from '../model/createEarnFixedTermPreRedeemResponse';
@@ -17,7 +30,6 @@ import { DualGetBalance } from '../model/dualGetBalance';
 import { DualGetOrders } from '../model/dualGetOrders';
 import { DualGetPlans } from '../model/dualGetPlans';
 import { EarnFixedTermPreRedeemRequest } from '../model/earnFixedTermPreRedeemRequest';
-import { FindCoin } from '../model/findCoin';
 import { FixedTermLendRequest } from '../model/fixedTermLendRequest';
 import { ListEarnFixedTermHistoryResponse } from '../model/listEarnFixedTermHistoryResponse';
 import { ListEarnFixedTermLendsResponse } from '../model/listEarnFixedTermLendsResponse';
@@ -230,9 +242,10 @@ export class EarnApi {
     /**
      *
      * @summary Staking coins
-     * @param findCoin
+     * @param opts Optional parameters
+     * @param opts.cointype Currency type: swap - voucher; lock - locked position; debt - US Treasury bond.
      */
-    public async findCoin(findCoin: FindCoin): Promise<{ response: AxiosResponse; body: Array<object> }> {
+    public async findCoin(opts?: { cointype?: string }): Promise<{ response: AxiosResponse; body: Array<object> }> {
         const localVarPath = this.client.basePath + '/earn/staking/coins';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -244,9 +257,14 @@ export class EarnApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'findCoin' is not null or undefined
-        if (findCoin === null || findCoin === undefined) {
-            throw new Error('Required parameter findCoin was null or undefined when calling findCoin.');
+        opts = opts || {};
+        if (opts.cointype !== undefined) {
+            let cointypeSerialized = ObjectSerializer.serialize(opts.cointype, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(cointypeSerialized)) {
+                cointypeSerialized = cointypeSerialized.join(',');
+            }
+            localVarQueryParameters['cointype'] = cointypeSerialized;
         }
 
         const config: AxiosRequestConfig = {
@@ -254,7 +272,6 @@ export class EarnApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(findCoin, 'FindCoin'),
         };
 
         const authSettings = ['apiv4'];
@@ -469,6 +486,475 @@ export class EarnApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<object>>(config, 'Array<object>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Create auto invest plan
+     * @param autoInvestPlanCreate
+     */
+    public async createAutoInvestPlan(
+        autoInvestPlanCreate: AutoInvestPlanCreate,
+    ): Promise<{ response: AxiosResponse; body: AutoInvestPlanCreateResp }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/plans/create';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'autoInvestPlanCreate' is not null or undefined
+        if (autoInvestPlanCreate === null || autoInvestPlanCreate === undefined) {
+            throw new Error(
+                'Required parameter autoInvestPlanCreate was null or undefined when calling createAutoInvestPlan.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(autoInvestPlanCreate, 'AutoInvestPlanCreate'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AutoInvestPlanCreateResp>(config, 'AutoInvestPlanCreateResp', authSettings);
+    }
+
+    /**
+     *
+     * @summary UpdateAuto invest plan
+     * @param autoInvestPlanUpdate
+     */
+    public async updateAutoInvestPlan(
+        autoInvestPlanUpdate: AutoInvestPlanUpdate,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/plans/update';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'autoInvestPlanUpdate' is not null or undefined
+        if (autoInvestPlanUpdate === null || autoInvestPlanUpdate === undefined) {
+            throw new Error(
+                'Required parameter autoInvestPlanUpdate was null or undefined when calling updateAutoInvestPlan.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(autoInvestPlanUpdate, 'AutoInvestPlanUpdate'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary StopAuto invest plan
+     * @param autoInvestPlanStop
+     */
+    public async stopAutoInvestPlan(
+        autoInvestPlanStop: AutoInvestPlanStop,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/plans/stop';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'autoInvestPlanStop' is not null or undefined
+        if (autoInvestPlanStop === null || autoInvestPlanStop === undefined) {
+            throw new Error(
+                'Required parameter autoInvestPlanStop was null or undefined when calling stopAutoInvestPlan.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(autoInvestPlanStop, 'AutoInvestPlanStop'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary Add position immediately
+     * @param autoInvestPlanAddPosition
+     */
+    public async addPositionAutoInvestPlan(
+        autoInvestPlanAddPosition: AutoInvestPlanAddPosition,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/plans/add_position';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'autoInvestPlanAddPosition' is not null or undefined
+        if (autoInvestPlanAddPosition === null || autoInvestPlanAddPosition === undefined) {
+            throw new Error(
+                'Required parameter autoInvestPlanAddPosition was null or undefined when calling addPositionAutoInvestPlan.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(autoInvestPlanAddPosition, 'AutoInvestPlanAddPosition'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary QueryCurrencies supporting auto invest
+     * @param opts Optional parameters
+     * @param opts.planMoney Pricing currency，Optional: USDT or BTC，Default: USDT
+     */
+    public async listAutoInvestCoins(opts?: {
+        planMoney?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<AutoInvestCoinsItem> }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/coins';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.planMoney !== undefined) {
+            let planMoneySerialized = ObjectSerializer.serialize(opts.planMoney, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(planMoneySerialized)) {
+                planMoneySerialized = planMoneySerialized.join(',');
+            }
+            localVarQueryParameters['plan_money'] = planMoneySerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<AutoInvestCoinsItem>>(config, 'Array<AutoInvestCoinsItem>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get minimum investment amount
+     * @param autoInvestMinInvestAmount
+     */
+    public async getAutoInvestMinAmount(
+        autoInvestMinInvestAmount: AutoInvestMinInvestAmount,
+    ): Promise<{ response: AxiosResponse; body: AutoInvestMinInvestAmountResp }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/min_invest_amount';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'autoInvestMinInvestAmount' is not null or undefined
+        if (autoInvestMinInvestAmount === null || autoInvestMinInvestAmount === undefined) {
+            throw new Error(
+                'Required parameter autoInvestMinInvestAmount was null or undefined when calling getAutoInvestMinAmount.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(autoInvestMinInvestAmount, 'AutoInvestMinInvestAmount'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AutoInvestMinInvestAmountResp>(
+            config,
+            'AutoInvestMinInvestAmountResp',
+            authSettings,
+        );
+    }
+
+    /**
+     *
+     * @summary List plan execution records
+     * @param planId Plan ID
+     * @param opts Optional parameters
+     * @param opts.page page number
+     * @param opts.pageSize Items per page，Maximum 100
+     */
+    public async listAutoInvestPlanRecords(
+        planId: number,
+        opts?: { page?: number; pageSize?: number },
+    ): Promise<{ response: AxiosResponse; body: AutoInvestPlanRecordsResp }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/plans/records';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'planId' is not null or undefined
+        if (planId === null || planId === undefined) {
+            throw new Error('Required parameter planId was null or undefined when calling listAutoInvestPlanRecords.');
+        }
+
+        opts = opts || {};
+        let planIdSerialized = ObjectSerializer.serialize(planId, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(planIdSerialized)) {
+            planIdSerialized = planIdSerialized.join(',');
+        }
+        localVarQueryParameters['plan_id'] = planIdSerialized;
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AutoInvestPlanRecordsResp>(config, 'AutoInvestPlanRecordsResp', authSettings);
+    }
+
+    /**
+     *
+     * @summary List plan execution recordsDetails（OrderDetails）
+     * @param planId Plan ID
+     * @param recordId Record ID
+     */
+    public async listAutoInvestOrders(
+        planId: number,
+        recordId: number,
+    ): Promise<{ response: AxiosResponse; body: Array<AutoInvestOrderItem> }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'planId' is not null or undefined
+        if (planId === null || planId === undefined) {
+            throw new Error('Required parameter planId was null or undefined when calling listAutoInvestOrders.');
+        }
+
+        // verify required parameter 'recordId' is not null or undefined
+        if (recordId === null || recordId === undefined) {
+            throw new Error('Required parameter recordId was null or undefined when calling listAutoInvestOrders.');
+        }
+
+        let planIdSerialized = ObjectSerializer.serialize(planId, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(planIdSerialized)) {
+            planIdSerialized = planIdSerialized.join(',');
+        }
+        localVarQueryParameters['plan_id'] = planIdSerialized;
+
+        let recordIdSerialized = ObjectSerializer.serialize(recordId, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(recordIdSerialized)) {
+            recordIdSerialized = recordIdSerialized.join(',');
+        }
+        localVarQueryParameters['record_id'] = recordIdSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<AutoInvestOrderItem>>(config, 'Array<AutoInvestOrderItem>', authSettings);
+    }
+
+    /**
+     *
+     * @summary List investment currency configuration
+     */
+    public async listAutoInvestConfig(): Promise<{ response: AxiosResponse; body: Array<AutoInvestConfigItem> }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/config';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<AutoInvestConfigItem>>(config, 'Array<AutoInvestConfigItem>', authSettings);
+    }
+
+    /**
+     *
+     * @summary QueryAuto invest planDetails
+     * @param planId Plan ID
+     */
+    public async getAutoInvestPlanDetail(
+        planId: number,
+    ): Promise<{ response: AxiosResponse; body: AutoInvestPlanDetail }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/plans/detail';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'planId' is not null or undefined
+        if (planId === null || planId === undefined) {
+            throw new Error('Required parameter planId was null or undefined when calling getAutoInvestPlanDetail.');
+        }
+
+        let planIdSerialized = ObjectSerializer.serialize(planId, 'number');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(planIdSerialized)) {
+            planIdSerialized = planIdSerialized.join(',');
+        }
+        localVarQueryParameters['plan_id'] = planIdSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AutoInvestPlanDetail>(config, 'AutoInvestPlanDetail', authSettings);
+    }
+
+    /**
+     *
+     * @summary QueryAuto invest planList
+     * @param status Plan status，History history，Active active
+     * @param opts Optional parameters
+     * @param opts.page page number
+     * @param opts.pageSize Items per page，Maximum 100
+     */
+    public async listAutoInvestPlans(
+        status: string,
+        opts?: { page?: number; pageSize?: number },
+    ): Promise<{ response: AxiosResponse; body: AutoInvestPlanListInfoResp }> {
+        const localVarPath = this.client.basePath + '/earn/autoinvest/plans/list_info';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'status' is not null or undefined
+        if (status === null || status === undefined) {
+            throw new Error('Required parameter status was null or undefined when calling listAutoInvestPlans.');
+        }
+
+        opts = opts || {};
+        let statusSerialized = ObjectSerializer.serialize(status, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(statusSerialized)) {
+            statusSerialized = statusSerialized.join(',');
+        }
+        localVarQueryParameters['status'] = statusSerialized;
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AutoInvestPlanListInfoResp>(config, 'AutoInvestPlanListInfoResp', authSettings);
     }
 
     /**
