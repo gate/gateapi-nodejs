@@ -19,6 +19,10 @@ export class CrossexRiskLimitTier {
      */
     'maxRiskLimitValue': string;
     /**
+     * Quick-calculation amount
+     */
+    'quickCalAmount': string;
+    /**
      * Maximum leverage
      */
     'leverageMax': string;
@@ -42,6 +46,11 @@ export class CrossexRiskLimitTier {
         {
             name: 'maxRiskLimitValue',
             baseName: 'max_risk_limit_value',
+            type: 'string',
+        },
+        {
+            name: 'quickCalAmount',
+            baseName: 'quick_cal_amount',
             type: 'string',
         },
         {

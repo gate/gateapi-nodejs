@@ -534,7 +534,9 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
 const opts = {
-  'subUid': "10003" // string | Sub-account user ID, you can query multiple records separated by `,`. If not specified, it will return records of all sub-accounts
+  'subUid': "10003", // string | Sub-account user ID, you can query multiple records separated by `,`. If not specified, it will return records of all sub-accounts
+  'page': 1, // number | Page number
+  'limit': 100 // number | Maximum number of records returned. Default 20, max 100.
 };
 api.listSubAccountBalances(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -547,6 +549,8 @@ api.listSubAccountBalances(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subUid** | **string**| Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records returned. Default 20, max 100. | [optional] [default to 100]
 
 ### Return type
 

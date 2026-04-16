@@ -55,7 +55,7 @@ export class WithdrawalRecord {
      */
     'failReason'?: string;
     /**
-     * Withdrawal final time, i.e.: withdrawal cancellation time or withdrawal success time When status = CANCEL, corresponds to cancellation time When status = DONE and block_number > 0, it is the withdrawal success time
+     * Withdrawal final time, i.e.: withdrawal cancellation time or withdrawal success time When status = CANCEL, corresponds to cancellation time When status = DONE, it is the withdrawal success time
      */
     'timestamp2'?: string;
     /**
@@ -63,7 +63,7 @@ export class WithdrawalRecord {
      */
     'memo'?: string;
     /**
-     * Transaction Status  - BCODE: Deposit Code Operation - CANCEL: Cancelled - CANCELPEND: Withdrawal Cancellation Pending - DONE: Completed (Only considered truly on-chain when block_number > 0) - EXTPEND: Sent and Waiting for Confirmation - FAIL: On-Chain Failure Pending Confirmation - FVERIFY: Facial Verification in Progress - LOCKED: Wallet-Side Order Locked - MANUAL: Pending Manual Review - REJECT: Rejected - REQUEST: Request in Progress - REVIEW: Under Review
+     * Transaction Status  - BCODE: Deposit Code Operation - CANCEL: Cancelled - CANCELPEND: Withdrawal Cancellation Pending - DONE: Completed - EXTPEND: Sent and Waiting for Confirmation - FAIL: On-Chain Failure Pending Confirmation - FVERIFY: Facial Verification in Progress - LOCKED: Wallet-Side Order Locked - MANUAL: Pending Manual Review - REJECT: Rejected - REQUEST: Request in Progress - REVIEW: Under Review
      */
     'status'?: string;
     /**

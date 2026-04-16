@@ -5,6 +5,10 @@ export * from './activityApi';
 import { ActivityApi } from './activityApi';
 export * from './alphaApi';
 import { AlphaApi } from './alphaApi';
+export * from './assetswapApi';
+import { AssetswapApi } from './assetswapApi';
+export * from './botApi';
+import { BotApi } from './botApi';
 export * from './couponApi';
 import { CouponApi } from './couponApi';
 export * from './crossExApi';
@@ -56,6 +60,8 @@ export const APIS = [
     AccountApi,
     ActivityApi,
     AlphaApi,
+    AssetswapApi,
+    BotApi,
     CouponApi,
     CrossExApi,
     DeliveryApi,

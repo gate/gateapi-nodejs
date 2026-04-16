@@ -23,7 +23,7 @@ export class AgencyCommission {
      */
     'groupName'?: string;
     /**
-     * Transaction amount
+     * Commission amount
      */
     'commissionAmount'?: string;
     /**

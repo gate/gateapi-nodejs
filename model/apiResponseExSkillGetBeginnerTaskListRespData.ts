@@ -16,7 +16,7 @@ import { ApiResponseExSkillGetBeginnerTaskListRespDataTasks } from './apiRespons
  */
 export class ApiResponseExSkillGetBeginnerTaskListRespData {
     /**
-     * Beginner task list (registration tasks first, onboarding tasks after)
+     * 入门任务列表（注册任务在前，引导任务在后；满足条件时会额外返回一条待领取下载任务）
      */
     'tasks'?: Array<ApiResponseExSkillGetBeginnerTaskListRespDataTasks>;
 

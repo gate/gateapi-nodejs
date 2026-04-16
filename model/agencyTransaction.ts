@@ -39,7 +39,7 @@ export class AgencyTransaction {
      */
     'amount'?: string;
     /**
-     * Commission Asset
+     * Transaction amount currency
      */
     'amountAsset'?: string;
     /**

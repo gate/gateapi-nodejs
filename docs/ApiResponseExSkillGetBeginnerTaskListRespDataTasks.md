@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **welfareTaskId** | **number** | Rewards Center task ID | [optional] [default to undefined]
-**taskCenterId** | **number** | Task center task ID (fixed at 0 for registration tasks) | [optional] [default to undefined]
-**taskType** | **number** | Task type: 1 &#x3D; KYC level-2 verification, 2 &#x3D; spot, 3 &#x3D; futures, 4 &#x3D; referral, 5 &#x3D; quantitative, 6 &#x3D; earn, 7 &#x3D; startup, 8 &#x3D; first deposit, 10 &#x3D; registration task, 11 &#x3D; onboarding task | [optional] [default to undefined]
+**taskCenterId** | **number** | Task center task ID (fixed at 0 for registration tasks) | [default to undefined]
+**taskType** | **number** | 任务类型：1&#x3D;KYC二级认证 2&#x3D;现货 3&#x3D;合约 4&#x3D;邀请 5&#x3D;量化 6&#x3D;余币宝 7&#x3D;startup 8&#x3D;首次入金 10&#x3D;注册任务 11&#x3D;引导任务 23&#x3D;下载任务 | [optional] [default to undefined]
 **taskName** | **string** | Task name | [optional] [default to undefined]
 **taskDesc** | **string** | Task description, may contain &lt;span&gt; highlight tags | [optional] [default to undefined]
 **rewardNum** | **string** | Reward value | [optional] [default to undefined]
 **rewardUnit** | **string** | Reward unit (e.g., USDT, BTC) | [optional] [default to undefined]
 **prizeType** | **number** | Reward type: 1 &#x3D; points, 2 &#x3D; regular coupon, 3 &#x3D; VIP coupon | [optional] [default to undefined]
-**status** | **number** | Task status: 0 &#x3D; unclaimed, 1 &#x3D; claimed, 2 &#x3D; reward pending, 3 &#x3D; rewarding, 4 &#x3D; completed, 5 &#x3D; expired | [optional] [default to undefined]
+**status** | **number** | 任务状态：0&#x3D;未领取（典型为待领取下载任务） 1&#x3D;已领取/进行中 2&#x3D;已完成待领奖 3&#x3D;发奖中 4&#x3D;已完成/已结算 5&#x3D;已过期 | [default to undefined]
 
 ## Enum: ApiResponseExSkillGetBeginnerTaskListRespDataTasks.PrizeType
 

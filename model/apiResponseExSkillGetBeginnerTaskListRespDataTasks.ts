@@ -10,7 +10,7 @@
  */
 
 /**
- * Beginner task information
+ * 入门任务信息。`task_center_id` 与 `status` 列入 required：二者均允许为 0（注册任务、待领取下载任务）， 且避免 Go SDK 对整型零值使用 omitempty 导致客户端序列化时丢失字段。
  */
 export class ApiResponseExSkillGetBeginnerTaskListRespDataTasks {
     /**
@@ -20,9 +20,9 @@ export class ApiResponseExSkillGetBeginnerTaskListRespDataTasks {
     /**
      * Task center task ID (fixed at 0 for registration tasks)
      */
-    'taskCenterId'?: number;
+    'taskCenterId': number;
     /**
-     * Task type: 1 = KYC level-2 verification, 2 = spot, 3 = futures, 4 = referral, 5 = quantitative, 6 = earn, 7 = startup, 8 = first deposit, 10 = registration task, 11 = onboarding task
+     * 任务类型：1=KYC二级认证 2=现货 3=合约 4=邀请 5=量化 6=余币宝 7=startup 8=首次入金 10=注册任务 11=引导任务 23=下载任务
      */
     'taskType'?: number;
     /**
@@ -46,9 +46,9 @@ export class ApiResponseExSkillGetBeginnerTaskListRespDataTasks {
      */
     'prizeType'?: ApiResponseExSkillGetBeginnerTaskListRespDataTasks.PrizeType;
     /**
-     * Task status: 0 = unclaimed, 1 = claimed, 2 = reward pending, 3 = rewarding, 4 = completed, 5 = expired
+     * 任务状态：0=未领取（典型为待领取下载任务） 1=已领取/进行中 2=已完成待领奖 3=发奖中 4=已完成/已结算 5=已过期
      */
-    'status'?: ApiResponseExSkillGetBeginnerTaskListRespDataTasks.Status;
+    'status': ApiResponseExSkillGetBeginnerTaskListRespDataTasks.Status;
 
     static discriminator: string | undefined = undefined;
 

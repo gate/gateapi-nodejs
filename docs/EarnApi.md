@@ -8,6 +8,10 @@ Method | HTTP request | Description
 [**listDualOrders**](EarnApi.md#listDualOrders) | **GET** /earn/dual/orders | Dual Investment order list
 [**placeDualOrder**](EarnApi.md#placeDualOrder) | **POST** /earn/dual/orders | Place Dual Investment order
 [**listDualBalance**](EarnApi.md#listDualBalance) | **GET** /earn/dual/balance | Dual-Currency Earning Assets
+[**getDualOrderRefundPreview**](EarnApi.md#getDualOrderRefundPreview) | **GET** /earn/dual/order-refund-preview | Dual-currency early redemption preview
+[**placeDualOrderRefund**](EarnApi.md#placeDualOrderRefund) | **POST** /earn/dual/order-refund | Dual-currency order early redemption
+[**modifyDualOrderReinvest**](EarnApi.md#modifyDualOrderReinvest) | **POST** /earn/dual/modify-order-reinvest | Modify dual-currency order reinvest
+[**getDualProjectRecommend**](EarnApi.md#getDualProjectRecommend) | **GET** /earn/dual/project-recommend | Dual-currency recommended projects
 [**findCoin**](EarnApi.md#findCoin) | **GET** /earn/staking/coins | Staking coins
 [**swapStakingCoin**](EarnApi.md#swapStakingCoin) | **POST** /earn/staking/swap | On-chain token swap for earned coins
 [**orderList**](EarnApi.md#orderList) | **GET** /earn/staking/order_list | List of on-chain coin-earning orders
@@ -48,7 +52,13 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.EarnApi(client);
 const opts = {
-  'planId': 1 // number | Financial project ID
+  'planId': 1, // number | Financial project ID
+  'coin': "BTC", // string | Investment Token
+  'type': "call", // string | Type enum: `put` — buy low; `call` — sell high
+  'quoteCurrency': "quoteCurrency_example", // string | Settlement currency enum: defaults to USDT; GUSD optional
+  'sort': "sort_example", // string | Sort field enum: `apy` — highest APY first `short-period` — shortest tenor first `multiple` — highest premium first
+  'page': 1, // number | page number
+  'pageSize': 3 // number | Items per page
 };
 api.listDualInvestmentPlans(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -61,6 +71,12 @@ api.listDualInvestmentPlans(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **planId** | **number**| Financial project ID | [optional] [default to undefined]
+ **coin** | **string**| Investment Token | [optional] [default to undefined]
+ **type** | **string**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | [optional] [default to undefined]
+ **quoteCurrency** | **string**| Settlement currency enum: defaults to USDT; GUSD optional | [optional] [default to undefined]
+ **sort** | **string**| Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first | [optional] [default to undefined]
+ **page** | **number**| page number | [optional] [default to undefined]
+ **pageSize** | **number**| Items per page | [optional] [default to undefined]
 
 ### Return type
 
@@ -95,6 +111,9 @@ const api = new GateApi.EarnApi(client);
 const opts = {
   'from': 1740727000, // number | Start settlement time
   'to': 1740729000, // number | End settlement time
+  'type': "put", // string | Type enum: `put` — buy low; `call` — sell high
+  'status': "HOLD", // string | Order status enum: `HOLD` — open position `REPAY` — historical position `PROCESSING` — position active `SETTLEMENT_PROCESSING` — settlement in progress `ALL` — all
+  'coin': "BTC", // string | Investment Token
   'page': 1, // number | Page number
   'limit': 100 // number | Maximum number of records returned in a single list
 };
@@ -110,6 +129,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **from** | **number**| Start settlement time | [optional] [default to undefined]
  **to** | **number**| End settlement time | [optional] [default to undefined]
+ **type** | **string**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | [optional] [default to undefined]
+ **status** | **string**| Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all | [optional] [default to undefined]
+ **coin** | **string**| Investment Token | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
 
@@ -198,6 +220,186 @@ This endpoint does not need any parameter.
 ### Return type
 
 Promise<{ response: AxiosResponse; body: DualGetBalance; }> [DualGetBalance](DualGetBalance.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getDualOrderRefundPreview
+
+> Promise<{ response: http.IncomingMessage; body: DualOrderRefundPreview; }> getDualOrderRefundPreview(orderId)
+
+Dual-currency early redemption preview
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const orderId = "9497"; // string | Order ID
+api.getDualOrderRefundPreview(orderId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **string**| Order ID | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: DualOrderRefundPreview; }> [DualOrderRefundPreview](DualOrderRefundPreview.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## placeDualOrderRefund
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> placeDualOrderRefund(dualOrderRefundParams)
+
+Dual-currency order early redemption
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const dualOrderRefundParams = new DualOrderRefundParams(); // DualOrderRefundParams | 
+api.placeDualOrderRefund(dualOrderRefundParams)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dualOrderRefundParams** | [**DualOrderRefundParams**](DualOrderRefundParams.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## modifyDualOrderReinvest
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> modifyDualOrderReinvest(dualModifyOrderReinvestParams)
+
+Modify dual-currency order reinvest
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const dualModifyOrderReinvestParams = new DualModifyOrderReinvestParams(); // DualModifyOrderReinvestParams | 
+api.modifyDualOrderReinvest(dualModifyOrderReinvestParams)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dualModifyOrderReinvestParams** | [**DualModifyOrderReinvestParams**](DualModifyOrderReinvestParams.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## getDualProjectRecommend
+
+> Promise<{ response: http.IncomingMessage; body: Array<DualProjectRecommend>; }> getDualProjectRecommend(opts)
+
+Dual-currency recommended projects
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const opts = {
+  'mode': "normal", // string | Sort mode; default `normal`: `senior` — curated picks (APR/tenor) `apy_up` — APY ascending `ep_down` — target price descending `ep_up` — target price ascending `dt_down` — maturity time descending `dt_up` — maturity time ascending
+  'coin': "ETH", // string | Investment Token
+  'type': "call", // string | `call`: sell high; `put`: buy low
+  'historyPids': "110656,110652" // string | Comma-separated project IDs to exclude already recommended items
+};
+api.getDualProjectRecommend(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mode** | **string**| Sort mode; default &#x60;normal&#x60;: &#x60;senior&#x60; — curated picks (APR/tenor) &#x60;apy_up&#x60; — APY ascending &#x60;ep_down&#x60; — target price descending &#x60;ep_up&#x60; — target price ascending &#x60;dt_down&#x60; — maturity time descending &#x60;dt_up&#x60; — maturity time ascending | [optional] [default to undefined]
+ **coin** | **string**| Investment Token | [optional] [default to undefined]
+ **type** | **string**| &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low | [optional] [default to undefined]
+ **historyPids** | **string**| Comma-separated project IDs to exclude already recommended items | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<DualProjectRecommend>; }> [DualProjectRecommend](DualProjectRecommend.md)
 
 ### Authorization
 

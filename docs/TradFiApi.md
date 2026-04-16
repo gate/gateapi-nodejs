@@ -490,7 +490,7 @@ Promise<{ response: AxiosResponse; body: OrderList; }> [OrderList](OrderList.md)
 
 ## createTradFiOrder
 
-> Promise<{ response: http.IncomingMessage; body: CreateOrder; }> createTradFiOrder(tradFiOrderRequest)
+> Promise<{ response: http.IncomingMessage; body: CreateOrder2; }> createTradFiOrder(tradFiOrderRequest)
 
 Create an order
 
@@ -520,7 +520,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: CreateOrder; }> [CreateOrder](CreateOrder.md)
+Promise<{ response: AxiosResponse; body: CreateOrder2; }> [CreateOrder2](CreateOrder2.md)
 
 ### Authorization
 

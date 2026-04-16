@@ -633,9 +633,13 @@ export class WalletApi {
      * @summary Query sub-account balance information
      * @param opts Optional parameters
      * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned. Default 20, max 100.
      */
     public async listSubAccountBalances(opts?: {
         subUid?: string;
+        page?: number;
+        limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_balances';
         let localVarQueryParameters: any = {};
@@ -656,6 +660,24 @@ export class WalletApi {
                 subUidSerialized = subUidSerialized.join(',');
             }
             localVarQueryParameters['sub_uid'] = subUidSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
         }
 
         const config: AxiosRequestConfig = {

@@ -23,6 +23,10 @@ export class FuturesPriceTriggeredOrder {
      */
     'id'?: bigint;
     /**
+     * String form of the auto order ID; the same order as numeric `id`, as the decimal string of `id` to avoid int64 precision loss in JavaScript and similar environments. Prefer this field to display the order ID or when a string unique identifier is needed; one-to-one with `id`. Same meaning as the field of the same name in futures price-trigger REST APIs and in `futures.orders` / `futures.autoorders` WebSocket pushes.
+     */
+    'idString'?: string;
+    /**
      * User ID
      */
     'user'?: number;
@@ -76,6 +80,11 @@ export class FuturesPriceTriggeredOrder {
             name: 'id',
             baseName: 'id',
             type: 'bigint',
+        },
+        {
+            name: 'idString',
+            baseName: 'id_string',
+            type: 'string',
         },
         {
             name: 'user',

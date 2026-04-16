@@ -18,7 +18,7 @@ export class ApiResponseExSkillGetBeginnerTaskListResp {
     /**
      * Business error code: 0 = success, 1007 = no task data, 1008 = not logged in
      */
-    'code'?: number;
+    'code': number;
     /**
      * Error identifier code. Empty string on success, machine-readable error label on error
      */
@@ -31,7 +31,7 @@ export class ApiResponseExSkillGetBeginnerTaskListResp {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 

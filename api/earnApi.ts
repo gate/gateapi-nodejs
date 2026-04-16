@@ -29,6 +29,10 @@ import { CreateEarnFixedTermPreRedeemResponse } from '../model/createEarnFixedTe
 import { DualGetBalance } from '../model/dualGetBalance';
 import { DualGetOrders } from '../model/dualGetOrders';
 import { DualGetPlans } from '../model/dualGetPlans';
+import { DualModifyOrderReinvestParams } from '../model/dualModifyOrderReinvestParams';
+import { DualOrderRefundParams } from '../model/dualOrderRefundParams';
+import { DualOrderRefundPreview } from '../model/dualOrderRefundPreview';
+import { DualProjectRecommend } from '../model/dualProjectRecommend';
 import { EarnFixedTermPreRedeemRequest } from '../model/earnFixedTermPreRedeemRequest';
 import { FixedTermLendRequest } from '../model/fixedTermLendRequest';
 import { ListEarnFixedTermHistoryResponse } from '../model/listEarnFixedTermHistoryResponse';
@@ -64,9 +68,21 @@ export class EarnApi {
      * @summary Dual Investment product list
      * @param opts Optional parameters
      * @param opts.planId Financial project ID
+     * @param opts.coin Investment Token
+     * @param opts.type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high
+     * @param opts.quoteCurrency Settlement currency enum: defaults to USDT; GUSD optional
+     * @param opts.sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first
+     * @param opts.page page number
+     * @param opts.pageSize Items per page
      */
     public async listDualInvestmentPlans(opts?: {
         planId?: number;
+        coin?: string;
+        type?: string;
+        quoteCurrency?: string;
+        sort?: string;
+        page?: number;
+        pageSize?: number;
     }): Promise<{ response: AxiosResponse; body: Array<DualGetPlans> }> {
         const localVarPath = this.client.basePath + '/earn/dual/investment_plan';
         let localVarQueryParameters: any = {};
@@ -89,6 +105,60 @@ export class EarnApi {
             localVarQueryParameters['plan_id'] = planIdSerialized;
         }
 
+        if (opts.coin !== undefined) {
+            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(coinSerialized)) {
+                coinSerialized = coinSerialized.join(',');
+            }
+            localVarQueryParameters['coin'] = coinSerialized;
+        }
+
+        if (opts.type !== undefined) {
+            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        if (opts.quoteCurrency !== undefined) {
+            let quoteCurrencySerialized = ObjectSerializer.serialize(opts.quoteCurrency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(quoteCurrencySerialized)) {
+                quoteCurrencySerialized = quoteCurrencySerialized.join(',');
+            }
+            localVarQueryParameters['quote_currency'] = quoteCurrencySerialized;
+        }
+
+        if (opts.sort !== undefined) {
+            let sortSerialized = ObjectSerializer.serialize(opts.sort, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sortSerialized)) {
+                sortSerialized = sortSerialized.join(',');
+            }
+            localVarQueryParameters['sort'] = sortSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -106,12 +176,18 @@ export class EarnApi {
      * @param opts Optional parameters
      * @param opts.from Start settlement time
      * @param opts.to End settlement time
+     * @param opts.type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high
+     * @param opts.status Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all
+     * @param opts.coin Investment Token
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in a single list
      */
     public async listDualOrders(opts?: {
         from?: number;
         to?: number;
+        type?: string;
+        status?: string;
+        coin?: string;
         page?: number;
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<DualGetOrders> }> {
@@ -143,6 +219,33 @@ export class EarnApi {
                 toSerialized = toSerialized.join(',');
             }
             localVarQueryParameters['to'] = toSerialized;
+        }
+
+        if (opts.type !== undefined) {
+            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        if (opts.status !== undefined) {
+            let statusSerialized = ObjectSerializer.serialize(opts.status, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(statusSerialized)) {
+                statusSerialized = statusSerialized.join(',');
+            }
+            localVarQueryParameters['status'] = statusSerialized;
+        }
+
+        if (opts.coin !== undefined) {
+            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(coinSerialized)) {
+                coinSerialized = coinSerialized.join(',');
+            }
+            localVarQueryParameters['coin'] = coinSerialized;
         }
 
         if (opts.page !== undefined) {
@@ -237,6 +340,184 @@ export class EarnApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<DualGetBalance>(config, 'DualGetBalance', authSettings);
+    }
+
+    /**
+     *
+     * @summary Dual-currency early redemption preview
+     * @param orderId Order ID
+     */
+    public async getDualOrderRefundPreview(
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: DualOrderRefundPreview }> {
+        const localVarPath = this.client.basePath + '/earn/dual/order-refund-preview';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling getDualOrderRefundPreview.');
+        }
+
+        let orderIdSerialized = ObjectSerializer.serialize(orderId, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(orderIdSerialized)) {
+            orderIdSerialized = orderIdSerialized.join(',');
+        }
+        localVarQueryParameters['order_id'] = orderIdSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<DualOrderRefundPreview>(config, 'DualOrderRefundPreview', authSettings);
+    }
+
+    /**
+     *
+     * @summary Dual-currency order early redemption
+     * @param dualOrderRefundParams
+     */
+    public async placeDualOrderRefund(
+        dualOrderRefundParams: DualOrderRefundParams,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/earn/dual/order-refund';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'dualOrderRefundParams' is not null or undefined
+        if (dualOrderRefundParams === null || dualOrderRefundParams === undefined) {
+            throw new Error(
+                'Required parameter dualOrderRefundParams was null or undefined when calling placeDualOrderRefund.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(dualOrderRefundParams, 'DualOrderRefundParams'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary Modify dual-currency order reinvest
+     * @param dualModifyOrderReinvestParams
+     */
+    public async modifyDualOrderReinvest(
+        dualModifyOrderReinvestParams: DualModifyOrderReinvestParams,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/earn/dual/modify-order-reinvest';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'dualModifyOrderReinvestParams' is not null or undefined
+        if (dualModifyOrderReinvestParams === null || dualModifyOrderReinvestParams === undefined) {
+            throw new Error(
+                'Required parameter dualModifyOrderReinvestParams was null or undefined when calling modifyDualOrderReinvest.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(dualModifyOrderReinvestParams, 'DualModifyOrderReinvestParams'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary Dual-currency recommended projects
+     * @param opts Optional parameters
+     * @param opts.mode Sort mode; default &#x60;normal&#x60;: &#x60;senior&#x60; — curated picks (APR/tenor) &#x60;apy_up&#x60; — APY ascending &#x60;ep_down&#x60; — target price descending &#x60;ep_up&#x60; — target price ascending &#x60;dt_down&#x60; — maturity time descending &#x60;dt_up&#x60; — maturity time ascending
+     * @param opts.coin Investment Token
+     * @param opts.type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low
+     * @param opts.historyPids Comma-separated project IDs to exclude already recommended items
+     */
+    public async getDualProjectRecommend(opts?: {
+        mode?: string;
+        coin?: string;
+        type?: string;
+        historyPids?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<DualProjectRecommend> }> {
+        const localVarPath = this.client.basePath + '/earn/dual/project-recommend';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.mode !== undefined) {
+            let modeSerialized = ObjectSerializer.serialize(opts.mode, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(modeSerialized)) {
+                modeSerialized = modeSerialized.join(',');
+            }
+            localVarQueryParameters['mode'] = modeSerialized;
+        }
+
+        if (opts.coin !== undefined) {
+            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(coinSerialized)) {
+                coinSerialized = coinSerialized.join(',');
+            }
+            localVarQueryParameters['coin'] = coinSerialized;
+        }
+
+        if (opts.type !== undefined) {
+            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        if (opts.historyPids !== undefined) {
+            let historyPidsSerialized = ObjectSerializer.serialize(opts.historyPids, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(historyPidsSerialized)) {
+                historyPidsSerialized = historyPidsSerialized.join(',');
+            }
+            localVarQueryParameters['history_pids'] = historyPidsSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<DualProjectRecommend>>(config, 'Array<DualProjectRecommend>', authSettings);
     }
 
     /**

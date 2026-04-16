@@ -12,7 +12,7 @@
 /* tslint:disable:no-unused-locals */
 import { Categories } from '../model/categories';
 import { ContractDetail } from '../model/contractDetail';
-import { CreateOrder } from '../model/createOrder';
+import { CreateOrder2 } from '../model/createOrder2';
 import { CreateTransaction } from '../model/createTransaction';
 import { CreateUserResp } from '../model/createUserResp';
 import { DeletePosition } from '../model/deletePosition';
@@ -510,7 +510,7 @@ export class TradFiApi {
      */
     public async createTradFiOrder(
         tradFiOrderRequest: TradFiOrderRequest,
-    ): Promise<{ response: AxiosResponse; body: CreateOrder }> {
+    ): Promise<{ response: AxiosResponse; body: CreateOrder2 }> {
         const localVarPath = this.client.basePath + '/tradfi/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -538,7 +538,7 @@ export class TradFiApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<CreateOrder>(config, 'CreateOrder', authSettings);
+        return this.client.request<CreateOrder2>(config, 'CreateOrder2', authSettings);
     }
 
     /**

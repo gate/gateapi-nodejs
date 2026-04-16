@@ -10,25 +10,9 @@
  */
 
 /**
- * Order result
+ * 合约马丁策略支持的方向枚举，和 App 原始接口保持一致。
  */
-export class CreateOrderData {
-    /**
-     * Queue Task ID (not task ID)
-     */
-    'id'?: string;
-
-    static discriminator: string | undefined = undefined;
-
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
-        },
-    ];
-
-    static getAttributeTypeMap() {
-        return CreateOrderData.attributeTypeMap;
-    }
+export enum ContractMartingaleDirection {
+    Buy = <any>'buy',
+    Sell = <any>'sell',
 }

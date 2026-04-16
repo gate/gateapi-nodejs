@@ -86,6 +86,10 @@ export class Contract {
      */
     'riskLimitBase'?: string;
     /**
+     * Interest rate parameter used in funding rate and premium-related calculations for perpetual contracts. Returned as a string decimal ratio (e.g. `0.0003`), same convention as `funding_rate` (ratio, not percent).
+     */
+    'interestRate'?: string;
+    /**
      * Risk limit adjustment step (deprecated)
      */
     'riskLimitStep'?: string;
@@ -190,6 +194,10 @@ export class Contract {
      */
     'fundingRateLimit'?: string;
     /**
+     * Contract classification type, e.g. stocks, metals, indices, forex, commodities, etc.
+     */
+    'contractType'?: string;
+    /**
      * Funding rate depth impact value
      */
     'fundingImpactValue'?: string;
@@ -285,6 +293,11 @@ export class Contract {
         {
             name: 'riskLimitBase',
             baseName: 'risk_limit_base',
+            type: 'string',
+        },
+        {
+            name: 'interestRate',
+            baseName: 'interest_rate',
             type: 'string',
         },
         {
@@ -415,6 +428,11 @@ export class Contract {
         {
             name: 'fundingRateLimit',
             baseName: 'funding_rate_limit',
+            type: 'string',
+        },
+        {
+            name: 'contractType',
+            baseName: 'contract_type',
             type: 'string',
         },
         {

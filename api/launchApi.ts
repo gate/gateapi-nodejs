@@ -10,7 +10,21 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { CandyDropV4ActivityCd01 } from '../model/candyDropV4ActivityCd01';
+import { CandyDropV4ActivityRulesCd03 } from '../model/candyDropV4ActivityRulesCd03';
+import { CandyDropV4AirdropRecordCd06 } from '../model/candyDropV4AirdropRecordCd06';
+import { CandyDropV4ErrorCd01 } from '../model/candyDropV4ErrorCd01';
+import { CandyDropV4ParticipationRecordCd05 } from '../model/candyDropV4ParticipationRecordCd05';
+import { CandyDropV4RegisterReqCd02 } from '../model/candyDropV4RegisterReqCd02';
+import { CandyDropV4RegisterRespCd02 } from '../model/candyDropV4RegisterRespCd02';
+import { CandyDropV4TaskProgressCd04 } from '../model/candyDropV4TaskProgressCd04';
 import { CreateOrderV4 } from '../model/createOrderV4';
+import { HodlerAirdropV4ErrorResponse } from '../model/hodlerAirdropV4ErrorResponse';
+import { HodlerAirdropV4OrderRequest } from '../model/hodlerAirdropV4OrderRequest';
+import { HodlerAirdropV4OrderResponse } from '../model/hodlerAirdropV4OrderResponse';
+import { HodlerAirdropV4ProjectItem } from '../model/hodlerAirdropV4ProjectItem';
+import { HodlerAirdropV4UserAirdropRecord } from '../model/hodlerAirdropV4UserAirdropRecord';
+import { HodlerAirdropV4UserOrderRecord } from '../model/hodlerAirdropV4UserOrderRecord';
 import { LaunchPoolV4CreateOrderResponse } from '../model/launchPoolV4CreateOrderResponse';
 import { LaunchPoolV4ErrorResponse } from '../model/launchPoolV4ErrorResponse';
 import { LaunchPoolV4PledgeRecord } from '../model/launchPoolV4PledgeRecord';
@@ -407,6 +421,751 @@ export class LaunchApi {
         return this.client.request<Array<LaunchPoolV4RewardRecord>>(
             config,
             'Array<LaunchPoolV4RewardRecord>',
+            authSettings,
+        );
+    }
+
+    /**
+     * 获取HODLer Airdrop活动列表，支持按状态、币种/项目名称、参与情况筛选。此接口无需用户登录，登录用户可获取个人参与信息。
+     * @summary 查询HODLer Airdrop活动列表
+     * @param opts Optional parameters
+     * @param opts.status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部
+     * @param opts.keyword 币种/项目名称关键词，模糊匹配
+     * @param opts.join 参与情况筛选：0全部（默认），1仅已参与
+     * @param opts.page 页码，默认1
+     * @param opts.size 每页条数，默认10
+     */
+    public async getHodlerAirdropProjectList(opts?: {
+        status?: 'ACTIVE' | 'UNDERWAY' | 'PREHEAT' | 'FINISH';
+        keyword?: string;
+        join?: 0 | 1;
+        page?: number;
+        size?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<HodlerAirdropV4ProjectItem> }> {
+        const localVarPath = this.client.basePath + '/launch/hodler-airdrop/project-list';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.status !== undefined) {
+            let statusSerialized = ObjectSerializer.serialize(
+                opts.status,
+                "'ACTIVE' | 'UNDERWAY' | 'PREHEAT' | 'FINISH'",
+            );
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(statusSerialized)) {
+                statusSerialized = statusSerialized.join(',');
+            }
+            localVarQueryParameters['status'] = statusSerialized;
+        }
+
+        if (opts.keyword !== undefined) {
+            let keywordSerialized = ObjectSerializer.serialize(opts.keyword, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(keywordSerialized)) {
+                keywordSerialized = keywordSerialized.join(',');
+            }
+            localVarQueryParameters['keyword'] = keywordSerialized;
+        }
+
+        if (opts.join !== undefined) {
+            let joinSerialized = ObjectSerializer.serialize(opts.join, '0 | 1');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(joinSerialized)) {
+                joinSerialized = joinSerialized.join(',');
+            }
+            localVarQueryParameters['join'] = joinSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.size !== undefined) {
+            let sizeSerialized = ObjectSerializer.serialize(opts.size, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sizeSerialized)) {
+                sizeSerialized = sizeSerialized.join(',');
+            }
+            localVarQueryParameters['size'] = sizeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<HodlerAirdropV4ProjectItem>>(
+            config,
+            'Array<HodlerAirdropV4ProjectItem>',
+            authSettings,
+        );
+    }
+
+    /**
+     * 参与指定的HODLer Airdrop活动，需持有GT。此接口需要用户登录认证，且须满足KYC要求，不支持子账户、企业/机构用户。
+     * @summary 参与HODLer Airdrop活动
+     * @param hodlerAirdropV4OrderRequest
+     */
+    public async hodlerAirdropOrder(
+        hodlerAirdropV4OrderRequest: HodlerAirdropV4OrderRequest,
+    ): Promise<{ response: AxiosResponse; body: HodlerAirdropV4OrderResponse }> {
+        const localVarPath = this.client.basePath + '/launch/hodler-airdrop/order';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'hodlerAirdropV4OrderRequest' is not null or undefined
+        if (hodlerAirdropV4OrderRequest === null || hodlerAirdropV4OrderRequest === undefined) {
+            throw new Error(
+                'Required parameter hodlerAirdropV4OrderRequest was null or undefined when calling hodlerAirdropOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(hodlerAirdropV4OrderRequest, 'HodlerAirdropV4OrderRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<HodlerAirdropV4OrderResponse>(config, 'HodlerAirdropV4OrderResponse', authSettings);
+    }
+
+    /**
+     * 查询用户的HODLer Airdrop参与记录，返回每个活动的有效持仓和空投金额。此接口需要用户登录认证。
+     * @summary 查询HODLer Airdrop参与记录
+     * @param opts Optional parameters
+     * @param opts.keyword 币种名称关键词筛选
+     * @param opts.startTimest 开始时间戳（秒）
+     * @param opts.endTimest 结束时间戳（秒）
+     * @param opts.page 页码，默认1
+     * @param opts.size 每页条数，默认10
+     */
+    public async getHodlerAirdropUserOrderRecords(opts?: {
+        keyword?: string;
+        startTimest?: number;
+        endTimest?: number;
+        page?: number;
+        size?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<HodlerAirdropV4UserOrderRecord> }> {
+        const localVarPath = this.client.basePath + '/launch/hodler-airdrop/user-order-records';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.keyword !== undefined) {
+            let keywordSerialized = ObjectSerializer.serialize(opts.keyword, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(keywordSerialized)) {
+                keywordSerialized = keywordSerialized.join(',');
+            }
+            localVarQueryParameters['keyword'] = keywordSerialized;
+        }
+
+        if (opts.startTimest !== undefined) {
+            let startTimestSerialized = ObjectSerializer.serialize(opts.startTimest, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(startTimestSerialized)) {
+                startTimestSerialized = startTimestSerialized.join(',');
+            }
+            localVarQueryParameters['start_timest'] = startTimestSerialized;
+        }
+
+        if (opts.endTimest !== undefined) {
+            let endTimestSerialized = ObjectSerializer.serialize(opts.endTimest, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(endTimestSerialized)) {
+                endTimestSerialized = endTimestSerialized.join(',');
+            }
+            localVarQueryParameters['end_timest'] = endTimestSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.size !== undefined) {
+            let sizeSerialized = ObjectSerializer.serialize(opts.size, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sizeSerialized)) {
+                sizeSerialized = sizeSerialized.join(',');
+            }
+            localVarQueryParameters['size'] = sizeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<HodlerAirdropV4UserOrderRecord>>(
+            config,
+            'Array<HodlerAirdropV4UserOrderRecord>',
+            authSettings,
+        );
+    }
+
+    /**
+     * 查询用户已获得的HODLer Airdrop空投发放记录，包含基础空投、额外空投和自动兑换状态。此接口需要用户登录认证。
+     * @summary 查询HODLer Airdrop空投记录
+     * @param opts Optional parameters
+     * @param opts.keyword 币种名称关键词筛选
+     * @param opts.startTimest 开始时间戳（秒）
+     * @param opts.endTimest 结束时间戳（秒）
+     * @param opts.page 页码，默认1
+     * @param opts.size 每页条数，默认10
+     */
+    public async getHodlerAirdropUserAirdropRecords(opts?: {
+        keyword?: string;
+        startTimest?: number;
+        endTimest?: number;
+        page?: number;
+        size?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<HodlerAirdropV4UserAirdropRecord> }> {
+        const localVarPath = this.client.basePath + '/launch/hodler-airdrop/user-airdrop-records';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.keyword !== undefined) {
+            let keywordSerialized = ObjectSerializer.serialize(opts.keyword, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(keywordSerialized)) {
+                keywordSerialized = keywordSerialized.join(',');
+            }
+            localVarQueryParameters['keyword'] = keywordSerialized;
+        }
+
+        if (opts.startTimest !== undefined) {
+            let startTimestSerialized = ObjectSerializer.serialize(opts.startTimest, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(startTimestSerialized)) {
+                startTimestSerialized = startTimestSerialized.join(',');
+            }
+            localVarQueryParameters['start_timest'] = startTimestSerialized;
+        }
+
+        if (opts.endTimest !== undefined) {
+            let endTimestSerialized = ObjectSerializer.serialize(opts.endTimest, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(endTimestSerialized)) {
+                endTimestSerialized = endTimestSerialized.join(',');
+            }
+            localVarQueryParameters['end_timest'] = endTimestSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.size !== undefined) {
+            let sizeSerialized = ObjectSerializer.serialize(opts.size, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sizeSerialized)) {
+                sizeSerialized = sizeSerialized.join(',');
+            }
+            localVarQueryParameters['size'] = sizeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<HodlerAirdropV4UserAirdropRecord>>(
+            config,
+            'Array<HodlerAirdropV4UserAirdropRecord>',
+            authSettings,
+        );
+    }
+
+    /**
+     * 支持多维度筛选 CandyDrop 活动，每次查询返回列表排序的前十条数据。不需要登录。
+     * @summary 查询活动列表
+     * @param opts Optional parameters
+     * @param opts.status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部
+     * @param opts.ruleName 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF)
+     * @param opts.registerStatus 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部
+     * @param opts.currency 币种名称筛选
+     * @param opts.limit 返回条数，默认10，最大30
+     * @param opts.offset 偏移量，默认0
+     */
+    public async getCandyDropActivityListV4(opts?: {
+        status?: 'ongoing' | 'upcoming' | 'ended';
+        ruleName?: string;
+        registerStatus?: 'registered' | 'unregistered';
+        currency?: string;
+        limit?: number;
+        offset?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<CandyDropV4ActivityCd01> }> {
+        const localVarPath = this.client.basePath + '/launch/candydrop/activity-list';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.status !== undefined) {
+            let statusSerialized = ObjectSerializer.serialize(opts.status, "'ongoing' | 'upcoming' | 'ended'");
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(statusSerialized)) {
+                statusSerialized = statusSerialized.join(',');
+            }
+            localVarQueryParameters['status'] = statusSerialized;
+        }
+
+        if (opts.ruleName !== undefined) {
+            let ruleNameSerialized = ObjectSerializer.serialize(opts.ruleName, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(ruleNameSerialized)) {
+                ruleNameSerialized = ruleNameSerialized.join(',');
+            }
+            localVarQueryParameters['rule_name'] = ruleNameSerialized;
+        }
+
+        if (opts.registerStatus !== undefined) {
+            let registerStatusSerialized = ObjectSerializer.serialize(
+                opts.registerStatus,
+                "'registered' | 'unregistered'",
+            );
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(registerStatusSerialized)) {
+                registerStatusSerialized = registerStatusSerialized.join(',');
+            }
+            localVarQueryParameters['register_status'] = registerStatusSerialized;
+        }
+
+        if (opts.currency !== undefined) {
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        if (opts.offset !== undefined) {
+            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(offsetSerialized)) {
+                offsetSerialized = offsetSerialized.join(',');
+            }
+            localVarQueryParameters['offset'] = offsetSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<CandyDropV4ActivityCd01>>(
+            config,
+            'Array<CandyDropV4ActivityCd01>',
+            authSettings,
+        );
+    }
+
+    /**
+     * 报名参与特定 CandyDrop 活动。需要登录，需要 API Key 签名认证。
+     * @summary 报名参与活动
+     * @param candyDropV4RegisterReqCd02
+     */
+    public async registerCandyDropV4(
+        candyDropV4RegisterReqCd02: CandyDropV4RegisterReqCd02,
+    ): Promise<{ response: AxiosResponse; body: CandyDropV4RegisterRespCd02 }> {
+        const localVarPath = this.client.basePath + '/launch/candydrop/register';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'candyDropV4RegisterReqCd02' is not null or undefined
+        if (candyDropV4RegisterReqCd02 === null || candyDropV4RegisterReqCd02 === undefined) {
+            throw new Error(
+                'Required parameter candyDropV4RegisterReqCd02 was null or undefined when calling registerCandyDropV4.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(candyDropV4RegisterReqCd02, 'CandyDropV4RegisterReqCd02'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<CandyDropV4RegisterRespCd02>(config, 'CandyDropV4RegisterRespCd02', authSettings);
+    }
+
+    /**
+     * 查询特定活动的规则，包括奖池及对应任务数据。不需要登录。
+     * @summary 查询活动规则
+     * @param opts Optional parameters
+     * @param opts.activityId 活动ID，与 currency 二选一，至少须传其一
+     * @param opts.currency 项目/币种名称，与 activity_id 二选一，至少须传其一
+     */
+    public async getCandyDropActivityRulesV4(opts?: {
+        activityId?: number;
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: CandyDropV4ActivityRulesCd03 }> {
+        const localVarPath = this.client.basePath + '/launch/candydrop/activity-rules';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.activityId !== undefined) {
+            let activityIdSerialized = ObjectSerializer.serialize(opts.activityId, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(activityIdSerialized)) {
+                activityIdSerialized = activityIdSerialized.join(',');
+            }
+            localVarQueryParameters['activity_id'] = activityIdSerialized;
+        }
+
+        if (opts.currency !== undefined) {
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<CandyDropV4ActivityRulesCd03>(config, 'CandyDropV4ActivityRulesCd03', authSettings);
+    }
+
+    /**
+     * 查询进行中且已报名/参与的任务完成进度。需要登录。
+     * @summary 查询任务完成进度
+     * @param opts Optional parameters
+     * @param opts.activityId 活动ID，与 currency 二选一，至少须传其一
+     * @param opts.currency 项目/币种名称，与 activity_id 二选一，至少须传其一
+     */
+    public async getCandyDropTaskProgressV4(opts?: {
+        activityId?: number;
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: CandyDropV4TaskProgressCd04 }> {
+        const localVarPath = this.client.basePath + '/launch/candydrop/task-progress';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.activityId !== undefined) {
+            let activityIdSerialized = ObjectSerializer.serialize(opts.activityId, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(activityIdSerialized)) {
+                activityIdSerialized = activityIdSerialized.join(',');
+            }
+            localVarQueryParameters['activity_id'] = activityIdSerialized;
+        }
+
+        if (opts.currency !== undefined) {
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<CandyDropV4TaskProgressCd04>(config, 'CandyDropV4TaskProgressCd04', authSettings);
+    }
+
+    /**
+     * 查询用户的 CandyDrop 参与详情。需要登录。
+     * @summary 查询参与记录
+     * @param opts Optional parameters
+     * @param opts.currency 币种名称筛选
+     * @param opts.status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖)
+     * @param opts.startTime 开始时间（Unix 时间戳秒）
+     * @param opts.endTime 结束时间（Unix 时间戳秒）
+     * @param opts.page 页码，默认1
+     * @param opts.limit 每页条数，默认10，最大30
+     */
+    public async getCandyDropParticipationRecordsV4(opts?: {
+        currency?: string;
+        status?: 'ongoing' | 'awaiting_draw' | 'won' | 'not_win';
+        startTime?: number;
+        endTime?: number;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<CandyDropV4ParticipationRecordCd05> }> {
+        const localVarPath = this.client.basePath + '/launch/candydrop/participation-records';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
+        }
+
+        if (opts.status !== undefined) {
+            let statusSerialized = ObjectSerializer.serialize(
+                opts.status,
+                "'ongoing' | 'awaiting_draw' | 'won' | 'not_win'",
+            );
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(statusSerialized)) {
+                statusSerialized = statusSerialized.join(',');
+            }
+            localVarQueryParameters['status'] = statusSerialized;
+        }
+
+        if (opts.startTime !== undefined) {
+            let startTimeSerialized = ObjectSerializer.serialize(opts.startTime, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(startTimeSerialized)) {
+                startTimeSerialized = startTimeSerialized.join(',');
+            }
+            localVarQueryParameters['start_time'] = startTimeSerialized;
+        }
+
+        if (opts.endTime !== undefined) {
+            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(endTimeSerialized)) {
+                endTimeSerialized = endTimeSerialized.join(',');
+            }
+            localVarQueryParameters['end_time'] = endTimeSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<CandyDropV4ParticipationRecordCd05>>(
+            config,
+            'Array<CandyDropV4ParticipationRecordCd05>',
+            authSettings,
+        );
+    }
+
+    /**
+     * 查询用户的 CandyDrop 空投详情。需要登录。
+     * @summary 查询空投记录
+     * @param opts Optional parameters
+     * @param opts.currency 币种名称筛选
+     * @param opts.startTime 开始时间（Unix 时间戳秒）
+     * @param opts.endTime 结束时间（Unix 时间戳秒）
+     * @param opts.page 页码，默认1
+     * @param opts.limit 每页条数，默认10，最大30
+     */
+    public async getCandyDropAirdropRecordsV4(opts?: {
+        currency?: string;
+        startTime?: number;
+        endTime?: number;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<CandyDropV4AirdropRecordCd06> }> {
+        const localVarPath = this.client.basePath + '/launch/candydrop/airdrop-records';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
+        }
+
+        if (opts.startTime !== undefined) {
+            let startTimeSerialized = ObjectSerializer.serialize(opts.startTime, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(startTimeSerialized)) {
+                startTimeSerialized = startTimeSerialized.join(',');
+            }
+            localVarQueryParameters['start_time'] = startTimeSerialized;
+        }
+
+        if (opts.endTime !== undefined) {
+            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(endTimeSerialized)) {
+                endTimeSerialized = endTimeSerialized.join(',');
+            }
+            localVarQueryParameters['end_time'] = endTimeSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<CandyDropV4AirdropRecordCd06>>(
+            config,
+            'Array<CandyDropV4AirdropRecordCd06>',
             authSettings,
         );
     }

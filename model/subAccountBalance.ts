@@ -18,6 +18,10 @@ export class SubAccountBalance {
      * Available balances of currencies
      */
     'available'?: { [key: string]: string };
+    /**
+     * Locked amount by currency
+     */
+    'locking'?: { [key: string]: string };
 
     static discriminator: string | undefined = undefined;
 
@@ -30,6 +34,11 @@ export class SubAccountBalance {
         {
             name: 'available',
             baseName: 'available',
+            type: '{ [key: string]: string; }',
+        },
+        {
+            name: 'locking',
+            baseName: 'locking',
             type: '{ [key: string]: string; }',
         },
     ];

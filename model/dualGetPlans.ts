@@ -35,11 +35,11 @@ export class DualGetPlans {
      */
     'deliveryTime'?: number;
     /**
-     * Minimum Units
+     * Minimum share count
      */
     'minCopies'?: number;
     /**
-     * Maximum Units
+     * Maximum share count
      */
     'maxCopies'?: number;
     /**

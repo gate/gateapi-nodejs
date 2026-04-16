@@ -9,27 +9,66 @@
  * Do not edit the class manually.
  */
 
-import { CreateOrderData } from './createOrderData';
+import { CreateOrderDetail } from './createOrderDetail';
 
 export class CreateOrder {
-    /**
-     * Server timestamp (milliseconds)
-     */
-    'timestamp'?: number;
-    'data'?: CreateOrderData;
+    'id': number;
+    'userId': number;
+    'from': Array<CreateOrderDetail>;
+    'to': Array<CreateOrderDetail>;
+    'source': string;
+    'appId': string;
+    'clientReqId': string;
+    'status': number;
+    'createTime': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'timestamp',
-            baseName: 'timestamp',
+            name: 'id',
+            baseName: 'id',
             type: 'number',
         },
         {
-            name: 'data',
-            baseName: 'data',
-            type: 'CreateOrderData',
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'number',
+        },
+        {
+            name: 'from',
+            baseName: 'from',
+            type: 'Array<CreateOrderDetail>',
+        },
+        {
+            name: 'to',
+            baseName: 'to',
+            type: 'Array<CreateOrderDetail>',
+        },
+        {
+            name: 'source',
+            baseName: 'source',
+            type: 'string',
+        },
+        {
+            name: 'appId',
+            baseName: 'app_id',
+            type: 'string',
+        },
+        {
+            name: 'clientReqId',
+            baseName: 'client_req_id',
+            type: 'string',
+        },
+        {
+            name: 'status',
+            baseName: 'status',
+            type: 'number',
+        },
+        {
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
     ];
 

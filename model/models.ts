@@ -1,3 +1,16 @@
+export * from './aIHubCreateData';
+export * from './aIHubCreateSuccessResponse';
+export * from './aIHubDiscoverData';
+export * from './aIHubDiscoverSuccessResponse';
+export * from './aIHubPortfolioDetailData';
+export * from './aIHubPortfolioDetailSuccessResponse';
+export * from './aIHubPortfolioRunningData';
+export * from './aIHubPortfolioRunningItem';
+export * from './aIHubPortfolioRunningSuccessResponse';
+export * from './aIHubPortfolioStopData';
+export * from './aIHubPortfolioStopRequest';
+export * from './aIHubPortfolioStopSuccessResponse';
+export * from './aIHubRecommendation';
 export * from './accountBalance';
 export * from './accountBookResponse';
 export * from './accountDetail';
@@ -16,10 +29,22 @@ export * from './agencyTransactionHistory';
 export * from './alphaCurrency';
 export * from './alphaTicker';
 export * from './amendOptionsOrderRequest';
+export * from './apiResponseAssetSwapConfig';
+export * from './apiResponseAssetSwapEvaluate';
+export * from './apiResponseAssetSwapListAssets';
+export * from './apiResponseAssetSwapOrderCreateV1';
+export * from './apiResponseAssetSwapOrderListV1';
+export * from './apiResponseAssetSwapOrderPreviewV1';
+export * from './apiResponseAssetSwapOrderQueryV1';
+export * from './apiResponseExSkillClaimRewardResp';
+export * from './apiResponseExSkillClaimRewardRespData';
+export * from './apiResponseExSkillClaimTaskResp';
 export * from './apiResponseExSkillGetBeginnerTaskListResp';
 export * from './apiResponseExSkillGetBeginnerTaskListRespData';
 export * from './apiResponseExSkillGetBeginnerTaskListRespDataTasks';
 export * from './apiResponseExSkillGetUserIdentityResp';
+export * from './assetListResp';
+export * from './assetSwapFrontend';
 export * from './autoInvestCoinsItem';
 export * from './autoInvestConfigItem';
 export * from './autoInvestMinInvestAmount';
@@ -56,9 +81,22 @@ export * from './brokerTransactionHistory';
 export * from './cancelBatchOrder';
 export * from './cancelOrder';
 export * from './cancelOrderResult';
+export * from './candyDropV4ActivityCd01';
+export * from './candyDropV4ActivityRulesCd03';
+export * from './candyDropV4AirdropRecordCd06';
+export * from './candyDropV4ErrorCd01';
+export * from './candyDropV4ParticipationRecordCd05';
+export * from './candyDropV4PrizePoolCd03';
+export * from './candyDropV4RegisterReqCd02';
+export * from './candyDropV4RegisterRespCd02';
+export * from './candyDropV4TaskCd03';
+export * from './candyDropV4TaskProgressCd04';
+export * from './candyDropV4TaskProgressItemCd04';
 export * from './categories';
 export * from './categoriesData';
 export * from './categoriesDataList';
+export * from './claimRewardError';
+export * from './claimTaskError';
 export * from './collateralAdjust';
 export * from './collateralAdjustRes';
 export * from './collateralCurrency';
@@ -67,13 +105,18 @@ export * from './collateralCurrencyRes';
 export * from './collateralCurrentRate';
 export * from './collateralFixRate';
 export * from './collateralLtv';
+export * from './configResp';
 export * from './confirmPayment';
 export * from './confirmReceipt';
 export * from './contract';
 export * from './contractDetail';
 export * from './contractDetailData';
 export * from './contractDetailDataList';
+export * from './contractMartingaleCreateParams';
+export * from './contractMartingaleCreateRequest';
+export * from './contractMartingaleDirection';
 export * from './contractStat';
+export * from './convertCurrenciesV2Item';
 export * from './convertSmallBalance';
 export * from './countdownCancelAllFuturesTask';
 export * from './countdownCancelAllOptionsTask';
@@ -83,8 +126,11 @@ export * from './createEarnFixedTermLendResponseData';
 export * from './createEarnFixedTermPreRedeemResponse';
 export * from './createMultiCollateralOrder';
 export * from './createOrder';
-export * from './createOrderData';
+export * from './createOrder2';
+export * from './createOrder2Data';
+export * from './createOrderDetail';
 export * from './createOrderV4';
+export * from './createParam';
 export * from './createTrailOrder';
 export * from './createTrailOrderResponse';
 export * from './createTrailOrderResult';
@@ -152,15 +198,24 @@ export * from './deliveryTicker';
 export * from './deliveryTrade';
 export * from './depositAddress';
 export * from './depositRecord';
+export * from './discoverScene';
 export * from './dualGetBalance';
 export * from './dualGetOrders';
 export * from './dualGetPlans';
+export * from './dualModifyOrderReinvestParams';
+export * from './dualOrderRefundParams';
+export * from './dualOrderRefundPreview';
+export * from './dualProjectRecommend';
 export * from './earnFixedTermPreRedeemRequest';
 export * from './eligibility';
 export * from './eligibilityResponse';
 export * from './eligibilityResponseAllOf';
 export * from './errCodeMsg';
 export * from './errorResponse';
+export * from './evaluateItem';
+export * from './evaluateResp';
+export * from './exSkillClaimRewardReq';
+export * from './exSkillClaimTaskReq';
 export * from './fixedTermBonusInfo';
 export * from './fixedTermCouponInfo';
 export * from './fixedTermHistoryRecord';
@@ -206,7 +261,10 @@ export * from './futuresAutoDeleverage';
 export * from './futuresBBOOrder';
 export * from './futuresBatchAmendOrderRequest';
 export * from './futuresCandlestick';
+export * from './futuresDirection';
 export * from './futuresFee';
+export * from './futuresGridCreateParams';
+export * from './futuresGridCreateRequest';
 export * from './futuresIndexConstituents';
 export * from './futuresInitialOrder';
 export * from './futuresLeverage';
@@ -238,7 +296,15 @@ export * from './getTransactionDetailsRequest';
 export * from './getUserCouponDetailResponse';
 export * from './getUserCouponDetailResponseData';
 export * from './getUserIdentityError';
+export * from './hodlerAirdropV4ErrorResponse';
+export * from './hodlerAirdropV4OrderRequest';
+export * from './hodlerAirdropV4OrderResponse';
+export * from './hodlerAirdropV4ProjectItem';
+export * from './hodlerAirdropV4UserAirdropRecord';
+export * from './hodlerAirdropV4UserOrderRecord';
 export * from './indexConstituent';
+export * from './infiniteGridCreateParams';
+export * from './infiniteGridCreateRequest';
 export * from './inlineResponse200';
 export * from './insuranceRecord';
 export * from './klines';
@@ -287,6 +353,8 @@ export * from './listUserCouponsResponseDataProgressConfig';
 export * from './marginAccount';
 export * from './marginAccountBook';
 export * from './marginAccountCurrency';
+export * from './marginGridCreateParams';
+export * from './marginGridCreateRequest';
 export * from './marginLeverageTier';
 export * from './marginMarketLeverage';
 export * from './marginTiers';
@@ -337,6 +405,8 @@ export * from './optionsUnderlyingTicker';
 export * from './order';
 export * from './orderBook';
 export * from './orderCancel';
+export * from './orderCreateV1Req';
+export * from './orderCreateV1Resp';
 export * from './orderHistoryList';
 export * from './orderHistoryListData';
 export * from './orderHistoryListDataList';
@@ -345,7 +415,11 @@ export * from './orderListData';
 export * from './orderListDataList';
 export * from './orderListStruct';
 export * from './orderListStructList';
+export * from './orderListV1Resp';
 export * from './orderPatch';
+export * from './orderPreviewV1Req';
+export * from './orderPreviewV1Resp';
+export * from './orderQueryV1Resp';
 export * from './orderResp';
 export * from './orderResponse';
 export * from './otcActionResponse';
@@ -433,10 +507,17 @@ export * from './positionList';
 export * from './positionListData';
 export * from './positionListDataList';
 export * from './positionTimerange';
+export * from './previewFromParam';
+export * from './previewOrder';
+export * from './previewOrderDetail';
+export * from './previewToParam';
 export * from './profitLossRange';
 export * from './quoteRequest';
 export * from './quoteResponse';
 export * from './rebateUserInfo';
+export * from './recommend';
+export * from './recommendV2Scheme';
+export * from './recommendV2Strategy';
 export * from './redeemLaunchPoolResponse';
 export * from './redeemV4';
 export * from './repayCurrencyRes';
@@ -454,7 +535,11 @@ export * from './spotAccount';
 export * from './spotAccountBook';
 export * from './spotCurrencyChain';
 export * from './spotFee';
+export * from './spotGridCreateParams';
+export * from './spotGridCreateRequest';
 export * from './spotInsuranceHistory';
+export * from './spotMartingaleCreateParams';
+export * from './spotMartingaleCreateRequest';
 export * from './spotPricePutOrder';
 export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
@@ -462,6 +547,7 @@ export * from './stopAllTrailOrders';
 export * from './stopTrailOrder';
 export * from './stpGroup';
 export * from './stpGroupUser';
+export * from './strategyType';
 export * from './subAccount';
 export * from './subAccountBalance';
 export * from './subAccountCrossMarginBalance';
@@ -567,6 +653,19 @@ import querystring = require('querystring');
 import crypto = require('crypto');
 import { URL } from 'url';
 
+import { AIHubCreateData } from './aIHubCreateData';
+import { AIHubCreateSuccessResponse } from './aIHubCreateSuccessResponse';
+import { AIHubDiscoverData } from './aIHubDiscoverData';
+import { AIHubDiscoverSuccessResponse } from './aIHubDiscoverSuccessResponse';
+import { AIHubPortfolioDetailData } from './aIHubPortfolioDetailData';
+import { AIHubPortfolioDetailSuccessResponse } from './aIHubPortfolioDetailSuccessResponse';
+import { AIHubPortfolioRunningData } from './aIHubPortfolioRunningData';
+import { AIHubPortfolioRunningItem } from './aIHubPortfolioRunningItem';
+import { AIHubPortfolioRunningSuccessResponse } from './aIHubPortfolioRunningSuccessResponse';
+import { AIHubPortfolioStopData } from './aIHubPortfolioStopData';
+import { AIHubPortfolioStopRequest } from './aIHubPortfolioStopRequest';
+import { AIHubPortfolioStopSuccessResponse } from './aIHubPortfolioStopSuccessResponse';
+import { AIHubRecommendation } from './aIHubRecommendation';
 import { AccountBalance } from './accountBalance';
 import { AccountBookResponse } from './accountBookResponse';
 import { AccountDetail } from './accountDetail';
@@ -585,10 +684,22 @@ import { AgencyTransactionHistory } from './agencyTransactionHistory';
 import { AlphaCurrency } from './alphaCurrency';
 import { AlphaTicker } from './alphaTicker';
 import { AmendOptionsOrderRequest } from './amendOptionsOrderRequest';
+import { ApiResponseAssetSwapConfig } from './apiResponseAssetSwapConfig';
+import { ApiResponseAssetSwapEvaluate } from './apiResponseAssetSwapEvaluate';
+import { ApiResponseAssetSwapListAssets } from './apiResponseAssetSwapListAssets';
+import { ApiResponseAssetSwapOrderCreateV1 } from './apiResponseAssetSwapOrderCreateV1';
+import { ApiResponseAssetSwapOrderListV1 } from './apiResponseAssetSwapOrderListV1';
+import { ApiResponseAssetSwapOrderPreviewV1 } from './apiResponseAssetSwapOrderPreviewV1';
+import { ApiResponseAssetSwapOrderQueryV1 } from './apiResponseAssetSwapOrderQueryV1';
+import { ApiResponseExSkillClaimRewardResp } from './apiResponseExSkillClaimRewardResp';
+import { ApiResponseExSkillClaimRewardRespData } from './apiResponseExSkillClaimRewardRespData';
+import { ApiResponseExSkillClaimTaskResp } from './apiResponseExSkillClaimTaskResp';
 import { ApiResponseExSkillGetBeginnerTaskListResp } from './apiResponseExSkillGetBeginnerTaskListResp';
 import { ApiResponseExSkillGetBeginnerTaskListRespData } from './apiResponseExSkillGetBeginnerTaskListRespData';
 import { ApiResponseExSkillGetBeginnerTaskListRespDataTasks } from './apiResponseExSkillGetBeginnerTaskListRespDataTasks';
 import { ApiResponseExSkillGetUserIdentityResp } from './apiResponseExSkillGetUserIdentityResp';
+import { AssetListResp } from './assetListResp';
+import { AssetSwapFrontend } from './assetSwapFrontend';
 import { AutoInvestCoinsItem } from './autoInvestCoinsItem';
 import { AutoInvestConfigItem } from './autoInvestConfigItem';
 import { AutoInvestMinInvestAmount } from './autoInvestMinInvestAmount';
@@ -625,9 +736,22 @@ import { BrokerTransactionHistory } from './brokerTransactionHistory';
 import { CancelBatchOrder } from './cancelBatchOrder';
 import { CancelOrder } from './cancelOrder';
 import { CancelOrderResult } from './cancelOrderResult';
+import { CandyDropV4ActivityCd01 } from './candyDropV4ActivityCd01';
+import { CandyDropV4ActivityRulesCd03 } from './candyDropV4ActivityRulesCd03';
+import { CandyDropV4AirdropRecordCd06 } from './candyDropV4AirdropRecordCd06';
+import { CandyDropV4ErrorCd01 } from './candyDropV4ErrorCd01';
+import { CandyDropV4ParticipationRecordCd05 } from './candyDropV4ParticipationRecordCd05';
+import { CandyDropV4PrizePoolCd03 } from './candyDropV4PrizePoolCd03';
+import { CandyDropV4RegisterReqCd02 } from './candyDropV4RegisterReqCd02';
+import { CandyDropV4RegisterRespCd02 } from './candyDropV4RegisterRespCd02';
+import { CandyDropV4TaskCd03 } from './candyDropV4TaskCd03';
+import { CandyDropV4TaskProgressCd04 } from './candyDropV4TaskProgressCd04';
+import { CandyDropV4TaskProgressItemCd04 } from './candyDropV4TaskProgressItemCd04';
 import { Categories } from './categories';
 import { CategoriesData } from './categoriesData';
 import { CategoriesDataList } from './categoriesDataList';
+import { ClaimRewardError } from './claimRewardError';
+import { ClaimTaskError } from './claimTaskError';
 import { CollateralAdjust } from './collateralAdjust';
 import { CollateralAdjustRes } from './collateralAdjustRes';
 import { CollateralCurrency } from './collateralCurrency';
@@ -636,13 +760,18 @@ import { CollateralCurrencyRes } from './collateralCurrencyRes';
 import { CollateralCurrentRate } from './collateralCurrentRate';
 import { CollateralFixRate } from './collateralFixRate';
 import { CollateralLtv } from './collateralLtv';
+import { ConfigResp } from './configResp';
 import { ConfirmPayment } from './confirmPayment';
 import { ConfirmReceipt } from './confirmReceipt';
 import { Contract } from './contract';
 import { ContractDetail } from './contractDetail';
 import { ContractDetailData } from './contractDetailData';
 import { ContractDetailDataList } from './contractDetailDataList';
+import { ContractMartingaleCreateParams } from './contractMartingaleCreateParams';
+import { ContractMartingaleCreateRequest } from './contractMartingaleCreateRequest';
+import { ContractMartingaleDirection } from './contractMartingaleDirection';
 import { ContractStat } from './contractStat';
+import { ConvertCurrenciesV2Item } from './convertCurrenciesV2Item';
 import { ConvertSmallBalance } from './convertSmallBalance';
 import { CountdownCancelAllFuturesTask } from './countdownCancelAllFuturesTask';
 import { CountdownCancelAllOptionsTask } from './countdownCancelAllOptionsTask';
@@ -652,8 +781,11 @@ import { CreateEarnFixedTermLendResponseData } from './createEarnFixedTermLendRe
 import { CreateEarnFixedTermPreRedeemResponse } from './createEarnFixedTermPreRedeemResponse';
 import { CreateMultiCollateralOrder } from './createMultiCollateralOrder';
 import { CreateOrder } from './createOrder';
-import { CreateOrderData } from './createOrderData';
+import { CreateOrder2 } from './createOrder2';
+import { CreateOrder2Data } from './createOrder2Data';
+import { CreateOrderDetail } from './createOrderDetail';
 import { CreateOrderV4 } from './createOrderV4';
+import { CreateParam } from './createParam';
 import { CreateTrailOrder } from './createTrailOrder';
 import { CreateTrailOrderResponse } from './createTrailOrderResponse';
 import { CreateTrailOrderResult } from './createTrailOrderResult';
@@ -721,15 +853,24 @@ import { DeliveryTicker } from './deliveryTicker';
 import { DeliveryTrade } from './deliveryTrade';
 import { DepositAddress } from './depositAddress';
 import { DepositRecord } from './depositRecord';
+import { DiscoverScene } from './discoverScene';
 import { DualGetBalance } from './dualGetBalance';
 import { DualGetOrders } from './dualGetOrders';
 import { DualGetPlans } from './dualGetPlans';
+import { DualModifyOrderReinvestParams } from './dualModifyOrderReinvestParams';
+import { DualOrderRefundParams } from './dualOrderRefundParams';
+import { DualOrderRefundPreview } from './dualOrderRefundPreview';
+import { DualProjectRecommend } from './dualProjectRecommend';
 import { EarnFixedTermPreRedeemRequest } from './earnFixedTermPreRedeemRequest';
 import { Eligibility } from './eligibility';
 import { EligibilityResponse } from './eligibilityResponse';
 import { EligibilityResponseAllOf } from './eligibilityResponseAllOf';
 import { ErrCodeMsg } from './errCodeMsg';
 import { ErrorResponse } from './errorResponse';
+import { EvaluateItem } from './evaluateItem';
+import { EvaluateResp } from './evaluateResp';
+import { ExSkillClaimRewardReq } from './exSkillClaimRewardReq';
+import { ExSkillClaimTaskReq } from './exSkillClaimTaskReq';
 import { FixedTermBonusInfo } from './fixedTermBonusInfo';
 import { FixedTermCouponInfo } from './fixedTermCouponInfo';
 import { FixedTermHistoryRecord } from './fixedTermHistoryRecord';
@@ -775,7 +916,10 @@ import { FuturesAutoDeleverage } from './futuresAutoDeleverage';
 import { FuturesBBOOrder } from './futuresBBOOrder';
 import { FuturesBatchAmendOrderRequest } from './futuresBatchAmendOrderRequest';
 import { FuturesCandlestick } from './futuresCandlestick';
+import { FuturesDirection } from './futuresDirection';
 import { FuturesFee } from './futuresFee';
+import { FuturesGridCreateParams } from './futuresGridCreateParams';
+import { FuturesGridCreateRequest } from './futuresGridCreateRequest';
 import { FuturesIndexConstituents } from './futuresIndexConstituents';
 import { FuturesInitialOrder } from './futuresInitialOrder';
 import { FuturesLeverage } from './futuresLeverage';
@@ -807,7 +951,15 @@ import { GetTransactionDetailsRequest } from './getTransactionDetailsRequest';
 import { GetUserCouponDetailResponse } from './getUserCouponDetailResponse';
 import { GetUserCouponDetailResponseData } from './getUserCouponDetailResponseData';
 import { GetUserIdentityError } from './getUserIdentityError';
+import { HodlerAirdropV4ErrorResponse } from './hodlerAirdropV4ErrorResponse';
+import { HodlerAirdropV4OrderRequest } from './hodlerAirdropV4OrderRequest';
+import { HodlerAirdropV4OrderResponse } from './hodlerAirdropV4OrderResponse';
+import { HodlerAirdropV4ProjectItem } from './hodlerAirdropV4ProjectItem';
+import { HodlerAirdropV4UserAirdropRecord } from './hodlerAirdropV4UserAirdropRecord';
+import { HodlerAirdropV4UserOrderRecord } from './hodlerAirdropV4UserOrderRecord';
 import { IndexConstituent } from './indexConstituent';
+import { InfiniteGridCreateParams } from './infiniteGridCreateParams';
+import { InfiniteGridCreateRequest } from './infiniteGridCreateRequest';
 import { InlineResponse200 } from './inlineResponse200';
 import { InsuranceRecord } from './insuranceRecord';
 import { Klines } from './klines';
@@ -856,6 +1008,8 @@ import { ListUserCouponsResponseDataProgressConfig } from './listUserCouponsResp
 import { MarginAccount } from './marginAccount';
 import { MarginAccountBook } from './marginAccountBook';
 import { MarginAccountCurrency } from './marginAccountCurrency';
+import { MarginGridCreateParams } from './marginGridCreateParams';
+import { MarginGridCreateRequest } from './marginGridCreateRequest';
 import { MarginLeverageTier } from './marginLeverageTier';
 import { MarginMarketLeverage } from './marginMarketLeverage';
 import { MarginTiers } from './marginTiers';
@@ -906,6 +1060,8 @@ import { OptionsUnderlyingTicker } from './optionsUnderlyingTicker';
 import { Order } from './order';
 import { OrderBook } from './orderBook';
 import { OrderCancel } from './orderCancel';
+import { OrderCreateV1Req } from './orderCreateV1Req';
+import { OrderCreateV1Resp } from './orderCreateV1Resp';
 import { OrderHistoryList } from './orderHistoryList';
 import { OrderHistoryListData } from './orderHistoryListData';
 import { OrderHistoryListDataList } from './orderHistoryListDataList';
@@ -914,7 +1070,11 @@ import { OrderListData } from './orderListData';
 import { OrderListDataList } from './orderListDataList';
 import { OrderListStruct } from './orderListStruct';
 import { OrderListStructList } from './orderListStructList';
+import { OrderListV1Resp } from './orderListV1Resp';
 import { OrderPatch } from './orderPatch';
+import { OrderPreviewV1Req } from './orderPreviewV1Req';
+import { OrderPreviewV1Resp } from './orderPreviewV1Resp';
+import { OrderQueryV1Resp } from './orderQueryV1Resp';
 import { OrderResp } from './orderResp';
 import { OrderResponse } from './orderResponse';
 import { OtcActionResponse } from './otcActionResponse';
@@ -1002,10 +1162,17 @@ import { PositionList } from './positionList';
 import { PositionListData } from './positionListData';
 import { PositionListDataList } from './positionListDataList';
 import { PositionTimerange } from './positionTimerange';
+import { PreviewFromParam } from './previewFromParam';
+import { PreviewOrder } from './previewOrder';
+import { PreviewOrderDetail } from './previewOrderDetail';
+import { PreviewToParam } from './previewToParam';
 import { ProfitLossRange } from './profitLossRange';
 import { QuoteRequest } from './quoteRequest';
 import { QuoteResponse } from './quoteResponse';
 import { RebateUserInfo } from './rebateUserInfo';
+import { Recommend } from './recommend';
+import { RecommendV2Scheme } from './recommendV2Scheme';
+import { RecommendV2Strategy } from './recommendV2Strategy';
 import { RedeemLaunchPoolResponse } from './redeemLaunchPoolResponse';
 import { RedeemV4 } from './redeemV4';
 import { RepayCurrencyRes } from './repayCurrencyRes';
@@ -1023,7 +1190,11 @@ import { SpotAccount } from './spotAccount';
 import { SpotAccountBook } from './spotAccountBook';
 import { SpotCurrencyChain } from './spotCurrencyChain';
 import { SpotFee } from './spotFee';
+import { SpotGridCreateParams } from './spotGridCreateParams';
+import { SpotGridCreateRequest } from './spotGridCreateRequest';
 import { SpotInsuranceHistory } from './spotInsuranceHistory';
+import { SpotMartingaleCreateParams } from './spotMartingaleCreateParams';
+import { SpotMartingaleCreateRequest } from './spotMartingaleCreateRequest';
 import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
@@ -1031,6 +1202,7 @@ import { StopAllTrailOrders } from './stopAllTrailOrders';
 import { StopTrailOrder } from './stopTrailOrder';
 import { StpGroup } from './stpGroup';
 import { StpGroupUser } from './stpGroupUser';
+import { StrategyType } from './strategyType';
 import { SubAccount } from './subAccount';
 import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountCrossMarginBalance } from './subAccountCrossMarginBalance';
@@ -1154,6 +1326,8 @@ let enumsMap: { [index: string]: any } = {
     'BatchOrder.FinishAs': BatchOrder.FinishAs,
     'Contract.Type': Contract.Type,
     'Contract.MarkType': Contract.MarkType,
+    'ContractMartingaleCreateRequest.StrategyType': ContractMartingaleCreateRequest.StrategyType,
+    ContractMartingaleDirection: ContractMartingaleDirection,
     'CreateTrailOrder.PriceType': CreateTrailOrder.PriceType,
     'CreateUniLend.Type': CreateUniLend.Type,
     'CreateUniLoan.Type': CreateUniLoan.Type,
@@ -1176,11 +1350,15 @@ let enumsMap: { [index: string]: any } = {
     'DeliveryOrder.StpAct': DeliveryOrder.StpAct,
     'DeliveryPosition.Mode': DeliveryPosition.Mode,
     'DeliveryPositionClose.Side': DeliveryPositionClose.Side,
+    DiscoverScene: DiscoverScene,
     'Eligibility.BlockReasonCodes': Eligibility.BlockReasonCodes,
     'FuturesAccountBook.Type': FuturesAccountBook.Type,
     'FuturesBBOOrder.Tif': FuturesBBOOrder.Tif,
     'FuturesBBOOrder.AutoSize': FuturesBBOOrder.AutoSize,
     'FuturesBBOOrder.StpAct': FuturesBBOOrder.StpAct,
+    FuturesDirection: FuturesDirection,
+    'FuturesGridCreateParams.PriceType': FuturesGridCreateParams.PriceType,
+    'FuturesGridCreateRequest.StrategyType': FuturesGridCreateRequest.StrategyType,
     'FuturesInitialOrder.Tif': FuturesInitialOrder.Tif,
     'FuturesOrder.FinishAs': FuturesOrder.FinishAs,
     'FuturesOrder.Status': FuturesOrder.Status,
@@ -1201,11 +1379,17 @@ let enumsMap: { [index: string]: any } = {
     'GetUserCouponDetailResponse.Code': GetUserCouponDetailResponse.Code,
     'GetUserCouponDetailResponseData.Status': GetUserCouponDetailResponseData.Status,
     'GetUserCouponDetailResponseData.IsTaskCoupon': GetUserCouponDetailResponseData.IsTaskCoupon,
+    'HodlerAirdropV4ErrorResponse.Label': HodlerAirdropV4ErrorResponse.Label,
+    'HodlerAirdropV4ProjectItem.Status': HodlerAirdropV4ProjectItem.Status,
+    'InfiniteGridCreateParams.PriceType': InfiniteGridCreateParams.PriceType,
+    'InfiniteGridCreateRequest.StrategyType': InfiniteGridCreateRequest.StrategyType,
     'LaunchPoolV4ErrorResponse.Label': LaunchPoolV4ErrorResponse.Label,
     'LaunchPoolV4Project.ProjectState': LaunchPoolV4Project.ProjectState,
     'ListUserCouponsResponse.Code': ListUserCouponsResponse.Code,
     'ListUserCouponsResponseDataList.Status': ListUserCouponsResponseDataList.Status,
     'ListUserCouponsResponseDataList.IsTaskCoupon': ListUserCouponsResponseDataList.IsTaskCoupon,
+    'MarginGridCreateParams.PriceType': MarginGridCreateParams.PriceType,
+    'MarginGridCreateRequest.StrategyType': MarginGridCreateRequest.StrategyType,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
     'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
     'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
@@ -1236,12 +1420,16 @@ let enumsMap: { [index: string]: any } = {
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'PositionHistoryListDataList.PositionDir': PositionHistoryListDataList.PositionDir,
+    'SpotGridCreateParams.PriceType': SpotGridCreateParams.PriceType,
+    'SpotGridCreateRequest.StrategyType': SpotGridCreateRequest.StrategyType,
+    'SpotMartingaleCreateRequest.StrategyType': SpotMartingaleCreateRequest.StrategyType,
     'SpotPricePutOrder.Type': SpotPricePutOrder.Type,
     'SpotPricePutOrder.Side': SpotPricePutOrder.Side,
     'SpotPricePutOrder.Account': SpotPricePutOrder.Account,
     'SpotPricePutOrder.TimeInForce': SpotPricePutOrder.TimeInForce,
     'SpotPriceTrigger.Rule': SpotPriceTrigger.Rule,
     'StopAllTrailOrders.RelatedPosition': StopAllTrailOrders.RelatedPosition,
+    StrategyType: StrategyType,
     'TradFiClosePositionRequest.CloseType': TradFiClosePositionRequest.CloseType,
     'TradFiOrderRequest.PriceType': TradFiOrderRequest.PriceType,
     'TradFiOrderRequest.Side': TradFiOrderRequest.Side,
@@ -1260,6 +1448,19 @@ let enumsMap: { [index: string]: any } = {
 };
 
 let typeMap: { [index: string]: any } = {
+    AIHubCreateData: AIHubCreateData,
+    AIHubCreateSuccessResponse: AIHubCreateSuccessResponse,
+    AIHubDiscoverData: AIHubDiscoverData,
+    AIHubDiscoverSuccessResponse: AIHubDiscoverSuccessResponse,
+    AIHubPortfolioDetailData: AIHubPortfolioDetailData,
+    AIHubPortfolioDetailSuccessResponse: AIHubPortfolioDetailSuccessResponse,
+    AIHubPortfolioRunningData: AIHubPortfolioRunningData,
+    AIHubPortfolioRunningItem: AIHubPortfolioRunningItem,
+    AIHubPortfolioRunningSuccessResponse: AIHubPortfolioRunningSuccessResponse,
+    AIHubPortfolioStopData: AIHubPortfolioStopData,
+    AIHubPortfolioStopRequest: AIHubPortfolioStopRequest,
+    AIHubPortfolioStopSuccessResponse: AIHubPortfolioStopSuccessResponse,
+    AIHubRecommendation: AIHubRecommendation,
     AccountBalance: AccountBalance,
     AccountBookResponse: AccountBookResponse,
     AccountDetail: AccountDetail,
@@ -1278,10 +1479,22 @@ let typeMap: { [index: string]: any } = {
     AlphaCurrency: AlphaCurrency,
     AlphaTicker: AlphaTicker,
     AmendOptionsOrderRequest: AmendOptionsOrderRequest,
+    ApiResponseAssetSwapConfig: ApiResponseAssetSwapConfig,
+    ApiResponseAssetSwapEvaluate: ApiResponseAssetSwapEvaluate,
+    ApiResponseAssetSwapListAssets: ApiResponseAssetSwapListAssets,
+    ApiResponseAssetSwapOrderCreateV1: ApiResponseAssetSwapOrderCreateV1,
+    ApiResponseAssetSwapOrderListV1: ApiResponseAssetSwapOrderListV1,
+    ApiResponseAssetSwapOrderPreviewV1: ApiResponseAssetSwapOrderPreviewV1,
+    ApiResponseAssetSwapOrderQueryV1: ApiResponseAssetSwapOrderQueryV1,
+    ApiResponseExSkillClaimRewardResp: ApiResponseExSkillClaimRewardResp,
+    ApiResponseExSkillClaimRewardRespData: ApiResponseExSkillClaimRewardRespData,
+    ApiResponseExSkillClaimTaskResp: ApiResponseExSkillClaimTaskResp,
     ApiResponseExSkillGetBeginnerTaskListResp: ApiResponseExSkillGetBeginnerTaskListResp,
     ApiResponseExSkillGetBeginnerTaskListRespData: ApiResponseExSkillGetBeginnerTaskListRespData,
     ApiResponseExSkillGetBeginnerTaskListRespDataTasks: ApiResponseExSkillGetBeginnerTaskListRespDataTasks,
     ApiResponseExSkillGetUserIdentityResp: ApiResponseExSkillGetUserIdentityResp,
+    AssetListResp: AssetListResp,
+    AssetSwapFrontend: AssetSwapFrontend,
     AutoInvestCoinsItem: AutoInvestCoinsItem,
     AutoInvestConfigItem: AutoInvestConfigItem,
     AutoInvestMinInvestAmount: AutoInvestMinInvestAmount,
@@ -1318,9 +1531,22 @@ let typeMap: { [index: string]: any } = {
     CancelBatchOrder: CancelBatchOrder,
     CancelOrder: CancelOrder,
     CancelOrderResult: CancelOrderResult,
+    CandyDropV4ActivityCd01: CandyDropV4ActivityCd01,
+    CandyDropV4ActivityRulesCd03: CandyDropV4ActivityRulesCd03,
+    CandyDropV4AirdropRecordCd06: CandyDropV4AirdropRecordCd06,
+    CandyDropV4ErrorCd01: CandyDropV4ErrorCd01,
+    CandyDropV4ParticipationRecordCd05: CandyDropV4ParticipationRecordCd05,
+    CandyDropV4PrizePoolCd03: CandyDropV4PrizePoolCd03,
+    CandyDropV4RegisterReqCd02: CandyDropV4RegisterReqCd02,
+    CandyDropV4RegisterRespCd02: CandyDropV4RegisterRespCd02,
+    CandyDropV4TaskCd03: CandyDropV4TaskCd03,
+    CandyDropV4TaskProgressCd04: CandyDropV4TaskProgressCd04,
+    CandyDropV4TaskProgressItemCd04: CandyDropV4TaskProgressItemCd04,
     Categories: Categories,
     CategoriesData: CategoriesData,
     CategoriesDataList: CategoriesDataList,
+    ClaimRewardError: ClaimRewardError,
+    ClaimTaskError: ClaimTaskError,
     CollateralAdjust: CollateralAdjust,
     CollateralAdjustRes: CollateralAdjustRes,
     CollateralCurrency: CollateralCurrency,
@@ -1329,13 +1555,17 @@ let typeMap: { [index: string]: any } = {
     CollateralCurrentRate: CollateralCurrentRate,
     CollateralFixRate: CollateralFixRate,
     CollateralLtv: CollateralLtv,
+    ConfigResp: ConfigResp,
     ConfirmPayment: ConfirmPayment,
     ConfirmReceipt: ConfirmReceipt,
     Contract: Contract,
     ContractDetail: ContractDetail,
     ContractDetailData: ContractDetailData,
     ContractDetailDataList: ContractDetailDataList,
+    ContractMartingaleCreateParams: ContractMartingaleCreateParams,
+    ContractMartingaleCreateRequest: ContractMartingaleCreateRequest,
     ContractStat: ContractStat,
+    ConvertCurrenciesV2Item: ConvertCurrenciesV2Item,
     ConvertSmallBalance: ConvertSmallBalance,
     CountdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
     CountdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
@@ -1345,8 +1575,11 @@ let typeMap: { [index: string]: any } = {
     CreateEarnFixedTermPreRedeemResponse: CreateEarnFixedTermPreRedeemResponse,
     CreateMultiCollateralOrder: CreateMultiCollateralOrder,
     CreateOrder: CreateOrder,
-    CreateOrderData: CreateOrderData,
+    CreateOrder2: CreateOrder2,
+    CreateOrder2Data: CreateOrder2Data,
+    CreateOrderDetail: CreateOrderDetail,
     CreateOrderV4: CreateOrderV4,
+    CreateParam: CreateParam,
     CreateTrailOrder: CreateTrailOrder,
     CreateTrailOrderResponse: CreateTrailOrderResponse,
     CreateTrailOrderResult: CreateTrailOrderResult,
@@ -1417,12 +1650,20 @@ let typeMap: { [index: string]: any } = {
     DualGetBalance: DualGetBalance,
     DualGetOrders: DualGetOrders,
     DualGetPlans: DualGetPlans,
+    DualModifyOrderReinvestParams: DualModifyOrderReinvestParams,
+    DualOrderRefundParams: DualOrderRefundParams,
+    DualOrderRefundPreview: DualOrderRefundPreview,
+    DualProjectRecommend: DualProjectRecommend,
     EarnFixedTermPreRedeemRequest: EarnFixedTermPreRedeemRequest,
     Eligibility: Eligibility,
     EligibilityResponse: EligibilityResponse,
     EligibilityResponseAllOf: EligibilityResponseAllOf,
     ErrCodeMsg: ErrCodeMsg,
     ErrorResponse: ErrorResponse,
+    EvaluateItem: EvaluateItem,
+    EvaluateResp: EvaluateResp,
+    ExSkillClaimRewardReq: ExSkillClaimRewardReq,
+    ExSkillClaimTaskReq: ExSkillClaimTaskReq,
     FixedTermBonusInfo: FixedTermBonusInfo,
     FixedTermCouponInfo: FixedTermCouponInfo,
     FixedTermHistoryRecord: FixedTermHistoryRecord,
@@ -1469,6 +1710,8 @@ let typeMap: { [index: string]: any } = {
     FuturesBatchAmendOrderRequest: FuturesBatchAmendOrderRequest,
     FuturesCandlestick: FuturesCandlestick,
     FuturesFee: FuturesFee,
+    FuturesGridCreateParams: FuturesGridCreateParams,
+    FuturesGridCreateRequest: FuturesGridCreateRequest,
     FuturesIndexConstituents: FuturesIndexConstituents,
     FuturesInitialOrder: FuturesInitialOrder,
     FuturesLeverage: FuturesLeverage,
@@ -1500,7 +1743,15 @@ let typeMap: { [index: string]: any } = {
     GetUserCouponDetailResponse: GetUserCouponDetailResponse,
     GetUserCouponDetailResponseData: GetUserCouponDetailResponseData,
     GetUserIdentityError: GetUserIdentityError,
+    HodlerAirdropV4ErrorResponse: HodlerAirdropV4ErrorResponse,
+    HodlerAirdropV4OrderRequest: HodlerAirdropV4OrderRequest,
+    HodlerAirdropV4OrderResponse: HodlerAirdropV4OrderResponse,
+    HodlerAirdropV4ProjectItem: HodlerAirdropV4ProjectItem,
+    HodlerAirdropV4UserAirdropRecord: HodlerAirdropV4UserAirdropRecord,
+    HodlerAirdropV4UserOrderRecord: HodlerAirdropV4UserOrderRecord,
     IndexConstituent: IndexConstituent,
+    InfiniteGridCreateParams: InfiniteGridCreateParams,
+    InfiniteGridCreateRequest: InfiniteGridCreateRequest,
     InlineResponse200: InlineResponse200,
     InsuranceRecord: InsuranceRecord,
     Klines: Klines,
@@ -1549,6 +1800,8 @@ let typeMap: { [index: string]: any } = {
     MarginAccount: MarginAccount,
     MarginAccountBook: MarginAccountBook,
     MarginAccountCurrency: MarginAccountCurrency,
+    MarginGridCreateParams: MarginGridCreateParams,
+    MarginGridCreateRequest: MarginGridCreateRequest,
     MarginLeverageTier: MarginLeverageTier,
     MarginMarketLeverage: MarginMarketLeverage,
     MarginTiers: MarginTiers,
@@ -1599,6 +1852,8 @@ let typeMap: { [index: string]: any } = {
     Order: Order,
     OrderBook: OrderBook,
     OrderCancel: OrderCancel,
+    OrderCreateV1Req: OrderCreateV1Req,
+    OrderCreateV1Resp: OrderCreateV1Resp,
     OrderHistoryList: OrderHistoryList,
     OrderHistoryListData: OrderHistoryListData,
     OrderHistoryListDataList: OrderHistoryListDataList,
@@ -1607,7 +1862,11 @@ let typeMap: { [index: string]: any } = {
     OrderListDataList: OrderListDataList,
     OrderListStruct: OrderListStruct,
     OrderListStructList: OrderListStructList,
+    OrderListV1Resp: OrderListV1Resp,
     OrderPatch: OrderPatch,
+    OrderPreviewV1Req: OrderPreviewV1Req,
+    OrderPreviewV1Resp: OrderPreviewV1Resp,
+    OrderQueryV1Resp: OrderQueryV1Resp,
     OrderResp: OrderResp,
     OrderResponse: OrderResponse,
     OtcActionResponse: OtcActionResponse,
@@ -1695,10 +1954,17 @@ let typeMap: { [index: string]: any } = {
     PositionListData: PositionListData,
     PositionListDataList: PositionListDataList,
     PositionTimerange: PositionTimerange,
+    PreviewFromParam: PreviewFromParam,
+    PreviewOrder: PreviewOrder,
+    PreviewOrderDetail: PreviewOrderDetail,
+    PreviewToParam: PreviewToParam,
     ProfitLossRange: ProfitLossRange,
     QuoteRequest: QuoteRequest,
     QuoteResponse: QuoteResponse,
     RebateUserInfo: RebateUserInfo,
+    Recommend: Recommend,
+    RecommendV2Scheme: RecommendV2Scheme,
+    RecommendV2Strategy: RecommendV2Strategy,
     RedeemLaunchPoolResponse: RedeemLaunchPoolResponse,
     RedeemV4: RedeemV4,
     RepayCurrencyRes: RepayCurrencyRes,
@@ -1716,7 +1982,11 @@ let typeMap: { [index: string]: any } = {
     SpotAccountBook: SpotAccountBook,
     SpotCurrencyChain: SpotCurrencyChain,
     SpotFee: SpotFee,
+    SpotGridCreateParams: SpotGridCreateParams,
+    SpotGridCreateRequest: SpotGridCreateRequest,
     SpotInsuranceHistory: SpotInsuranceHistory,
+    SpotMartingaleCreateParams: SpotMartingaleCreateParams,
+    SpotMartingaleCreateRequest: SpotMartingaleCreateRequest,
     SpotPricePutOrder: SpotPricePutOrder,
     SpotPriceTrigger: SpotPriceTrigger,
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
