@@ -105,7 +105,6 @@ export * from './collateralCurrencyRes';
 export * from './collateralCurrentRate';
 export * from './collateralFixRate';
 export * from './collateralLtv';
-export * from './configResp';
 export * from './confirmPayment';
 export * from './confirmReceipt';
 export * from './contract';
@@ -419,7 +418,6 @@ export * from './orderListV1Resp';
 export * from './orderPatch';
 export * from './orderPreviewV1Req';
 export * from './orderPreviewV1Resp';
-export * from './orderQueryV1Resp';
 export * from './orderResp';
 export * from './orderResponse';
 export * from './otcActionResponse';
@@ -760,7 +758,6 @@ import { CollateralCurrencyRes } from './collateralCurrencyRes';
 import { CollateralCurrentRate } from './collateralCurrentRate';
 import { CollateralFixRate } from './collateralFixRate';
 import { CollateralLtv } from './collateralLtv';
-import { ConfigResp } from './configResp';
 import { ConfirmPayment } from './confirmPayment';
 import { ConfirmReceipt } from './confirmReceipt';
 import { Contract } from './contract';
@@ -1074,7 +1071,6 @@ import { OrderListV1Resp } from './orderListV1Resp';
 import { OrderPatch } from './orderPatch';
 import { OrderPreviewV1Req } from './orderPreviewV1Req';
 import { OrderPreviewV1Resp } from './orderPreviewV1Resp';
-import { OrderQueryV1Resp } from './orderQueryV1Resp';
 import { OrderResp } from './orderResp';
 import { OrderResponse } from './orderResponse';
 import { OtcActionResponse } from './otcActionResponse';
@@ -1555,7 +1551,6 @@ let typeMap: { [index: string]: any } = {
     CollateralCurrentRate: CollateralCurrentRate,
     CollateralFixRate: CollateralFixRate,
     CollateralLtv: CollateralLtv,
-    ConfigResp: ConfigResp,
     ConfirmPayment: ConfirmPayment,
     ConfirmReceipt: ConfirmReceipt,
     Contract: Contract,
@@ -1866,7 +1861,6 @@ let typeMap: { [index: string]: any } = {
     OrderPatch: OrderPatch,
     OrderPreviewV1Req: OrderPreviewV1Req,
     OrderPreviewV1Resp: OrderPreviewV1Resp,
-    OrderQueryV1Resp: OrderQueryV1Resp,
     OrderResp: OrderResp,
     OrderResponse: OrderResponse,
     OtcActionResponse: OtcActionResponse,

@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { OrderQueryV1Resp } from './orderQueryV1Resp';
+import { CreateOrder } from './createOrder';
 
 /**
  * 资产配置优化-查询订单统一响应
@@ -28,9 +28,9 @@ export class ApiResponseAssetSwapOrderQueryV1 {
      */
     'message': string;
     /**
-     * 成功时为订单详情（CreateOrder），失败时为 null
+     * 成功时为订单详情，失败时为 null
      */
-    'data': OrderQueryV1Resp | null;
+    'data': CreateOrder | null;
     /**
      * Server timestamp (milliseconds)
      */
@@ -57,7 +57,7 @@ export class ApiResponseAssetSwapOrderQueryV1 {
         {
             name: 'data',
             baseName: 'data',
-            type: 'OrderQueryV1Resp',
+            type: 'CreateOrder',
         },
         {
             name: 'timestamp',

@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { ConfigResp } from './configResp';
+import { AssetSwapFrontend } from './assetSwapFrontend';
 
 /**
  * 资产配置优化-配置统一响应
@@ -28,9 +28,9 @@ export class ApiResponseAssetSwapConfig {
      */
     'message': string;
     /**
-     * 成功时为前端配置（ConfigResp），失败时为 null
+     * 成功时为前端配置，失败时为 null
      */
-    'data': ConfigResp | null;
+    'data': AssetSwapFrontend | null;
     /**
      * Server timestamp (milliseconds)
      */
@@ -57,7 +57,7 @@ export class ApiResponseAssetSwapConfig {
         {
             name: 'data',
             baseName: 'data',
-            type: 'ConfigResp',
+            type: 'AssetSwapFrontend',
         },
         {
             name: 'timestamp',
