@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-import { AnyType } from './anyType';
 import { StrategyType } from './strategyType';
 
 /**
@@ -23,15 +22,15 @@ export class AIHubPortfolioDetailData {
     /**
      * 基础信息，字段按策略类型动态变化
      */
-    'baseInfo': { [key: string]: AnyType };
+    'baseInfo': { [key: string]: string };
     /**
      * 指标信息，字段按策略类型动态变化
      */
-    'metrics': { [key: string]: AnyType };
+    'metrics': { [key: string]: string };
     /**
      * 仓位或持仓信息，字段按策略类型动态变化
      */
-    'position'?: { [key: string]: AnyType } | null;
+    'position'?: { [key: string]: string } | null;
     'stopSupported': boolean;
 
     static discriminator: string | undefined = undefined;
@@ -60,17 +59,17 @@ export class AIHubPortfolioDetailData {
         {
             name: 'baseInfo',
             baseName: 'base_info',
-            type: '{ [key: string]: AnyType; }',
+            type: '{ [key: string]: string; }',
         },
         {
             name: 'metrics',
             baseName: 'metrics',
-            type: '{ [key: string]: AnyType; }',
+            type: '{ [key: string]: string; }',
         },
         {
             name: 'position',
             baseName: 'position',
-            type: '{ [key: string]: AnyType; }',
+            type: '{ [key: string]: string; }',
         },
         {
             name: 'stopSupported',

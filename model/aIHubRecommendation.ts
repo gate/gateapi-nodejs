@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-import { AnyType } from './anyType';
 import { StrategyType } from './strategyType';
 
 /**
@@ -26,7 +25,7 @@ export class AIHubRecommendation {
     /**
      * 推荐参数预览；按策略类型动态变化
      */
-    'strategyParamsPreview'?: { [key: string]: AnyType };
+    'strategyParamsPreview'?: { [key: string]: string };
 
     static discriminator: string | undefined = undefined;
 
@@ -69,7 +68,7 @@ export class AIHubRecommendation {
         {
             name: 'strategyParamsPreview',
             baseName: 'strategy_params_preview',
-            type: '{ [key: string]: AnyType; }',
+            type: '{ [key: string]: string; }',
         },
     ];
 

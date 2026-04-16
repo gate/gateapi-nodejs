@@ -11,5 +11,5 @@ Name | Type | Description | Notes
 **backtestApr** | **string** |  | [optional] [default to undefined]
 **maxDrawdown** | **string** |  | [optional] [default to undefined]
 **summary** | **string** |  | [default to undefined]
-**strategyParamsPreview** | [**{ [key: string]: AnyType; }**](AnyType.md) | 推荐参数预览；按策略类型动态变化 | [optional] [default to undefined]
+**strategyParamsPreview** | **{ [key: string]: string; }** | 推荐参数预览；按策略类型动态变化 | [optional] [default to undefined]
 
