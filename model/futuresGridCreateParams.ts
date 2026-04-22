@@ -12,7 +12,7 @@
 import { FuturesDirection } from './futuresDirection';
 
 /**
- * 合约网格策略的创建参数。
+ * Creation parameters for the contract grid strategy.
  */
 export class FuturesGridCreateParams {
     'money': string;

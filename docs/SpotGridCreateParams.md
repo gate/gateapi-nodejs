@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**money** | **string** | 投入金额 | [default to undefined]
+**money** | **string** | Amount of investment | [default to undefined]
 **lowPrice** | **string** | Range lower limit | [default to undefined]
 **highPrice** | **string** | Range upper limit | [default to undefined]
-**gridNum** | **number** | 网格数量 | [default to undefined]
+**gridNum** | **number** | Number of grids | [default to undefined]
 **priceType** | **number** |  | [default to undefined]
 **triggerPrice** | **string** |  | [optional] [default to undefined]
 **stopProfit** | **string** |  | [optional] [default to undefined]

@@ -13,23 +13,23 @@ import { CandyDropV4TaskProgressItemCd04 } from './candyDropV4TaskProgressItemCd
 
 export class CandyDropV4TaskProgressCd04 {
     /**
-     * 项目/币种名称
+     * Project/currency name
      */
     'currency'?: string;
     /**
-     * 总奖池
+     * total prize pool
      */
     'totalRewards'?: string;
     /**
-     * 活动开始时间（UTC格式化）
+     * Event start time (UTC formatted)
      */
     'startTime'?: string;
     /**
-     * 活动结束时间（UTC格式化）
+     * Event end time (UTC format)
      */
     'endTime'?: string;
     /**
-     * 已领取任务的进度列表
+     * Progress list of tasks received
      */
     'tasks'?: Array<CandyDropV4TaskProgressItemCd04>;
 

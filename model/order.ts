@@ -62,7 +62,7 @@ export class Order {
      */
     'side': Order.Side;
     /**
-     * Trading quantity When `type` is `limit`, it refers to the base currency (the currency being traded), such as `BTC` in `BTC_USDT` When `type` is `market`, it refers to different currencies based on the side: - `side`: `buy` refers to quote currency, `BTC_USDT` means `USDT` - `side`: `sell` refers to base currency, `BTC_USDT` means `BTC`
+     * 交易数量 `type`为`limit`时，指交易货币，即需要交易的货币，如`BTC_USDT`中指`BTC`。 `type`为`market`时，根据买卖不同指代不同 - `side` : `buy` 指代计价货币，`BTC_USDT`中指`USDT` - `side` : `sell` 指代交易货币，`BTC_USDT`中指`BTC`
      */
     'amount': string;
     /**

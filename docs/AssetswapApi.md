@@ -165,7 +165,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AssetswapApi(client);
-const orderCreateV1Req = new OrderCreateV1Req(); // OrderCreateV1Req | 下单请求体（`OrderCreateV1Req`）。**无 `ratio` 字段**；`from`/`to` 每项仅 `asset` + `amount`。`to` 使用目标侧**数量** `amount`，与 preview 中 `to` 的 **ratio**（比例）语义不同，勿混用。
+const orderCreateV1Req = new OrderCreateV1Req(); // OrderCreateV1Req | Order request body (`OrderCreateV1Req`). **No `ratio` field**; `from`/`to` items are only `asset` + `amount`. `to` uses the target side **amount** `amount`, which is different from the **ratio** (ratio) semantics of `to` in preview, do not mix them.
 api.createAssetSwapOrderV1(orderCreateV1Req)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -176,7 +176,7 @@ api.createAssetSwapOrderV1(orderCreateV1Req)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderCreateV1Req** | [**OrderCreateV1Req**](OrderCreateV1Req.md)| 下单请求体（&#x60;OrderCreateV1Req&#x60;）。**无 &#x60;ratio&#x60; 字段**；&#x60;from&#x60;/&#x60;to&#x60; 每项仅 &#x60;asset&#x60; + &#x60;amount&#x60;。&#x60;to&#x60; 使用目标侧**数量** &#x60;amount&#x60;，与 preview 中 &#x60;to&#x60; 的 **ratio**（比例）语义不同，勿混用。 | 
+ **orderCreateV1Req** | [**OrderCreateV1Req**](OrderCreateV1Req.md)| Order request body (&#x60;OrderCreateV1Req&#x60;). **No &#x60;ratio&#x60; field**; &#x60;from&#x60;/&#x60;to&#x60; items are only &#x60;asset&#x60; + &#x60;amount&#x60;. &#x60;to&#x60; uses the target side **amount** &#x60;amount&#x60;, which is different from the **ratio** (ratio) semantics of &#x60;to&#x60; in preview, do not mix them. | 
 
 ### Return type
 
@@ -269,7 +269,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AssetswapApi(client);
-const orderPreviewV1Req = new OrderPreviewV1Req(); // OrderPreviewV1Req | 预览请求体。`to` 必须为 **ratio**；与 create 的 **amount** 语义不同。
+const orderPreviewV1Req = new OrderPreviewV1Req(); // OrderPreviewV1Req | Preview the request body. `to` must be **ratio**; unlike create\'s **amount** semantics.
 api.previewAssetSwapOrderV1(orderPreviewV1Req)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -280,7 +280,7 @@ api.previewAssetSwapOrderV1(orderPreviewV1Req)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderPreviewV1Req** | [**OrderPreviewV1Req**](OrderPreviewV1Req.md)| 预览请求体。&#x60;to&#x60; 必须为 **ratio**；与 create 的 **amount** 语义不同。 | 
+ **orderPreviewV1Req** | [**OrderPreviewV1Req**](OrderPreviewV1Req.md)| Preview the request body. &#x60;to&#x60; must be **ratio**; unlike create\&#39;s **amount** semantics. | 
 
 ### Return type
 

@@ -426,14 +426,14 @@ export class LaunchApi {
     }
 
     /**
-     * 获取HODLer Airdrop活动列表，支持按状态、币种/项目名称、参与情况筛选。此接口无需用户登录，登录用户可获取个人参与信息。
-     * @summary 查询HODLer Airdrop活动列表
+     * Get the HODLer Airdrop activity list, which supports filtering by status, currency/project name, and participation status. This interface does not require user login, and logged in users can obtain personal participation information.
+     * @summary Check the list of HODLer Airdrop activities
      * @param opts Optional parameters
-     * @param opts.status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部
-     * @param opts.keyword 币种/项目名称关键词，模糊匹配
-     * @param opts.join 参与情况筛选：0全部（默认），1仅已参与
-     * @param opts.page 页码，默认1
-     * @param opts.size 每页条数，默认10
+     * @param opts.status Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed
+     * @param opts.keyword Currency/project name keywords, fuzzy matching
+     * @param opts.join Participation filter: 0 all (default), 1 only participated
+     * @param opts.page Page number, default 1
+     * @param opts.size Number of items per page, default 10
      */
     public async getHodlerAirdropProjectList(opts?: {
         status?: 'ACTIVE' | 'UNDERWAY' | 'PREHEAT' | 'FINISH';
@@ -518,8 +518,8 @@ export class LaunchApi {
     }
 
     /**
-     * 参与指定的HODLer Airdrop活动，需持有GT。此接口需要用户登录认证，且须满足KYC要求，不支持子账户、企业/机构用户。
-     * @summary 参与HODLer Airdrop活动
+     * To participate in designated HODLer Airdrop activities, you need to hold GT. This interface requires user login authentication and must meet KYC requirements. It does not support sub-accounts and enterprise/institutional users.
+     * @summary Participate in the HODLer Airdrop event
      * @param hodlerAirdropV4OrderRequest
      */
     public async hodlerAirdropOrder(
@@ -556,14 +556,14 @@ export class LaunchApi {
     }
 
     /**
-     * 查询用户的HODLer Airdrop参与记录，返回每个活动的有效持仓和空投金额。此接口需要用户登录认证。
-     * @summary 查询HODLer Airdrop参与记录
+     * Query the user\'s HODLer Airdrop participation record and return the effective holdings and airdrop amount of each activity. This interface requires user login authentication.
+     * @summary Check HODLer Airdrop participation records
      * @param opts Optional parameters
-     * @param opts.keyword 币种名称关键词筛选
-     * @param opts.startTimest 开始时间戳（秒）
-     * @param opts.endTimest 结束时间戳（秒）
-     * @param opts.page 页码，默认1
-     * @param opts.size 每页条数，默认10
+     * @param opts.keyword Currency name keyword filtering
+     * @param opts.startTimest Start timestamp (seconds)
+     * @param opts.endTimest end timestamp (seconds)
+     * @param opts.page Page number, default 1
+     * @param opts.size Number of items per page, default 10
      */
     public async getHodlerAirdropUserOrderRecords(opts?: {
         keyword?: string;
@@ -645,14 +645,14 @@ export class LaunchApi {
     }
 
     /**
-     * 查询用户已获得的HODLer Airdrop空投发放记录，包含基础空投、额外空投和自动兑换状态。此接口需要用户登录认证。
-     * @summary 查询HODLer Airdrop空投记录
+     * Query the HODLer Airdrop airdrop distribution record that the user has obtained, including basic airdrops, additional airdrops and automatic redemption status. This interface requires user login authentication.
+     * @summary Query HODLer Airdrop records
      * @param opts Optional parameters
-     * @param opts.keyword 币种名称关键词筛选
-     * @param opts.startTimest 开始时间戳（秒）
-     * @param opts.endTimest 结束时间戳（秒）
-     * @param opts.page 页码，默认1
-     * @param opts.size 每页条数，默认10
+     * @param opts.keyword Currency name keyword filtering
+     * @param opts.startTimest Start timestamp (seconds)
+     * @param opts.endTimest end timestamp (seconds)
+     * @param opts.page Page number, default 1
+     * @param opts.size Number of items per page, default 10
      */
     public async getHodlerAirdropUserAirdropRecords(opts?: {
         keyword?: string;
@@ -734,15 +734,15 @@ export class LaunchApi {
     }
 
     /**
-     * 支持多维度筛选 CandyDrop 活动，每次查询返回列表排序的前十条数据。不需要登录。
-     * @summary 查询活动列表
+     * Supports multi-dimensional filtering of CandyDrop activities, and each query returns the top ten data sorted by the list. No login required.
+     * @summary Query activity list
      * @param opts Optional parameters
-     * @param opts.status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部
-     * @param opts.ruleName 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF)
-     * @param opts.registerStatus 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部
-     * @param opts.currency 币种名称筛选
-     * @param opts.limit 返回条数，默认10，最大30
-     * @param opts.offset 偏移量，默认0
+     * @param opts.status Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned
+     * @param opts.ruleName Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF)
+     * @param opts.registerStatus Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned
+     * @param opts.currency Currency name filter
+     * @param opts.limit Number of items returned, default 10, maximum 30
+     * @param opts.offset Offset, default 0
      */
     public async getCandyDropActivityListV4(opts?: {
         status?: 'ongoing' | 'upcoming' | 'ended';
@@ -837,8 +837,8 @@ export class LaunchApi {
     }
 
     /**
-     * 报名参与特定 CandyDrop 活动。需要登录，需要 API Key 签名认证。
-     * @summary 报名参与活动
+     * Sign up for select CandyDrop events. Login is required and API Key signature authentication is required.
+     * @summary Sign up for events
      * @param candyDropV4RegisterReqCd02
      */
     public async registerCandyDropV4(
@@ -875,11 +875,11 @@ export class LaunchApi {
     }
 
     /**
-     * 查询特定活动的规则，包括奖池及对应任务数据。不需要登录。
-     * @summary 查询活动规则
+     * Query the rules of a specific activity, including prize pool and corresponding task data. No login required.
+     * @summary Query activity rules
      * @param opts Optional parameters
-     * @param opts.activityId 活动ID，与 currency 二选一，至少须传其一
-     * @param opts.currency 项目/币种名称，与 activity_id 二选一，至少须传其一
+     * @param opts.activityId Activity ID, choose one from currency, at least one of them must be passed
+     * @param opts.currency Project/currency name, choose one from activity_id, at least one of them must be passed
      */
     public async getCandyDropActivityRulesV4(opts?: {
         activityId?: number;
@@ -927,11 +927,11 @@ export class LaunchApi {
     }
 
     /**
-     * 查询进行中且已报名/参与的任务完成进度。需要登录。
-     * @summary 查询任务完成进度
+     * Check the completion progress of tasks that are in progress and have been registered/participated. Login required.
+     * @summary Query task completion progress
      * @param opts Optional parameters
-     * @param opts.activityId 活动ID，与 currency 二选一，至少须传其一
-     * @param opts.currency 项目/币种名称，与 activity_id 二选一，至少须传其一
+     * @param opts.activityId Activity ID, choose one from currency, at least one of them must be passed
+     * @param opts.currency Project/currency name, choose one from activity_id, at least one of them must be passed
      */
     public async getCandyDropTaskProgressV4(opts?: {
         activityId?: number;
@@ -979,15 +979,15 @@ export class LaunchApi {
     }
 
     /**
-     * 查询用户的 CandyDrop 参与详情。需要登录。
-     * @summary 查询参与记录
+     * Query the user\'s CandyDrop participation details. Login required.
+     * @summary Query participation records
      * @param opts Optional parameters
-     * @param opts.currency 币种名称筛选
-     * @param opts.status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖)
-     * @param opts.startTime 开始时间（Unix 时间戳秒）
-     * @param opts.endTime 结束时间（Unix 时间戳秒）
-     * @param opts.page 页码，默认1
-     * @param opts.limit 每页条数，默认10，最大30
+     * @param opts.currency Currency name filter
+     * @param opts.status Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won)
+     * @param opts.startTime Start time (Unix timestamp seconds)
+     * @param opts.endTime End time (Unix timestamp seconds)
+     * @param opts.page Page number, default 1
+     * @param opts.limit Number of items per page, default 10, maximum 30
      */
     public async getCandyDropParticipationRecordsV4(opts?: {
         currency?: string;
@@ -1082,14 +1082,14 @@ export class LaunchApi {
     }
 
     /**
-     * 查询用户的 CandyDrop 空投详情。需要登录。
-     * @summary 查询空投记录
+     * Query the user\'s CandyDrop airdrop details. Login required.
+     * @summary Query airdrop records
      * @param opts Optional parameters
-     * @param opts.currency 币种名称筛选
-     * @param opts.startTime 开始时间（Unix 时间戳秒）
-     * @param opts.endTime 结束时间（Unix 时间戳秒）
-     * @param opts.page 页码，默认1
-     * @param opts.limit 每页条数，默认10，最大30
+     * @param opts.currency Currency name filter
+     * @param opts.startTime Start time (Unix timestamp seconds)
+     * @param opts.endTime End time (Unix timestamp seconds)
+     * @param opts.page Page number, default 1
+     * @param opts.limit Number of items per page, default 10, maximum 30
      */
     public async getCandyDropAirdropRecordsV4(opts?: {
         currency?: string;

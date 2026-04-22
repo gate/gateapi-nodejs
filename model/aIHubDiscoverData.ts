@@ -13,13 +13,13 @@ import { AIHubRecommendation } from './aIHubRecommendation';
 import { DiscoverScene } from './discoverScene';
 
 /**
- * 策略推荐结果数据。
+ * Strategy recommendation result data.
  */
 export class AIHubDiscoverData {
     'scene': DiscoverScene;
     'recommendations': Array<AIHubRecommendation>;
     /**
-     * 本期不支持的筛选条件
+     * Filter conditions not supported in this issue
      */
     'unsupportedFilters': Array<string>;
 

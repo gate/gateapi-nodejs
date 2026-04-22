@@ -12,7 +12,7 @@
 import { AIHubDiscoverData } from './aIHubDiscoverData';
 
 /**
- * 获取策略推荐成功时的响应体。
+ * Get the response body when the strategy recommendation is successful.
  */
 export class AIHubDiscoverSuccessResponse {
     'code': number;

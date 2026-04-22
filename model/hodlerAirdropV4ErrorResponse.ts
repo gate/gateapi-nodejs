@@ -10,7 +10,7 @@
  */
 
 /**
- * v4接口统一错误响应
+ * v4 interface unified error response
  */
 export class HodlerAirdropV4ErrorResponse {
     /**
@@ -18,7 +18,7 @@ export class HodlerAirdropV4ErrorResponse {
      */
     'label': HodlerAirdropV4ErrorResponse.Label;
     /**
-     * 错误信息（多语言）
+     * Error messages (multilingual)
      */
     'message': string;
 

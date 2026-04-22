@@ -12,7 +12,7 @@
 import { AIHubCreateData } from './aIHubCreateData';
 
 /**
- * 创建策略成功时的响应体。
+ * The response body when the creation strategy is successful.
  */
 export class AIHubCreateSuccessResponse {
     'code': number;

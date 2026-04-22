@@ -15,15 +15,15 @@ export class CandyDropV4AirdropRecordCd06 {
      */
     'currency'?: string;
     /**
-     * 空投时间（UTC格式化）
+     * Airdrop time (UTC format)
      */
     'airdropTime'?: string;
     /**
-     * 空投奖励
+     * Airdrop rewards
      */
     'rewards'?: string;
     /**
-     * 自动兑换金额
+     * Automatic exchange amount
      */
     'convertAmount'?: string;
 

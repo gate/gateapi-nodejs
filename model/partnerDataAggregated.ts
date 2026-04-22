@@ -39,7 +39,7 @@ export class PartnerDataAggregated {
      */
     'businessType': PartnerDataAggregated.BusinessType;
     /**
-     * Business type description. Allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi
+     * Business type description; allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi
      */
     'businessTypeDesc': string;
 

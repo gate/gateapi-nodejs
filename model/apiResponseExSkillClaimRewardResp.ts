@@ -12,11 +12,11 @@
 import { ApiResponseExSkillClaimRewardRespData } from './apiResponseExSkillClaimRewardRespData';
 
 /**
- * 领取任务奖励响应
+ * Receive mission reward response
  */
 export class ApiResponseExSkillClaimRewardResp {
     /**
-     * 业务错误码，0 表示成功
+     * Business error code, 0 means success
      */
     'code'?: number;
     /**

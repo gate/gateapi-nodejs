@@ -12,7 +12,7 @@
 import { StrategyType } from './strategyType';
 
 /**
- * 单条策略推荐信息。
+ * A single piece of strategy recommendation information.
  */
 export class AIHubRecommendation {
     'recommendationId': string;
@@ -23,7 +23,7 @@ export class AIHubRecommendation {
     'maxDrawdown'?: string;
     'summary': string;
     /**
-     * 推荐参数预览；按策略类型动态变化
+     * Recommended parameter preview; dynamic changes by strategy type
      */
     'strategyParamsPreview'?: { [key: string]: string };
 

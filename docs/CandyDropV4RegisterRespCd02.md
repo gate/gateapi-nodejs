@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **boolean** | 是否报名成功 | [optional] [default to undefined]
+**success** | **boolean** | Whether the registration is successful | [optional] [default to undefined]
 

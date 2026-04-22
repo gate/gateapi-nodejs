@@ -10,11 +10,11 @@
  */
 
 /**
- * 现货网格策略的创建参数。
+ * Creation parameters for the spot grid strategy.
  */
 export class SpotGridCreateParams {
     /**
-     * 投入金额
+     * Amount of investment
      */
     'money': string;
     /**
@@ -26,7 +26,7 @@ export class SpotGridCreateParams {
      */
     'highPrice': string;
     /**
-     * 网格数量
+     * Number of grids
      */
     'gridNum': number;
     'priceType': SpotGridCreateParams.PriceType;

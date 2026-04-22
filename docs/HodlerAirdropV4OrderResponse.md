@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**interestCoin** | **Array&lt;string&gt;** | 获得空投的币种列表 | [default to undefined]
+**interestCoin** | **Array&lt;string&gt;** | Get the list of airdropped currencies | [default to undefined]
 

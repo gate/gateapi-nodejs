@@ -12,7 +12,7 @@
 import { StrategyType } from './strategyType';
 
 /**
- * 运行中策略列表中的单条记录。
+ * A single record in the list of running policies.
  */
 export class AIHubPortfolioRunningItem {
     'strategyId': string;

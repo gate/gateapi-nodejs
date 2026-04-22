@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | **string** | Error label | [default to undefined]
-**message** | **string** | 错误信息（多语言） | [default to undefined]
+**message** | **string** | Error messages (multilingual) | [default to undefined]
 
 ## Enum: HodlerAirdropV4ErrorResponse.Label
 

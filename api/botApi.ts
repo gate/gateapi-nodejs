@@ -43,21 +43,21 @@ export class BotApi {
 
     /**
      * discover 域唯一正式接口。  支持场景： - `top1` - `bundle` - `filter` - `refresh`  约束： - 主动推荐池仅包含 `spot_grid`、`futures_grid`、`spot_martingale` - 可返回但不主动推荐 `infinite_grid`、`margin_grid` - 不得返回 `contract_martingale`、`smart-position`、`spot-future-arbitrage` - `scene=filter` 时只允许按 `market`、`backtest_apr_gte`、`max_drawdown_lte` 过滤 - `scene=refresh` 通过 `refresh_recommendation_id` 承接刷新上下文；正式最小格式只要求 `strategy_type|market` - 若上游直接透传上一条推荐的 `recommendation_id`，其中第三段 `backtest_id` 当前会被忽略
-     * @summary 获取 AIHub 策略推荐
+     * @summary Get AIHub strategy recommendations
      * @param opts Optional parameters
-     * @param opts.market 交易对，例如 &#x60;BTC_USDT&#x60;
-     * @param opts.strategyType 推荐目标策略类型；&#x60;contract_martingale&#x60; 不允许
-     * @param opts.direction 行情方向
-     * @param opts.investAmount 投入金额，字符串透传
-     * @param opts.scene 推荐场景；为空时 bot-service 可按实现逻辑自动推断
-     * @param opts.refreshRecommendationId 推荐刷新上下文。&#x60;scene&#x3D;refresh&#x60; 时使用；当 &#x60;scene&#x60; 为空但该字段存在时，bot-service 也会自动判定为 &#x60;refresh&#x60;。 正式最小格式为 &#x60;strategy_type|market&#x60;；若直接透传上一条推荐的 &#x60;recommendation_id&#x60;，第三段 &#x60;backtest_id&#x60; 会被忽略。
-     * @param opts.limit 返回数量；&#x60;scene&#x3D;filter&#x60; 时实际结果最多 10 条
-     * @param opts.maxDrawdownLte 最大回撤上限
-     * @param opts.backtestAprGte 回测年化下限
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.market Trading pair, such as &#x60;BTC_USDT&#x60;
+     * @param opts.strategyType Recommended target policy type; &#x60;contract_martingale&#x60; not allowed
+     * @param opts.direction Market direction
+     * @param opts.investAmount Investment amount, string transparent transmission
+     * @param opts.scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic.
+     * @param opts.refreshRecommendationId It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored.
+     * @param opts.limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10
+     * @param opts.maxDrawdownLte Maximum drawdown limit
+     * @param opts.backtestAprGte Backtest annualized lower limit
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async getAIHubStrategyRecommend(opts?: {
         market?: string;
@@ -195,14 +195,14 @@ export class BotApi {
     }
 
     /**
-     * 根据传入参数创建现货网格策略。
-     * @summary 创建现货网格
+     * Create a spot grid strategy based on the incoming parameters.
+     * @summary Create spot grid
      * @param spotGridCreateRequest
      * @param opts Optional parameters
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async postAIHubSpotGridCreate(
         spotGridCreateRequest: SpotGridCreateRequest,
@@ -253,14 +253,14 @@ export class BotApi {
     }
 
     /**
-     * 根据传入参数创建杠杆网格策略。
-     * @summary 创建杠杆网格
+     * Create a leverage grid strategy based on the passed parameters.
+     * @summary Create a lever grid
      * @param marginGridCreateRequest
      * @param opts Optional parameters
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async postAIHubMarginGridCreate(
         marginGridCreateRequest: MarginGridCreateRequest,
@@ -311,14 +311,14 @@ export class BotApi {
     }
 
     /**
-     * 根据传入参数创建无限网格策略。
-     * @summary 创建无限网格
+     * Create an infinite grid strategy based on passed parameters.
+     * @summary Create infinite grid
      * @param infiniteGridCreateRequest
      * @param opts Optional parameters
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async postAIHubInfiniteGridCreate(
         infiniteGridCreateRequest: InfiniteGridCreateRequest,
@@ -369,14 +369,14 @@ export class BotApi {
     }
 
     /**
-     * 根据传入参数创建合约网格策略。
-     * @summary 创建合约网格
+     * Create a contract grid strategy based on the incoming parameters.
+     * @summary Create a contract grid
      * @param futuresGridCreateRequest
      * @param opts Optional parameters
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async postAIHubFuturesGridCreate(
         futuresGridCreateRequest: FuturesGridCreateRequest,
@@ -427,14 +427,14 @@ export class BotApi {
     }
 
     /**
-     * 根据传入参数创建现货马丁策略。
-     * @summary 创建现货马丁
+     * Create a spot Martin strategy based on the passed parameters.
+     * @summary Create Spot Martin
      * @param spotMartingaleCreateRequest
      * @param opts Optional parameters
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async postAIHubSpotMartingaleCreate(
         spotMartingaleCreateRequest: SpotMartingaleCreateRequest,
@@ -485,14 +485,14 @@ export class BotApi {
     }
 
     /**
-     * 根据传入参数创建合约马丁策略。
-     * @summary 创建合约马丁
+     * Create a contract Martin strategy based on the input parameters.
+     * @summary Create contract martin
      * @param contractMartingaleCreateRequest
      * @param opts Optional parameters
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async postAIHubContractMartingaleCreate(
         contractMartingaleCreateRequest: ContractMartingaleCreateRequest,
@@ -543,17 +543,17 @@ export class BotApi {
     }
 
     /**
-     * 查询当前用户运行中的 AIHub 策略列表，支持按策略类型、交易对和分页条件过滤。
-     * @summary 查询运行中策略列表
+     * Query the list of AIHub strategies currently running by the user, and support filtering by strategy type, trading pair and paging conditions.
+     * @summary Query the list of running policies
      * @param opts Optional parameters
-     * @param opts.strategyType 按策略类型过滤
-     * @param opts.market 按交易对过滤
-     * @param opts.page 页码，默认 1
-     * @param opts.pageSize 分页大小，默认 20，最大 50
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.strategyType Filter by policy type
+     * @param opts.market Filter by trading pair
+     * @param opts.page Page number, default 1
+     * @param opts.pageSize Paging size, default 20, maximum 50
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async getAIHubPortfolioRunning(opts?: {
         strategyType?:
@@ -651,15 +651,15 @@ export class BotApi {
     }
 
     /**
-     * 请求中必须同时传 `strategy_id` 与 `strategy_type`，其中 `strategy_type` 用于按策略类型分发到底层详情实现。
-     * @summary 查询单策略详情
-     * @param strategyId 策略 ID
-     * @param strategyType 策略类型；用于底层详情分发
+     * Both `strategy_id` and `strategy_type` must be passed in the request, where `strategy_type` is used to distribute to the underlying detailed implementation by strategy type.
+     * @summary Query order policy details
+     * @param strategyId Policy ID
+     * @param strategyType Policy type; used for underlying detail distribution
      * @param opts Optional parameters
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async getAIHubPortfolioDetail(
         strategyId: string,
@@ -744,14 +744,14 @@ export class BotApi {
     }
 
     /**
-     * 单次请求只允许终止一个策略。 风险提示与二次确认由 OpenClaw 上层承担；本接口只负责执行 stop。
-     * @summary 终止单个运行中策略
+     * Only one policy is allowed to be terminated per request. Risk warning and secondary confirmation are borne by the upper layer of OpenClaw; this interface is only responsible for executing stop.
+     * @summary Terminate a single running policy
      * @param aIHubPortfolioStopRequest
      * @param opts Optional parameters
-     * @param opts.xGateServiceId 调用来源标识；如有需要由 APIv4 注入
-     * @param opts.xGateAppLang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
-     * @param opts.xRequestId 请求链路 ID；调用方可透传
-     * @param opts.xTraceId trace header；可由 APIv4 统一生成
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
      */
     public async postAIHubPortfolioStop(
         aIHubPortfolioStopRequest: AIHubPortfolioStopRequest,

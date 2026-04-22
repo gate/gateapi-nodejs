@@ -10,16 +10,16 @@
  */
 
 /**
- * 无限网格策略的创建参数。
+ * Creation parameters for infinite grid strategies.
  */
 export class InfiniteGridCreateParams {
     'money': string;
     /**
-     * 价格地板
+     * price floor
      */
     'priceFloor': string;
     /**
-     * 每格利润
+     * Profit per square
      */
     'profitPerGrid': string;
     'gridNum': number;

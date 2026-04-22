@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**taskName** | **string** | 任务主标题 | [optional] [default to undefined]
-**taskDesc** | **string** | 任务副标题，无则返回 - | [optional] [default to undefined]
-**exclusiveLabel** | **string** | 专属任务标签文案，未配置则返回 - | [optional] [default to undefined]
+**taskName** | **string** | Task main title | [optional] [default to undefined]
+**taskDesc** | **string** | Task subtitle, if none is returned - | [optional] [default to undefined]
+**exclusiveLabel** | **string** | Exclusive task label copywriting, if not configured, it will return - | [optional] [default to undefined]
 

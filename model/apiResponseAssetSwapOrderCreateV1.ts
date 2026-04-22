@@ -12,23 +12,23 @@
 import { OrderCreateV1Resp } from './orderCreateV1Resp';
 
 /**
- * 资产配置优化-下单统一响应
+ * Asset allocation optimization - unified response to orders
  */
 export class ApiResponseAssetSwapOrderCreateV1 {
     /**
-     * 业务错误码，0 表示成功
+     * Business error code, 0 means success
      */
     'code': number;
     /**
-     * 错误标识码，成功时为空字符串
+     * Error identification code, empty string on success
      */
     'label'?: string;
     /**
-     * 描述信息
+     * Description information
      */
     'message': string;
     /**
-     * 成功时为下单结果，失败时为 null
+     * It is the order result when successful, and null when it fails.
      */
     'data': OrderCreateV1Resp | null;
     /**

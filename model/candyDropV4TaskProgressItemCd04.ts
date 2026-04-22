@@ -11,15 +11,15 @@
 
 export class CandyDropV4TaskProgressItemCd04 {
     /**
-     * 任务主标题
+     * Task main title
      */
     'taskName'?: string;
     /**
-     * 任务副标题
+     * Task subtitle
      */
     'taskDesc'?: string;
     /**
-     * 任务进度数据（交易量/充值量等）
+     * Task progress data (transaction volume/recharge volume, etc.)
      */
     'value'?: string;
 

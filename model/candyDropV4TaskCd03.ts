@@ -11,15 +11,15 @@
 
 export class CandyDropV4TaskCd03 {
     /**
-     * 任务主标题
+     * Task main title
      */
     'taskName'?: string;
     /**
-     * 任务副标题，无则返回 -
+     * Task subtitle, if none is returned -
      */
     'taskDesc'?: string;
     /**
-     * 专属任务标签文案，未配置则返回 -
+     * Exclusive task label copywriting, if not configured, it will return -
      */
     'exclusiveLabel'?: string;
 

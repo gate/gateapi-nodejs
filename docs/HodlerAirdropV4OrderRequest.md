@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hodlerId** | **number** | 活动ID，必填 | [default to undefined]
+**hodlerId** | **number** | Activity ID, required | [default to undefined]
 

@@ -19,11 +19,11 @@ export class CandyDropV4ParticipationRecordCd05 {
      */
     'currency'?: string;
     /**
-     * 项目状态：ongoing/awaiting_draw/won/not_win
+     * Project status: ongoing/awaiting_draw/won/not_win
      */
     'status'?: string;
     /**
-     * 参与时间（UTC格式化）
+     * Participation time (UTC formatted)
      */
     'registerTime'?: string;
 

@@ -12,7 +12,7 @@
 import { MarginGridCreateParams } from './marginGridCreateParams';
 
 /**
- * 创建杠杆网格策略的请求体。
+ * Create the request body for the Leverage Grid strategy.
  */
 export class MarginGridCreateRequest {
     'strategyType': MarginGridCreateRequest.StrategyType;

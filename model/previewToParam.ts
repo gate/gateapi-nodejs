@@ -10,15 +10,15 @@
  */
 
 /**
- * **仅用于预览** `OrderPreviewV1Req.to`。目标币种 + **比例 ratio**。 **禁止**与下单 `CreateParam` 混淆：下单的 `to` 必须使用 **`amount`**，没有 `ratio` 字段。
+ * **For preview only** `OrderPreviewV1Req.to`. Target currency + **ratio ratio**. **Forbidden** is confused with the order `CreateParam`: the `to` of the order must be **`amount`**, and there is no `ratio` field.
  */
 export class PreviewToParam {
     /**
-     * 目标币种符号；常与 config 中 `recommend_v2.*[].schemes[].name` 对应。
+     * Target currency symbol; often corresponds to `recommend_v2.*[].schemes[].name` in config.
      */
     'asset': string;
     /**
-     * 该目标币种在组合中的权重比例，**十进制字符串**（如 `0.2`、`0.5`）。 常与 `GET /asset-swap/config` 的 `recommend_v2` 下某策略的 `schemes[].ratio` 一致。
+     * The weight ratio of the target currency in the portfolio, **decimal string** (such as `0.2`, `0.5`). Often consistent with the `schemes[].ratio` of a strategy under `recommend_v2` of `GET /asset-swap/config`.
      */
     'ratio': string;
 

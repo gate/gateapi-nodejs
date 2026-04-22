@@ -10,15 +10,15 @@
  */
 
 /**
- * **下单专用**。表示某一侧（`from` 或 `to`）的一个币种及其**数量 amount**。 用于 `OrderCreateV1Req`；**不要**用于预览接口的 `to`（预览 `to` 使用 `PreviewToParam.ratio`）。
+ * **For order only**. Represents a currency and its **amount** on a certain side (`from` or `to`). Used with `OrderCreateV1Req`; **Don\'t** be used with `to` of the preview interface (preview `to` uses `PreviewToParam.ratio`).
  */
 export class CreateParam {
     /**
-     * 币种符号，与 `GET /asset-swap/asset/list` 及业务支持范围一致。
+     * Currency symbol, consistent with `GET /asset-swap/asset/list` and business support scope.
      */
     'asset': string;
     /**
-     * 该币种在本侧的数量，**十进制字符串**（非科学计数法）。`from` 表示卖出数量，`to` 表示目标侧数量。 与预览接口 `to[].ratio` 不同。
+     * The quantity of this currency on this side, **decimal string** (non-scientific notation). `from` represents the selling quantity, and `to` represents the target side quantity. Different from preview interface `to[].ratio`.
      */
     'amount': string;
 

@@ -10,11 +10,11 @@
  */
 
 /**
- * 参与活动请求体
+ * Participation activity request body
  */
 export class HodlerAirdropV4OrderRequest {
     /**
-     * 活动ID，必填
+     * Activity ID, required
      */
     'hodlerId': number;
 

@@ -12,7 +12,7 @@
 import { AIHubPortfolioRunningItem } from './aIHubPortfolioRunningItem';
 
 /**
- * 运行中策略列表数据。
+ * Running policy list data.
  */
 export class AIHubPortfolioRunningData {
     'items': Array<AIHubPortfolioRunningItem>;

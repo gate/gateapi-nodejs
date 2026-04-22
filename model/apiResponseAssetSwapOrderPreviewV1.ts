@@ -12,23 +12,23 @@
 import { OrderPreviewV1Resp } from './orderPreviewV1Resp';
 
 /**
- * 资产配置优化-预览统一响应
+ * Asset allocation optimization-preview unified response
  */
 export class ApiResponseAssetSwapOrderPreviewV1 {
     /**
-     * 业务错误码，0 表示成功
+     * Business error code, 0 means success
      */
     'code': number;
     /**
-     * 错误标识码，成功时为空字符串
+     * Error identification code, empty string on success
      */
     'label'?: string;
     /**
-     * 描述信息
+     * Description information
      */
     'message': string;
     /**
-     * 成功时为预览结果，失败时为 null
+     * Preview result when successful, null when failed
      */
     'data': OrderPreviewV1Resp | null;
     /**

@@ -10,7 +10,7 @@
  */
 
 /**
- * 策略推荐接口支持的场景枚举。
+ * Enumeration of scenarios supported by the policy recommendation interface.
  */
 export enum DiscoverScene {
     Top1 = <any>'top1',

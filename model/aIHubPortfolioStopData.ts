@@ -12,13 +12,13 @@
 import { StrategyType } from './strategyType';
 
 /**
- * 终止策略成功后返回的结果信息。
+ * The result information returned after the termination strategy is successful.
  */
 export class AIHubPortfolioStopData {
     'strategyId': string;
     'strategyType': StrategyType;
     /**
-     * 当前实现返回 `stopping`
+     * The current implementation returns `stopping`
      */
     'status': string;
     'resultMessage': string;

@@ -11,11 +11,11 @@
 
 export class CandyDropV4RegisterReqCd02 {
     /**
-     * 活动ID（可选，与 currency 配合使用）
+     * Activity ID (optional, used with currency)
      */
     'activityId'?: number;
     /**
-     * 项目/币种名称（必填）
+     * Project/currency name (required)
      */
     'currency': string;
 

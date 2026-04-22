@@ -12,7 +12,7 @@
 import { StrategyType } from './strategyType';
 
 /**
- * 策略详情数据。
+ * Policy details data.
  */
 export class AIHubPortfolioDetailData {
     'strategyId': string;
@@ -20,15 +20,15 @@ export class AIHubPortfolioDetailData {
     'market': string;
     'status': string;
     /**
-     * 基础信息，字段按策略类型动态变化
+     * Basic information, fields change dynamically according to strategy type
      */
     'baseInfo': { [key: string]: string };
     /**
-     * 指标信息，字段按策略类型动态变化
+     * Indicator information, fields change dynamically according to strategy type
      */
     'metrics': { [key: string]: string };
     /**
-     * 仓位或持仓信息，字段按策略类型动态变化
+     * Position or position information, fields dynamically change according to strategy type
      */
     'position'?: { [key: string]: string } | null;
     'stopSupported': boolean;

@@ -12,7 +12,7 @@
 import { InfiniteGridCreateParams } from './infiniteGridCreateParams';
 
 /**
- * 创建无限网格策略的请求体。
+ * Create the request body for the infinite grid policy.
  */
 export class InfiniteGridCreateRequest {
     'strategyType': InfiniteGridCreateRequest.StrategyType;

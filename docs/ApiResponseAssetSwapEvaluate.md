@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **number** | 业务错误码，0 表示成功 | [default to undefined]
-**label** | **string** | 错误标识码，成功时为空字符串 | [optional] [default to undefined]
-**message** | **string** | 描述信息 | [default to undefined]
-**data** | [**EvaluateResp**](EvaluateResp.md) | 成功时为估值分页数据，失败时为 null | [default to undefined]
+**code** | **number** | Business error code, 0 means success | [default to undefined]
+**label** | **string** | Error identification code, empty string on success | [optional] [default to undefined]
+**message** | **string** | Description information | [default to undefined]
+**data** | [**EvaluateResp**](EvaluateResp.md) | Estimated paginated data on success, null on failure | [default to undefined]
 **timestamp** | **number** | Server timestamp (milliseconds) | [default to undefined]
 

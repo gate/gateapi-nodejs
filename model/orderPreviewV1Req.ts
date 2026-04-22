@@ -13,15 +13,15 @@ import { PreviewFromParam } from './previewFromParam';
 import { PreviewToParam } from './previewToParam';
 
 /**
- * 资产配置优化**预览**请求。`from` 为卖出数量；`to` 为目标币种及**分配比例 ratio**（不是绝对数量）。 正式下单请使用 `OrderCreateV1Req`，其 `to` 为 `amount`。
+ * Asset allocation optimization **preview** request. `from` is the selling quantity; `to` is the target currency and **distribution ratio ratio** (not the absolute quantity). Please use `OrderCreateV1Req` to place a formal order, and its `to` is `amount`.
  */
 export class OrderPreviewV1Req {
     /**
-     * 卖出侧；每项为币种 + 换出数量 `amount`（字符串十进制）。
+     * Sell ​​side; each item is the currency + the swap amount `amount` (string decimal).
      */
     'from': Array<PreviewFromParam>;
     /**
-     * 目标侧；每项为币种 + **比例** `ratio`（字符串十进制，如 `0.5`）。 典型来源：`GET /asset-swap/config` → `recommend_v2` 某分组下策略的 `schemes[].name` / `schemes[].ratio`。
+     * Target side; each item is currency + **ratio** `ratio` (string decimal, such as `0.5`). Typical source: `GET /asset-swap/config` → `recommend_v2` `schemes[].name` / `schemes[].ratio` of the strategy under a certain group.
      */
     'to': Array<PreviewToParam>;
 

@@ -593,7 +593,7 @@ export class MultiCollateralLoanApi {
     /**
      * Query the current interest rate of the currency in the previous hour, the current interest rate is updated every hour
      * @summary Query currency\'s current interest rate
-     * @param currencies Specify currency name query array, separated by commas, maximum 100 items
+     * @param currencies Specify currency name query array, separated by commas, maximum 100
      * @param opts Optional parameters
      * @param opts.vipLevel VIP level, defaults to 0 if not specified
      */

@@ -12,23 +12,23 @@
 import { CreateOrder } from './createOrder';
 
 /**
- * 资产配置优化-查询订单统一响应
+ * Asset allocation optimization - unified response to query orders
  */
 export class ApiResponseAssetSwapOrderQueryV1 {
     /**
-     * 业务错误码，0 表示成功
+     * Business error code, 0 means success
      */
     'code': number;
     /**
-     * 错误标识码，成功时为空字符串
+     * Error identification code, empty string on success
      */
     'label'?: string;
     /**
-     * 描述信息
+     * Description information
      */
     'message': string;
     /**
-     * 成功时为订单详情，失败时为 null
+     * Order details on success, null on failure
      */
     'data': CreateOrder | null;
     /**

@@ -10,7 +10,7 @@
  */
 
 /**
- * 用户参与记录单项
+ * User participation record single item
  */
 export class HodlerAirdropV4UserOrderRecord {
     /**
@@ -18,23 +18,23 @@ export class HodlerAirdropV4UserOrderRecord {
      */
     'hodlerId': string;
     /**
-     * 空投币种
+     * Airdrop currency
      */
     'asset': string;
     /**
-     * 有效持仓GT数量（参与活动时持有的GT平均数量）
+     * Effective number of GT positions (average number of GT held when participating in the event)
      */
     'userGtAvgAmount'?: string;
     /**
-     * 基础空投金额，活动结束前为空字符串
+     * Basic airdrop amount, it will be an empty string before the end of the activity
      */
     'receiveAmountBase'?: string;
     /**
-     * 额外空投金额（余币宝加成），活动结束前为空字符串
+     * Additional airdrop amount (Yubibao bonus), it will be an empty string before the end of the event
      */
     'receiveAmountExt'?: string;
     /**
-     * 活动结束时间，格式 Y-m-d H:i:s，UTC
+     * Event end time, format Y-m-d H:i:s, UTC
      */
     'closeTimest': string;
 

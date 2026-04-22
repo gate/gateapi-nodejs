@@ -9,16 +9,16 @@ Method | HTTP request | Description
 [**redeemLaunchPool**](LaunchApi.md#redeemLaunchPool) | **POST** /launch/redeem | Redeem LaunchPool staked assets
 [**listLaunchPoolPledgeRecords**](LaunchApi.md#listLaunchPoolPledgeRecords) | **GET** /launch/user-pledge-records | Query user pledge records
 [**listLaunchPoolRewardRecords**](LaunchApi.md#listLaunchPoolRewardRecords) | **GET** /launch/get-user-reward-records | Query user reward records
-[**getHodlerAirdropProjectList**](LaunchApi.md#getHodlerAirdropProjectList) | **GET** /launch/hodler-airdrop/project-list | 查询HODLer Airdrop活动列表
-[**hodlerAirdropOrder**](LaunchApi.md#hodlerAirdropOrder) | **POST** /launch/hodler-airdrop/order | 参与HODLer Airdrop活动
-[**getHodlerAirdropUserOrderRecords**](LaunchApi.md#getHodlerAirdropUserOrderRecords) | **GET** /launch/hodler-airdrop/user-order-records | 查询HODLer Airdrop参与记录
-[**getHodlerAirdropUserAirdropRecords**](LaunchApi.md#getHodlerAirdropUserAirdropRecords) | **GET** /launch/hodler-airdrop/user-airdrop-records | 查询HODLer Airdrop空投记录
-[**getCandyDropActivityListV4**](LaunchApi.md#getCandyDropActivityListV4) | **GET** /launch/candydrop/activity-list | 查询活动列表
-[**registerCandyDropV4**](LaunchApi.md#registerCandyDropV4) | **POST** /launch/candydrop/register | 报名参与活动
-[**getCandyDropActivityRulesV4**](LaunchApi.md#getCandyDropActivityRulesV4) | **GET** /launch/candydrop/activity-rules | 查询活动规则
-[**getCandyDropTaskProgressV4**](LaunchApi.md#getCandyDropTaskProgressV4) | **GET** /launch/candydrop/task-progress | 查询任务完成进度
-[**getCandyDropParticipationRecordsV4**](LaunchApi.md#getCandyDropParticipationRecordsV4) | **GET** /launch/candydrop/participation-records | 查询参与记录
-[**getCandyDropAirdropRecordsV4**](LaunchApi.md#getCandyDropAirdropRecordsV4) | **GET** /launch/candydrop/airdrop-records | 查询空投记录
+[**getHodlerAirdropProjectList**](LaunchApi.md#getHodlerAirdropProjectList) | **GET** /launch/hodler-airdrop/project-list | Check the list of HODLer Airdrop activities
+[**hodlerAirdropOrder**](LaunchApi.md#hodlerAirdropOrder) | **POST** /launch/hodler-airdrop/order | Participate in the HODLer Airdrop event
+[**getHodlerAirdropUserOrderRecords**](LaunchApi.md#getHodlerAirdropUserOrderRecords) | **GET** /launch/hodler-airdrop/user-order-records | Check HODLer Airdrop participation records
+[**getHodlerAirdropUserAirdropRecords**](LaunchApi.md#getHodlerAirdropUserAirdropRecords) | **GET** /launch/hodler-airdrop/user-airdrop-records | Query HODLer Airdrop records
+[**getCandyDropActivityListV4**](LaunchApi.md#getCandyDropActivityListV4) | **GET** /launch/candydrop/activity-list | Query activity list
+[**registerCandyDropV4**](LaunchApi.md#registerCandyDropV4) | **POST** /launch/candydrop/register | Sign up for events
+[**getCandyDropActivityRulesV4**](LaunchApi.md#getCandyDropActivityRulesV4) | **GET** /launch/candydrop/activity-rules | Query activity rules
+[**getCandyDropTaskProgressV4**](LaunchApi.md#getCandyDropTaskProgressV4) | **GET** /launch/candydrop/task-progress | Query task completion progress
+[**getCandyDropParticipationRecordsV4**](LaunchApi.md#getCandyDropParticipationRecordsV4) | **GET** /launch/candydrop/participation-records | Query participation records
+[**getCandyDropAirdropRecordsV4**](LaunchApi.md#getCandyDropAirdropRecordsV4) | **GET** /launch/candydrop/airdrop-records | Query airdrop records
 
 
 ## listLaunchPoolProjects
@@ -284,9 +284,9 @@ Promise<{ response: AxiosResponse; body: Array<LaunchPoolV4RewardRecord>; }> [La
 
 > Promise<{ response: http.IncomingMessage; body: Array<HodlerAirdropV4ProjectItem>; }> getHodlerAirdropProjectList(opts)
 
-查询HODLer Airdrop活动列表
+Check the list of HODLer Airdrop activities
 
-获取HODLer Airdrop活动列表，支持按状态、币种/项目名称、参与情况筛选。此接口无需用户登录，登录用户可获取个人参与信息。
+Get the HODLer Airdrop activity list, which supports filtering by status, currency/project name, and participation status. This interface does not require user login, and logged in users can obtain personal participation information.
 
 ### Example
 
@@ -298,11 +298,11 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.LaunchApi(client);
 const opts = {
-  'status': "status_example", // 'ACTIVE' | 'UNDERWAY' | 'PREHEAT' | 'FINISH' | 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部
-  'keyword': "keyword_example", // string | 币种/项目名称关键词，模糊匹配
-  'join': 0, // 0 | 1 | 参与情况筛选：0全部（默认），1仅已参与
-  'page': 1, // number | 页码，默认1
-  'size': 10 // number | 每页条数，默认10
+  'status': "status_example", // 'ACTIVE' | 'UNDERWAY' | 'PREHEAT' | 'FINISH' | Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed
+  'keyword': "keyword_example", // string | Currency/project name keywords, fuzzy matching
+  'join': 0, // 0 | 1 | Participation filter: 0 all (default), 1 only participated
+  'page': 1, // number | Page number, default 1
+  'size': 10 // number | Number of items per page, default 10
 };
 api.getHodlerAirdropProjectList(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -314,11 +314,11 @@ api.getHodlerAirdropProjectList(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **Status**| 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 | [optional] [default to undefined]
- **keyword** | **string**| 币种/项目名称关键词，模糊匹配 | [optional] [default to undefined]
- **join** | **Join**| 参与情况筛选：0全部（默认），1仅已参与 | [optional] [default to 0]
- **page** | **number**| 页码，默认1 | [optional] [default to 1]
- **size** | **number**| 每页条数，默认10 | [optional] [default to 10]
+ **status** | **Status**| Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed | [optional] [default to undefined]
+ **keyword** | **string**| Currency/project name keywords, fuzzy matching | [optional] [default to undefined]
+ **join** | **Join**| Participation filter: 0 all (default), 1 only participated | [optional] [default to 0]
+ **page** | **number**| Page number, default 1 | [optional] [default to 1]
+ **size** | **number**| Number of items per page, default 10 | [optional] [default to 10]
 
 ### Return type
 
@@ -337,9 +337,9 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: HodlerAirdropV4OrderResponse; }> hodlerAirdropOrder(hodlerAirdropV4OrderRequest)
 
-参与HODLer Airdrop活动
+Participate in the HODLer Airdrop event
 
-参与指定的HODLer Airdrop活动，需持有GT。此接口需要用户登录认证，且须满足KYC要求，不支持子账户、企业/机构用户。
+To participate in designated HODLer Airdrop activities, you need to hold GT. This interface requires user login authentication and must meet KYC requirements. It does not support sub-accounts and enterprise/institutional users.
 
 ### Example
 
@@ -382,9 +382,9 @@ Promise<{ response: AxiosResponse; body: HodlerAirdropV4OrderResponse; }> [Hodle
 
 > Promise<{ response: http.IncomingMessage; body: Array<HodlerAirdropV4UserOrderRecord>; }> getHodlerAirdropUserOrderRecords(opts)
 
-查询HODLer Airdrop参与记录
+Check HODLer Airdrop participation records
 
-查询用户的HODLer Airdrop参与记录，返回每个活动的有效持仓和空投金额。此接口需要用户登录认证。
+Query the user\&#39;s HODLer Airdrop participation record and return the effective holdings and airdrop amount of each activity. This interface requires user login authentication.
 
 ### Example
 
@@ -398,11 +398,11 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.LaunchApi(client);
 const opts = {
-  'keyword': "keyword_example", // string | 币种名称关键词筛选
-  'startTimest': 56, // number | 开始时间戳（秒）
-  'endTimest': 56, // number | 结束时间戳（秒）
-  'page': 1, // number | 页码，默认1
-  'size': 10 // number | 每页条数，默认10
+  'keyword': "keyword_example", // string | Currency name keyword filtering
+  'startTimest': 56, // number | Start timestamp (seconds)
+  'endTimest': 56, // number | end timestamp (seconds)
+  'page': 1, // number | Page number, default 1
+  'size': 10 // number | Number of items per page, default 10
 };
 api.getHodlerAirdropUserOrderRecords(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -414,11 +414,11 @@ api.getHodlerAirdropUserOrderRecords(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keyword** | **string**| 币种名称关键词筛选 | [optional] [default to undefined]
- **startTimest** | **number**| 开始时间戳（秒） | [optional] [default to undefined]
- **endTimest** | **number**| 结束时间戳（秒） | [optional] [default to undefined]
- **page** | **number**| 页码，默认1 | [optional] [default to 1]
- **size** | **number**| 每页条数，默认10 | [optional] [default to 10]
+ **keyword** | **string**| Currency name keyword filtering | [optional] [default to undefined]
+ **startTimest** | **number**| Start timestamp (seconds) | [optional] [default to undefined]
+ **endTimest** | **number**| end timestamp (seconds) | [optional] [default to undefined]
+ **page** | **number**| Page number, default 1 | [optional] [default to 1]
+ **size** | **number**| Number of items per page, default 10 | [optional] [default to 10]
 
 ### Return type
 
@@ -437,9 +437,9 @@ Promise<{ response: AxiosResponse; body: Array<HodlerAirdropV4UserOrderRecord>; 
 
 > Promise<{ response: http.IncomingMessage; body: Array<HodlerAirdropV4UserAirdropRecord>; }> getHodlerAirdropUserAirdropRecords(opts)
 
-查询HODLer Airdrop空投记录
+Query HODLer Airdrop records
 
-查询用户已获得的HODLer Airdrop空投发放记录，包含基础空投、额外空投和自动兑换状态。此接口需要用户登录认证。
+Query the HODLer Airdrop airdrop distribution record that the user has obtained, including basic airdrops, additional airdrops and automatic redemption status. This interface requires user login authentication.
 
 ### Example
 
@@ -453,11 +453,11 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.LaunchApi(client);
 const opts = {
-  'keyword': "keyword_example", // string | 币种名称关键词筛选
-  'startTimest': 56, // number | 开始时间戳（秒）
-  'endTimest': 56, // number | 结束时间戳（秒）
-  'page': 1, // number | 页码，默认1
-  'size': 10 // number | 每页条数，默认10
+  'keyword': "keyword_example", // string | Currency name keyword filtering
+  'startTimest': 56, // number | Start timestamp (seconds)
+  'endTimest': 56, // number | end timestamp (seconds)
+  'page': 1, // number | Page number, default 1
+  'size': 10 // number | Number of items per page, default 10
 };
 api.getHodlerAirdropUserAirdropRecords(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -469,11 +469,11 @@ api.getHodlerAirdropUserAirdropRecords(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keyword** | **string**| 币种名称关键词筛选 | [optional] [default to undefined]
- **startTimest** | **number**| 开始时间戳（秒） | [optional] [default to undefined]
- **endTimest** | **number**| 结束时间戳（秒） | [optional] [default to undefined]
- **page** | **number**| 页码，默认1 | [optional] [default to 1]
- **size** | **number**| 每页条数，默认10 | [optional] [default to 10]
+ **keyword** | **string**| Currency name keyword filtering | [optional] [default to undefined]
+ **startTimest** | **number**| Start timestamp (seconds) | [optional] [default to undefined]
+ **endTimest** | **number**| end timestamp (seconds) | [optional] [default to undefined]
+ **page** | **number**| Page number, default 1 | [optional] [default to 1]
+ **size** | **number**| Number of items per page, default 10 | [optional] [default to 10]
 
 ### Return type
 
@@ -492,9 +492,9 @@ Promise<{ response: AxiosResponse; body: Array<HodlerAirdropV4UserAirdropRecord>
 
 > Promise<{ response: http.IncomingMessage; body: Array<CandyDropV4ActivityCd01>; }> getCandyDropActivityListV4(opts)
 
-查询活动列表
+Query activity list
 
-支持多维度筛选 CandyDrop 活动，每次查询返回列表排序的前十条数据。不需要登录。
+Supports multi-dimensional filtering of CandyDrop activities, and each query returns the top ten data sorted by the list. No login required.
 
 ### Example
 
@@ -506,12 +506,12 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.LaunchApi(client);
 const opts = {
-  'status': "status_example", // 'ongoing' | 'upcoming' | 'ended' | 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部
-  'ruleName': "ruleName_example", // string | 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF)
-  'registerStatus': "registerStatus_example", // 'registered' | 'unregistered' | 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部
-  'currency': "currency_example", // string | 币种名称筛选
-  'limit': 10, // number | 返回条数，默认10，最大30
-  'offset': 0 // number | 偏移量，默认0
+  'status': "status_example", // 'ongoing' | 'upcoming' | 'ended' | Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned
+  'ruleName': "ruleName_example", // string | Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF)
+  'registerStatus': "registerStatus_example", // 'registered' | 'unregistered' | Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned
+  'currency': "currency_example", // string | Currency name filter
+  'limit': 10, // number | Number of items returned, default 10, maximum 30
+  'offset': 0 // number | Offset, default 0
 };
 api.getCandyDropActivityListV4(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -523,12 +523,12 @@ api.getCandyDropActivityListV4(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **Status**| 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 | [optional] [default to undefined]
- **ruleName** | **string**| 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) | [optional] [default to undefined]
- **registerStatus** | **RegisterStatus**| 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 | [optional] [default to undefined]
- **currency** | **string**| 币种名称筛选 | [optional] [default to undefined]
- **limit** | **number**| 返回条数，默认10，最大30 | [optional] [default to 10]
- **offset** | **number**| 偏移量，默认0 | [optional] [default to 0]
+ **status** | **Status**| Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned | [optional] [default to undefined]
+ **ruleName** | **string**| Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF) | [optional] [default to undefined]
+ **registerStatus** | **RegisterStatus**| Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned | [optional] [default to undefined]
+ **currency** | **string**| Currency name filter | [optional] [default to undefined]
+ **limit** | **number**| Number of items returned, default 10, maximum 30 | [optional] [default to 10]
+ **offset** | **number**| Offset, default 0 | [optional] [default to 0]
 
 ### Return type
 
@@ -547,9 +547,9 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: CandyDropV4RegisterRespCd02; }> registerCandyDropV4(candyDropV4RegisterReqCd02)
 
-报名参与活动
+Sign up for events
 
-报名参与特定 CandyDrop 活动。需要登录，需要 API Key 签名认证。
+Sign up for select CandyDrop events. Login is required and API Key signature authentication is required.
 
 ### Example
 
@@ -592,9 +592,9 @@ Promise<{ response: AxiosResponse; body: CandyDropV4RegisterRespCd02; }> [CandyD
 
 > Promise<{ response: http.IncomingMessage; body: CandyDropV4ActivityRulesCd03; }> getCandyDropActivityRulesV4(opts)
 
-查询活动规则
+Query activity rules
 
-查询特定活动的规则，包括奖池及对应任务数据。不需要登录。
+Query the rules of a specific activity, including prize pool and corresponding task data. No login required.
 
 ### Example
 
@@ -606,8 +606,8 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.LaunchApi(client);
 const opts = {
-  'activityId': 56, // number | 活动ID，与 currency 二选一，至少须传其一
-  'currency': "currency_example" // string | 项目/币种名称，与 activity_id 二选一，至少须传其一
+  'activityId': 56, // number | Activity ID, choose one from currency, at least one of them must be passed
+  'currency': "currency_example" // string | Project/currency name, choose one from activity_id, at least one of them must be passed
 };
 api.getCandyDropActivityRulesV4(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -619,8 +619,8 @@ api.getCandyDropActivityRulesV4(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **activityId** | **number**| 活动ID，与 currency 二选一，至少须传其一 | [optional] [default to undefined]
- **currency** | **string**| 项目/币种名称，与 activity_id 二选一，至少须传其一 | [optional] [default to undefined]
+ **activityId** | **number**| Activity ID, choose one from currency, at least one of them must be passed | [optional] [default to undefined]
+ **currency** | **string**| Project/currency name, choose one from activity_id, at least one of them must be passed | [optional] [default to undefined]
 
 ### Return type
 
@@ -639,9 +639,9 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: CandyDropV4TaskProgressCd04; }> getCandyDropTaskProgressV4(opts)
 
-查询任务完成进度
+Query task completion progress
 
-查询进行中且已报名/参与的任务完成进度。需要登录。
+Check the completion progress of tasks that are in progress and have been registered/participated. Login required.
 
 ### Example
 
@@ -655,8 +655,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.LaunchApi(client);
 const opts = {
-  'activityId': 56, // number | 活动ID，与 currency 二选一，至少须传其一
-  'currency': "currency_example" // string | 项目/币种名称，与 activity_id 二选一，至少须传其一
+  'activityId': 56, // number | Activity ID, choose one from currency, at least one of them must be passed
+  'currency': "currency_example" // string | Project/currency name, choose one from activity_id, at least one of them must be passed
 };
 api.getCandyDropTaskProgressV4(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -668,8 +668,8 @@ api.getCandyDropTaskProgressV4(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **activityId** | **number**| 活动ID，与 currency 二选一，至少须传其一 | [optional] [default to undefined]
- **currency** | **string**| 项目/币种名称，与 activity_id 二选一，至少须传其一 | [optional] [default to undefined]
+ **activityId** | **number**| Activity ID, choose one from currency, at least one of them must be passed | [optional] [default to undefined]
+ **currency** | **string**| Project/currency name, choose one from activity_id, at least one of them must be passed | [optional] [default to undefined]
 
 ### Return type
 
@@ -688,9 +688,9 @@ Promise<{ response: AxiosResponse; body: CandyDropV4TaskProgressCd04; }> [CandyD
 
 > Promise<{ response: http.IncomingMessage; body: Array<CandyDropV4ParticipationRecordCd05>; }> getCandyDropParticipationRecordsV4(opts)
 
-查询参与记录
+Query participation records
 
-查询用户的 CandyDrop 参与详情。需要登录。
+Query the user\&#39;s CandyDrop participation details. Login required.
 
 ### Example
 
@@ -704,12 +704,12 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.LaunchApi(client);
 const opts = {
-  'currency': "currency_example", // string | 币种名称筛选
-  'status': "status_example", // 'ongoing' | 'awaiting_draw' | 'won' | 'not_win' | 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖)
-  'startTime': 56, // number | 开始时间（Unix 时间戳秒）
-  'endTime': 56, // number | 结束时间（Unix 时间戳秒）
-  'page': 1, // number | 页码，默认1
-  'limit': 10 // number | 每页条数，默认10，最大30
+  'currency': "currency_example", // string | Currency name filter
+  'status': "status_example", // 'ongoing' | 'awaiting_draw' | 'won' | 'not_win' | Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won)
+  'startTime': 56, // number | Start time (Unix timestamp seconds)
+  'endTime': 56, // number | End time (Unix timestamp seconds)
+  'page': 1, // number | Page number, default 1
+  'limit': 10 // number | Number of items per page, default 10, maximum 30
 };
 api.getCandyDropParticipationRecordsV4(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -721,12 +721,12 @@ api.getCandyDropParticipationRecordsV4(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| 币种名称筛选 | [optional] [default to undefined]
- **status** | **Status**| 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) | [optional] [default to undefined]
- **startTime** | **number**| 开始时间（Unix 时间戳秒） | [optional] [default to undefined]
- **endTime** | **number**| 结束时间（Unix 时间戳秒） | [optional] [default to undefined]
- **page** | **number**| 页码，默认1 | [optional] [default to 1]
- **limit** | **number**| 每页条数，默认10，最大30 | [optional] [default to 10]
+ **currency** | **string**| Currency name filter | [optional] [default to undefined]
+ **status** | **Status**| Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won) | [optional] [default to undefined]
+ **startTime** | **number**| Start time (Unix timestamp seconds) | [optional] [default to undefined]
+ **endTime** | **number**| End time (Unix timestamp seconds) | [optional] [default to undefined]
+ **page** | **number**| Page number, default 1 | [optional] [default to 1]
+ **limit** | **number**| Number of items per page, default 10, maximum 30 | [optional] [default to 10]
 
 ### Return type
 
@@ -745,9 +745,9 @@ Promise<{ response: AxiosResponse; body: Array<CandyDropV4ParticipationRecordCd0
 
 > Promise<{ response: http.IncomingMessage; body: Array<CandyDropV4AirdropRecordCd06>; }> getCandyDropAirdropRecordsV4(opts)
 
-查询空投记录
+Query airdrop records
 
-查询用户的 CandyDrop 空投详情。需要登录。
+Query the user\&#39;s CandyDrop airdrop details. Login required.
 
 ### Example
 
@@ -761,11 +761,11 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.LaunchApi(client);
 const opts = {
-  'currency': "currency_example", // string | 币种名称筛选
-  'startTime': 56, // number | 开始时间（Unix 时间戳秒）
-  'endTime': 56, // number | 结束时间（Unix 时间戳秒）
-  'page': 1, // number | 页码，默认1
-  'limit': 10 // number | 每页条数，默认10，最大30
+  'currency': "currency_example", // string | Currency name filter
+  'startTime': 56, // number | Start time (Unix timestamp seconds)
+  'endTime': 56, // number | End time (Unix timestamp seconds)
+  'page': 1, // number | Page number, default 1
+  'limit': 10 // number | Number of items per page, default 10, maximum 30
 };
 api.getCandyDropAirdropRecordsV4(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -777,11 +777,11 @@ api.getCandyDropAirdropRecordsV4(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| 币种名称筛选 | [optional] [default to undefined]
- **startTime** | **number**| 开始时间（Unix 时间戳秒） | [optional] [default to undefined]
- **endTime** | **number**| 结束时间（Unix 时间戳秒） | [optional] [default to undefined]
- **page** | **number**| 页码，默认1 | [optional] [default to 1]
- **limit** | **number**| 每页条数，默认10，最大30 | [optional] [default to 10]
+ **currency** | **string**| Currency name filter | [optional] [default to undefined]
+ **startTime** | **number**| Start time (Unix timestamp seconds) | [optional] [default to undefined]
+ **endTime** | **number**| End time (Unix timestamp seconds) | [optional] [default to undefined]
+ **page** | **number**| Page number, default 1 | [optional] [default to 1]
+ **limit** | **number**| Number of items per page, default 10, maximum 30 | [optional] [default to 10]
 
 ### Return type
 

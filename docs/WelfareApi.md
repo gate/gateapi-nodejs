@@ -6,8 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getUserIdentity**](WelfareApi.md#getUserIdentity) | **GET** /rewards/getUserIdentity | Get user identity
 [**getBeginnerTaskList**](WelfareApi.md#getBeginnerTaskList) | **GET** /rewards/getBeginnerTaskList | Get beginner task list
-[**claimTask**](WelfareApi.md#claimTask) | **POST** /rewards/claimTask | 领取任务
-[**claimReward**](WelfareApi.md#claimReward) | **POST** /rewards/claimReward | 领取任务奖励
+[**claimTask**](WelfareApi.md#claimTask) | **POST** /rewards/claimTask | Get the task
+[**claimReward**](WelfareApi.md#claimReward) | **POST** /rewards/claimReward | Receive mission rewards
 
 
 ## getUserIdentity
@@ -96,7 +96,7 @@ Promise<{ response: AxiosResponse; body: ApiResponseExSkillGetBeginnerTaskListRe
 
 > Promise<{ response: http.IncomingMessage; body: ApiResponseExSkillClaimTaskResp; }> claimTask(exSkillClaimTaskReq)
 
-领取任务
+Get the task
 
 领取单个福利任务。  当前主场景为新客下载任务领取，但接口本身支持新客注册、引导、进阶任务类型。  处理流程： 1. 读取登录用户 2. 做用户资格校验 3. 风控校验（事件码 &#x60;task_center&#x60;） 4. 校验任务配置与任务中心任务 5. 校验是否已存在进行中任务 6. 若为下载任务，校验是否已下载 App 7. 写入 &#x60;welfare_user_tasks_xx&#x60; 8. 上报任务中心  风控透传字段： - 老字段：&#x60;user_id&#x60;、&#x60;ip&#x60;、&#x60;const_id&#x60;、&#x60;is_async&#x60;、&#x60;action&#x60;、&#x60;task_id&#x60; - 新增字段：&#x60;req_method&#x60;、&#x60;traceid&#x60; - 其中：   - &#x60;req_method&#x60; 来自 &#x60;X-Gate-Request-Source&#x60;   - &#x60;ip&#x60; 来自 &#x60;X-Gate-Ip&#x60;   - &#x60;traceid&#x60; 来自 &#x60;X-Gate-Trace-Id&#x60;   - &#x60;const_id&#x60; 固定为空字符串
 
@@ -141,7 +141,7 @@ Promise<{ response: AxiosResponse; body: ApiResponseExSkillClaimTaskResp; }> [Ap
 
 > Promise<{ response: http.IncomingMessage; body: ApiResponseExSkillClaimRewardResp; }> claimReward(exSkillClaimRewardReq)
 
-领取任务奖励
+Receive mission rewards
 
 领取单个福利任务奖励。  处理流程： 1. 读取登录用户 2. 做用户资格校验 3. 查询 &#x60;welfare_user_tasks_xx&#x60;，要求任务状态为 &#x60;StatusDone(2)&#x60; 4. 风控校验（事件码 &#x60;index_page_check&#x60;） 5. 查询任务中心任务详情与奖励信息 6. 若奖励为 m 选 n 奖池，则返回 &#x60;has_m_n_task &#x3D; true&#x60;，不实际发奖 7. 普通奖励则进入福利中心原领奖逻辑  风控透传字段： - 老字段：&#x60;user_id&#x60;、&#x60;ip&#x60;、&#x60;const_id&#x60;、&#x60;is_async&#x60; - 新增字段：&#x60;req_method&#x60;、&#x60;traceid&#x60; - 其中：   - &#x60;req_method&#x60; 来自 &#x60;X-Gate-Request-Source&#x60;   - &#x60;ip&#x60; 来自 &#x60;X-Gate-Ip&#x60;   - &#x60;traceid&#x60; 来自 &#x60;X-Gate-Trace-Id&#x60;   - &#x60;const_id&#x60; 固定为空字符串
 

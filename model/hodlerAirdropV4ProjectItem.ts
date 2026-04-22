@@ -10,7 +10,7 @@
  */
 
 /**
- * HODLer Airdrop活动列表项
+ * HODLer Airdrop activity list item
  */
 export class HodlerAirdropV4ProjectItem {
     /**
@@ -22,35 +22,35 @@ export class HodlerAirdropV4ProjectItem {
      */
     'name': string;
     /**
-     * 空投币种
+     * Airdrop currency
      */
     'asset': string;
     /**
-     * 项目状态
+     * Project status
      */
     'status': HodlerAirdropV4ProjectItem.Status;
     /**
-     * 空投总量
+     * Total airdrop amount
      */
     'totalAmount': string;
     /**
-     * 活动开始时间，格式 Y-m-d H:i:s，UTC
+     * Event start time, format Y-m-d H:i:s, UTC
      */
     'openTimest': string;
     /**
-     * 活动结束时间，格式 Y-m-d H:i:s，UTC
+     * Event end time, format Y-m-d H:i:s, UTC
      */
     'closeTimest': string;
     /**
-     * 每枚GT可获得的空投币数量，计算中时返回空字符串
+     * The number of airdrop coins that can be obtained for each GT. When the calculation is in progress, an empty string is returned.
      */
     'perGtRewardToken'?: string;
     /**
-     * 参与人数
+     * Number of participants
      */
     'userCount'?: string;
     /**
-     * 个人参与GT上限
+     * Personal GT limit
      */
     'maxQueueAmount'?: string;
 

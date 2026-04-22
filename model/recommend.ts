@@ -11,19 +11,19 @@
 
 export class Recommend {
     /**
-     * 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * Mapping of string keys to string values, corresponding to Go\'s map[string]string.
      */
     'balance': { [key: string]: string };
     /**
-     * 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * Mapping of string keys to string values, corresponding to Go\'s map[string]string.
      */
     'btcFaith': { [key: string]: string };
     /**
-     * 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * Mapping of string keys to string values, corresponding to Go\'s map[string]string.
      */
     'conservative': { [key: string]: string };
     /**
-     * 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * Mapping of string keys to string values, corresponding to Go\'s map[string]string.
      */
     'gtFaith': { [key: string]: string };
 

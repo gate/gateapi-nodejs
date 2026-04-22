@@ -12,15 +12,15 @@
 import { CreateParam } from './createParam';
 
 /**
- * 资产配置优化下单请求。**`from` 与 `to` 数组元素均为 `CreateParam`，字段均为 `asset` + `amount`。** 不存在 `ratio` 字段；若从预览接口抄参，须将预览中的 `to[].ratio` 转换为下单所需的 `to[].amount`（按产品约定，通常依据预览返回的订单明细等），不可直接复用 `ratio` 字符串作为 `amount`。
+ * Asset allocation optimization order request. **The array elements of `from` and `to` are both `CreateParam`, and the fields are `asset` + `amount`. ** There is no `ratio` field; if you copy parameters from the preview interface, you must convert the `to[].ratio` in the preview into the `to[].amount` required for placing an order (according to the product agreement, usually based on the order details returned by the preview, etc.). The `ratio` string cannot be directly reused as `amount`.
  */
 export class OrderCreateV1Req {
     /**
-     * 卖出侧列表，至少一项；每项为要换出的币种及数量 `amount`。
+     * Sell ​​side list, at least one item; each item is the currency and amount `amount` to be swapped out.
      */
     'from': Array<CreateParam>;
     /**
-     * 目标侧列表，至少一项；每项为目标币种及**数量** `amount`（非比例）。 与 `OrderPreviewV1Req.to`（`PreviewToParam`，含 `ratio`）结构语义不同，勿混用。
+     * Target side list, at least one item; each item is the target currency and **amount** `amount` (non-proportional). The structural semantics are different from `OrderPreviewV1Req.to` (`PreviewToParam`, including `ratio`), so do not mix them.
      */
     'to': Array<CreateParam>;
 

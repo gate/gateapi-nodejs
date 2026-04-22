@@ -12,7 +12,7 @@
 import { ContractMartingaleDirection } from './contractMartingaleDirection';
 
 /**
- * 合约马丁策略的创建参数。
+ * The creation parameters of the contract Martin strategy.
  */
 export class ContractMartingaleCreateParams {
     'investAmount': string;

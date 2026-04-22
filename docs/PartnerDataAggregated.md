@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **tradingUserCount** | **string** | 交易人数，字符串形式（与线上 JSON 序列化一致）  仅在 business_type&#x3D;0（全部）时返回具体数值，其他业务类型返回 null | [default to undefined]
 **timeRangeDesc** | **string** | Time range description | [default to undefined]
 **businessType** | **number** | Business Type | [default to undefined]
-**businessTypeDesc** | **string** | Business type description. Allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi | [default to undefined]
+**businessTypeDesc** | **string** | Business type description; allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi | [default to undefined]
 
 ## Enum: PartnerDataAggregated.BusinessType
 

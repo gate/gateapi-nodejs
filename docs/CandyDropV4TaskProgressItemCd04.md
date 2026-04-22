@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**taskName** | **string** | 任务主标题 | [optional] [default to undefined]
-**taskDesc** | **string** | 任务副标题 | [optional] [default to undefined]
-**value** | **string** | 任务进度数据（交易量/充值量等） | [optional] [default to undefined]
+**taskName** | **string** | Task main title | [optional] [default to undefined]
+**taskDesc** | **string** | Task subtitle | [optional] [default to undefined]
+**value** | **string** | Task progress data (transaction volume/recharge volume, etc.) | [optional] [default to undefined]
 

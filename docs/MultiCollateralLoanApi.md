@@ -524,7 +524,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.MultiCollateralLoanApi(client);
-const currencies = [["BTC","GT"]]; // Array<string> | Specify currency name query array, separated by commas, maximum 100 items
+const currencies = [["BTC","GT"]]; // Array<string> | Specify currency name query array, separated by commas, maximum 100
 const opts = {
   'vipLevel': '0' // string | VIP level, defaults to 0 if not specified
 };
@@ -538,7 +538,7 @@ api.getMultiCollateralCurrentRate(currencies, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencies** | [**Array&lt;string&gt;**](string.md)| Specify currency name query array, separated by commas, maximum 100 items | [default to undefined]
+ **currencies** | [**Array&lt;string&gt;**](string.md)| Specify currency name query array, separated by commas, maximum 100 | [default to undefined]
  **vipLevel** | **string**| VIP level, defaults to 0 if not specified | [optional] [default to &#39;0&#39;]
 
 ### Return type

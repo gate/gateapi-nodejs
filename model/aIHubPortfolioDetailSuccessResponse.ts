@@ -12,7 +12,7 @@
 import { AIHubPortfolioDetailData } from './aIHubPortfolioDetailData';
 
 /**
- * 查询策略详情成功时的响应体。
+ * The response body when querying policy details is successful.
  */
 export class AIHubPortfolioDetailSuccessResponse {
     'code': number;

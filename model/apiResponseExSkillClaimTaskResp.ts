@@ -10,11 +10,11 @@
  */
 
 /**
- * 领取任务响应
+ * Receive task response
  */
 export class ApiResponseExSkillClaimTaskResp {
     /**
-     * 业务错误码，0 表示成功
+     * Business error code, 0 means success
      */
     'code'?: number;
     /**
@@ -26,7 +26,7 @@ export class ApiResponseExSkillClaimTaskResp {
      */
     'message'?: string;
     /**
-     * 成功时为空对象 {}
+     * Empty object {} on success
      */
     'data'?: object;
     /**

@@ -15,31 +15,31 @@ export class CandyDropV4ActivityCd01 {
      */
     'id'?: number;
     /**
-     * 项目/币种名称
+     * Project/currency name
      */
     'currency'?: string;
     /**
-     * 总奖池
+     * total prize pool
      */
     'totalRewards'?: string;
     /**
-     * 活动开始时间（UTC格式化）
+     * Event start time (UTC formatted)
      */
     'startTime'?: string;
     /**
-     * 活动结束时间（UTC格式化）
+     * Event end time (UTC format)
      */
     'endTime'?: string;
     /**
-     * 任务类型列表
+     * Task type list
      */
     'ruleName'?: Array<string>;
     /**
-     * 参与人数
+     * Number of participants
      */
     'participants'?: number;
     /**
-     * 最高可得奖励
+     * Maximum reward available
      */
     'userMaxRewards'?: string;
 

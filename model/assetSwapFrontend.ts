@@ -19,14 +19,14 @@ export class AssetSwapFrontend {
     'convertCurrencies': Array<string>;
     'convertCurrenciesV2': Array<ConvertCurrenciesV2Item>;
     /**
-     * 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * Mapping of string keys to string values, corresponding to Go\'s map[string]string.
      */
     '_default': { [key: string]: string };
     'maxSelectCurrencies': number;
     'minEvaluateValue': string;
     'recommend': Recommend;
     /**
-     * 策略分组键到 RecommendV2Strategy 列表的映射。
+     * Mapping of strategy grouping keys to RecommendV2Strategy lists.
      */
     'recommendV2': { [key: string]: Array<RecommendV2Strategy> };
     'titleTips': string;

@@ -10,7 +10,7 @@
  */
 
 /**
- * 现货马丁策略的创建参数。
+ * Creation parameters of spot martin strategy.
  */
 export class SpotMartingaleCreateParams {
     'investAmount': string;

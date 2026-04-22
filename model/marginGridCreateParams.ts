@@ -12,7 +12,7 @@
 import { FuturesDirection } from './futuresDirection';
 
 /**
- * 杠杆网格策略的创建参数。
+ * Creation parameters for the Leverage Grid strategy.
  */
 export class MarginGridCreateParams {
     'money': string;

@@ -13,23 +13,23 @@ import { CandyDropV4PrizePoolCd03 } from './candyDropV4PrizePoolCd03';
 
 export class CandyDropV4ActivityRulesCd03 {
     /**
-     * 项目/币种名称
+     * Project/currency name
      */
     'currency'?: string;
     /**
-     * 总奖池
+     * total prize pool
      */
     'totalRewards'?: string;
     /**
-     * 活动开始时间（UTC格式化）
+     * Event start time (UTC formatted)
      */
     'startTime'?: string;
     /**
-     * 活动结束时间（UTC格式化）
+     * Event end time (UTC format)
      */
     'endTime'?: string;
     /**
-     * 奖池列表
+     * Prize pool list
      */
     'prizePools'?: Array<CandyDropV4PrizePoolCd03>;
 

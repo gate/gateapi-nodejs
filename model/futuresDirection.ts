@@ -10,7 +10,7 @@
  */
 
 /**
- * 合约类策略支持的方向枚举。
+ * Direction enumeration supported by contract-based strategies.
  */
 export enum FuturesDirection {
     Long = <any>'long',

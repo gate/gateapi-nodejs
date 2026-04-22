@@ -10,11 +10,11 @@
  */
 
 /**
- * 参与活动响应
+ * Participate in event response
  */
 export class HodlerAirdropV4OrderResponse {
     /**
-     * 获得空投的币种列表
+     * Get the list of airdropped currencies
      */
     'interestCoin': Array<string>;
 

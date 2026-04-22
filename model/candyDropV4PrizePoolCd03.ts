@@ -13,19 +13,19 @@ import { CandyDropV4TaskCd03 } from './candyDropV4TaskCd03';
 
 export class CandyDropV4PrizePoolCd03 {
     /**
-     * 奖池类型
+     * Prize pool type
      */
     'prizePoolType'?: number;
     /**
-     * 奖池总额度
+     * Total prize pool amount
      */
     'prizeAll'?: string;
     /**
-     * 每人瓜分上限
+     * Maximum share per person
      */
     'prizeLimit'?: string;
     /**
-     * 任务列表
+     * task list
      */
     'tasks'?: Array<CandyDropV4TaskCd03>;
 

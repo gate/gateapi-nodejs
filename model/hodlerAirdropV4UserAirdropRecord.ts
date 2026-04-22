@@ -10,7 +10,7 @@
  */
 
 /**
- * 用户空投发放记录单项
+ * User airdrop distribution record single item
  */
 export class HodlerAirdropV4UserAirdropRecord {
     /**
@@ -18,23 +18,23 @@ export class HodlerAirdropV4UserAirdropRecord {
      */
     'hodlerId': string;
     /**
-     * 空投币种
+     * Airdrop currency
      */
     'asset': string;
     /**
-     * 基础空投金额
+     * Basic airdrop amount
      */
     'receiveAmountBase'?: string;
     /**
-     * 额外空投金额（余币宝加成）
+     * Additional airdrop amount (Yubibao bonus)
      */
     'receiveAmountExt'?: string;
     /**
-     * 空投发放时间，格式 Y-m-d H:i:s，UTC；未发放时可能为空字符串
+     * Airdrop distribution time, format Y-m-d H:i:s, UTC; may be an empty string when not distributed
      */
     'deliveryTimest': string;
     /**
-     * 自动兑换状态，0未兑换 1已兑换为GT
+     * Automatic exchange status, 0 has not been exchanged, 1 has been exchanged for GT
      */
     'exchange'?: string;
 
