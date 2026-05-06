@@ -39,7 +39,7 @@ export class P2pPaymentMethodAccount {
      */
     'bankprov'?: string;
     /**
-     * Bank card number
+     * Bank card number or masked card number.
      */
     'bankaddr'?: string;
     /**
@@ -55,7 +55,7 @@ export class P2pPaymentMethodAccount {
      */
     'holdUsername'?: string;
     /**
-     * userfirst name
+     * User verified display name.
      */
     'realName'?: string;
     /**
@@ -79,7 +79,7 @@ export class P2pPaymentMethodAccount {
      */
     'fileKey'?: string;
     /**
-     * Payment method name
+     * Payment account or masked payment account.
      */
     'account'?: string;
     /**
@@ -149,7 +149,7 @@ export class P2pPaymentMethodAccount {
         },
         {
             name: 'holdUid',
-            baseName: 'holdUid',
+            baseName: 'hold_uid',
             type: 'number',
         },
         {

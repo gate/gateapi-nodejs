@@ -14,7 +14,7 @@
  */
 export class PlaceBizPushOrder {
     /**
-     * Cryptocurrency
+     * Cryptocurrency symbol.
      */
     'currencyType': string;
     /**
@@ -22,105 +22,105 @@ export class PlaceBizPushOrder {
      */
     'exchangeType': string;
     /**
-     * Ad type: 0=Sell, 1=Buy, 2=Edit sell, 3=Edit buy
+     * Ad operation type. `0`: publish sell ad; `1`: publish buy ad; `2`: edit sell ad; `3`: edit buy ad.
      */
-    'type': string;
+    'type': PlaceBizPushOrder.Type;
     /**
-     * Unit price
+     * Per-unit price in fixed-price mode.
      */
     'unitPrice': string;
     /**
-     * Size
+     * Ad amount priced in `currencyType`.
      */
     'number': string;
     /**
-     * Payment method
+     * Payment types, comma-separated; from pay type list `pay_type`, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
      */
     'payType': string;
     /**
-     * Payment method JSON string
+     * JSON map of payment type -> user\'s payment method ID.
      */
     'payTypeJson'?: string;
     /**
-     * Price type: 0-Floating price, 1-Fixed price
+     * Price type: `0` floating; `1` fixed.
      */
     'rateFixed'?: string;
     /**
-     * Ad ID when editing
+     * Pass ad ID when editing; omit or empty when publishing a new ad.
      */
     'oid'?: string;
     /**
-     * Minimum transaction amount per order
+     * Minimum trade amount in `exchangeType`.
      */
     'minAmount': string;
     /**
-     * Maximum transaction amount per order
+     * Maximum amount per trade in `exchangeType` fiat units.
      */
     'maxAmount': string;
     /**
-     * Order tier limit
+     * Minimum counterparty VIP level; `0` means no requirement.
      */
     'tierLimit'?: string;
     /**
-     * Verification level limit
+     * Minimum counterparty verification level; `0` means no limit.
      */
     'verifiedLimit'?: string;
     /**
-     * Registration time limit
+     * Minimum counterparty account age in days; `0` means no limit.
      */
     'regTimeLimit'?: string;
     /**
-     * Advertiser restriction
+     * Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
      */
     'advertisersLimit'?: string;
     /**
-     * Whether to hide payment method: 1=Yes, 0=No
-     */
-    'hidePayment'?: string;
-    /**
-     * Ad expiration time (minutes)
+     * Payment timeout in minutes.
      */
     'expireMin'?: string;
     /**
-     * Trading terms
+     * Ad trading terms shown to the taker.
      */
     'tradeTips'?: string;
     /**
-     * Auto reply
+     * Auto-reply message after order creation.
      */
     'autoReply'?: string;
     /**
-     * Minimum limit of completed orders
+     * Minimum completed orders for counterparty; `-1` unlimited.
      */
     'minCompletedLimit'?: string;
     /**
-     * Maximum limit of completed orders
+     * Maximum completed orders for counterparty; `-1` unlimited.
      */
     'maxCompletedLimit'?: string;
     /**
-     * 30-day completion rate limit
+     * Counterparty minimum 30-day completion rate; `-1` means no limit.
      */
     'completedRateLimit'?: string;
     /**
-     * KYC nationality restriction
+     * KYC nationality restriction; `-1` means no restriction.
      */
     'userCountryLimit'?: string;
     /**
-     * Order count limit
+     * Maximum concurrent orders allowed for the counterparty. `-1`: unlimited.
      */
     'userOrderLimit'?: string;
     /**
-     * Reference exchange rate ID
+     * Floating price reference. `1`: platform reference; `2`: Gate reference; `3`: spot reference.
      */
     'rateReferenceId'?: string;
     /**
-     * Reference exchange rate offset
+     * Absolute floating offset ratio, e.g. `0.5` means 0.5%.
      */
     'rateOffset'?: string;
     /**
-     * 444
+     * Floating direction: `0` markup; `1` markdown.
      */
     'floatTrend'?: string;
+    /**
+     * Team payee UID; optional for non-team merchants.
+     */
+    'teamPaymentUid'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -138,7 +138,7 @@ export class PlaceBizPushOrder {
         {
             name: 'type',
             baseName: 'type',
-            type: 'string',
+            type: 'PlaceBizPushOrder.Type',
         },
         {
             name: 'unitPrice',
@@ -201,11 +201,6 @@ export class PlaceBizPushOrder {
             type: 'string',
         },
         {
-            name: 'hidePayment',
-            baseName: 'hide_payment',
-            type: 'string',
-        },
-        {
             name: 'expireMin',
             baseName: 'expire_min',
             type: 'string',
@@ -260,9 +255,23 @@ export class PlaceBizPushOrder {
             baseName: 'float_trend',
             type: 'string',
         },
+        {
+            name: 'teamPaymentUid',
+            baseName: 'team_payment_uid',
+            type: 'string',
+        },
     ];
 
     static getAttributeTypeMap() {
         return PlaceBizPushOrder.attributeTypeMap;
+    }
+}
+
+export namespace PlaceBizPushOrder {
+    export enum Type {
+        _0 = <any>'0',
+        _1 = <any>'1',
+        _2 = <any>'2',
+        _3 = <any>'3',
     }
 }

@@ -13,6 +13,9 @@
  * Get ad details request
  */
 export class AdsDetailRequest {
+    /**
+     * Advertisement ID.
+     */
     'advNo': string;
 
     static discriminator: string | undefined = undefined;

@@ -29,11 +29,11 @@ export class P2pChatListResult {
      */
     'txid'?: number;
     /**
-     * Timestamp of the latest message
+     * Timestamp of the latest message.
      */
     'sRVTM'?: number;
     /**
-     * Order Status
+     * Raw order status in DB; typical values: `OPEN`, `PAID`, `LOCKED`, `ACCEPT`, `BCLOSED`, `CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`.
      */
     'orderStatus'?: string;
 

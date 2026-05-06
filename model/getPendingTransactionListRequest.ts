@@ -14,7 +14,7 @@
  */
 export class GetPendingTransactionListRequest {
     /**
-     * Cryptocurrency
+     * Cryptocurrency symbol.
      */
     'cryptoCurrency': string;
     /**
@@ -22,15 +22,15 @@ export class GetPendingTransactionListRequest {
      */
     'fiatCurrency': string;
     /**
-     * Order tab, default: pending (pending: In Progress (pending: AND status in (\'OPEN\',\'PAID\', \'LOCKED\', \'TEMP\')); dispute: In Dispute (status in (\'ACCEPT\',\'BCLOSED\', \'CANCEL\', \'BECANCEL\', \'SCLOSED\', \'SCANCEL\')))
+     * Order tab: `pending` in progress (`OPEN`, `PAID`, `LOCKED`, `TEMP`); `dispute` in dispute; default `pending`.
      */
-    'orderTab'?: string;
+    'orderTab'?: GetPendingTransactionListRequest.OrderTab;
     /**
-     * Buy/Sell (sell=Sell, buy=Buy, others=All)
+     * Order side filter: `buy` buy orders; `sell` sell orders; empty: all.
      */
     'selectType'?: string;
     /**
-     * Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
+     * Order status filter. `open` unpaid (`OPEN`); `paid` paid (`PAID`); `locked` locked (`LOCKED`); `dispute` in dispute; empty or omitted uses the default range for `order_tab`.
      */
     'status'?: string;
     /**
@@ -62,7 +62,7 @@ export class GetPendingTransactionListRequest {
         {
             name: 'orderTab',
             baseName: 'order_tab',
-            type: 'string',
+            type: 'GetPendingTransactionListRequest.OrderTab',
         },
         {
             name: 'selectType',
@@ -93,5 +93,12 @@ export class GetPendingTransactionListRequest {
 
     static getAttributeTypeMap() {
         return GetPendingTransactionListRequest.attributeTypeMap;
+    }
+}
+
+export namespace GetPendingTransactionListRequest {
+    export enum OrderTab {
+        Pending = <any>'pending',
+        Dispute = <any>'dispute',
     }
 }

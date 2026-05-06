@@ -2,8 +2,11 @@ export * from './aIHubCreateData';
 export * from './aIHubCreateSuccessResponse';
 export * from './aIHubDiscoverData';
 export * from './aIHubDiscoverSuccessResponse';
+export * from './aIHubPortfolioBaseInfo';
 export * from './aIHubPortfolioDetailData';
 export * from './aIHubPortfolioDetailSuccessResponse';
+export * from './aIHubPortfolioMetrics';
+export * from './aIHubPortfolioPosition';
 export * from './aIHubPortfolioRunningData';
 export * from './aIHubPortfolioRunningItem';
 export * from './aIHubPortfolioRunningSuccessResponse';
@@ -456,6 +459,7 @@ export * from './p2pChatMessage';
 export * from './p2pChatMessagePayload';
 export * from './p2pCounterpartyUserInfo';
 export * from './p2pCounterpartyUserInfoResponse';
+export * from './p2pMerchantBooksPlaceBizPushOrderResponse';
 export * from './p2pMerchantMarketInfo';
 export * from './p2pMerchantUserInfo';
 export * from './p2pMerchantUserInfoResponse';
@@ -470,10 +474,12 @@ export * from './p2pSendChatMessageResult';
 export * from './p2pTransactionActionResponse';
 export * from './p2pTransactionConvertInfo';
 export * from './p2pTransactionDetail';
+export * from './p2pTransactionDetailPayOthers';
 export * from './p2pTransactionDetailResponse';
 export * from './p2pTransactionListItem';
 export * from './p2pTransactionListResponse';
 export * from './p2pTransactionListResult';
+export * from './p2pTransactionListResultPayOthers';
 export * from './p2pTransactionTimeMarker';
 export * from './p2pUploadChatFileResponse';
 export * from './p2pUploadChatFileResult';
@@ -655,8 +661,11 @@ import { AIHubCreateData } from './aIHubCreateData';
 import { AIHubCreateSuccessResponse } from './aIHubCreateSuccessResponse';
 import { AIHubDiscoverData } from './aIHubDiscoverData';
 import { AIHubDiscoverSuccessResponse } from './aIHubDiscoverSuccessResponse';
+import { AIHubPortfolioBaseInfo } from './aIHubPortfolioBaseInfo';
 import { AIHubPortfolioDetailData } from './aIHubPortfolioDetailData';
 import { AIHubPortfolioDetailSuccessResponse } from './aIHubPortfolioDetailSuccessResponse';
+import { AIHubPortfolioMetrics } from './aIHubPortfolioMetrics';
+import { AIHubPortfolioPosition } from './aIHubPortfolioPosition';
 import { AIHubPortfolioRunningData } from './aIHubPortfolioRunningData';
 import { AIHubPortfolioRunningItem } from './aIHubPortfolioRunningItem';
 import { AIHubPortfolioRunningSuccessResponse } from './aIHubPortfolioRunningSuccessResponse';
@@ -1109,6 +1118,7 @@ import { P2pChatMessage } from './p2pChatMessage';
 import { P2pChatMessagePayload } from './p2pChatMessagePayload';
 import { P2pCounterpartyUserInfo } from './p2pCounterpartyUserInfo';
 import { P2pCounterpartyUserInfoResponse } from './p2pCounterpartyUserInfoResponse';
+import { P2pMerchantBooksPlaceBizPushOrderResponse } from './p2pMerchantBooksPlaceBizPushOrderResponse';
 import { P2pMerchantMarketInfo } from './p2pMerchantMarketInfo';
 import { P2pMerchantUserInfo } from './p2pMerchantUserInfo';
 import { P2pMerchantUserInfoResponse } from './p2pMerchantUserInfoResponse';
@@ -1123,10 +1133,12 @@ import { P2pSendChatMessageResult } from './p2pSendChatMessageResult';
 import { P2pTransactionActionResponse } from './p2pTransactionActionResponse';
 import { P2pTransactionConvertInfo } from './p2pTransactionConvertInfo';
 import { P2pTransactionDetail } from './p2pTransactionDetail';
+import { P2pTransactionDetailPayOthers } from './p2pTransactionDetailPayOthers';
 import { P2pTransactionDetailResponse } from './p2pTransactionDetailResponse';
 import { P2pTransactionListItem } from './p2pTransactionListItem';
 import { P2pTransactionListResponse } from './p2pTransactionListResponse';
 import { P2pTransactionListResult } from './p2pTransactionListResult';
+import { P2pTransactionListResultPayOthers } from './p2pTransactionListResultPayOthers';
 import { P2pTransactionTimeMarker } from './p2pTransactionTimeMarker';
 import { P2pUploadChatFileResponse } from './p2pUploadChatFileResponse';
 import { P2pUploadChatFileResult } from './p2pUploadChatFileResult';
@@ -1303,6 +1315,7 @@ let primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'nu
 
 let enumsMap: { [index: string]: any } = {
     'AccountBalance.Currency': AccountBalance.Currency,
+    'AdsUpdateStatus.AdvStatus': AdsUpdateStatus.AdvStatus,
     'ApiResponseExSkillGetBeginnerTaskListRespDataTasks.PrizeType':
         ApiResponseExSkillGetBeginnerTaskListRespDataTasks.PrizeType,
     'ApiResponseExSkillGetBeginnerTaskListRespDataTasks.Status':
@@ -1372,6 +1385,7 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
     'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
+    'GetPendingTransactionListRequest.OrderTab': GetPendingTransactionListRequest.OrderTab,
     'GetUserCouponDetailResponse.Code': GetUserCouponDetailResponse.Code,
     'GetUserCouponDetailResponseData.Status': GetUserCouponDetailResponseData.Status,
     'GetUserCouponDetailResponseData.IsTaskCoupon': GetUserCouponDetailResponseData.IsTaskCoupon,
@@ -1413,9 +1427,11 @@ let enumsMap: { [index: string]: any } = {
     'OrderListDataList.Finished': OrderListDataList.Finished,
     'OrderListDataList.Side': OrderListDataList.Side,
     'PartnerDataAggregated.BusinessType': PartnerDataAggregated.BusinessType,
+    'PlaceBizPushOrder.Type': PlaceBizPushOrder.Type,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'PositionHistoryListDataList.PositionDir': PositionHistoryListDataList.PositionDir,
+    'SendChatMessageRequest.Type': SendChatMessageRequest.Type,
     'SpotGridCreateParams.PriceType': SpotGridCreateParams.PriceType,
     'SpotGridCreateRequest.StrategyType': SpotGridCreateRequest.StrategyType,
     'SpotMartingaleCreateRequest.StrategyType': SpotMartingaleCreateRequest.StrategyType,
@@ -1441,6 +1457,7 @@ let enumsMap: { [index: string]: any } = {
     'UnifiedCollateralReq.CollateralType': UnifiedCollateralReq.CollateralType,
     'UnifiedLoan.Type': UnifiedLoan.Type,
     'UpdateTrailOrder.PriceType': UpdateTrailOrder.PriceType,
+    'UploadChatFile.ImageContentType': UploadChatFile.ImageContentType,
 };
 
 let typeMap: { [index: string]: any } = {
@@ -1448,8 +1465,11 @@ let typeMap: { [index: string]: any } = {
     AIHubCreateSuccessResponse: AIHubCreateSuccessResponse,
     AIHubDiscoverData: AIHubDiscoverData,
     AIHubDiscoverSuccessResponse: AIHubDiscoverSuccessResponse,
+    AIHubPortfolioBaseInfo: AIHubPortfolioBaseInfo,
     AIHubPortfolioDetailData: AIHubPortfolioDetailData,
     AIHubPortfolioDetailSuccessResponse: AIHubPortfolioDetailSuccessResponse,
+    AIHubPortfolioMetrics: AIHubPortfolioMetrics,
+    AIHubPortfolioPosition: AIHubPortfolioPosition,
     AIHubPortfolioRunningData: AIHubPortfolioRunningData,
     AIHubPortfolioRunningItem: AIHubPortfolioRunningItem,
     AIHubPortfolioRunningSuccessResponse: AIHubPortfolioRunningSuccessResponse,
@@ -1899,6 +1919,7 @@ let typeMap: { [index: string]: any } = {
     P2pChatMessagePayload: P2pChatMessagePayload,
     P2pCounterpartyUserInfo: P2pCounterpartyUserInfo,
     P2pCounterpartyUserInfoResponse: P2pCounterpartyUserInfoResponse,
+    P2pMerchantBooksPlaceBizPushOrderResponse: P2pMerchantBooksPlaceBizPushOrderResponse,
     P2pMerchantMarketInfo: P2pMerchantMarketInfo,
     P2pMerchantUserInfo: P2pMerchantUserInfo,
     P2pMerchantUserInfoResponse: P2pMerchantUserInfoResponse,
@@ -1913,10 +1934,12 @@ let typeMap: { [index: string]: any } = {
     P2pTransactionActionResponse: P2pTransactionActionResponse,
     P2pTransactionConvertInfo: P2pTransactionConvertInfo,
     P2pTransactionDetail: P2pTransactionDetail,
+    P2pTransactionDetailPayOthers: P2pTransactionDetailPayOthers,
     P2pTransactionDetailResponse: P2pTransactionDetailResponse,
     P2pTransactionListItem: P2pTransactionListItem,
     P2pTransactionListResponse: P2pTransactionListResponse,
     P2pTransactionListResult: P2pTransactionListResult,
+    P2pTransactionListResultPayOthers: P2pTransactionListResultPayOthers,
     P2pTransactionTimeMarker: P2pTransactionTimeMarker,
     P2pUploadChatFileResponse: P2pUploadChatFileResponse,
     P2pUploadChatFileResult: P2pUploadChatFileResult,

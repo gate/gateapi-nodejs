@@ -11,7 +11,7 @@
 
 export class P2pChatMessagePayload {
     /**
-     * Order status when message was sent
+     * Order status when sending a message. Typical values: `OPEN`, `PAID`, `LOCKED`, `ACCEPT`, `BCLOSED`, `CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`.
      */
     'status'?: string;
     /**
@@ -23,7 +23,7 @@ export class P2pChatMessagePayload {
      */
     'paymentVoucher'?: Array<string>;
     /**
-     * Cancellation reason ID
+     * Cancel reason ID. `1` no longer want to buy; `2` cannot reach seller; `3` will not pay; `4` seller account not real; `5` payout account issue; `6` price mismatch; `7` mutually agreed cancel; `8` poor communication; `9` other; `10` seller cannot release with refund; `11` terms not met; `12` seller payout risk-controlled.
      */
     'reasonId'?: number;
     /**
@@ -31,7 +31,7 @@ export class P2pChatMessagePayload {
      */
     'toastId'?: number;
     /**
-     * Cancellation reason title
+     * Cancel reason description.
      */
     'reasonMemo'?: string;
     /**
@@ -39,7 +39,7 @@ export class P2pChatMessagePayload {
      */
     'cancelTime'?: number;
     /**
-     * Whether seller confirmed the reason
+     * Seller confirmation of cancel reason: `0` pending; `1` confirmed; `2` rejected.
      */
     'sellerConfirm'?: number;
     /**
@@ -63,7 +63,7 @@ export class P2pChatMessagePayload {
      */
     'fileKey'?: string;
     /**
-     * Payment method name
+     * Payment account or masked payment account.
      */
     'account'?: string;
     /**
@@ -87,7 +87,7 @@ export class P2pChatMessagePayload {
      */
     'realName'?: string;
     /**
-     * Whether deleted
+     * Whether the payment method was deleted. `1`: deleted; `0`: not deleted.
      */
     'isDelete'?: number;
     /**

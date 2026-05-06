@@ -14,7 +14,7 @@
  */
 export class GetCounterpartyUserInfoRequest {
     /**
-     * Counterparty UID (encrypted)
+     * Counterparty crypto UID from order list or detail field `its_uid`.
      */
     'bizUid': string;
 

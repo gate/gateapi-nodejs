@@ -11,5 +11,5 @@ Name | Type | Description | Notes
 **backtestApr** | **string** |  | [optional] [default to undefined]
 **maxDrawdown** | **string** |  | [optional] [default to undefined]
 **summary** | **string** |  | [default to undefined]
-**strategyParamsPreview** | **{ [key: string]: string; }** | Recommended parameter preview; dynamic changes by strategy type | [optional] [default to undefined]
+**strategyParamsPreview** | **string** | Recommended-parameter preview as JSON text (string-encoded so clients deserialize it consistently). The value is a serialized JSON object whose structure varies by strategy type; callers or upper-layer models must parse it. | [optional] [default to undefined]
 

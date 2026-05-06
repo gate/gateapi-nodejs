@@ -844,7 +844,7 @@ export class WalletApi {
      * @param opts Optional parameters
      * @param opts.chain Chain name
      * @param opts.limit Maximum number returned, up to 100
-     * @param opts.page Page number
+     * @param opts.page page number
      */
     public async listSavedAddress(
         currency: string,

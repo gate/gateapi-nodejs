@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**advNo** | **string** |  | [default to undefined]
+**advNo** | **string** | Advertisement ID. | [default to undefined]
 

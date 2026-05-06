@@ -25,15 +25,15 @@ export class P2pMerchantUserInfo {
      */
     'counterpartiesNum'?: number;
     /**
-     * Whether email is verified
+     * Whether email is verified. `1`: yes; `0`: no.
      */
     'emailVerified'?: string;
     /**
-     * Whether KYC verification is completed
+     * Whether KYC is completed. `1`: yes; `0`: no.
      */
     'verified'?: string;
     /**
-     * Whether phone is bound
+     * Whether a phone number is bound. `1`: yes; `0`: no.
      */
     'hasPhone'?: string;
     /**
@@ -77,15 +77,15 @@ export class P2pMerchantUserInfo {
      */
     'ordersBuyRateMonth'?: number;
     /**
-     * Whether blocked
+     * Whether the user is blocked. `1`: yes; `0`: no.
      */
     'isBlack'?: number;
     /**
-     * Whether following
+     * Whether you follow this user. `1`: yes; `0`: no.
      */
     'isFollow'?: number;
     /**
-     * Whether traded with self
+     * Whether you have traded with this user before. `1`: yes; `0`: no.
      */
     'haveTraded'?: number;
     /**
@@ -109,12 +109,12 @@ export class P2pMerchantUserInfo {
      */
     'firstTradeDays'?: number;
     /**
-     * Whether margin replenishment is needed
+     * Whether additional margin is required. `1`: yes; `0`: no.
      */
     'needReplenish'?: number;
     'merchantInfo'?: P2pMerchantMarketInfo;
     /**
-     * Merchant online status
+     * Merchant online status: `1` online; `0` offline.
      */
     'onlineStatus'?: number;
     /**

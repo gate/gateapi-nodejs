@@ -11,7 +11,7 @@
 
 export class P2pMyAd {
     /**
-     * Ad buy/sell direction
+     * Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
      */
     'type'?: string;
     /**
@@ -23,7 +23,7 @@ export class P2pMyAd {
      */
     'originalRate'?: string;
     /**
-     * Remaining cryptocurrency amount of ad
+     * Remaining crypto amount on the ad.
      */
     'amount'?: string;
     /**
@@ -51,7 +51,7 @@ export class P2pMyAd {
      */
     'payTypeNum'?: string;
     /**
-     * Payment method configuration details
+     * JSON map of payment type -> payment method ID.
      */
     'payTypeJson'?: string;
     /**
@@ -63,7 +63,7 @@ export class P2pMyAd {
      */
     'tierLimit'?: string;
     /**
-     * Whether merchant trading restriction is allowed
+     * Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
      */
     'advertisersLimit'?: number;
     /**
@@ -95,11 +95,11 @@ export class P2pMyAd {
      */
     'userOrdersLimit'?: number;
     /**
-     * Whether to hide payment method
+     * Whether payment methods are hidden. `1`: hidden; `0`: visible.
      */
     'hidePayment'?: string;
     /**
-     * Digital currency
+     * Cryptocurrency symbol.
      */
     'currencyType'?: string;
     /**
@@ -111,15 +111,15 @@ export class P2pMyAd {
      */
     'tradeTips'?: string;
     /**
-     * Special ad type
+     * Special ad type. `0` normal; `1` newcomer guide; `2` newcomer discount; `3` featured promo; `4` KOL ad; `5` coupon ad.
      */
     'newHand'?: number;
     /**
-     * Ad ID
+     * Advertisement ID.
      */
     'id'?: string;
     /**
-     * Ad status
+     * Ad status: `OPEN` listed; `OFFLIN` delisted; `CLOSED` closed; `CANCEL` canceled.
      */
     'status'?: string;
     /**
@@ -131,11 +131,11 @@ export class P2pMyAd {
      */
     'hideRate'?: string;
     /**
-     * Whether ad is currently expired
+     * Whether the ad timed out. `1`: timed out; `0`: not yet.
      */
     'isOutTime'?: number;
     /**
-     * Floating price reference configuration
+     * Floating reference: `1` platform; `2` Gate; `3` spot; `<= 0` means fixed price.
      */
     'rateRefId'?: number;
     /**
@@ -143,15 +143,15 @@ export class P2pMyAd {
      */
     'rateOffset'?: string;
     /**
-     * Reference price type: 0=Floating, 1=Fixed
+     * Price type: `0` floating; `1` fixed.
      */
     'rateFixed'?: number;
     /**
-     * Floating order direction
+     * Floating direction: `0` markup; `1` markdown.
      */
     'floatTrend'?: number;
     /**
-     * Whether ad has disputed transactions
+     * Whether the ad had a disputed trade. `1`: yes; `0`: no.
      */
     'inDispute'?: number;
     /**
@@ -163,7 +163,7 @@ export class P2pMyAd {
      */
     'timestamp'?: number;
     /**
-     * Auto delegation
+     * Whether auto-delegation is enabled. `1`: yes; `0`: no.
      */
     'isHedge'?: number;
 

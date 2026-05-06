@@ -13,16 +13,25 @@
  * Cancel order request
  */
 export class CancelOrder {
-    'tradeId': string;
+    /**
+     * Order ID
+     */
+    'txid': string;
+    /**
+     * Cancel reason ID. `1` no longer want to buy; `2` cannot reach seller; `3` will not pay; `4` seller account not real; `5` payout account issue; `6` price mismatch; `7` mutually agreed cancel; `8` poor communication; `9` other; `10` seller cannot release with refund; `11` terms not met; `12` seller payout risk-controlled.
+     */
     'reasonId'?: string;
+    /**
+     * Extra cancel notes when `reason_id` is `9` or explanation is required.
+     */
     'reasonMemo'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'tradeId',
-            baseName: 'trade_id',
+            name: 'txid',
+            baseName: 'txid',
             type: 'string',
         },
         {

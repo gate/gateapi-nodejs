@@ -28,6 +28,7 @@ import { P2pAdsListResponse } from '../model/p2pAdsListResponse';
 import { P2pAdsUpdateStatusResponse } from '../model/p2pAdsUpdateStatusResponse';
 import { P2pChatListResponse } from '../model/p2pChatListResponse';
 import { P2pCounterpartyUserInfoResponse } from '../model/p2pCounterpartyUserInfoResponse';
+import { P2pMerchantBooksPlaceBizPushOrderResponse } from '../model/p2pMerchantBooksPlaceBizPushOrderResponse';
 import { P2pMerchantUserInfoResponse } from '../model/p2pMerchantUserInfoResponse';
 import { P2pMyAdsListResponse } from '../model/p2pMyAdsListResponse';
 import { P2pPaymentMethodsResponse } from '../model/p2pPaymentMethodsResponse';
@@ -399,7 +400,7 @@ export class P2pApi {
      */
     public async p2pMerchantBooksPlaceBizPushOrder(
         placeBizPushOrder: PlaceBizPushOrder,
-    ): Promise<{ response: AxiosResponse; body: object }> {
+    ): Promise<{ response: AxiosResponse; body: P2pMerchantBooksPlaceBizPushOrderResponse }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/books/place_biz_push_order';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -427,19 +428,20 @@ export class P2pApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<object>(config, 'object', authSettings);
+        return this.client.request<P2pMerchantBooksPlaceBizPushOrderResponse>(
+            config,
+            'P2pMerchantBooksPlaceBizPushOrderResponse',
+            authSettings,
+        );
     }
 
     /**
      *
      * @summary Update ad status
      * @param adsUpdateStatus
-     * @param opts Optional parameters
-     * @param opts.tradeType Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
      */
     public async p2pMerchantBooksAdsUpdateStatus(
         adsUpdateStatus: AdsUpdateStatus,
-        opts?: { tradeType?: string },
     ): Promise<{ response: AxiosResponse; body: P2pAdsUpdateStatusResponse }> {
         const localVarPath = this.client.basePath + '/p2p/merchant/books/ads_update_status';
         let localVarQueryParameters: any = {};
@@ -457,16 +459,6 @@ export class P2pApi {
             throw new Error(
                 'Required parameter adsUpdateStatus was null or undefined when calling p2pMerchantBooksAdsUpdateStatus.',
             );
-        }
-
-        opts = opts || {};
-        if (opts.tradeType !== undefined) {
-            let tradeTypeSerialized = ObjectSerializer.serialize(opts.tradeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(tradeTypeSerialized)) {
-                tradeTypeSerialized = tradeTypeSerialized.join(',');
-            }
-            localVarQueryParameters['trade_type'] = tradeTypeSerialized;
         }
 
         const config: AxiosRequestConfig = {

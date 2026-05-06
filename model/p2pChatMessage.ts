@@ -13,15 +13,15 @@ import { P2pChatMessagePayload } from './p2pChatMessagePayload';
 
 export class P2pChatMessage {
     /**
-     * Whether seller
+     * Whether the current user is the seller. `1`: yes; `0`: no.
      */
     'isSell'?: number;
     /**
-     * Message type
+     * Message type: `0` text; `1` file; `2` template; `3` order-share; `4` payment-share; `5` status update.
      */
     'msgType'?: number;
     /**
-     * Message content
+     * Message content; for file messages, usually URL or file key.
      */
     'msg'?: string;
     /**
@@ -34,11 +34,11 @@ export class P2pChatMessage {
     'timest'?: number;
     'msgObj'?: P2pChatMessagePayload;
     /**
-     * Message sender UID
+     * Sender\'s crypto UID; system messages may use `System` or an empty string.
      */
     'uid'?: string;
     /**
-     * Message type
+     * Display type: `1` file message; `2` system message.
      */
     'type'?: number;
     /**
@@ -50,17 +50,9 @@ export class P2pChatMessage {
      */
     'fileKey'?: string;
     /**
-     * File type
+     * File type: `image` for images, `video` for videos.
      */
     'fileType'?: string;
-    /**
-     * Image width
-     */
-    'width'?: string;
-    /**
-     * Image height
-     */
-    'height'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -118,16 +110,6 @@ export class P2pChatMessage {
         {
             name: 'fileType',
             baseName: 'file_type',
-            type: 'string',
-        },
-        {
-            name: 'width',
-            baseName: 'width',
-            type: 'string',
-        },
-        {
-            name: 'height',
-            baseName: 'height',
             type: 'string',
         },
     ];

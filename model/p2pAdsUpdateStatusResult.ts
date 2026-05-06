@@ -11,7 +11,7 @@
 
 export class P2pAdsUpdateStatusResult {
     /**
-     * Ad status after successful update
+     * Ad status after update: `1` listed; `3` delisted; `4` closed.
      */
     'status'?: number;
 

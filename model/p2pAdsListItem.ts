@@ -31,11 +31,11 @@ export class P2pAdsListItem {
      */
     'price'?: string;
     /**
-     * Maximum Cryptocurrency Amount
+     * Maximum crypto size per trade.
      */
     'maxSingleTransAmount'?: string;
     /**
-     * Minimum Cryptocurrency Amount
+     * Minimum crypto size per trade.
      */
     'minSingleTransAmount'?: string;
     /**

@@ -14,7 +14,7 @@
  */
 export class GetMyselfPaymentRequest {
     /**
-     * Fiat currency
+     * Fiat currency; omit to return all available payment methods.
      */
     'fiat'?: string;
 

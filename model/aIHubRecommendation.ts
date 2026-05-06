@@ -23,9 +23,9 @@ export class AIHubRecommendation {
     'maxDrawdown'?: string;
     'summary': string;
     /**
-     * Recommended parameter preview; dynamic changes by strategy type
+     * Recommended-parameter preview as JSON text (string-encoded so clients deserialize it consistently). The value is a serialized JSON object whose structure varies by strategy type; callers or upper-layer models must parse it.
      */
-    'strategyParamsPreview'?: { [key: string]: string };
+    'strategyParamsPreview'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -68,7 +68,7 @@ export class AIHubRecommendation {
         {
             name: 'strategyParamsPreview',
             baseName: 'strategy_params_preview',
-            type: '{ [key: string]: string; }',
+            type: 'string',
         },
     ];
 

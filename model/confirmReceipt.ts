@@ -13,14 +13,17 @@
  * Confirm receipt request
  */
 export class ConfirmReceipt {
-    'tradeId': string;
+    /**
+     * Order ID
+     */
+    'txid': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'tradeId',
-            baseName: 'trade_id',
+            name: 'txid',
+            baseName: 'txid',
             type: 'string',
         },
     ];

@@ -11,59 +11,59 @@
 
 export class Symbol {
     /**
-     * ExchangeType_BusinessType_Base_Counter
+     * Unique trading pair identifier in the form ExchangeType_BusinessType_Base_Counter.
      */
     'symbol': string;
     /**
-     * BINANCE,OKX,GATE,BYBIT,CROSSEX
+     * Exchange type (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `CROSSEX`).
      */
     'exchangeType': string;
     /**
-     * SPOT, FUTURE, MARGIN
+     * Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
      */
     'businessType': string;
     /**
-     * live/suspend
+     * Status (`live` running / `suspend` paused).
      */
     'state': string;
     /**
-     * Minimum order quantity
+     * Minimum order size allowed by the contract
      */
     'minSize': string;
     /**
-     * Minimum order value
+     * Minimum Order Value
      */
     'minNotional': string;
     /**
-     * Quantity step size
+     * Quantity Step
      */
     'lotSize': string;
     /**
-     * Price step size
+     * Price Step
      */
     'tickSize': string;
     /**
-     * Maximum number of pending orders
+     * maximumopen orderamount
      */
     'maxNumOrders': string;
     /**
-     * Maximum order quantity at market price
+     * Maximum Market Order Quantity
      */
     'maxMarketSize': string;
     /**
-     * Maximum order quantity at limit price
+     * Maximum order quantity for limit orders.
      */
     'maxLimitSize': string;
     /**
-     * contract multiplier
+     * Contract Multiplier
      */
     'contractSize': string;
     /**
-     * Liquidation rate
+     * Liquidation Fee Rate
      */
     'liquidationFee': string;
     /**
-     * Millisecond timestamp,0 is normal
+     * Millisecond timestamp; `0` means not delisted.
      */
     'delistTime': string;
 

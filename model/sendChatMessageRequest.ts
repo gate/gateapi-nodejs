@@ -18,11 +18,11 @@ export class SendChatMessageRequest {
      */
     'txid': number;
     /**
-     * 0=Text, 1=File (video or image), default is 0 if not provided
+     * Message type: `0` text; `1` file (image or video); defaults to `0`.
      */
-    'type'?: number;
+    'type'?: SendChatMessageRequest.Type;
     /**
-     * Message content
+     * Message body. For `type=0`, plain text up to 500 characters; for `type=1`, pass the `file_key` returned by `upload_chat_file`.
      */
     'message': string;
 
@@ -37,7 +37,7 @@ export class SendChatMessageRequest {
         {
             name: 'type',
             baseName: 'type',
-            type: 'number',
+            type: 'SendChatMessageRequest.Type',
         },
         {
             name: 'message',
@@ -48,5 +48,12 @@ export class SendChatMessageRequest {
 
     static getAttributeTypeMap() {
         return SendChatMessageRequest.attributeTypeMap;
+    }
+}
+
+export namespace SendChatMessageRequest {
+    export enum Type {
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
     }
 }

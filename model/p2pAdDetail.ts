@@ -11,23 +11,23 @@
 
 export class P2pAdDetail {
     /**
-     * Price
+     * Advertisement price.
      */
     'rate'?: string;
     /**
-     * Buy/Sell order
+     * Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
      */
     'type'?: string;
     /**
-     * Cryptocurrency amount
+     * Remaining crypto amount on the ad.
      */
     'amount'?: string;
     /**
-     * Minimum limit
+     * Minimum trade amount in `want_type`.
      */
     'minAmount'?: string;
     /**
-     * Maximum limit
+     * Maximum trade amount priced in `want_type`.
      */
     'maxAmount'?: string;
     /**
@@ -35,19 +35,19 @@ export class P2pAdDetail {
      */
     'total'?: string;
     /**
-     * Whether Alipay payment is supported
+     * Whether Alipay is supported. `1`: yes; `0`: no.
      */
     'payAli'?: number;
     /**
-     * Whether bank payment is supported
+     * Whether bank transfer is supported. `1`: yes; `0`: no.
      */
     'payBank'?: number;
     /**
-     * Whether PayPal payment is supported
+     * Whether PayPal is supported. `1`: yes; `0`: no.
      */
     'payPaypal'?: number;
     /**
-     * Whether WeChat payment is supported
+     * Whether WeChat Pay is supported. `1`: yes; `0`: no.
      */
     'payWechat'?: number;
     /**
@@ -55,7 +55,7 @@ export class P2pAdDetail {
      */
     'payTypeNum'?: string;
     /**
-     * Payment method list
+     * JSON map of payment type -> payment method ID.
      */
     'payTypeJson'?: string;
     /**
@@ -71,7 +71,7 @@ export class P2pAdDetail {
      */
     'timestamp'?: number;
     /**
-     * Cryptocurrency type
+     * Cryptocurrency symbol.
      */
     'currencyType'?: string;
     /**
@@ -91,11 +91,7 @@ export class P2pAdDetail {
      */
     'autoReply'?: string;
     /**
-     * Merchant-friendly order
-     */
-    'newHand'?: string;
-    /**
-     * Floating price reference ID: 1=Platform reference price, 3=Spot reference price (≤0 means fixed price, >0 means floating price)
+     * Floating reference: `1` platform; `2` Gate; `3` spot; `<= 0` means fixed price.
      */
     'rateRefId'?: number;
     /**
@@ -103,15 +99,15 @@ export class P2pAdDetail {
      */
     'rateOffset'?: number;
     /**
-     * Status
+     * Ad status: `OPEN` listed; `OFFLIN` delisted; `CLOSED` closed; `CANCEL` canceled.
      */
     'status'?: string;
     /**
-     * 0=Floating, 1=Fixed
+     * Price type: `0` floating; `1` fixed.
      */
     'rateFixed'?: number;
     /**
-     * 0=Upward float, 1=Downward float
+     * Floating direction: `0` markup; `1` markdown.
      */
     'floatTrend'?: number;
     /**
@@ -127,13 +123,9 @@ export class P2pAdDetail {
      */
     'regTimeLimit'?: number;
     /**
-     * Do not trade with advertisers, advertiser limit: 0=No limit, 1=Limit
+     * Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
      */
     'advertisersLimit'?: number;
-    /**
-     * kyclimit
-     */
-    'verifiedLimit'?: number;
     /**
      * Minimum limit of completed orders
      */
@@ -151,10 +143,6 @@ export class P2pAdDetail {
      */
     'completedRateLimit'?: number;
     /**
-     * KYC nationality restriction
-     */
-    'userCountryLimit'?: number;
-    /**
      * Restricted nationality (Chinese)
      */
     'limitCountryCn'?: string;
@@ -163,17 +151,13 @@ export class P2pAdDetail {
      */
     'limitCountryEn'?: string;
     /**
-     * Whether auto delegation
+     * Whether auto-delegation is enabled. `1`: yes; `0`: no.
      */
     'isHedge'?: number;
     /**
-     * Whether to hide payment method
+     * Whether payment methods are hidden. `1`: hidden; `0`: visible.
      */
     'hidePayment'?: number;
-    /**
-     * fee
-     */
-    'fee'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -255,7 +239,7 @@ export class P2pAdDetail {
         },
         {
             name: 'currencyType',
-            baseName: 'currencyType',
+            baseName: 'currency_type',
             type: 'string',
         },
         {
@@ -276,11 +260,6 @@ export class P2pAdDetail {
         {
             name: 'autoReply',
             baseName: 'auto_reply',
-            type: 'string',
-        },
-        {
-            name: 'newHand',
-            baseName: 'new_hand',
             type: 'string',
         },
         {
@@ -329,11 +308,6 @@ export class P2pAdDetail {
             type: 'number',
         },
         {
-            name: 'verifiedLimit',
-            baseName: 'verified_limit',
-            type: 'number',
-        },
-        {
             name: 'minCompletedLimit',
             baseName: 'min_completed_limit',
             type: 'number',
@@ -354,11 +328,6 @@ export class P2pAdDetail {
             type: 'number',
         },
         {
-            name: 'userCountryLimit',
-            baseName: 'user_country_limit',
-            type: 'number',
-        },
-        {
             name: 'limitCountryCn',
             baseName: 'limit_country_cn',
             type: 'string',
@@ -376,11 +345,6 @@ export class P2pAdDetail {
         {
             name: 'hidePayment',
             baseName: 'hide_payment',
-            type: 'number',
-        },
-        {
-            name: 'fee',
-            baseName: 'fee',
             type: 'number',
         },
     ];

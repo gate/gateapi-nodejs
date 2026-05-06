@@ -13,15 +13,21 @@
  * Confirm payment request
  */
 export class ConfirmPayment {
-    'tradeId': string;
-    'paymentMethod': string;
+    /**
+     * Order ID
+     */
+    'txid': string;
+    /**
+     * Payment type used for this payment; optional but must be among order-supported types. Use `supported_pay_types` on the order or `pay_type` list, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
+     */
+    'paymentMethod'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'tradeId',
-            baseName: 'trade_id',
+            name: 'txid',
+            baseName: 'txid',
             type: 'string',
         },
         {

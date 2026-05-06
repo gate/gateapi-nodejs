@@ -23,9 +23,9 @@ export class CrossexAccountBookRecord {
      */
     'businessId': string;
     /**
-     * Change type | `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` futures funding fee `LIQUIDATION_FEE` liquidation fee `TRANSFER_IN` transfer in `TRANSFER_OUT` transfer out `BANKRUPT_COMPENSATION` bankruptcy compensation `AUTO_REPAY` margin position auto-repay
+     * Bill entry type | `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` funding `LIQUIDATION_FEE` liquidation `TRANSFER_IN` deposit `TRANSFER_OUT` withdrawal `BANKRUPT_COMPENSATION` bankruptcy subsidy `AUTO_REPAY` margin auto-repay
      */
-    'type': string;
+    'statementType': string;
     /**
      * Exchange
      */
@@ -66,8 +66,8 @@ export class CrossexAccountBookRecord {
             type: 'string',
         },
         {
-            name: 'type',
-            baseName: 'type',
+            name: 'statementType',
+            baseName: 'statement_type',
             type: 'string',
         },
         {

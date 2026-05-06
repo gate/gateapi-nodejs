@@ -9,6 +9,9 @@
  * Do not edit the class manually.
  */
 
+import { AIHubPortfolioBaseInfo } from './aIHubPortfolioBaseInfo';
+import { AIHubPortfolioMetrics } from './aIHubPortfolioMetrics';
+import { AIHubPortfolioPosition } from './aIHubPortfolioPosition';
 import { StrategyType } from './strategyType';
 
 /**
@@ -19,18 +22,9 @@ export class AIHubPortfolioDetailData {
     'strategyType': StrategyType;
     'market': string;
     'status': string;
-    /**
-     * Basic information, fields change dynamically according to strategy type
-     */
-    'baseInfo': { [key: string]: string };
-    /**
-     * Indicator information, fields change dynamically according to strategy type
-     */
-    'metrics': { [key: string]: string };
-    /**
-     * Position or position information, fields dynamically change according to strategy type
-     */
-    'position'?: { [key: string]: string } | null;
+    'baseInfo': AIHubPortfolioBaseInfo;
+    'metrics': AIHubPortfolioMetrics;
+    'position'?: AIHubPortfolioPosition | null;
     'stopSupported': boolean;
 
     static discriminator: string | undefined = undefined;
@@ -59,17 +53,17 @@ export class AIHubPortfolioDetailData {
         {
             name: 'baseInfo',
             baseName: 'base_info',
-            type: '{ [key: string]: string; }',
+            type: 'AIHubPortfolioBaseInfo',
         },
         {
             name: 'metrics',
             baseName: 'metrics',
-            type: '{ [key: string]: string; }',
+            type: 'AIHubPortfolioMetrics',
         },
         {
             name: 'position',
             baseName: 'position',
-            type: '{ [key: string]: string; }',
+            type: 'AIHubPortfolioPosition',
         },
         {
             name: 'stopSupported',

@@ -14,13 +14,13 @@
  */
 export class AdsUpdateStatus {
     /**
-     * Ad ID
+     * Advertisement ID.
      */
     'advNo': number;
     /**
-     * Ad status: 1=Active, 3=Inactive, 4=Closed
+     * Ad status. `1`: listed; `3`: delisted; `4`: closed.
      */
-    'advStatus': number;
+    'advStatus': AdsUpdateStatus.AdvStatus;
 
     static discriminator: string | undefined = undefined;
 
@@ -33,11 +33,19 @@ export class AdsUpdateStatus {
         {
             name: 'advStatus',
             baseName: 'adv_status',
-            type: 'number',
+            type: 'AdsUpdateStatus.AdvStatus',
         },
     ];
 
     static getAttributeTypeMap() {
         return AdsUpdateStatus.attributeTypeMap;
+    }
+}
+
+export namespace AdsUpdateStatus {
+    export enum AdvStatus {
+        NUMBER_1 = <any>1,
+        NUMBER_3 = <any>3,
+        NUMBER_4 = <any>4,
     }
 }

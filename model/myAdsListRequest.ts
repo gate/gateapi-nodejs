@@ -14,15 +14,15 @@
  */
 export class MyAdsListRequest {
     /**
-     * Cryptocurrency
+     * Crypto asset; omit to skip asset filter.
      */
     'asset'?: string;
     /**
-     * Fiat currency
+     * Fiat currency; omit to skip fiat filter.
      */
     'fiatUnit'?: string;
     /**
-     * Buy/Sell
+     * Ad side: `buy` for buy-crypto ads, `sell` for sell-crypto ads; omit for all sides.
      */
     'tradeType'?: string;
 

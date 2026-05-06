@@ -9,9 +9,11 @@
  * Do not edit the class manually.
  */
 
+import { P2pTransactionDetailPayOthers } from './p2pTransactionDetailPayOthers';
+
 export class P2pTransactionDetail {
     /**
-     * Whether sell order
+     * Whether the current user is the seller. `1`: yes; `0`: no.
      */
     'isSell'?: number;
     /**
@@ -31,67 +33,63 @@ export class P2pTransactionDetail {
      */
     'lastPayTime'?: number;
     /**
-     * Remaining payment time
+     * Seconds left to pay; `<= 0` means overdue.
      */
     'remainPayTime'?: number;
     /**
-     * Cryptocurrency type
+     * Cryptocurrency symbol.
      */
     'currencyType'?: string;
     /**
-     * Fiat currency type
+     * Fiat currency
      */
     'wantType'?: string;
     /**
-     * Price
+     * Fiat currency symbol
+     */
+    'symbol'?: string;
+    /**
+     * Order price in `want_type` units.
      */
     'rate'?: string;
     /**
-     * Size
+     * Order size in cryptocurrency.
      */
     'amount'?: string;
     /**
-     * Fiat amount
+     * Total fiat amount of the order.
      */
     'total'?: string;
     /**
-     * Order Status
+     * Display status: `unpay` unpaid; `hide_payment` unpaid with payment info hidden; `paid` buyer paid; `unconfirmed` awaiting seller confirmation; `locked` locked; `finished` done; `cancel` canceled; `expired` expired; `bclosed` arbitration filled; `sclosed` arbitration canceled.
      */
     'status'?: string;
     /**
-     * Cancellation reason ID
+     * Cancel reason ID; empty string means none. Examples: `1` no longer want to buy; `2` cannot reach seller; `3` will not pay; `4` seller did not provide a real account; `6` price/amount mismatch; `9` other; `10` seller cannot release and refund issued; `11` terms not met; `12` seller payout account risk-controlled.
      */
     'reasonId'?: string;
     /**
-     * Cancellation reason
+     * Cancel reason description.
      */
     'reasonDesc'?: string;
-    /**
-     * Popup ID
-     */
-    'toastId'?: number;
     /**
      * Cancellation time
      */
     'cancelTime'?: string;
     /**
-     * Whether seller confirmed the reason
-     */
-    'sellerConfirm'?: number;
-    /**
-     * Whether in dispute
+     * Whether a dispute is active. `1`: yes; `0`: no.
      */
     'inAppeal'?: number;
     /**
-     * Appeal time limit
+     * Earliest timestamp when a dispute may be opened.
      */
     'disputeTime'?: number;
     /**
-     * Whether order cancellation is allowed
+     * Whether cancellation is allowed. `1`: yes; `0`: no.
      */
     'cancelable'?: number;
     /**
-     * Whether to hide payment method
+     * Whether payment methods are hidden. `1`: hidden; `0`: visible.
      */
     'hidePayment'?: number;
     /**
@@ -99,7 +97,7 @@ export class P2pTransactionDetail {
      */
     'tradeTips'?: string;
     /**
-     * Whether to display bank
+     * Whether to show bank transfer details. `1`: show; `0`: hide.
      */
     'showBank'?: string;
     /**
@@ -111,7 +109,7 @@ export class P2pTransactionDetail {
      */
     'bankbranch'?: string;
     /**
-     * Bank ID
+     * Bank account or masked account.
      */
     'bankid'?: string;
     /**
@@ -119,7 +117,7 @@ export class P2pTransactionDetail {
      */
     'bankHolderRealname'?: string;
     /**
-     * Whether to display Alipay
+     * Whether to show Alipay details. `1`: show; `0`: hide.
      */
     'showAli'?: string;
     /**
@@ -127,11 +125,11 @@ export class P2pTransactionDetail {
      */
     'aliname'?: string;
     /**
-     * Whether Alipay QR code exists
+     * Whether an Alipay QR exists. `1`: yes; `0`: no.
      */
     'isAlicode'?: number;
     /**
-     * Whether to display WeChat
+     * Whether to show WeChat details. `1`: show; `0`: hide.
      */
     'showWechat'?: string;
     /**
@@ -139,163 +137,71 @@ export class P2pTransactionDetail {
      */
     'wename'?: string;
     /**
-     * Whether to display other payment methods
+     * Whether to show other payment methods. `1`: show; `0`: hide.
      */
     'showOthers'?: string;
     /**
      * Other payment methods
      */
-    'payOthers'?: Array<string>;
+    'payOthers'?: Array<P2pTransactionDetailPayOthers>;
     /**
-     * Payment type
+     * Selected payment type for this order, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
      */
     'selPaytype'?: string;
     /**
-     * Counterparty UID
+     * Counterparty crypto UID.
      */
     'itsUid'?: string;
-    /**
-     * Whether counterparty is Blue V
-     */
-    'itsIsBlueVip'?: number;
-    /**
-     * Counterparty VIP tier
-     */
-    'itsTier'?: number;
-    /**
-     * Counterparty avatar
-     */
-    'itsAvatar'?: string;
     /**
      * Counterparty nickname
      */
     'itsNickname'?: string;
     /**
-     * Counterparty username
+     * Counterparty real name or verified display name.
      */
     'itsRealname'?: string;
     /**
-     * Whether following
-     */
-    'isFollow'?: number;
-    /**
-     * Whether blocked
-     */
-    'isBlack'?: number;
-    /**
-     * Whether traded before
+     * Whether you traded with the counterparty before. `1`: yes; `0`: no.
      */
     'haveTraded'?: number;
     /**
-     * Unread appeals
-     */
-    'appealUnread'?: number;
-    /**
-     * Whether appeal cancellation is allowed
+     * Whether the dispute can be withdrawn. `1`: allowed; `0`: not allowed.
      */
     'appealAllowCancel'?: number;
     /**
-     * Appeal result (including pending appeals)
+     * Dispute outcome or in-dispute notice text.
      */
     'appealVerdictHasOpen'?: string;
     /**
-     * IM unread
+     * Unread chat message count.
      */
     'imUnread'?: number;
-    /**
-     * Review content
-     */
-    'message'?: string;
-    /**
-     * Rating
-     */
-    'score'?: string;
     /**
      * Payment voucher
      */
     'paymentVoucherUrl'?: Array<string>;
     /**
-     * Counterparty transaction volume
-     */
-    'completeNumber'?: number;
-    /**
-     * Counterparty completion rate
-     */
-    'completeRateMonth'?: string;
-    /**
-     * Whether transaction record is verified
-     */
-    'checkJournalAccount'?: boolean;
-    /**
-     * Whether to display transaction records
-     */
-    'showJournalAccount'?: boolean;
-    /**
-     * Whether margin is frozen
-     */
-    'isFreezeGuarantee'?: number;
-    /**
-     * Remaining USDT margin
-     */
-    'usdtLeftGuarantee'?: string;
-    /**
-     * Margin currency type
-     */
-    'guaranteeCurrType'?: string;
-    /**
-     * Payment time
+     * Timestamp when the buyer confirmed payment.
      */
     'timestPaid'?: number;
     /**
-     * Order Status
-     */
-    'state'?: string;
-    /**
-     * Coin release switch configuration
-     */
-    'releaseCoinSwitch'?: number;
-    /**
-     * Username
+     * Current user\'s real name or verified display name.
      */
     'ownRealname'?: string;
     /**
-     * Average confirmation time in last 30 days
-     */
-    'confirmationUseTimeMonth'?: number;
-    /**
-     * Whether risk user
-     */
-    'isRiskUser'?: number;
-    /**
-     * Whether XT order
-     */
-    'isXt'?: number;
-    /**
-     * Order Type
+     * Order type: `1` standard; `2` partner; `3` flash swap; `4` Web3.
      */
     'orderType'?: number;
     /**
-     * Fiat currency symbol
-     */
-    'symbol'?: string;
-    /**
-     * Whether to show confirm receipt during appeal
+     * Whether to show confirm-receipt during dispute. `1`: show; `0`: hide.
      */
     'isShowReceive'?: number;
-    /**
-     * Whether regular user
-     */
-    'isTaker'?: number;
-    /**
-     * Merchant online status
-     */
-    'isOnline'?: number;
     /**
      * Whether to display seller contact information
      */
     'showSellerContactInfo'?: boolean;
     /**
-     * Payment methods supported by current order
+     * Supported payment method types for the order, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
      */
     'supportedPayTypes'?: Array<string>;
 
@@ -334,12 +240,17 @@ export class P2pTransactionDetail {
         },
         {
             name: 'currencyType',
-            baseName: 'currencyType',
+            baseName: 'currency_type',
             type: 'string',
         },
         {
             name: 'wantType',
             baseName: 'want_type',
+            type: 'string',
+        },
+        {
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {
@@ -373,19 +284,9 @@ export class P2pTransactionDetail {
             type: 'string',
         },
         {
-            name: 'toastId',
-            baseName: 'toast_id',
-            type: 'number',
-        },
-        {
             name: 'cancelTime',
             baseName: 'cancel_time',
             type: 'string',
-        },
-        {
-            name: 'sellerConfirm',
-            baseName: 'seller_confirm',
-            type: 'number',
         },
         {
             name: 'inAppeal',
@@ -470,7 +371,7 @@ export class P2pTransactionDetail {
         {
             name: 'payOthers',
             baseName: 'pay_others',
-            type: 'Array<string>',
+            type: 'Array<P2pTransactionDetailPayOthers>',
         },
         {
             name: 'selPaytype',
@@ -480,21 +381,6 @@ export class P2pTransactionDetail {
         {
             name: 'itsUid',
             baseName: 'its_uid',
-            type: 'string',
-        },
-        {
-            name: 'itsIsBlueVip',
-            baseName: 'its_is_blue_vip',
-            type: 'number',
-        },
-        {
-            name: 'itsTier',
-            baseName: 'its_tier',
-            type: 'number',
-        },
-        {
-            name: 'itsAvatar',
-            baseName: 'its_avatar',
             type: 'string',
         },
         {
@@ -508,23 +394,8 @@ export class P2pTransactionDetail {
             type: 'string',
         },
         {
-            name: 'isFollow',
-            baseName: 'is_follow',
-            type: 'number',
-        },
-        {
-            name: 'isBlack',
-            baseName: 'is_black',
-            type: 'number',
-        },
-        {
             name: 'haveTraded',
             baseName: 'have_traded',
-            type: 'number',
-        },
-        {
-            name: 'appealUnread',
-            baseName: 'appeal_unread',
             type: 'number',
         },
         {
@@ -543,68 +414,13 @@ export class P2pTransactionDetail {
             type: 'number',
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
-            name: 'score',
-            baseName: 'score',
-            type: 'string',
-        },
-        {
             name: 'paymentVoucherUrl',
             baseName: 'payment_voucher_url',
             type: 'Array<string>',
         },
         {
-            name: 'completeNumber',
-            baseName: 'complete_number',
-            type: 'number',
-        },
-        {
-            name: 'completeRateMonth',
-            baseName: 'complete_rate_month',
-            type: 'string',
-        },
-        {
-            name: 'checkJournalAccount',
-            baseName: 'check_journal_account',
-            type: 'boolean',
-        },
-        {
-            name: 'showJournalAccount',
-            baseName: 'show_journal_account',
-            type: 'boolean',
-        },
-        {
-            name: 'isFreezeGuarantee',
-            baseName: 'is_freeze_guarantee',
-            type: 'number',
-        },
-        {
-            name: 'usdtLeftGuarantee',
-            baseName: 'usdt_left_guarantee',
-            type: 'string',
-        },
-        {
-            name: 'guaranteeCurrType',
-            baseName: 'guarantee_curr_type',
-            type: 'string',
-        },
-        {
             name: 'timestPaid',
             baseName: 'timest_paid',
-            type: 'number',
-        },
-        {
-            name: 'state',
-            baseName: 'state',
-            type: 'string',
-        },
-        {
-            name: 'releaseCoinSwitch',
-            baseName: 'release_coin_switch',
             type: 'number',
         },
         {
@@ -613,43 +429,13 @@ export class P2pTransactionDetail {
             type: 'string',
         },
         {
-            name: 'confirmationUseTimeMonth',
-            baseName: 'confirmation_use_time_month',
-            type: 'number',
-        },
-        {
-            name: 'isRiskUser',
-            baseName: 'is_risk_user',
-            type: 'number',
-        },
-        {
-            name: 'isXt',
-            baseName: 'is_xt',
-            type: 'number',
-        },
-        {
             name: 'orderType',
             baseName: 'order_type',
             type: 'number',
         },
         {
-            name: 'symbol',
-            baseName: 'symbol',
-            type: 'string',
-        },
-        {
             name: 'isShowReceive',
             baseName: 'is_show_receive',
-            type: 'number',
-        },
-        {
-            name: 'isTaker',
-            baseName: 'is_taker',
-            type: 'number',
-        },
-        {
-            name: 'isOnline',
-            baseName: 'is_online',
             type: 'number',
         },
         {

@@ -14,7 +14,7 @@
  */
 export class AdsListRequest {
     /**
-     * Cryptocurrency
+     * Cryptocurrency symbol.
      */
     'asset': string;
     /**
@@ -22,7 +22,7 @@ export class AdsListRequest {
      */
     'fiatUnit': string;
     /**
-     * Buy/Sell, sell/buy
+     * Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
      */
     'tradeType': string;
 

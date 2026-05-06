@@ -15,12 +15,18 @@ import { ContractMartingaleDirection } from './contractMartingaleDirection';
  * The creation parameters of the contract Martin strategy.
  */
 export class ContractMartingaleCreateParams {
+    /**
+     * Margin allocated; the server converts it to initial contract size using live contract price, contract multiplier, and minimum lot size.
+     */
     'investAmount': string;
     'priceDeviation': string;
     'maxOrders': number;
     'takeProfitRatio': string;
     'direction': ContractMartingaleDirection;
     'leverage': string;
+    /**
+     * Legacy field name. The AIHub `contract_martingale` creation path does not map this field today; follow contract martingale rules from the underlying API. MCP tooling must match bot-service behavior.
+     */
     'stopLossPrice'?: string;
     'profitSharingRatio'?: string;
 

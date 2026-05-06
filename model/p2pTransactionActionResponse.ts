@@ -10,13 +10,44 @@
  */
 
 export class P2pTransactionActionResponse {
-    'code'?: number;
-    'message'?: string;
+    /**
+     * Response timestamp.
+     */
     'timestamp'?: number;
+    /**
+     * Placeholder for request method.
+     */
+    'method'?: string;
+    /**
+     * Response code, 0 means success
+     */
+    'code'?: number;
+    /**
+     * Response message
+     */
+    'message'?: string;
+    /**
+     * Empty object on success.
+     */
+    'data'?: object;
+    /**
+     * API version.
+     */
+    'version'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
+        },
+        {
+            name: 'method',
+            baseName: 'method',
+            type: 'string',
+        },
         {
             name: 'code',
             baseName: 'code',
@@ -28,9 +59,14 @@ export class P2pTransactionActionResponse {
             type: 'string',
         },
         {
-            name: 'timestamp',
-            baseName: 'timestamp',
-            type: 'number',
+            name: 'data',
+            baseName: 'data',
+            type: 'object',
+        },
+        {
+            name: 'version',
+            baseName: 'version',
+            type: 'string',
         },
     ];
 

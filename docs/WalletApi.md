@@ -723,7 +723,7 @@ const currency = "USDT"; // string | Currency
 const opts = {
   'chain': '', // string | Chain name
   'limit': '50', // string | Maximum number returned, up to 100
-  'page': 1 // number | Page number
+  'page': 1 // number | page number
 };
 api.listSavedAddress(currency, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -738,7 +738,7 @@ Name | Type | Description  | Notes
  **currency** | **string**| Currency | [default to undefined]
  **chain** | **string**| Chain name | [optional] [default to &#39;&#39;]
  **limit** | **string**| Maximum number returned, up to 100 | [optional] [default to &#39;50&#39;]
- **page** | **number**| Page number | [optional] [default to 1]
+ **page** | **number**| page number | [optional] [default to 1]
 
 ### Return type
 

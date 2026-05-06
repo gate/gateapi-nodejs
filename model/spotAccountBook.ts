@@ -31,7 +31,7 @@ export class SpotAccountBook {
      */
     'balance'?: string;
     /**
-     * Account book type. Please refer to [account book type](#accountbook-type) for more detail
+     * Account change type; deprecated (see `code` for account change type encoding)
      */
     'type'?: string;
     /**

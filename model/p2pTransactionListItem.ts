@@ -10,10 +10,11 @@
  */
 
 import { P2pTransactionConvertInfo } from './p2pTransactionConvertInfo';
+import { P2pTransactionListResultPayOthers } from './p2pTransactionListResultPayOthers';
 
 export class P2pTransactionListItem {
     /**
-     * 1=Buy, 0=Sell
+     * Order side from current user\'s view. `1`: buy; `0`: sell.
      */
     'typeBuy'?: number;
     /**
@@ -25,27 +26,19 @@ export class P2pTransactionListItem {
      */
     'timestExpire'?: string;
     /**
-     * Buy/Sell order
-     */
-    'type'?: string;
-    /**
-     * Buy/Sell order
-     */
-    'tradeType'?: string;
-    /**
      * Order creation timestamp
      */
     'timestamp'?: number;
     /**
-     * Exchange rate
+     * Order price in fiat currency.
      */
     'rate'?: string;
     /**
-     * Size
+     * Order size in cryptocurrency.
      */
     'amount'?: string;
     /**
-     * Total amount
+     * Total fiat amount of the order.
      */
     'total'?: string;
     /**
@@ -53,19 +46,15 @@ export class P2pTransactionListItem {
      */
     'txid'?: number;
     /**
-     * Order Status
+     * Display status: `unpay` awaiting payment; `paid` buyer paid; `unconfirmed` awaiting seller confirmation; `locked` locked; `finished` completed; `cancel` canceled; `expired` expired; `bclosed` arbitration filled; `sclosed` arbitration canceled.
      */
     'status'?: string;
     /**
-     * Order status (database value)
-     */
-    'orderStatus'?: string;
-    /**
-     * Counterparty username
+     * Counterparty real name or verified display name.
      */
     'itsRealname'?: string;
     /**
-     * Counterparty UID
+     * Counterparty crypto UID.
      */
     'itsUid'?: string;
     /**
@@ -73,87 +62,19 @@ export class P2pTransactionListItem {
      */
     'itsNick'?: string;
     /**
-     * User note
-     */
-    'userNote'?: string;
-    /**
-     * Whether to display bank
-     */
-    'showBank'?: string;
-    /**
-     * Bank name
-     */
-    'bankname'?: string;
-    /**
-     * Bank branch name
-     */
-    'bankbranch'?: string;
-    /**
-     * Seller name
+     * Seller real name or verified display name.
      */
     'sellerRealname'?: string;
     /**
-     * Buyer name
+     * Buyer real name or verified display name.
      */
     'buyerRealname'?: string;
     /**
-     * Bank ID
-     */
-    'bankid'?: string;
-    /**
-     * Bank cardholder name
-     */
-    'bankHolderRealname'?: string;
-    /**
-     * Whether to display Alipay
-     */
-    'showAli'?: number;
-    /**
-     * Alipay account name
-     */
-    'aliname'?: string;
-    /**
-     * Whether to display WeChat
-     */
-    'showWechat'?: number;
-    /**
-     * WeChat account name
-     */
-    'wename'?: string;
-    /**
-     * Whether Alipay QR code exists
-     */
-    'isAlicode'?: number;
-    /**
-     * Appeal time
-     */
-    'disputeTime'?: number;
-    /**
-     * Whether cancellable
+     * Whether the order can be canceled. `1`: yes; `0`: no.
      */
     'cancelable'?: number;
     /**
-     * Blacklist UID
-     */
-    'blackUid'?: string;
-    /**
-     * Blacklist username
-     */
-    'blackName'?: string;
-    /**
-     * Blacklist note
-     */
-    'memo'?: string;
-    /**
-     * Whether following
-     */
-    'isFollow'?: number;
-    /**
-     * Whether blocked
-     */
-    'isBlack'?: boolean;
-    /**
-     * Virtual currency
+     * Cryptocurrency symbol.
      */
     'currencyType'?: string;
     /**
@@ -161,91 +82,23 @@ export class P2pTransactionListItem {
      */
     'wantType'?: string;
     /**
-     * Whether auto delegation
-     */
-    'isHedge'?: number;
-    /**
-     * Whether to hide payment method
+     * Whether payment methods are hidden. `1`: hidden; `0`: visible.
      */
     'hidePayment'?: number;
     /**
-     * Payment type
+     * Selected payment type for this order, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
      */
     'selPaytype'?: string;
     /**
-     * Whether to display other payment methods
+     * Other payment method details; may appear on historical orders.
      */
-    'showOthers'?: number;
+    'payOthers'?: Array<P2pTransactionListResultPayOthers>;
     /**
-     * Other payment methods
+     * Countdown seconds for the current order.
      */
-    'payOthers'?: Array<string>;
+    'cdTime'?: number;
     /**
-     * Trading tip
-     */
-    'tradeTips'?: string;
-    /**
-     * Unread appeals
-     */
-    'appealUnread'?: number;
-    /**
-     * IM unread
-     */
-    'imUnread'?: number;
-    /**
-     * Whether in dispute
-     */
-    'inDispute'?: boolean;
-    /**
-     * Cancellation reason ID
-     */
-    'reasonId'?: string;
-    /**
-     * Cancellation reason note
-     */
-    'reasonMemo'?: string;
-    /**
-     * Cancellation time
-     */
-    'cancelTime'?: string;
-    /**
-     * Whether seller confirmed the reason
-     */
-    'sellerConfirm'?: number;
-    /**
-     * Popup ID
-     */
-    'toastId'?: number;
-    /**
-     * Customer service has new reply to appeal
-     */
-    'disputeReback'?: number;
-    /**
-     * Rating
-     */
-    'score'?: string;
-    /**
-     * Review content
-     */
-    'message'?: string;
-    /**
-     * Coin release switch configuration
-     */
-    'releaseCoinSwitch'?: number;
-    /**
-     * VIP level
-     */
-    'tier'?: number;
-    /**
-     * Blue V Crown Shield
-     */
-    'blueVip'?: number;
-    /**
-     * Countdown time
-     */
-    'odTime'?: number;
-    /**
-     * Order Type
+     * Order type: `1` standard; `2` partner; `3` flash swap; `4` Web3.
      */
     'orderType'?: number;
     /**
@@ -270,16 +123,6 @@ export class P2pTransactionListItem {
         {
             name: 'timestExpire',
             baseName: 'timest_expire',
-            type: 'string',
-        },
-        {
-            name: 'type',
-            baseName: 'type',
-            type: 'string',
-        },
-        {
-            name: 'tradeType',
-            baseName: 'trade_type',
             type: 'string',
         },
         {
@@ -313,11 +156,6 @@ export class P2pTransactionListItem {
             type: 'string',
         },
         {
-            name: 'orderStatus',
-            baseName: 'order_status',
-            type: 'string',
-        },
-        {
             name: 'itsRealname',
             baseName: 'its_realname',
             type: 'string',
@@ -333,74 +171,14 @@ export class P2pTransactionListItem {
             type: 'string',
         },
         {
-            name: 'userNote',
-            baseName: 'user_note',
-            type: 'string',
-        },
-        {
-            name: 'showBank',
-            baseName: 'show_bank',
-            type: 'string',
-        },
-        {
-            name: 'bankname',
-            baseName: 'bankname',
-            type: 'string',
-        },
-        {
-            name: 'bankbranch',
-            baseName: 'bankbranch',
-            type: 'string',
-        },
-        {
             name: 'sellerRealname',
-            baseName: 'sellerRealname',
+            baseName: 'seller_realname',
             type: 'string',
         },
         {
             name: 'buyerRealname',
-            baseName: 'buyerRealname',
+            baseName: 'buyer_realname',
             type: 'string',
-        },
-        {
-            name: 'bankid',
-            baseName: 'bankid',
-            type: 'string',
-        },
-        {
-            name: 'bankHolderRealname',
-            baseName: 'bank_holder_realname',
-            type: 'string',
-        },
-        {
-            name: 'showAli',
-            baseName: 'show_ali',
-            type: 'number',
-        },
-        {
-            name: 'aliname',
-            baseName: 'aliname',
-            type: 'string',
-        },
-        {
-            name: 'showWechat',
-            baseName: 'show_wechat',
-            type: 'number',
-        },
-        {
-            name: 'wename',
-            baseName: 'wename',
-            type: 'string',
-        },
-        {
-            name: 'isAlicode',
-            baseName: 'is_alicode',
-            type: 'number',
-        },
-        {
-            name: 'disputeTime',
-            baseName: 'dispute_time',
-            type: 'number',
         },
         {
             name: 'cancelable',
@@ -408,44 +186,14 @@ export class P2pTransactionListItem {
             type: 'number',
         },
         {
-            name: 'blackUid',
-            baseName: 'black_uid',
-            type: 'string',
-        },
-        {
-            name: 'blackName',
-            baseName: 'black_name',
-            type: 'string',
-        },
-        {
-            name: 'memo',
-            baseName: 'memo',
-            type: 'string',
-        },
-        {
-            name: 'isFollow',
-            baseName: 'is_follow',
-            type: 'number',
-        },
-        {
-            name: 'isBlack',
-            baseName: 'is_black',
-            type: 'boolean',
-        },
-        {
             name: 'currencyType',
-            baseName: 'currencyType',
+            baseName: 'currency_type',
             type: 'string',
         },
         {
             name: 'wantType',
             baseName: 'want_type',
             type: 'string',
-        },
-        {
-            name: 'isHedge',
-            baseName: 'is_hedge',
-            type: 'number',
         },
         {
             name: 'hidePayment',
@@ -458,93 +206,13 @@ export class P2pTransactionListItem {
             type: 'string',
         },
         {
-            name: 'showOthers',
-            baseName: 'show_others',
-            type: 'number',
-        },
-        {
             name: 'payOthers',
             baseName: 'pay_others',
-            type: 'Array<string>',
+            type: 'Array<P2pTransactionListResultPayOthers>',
         },
         {
-            name: 'tradeTips',
-            baseName: 'trade_tips',
-            type: 'string',
-        },
-        {
-            name: 'appealUnread',
-            baseName: 'appeal_unread',
-            type: 'number',
-        },
-        {
-            name: 'imUnread',
-            baseName: 'im_unread',
-            type: 'number',
-        },
-        {
-            name: 'inDispute',
-            baseName: 'in_dispute',
-            type: 'boolean',
-        },
-        {
-            name: 'reasonId',
-            baseName: 'reason_id',
-            type: 'string',
-        },
-        {
-            name: 'reasonMemo',
-            baseName: 'reason_memo',
-            type: 'string',
-        },
-        {
-            name: 'cancelTime',
-            baseName: 'cancel_time',
-            type: 'string',
-        },
-        {
-            name: 'sellerConfirm',
-            baseName: 'seller_confirm',
-            type: 'number',
-        },
-        {
-            name: 'toastId',
-            baseName: 'toast_id',
-            type: 'number',
-        },
-        {
-            name: 'disputeReback',
-            baseName: 'dispute_reback',
-            type: 'number',
-        },
-        {
-            name: 'score',
-            baseName: 'score',
-            type: 'string',
-        },
-        {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
-            name: 'releaseCoinSwitch',
-            baseName: 'release_coin_switch',
-            type: 'number',
-        },
-        {
-            name: 'tier',
-            baseName: 'tier',
-            type: 'number',
-        },
-        {
-            name: 'blueVip',
-            baseName: 'blue_vip',
-            type: 'number',
-        },
-        {
-            name: 'odTime',
-            baseName: 'od_time',
+            name: 'cdTime',
+            baseName: 'cd_time',
             type: 'number',
         },
         {

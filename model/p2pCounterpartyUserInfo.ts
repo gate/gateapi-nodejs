@@ -15,15 +15,15 @@ export class P2pCounterpartyUserInfo {
      */
     'userTimest'?: string;
     /**
-     * Whether email is verified
+     * Whether email is verified. `1`: yes; `0`: no.
      */
     'emailVerified'?: string;
     /**
-     * Whether KYC verification is completed
+     * Whether KYC is completed. `1`: yes; `0`: no.
      */
     'verified'?: string;
     /**
-     * Whether phone is bound
+     * Whether a phone number is bound. `1`: yes; `0`: no.
      */
     'hasPhone'?: string;
     /**
@@ -63,11 +63,11 @@ export class P2pCounterpartyUserInfo {
      */
     'completeRateMonth'?: number;
     /**
-     * Whether following
+     * Whether you follow this user. `1`: yes; `0`: no.
      */
     'isFollow'?: number;
     /**
-     * Whether traded with self
+     * Whether you have traded with this user before. `1`: yes; `0`: no.
      */
     'haveTraded'?: number;
     /**

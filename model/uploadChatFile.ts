@@ -14,11 +14,11 @@
  */
 export class UploadChatFile {
     /**
-     * File type, currently only images and videos are supported
+     * File MIME type: supports `image/jpeg`, `image/jpg`, `image/png`, `video/mp4`.
      */
-    'imageContentType': string;
+    'imageContentType': UploadChatFile.ImageContentType;
     /**
-     * File content (base64 encoded)
+     * Base64 file content; max 20 MB.
      */
     'base64Img': string;
 
@@ -28,7 +28,7 @@ export class UploadChatFile {
         {
             name: 'imageContentType',
             baseName: 'image_content_type',
-            type: 'string',
+            type: 'UploadChatFile.ImageContentType',
         },
         {
             name: 'base64Img',
@@ -39,5 +39,14 @@ export class UploadChatFile {
 
     static getAttributeTypeMap() {
         return UploadChatFile.attributeTypeMap;
+    }
+}
+
+export namespace UploadChatFile {
+    export enum ImageContentType {
+        ImageJpeg = <any>'image/jpeg',
+        ImageJpg = <any>'image/jpg',
+        ImagePng = <any>'image/png',
+        VideoMp4 = <any>'video/mp4',
     }
 }

@@ -62,7 +62,7 @@ export class CrossExApi {
 
     /**
      * Query Trading Pair Information
-     * @summary [Public Interface] Query Trading Pair Information
+     * @summary 查询币对信息
      * @param opts Optional parameters
      * @param opts.symbols 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
      */
@@ -103,7 +103,7 @@ export class CrossExApi {
 
     /**
      * Query risk limit information for futures/margin trading pairs
-     * @summary [Public Interface] Query Risk Limit Information
+     * @summary 查询风险限额信息
      * @param symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT
      */
     public async listCrossexRuleRiskLimits(
@@ -145,7 +145,7 @@ export class CrossExApi {
 
     /**
      * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-     * @summary [Public Interface] Query Supported Transfer Currencies
+     * @summary 查询划转币种支持
      * @param opts Optional parameters
      * @param opts.coin Currency
      */
@@ -1531,6 +1531,7 @@ export class CrossExApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number returned by list, max 1000
      * @param opts.coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @param opts.statementType Bill entry type.
      * @param opts.from Start Millisecond Timestamp
      * @param opts.to End Millisecond Timestamp
      */
@@ -1538,6 +1539,7 @@ export class CrossExApi {
         page?: number;
         limit?: number;
         coin?: string;
+        statementType?: string;
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexAccountBookRecord> }> {
@@ -1580,6 +1582,15 @@ export class CrossExApi {
             localVarQueryParameters['coin'] = coinSerialized;
         }
 
+        if (opts.statementType !== undefined) {
+            let statementTypeSerialized = ObjectSerializer.serialize(opts.statementType, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(statementTypeSerialized)) {
+                statementTypeSerialized = statementTypeSerialized.join(',');
+            }
+            localVarQueryParameters['statement_type'] = statementTypeSerialized;
+        }
+
         if (opts.from !== undefined) {
             let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
             // For array query parameters with style:form and explode:false, convert to comma-separated string
@@ -1615,7 +1626,7 @@ export class CrossExApi {
 
     /**
      * Rate Limit: 200 requests per 10 seconds
-     * @summary Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+     * @summary Query Currency Discount Rate
      * @param opts Optional parameters
      * @param opts.coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
      * @param opts.exchangeType OKX/GATE/BINANCE/BYBIT
