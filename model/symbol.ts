@@ -15,7 +15,7 @@ export class Symbol {
      */
     'symbol': string;
     /**
-     * Exchange type (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `CROSSEX`).
+     * Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
      */
     'exchangeType': string;
     /**

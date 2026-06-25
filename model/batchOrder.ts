@@ -9,6 +9,9 @@
  * Do not edit the class manually.
  */
 
+import { SpotOrderStopLoss } from './spotOrderStopLoss';
+import { SpotOrderStopProfit } from './spotOrderStopProfit';
+
 /**
  * Batch order details
  */
@@ -158,13 +161,15 @@ export class BatchOrder {
      */
     'stpAct'?: BatchOrder.StpAct;
     /**
-     * 订单结束方式，包括：  - open: 等待处理 - filled: 完全成交 - cancelled: 用户撤销 - liquidate_cancelled: 爆仓撤销 - small: 订单数量太小 - depth_not_enough: 深度不足导致撤单 - trader_not_enough: 对手方不足导致撤单 - ioc: 未立即成交，因为 tif 设置为 ioc - poc: 未满足挂单策略，因为 tif 设置为 poc/rvt/rat/rpi表示只想成为maker, 经检查会成为taker被拒绝 - fok: 未立即完全成交，因为 tif 设置为 fok - stp: 订单发生自成交限制而被撤销 - price_protect_cancelled: 价格保护导致撤单 - unknown: 未知
+     * How the order finished:  - open: Pending processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled by liquidation - small: Order size too small - depth_not_enough: Cancelled due to insufficient order book depth - trader_not_enough: Cancelled due to insufficient counterparty liquidity - ioc: Not filled immediately because time-in-force is IOC - poc: Post-only requirement not met because time-in-force is set to poc (maker-only); rejected after being detected as taker - fok: Not fully filled immediately because time-in-force is FOK - stp: Cancelled due to self-trade prevention - price_protect_cancelled: Cancelled due to price protection - unknown: Unknown
      */
     'finishAs'?: BatchOrder.FinishAs;
     /**
      * Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
      */
     'slippage'?: string;
+    'stopProfit'?: SpotOrderStopProfit;
+    'stopLoss'?: SpotOrderStopLoss;
 
     static discriminator: string | undefined = undefined;
 
@@ -358,6 +363,16 @@ export class BatchOrder {
             name: 'slippage',
             baseName: 'slippage',
             type: 'string',
+        },
+        {
+            name: 'stopProfit',
+            baseName: 'stop_profit',
+            type: 'SpotOrderStopProfit',
+        },
+        {
+            name: 'stopLoss',
+            baseName: 'stop_loss',
+            type: 'SpotOrderStopLoss',
         },
     ];
 

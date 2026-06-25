@@ -1,0 +1,42 @@
+# ChaseOrder
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [optional] [default to undefined]
+**user** | **string** |  | [optional] [default to undefined]
+**contract** | **string** |  | [optional] [default to undefined]
+**settle** | **string** |  | [optional] [default to undefined]
+**amount** | **string** | Total size in contracts; positive for buy, negative for sell | [optional] [default to undefined]
+**priceLimit** | **string** |  | [optional] [default to undefined]
+**reduceOnly** | **boolean** |  | [optional] [default to undefined]
+**text** | **string** |  | [optional] [default to undefined]
+**createTime** | **number** |  | [optional] [default to undefined]
+**finishTime** | **number** |  | [optional] [default to undefined]
+**originalStatus** | **number** | Raw status enum | [optional] [default to undefined]
+**status** | **string** | Simplified status, e.g. open / finished | [optional] [default to undefined]
+**reason** | **string** |  | [optional] [default to undefined]
+**fillAmount** | **string** |  | [optional] [default to undefined]
+**averageFillPrice** | **string** |  | [optional] [default to undefined]
+**suborderId** | **string** |  | [optional] [default to undefined]
+**isDualMode** | **boolean** |  | [optional] [default to undefined]
+**sideLabel** | **string** |  | [optional] [default to undefined]
+**positionSideOutput** | **string** |  | [optional] [default to undefined]
+**chasePrice** | **string** |  | [optional] [default to undefined]
+**intervalSec** | **number** |  | [optional] [default to undefined]
+**updatedAt** | **number** |  | [optional] [default to undefined]
+**suborderPrice** | **string** |  | [optional] [default to undefined]
+**suborderOngoing** | **boolean** |  | [optional] [default to undefined]
+**suborderFinishAs** | **string** |  | [optional] [default to undefined]
+**priceType** | **number** | PriceType enum: 1 latest, 2 index, 3 mark | [optional] [default to undefined]
+**priceGapType** | **string** |  | [optional] [default to undefined]
+**priceGapValue** | **string** |  | [optional] [default to undefined]
+**statusCode** | **string** |  | [optional] [default to undefined]
+**createTimePrecise** | **string** | Creation time (seconds.microseconds) | [optional] [default to undefined]
+**finishTimePrecise** | **string** |  | [optional] [default to undefined]
+**posMarginMode** | **string** |  | [optional] [default to undefined]
+**positionMode** | **string** |  | [optional] [default to undefined]
+**leverage** | **string** |  | [optional] [default to undefined]
+**errorLabel** | **string** |  | [optional] [default to undefined]
+

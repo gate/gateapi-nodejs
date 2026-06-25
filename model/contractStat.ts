@@ -35,6 +35,10 @@ export class ContractStat {
      */
     'longLiqUsd'?: number;
     /**
+     * Long liquidations in quote currency; USDT settlement: long_liq_size × multiplier × mark price
+     */
+    'longLiqUsdNew'?: number;
+    /**
      * Short liquidation size (contracts)
      */
     'shortLiqSize'?: string;
@@ -46,6 +50,10 @@ export class ContractStat {
      * Short liquidation volume (quote currency)
      */
     'shortLiqUsd'?: number;
+    /**
+     * Short liquidations in quote currency; USDT settlement: short_liq_size × multiplier × mark price
+     */
+    'shortLiqUsdNew'?: number;
     /**
      * Total open interest size (contracts)
      */
@@ -66,6 +74,38 @@ export class ContractStat {
      * Mark price
      */
     'markPrice'?: number;
+    /**
+     * Top long open interest (contracts)
+     */
+    'topLongSize'?: string;
+    /**
+     * Top short open interest (contracts)
+     */
+    'topShortSize'?: string;
+    /**
+     * Long taker trade volume (contracts)
+     */
+    'longTakerSize'?: string;
+    /**
+     * Short taker trade volume (contracts)
+     */
+    'shortTakerSize'?: string;
+    /**
+     * Number of top long accounts (large holders)
+     */
+    'topLongAccount'?: number;
+    /**
+     * Number of top short accounts (large holders)
+     */
+    'topShortAccount'?: number;
+    /**
+     * Number of users holding long positions
+     */
+    'longUsers'?: string;
+    /**
+     * Number of users holding short positions
+     */
+    'shortUsers'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -101,6 +141,11 @@ export class ContractStat {
             type: 'number',
         },
         {
+            name: 'longLiqUsdNew',
+            baseName: 'long_liq_usd_new',
+            type: 'number',
+        },
+        {
             name: 'shortLiqSize',
             baseName: 'short_liq_size',
             type: 'string',
@@ -113,6 +158,11 @@ export class ContractStat {
         {
             name: 'shortLiqUsd',
             baseName: 'short_liq_usd',
+            type: 'number',
+        },
+        {
+            name: 'shortLiqUsdNew',
+            baseName: 'short_liq_usd_new',
             type: 'number',
         },
         {
@@ -139,6 +189,46 @@ export class ContractStat {
             name: 'markPrice',
             baseName: 'mark_price',
             type: 'number',
+        },
+        {
+            name: 'topLongSize',
+            baseName: 'top_long_size',
+            type: 'string',
+        },
+        {
+            name: 'topShortSize',
+            baseName: 'top_short_size',
+            type: 'string',
+        },
+        {
+            name: 'longTakerSize',
+            baseName: 'long_taker_size',
+            type: 'string',
+        },
+        {
+            name: 'shortTakerSize',
+            baseName: 'short_taker_size',
+            type: 'string',
+        },
+        {
+            name: 'topLongAccount',
+            baseName: 'top_long_account',
+            type: 'number',
+        },
+        {
+            name: 'topShortAccount',
+            baseName: 'top_short_account',
+            type: 'number',
+        },
+        {
+            name: 'longUsers',
+            baseName: 'long_users',
+            type: 'string',
+        },
+        {
+            name: 'shortUsers',
+            baseName: 'short_users',
+            type: 'string',
         },
     ];
 

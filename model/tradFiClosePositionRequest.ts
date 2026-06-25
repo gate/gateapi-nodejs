@@ -14,11 +14,11 @@
  */
 export class TradFiClosePositionRequest {
     /**
-     * 平仓类型  说明： - 1：部分平仓（必须传 close_volume） - 2：全平（无需传 close_volume）
+     * Close Type Description: - 1: Partial Close (close_volume is required) - 2: Full Close (close_volume is not required)
      */
     'closeType': TradFiClosePositionRequest.CloseType;
     /**
-     * 平仓数量  说明： - 当 close_type = 1 时必传 - 当 close_type = 2 时忽略该字段
+     * Close Volume Description: - Required when close_type = 1 - Ignored when close_type = 2
      */
     'closeVolume'?: string | null;
 

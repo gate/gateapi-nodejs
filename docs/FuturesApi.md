@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**listFuturesContracts**](FuturesApi.md#listFuturesContracts) | **GET** /futures/{settle}/contracts | Query all futures contracts
+[**listFuturesContractsAll**](FuturesApi.md#listFuturesContractsAll) | **GET** /futures/{settle}/contracts_all | Query all contract information (including delisted)
 [**getFuturesContract**](FuturesApi.md#getFuturesContract) | **GET** /futures/{settle}/contracts/{contract} | Query single contract information
 [**listFuturesOrderBook**](FuturesApi.md#listFuturesOrderBook) | **GET** /futures/{settle}/order_book | Query futures market depth information
 [**listFuturesTrades**](FuturesApi.md#listFuturesTrades) | **GET** /futures/{settle}/trades | Futures market transaction records
@@ -62,12 +63,17 @@ Method | HTTP request | Description
 [**getTrailOrderDetail**](FuturesApi.md#getTrailOrderDetail) | **GET** /futures/{settle}/autoorder/v1/trail/detail | Get trail order details
 [**updateTrailOrder**](FuturesApi.md#updateTrailOrder) | **POST** /futures/{settle}/autoorder/v1/trail/update | Update trail order
 [**getTrailOrderChangeLog**](FuturesApi.md#getTrailOrderChangeLog) | **GET** /futures/{settle}/autoorder/v1/trail/change_log | Get trail order user modification records
+[**createChaseOrder**](FuturesApi.md#createChaseOrder) | **POST** /futures/{settle}/autoorder/v1/chase/create | Create a chase order
+[**stopChaseOrder**](FuturesApi.md#stopChaseOrder) | **POST** /futures/{settle}/autoorder/v1/chase/stop | Stop a chase order
+[**stopAllChaseOrders**](FuturesApi.md#stopAllChaseOrders) | **POST** /futures/{settle}/autoorder/v1/chase/stop_all | Stop chase orders in batch
+[**getChaseOrders**](FuturesApi.md#getChaseOrders) | **GET** /futures/{settle}/autoorder/v1/chase/list | List chase orders
+[**getChaseOrderDetail**](FuturesApi.md#getChaseOrderDetail) | **GET** /futures/{settle}/autoorder/v1/chase/detail | Get chase order detail
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/{settle}/price_orders | Query auto order list
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create price-triggered order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all auto orders
 [**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/{settle}/price_orders/{order_id} | Query single auto order details
 [**cancelPriceTriggeredOrder**](FuturesApi.md#cancelPriceTriggeredOrder) | **DELETE** /futures/{settle}/price_orders/{order_id} | Cancel single auto order
-[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/amend/{order_id} | Modify a Single Auto Order
+[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/amend | Modify a Single Auto Order
 
 
 ## listFuturesContracts
@@ -91,6 +97,53 @@ const opts = {
   'offset': 0 // number | List offset, starting from 0
 };
 api.listFuturesContracts(settle, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<Contract>; }> [Contract](Contract.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listFuturesContractsAll
+
+> Promise<{ response: http.IncomingMessage; body: Array<Contract>; }> listFuturesContractsAll(settle, opts)
+
+Query all contract information (including delisted)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const opts = {
+  'limit': 100, // number | Maximum number of records returned in a single list
+  'offset': 0 // number | List offset, starting from 0
+};
+api.listFuturesContractsAll(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -1787,6 +1840,7 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'xGateExptime': "1689560679123", // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
   'contract': "BTC_USDT", // string | Contract Identifier; if specified, only cancel pending orders related to this contract
+  'actionMode': "ACK", // string | Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
   'side': "ask", // string | Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
   'excludeReduceOnly': false, // boolean | Whether to exclude reduce-only orders
   'text': "cancel by user" // string | Remark for order cancellation
@@ -1804,6 +1858,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
  **contract** | **string**| Contract Identifier; if specified, only cancel pending orders related to this contract | [optional] [default to undefined]
+ **actionMode** | **string**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) | [optional] [default to undefined]
  **side** | **string**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders | [optional] [default to undefined]
  **excludeReduceOnly** | **boolean**| Whether to exclude reduce-only orders | [optional] [default to undefined]
  **text** | **string**| Remark for order cancellation | [optional] [default to undefined]
@@ -2045,7 +2100,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const orderId = "12345"; // string | The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
 const opts = {
-  'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'xGateExptime': "1689560679123", // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'actionMode': "ACK" // string | Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
 };
 api.cancelFuturesOrder(settle, orderId, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -2060,6 +2116,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **orderId** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. | [default to undefined]
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+ **actionMode** | **string**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) | [optional] [default to undefined]
 
 ### Return type
 
@@ -2998,6 +3055,251 @@ Promise<{ response: AxiosResponse; body: TrailOrderChangeLogResponse; }> [TrailO
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## createChaseOrder
+
+> Promise<{ response: http.IncomingMessage; body: CreateChaseOrderResp; }> createChaseOrder(settle, createChaseOrderReq)
+
+Create a chase order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const createChaseOrderReq = new CreateChaseOrderReq(); // CreateChaseOrderReq | 
+api.createChaseOrder(settle, createChaseOrderReq)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **createChaseOrderReq** | [**CreateChaseOrderReq**](CreateChaseOrderReq.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: CreateChaseOrderResp; }> [CreateChaseOrderResp](CreateChaseOrderResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## stopChaseOrder
+
+> Promise<{ response: http.IncomingMessage; body: StopChaseOrderResp; }> stopChaseOrder(settle, stopChaseOrderReq)
+
+Stop a chase order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const stopChaseOrderReq = new StopChaseOrderReq(); // StopChaseOrderReq | 
+api.stopChaseOrder(settle, stopChaseOrderReq)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **stopChaseOrderReq** | [**StopChaseOrderReq**](StopChaseOrderReq.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: StopChaseOrderResp; }> [StopChaseOrderResp](StopChaseOrderResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## stopAllChaseOrders
+
+> Promise<{ response: http.IncomingMessage; body: StopAllChaseOrdersResp; }> stopAllChaseOrders(settle, stopAllChaseOrdersReq)
+
+Stop chase orders in batch
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const stopAllChaseOrdersReq = new StopAllChaseOrdersReq(); // StopAllChaseOrdersReq | 
+api.stopAllChaseOrders(settle, stopAllChaseOrdersReq)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **stopAllChaseOrdersReq** | [**StopAllChaseOrdersReq**](StopAllChaseOrdersReq.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: StopAllChaseOrdersResp; }> [StopAllChaseOrdersResp](StopAllChaseOrdersResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## getChaseOrders
+
+> Promise<{ response: http.IncomingMessage; body: GetChaseOrdersResp; }> getChaseOrders(settle, sortBy, opts)
+
+List chase orders
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const sortBy = 56; // 1 | 2 | Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
+const opts = {
+  'contract': "contract_example", // string | Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
+  'isFinished': True, // boolean | true to query finished orders, false to query in-progress orders
+  'startAt': 56, // number | Lower time bound for the history list, paired with end_at. Required when is_finished is true
+  'endAt': 56, // number | Upper time bound for the history list, paired with start_at. Required when is_finished is true
+  'pageNum': 56, // number | Page number, starting from 1
+  'pageSize': 56, // number | Page size; must be between 1 and 100
+  'hideCancel': True, // boolean | When true, cancelled orders are hidden in the list
+  'reduceOnly': 56, // 0 | 1 | 2 | OptionalBool: 0 unknown, 1 true, 2 false; used to filter by reduce-only flag
+  'side': 56 // 0 | 1 | 2 | Filter by long/short side: 1 long, 2 short
+};
+api.getChaseOrders(settle, sortBy, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **sortBy** | **SortBy**| Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 | [default to undefined]
+ **contract** | **string**| Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase | [optional] [default to undefined]
+ **isFinished** | **boolean**| true to query finished orders, false to query in-progress orders | [optional] [default to undefined]
+ **startAt** | **number**| Lower time bound for the history list, paired with end_at. Required when is_finished is true | [optional] [default to undefined]
+ **endAt** | **number**| Upper time bound for the history list, paired with start_at. Required when is_finished is true | [optional] [default to undefined]
+ **pageNum** | **number**| Page number, starting from 1 | [optional] [default to undefined]
+ **pageSize** | **number**| Page size; must be between 1 and 100 | [optional] [default to undefined]
+ **hideCancel** | **boolean**| When true, cancelled orders are hidden in the list | [optional] [default to undefined]
+ **reduceOnly** | **ReduceOnly**| OptionalBool: 0 unknown, 1 true, 2 false; used to filter by reduce-only flag | [optional] [default to undefined]
+ **side** | **Side**| Filter by long/short side: 1 long, 2 short | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: GetChaseOrdersResp; }> [GetChaseOrdersResp](GetChaseOrdersResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getChaseOrderDetail
+
+> Promise<{ response: http.IncomingMessage; body: GetChaseOrderDetailResp; }> getChaseOrderDetail(settle, id)
+
+Get chase order detail
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const id = "id_example"; // string | Order ID, must be a non-zero positive integer
+api.getChaseOrderDetail(settle, id)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **id** | **string**| Order ID, must be a non-zero positive integer | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: GetChaseOrderDetailResp; }> [GetChaseOrderDetailResp](GetChaseOrderDetailResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 ## listPriceTriggeredOrders
 
 > Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder>; }> listPriceTriggeredOrders(settle, status, opts)
@@ -3235,7 +3537,7 @@ Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder; }> [Futures
 
 ## updatePriceTriggeredOrder
 
-> Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse; }> updatePriceTriggeredOrder(settle, orderId, futuresUpdatePriceTriggeredOrder)
+> Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse; }> updatePriceTriggeredOrder(settle, futuresUpdatePriceTriggeredOrder)
 
 Modify a Single Auto Order
 
@@ -3251,9 +3553,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const orderId = 56; // number | ID returned when order is successfully created
 const futuresUpdatePriceTriggeredOrder = new FuturesUpdatePriceTriggeredOrder(); // FuturesUpdatePriceTriggeredOrder | 
-api.updatePriceTriggeredOrder(settle, orderId, futuresUpdatePriceTriggeredOrder)
+api.updatePriceTriggeredOrder(settle, futuresUpdatePriceTriggeredOrder)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -3264,7 +3565,6 @@ api.updatePriceTriggeredOrder(settle, orderId, futuresUpdatePriceTriggeredOrder)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **orderId** | **number**| ID returned when order is successfully created | [default to undefined]
  **futuresUpdatePriceTriggeredOrder** | [**FuturesUpdatePriceTriggeredOrder**](FuturesUpdatePriceTriggeredOrder.md)|  | 
 
 ### Return type

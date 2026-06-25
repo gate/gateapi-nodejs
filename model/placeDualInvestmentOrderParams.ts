@@ -18,7 +18,7 @@ export class PlaceDualInvestmentOrderParams {
      */
     'planId': string;
     /**
-     * Subscription amount, mutually exclusive with copies field
+     * Subscription amount
      */
     'amount': string;
     /**

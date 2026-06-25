@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**listSubAccountMarginBalances**](WalletApi.md#listSubAccountMarginBalances) | **GET** /wallet/sub_account_margin_balances | Query sub-account isolated margin account balance information
 [**listSubAccountFuturesBalances**](WalletApi.md#listSubAccountFuturesBalances) | **GET** /wallet/sub_account_futures_balances | Query sub-account perpetual futures account balance information
 [**listSubAccountCrossMarginBalances**](WalletApi.md#listSubAccountCrossMarginBalances) | **GET** /wallet/sub_account_cross_margin_balances | Query sub-account cross margin account balance information
-[**listSavedAddress**](WalletApi.md#listSavedAddress) | **GET** /wallet/saved_address | Query withdrawal address whitelist
+[**listSavedAddress**](WalletApi.md#listSavedAddress) | **GET** /wallet/saved_address | Query saved address
 [**getTradeFee**](WalletApi.md#getTradeFee) | **GET** /wallet/fee | Query personal trading fees
 [**getTotalBalance**](WalletApi.md#getTotalBalance) | **GET** /wallet/total_balance | Query personal account totals
 [**listSmallBalance**](WalletApi.md#listSmallBalance) | **GET** /wallet/small_balance | Get list of convertible small balance currencies
@@ -704,9 +704,9 @@ Promise<{ response: AxiosResponse; body: Array<SubAccountCrossMarginBalance>; }>
 
 ## listSavedAddress
 
-> Promise<{ response: http.IncomingMessage; body: Array<SavedAddress>; }> listSavedAddress(currency, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<SavedAddress>; }> listSavedAddress(opts)
 
-Query withdrawal address whitelist
+Query saved address
 
 ### Example
 
@@ -719,13 +719,14 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
-const currency = "USDT"; // string | Currency
 const opts = {
+  'currency': "USDT", // string | Currency
   'chain': '', // string | Chain name
+  'verified': '', // string | 1 means verified address, 0 means normal address, empty string means no limit
   'limit': '50', // string | Maximum number returned, up to 100
   'page': 1 // number | page number
 };
-api.listSavedAddress(currency, opts)
+api.listSavedAddress(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -735,8 +736,9 @@ api.listSavedAddress(currency, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Currency | [default to undefined]
+ **currency** | **string**| Currency | [optional] [default to undefined]
  **chain** | **string**| Chain name | [optional] [default to &#39;&#39;]
+ **verified** | **string**| 1 means verified address, 0 means normal address, empty string means no limit | [optional] [default to &#39;&#39;]
  **limit** | **string**| Maximum number returned, up to 100 | [optional] [default to &#39;50&#39;]
  **page** | **number**| page number | [optional] [default to 1]
 

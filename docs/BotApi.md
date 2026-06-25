@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Get AIHub strategy recommendations
 
-discover 域唯一正式接口。  支持场景： - &#x60;top1&#x60; - &#x60;bundle&#x60; - &#x60;filter&#x60; - &#x60;refresh&#x60;  约束： - 主动推荐池仅包含 &#x60;spot_grid&#x60;、&#x60;futures_grid&#x60;、&#x60;spot_martingale&#x60; - 可返回但不主动推荐 &#x60;infinite_grid&#x60;、&#x60;margin_grid&#x60; - 不得返回 &#x60;contract_martingale&#x60;、&#x60;smart-position&#x60;、&#x60;spot-future-arbitrage&#x60; - &#x60;scene&#x3D;filter&#x60; 时只允许按 &#x60;market&#x60;、&#x60;backtest_apr_gte&#x60;、&#x60;max_drawdown_lte&#x60; 过滤 - &#x60;scene&#x3D;refresh&#x60; 通过 &#x60;refresh_recommendation_id&#x60; 承接刷新上下文；正式最小格式只要求 &#x60;strategy_type|market&#x60; - 若上游直接透传上一条推荐的 &#x60;recommendation_id&#x60;，其中第三段 &#x60;backtest_id&#x60; 当前会被忽略
+The only formal interface for the discover domain. Support scenarios: - &#x60;top1&#x60; - &#x60;bundle&#x60; - &#x60;filter&#x60; - &#x60;refresh&#x60; Constraints: - The active recommendation pool only contains &#x60;spot_grid&#x60;, &#x60;futures_grid&#x60;, &#x60;spot_martingale&#x60; - Can return but do not actively recommend &#x60;infinite_grid&#x60;, &#x60;margin_grid&#x60; - &#x60;contract_martingale&#x60;, &#x60;smart-position&#x60;, &#x60;spot-future-arbitrage&#x60; must not be returned - When &#x60;scene&#x3D;filter&#x60; is used, only filtering by &#x60;market&#x60;, &#x60;backtest_apr_gte&#x60;, &#x60;max_drawdown_lte&#x60; is allowed - &#x60;scene&#x3D;refresh&#x60; inherits the refresh context through &#x60;refresh_recommendation_id&#x60;; the official minimum format only requires &#x60;strategy_type|market&#x60; - If the upstream directly transmits the previous recommendation &#x60;recommendation_id&#x60;, the third paragraph &#x60;backtest_id&#x60; will currently be ignored.
 
 ### Example
 
@@ -313,7 +313,7 @@ Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse; }> [AIHubCr
 
 Create Spot Martin
 
-根据传入参数创建现货马丁策略。  止损口径与 App / &#x60;MartingaleBot&#x60; 一致： - 使用 **&#x60;create_params.stop_loss_per_cycle&#x60;**（每轮止损比例，小数字符串），**不要**使用 &#x60;stop_loss_price&#x60; 表达创建侧止损。 - 详情页展示的「止损价」由引擎按轮次计算；创建侧可选 **&#x60;create_params.trigger_price&#x60;**（触发价）。
+Create a spot martingale strategy from the given parameters. Stop-loss semantics match the app / &#x60;MartingaleBot&#x60;: - Use **&#x60;create_params.stop_loss_per_cycle&#x60;** (ratio per round as a decimal string) for creation-side stop-loss; **do not** use &#x60;stop_loss_price&#x60; for creation logic. - Stop-loss prices shown on detail pages are computed per round by the engine; creation accepts optional **&#x60;create_params.trigger_price&#x60;** (trigger price).
 
 ### Example
 

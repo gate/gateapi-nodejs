@@ -30,6 +30,7 @@ import { P2pChatListResponse } from '../model/p2pChatListResponse';
 import { P2pCounterpartyUserInfoResponse } from '../model/p2pCounterpartyUserInfoResponse';
 import { P2pMerchantBooksPlaceBizPushOrderResponse } from '../model/p2pMerchantBooksPlaceBizPushOrderResponse';
 import { P2pMerchantUserInfoResponse } from '../model/p2pMerchantUserInfoResponse';
+import { P2pMerchantWorkHoursResponse } from '../model/p2pMerchantWorkHoursResponse';
 import { P2pMyAdsListResponse } from '../model/p2pMyAdsListResponse';
 import { P2pPaymentMethodsResponse } from '../model/p2pPaymentMethodsResponse';
 import { P2pSendChatMessageResponse } from '../model/p2pSendChatMessageResponse';
@@ -39,6 +40,7 @@ import { P2pTransactionListResponse } from '../model/p2pTransactionListResponse'
 import { P2pUploadChatFileResponse } from '../model/p2pUploadChatFileResponse';
 import { PlaceBizPushOrder } from '../model/placeBizPushOrder';
 import { SendChatMessageRequest } from '../model/sendChatMessageRequest';
+import { SetMerchantWorkHoursRequest } from '../model/setMerchantWorkHoursRequest';
 import { UploadChatFile } from '../model/uploadChatFile';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -163,6 +165,44 @@ export class P2pApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<P2pPaymentMethodsResponse>(config, 'P2pPaymentMethodsResponse', authSettings);
+    }
+
+    /**
+     *
+     * @summary Set merchant working status and custom working hours
+     * @param setMerchantWorkHoursRequest
+     */
+    public async p2pMerchantAccountSetMerchantWorkHours(
+        setMerchantWorkHoursRequest: SetMerchantWorkHoursRequest,
+    ): Promise<{ response: AxiosResponse; body: P2pMerchantWorkHoursResponse }> {
+        const localVarPath = this.client.basePath + '/p2p/merchant/account/set_merchant_work_hours';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'setMerchantWorkHoursRequest' is not null or undefined
+        if (setMerchantWorkHoursRequest === null || setMerchantWorkHoursRequest === undefined) {
+            throw new Error(
+                'Required parameter setMerchantWorkHoursRequest was null or undefined when calling p2pMerchantAccountSetMerchantWorkHours.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(setMerchantWorkHoursRequest, 'SetMerchantWorkHoursRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<P2pMerchantWorkHoursResponse>(config, 'P2pMerchantWorkHoursResponse', authSettings);
     }
 
     /**
@@ -394,7 +434,7 @@ export class P2pApi {
     }
 
     /**
-     *
+     * When publishing or editing an advertisement, trade_tips and auto_reply go through off-platform traffic diversion risk control; when hit, the advertisement is not saved, and code 70305102 with data.risk_event is returned.
      * @summary Publish ad order
      * @param placeBizPushOrder
      */
@@ -622,7 +662,7 @@ export class P2pApi {
     }
 
     /**
-     *
+     * Text messages go through off-platform traffic diversion risk control. When hit, the API still returns code 0, and data contains risk_type=1 and toast_msg.
      * @summary Send text message
      * @param sendChatMessageRequest
      */

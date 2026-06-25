@@ -9,6 +9,9 @@
  * Do not edit the class manually.
  */
 
+import { SpotOrderStopLoss } from './spotOrderStopLoss';
+import { SpotOrderStopProfit } from './spotOrderStopProfit';
+
 /**
  * Order information that needs to be modified
  */
@@ -41,6 +44,8 @@ export class BatchAmendItem {
      * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
      */
     'actionMode'?: string;
+    'stopProfit'?: SpotOrderStopProfit;
+    'stopLoss'?: SpotOrderStopLoss;
 
     static discriminator: string | undefined = undefined;
 
@@ -79,6 +84,16 @@ export class BatchAmendItem {
             name: 'actionMode',
             baseName: 'action_mode',
             type: 'string',
+        },
+        {
+            name: 'stopProfit',
+            baseName: 'stop_profit',
+            type: 'SpotOrderStopProfit',
+        },
+        {
+            name: 'stopLoss',
+            baseName: 'stop_loss',
+            type: 'SpotOrderStopLoss',
         },
     ];
 

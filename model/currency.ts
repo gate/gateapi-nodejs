@@ -61,7 +61,7 @@ export class Currency {
      */
     'marketCap'?: string;
     /**
-     * 币种分类  - stocks: 股票 - metals: 金属 - indices: 指数 - forex: 外汇 - commodities: 大宗商品
+     * Currency categories - stocks: Stocks - metals: Metals - indices: Indices - forex: Forex - commodities: Commodities
      */
     'category'?: Array<string>;
 

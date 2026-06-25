@@ -16,6 +16,14 @@ import { PositionHistoryListDataList } from './positionHistoryListDataList';
  */
 export class PositionHistoryListData {
     /**
+     * Total amount
+     */
+    'total'?: number;
+    /**
+     * Total pages
+     */
+    'totalPage'?: number;
+    /**
      * Query historical position list
      */
     'list'?: Array<PositionHistoryListDataList>;
@@ -23,6 +31,16 @@ export class PositionHistoryListData {
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+        {
+            name: 'total',
+            baseName: 'total',
+            type: 'number',
+        },
+        {
+            name: 'totalPage',
+            baseName: 'total_page',
+            type: 'number',
+        },
         {
             name: 'list',
             baseName: 'list',

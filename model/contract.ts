@@ -201,6 +201,10 @@ export class Contract {
      * Funding rate depth impact value
      */
     'fundingImpactValue'?: string;
+    /**
+     * Whether the newly launched contract activates mark price circuit breaker (If the platform intends to activate this mechanism for a newly launched contract market to prevent significant price fluctuations and excessive liquidations after launch, an advance announcement will be made).
+     */
+    'enableCircuitBreaker'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -439,6 +443,11 @@ export class Contract {
             name: 'fundingImpactValue',
             baseName: 'funding_impact_value',
             type: 'string',
+        },
+        {
+            name: 'enableCircuitBreaker',
+            baseName: 'enable_circuit_breaker',
+            type: 'boolean',
         },
     ];
 

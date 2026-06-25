@@ -23,7 +23,7 @@ export class CrossexOrder {
      */
     'text': string;
     /**
-     * 订单状态：  NEW：订单已通过校验，等待发送到交易所  OPEN：订单已挂在交易所订单簿上  PARTIALLY_FILLED：订单已部分成交  FILLED：订单已完全成交  FAIL：CrossEx 内部校验未通过，请查看 reason 字段了解失败原因  REJECT：订单被交易所拒绝，请查看 reason 字段了解失败原因
+     * Order status:  NEW: Validated and queued to be sent to the exchange.  OPEN: Resting on the exchange order book.  PARTIALLY_FILLED: Partially filled.  FILLED: Fully filled.  FAIL: CrossEx internal validation failed; see the `reason` field for details.  REJECT: Rejected by the exchange; see the `reason` field for details.
      */
     'state': string;
     /**
@@ -39,11 +39,11 @@ export class CrossexOrder {
      */
     'type': string;
     /**
-     * Order attributes (`COMMON` normal / `LIQ` liquidation takeover / `REDUCE` liquidation reduction / `ADL` auto-deleverage).
+     * Order attributes (`COMMON` normal / `LIQ` liquidation takeover / `REDUCE` liquidation reduction / `ADL` auto-deleverage / `SETTLEMENT` delisting settlement).
      */
     'attribute': string;
     /**
-     * Exchange type (`BINANCE` / `OKX` / `GATE` / `BYBIT`).
+     * Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
      */
     'exchangeType': string;
     /**

@@ -27,7 +27,7 @@ export class OrderListStructList {
      */
     'type': number;
     /**
-     * Status
+     * Status. 1 - success, 3 - delayed redemption in progress, 6 - redemption cancellation order
      */
     'status': number;
     /**

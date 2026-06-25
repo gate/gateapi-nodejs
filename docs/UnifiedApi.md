@@ -26,6 +26,10 @@ Method | HTTP request | Description
 [**listUnifiedCurrencies**](UnifiedApi.md#listUnifiedCurrencies) | **GET** /unified/currencies | List of loan currencies supported by unified account
 [**getHistoryLoanRate**](UnifiedApi.md#getHistoryLoanRate) | **GET** /unified/history_loan_rate | Get historical lending rates
 [**setUnifiedCollateral**](UnifiedApi.md#setUnifiedCollateral) | **POST** /unified/collateral_currencies | Set collateral currency
+[**getEstimatedQuickRepayment**](UnifiedApi.md#getEstimatedQuickRepayment) | **GET** /unified/estimated_quick_repayment | Estimated quick repayment details
+[**createQuickRepayment**](UnifiedApi.md#createQuickRepayment) | **POST** /unified/quick_repayment | Quick repayment
+[**getUnifiedDeltaNeutral**](UnifiedApi.md#getUnifiedDeltaNeutral) | **GET** /unified/delta_neutral | Query the account Delta-neutral strategy mode setting
+[**setUnifiedDeltaNeutral**](UnifiedApi.md#setUnifiedDeltaNeutral) | **POST** /unified/delta_neutral | Set the account Delta-neutral strategy mode
 
 
 ## listUnifiedAccounts
@@ -998,6 +1002,176 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: UnifiedCollateralRes; }> [UnifiedCollateralRes](UnifiedCollateralRes.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## getEstimatedQuickRepayment
+
+> Promise<{ response: http.IncomingMessage; body: QuickEstimatedRepayment; }> getEstimatedQuickRepayment()
+
+Estimated quick repayment details
+
+Available for unified account cross-currency margin mode and portfolio margin mode
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.UnifiedApi(client);
+api.getEstimatedQuickRepayment()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: QuickEstimatedRepayment; }> [QuickEstimatedRepayment](QuickEstimatedRepayment.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## createQuickRepayment
+
+> Promise<{ response: http.IncomingMessage; body: QuickRepaymentResponse; }> createQuickRepayment(quickRepaymentRequest)
+
+Quick repayment
+
+Available for unified account cross-currency margin mode and portfolio margin mode. Use &#x60;GET /unified/estimated_quick_repayment&#x60; to query liabilities and pending repayment information.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.UnifiedApi(client);
+const quickRepaymentRequest = new QuickRepaymentRequest(); // QuickRepaymentRequest | 
+api.createQuickRepayment(quickRepaymentRequest)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **quickRepaymentRequest** | [**QuickRepaymentRequest**](QuickRepaymentRequest.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: QuickRepaymentResponse; }> [QuickRepaymentResponse](QuickRepaymentResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## getUnifiedDeltaNeutral
+
+> Promise<{ response: http.IncomingMessage; body: DeltaNeutralEnabled; }> getUnifiedDeltaNeutral()
+
+Query the account Delta-neutral strategy mode setting
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.UnifiedApi(client);
+api.getUnifiedDeltaNeutral()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: DeltaNeutralEnabled; }> [DeltaNeutralEnabled](DeltaNeutralEnabled.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## setUnifiedDeltaNeutral
+
+> Promise<{ response: http.IncomingMessage; body: DeltaNeutralEnabled; }> setUnifiedDeltaNeutral(deltaNeutralEnabled)
+
+Set the account Delta-neutral strategy mode
+
+Enable or disable the account Delta-neutral strategy mode.  Requirements for enabling: VIP level &gt;&#x3D; 4 and the account is in cross-currency margin mode; otherwise 403 is returned. Returns the enabled status after the setting takes effect.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.UnifiedApi(client);
+const deltaNeutralEnabled = new DeltaNeutralEnabled(); // DeltaNeutralEnabled | 
+api.setUnifiedDeltaNeutral(deltaNeutralEnabled)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deltaNeutralEnabled** | [**DeltaNeutralEnabled**](DeltaNeutralEnabled.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: DeltaNeutralEnabled; }> [DeltaNeutralEnabled](DeltaNeutralEnabled.md)
 
 ### Authorization
 

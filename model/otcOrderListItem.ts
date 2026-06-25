@@ -61,9 +61,13 @@ export class OtcOrderListItem {
      */
     'rate'?: string;
     /**
-     * Remark
+     * Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
      */
     'transferRemark'?: string;
+    /**
+     * Unique bank transfer reference code for deposit buy orders (SGB deposit scenario)
+     */
+    'referenceCode'?: string;
     /**
      * Bank account
      */
@@ -149,6 +153,11 @@ export class OtcOrderListItem {
         {
             name: 'transferRemark',
             baseName: 'transfer_remark',
+            type: 'string',
+        },
+        {
+            name: 'referenceCode',
+            baseName: 'reference_code',
             type: 'string',
         },
         {

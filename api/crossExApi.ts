@@ -62,9 +62,9 @@ export class CrossExApi {
 
     /**
      * Query Trading Pair Information
-     * @summary 查询币对信息
+     * @summary Query symbol information
      * @param opts Optional parameters
-     * @param opts.symbols 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+     * @param opts.symbols List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
      */
     public async listCrossexRuleSymbols(opts?: {
         symbols?: string;
@@ -103,7 +103,7 @@ export class CrossExApi {
 
     /**
      * Query risk limit information for futures/margin trading pairs
-     * @summary 查询风险限额信息
+     * @summary Query risk limit information
      * @param symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT
      */
     public async listCrossexRuleRiskLimits(
@@ -145,9 +145,9 @@ export class CrossExApi {
 
     /**
      * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-     * @summary 查询划转币种支持
+     * @summary Query supported transfer currencies
      * @param opts Optional parameters
-     * @param opts.coin Currency
+     * @param opts.coin Query by specified currency name
      */
     public async listCrossexTransferCoins(opts?: {
         coin?: string;
@@ -281,7 +281,7 @@ export class CrossExApi {
     }
 
     /**
-     * Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE`
+     * Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE` - When either side of the transfer is `CROSSEX_KRAKEN`, only USDT is supported for now. - When either side of the transfer is `CROSSEX_HYPERLIQUID`, the other side must be `SPOT`, and only USDC is supported.
      * @summary Fund Transfer
      * @param opts Optional parameters
      * @param opts.crossexTransferRequest
@@ -535,7 +535,7 @@ export class CrossExApi {
      * Rate Limit: 200 requests per 10 seconds If 100% ≤ initial_margin_rate < 110%, transferring out the margin currency is prohibited. If initial_margin_rate < 100%, the system will automatically cancel orders; only closing positions is allowed, not opening new ones. If maintenance_margin_rate ≤ 100%, the system will force liquidation.
      * @summary Query Account Assets
      * @param opts Optional parameters
-     * @param opts.exchangeType Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT)
+     * @param opts.exchangeType Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;).
      */
     public async getCrossexAccount(opts?: {
         exchangeType?: string;
@@ -794,7 +794,7 @@ export class CrossExApi {
      * Rate Limit: 200 requests per 10 seconds
      * @summary Query margin asset interest rates
      * @param opts Optional parameters
-     * @param opts.coin Currency
+     * @param opts.coin Query by specified currency name
      * @param opts.exchangeType Exchange
      */
     public async getCrossexInterestRate(opts?: {
@@ -1082,9 +1082,10 @@ export class CrossExApi {
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in a single list
-     * @param opts.symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @param opts.symbol Currency pair
      * @param opts.from Start Millisecond Timestamp
      * @param opts.to End Millisecond Timestamp
+     * @param opts.attributes Order attributes (&#x60;COMMON&#x60; normal / &#x60;LIQ&#x60; liquidation takeover / &#x60;REDUCE&#x60; liquidation reduction / &#x60;ADL&#x60; auto-deleverage / &#x60;SETTLEMENT&#x60; delisting settlement). Multiple values, comma-separated.
      */
     public async listCrossexHistoryOrders(opts?: {
         page?: number;
@@ -1092,6 +1093,7 @@ export class CrossExApi {
         symbol?: string;
         from?: number;
         to?: number;
+        attributes?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexOrder> }> {
         const localVarPath = this.client.basePath + '/crossex/history_orders';
         let localVarQueryParameters: any = {};
@@ -1150,6 +1152,15 @@ export class CrossExApi {
             localVarQueryParameters['to'] = toSerialized;
         }
 
+        if (opts.attributes !== undefined) {
+            let attributesSerialized = ObjectSerializer.serialize(opts.attributes, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(attributesSerialized)) {
+                attributesSerialized = attributesSerialized.join(',');
+            }
+            localVarQueryParameters['attributes'] = attributesSerialized;
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -1167,7 +1178,7 @@ export class CrossExApi {
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number returned by list, max 1000
-     * @param opts.symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @param opts.symbol Currency pair
      * @param opts.from Start Millisecond Timestamp
      * @param opts.to End Millisecond Timestamp
      */
@@ -1256,7 +1267,7 @@ export class CrossExApi {
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number returned by list, max 1000
-     * @param opts.symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @param opts.symbol Currency pair
      * @param opts.from Start Millisecond Timestamp
      * @param opts.to End Millisecond Timestamp
      */
@@ -1343,7 +1354,7 @@ export class CrossExApi {
      * Rate Limit: 200 requests per 10 seconds
      * @summary Query Leveraged Interest Deduction History
      * @param opts Optional parameters
-     * @param opts.symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @param opts.symbol Currency pair
      * @param opts.from Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
      * @param opts.to Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
      * @param opts.page Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
@@ -1445,7 +1456,7 @@ export class CrossExApi {
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number returned by list, max 1000
-     * @param opts.symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @param opts.symbol Currency pair
      * @param opts.from Start Millisecond Timestamp
      * @param opts.to End Millisecond Timestamp
      */
@@ -1530,8 +1541,8 @@ export class CrossExApi {
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number returned by list, max 1000
-     * @param opts.coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-     * @param opts.statementType Bill entry type.
+     * @param opts.coin Query by specified currency name
+     * @param opts.statementType Bill entry type. The filter accepts the same values returned in the response.
      * @param opts.from Start Millisecond Timestamp
      * @param opts.to End Millisecond Timestamp
      */
@@ -1628,8 +1639,8 @@ export class CrossExApi {
      * Rate Limit: 200 requests per 10 seconds
      * @summary Query Currency Discount Rate
      * @param opts Optional parameters
-     * @param opts.coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-     * @param opts.exchangeType OKX/GATE/BINANCE/BYBIT
+     * @param opts.coin Query by specified currency name
+     * @param opts.exchangeType OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID
      */
     public async listCrossexCoinDiscountRate(opts?: {
         coin?: string;

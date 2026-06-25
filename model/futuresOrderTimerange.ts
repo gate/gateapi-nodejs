@@ -133,6 +133,14 @@ export class FuturesOrderTimerange {
      * Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode
      */
     'posMarginMode'?: string;
+    /**
+     * Take profit price
+     */
+    'tpslTpTriggerPrice'?: string;
+    /**
+     * Stop loss price
+     */
+    'tpslSlTriggerPrice'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -285,6 +293,16 @@ export class FuturesOrderTimerange {
         {
             name: 'posMarginMode',
             baseName: 'pos_margin_mode',
+            type: 'string',
+        },
+        {
+            name: 'tpslTpTriggerPrice',
+            baseName: 'tpsl_tp_trigger_price',
+            type: 'string',
+        },
+        {
+            name: 'tpslSlTriggerPrice',
+            baseName: 'tpsl_sl_trigger_price',
             type: 'string',
         },
     ];

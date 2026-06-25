@@ -17,6 +17,8 @@ import { BatchFuturesOrder } from '../model/batchFuturesOrder';
 import { Contract } from '../model/contract';
 import { ContractStat } from '../model/contractStat';
 import { CountdownCancelAllFuturesTask } from '../model/countdownCancelAllFuturesTask';
+import { CreateChaseOrderReq } from '../model/createChaseOrderReq';
+import { CreateChaseOrderResp } from '../model/createChaseOrderResp';
 import { CreateTrailOrder } from '../model/createTrailOrder';
 import { CreateTrailOrderResponse } from '../model/createTrailOrderResponse';
 import { FundingRateRecord } from '../model/fundingRateRecord';
@@ -43,13 +45,19 @@ import { FuturesRiskLimitTier } from '../model/futuresRiskLimitTier';
 import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
 import { FuturesUpdatePriceTriggeredOrder } from '../model/futuresUpdatePriceTriggeredOrder';
+import { GetChaseOrderDetailResp } from '../model/getChaseOrderDetailResp';
+import { GetChaseOrdersResp } from '../model/getChaseOrdersResp';
 import { InsuranceRecord } from '../model/insuranceRecord';
 import { MyFuturesTrade } from '../model/myFuturesTrade';
 import { MyFuturesTradeTimeRange } from '../model/myFuturesTradeTimeRange';
 import { Position } from '../model/position';
 import { PositionClose } from '../model/positionClose';
 import { PositionTimerange } from '../model/positionTimerange';
+import { StopAllChaseOrdersReq } from '../model/stopAllChaseOrdersReq';
+import { StopAllChaseOrdersResp } from '../model/stopAllChaseOrdersResp';
 import { StopAllTrailOrders } from '../model/stopAllTrailOrders';
+import { StopChaseOrderReq } from '../model/stopChaseOrderReq';
+import { StopChaseOrderResp } from '../model/stopChaseOrderResp';
 import { StopTrailOrder } from '../model/stopTrailOrder';
 import { TrailOrderChangeLogResponse } from '../model/trailOrderChangeLogResponse';
 import { TrailOrderDetailResponse } from '../model/trailOrderDetailResponse';
@@ -106,6 +114,66 @@ export class FuturesApi {
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
             throw new Error('Required parameter settle was null or undefined when calling listFuturesContracts.');
+        }
+
+        opts = opts || {};
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        if (opts.offset !== undefined) {
+            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(offsetSerialized)) {
+                offsetSerialized = offsetSerialized.join(',');
+            }
+            localVarQueryParameters['offset'] = offsetSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<Contract>>(config, 'Array<Contract>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Query all contract information (including delisted)
+     * @param settle Settle currency
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
+     */
+    public async listFuturesContractsAll(
+        settle: 'btc' | 'usdt',
+        opts?: { limit?: number; offset?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<Contract> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/contracts_all'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling listFuturesContractsAll.');
         }
 
         opts = opts || {};
@@ -2458,13 +2526,21 @@ export class FuturesApi {
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      * @param opts.contract Contract Identifier; if specified, only cancel pending orders related to this contract
+     * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default)
      * @param opts.side Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
      * @param opts.excludeReduceOnly Whether to exclude reduce-only orders
      * @param opts.text Remark for order cancellation
      */
     public async cancelFuturesOrders(
         settle: 'btc' | 'usdt',
-        opts?: { xGateExptime?: string; contract?: string; side?: string; excludeReduceOnly?: boolean; text?: string },
+        opts?: {
+            xGateExptime?: string;
+            contract?: string;
+            actionMode?: string;
+            side?: string;
+            excludeReduceOnly?: boolean;
+            text?: string;
+        },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -2492,6 +2568,15 @@ export class FuturesApi {
                 contractSerialized = contractSerialized.join(',');
             }
             localVarQueryParameters['contract'] = contractSerialized;
+        }
+
+        if (opts.actionMode !== undefined) {
+            let actionModeSerialized = ObjectSerializer.serialize(opts.actionMode, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(actionModeSerialized)) {
+                actionModeSerialized = actionModeSerialized.join(',');
+            }
+            localVarQueryParameters['action_mode'] = actionModeSerialized;
         }
 
         if (opts.side !== undefined) {
@@ -2798,11 +2883,12 @@ export class FuturesApi {
      * @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely.
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+     * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default)
      */
     public async cancelFuturesOrder(
         settle: 'btc' | 'usdt',
         orderId: string,
-        opts?: { xGateExptime?: string },
+        opts?: { xGateExptime?: string; actionMode?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -2830,6 +2916,15 @@ export class FuturesApi {
         }
 
         opts = opts || {};
+        if (opts.actionMode !== undefined) {
+            let actionModeSerialized = ObjectSerializer.serialize(opts.actionMode, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(actionModeSerialized)) {
+                actionModeSerialized = actionModeSerialized.join(',');
+            }
+            localVarQueryParameters['action_mode'] = actionModeSerialized;
+        }
+
         if (opts.xGateExptime !== undefined) {
             localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
@@ -4181,6 +4276,365 @@ export class FuturesApi {
 
     /**
      *
+     * @summary Create a chase order
+     * @param settle Settle currency
+     * @param createChaseOrderReq
+     */
+    public async createChaseOrder(
+        settle: 'btc' | 'usdt',
+        createChaseOrderReq: CreateChaseOrderReq,
+    ): Promise<{ response: AxiosResponse; body: CreateChaseOrderResp }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/chase/create'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling createChaseOrder.');
+        }
+
+        // verify required parameter 'createChaseOrderReq' is not null or undefined
+        if (createChaseOrderReq === null || createChaseOrderReq === undefined) {
+            throw new Error(
+                'Required parameter createChaseOrderReq was null or undefined when calling createChaseOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(createChaseOrderReq, 'CreateChaseOrderReq'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<CreateChaseOrderResp>(config, 'CreateChaseOrderResp', authSettings);
+    }
+
+    /**
+     *
+     * @summary Stop a chase order
+     * @param settle Settle currency
+     * @param stopChaseOrderReq
+     */
+    public async stopChaseOrder(
+        settle: 'btc' | 'usdt',
+        stopChaseOrderReq: StopChaseOrderReq,
+    ): Promise<{ response: AxiosResponse; body: StopChaseOrderResp }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/chase/stop'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling stopChaseOrder.');
+        }
+
+        // verify required parameter 'stopChaseOrderReq' is not null or undefined
+        if (stopChaseOrderReq === null || stopChaseOrderReq === undefined) {
+            throw new Error('Required parameter stopChaseOrderReq was null or undefined when calling stopChaseOrder.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(stopChaseOrderReq, 'StopChaseOrderReq'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<StopChaseOrderResp>(config, 'StopChaseOrderResp', authSettings);
+    }
+
+    /**
+     *
+     * @summary Stop chase orders in batch
+     * @param settle Settle currency
+     * @param stopAllChaseOrdersReq
+     */
+    public async stopAllChaseOrders(
+        settle: 'btc' | 'usdt',
+        stopAllChaseOrdersReq: StopAllChaseOrdersReq,
+    ): Promise<{ response: AxiosResponse; body: StopAllChaseOrdersResp }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/chase/stop_all'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling stopAllChaseOrders.');
+        }
+
+        // verify required parameter 'stopAllChaseOrdersReq' is not null or undefined
+        if (stopAllChaseOrdersReq === null || stopAllChaseOrdersReq === undefined) {
+            throw new Error(
+                'Required parameter stopAllChaseOrdersReq was null or undefined when calling stopAllChaseOrders.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(stopAllChaseOrdersReq, 'StopAllChaseOrdersReq'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<StopAllChaseOrdersResp>(config, 'StopAllChaseOrdersResp', authSettings);
+    }
+
+    /**
+     *
+     * @summary List chase orders
+     * @param settle Settle currency
+     * @param sortBy Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
+     * @param opts Optional parameters
+     * @param opts.contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
+     * @param opts.isFinished true to query finished orders, false to query in-progress orders
+     * @param opts.startAt Lower time bound for the history list, paired with end_at. Required when is_finished is true
+     * @param opts.endAt Upper time bound for the history list, paired with start_at. Required when is_finished is true
+     * @param opts.pageNum Page number, starting from 1
+     * @param opts.pageSize Page size; must be between 1 and 100
+     * @param opts.hideCancel When true, cancelled orders are hidden in the list
+     * @param opts.reduceOnly OptionalBool: 0 unknown, 1 true, 2 false; used to filter by reduce-only flag
+     * @param opts.side Filter by long/short side: 1 long, 2 short
+     */
+    public async getChaseOrders(
+        settle: 'btc' | 'usdt',
+        sortBy: 1 | 2,
+        opts?: {
+            contract?: string;
+            isFinished?: boolean;
+            startAt?: number;
+            endAt?: number;
+            pageNum?: number;
+            pageSize?: number;
+            hideCancel?: boolean;
+            reduceOnly?: 0 | 1 | 2;
+            side?: 0 | 1 | 2;
+        },
+    ): Promise<{ response: AxiosResponse; body: GetChaseOrdersResp }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/chase/list'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling getChaseOrders.');
+        }
+
+        // verify required parameter 'sortBy' is not null or undefined
+        if (sortBy === null || sortBy === undefined) {
+            throw new Error('Required parameter sortBy was null or undefined when calling getChaseOrders.');
+        }
+
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(contractSerialized)) {
+                contractSerialized = contractSerialized.join(',');
+            }
+            localVarQueryParameters['contract'] = contractSerialized;
+        }
+
+        if (opts.isFinished !== undefined) {
+            let isFinishedSerialized = ObjectSerializer.serialize(opts.isFinished, 'boolean');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(isFinishedSerialized)) {
+                isFinishedSerialized = isFinishedSerialized.join(',');
+            }
+            localVarQueryParameters['is_finished'] = isFinishedSerialized;
+        }
+
+        if (opts.startAt !== undefined) {
+            let startAtSerialized = ObjectSerializer.serialize(opts.startAt, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(startAtSerialized)) {
+                startAtSerialized = startAtSerialized.join(',');
+            }
+            localVarQueryParameters['start_at'] = startAtSerialized;
+        }
+
+        if (opts.endAt !== undefined) {
+            let endAtSerialized = ObjectSerializer.serialize(opts.endAt, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(endAtSerialized)) {
+                endAtSerialized = endAtSerialized.join(',');
+            }
+            localVarQueryParameters['end_at'] = endAtSerialized;
+        }
+
+        if (opts.pageNum !== undefined) {
+            let pageNumSerialized = ObjectSerializer.serialize(opts.pageNum, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageNumSerialized)) {
+                pageNumSerialized = pageNumSerialized.join(',');
+            }
+            localVarQueryParameters['page_num'] = pageNumSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
+        let sortBySerialized = ObjectSerializer.serialize(sortBy, '1 | 2');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(sortBySerialized)) {
+            sortBySerialized = sortBySerialized.join(',');
+        }
+        localVarQueryParameters['sort_by'] = sortBySerialized;
+
+        if (opts.hideCancel !== undefined) {
+            let hideCancelSerialized = ObjectSerializer.serialize(opts.hideCancel, 'boolean');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(hideCancelSerialized)) {
+                hideCancelSerialized = hideCancelSerialized.join(',');
+            }
+            localVarQueryParameters['hide_cancel'] = hideCancelSerialized;
+        }
+
+        if (opts.reduceOnly !== undefined) {
+            let reduceOnlySerialized = ObjectSerializer.serialize(opts.reduceOnly, '0 | 1 | 2');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(reduceOnlySerialized)) {
+                reduceOnlySerialized = reduceOnlySerialized.join(',');
+            }
+            localVarQueryParameters['reduce_only'] = reduceOnlySerialized;
+        }
+
+        if (opts.side !== undefined) {
+            let sideSerialized = ObjectSerializer.serialize(opts.side, '0 | 1 | 2');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sideSerialized)) {
+                sideSerialized = sideSerialized.join(',');
+            }
+            localVarQueryParameters['side'] = sideSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<GetChaseOrdersResp>(config, 'GetChaseOrdersResp', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get chase order detail
+     * @param settle Settle currency
+     * @param id Order ID, must be a non-zero positive integer
+     */
+    public async getChaseOrderDetail(
+        settle: 'btc' | 'usdt',
+        id: string,
+    ): Promise<{ response: AxiosResponse; body: GetChaseOrderDetailResp }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/autoorder/v1/chase/detail'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling getChaseOrderDetail.');
+        }
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getChaseOrderDetail.');
+        }
+
+        let idSerialized = ObjectSerializer.serialize(id, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(idSerialized)) {
+            idSerialized = idSerialized.join(',');
+        }
+        localVarQueryParameters['id'] = idSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<GetChaseOrderDetailResp>(config, 'GetChaseOrderDetailResp', authSettings);
+    }
+
+    /**
+     *
      * @summary Query auto order list
      * @param settle Settle currency
      * @param status Query order list based on status
@@ -4466,19 +4920,15 @@ export class FuturesApi {
      *
      * @summary Modify a Single Auto Order
      * @param settle Settle currency
-     * @param orderId ID returned when order is successfully created
      * @param futuresUpdatePriceTriggeredOrder
      */
     public async updatePriceTriggeredOrder(
         settle: 'btc' | 'usdt',
-        orderId: number,
         futuresUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath =
             this.client.basePath +
-            '/futures/{settle}/price_orders/amend/{order_id}'
-                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+            '/futures/{settle}/price_orders/amend'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -4492,11 +4942,6 @@ export class FuturesApi {
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
             throw new Error('Required parameter settle was null or undefined when calling updatePriceTriggeredOrder.');
-        }
-
-        // verify required parameter 'orderId' is not null or undefined
-        if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling updatePriceTriggeredOrder.');
         }
 
         // verify required parameter 'futuresUpdatePriceTriggeredOrder' is not null or undefined

@@ -23,7 +23,7 @@ export class CrossexAccountBookRecord {
      */
     'businessId': string;
     /**
-     * Bill entry type | `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` funding `LIQUIDATION_FEE` liquidation `TRANSFER_IN` deposit `TRANSFER_OUT` withdrawal `BANKRUPT_COMPENSATION` bankruptcy subsidy `AUTO_REPAY` margin auto-repay
+     * Bill entry type. `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` funding `LIQUIDATION_FEE` liquidation `TRANSFER_IN` deposit `TRANSFER_OUT` withdrawal `BANKRUPT_COMPENSATION` bankruptcy subsidy `AUTO_REPAY` margin auto-repay `INTEREST_ISOLATED` isolated-venue interest entry `ACCOUNT_MODE_CHANGE` account mode switch entry `KRAKEN_CONVERSION` conversion of other margin coins to cover a negative KRAKEN_USD balance `OTHER` other
      */
     'statementType': string;
     /**

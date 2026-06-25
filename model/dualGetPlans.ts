@@ -35,21 +35,13 @@ export class DualGetPlans {
      */
     'deliveryTime'?: number;
     /**
-     * Minimum share count
-     */
-    'minCopies'?: number;
-    /**
-     * Maximum share count
-     */
-    'maxCopies'?: number;
-    /**
-     * Value Per Unit (deprecated)
-     */
-    'perValue'?: string;
-    /**
      * Annual Yield
      */
     'apyDisplay'?: string;
+    /**
+     * Minimum investment amount
+     */
+    'minAmount'?: string;
     /**
      * Start Time
      */
@@ -59,7 +51,7 @@ export class DualGetPlans {
      */
     'endTime'?: number;
     /**
-     * 状态:  `NOTSTARTED`-未开始 `ONGOING`-进行中 `ENDED`-已结束
+     * Status:  `NOTSTARTED` - Not started `ONGOING` - In progress `ENDED` - Ended
      */
     'status'?: string;
 
@@ -97,23 +89,13 @@ export class DualGetPlans {
             type: 'number',
         },
         {
-            name: 'minCopies',
-            baseName: 'min_copies',
-            type: 'number',
-        },
-        {
-            name: 'maxCopies',
-            baseName: 'max_copies',
-            type: 'number',
-        },
-        {
-            name: 'perValue',
-            baseName: 'per_value',
+            name: 'apyDisplay',
+            baseName: 'apy_display',
             type: 'string',
         },
         {
-            name: 'apyDisplay',
-            baseName: 'apy_display',
+            name: 'minAmount',
+            baseName: 'min_amount',
             type: 'string',
         },
         {

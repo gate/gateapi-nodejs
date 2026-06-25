@@ -53,6 +53,14 @@ export class P2pChatMessage {
      * File type: `image` for images, `video` for videos.
      */
     'fileType'?: string;
+    /**
+     * Risk control display type. 1: off-platform traffic diversion risk; returned when a text message hits risk control
+     */
+    'riskType'?: P2pChatMessage.RiskType;
+    /**
+     * Risk control prompt message; returned only when risk_type=1
+     */
+    'toastMsg'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -112,9 +120,25 @@ export class P2pChatMessage {
             baseName: 'file_type',
             type: 'string',
         },
+        {
+            name: 'riskType',
+            baseName: 'risk_type',
+            type: 'P2pChatMessage.RiskType',
+        },
+        {
+            name: 'toastMsg',
+            baseName: 'toast_msg',
+            type: 'string',
+        },
     ];
 
     static getAttributeTypeMap() {
         return P2pChatMessage.attributeTypeMap;
+    }
+}
+
+export namespace P2pChatMessage {
+    export enum RiskType {
+        NUMBER_1 = <any>1,
     }
 }

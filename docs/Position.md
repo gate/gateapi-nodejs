@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **user** | **number** | User ID | [optional] [readonly] [default to undefined]
 **contract** | **string** | Futures contract | [optional] [readonly] [default to undefined]
 **size** | **string** | Position size | [optional] [readonly] [default to undefined]
+**hedgeStatus** | **string** | The hedging status of the position under the Delta-neutral strategy. Including:  - &#x60;partial_hedged&#x60;: partially hedged - &#x60;full_hedged&#x60;: fully hedged | [optional] [readonly] [default to undefined]
+**hedgedSize** | **string** | The hedged position size under the Delta-neutral strategy. | [optional] [readonly] [default to undefined]
+**unhedgedSize** | **string** | The unhedged position size under the Delta-neutral strategy, calculated as &#x60;max(abs(size) - abs(hedged_size), 0)&#x60;. | [optional] [readonly] [default to undefined]
 **leverage** | **string** |  leverage for isolated margin. 0 means cross margin. For leverage of cross margin, please refer to &#x60;cross_leverage_limit&#x60;. | [optional] [default to undefined]
 **riskLimit** | **string** | Position risk limit | [optional] [default to undefined]
 **leverageMax** | **string** | the maximum permissible leverage given to the current positon value: the higher positon value, the lower maximum permissible leverage | [optional] [readonly] [default to undefined]
@@ -40,6 +43,13 @@ Name | Type | Description | Notes
 **pid** | **number** | Sub-account position ID | [optional] [readonly] [default to undefined]
 **posMarginMode** | **string** | Position Margin Mode isolated - Isolated Margin, cross - Cross Margin | [optional] [default to undefined]
 **lever** | **string** | Indicates the current leverage of the position, applicable to both isolated and cross margin, gradually replacing the current leverage and cross_leverage_limit | [optional] [default to undefined]
+
+## Enum: Position.HedgeStatus
+
+* `PartialHedged` (value: `'partial_hedged'`)
+
+* `FullHedged` (value: `'full_hedged'`)
+
 
 ## Enum: Position.Mode
 

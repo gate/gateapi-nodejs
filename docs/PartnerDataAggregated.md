@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rebateAmount** | **string** | 返佣金额，字符串格式保证精度  最多保留 6 位小数，去除尾零 | [default to undefined]
-**tradeVolume** | **string** | 交易量，字符串格式保证精度  最多保留 6 位小数，去除尾零 | [default to undefined]
-**netFee** | **string** | 净手续费，字符串格式保证精度  最多保留 6 位小数，去除尾零 | [default to undefined]
+**rebateAmount** | **string** | Rebate amount as a string for precision. Up to 6 decimal places; trailing zeros removed. | [default to undefined]
+**tradeVolume** | **string** | Trading volume as a string for precision. Up to 6 decimal places; trailing zeros removed. | [default to undefined]
+**netFee** | **string** | Net fee as a string for precision. Up to 6 decimal places; trailing zeros removed. | [default to undefined]
 **customerCount** | **number** | Customer count (invited users) | [default to undefined]
-**tradingUserCount** | **string** | 交易人数，字符串形式（与线上 JSON 序列化一致）  仅在 business_type&#x3D;0（全部）时返回具体数值，其他业务类型返回 null | [default to undefined]
+**tradingUserCount** | **string** | Transaction participant count​ (string format, consistent with online JSON serialization) only returns a specific value when business_type&#x3D;0(all), and returns nullfor other business types. | [default to undefined]
 **timeRangeDesc** | **string** | Time range description | [default to undefined]
 **businessType** | **number** | Business Type | [default to undefined]
 **businessTypeDesc** | **string** | Business type description; allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi | [default to undefined]

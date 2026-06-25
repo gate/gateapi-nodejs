@@ -11,7 +11,10 @@
 
 /* tslint:disable:no-unused-locals */
 import { OtcActionResponse } from '../model/otcActionResponse';
+import { OtcBankCreateResponse } from '../model/otcBankCreateResponse';
+import { OtcBankIdRequest } from '../model/otcBankIdRequest';
 import { OtcBankListResponse } from '../model/otcBankListResponse';
+import { OtcBankSupplementChecklistResponse } from '../model/otcBankSupplementChecklistResponse';
 import { OtcMarkOrderPaidRequest } from '../model/otcMarkOrderPaidRequest';
 import { OtcOrderDetailResponse } from '../model/otcOrderDetailResponse';
 import { OtcOrderListResponse } from '../model/otcOrderListResponse';
@@ -21,7 +24,6 @@ import { OtcQuoteResponse } from '../model/otcQuoteResponse';
 import { OtcStableCoinOrderCreateResponse } from '../model/otcStableCoinOrderCreateResponse';
 import { OtcStableCoinOrderListResponse } from '../model/otcStableCoinOrderListResponse';
 import { OtcStableCoinOrderRequest } from '../model/otcStableCoinOrderRequest';
-import { OtcUserDefaultBankResponse } from '../model/otcUserDefaultBankResponse';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -156,38 +158,11 @@ export class OTCApi {
     }
 
     /**
-     * Get user\'s default bank account information for order placement
-     * @summary Get user\'s default bank account information
-     */
-    public async getUserDefaultBank(): Promise<{ response: AxiosResponse; body: OtcUserDefaultBankResponse }> {
-        const localVarPath = this.client.basePath + '/otc/get_user_def_bank';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<OtcUserDefaultBankResponse>(config, 'OtcUserDefaultBankResponse', authSettings);
-    }
-
-    /**
-     * Get user bank card list for selecting bank card when placing orders
+     * Retrieve the user\'s bank card list, used to select a bank card when placing an order. **Default card**: refer to the list item field `is_default` (1=default); there is no need to call the deprecated standalone \"default bank card\" endpoint. Corresponding Inner: `GET /bank_list` or `GET /bank/list`.
      * @summary Get user bank card list
      */
-    public async getBankList(): Promise<{ response: AxiosResponse; body: OtcBankListResponse }> {
-        const localVarPath = this.client.basePath + '/otc/bank_list';
+    public async getBankListInnerPath(): Promise<{ response: AxiosResponse; body: OtcBankListResponse }> {
+        const localVarPath = this.client.basePath + '/otc/bank/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -210,8 +185,358 @@ export class OTCApi {
     }
 
     /**
-     * Mark fiat order as paid
-     * @summary Mark fiat order as paid
+     * Bind a bank card. Under the Global entity, an account with a non-matching name may enter manual review (`status` pending) and require subsequent supplementary materials. Corresponding Inner: `POST /bank/create`. Fields and protocol are subject to the production form/gateway; in some environments `bank_account_name` is passed Base64-encoded, see the integration notes for details.
+     * @summary Create bank card
+     * @param bankAccountName
+     * @param bankName
+     * @param bankCountry
+     * @param bankAddress
+     * @param iban
+     * @param swift
+     * @param documentationFile Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment).
+     * @param opts Optional parameters
+     * @param opts.remittanceLineNumber
+     * @param opts.agentBankName
+     * @param opts.agentBankSwift
+     */
+    public async createOtcBank(
+        bankAccountName: string,
+        bankName: string,
+        bankCountry: string,
+        bankAddress: string,
+        iban: string,
+        swift: string,
+        documentationFile: RequestFile,
+        opts?: { remittanceLineNumber?: string; agentBankName?: string; agentBankSwift?: string },
+    ): Promise<{ response: AxiosResponse; body: OtcBankCreateResponse }> {
+        const localVarPath = this.client.basePath + '/otc/bank/create';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'bankAccountName' is not null or undefined
+        if (bankAccountName === null || bankAccountName === undefined) {
+            throw new Error('Required parameter bankAccountName was null or undefined when calling createOtcBank.');
+        }
+
+        // verify required parameter 'bankName' is not null or undefined
+        if (bankName === null || bankName === undefined) {
+            throw new Error('Required parameter bankName was null or undefined when calling createOtcBank.');
+        }
+
+        // verify required parameter 'bankCountry' is not null or undefined
+        if (bankCountry === null || bankCountry === undefined) {
+            throw new Error('Required parameter bankCountry was null or undefined when calling createOtcBank.');
+        }
+
+        // verify required parameter 'bankAddress' is not null or undefined
+        if (bankAddress === null || bankAddress === undefined) {
+            throw new Error('Required parameter bankAddress was null or undefined when calling createOtcBank.');
+        }
+
+        // verify required parameter 'iban' is not null or undefined
+        if (iban === null || iban === undefined) {
+            throw new Error('Required parameter iban was null or undefined when calling createOtcBank.');
+        }
+
+        // verify required parameter 'swift' is not null or undefined
+        if (swift === null || swift === undefined) {
+            throw new Error('Required parameter swift was null or undefined when calling createOtcBank.');
+        }
+
+        // verify required parameter 'documentationFile' is not null or undefined
+        if (documentationFile === null || documentationFile === undefined) {
+            throw new Error('Required parameter documentationFile was null or undefined when calling createOtcBank.');
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OtcBankCreateResponse>(config, 'OtcBankCreateResponse', authSettings);
+    }
+
+    /**
+     * Delete the specified bank card. Corresponds to Inner: `POST /bank/delete`.
+     * @summary Delete bank card
+     * @param otcBankIdRequest
+     */
+    public async deleteOtcBank(
+        otcBankIdRequest: OtcBankIdRequest,
+    ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        const localVarPath = this.client.basePath + '/otc/bank/delete';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'otcBankIdRequest' is not null or undefined
+        if (otcBankIdRequest === null || otcBankIdRequest === undefined) {
+            throw new Error('Required parameter otcBankIdRequest was null or undefined when calling deleteOtcBank.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(otcBankIdRequest, 'OtcBankIdRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OtcActionResponse>(config, 'OtcActionResponse', authSettings);
+    }
+
+    /**
+     * Set the specified bank card as default. Corresponds to Inner: `POST /bank/set_default`.
+     * @summary Set default bank card
+     * @param otcBankIdRequest
+     */
+    public async setDefaultOtcBank(
+        otcBankIdRequest: OtcBankIdRequest,
+    ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        const localVarPath = this.client.basePath + '/otc/bank/set_default';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'otcBankIdRequest' is not null or undefined
+        if (otcBankIdRequest === null || otcBankIdRequest === undefined) {
+            throw new Error(
+                'Required parameter otcBankIdRequest was null or undefined when calling setDefaultOtcBank.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(otcBankIdRequest, 'OtcBankIdRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OtcActionResponse>(config, 'OtcActionResponse', authSettings);
+    }
+
+    /**
+     * **①** `bank_id` must be specified: after verifying that the card belongs to the current user and its status allows supplementation, returns the items to be supplemented and whether each sub-item is required, based on the user\'s **passed professional verification type** (personal/enterprise). Corresponding Inner: `GET /bank/bank_supplement_checklist`.
+     * @summary Query the checklist of materials to supplement for a bank card
+     * @param bankId Bank card ID (otc_rds / the id returned by the list endpoint).
+     */
+    public async getOtcBankSupplementChecklist(
+        bankId: string,
+    ): Promise<{ response: AxiosResponse; body: OtcBankSupplementChecklistResponse }> {
+        const localVarPath = this.client.basePath + '/otc/bank/bank_supplement_checklist';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'bankId' is not null or undefined
+        if (bankId === null || bankId === undefined) {
+            throw new Error(
+                'Required parameter bankId was null or undefined when calling getOtcBankSupplementChecklist.',
+            );
+        }
+
+        let bankIdSerialized = ObjectSerializer.serialize(bankId, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(bankIdSerialized)) {
+            bankIdSerialized = bankIdSerialized.join(',');
+        }
+        localVarQueryParameters['bank_id'] = bankIdSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OtcBankSupplementChecklistResponse>(
+            config,
+            'OtcBankSupplementChecklistResponse',
+            authSettings,
+        );
+    }
+
+    /**
+     * **Personal professional verification (type=1)** users submit non-same-person/supplementary materials. Must match `user_type=personal` returned by `GET /otc/bank/bank_supplement_checklist?bank_id=`, otherwise the request is rejected. **multipart/form-data** is recommended: each material item is a separate file field, with field names matching the checklist `code` (`id_document_front`, `id_document_back`, `address_proof`).
+     * @summary Submit Bank Card Supplement Materials (Personal)
+     * @param bankId
+     * @param idDocumentFront ID document front-side file content (multipart file field, binary/Base64)
+     * @param idDocumentBack ID document back-side file content (multipart file field, binary/Base64)
+     * @param addressProof Proof-of-address file content (multipart file field, binary/Base64)
+     */
+    public async submitOtcBankPersonalSupplement(
+        bankId: string,
+        idDocumentFront: string,
+        idDocumentBack: string,
+        addressProof: string,
+    ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        const localVarPath = this.client.basePath + '/otc/bank/personal/bank_supplement';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'bankId' is not null or undefined
+        if (bankId === null || bankId === undefined) {
+            throw new Error(
+                'Required parameter bankId was null or undefined when calling submitOtcBankPersonalSupplement.',
+            );
+        }
+
+        // verify required parameter 'idDocumentFront' is not null or undefined
+        if (idDocumentFront === null || idDocumentFront === undefined) {
+            throw new Error(
+                'Required parameter idDocumentFront was null or undefined when calling submitOtcBankPersonalSupplement.',
+            );
+        }
+
+        // verify required parameter 'idDocumentBack' is not null or undefined
+        if (idDocumentBack === null || idDocumentBack === undefined) {
+            throw new Error(
+                'Required parameter idDocumentBack was null or undefined when calling submitOtcBankPersonalSupplement.',
+            );
+        }
+
+        // verify required parameter 'addressProof' is not null or undefined
+        if (addressProof === null || addressProof === undefined) {
+            throw new Error(
+                'Required parameter addressProof was null or undefined when calling submitOtcBankPersonalSupplement.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OtcActionResponse>(config, 'OtcActionResponse', authSettings);
+    }
+
+    /**
+     * **Enterprise professional verification (type=2)** users submit supplementary materials. Must match `user_type=enterprise` returned by the checklist. **multipart** file field names: `certificate`, `share_holders`, `passport`, `share_holding_structure`.
+     * @summary Submit Bank Card Supplement Materials (Enterprise)
+     * @param bankId
+     * @param certificate Business license / registration certificate file content (multipart file field, binary/Base64)
+     * @param shareHolders Register of shareholders file content (multipart file field, binary/Base64)
+     * @param passport Legal representative / shareholder passport file content (multipart file field, binary/Base64)
+     * @param shareHoldingStructure Ownership structure chart file content (multipart file field, binary/Base64)
+     * @param opts Optional parameters
+     * @param opts.uid
+     * @param opts.fundsStatement Proof-of-funds file content (multipart file field, binary/Base64, optional)
+     * @param opts.additional Other supplementary material file content (multipart file field, binary/Base64, optional)
+     */
+    public async submitOtcBankEnterpriseSupplement(
+        bankId: string,
+        certificate: string,
+        shareHolders: string,
+        passport: string,
+        shareHoldingStructure: string,
+        opts?: { uid?: string; fundsStatement?: string; additional?: string },
+    ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        const localVarPath = this.client.basePath + '/otc/bank/enterprise/bank_supplement';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'bankId' is not null or undefined
+        if (bankId === null || bankId === undefined) {
+            throw new Error(
+                'Required parameter bankId was null or undefined when calling submitOtcBankEnterpriseSupplement.',
+            );
+        }
+
+        // verify required parameter 'certificate' is not null or undefined
+        if (certificate === null || certificate === undefined) {
+            throw new Error(
+                'Required parameter certificate was null or undefined when calling submitOtcBankEnterpriseSupplement.',
+            );
+        }
+
+        // verify required parameter 'shareHolders' is not null or undefined
+        if (shareHolders === null || shareHolders === undefined) {
+            throw new Error(
+                'Required parameter shareHolders was null or undefined when calling submitOtcBankEnterpriseSupplement.',
+            );
+        }
+
+        // verify required parameter 'passport' is not null or undefined
+        if (passport === null || passport === undefined) {
+            throw new Error(
+                'Required parameter passport was null or undefined when calling submitOtcBankEnterpriseSupplement.',
+            );
+        }
+
+        // verify required parameter 'shareHoldingStructure' is not null or undefined
+        if (shareHoldingStructure === null || shareHoldingStructure === undefined) {
+            throw new Error(
+                'Required parameter shareHoldingStructure was null or undefined when calling submitOtcBankEnterpriseSupplement.',
+            );
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OtcActionResponse>(config, 'OtcActionResponse', authSettings);
+    }
+
+    /**
+     * Mark a fiat buy order as paid (deposit confirmation). **The user\'s payment receipt must be uploaded**: `payment_receipt_file_key` is required; file format jpg / jpeg / png / pdf, single file no larger than 4MB (jointly validated by the server and gateway). The compatible field name `payment_receipt` is subject to the gateway/production environment. For the persisted field, see `otc_trade_record.payment_receipt_file_key`. The Pay Inner path is `POST .../pay/order_set_paid` (orders are usually associated via `client_order_id`); this OpenAPI path maps to Inner `POST /order/paid` and still uses `order_id` as the primary key—if the gateway unifies it to the merchant order number, the gateway documentation prevails.
+     * @summary Mark fiat order as paid (deposit confirmation)
      * @param otcMarkOrderPaidRequest
      */
     public async markOtcOrderPaid(

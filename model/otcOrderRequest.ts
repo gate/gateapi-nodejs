@@ -46,7 +46,7 @@ export class OtcOrderRequest {
      */
     'quoteToken': string;
     /**
-     * Bank card ID used for the order (retrieved via the default bank card API)
+     * The bank card ID used for placing the order; select it from the list returned by `GET /otc/bank_list` (or `GET /otc/bank/list`); the default card has `is_default=1`
      */
     'bankId': string;
 

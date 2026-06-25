@@ -20,6 +20,7 @@ import { Klines } from '../model/klines';
 import { Mt5Account } from '../model/mt5Account';
 import { OrderHistoryList } from '../model/orderHistoryList';
 import { OrderList } from '../model/orderList';
+import { OrderLog } from '../model/orderLog';
 import { PositionHistoryList } from '../model/positionHistoryList';
 import { PositionList } from '../model/positionList';
 import { Symbols } from '../model/symbols';
@@ -699,6 +700,41 @@ export class TradFiApi {
 
     /**
      *
+     * @summary Get order details by log ID
+     * @param logId log_id returned from the order placement API
+     */
+    public async queryOrderLog(logId: number): Promise<{ response: AxiosResponse; body: OrderLog }> {
+        const localVarPath =
+            this.client.basePath +
+            '/tradfi/orders/log/{log_id}'.replace('{' + 'log_id' + '}', encodeURIComponent(String(logId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'logId' is not null or undefined
+        if (logId === null || logId === undefined) {
+            throw new Error('Required parameter logId was null or undefined when calling queryOrderLog.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OrderLog>(config, 'OrderLog', authSettings);
+    }
+
+    /**
+     *
      * @summary Query active position list
      */
     public async queryPositionList(): Promise<{ response: AxiosResponse; body: PositionList }> {
@@ -828,12 +864,16 @@ export class TradFiApi {
      *
      * @summary Query historical position list
      * @param opts Optional parameters
+     * @param opts.page Page number; defaults to 1 if omitted.
+     * @param opts.pageSize Page size; defaults to 10 if omitted. Maximum 100.
      * @param opts.beginTime Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
      * @param opts.endTime End time (timestamp in seconds)
      * @param opts.symbol Trading symbol (e.g., EURUSD)
      * @param opts.positionDir Position direction (Long&#x3D;long position, Short&#x3D;short position)
      */
     public async queryPositionHistoryList(opts?: {
+        page?: number;
+        pageSize?: number;
         beginTime?: number;
         endTime?: number;
         symbol?: string;
@@ -851,6 +891,24 @@ export class TradFiApi {
         }
 
         opts = opts || {};
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
         if (opts.beginTime !== undefined) {
             let beginTimeSerialized = ObjectSerializer.serialize(opts.beginTime, 'number');
             // For array query parameters with style:form and explode:false, convert to comma-separated string

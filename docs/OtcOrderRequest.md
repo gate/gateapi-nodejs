@@ -12,5 +12,5 @@ Name | Type | Description | Notes
 **fiatAmount** | **string** | Fiat amount | [default to undefined]
 **promotionCode** | **string** | Promotion code | [optional] [default to undefined]
 **quoteToken** | **string** | Parameter returned by the quote API | [default to undefined]
-**bankId** | **string** | Bank card ID used for the order (retrieved via the default bank card API) | [default to undefined]
+**bankId** | **string** | The bank card ID used for placing the order; select it from the list returned by &#x60;GET /otc/bank_list&#x60; (or &#x60;GET /otc/bank/list&#x60;); the default card has &#x60;is_default&#x3D;1&#x60; | [default to undefined]
 

@@ -14,6 +14,26 @@ export class P2pSendChatMessageResult {
      * Timestamp when message was successfully sent (current timestamp)
      */
     'sRVTM'?: number;
+    /**
+     * Order ID
+     */
+    'txid'?: number;
+    /**
+     * Chat ID, formatted as both parties\' UIDs concatenated in ascending order
+     */
+    'conversationId'?: string;
+    /**
+     * Message content type when risk control is hit. 0: text
+     */
+    'msgType'?: P2pSendChatMessageResult.MsgType;
+    /**
+     * Risk control display type. 1: off-platform traffic diversion risk; returned only when risk control is hit
+     */
+    'riskType'?: P2pSendChatMessageResult.RiskType;
+    /**
+     * Risk control prompt message; returned only when risk_type=1
+     */
+    'toastMsg'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -23,9 +43,43 @@ export class P2pSendChatMessageResult {
             baseName: 'SRVTM',
             type: 'number',
         },
+        {
+            name: 'txid',
+            baseName: 'txid',
+            type: 'number',
+        },
+        {
+            name: 'conversationId',
+            baseName: 'conversation_id',
+            type: 'string',
+        },
+        {
+            name: 'msgType',
+            baseName: 'msg_type',
+            type: 'P2pSendChatMessageResult.MsgType',
+        },
+        {
+            name: 'riskType',
+            baseName: 'risk_type',
+            type: 'P2pSendChatMessageResult.RiskType',
+        },
+        {
+            name: 'toastMsg',
+            baseName: 'toast_msg',
+            type: 'string',
+        },
     ];
 
     static getAttributeTypeMap() {
         return P2pSendChatMessageResult.attributeTypeMap;
+    }
+}
+
+export namespace P2pSendChatMessageResult {
+    export enum MsgType {
+        NUMBER_0 = <any>0,
+    }
+    export enum RiskType {
+        NUMBER_1 = <any>1,
     }
 }

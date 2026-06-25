@@ -43,6 +43,10 @@ export class DepositRecord {
      */
     'status'?: string;
     /**
+     * Blocked deposit refund status. This field is returned only when the deposit record has a blocked deposit refund record with a non-empty refund status. Not returned when there is no refund record or the refund status is empty - REFUNDING: Refund in progress - REFUNDED: Refund completed - REFUND_FAILED: Refund failed - REJECTED: Refund rejected
+     */
+    'refundStatus'?: string;
+    /**
      * Name of the chain used in withdrawals
      */
     'chain': string;
@@ -88,6 +92,11 @@ export class DepositRecord {
         {
             name: 'status',
             baseName: 'status',
+            type: 'string',
+        },
+        {
+            name: 'refundStatus',
+            baseName: 'refund_status',
             type: 'string',
         },
         {

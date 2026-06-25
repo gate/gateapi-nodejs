@@ -35,7 +35,7 @@ export class AwardListStructList {
      */
     'fee': string;
     /**
-     * Status
+     * Status. 4 - success
      */
     'status': number;
     /**

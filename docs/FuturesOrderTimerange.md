@@ -34,6 +34,8 @@ Name | Type | Description | Notes
 **pid** | **number** | Position ID | [optional] [default to undefined]
 **marketOrderSlipRatio** | **string** | Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used | [optional] [default to undefined]
 **posMarginMode** | **string** | Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode | [optional] [default to undefined]
+**tpslTpTriggerPrice** | **string** | Take profit price | [optional] [default to undefined]
+**tpslSlTriggerPrice** | **string** | Stop loss price | [optional] [default to undefined]
 
 ## Enum: FuturesOrderTimerange.FinishAs
 

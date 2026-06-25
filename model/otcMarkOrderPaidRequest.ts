@@ -10,13 +10,25 @@
  */
 
 /**
- * Fiat Order Set Paid Request Body
+ * Request body for marking a fiat order as paid (deposit confirmation). Must include the user\'s payment receipt (consistent with §3.2).  **`payment_receipt_file_key` is required**; the order primary key for this path is `order_id`. When accessed via the Pay gateway using `client_order_id`, the gateway\'s rewritten field prevails.
  */
 export class OtcMarkOrderPaidRequest {
     /**
      * Order ID
      */
     'orderId': string;
+    /**
+     * Client order ID (used by some gateway/Inner Pay paths, optional)
+     */
+    'clientOrderId'?: string;
+    /**
+     * User payment receipt: **required**. Stored as a file_key. Single file; jpg/jpeg/png/pdf; ≤4MB.
+     */
+    'paymentReceiptFileKey': string;
+    /**
+     * Alias compatible with `payment_receipt_file_key` (depends on the gateway\'s external field name)
+     */
+    'paymentReceipt'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -24,6 +36,21 @@ export class OtcMarkOrderPaidRequest {
         {
             name: 'orderId',
             baseName: 'order_id',
+            type: 'string',
+        },
+        {
+            name: 'clientOrderId',
+            baseName: 'client_order_id',
+            type: 'string',
+        },
+        {
+            name: 'paymentReceiptFileKey',
+            baseName: 'payment_receipt_file_key',
+            type: 'string',
+        },
+        {
+            name: 'paymentReceipt',
+            baseName: 'payment_receipt',
             type: 'string',
         },
     ];

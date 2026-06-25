@@ -28,6 +28,18 @@ export class Position {
      */
     'size'?: string;
     /**
+     * The hedging status of the position under the Delta-neutral strategy. Including:  - `partial_hedged`: partially hedged - `full_hedged`: fully hedged
+     */
+    'hedgeStatus'?: Position.HedgeStatus;
+    /**
+     * The hedged position size under the Delta-neutral strategy.
+     */
+    'hedgedSize'?: string;
+    /**
+     * The unhedged position size under the Delta-neutral strategy, calculated as `max(abs(size) - abs(hedged_size), 0)`.
+     */
+    'unhedgedSize'?: string;
+    /**
      *  leverage for isolated margin. 0 means cross margin. For leverage of cross margin, please refer to `cross_leverage_limit`.
      */
     'leverage'?: string;
@@ -173,6 +185,21 @@ export class Position {
         {
             name: 'size',
             baseName: 'size',
+            type: 'string',
+        },
+        {
+            name: 'hedgeStatus',
+            baseName: 'hedge_status',
+            type: 'Position.HedgeStatus',
+        },
+        {
+            name: 'hedgedSize',
+            baseName: 'hedged_size',
+            type: 'string',
+        },
+        {
+            name: 'unhedgedSize',
+            baseName: 'unhedged_size',
             type: 'string',
         },
         {
@@ -348,6 +375,10 @@ export class Position {
 }
 
 export namespace Position {
+    export enum HedgeStatus {
+        PartialHedged = <any>'partial_hedged',
+        FullHedged = <any>'full_hedged',
+    }
     export enum Mode {
         Single = <any>'single',
         DualLong = <any>'dual_long',

@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**updateOrder**](TradFiApi.md#updateOrder) | **PUT** /tradfi/orders/{order_id} | Modify order
 [**deleteOrder**](TradFiApi.md#deleteOrder) | **DELETE** /tradfi/orders/{order_id} | Cancel order
 [**queryOrderHistoryList**](TradFiApi.md#queryOrderHistoryList) | **GET** /tradfi/orders/history | Query historical order list
+[**queryOrderLog**](TradFiApi.md#queryOrderLog) | **GET** /tradfi/orders/log/{log_id} | Get order details by log ID
 [**queryPositionList**](TradFiApi.md#queryPositionList) | **GET** /tradfi/positions | Query active position list
 [**updatePosition**](TradFiApi.md#updatePosition) | **PUT** /tradfi/positions/{position_id} | Modify position
 [**closePosition**](TradFiApi.md#closePosition) | **POST** /tradfi/positions/{position_id}/close | Close position
@@ -670,6 +671,49 @@ Promise<{ response: AxiosResponse; body: OrderHistoryList; }> [OrderHistoryList]
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## queryOrderLog
+
+> Promise<{ response: http.IncomingMessage; body: OrderLog; }> queryOrderLog(logId)
+
+Get order details by log ID
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.TradFiApi(client);
+const logId = 1223; // number | log_id returned from the order placement API
+api.queryOrderLog(logId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **logId** | **number**| log_id returned from the order placement API | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: OrderLog; }> [OrderLog](OrderLog.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 ## queryPositionList
 
 > Promise<{ response: http.IncomingMessage; body: PositionList; }> queryPositionList()
@@ -817,6 +861,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.TradFiApi(client);
 const opts = {
+  'page': 1, // number | Page number; defaults to 1 if omitted.
+  'pageSize': 10, // number | Page size; defaults to 10 if omitted. Maximum 100.
   'beginTime': 56, // number | Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
   'endTime': 56, // number | End time (timestamp in seconds)
   'symbol': "symbol_example", // string | Trading symbol (e.g., EURUSD)
@@ -832,6 +878,8 @@ api.queryPositionHistoryList(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **page** | **number**| Page number; defaults to 1 if omitted. | [optional] [default to undefined]
+ **pageSize** | **number**| Page size; defaults to 10 if omitted. Maximum 100. | [optional] [default to undefined]
  **beginTime** | **number**| Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago | [optional] [default to undefined]
  **endTime** | **number**| End time (timestamp in seconds) | [optional] [default to undefined]
  **symbol** | **string**| Trading symbol (e.g., EURUSD) | [optional] [default to undefined]

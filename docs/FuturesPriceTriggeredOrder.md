@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **reason** | **string** | Additional description of how the order was completed | [optional] [readonly] [default to undefined]
 **orderType** | **string** | Types of take-profit and stop-loss orders, including:  - &#x60;close-long-order&#x60;: Order take-profit/stop-loss, close long position - &#x60;close-short-order&#x60;: Order take-profit/stop-loss, close short position - &#x60;close-long-position&#x60;: Position take-profit/stop-loss, used to close all long positions - &#x60;close-short-position&#x60;: Position take-profit/stop-loss, used to close all short positions - &#x60;plan-close-long-position&#x60;: Position plan take-profit/stop-loss, used to close all or partial long positions - &#x60;plan-close-short-position&#x60;: Position plan take-profit/stop-loss, used to close all or partial short positions  The two types of order take-profit/stop-loss are read-only and cannot be passed in requests | [optional] [default to undefined]
 **meOrderId** | **number** | Corresponding order ID for order take-profit/stop-loss orders | [optional] [readonly] [default to undefined]
+**posMarginMode** | **string** | Position margin mode: &#x60;isolated&#x60; (isolated margin) or &#x60;cross&#x60; (cross margin). Returned by the server in simple split-position mode; when writing, use only the values below. | [optional] [default to undefined]
 
 ## Enum: FuturesPriceTriggeredOrder.Status
 
@@ -38,5 +39,12 @@ Name | Type | Description | Notes
 * `Failed` (value: `'failed'`)
 
 * `Expired` (value: `'expired'`)
+
+
+## Enum: FuturesPriceTriggeredOrder.PosMarginMode
+
+* `Isolated` (value: `'isolated'`)
+
+* `Cross` (value: `'cross'`)
 
 

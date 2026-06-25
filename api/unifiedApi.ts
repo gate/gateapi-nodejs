@@ -10,6 +10,11 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { DeltaNeutralEnabled } from '../model/deltaNeutralEnabled';
+import { GateErrorResponse } from '../model/gateErrorResponse';
+import { QuickEstimatedRepayment } from '../model/quickEstimatedRepayment';
+import { QuickRepaymentRequest } from '../model/quickRepaymentRequest';
+import { QuickRepaymentResponse } from '../model/quickRepaymentResponse';
 import { TransferablesResult } from '../model/transferablesResult';
 import { UniLoan } from '../model/uniLoan';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
@@ -1039,5 +1044,135 @@ export class UnifiedApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<UnifiedCollateralRes>(config, 'UnifiedCollateralRes', authSettings);
+    }
+
+    /**
+     * Available for unified account cross-currency margin mode and portfolio margin mode
+     * @summary Estimated quick repayment details
+     */
+    public async getEstimatedQuickRepayment(): Promise<{ response: AxiosResponse; body: QuickEstimatedRepayment }> {
+        const localVarPath = this.client.basePath + '/unified/estimated_quick_repayment';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<QuickEstimatedRepayment>(config, 'QuickEstimatedRepayment', authSettings);
+    }
+
+    /**
+     * Available for unified account cross-currency margin mode and portfolio margin mode. Use `GET /unified/estimated_quick_repayment` to query liabilities and pending repayment information.
+     * @summary Quick repayment
+     * @param quickRepaymentRequest
+     */
+    public async createQuickRepayment(
+        quickRepaymentRequest: QuickRepaymentRequest,
+    ): Promise<{ response: AxiosResponse; body: QuickRepaymentResponse }> {
+        const localVarPath = this.client.basePath + '/unified/quick_repayment';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'quickRepaymentRequest' is not null or undefined
+        if (quickRepaymentRequest === null || quickRepaymentRequest === undefined) {
+            throw new Error(
+                'Required parameter quickRepaymentRequest was null or undefined when calling createQuickRepayment.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(quickRepaymentRequest, 'QuickRepaymentRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<QuickRepaymentResponse>(config, 'QuickRepaymentResponse', authSettings);
+    }
+
+    /**
+     *
+     * @summary Query the account Delta-neutral strategy mode setting
+     */
+    public async getUnifiedDeltaNeutral(): Promise<{ response: AxiosResponse; body: DeltaNeutralEnabled }> {
+        const localVarPath = this.client.basePath + '/unified/delta_neutral';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<DeltaNeutralEnabled>(config, 'DeltaNeutralEnabled', authSettings);
+    }
+
+    /**
+     * Enable or disable the account Delta-neutral strategy mode.  Requirements for enabling: VIP level >= 4 and the account is in cross-currency margin mode; otherwise 403 is returned. Returns the enabled status after the setting takes effect.
+     * @summary Set the account Delta-neutral strategy mode
+     * @param deltaNeutralEnabled
+     */
+    public async setUnifiedDeltaNeutral(
+        deltaNeutralEnabled: DeltaNeutralEnabled,
+    ): Promise<{ response: AxiosResponse; body: DeltaNeutralEnabled }> {
+        const localVarPath = this.client.basePath + '/unified/delta_neutral';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'deltaNeutralEnabled' is not null or undefined
+        if (deltaNeutralEnabled === null || deltaNeutralEnabled === undefined) {
+            throw new Error(
+                'Required parameter deltaNeutralEnabled was null or undefined when calling setUnifiedDeltaNeutral.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(deltaNeutralEnabled, 'DeltaNeutralEnabled'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<DeltaNeutralEnabled>(config, 'DeltaNeutralEnabled', authSettings);
     }
 }

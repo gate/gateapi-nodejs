@@ -9,40 +9,32 @@
  * Do not edit the class manually.
  */
 
-import { OtcUserDefaultBank } from './otcUserDefaultBank';
-
-export class OtcUserDefaultBankResponse {
-    'code': number;
-    'message': string;
-    'data': OtcUserDefaultBank;
-    'timestamp': number;
+export class OtcBankCreateResponseData {
+    /**
+     * Bank card primary key in otc_rds.
+     */
+    'bankId': number;
+    /**
+     * Review status (e.g., pending review).
+     */
+    'status': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'code',
-            baseName: 'code',
+            name: 'bankId',
+            baseName: 'bank_id',
             type: 'number',
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-        {
-            name: 'data',
-            baseName: 'data',
-            type: 'OtcUserDefaultBank',
-        },
-        {
-            name: 'timestamp',
-            baseName: 'timestamp',
+            name: 'status',
+            baseName: 'status',
             type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return OtcUserDefaultBankResponse.attributeTypeMap;
+        return OtcBankCreateResponseData.attributeTypeMap;
     }
 }

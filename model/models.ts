@@ -98,6 +98,7 @@ export * from './candyDropV4TaskProgressItemCd04';
 export * from './categories';
 export * from './categoriesData';
 export * from './categoriesDataList';
+export * from './chaseOrder';
 export * from './claimRewardError';
 export * from './claimTaskError';
 export * from './collateralAdjust';
@@ -123,6 +124,8 @@ export * from './convertSmallBalance';
 export * from './countdownCancelAllFuturesTask';
 export * from './countdownCancelAllOptionsTask';
 export * from './countdownCancelAllSpotTask';
+export * from './createChaseOrderReq';
+export * from './createChaseOrderResp';
 export * from './createEarnFixedTermLendResponse';
 export * from './createEarnFixedTermLendResponseData';
 export * from './createEarnFixedTermPreRedeemResponse';
@@ -198,6 +201,7 @@ export * from './deliveryPositionClose';
 export * from './deliverySettlement';
 export * from './deliveryTicker';
 export * from './deliveryTrade';
+export * from './deltaNeutralEnabled';
 export * from './depositAddress';
 export * from './depositRecord';
 export * from './discoverScene';
@@ -286,7 +290,10 @@ export * from './futuresRiskLimitTier';
 export * from './futuresTicker';
 export * from './futuresTrade';
 export * from './futuresUpdatePriceTriggeredOrder';
+export * from './gateErrorResponse';
 export * from './getBeginnerTaskListError';
+export * from './getChaseOrderDetailResp';
+export * from './getChaseOrdersResp';
 export * from './getChatsListRequest';
 export * from './getCompletedTransactionListRequest';
 export * from './getCounterpartyUserInfoRequest';
@@ -418,15 +425,26 @@ export * from './orderListDataList';
 export * from './orderListStruct';
 export * from './orderListStructList';
 export * from './orderListV1Resp';
+export * from './orderLog';
+export * from './orderLogData';
 export * from './orderPatch';
 export * from './orderPreviewV1Req';
 export * from './orderPreviewV1Resp';
 export * from './orderResp';
 export * from './orderResponse';
 export * from './otcActionResponse';
+export * from './otcBankCreateMultipartRequest';
+export * from './otcBankCreateResponse';
+export * from './otcBankCreateResponseData';
+export * from './otcBankEnterpriseSupplementMultipartRequest';
+export * from './otcBankIdRequest';
 export * from './otcBankListItem';
 export * from './otcBankListResponse';
 export * from './otcBankListResult';
+export * from './otcBankPersonalSupplementMultipartRequest';
+export * from './otcBankSupplementChecklistItem';
+export * from './otcBankSupplementChecklistResponse';
+export * from './otcBankSupplementChecklistResponseData';
 export * from './otcMarkOrderPaidRequest';
 export * from './otcOrderDetail';
 export * from './otcOrderDetailResponse';
@@ -444,8 +462,6 @@ export * from './otcStableCoinOrderListItem';
 export * from './otcStableCoinOrderListResponse';
 export * from './otcStableCoinOrderListResult';
 export * from './otcStableCoinOrderRequest';
-export * from './otcUserDefaultBank';
-export * from './otcUserDefaultBankResponse';
 export * from './otherContact';
 export * from './p2pAdDetail';
 export * from './p2pAdDetailResponse';
@@ -460,9 +476,14 @@ export * from './p2pChatMessagePayload';
 export * from './p2pCounterpartyUserInfo';
 export * from './p2pCounterpartyUserInfoResponse';
 export * from './p2pMerchantBooksPlaceBizPushOrderResponse';
+export * from './p2pMerchantBooksPlaceBizPushOrderResponseData';
+export * from './p2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent';
+export * from './p2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction';
 export * from './p2pMerchantMarketInfo';
 export * from './p2pMerchantUserInfo';
 export * from './p2pMerchantUserInfoResponse';
+export * from './p2pMerchantWorkHours';
+export * from './p2pMerchantWorkHoursResponse';
 export * from './p2pMyAd';
 export * from './p2pMyAdsListResponse';
 export * from './p2pMyAdsListResult';
@@ -516,6 +537,9 @@ export * from './previewOrder';
 export * from './previewOrderDetail';
 export * from './previewToParam';
 export * from './profitLossRange';
+export * from './quickEstimatedRepayment';
+export * from './quickRepaymentRequest';
+export * from './quickRepaymentResponse';
 export * from './quoteRequest';
 export * from './quoteResponse';
 export * from './rebateUserInfo';
@@ -533,6 +557,7 @@ export * from './repayRecordTotalInterest';
 export * from './riskUnits';
 export * from './savedAddress';
 export * from './sendChatMessageRequest';
+export * from './setMerchantWorkHoursRequest';
 export * from './smallBalance';
 export * from './smallBalanceHistory';
 export * from './spotAccount';
@@ -544,10 +569,16 @@ export * from './spotGridCreateRequest';
 export * from './spotInsuranceHistory';
 export * from './spotMartingaleCreateParams';
 export * from './spotMartingaleCreateRequest';
+export * from './spotOrderStopLoss';
+export * from './spotOrderStopProfit';
 export * from './spotPricePutOrder';
 export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
+export * from './stopAllChaseOrdersReq';
+export * from './stopAllChaseOrdersResp';
 export * from './stopAllTrailOrders';
+export * from './stopChaseOrderReq';
+export * from './stopChaseOrderResp';
 export * from './stopTrailOrder';
 export * from './stpGroup';
 export * from './stpGroupUser';
@@ -634,6 +665,10 @@ export * from './unifiedMarginTiers';
 export * from './unifiedModeSet';
 export * from './unifiedPortfolioInput';
 export * from './unifiedPortfolioOutput';
+export * from './unifiedQuickRepayAvailableItem';
+export * from './unifiedQuickRepayDebtItem';
+export * from './unifiedQuickRepayRepaidInfo';
+export * from './unifiedQuickRepayUsedInfo';
 export * from './unifiedRiskUnits';
 export * from './unifiedSettings';
 export * from './unifiedTransferable';
@@ -757,6 +792,7 @@ import { CandyDropV4TaskProgressItemCd04 } from './candyDropV4TaskProgressItemCd
 import { Categories } from './categories';
 import { CategoriesData } from './categoriesData';
 import { CategoriesDataList } from './categoriesDataList';
+import { ChaseOrder } from './chaseOrder';
 import { ClaimRewardError } from './claimRewardError';
 import { ClaimTaskError } from './claimTaskError';
 import { CollateralAdjust } from './collateralAdjust';
@@ -782,6 +818,8 @@ import { ConvertSmallBalance } from './convertSmallBalance';
 import { CountdownCancelAllFuturesTask } from './countdownCancelAllFuturesTask';
 import { CountdownCancelAllOptionsTask } from './countdownCancelAllOptionsTask';
 import { CountdownCancelAllSpotTask } from './countdownCancelAllSpotTask';
+import { CreateChaseOrderReq } from './createChaseOrderReq';
+import { CreateChaseOrderResp } from './createChaseOrderResp';
 import { CreateEarnFixedTermLendResponse } from './createEarnFixedTermLendResponse';
 import { CreateEarnFixedTermLendResponseData } from './createEarnFixedTermLendResponseData';
 import { CreateEarnFixedTermPreRedeemResponse } from './createEarnFixedTermPreRedeemResponse';
@@ -857,6 +895,7 @@ import { DeliveryPositionClose } from './deliveryPositionClose';
 import { DeliverySettlement } from './deliverySettlement';
 import { DeliveryTicker } from './deliveryTicker';
 import { DeliveryTrade } from './deliveryTrade';
+import { DeltaNeutralEnabled } from './deltaNeutralEnabled';
 import { DepositAddress } from './depositAddress';
 import { DepositRecord } from './depositRecord';
 import { DiscoverScene } from './discoverScene';
@@ -945,7 +984,10 @@ import { FuturesRiskLimitTier } from './futuresRiskLimitTier';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
 import { FuturesUpdatePriceTriggeredOrder } from './futuresUpdatePriceTriggeredOrder';
+import { GateErrorResponse } from './gateErrorResponse';
 import { GetBeginnerTaskListError } from './getBeginnerTaskListError';
+import { GetChaseOrderDetailResp } from './getChaseOrderDetailResp';
+import { GetChaseOrdersResp } from './getChaseOrdersResp';
 import { GetChatsListRequest } from './getChatsListRequest';
 import { GetCompletedTransactionListRequest } from './getCompletedTransactionListRequest';
 import { GetCounterpartyUserInfoRequest } from './getCounterpartyUserInfoRequest';
@@ -1077,15 +1119,26 @@ import { OrderListDataList } from './orderListDataList';
 import { OrderListStruct } from './orderListStruct';
 import { OrderListStructList } from './orderListStructList';
 import { OrderListV1Resp } from './orderListV1Resp';
+import { OrderLog } from './orderLog';
+import { OrderLogData } from './orderLogData';
 import { OrderPatch } from './orderPatch';
 import { OrderPreviewV1Req } from './orderPreviewV1Req';
 import { OrderPreviewV1Resp } from './orderPreviewV1Resp';
 import { OrderResp } from './orderResp';
 import { OrderResponse } from './orderResponse';
 import { OtcActionResponse } from './otcActionResponse';
+import { OtcBankCreateMultipartRequest } from './otcBankCreateMultipartRequest';
+import { OtcBankCreateResponse } from './otcBankCreateResponse';
+import { OtcBankCreateResponseData } from './otcBankCreateResponseData';
+import { OtcBankEnterpriseSupplementMultipartRequest } from './otcBankEnterpriseSupplementMultipartRequest';
+import { OtcBankIdRequest } from './otcBankIdRequest';
 import { OtcBankListItem } from './otcBankListItem';
 import { OtcBankListResponse } from './otcBankListResponse';
 import { OtcBankListResult } from './otcBankListResult';
+import { OtcBankPersonalSupplementMultipartRequest } from './otcBankPersonalSupplementMultipartRequest';
+import { OtcBankSupplementChecklistItem } from './otcBankSupplementChecklistItem';
+import { OtcBankSupplementChecklistResponse } from './otcBankSupplementChecklistResponse';
+import { OtcBankSupplementChecklistResponseData } from './otcBankSupplementChecklistResponseData';
 import { OtcMarkOrderPaidRequest } from './otcMarkOrderPaidRequest';
 import { OtcOrderDetail } from './otcOrderDetail';
 import { OtcOrderDetailResponse } from './otcOrderDetailResponse';
@@ -1103,8 +1156,6 @@ import { OtcStableCoinOrderListItem } from './otcStableCoinOrderListItem';
 import { OtcStableCoinOrderListResponse } from './otcStableCoinOrderListResponse';
 import { OtcStableCoinOrderListResult } from './otcStableCoinOrderListResult';
 import { OtcStableCoinOrderRequest } from './otcStableCoinOrderRequest';
-import { OtcUserDefaultBank } from './otcUserDefaultBank';
-import { OtcUserDefaultBankResponse } from './otcUserDefaultBankResponse';
 import { OtherContact } from './otherContact';
 import { P2pAdDetail } from './p2pAdDetail';
 import { P2pAdDetailResponse } from './p2pAdDetailResponse';
@@ -1119,9 +1170,14 @@ import { P2pChatMessagePayload } from './p2pChatMessagePayload';
 import { P2pCounterpartyUserInfo } from './p2pCounterpartyUserInfo';
 import { P2pCounterpartyUserInfoResponse } from './p2pCounterpartyUserInfoResponse';
 import { P2pMerchantBooksPlaceBizPushOrderResponse } from './p2pMerchantBooksPlaceBizPushOrderResponse';
+import { P2pMerchantBooksPlaceBizPushOrderResponseData } from './p2pMerchantBooksPlaceBizPushOrderResponseData';
+import { P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent } from './p2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent';
+import { P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction } from './p2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction';
 import { P2pMerchantMarketInfo } from './p2pMerchantMarketInfo';
 import { P2pMerchantUserInfo } from './p2pMerchantUserInfo';
 import { P2pMerchantUserInfoResponse } from './p2pMerchantUserInfoResponse';
+import { P2pMerchantWorkHours } from './p2pMerchantWorkHours';
+import { P2pMerchantWorkHoursResponse } from './p2pMerchantWorkHoursResponse';
 import { P2pMyAd } from './p2pMyAd';
 import { P2pMyAdsListResponse } from './p2pMyAdsListResponse';
 import { P2pMyAdsListResult } from './p2pMyAdsListResult';
@@ -1175,6 +1231,9 @@ import { PreviewOrder } from './previewOrder';
 import { PreviewOrderDetail } from './previewOrderDetail';
 import { PreviewToParam } from './previewToParam';
 import { ProfitLossRange } from './profitLossRange';
+import { QuickEstimatedRepayment } from './quickEstimatedRepayment';
+import { QuickRepaymentRequest } from './quickRepaymentRequest';
+import { QuickRepaymentResponse } from './quickRepaymentResponse';
 import { QuoteRequest } from './quoteRequest';
 import { QuoteResponse } from './quoteResponse';
 import { RebateUserInfo } from './rebateUserInfo';
@@ -1192,6 +1251,7 @@ import { RepayRecordTotalInterest } from './repayRecordTotalInterest';
 import { RiskUnits } from './riskUnits';
 import { SavedAddress } from './savedAddress';
 import { SendChatMessageRequest } from './sendChatMessageRequest';
+import { SetMerchantWorkHoursRequest } from './setMerchantWorkHoursRequest';
 import { SmallBalance } from './smallBalance';
 import { SmallBalanceHistory } from './smallBalanceHistory';
 import { SpotAccount } from './spotAccount';
@@ -1203,10 +1263,16 @@ import { SpotGridCreateRequest } from './spotGridCreateRequest';
 import { SpotInsuranceHistory } from './spotInsuranceHistory';
 import { SpotMartingaleCreateParams } from './spotMartingaleCreateParams';
 import { SpotMartingaleCreateRequest } from './spotMartingaleCreateRequest';
+import { SpotOrderStopLoss } from './spotOrderStopLoss';
+import { SpotOrderStopProfit } from './spotOrderStopProfit';
 import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
+import { StopAllChaseOrdersReq } from './stopAllChaseOrdersReq';
+import { StopAllChaseOrdersResp } from './stopAllChaseOrdersResp';
 import { StopAllTrailOrders } from './stopAllTrailOrders';
+import { StopChaseOrderReq } from './stopChaseOrderReq';
+import { StopChaseOrderResp } from './stopChaseOrderResp';
 import { StopTrailOrder } from './stopTrailOrder';
 import { StpGroup } from './stpGroup';
 import { StpGroupUser } from './stpGroupUser';
@@ -1293,6 +1359,10 @@ import { UnifiedMarginTiers } from './unifiedMarginTiers';
 import { UnifiedModeSet } from './unifiedModeSet';
 import { UnifiedPortfolioInput } from './unifiedPortfolioInput';
 import { UnifiedPortfolioOutput } from './unifiedPortfolioOutput';
+import { UnifiedQuickRepayAvailableItem } from './unifiedQuickRepayAvailableItem';
+import { UnifiedQuickRepayDebtItem } from './unifiedQuickRepayDebtItem';
+import { UnifiedQuickRepayRepaidInfo } from './unifiedQuickRepayRepaidInfo';
+import { UnifiedQuickRepayUsedInfo } from './unifiedQuickRepayUsedInfo';
 import { UnifiedRiskUnits } from './unifiedRiskUnits';
 import { UnifiedSettings } from './unifiedSettings';
 import { UnifiedTransferable } from './unifiedTransferable';
@@ -1384,6 +1454,7 @@ let enumsMap: { [index: string]: any } = {
     'FuturesPriceTrigger.Rule': FuturesPriceTrigger.Rule,
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
+    'FuturesPriceTriggeredOrder.PosMarginMode': FuturesPriceTriggeredOrder.PosMarginMode,
     'FuturesUpdatePriceTriggeredOrder.PriceType': FuturesUpdatePriceTriggeredOrder.PriceType,
     'GetPendingTransactionListRequest.OrderTab': GetPendingTransactionListRequest.OrderTab,
     'GetUserCouponDetailResponse.Code': GetUserCouponDetailResponse.Code,
@@ -1426,12 +1497,30 @@ let enumsMap: { [index: string]: any } = {
     'OrderListDataList.PriceType': OrderListDataList.PriceType,
     'OrderListDataList.Finished': OrderListDataList.Finished,
     'OrderListDataList.Side': OrderListDataList.Side,
+    'OrderLogData.PriceType': OrderLogData.PriceType,
+    'OrderLogData.Side': OrderLogData.Side,
+    'OtcBankSupplementChecklistResponseData.UserType': OtcBankSupplementChecklistResponseData.UserType,
+    'P2pChatMessage.RiskType': P2pChatMessage.RiskType,
+    'P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent.Type':
+        P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent.Type,
+    'P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent.ContentRiskType':
+        P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent.ContentRiskType,
+    'P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction.ActionType':
+        P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction.ActionType,
+    'P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction.Mainly':
+        P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction.Mainly,
+    'P2pMerchantWorkHours.WorkStatus': P2pMerchantWorkHours.WorkStatus,
+    'P2pSendChatMessageResult.MsgType': P2pSendChatMessageResult.MsgType,
+    'P2pSendChatMessageResult.RiskType': P2pSendChatMessageResult.RiskType,
     'PartnerDataAggregated.BusinessType': PartnerDataAggregated.BusinessType,
     'PlaceBizPushOrder.Type': PlaceBizPushOrder.Type,
+    'Position.HedgeStatus': Position.HedgeStatus,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'PositionHistoryListDataList.PositionDir': PositionHistoryListDataList.PositionDir,
     'SendChatMessageRequest.Type': SendChatMessageRequest.Type,
+    'SetMerchantWorkHoursRequest.WorkStatus': SetMerchantWorkHoursRequest.WorkStatus,
+    'SetMerchantWorkHoursRequest.CycleType': SetMerchantWorkHoursRequest.CycleType,
     'SpotGridCreateParams.PriceType': SpotGridCreateParams.PriceType,
     'SpotGridCreateRequest.StrategyType': SpotGridCreateRequest.StrategyType,
     'SpotMartingaleCreateRequest.StrategyType': SpotMartingaleCreateRequest.StrategyType,
@@ -1561,6 +1650,7 @@ let typeMap: { [index: string]: any } = {
     Categories: Categories,
     CategoriesData: CategoriesData,
     CategoriesDataList: CategoriesDataList,
+    ChaseOrder: ChaseOrder,
     ClaimRewardError: ClaimRewardError,
     ClaimTaskError: ClaimTaskError,
     CollateralAdjust: CollateralAdjust,
@@ -1585,6 +1675,8 @@ let typeMap: { [index: string]: any } = {
     CountdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
     CountdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
     CountdownCancelAllSpotTask: CountdownCancelAllSpotTask,
+    CreateChaseOrderReq: CreateChaseOrderReq,
+    CreateChaseOrderResp: CreateChaseOrderResp,
     CreateEarnFixedTermLendResponse: CreateEarnFixedTermLendResponse,
     CreateEarnFixedTermLendResponseData: CreateEarnFixedTermLendResponseData,
     CreateEarnFixedTermPreRedeemResponse: CreateEarnFixedTermPreRedeemResponse,
@@ -1660,6 +1752,7 @@ let typeMap: { [index: string]: any } = {
     DeliverySettlement: DeliverySettlement,
     DeliveryTicker: DeliveryTicker,
     DeliveryTrade: DeliveryTrade,
+    DeltaNeutralEnabled: DeltaNeutralEnabled,
     DepositAddress: DepositAddress,
     DepositRecord: DepositRecord,
     DualGetBalance: DualGetBalance,
@@ -1746,7 +1839,10 @@ let typeMap: { [index: string]: any } = {
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
     FuturesUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
+    GateErrorResponse: GateErrorResponse,
     GetBeginnerTaskListError: GetBeginnerTaskListError,
+    GetChaseOrderDetailResp: GetChaseOrderDetailResp,
+    GetChaseOrdersResp: GetChaseOrdersResp,
     GetChatsListRequest: GetChatsListRequest,
     GetCompletedTransactionListRequest: GetCompletedTransactionListRequest,
     GetCounterpartyUserInfoRequest: GetCounterpartyUserInfoRequest,
@@ -1878,15 +1974,26 @@ let typeMap: { [index: string]: any } = {
     OrderListStruct: OrderListStruct,
     OrderListStructList: OrderListStructList,
     OrderListV1Resp: OrderListV1Resp,
+    OrderLog: OrderLog,
+    OrderLogData: OrderLogData,
     OrderPatch: OrderPatch,
     OrderPreviewV1Req: OrderPreviewV1Req,
     OrderPreviewV1Resp: OrderPreviewV1Resp,
     OrderResp: OrderResp,
     OrderResponse: OrderResponse,
     OtcActionResponse: OtcActionResponse,
+    OtcBankCreateMultipartRequest: OtcBankCreateMultipartRequest,
+    OtcBankCreateResponse: OtcBankCreateResponse,
+    OtcBankCreateResponseData: OtcBankCreateResponseData,
+    OtcBankEnterpriseSupplementMultipartRequest: OtcBankEnterpriseSupplementMultipartRequest,
+    OtcBankIdRequest: OtcBankIdRequest,
     OtcBankListItem: OtcBankListItem,
     OtcBankListResponse: OtcBankListResponse,
     OtcBankListResult: OtcBankListResult,
+    OtcBankPersonalSupplementMultipartRequest: OtcBankPersonalSupplementMultipartRequest,
+    OtcBankSupplementChecklistItem: OtcBankSupplementChecklistItem,
+    OtcBankSupplementChecklistResponse: OtcBankSupplementChecklistResponse,
+    OtcBankSupplementChecklistResponseData: OtcBankSupplementChecklistResponseData,
     OtcMarkOrderPaidRequest: OtcMarkOrderPaidRequest,
     OtcOrderDetail: OtcOrderDetail,
     OtcOrderDetailResponse: OtcOrderDetailResponse,
@@ -1904,8 +2011,6 @@ let typeMap: { [index: string]: any } = {
     OtcStableCoinOrderListResponse: OtcStableCoinOrderListResponse,
     OtcStableCoinOrderListResult: OtcStableCoinOrderListResult,
     OtcStableCoinOrderRequest: OtcStableCoinOrderRequest,
-    OtcUserDefaultBank: OtcUserDefaultBank,
-    OtcUserDefaultBankResponse: OtcUserDefaultBankResponse,
     OtherContact: OtherContact,
     P2pAdDetail: P2pAdDetail,
     P2pAdDetailResponse: P2pAdDetailResponse,
@@ -1920,9 +2025,15 @@ let typeMap: { [index: string]: any } = {
     P2pCounterpartyUserInfo: P2pCounterpartyUserInfo,
     P2pCounterpartyUserInfoResponse: P2pCounterpartyUserInfoResponse,
     P2pMerchantBooksPlaceBizPushOrderResponse: P2pMerchantBooksPlaceBizPushOrderResponse,
+    P2pMerchantBooksPlaceBizPushOrderResponseData: P2pMerchantBooksPlaceBizPushOrderResponseData,
+    P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent: P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent,
+    P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction:
+        P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction,
     P2pMerchantMarketInfo: P2pMerchantMarketInfo,
     P2pMerchantUserInfo: P2pMerchantUserInfo,
     P2pMerchantUserInfoResponse: P2pMerchantUserInfoResponse,
+    P2pMerchantWorkHours: P2pMerchantWorkHours,
+    P2pMerchantWorkHoursResponse: P2pMerchantWorkHoursResponse,
     P2pMyAd: P2pMyAd,
     P2pMyAdsListResponse: P2pMyAdsListResponse,
     P2pMyAdsListResult: P2pMyAdsListResult,
@@ -1976,6 +2087,9 @@ let typeMap: { [index: string]: any } = {
     PreviewOrderDetail: PreviewOrderDetail,
     PreviewToParam: PreviewToParam,
     ProfitLossRange: ProfitLossRange,
+    QuickEstimatedRepayment: QuickEstimatedRepayment,
+    QuickRepaymentRequest: QuickRepaymentRequest,
+    QuickRepaymentResponse: QuickRepaymentResponse,
     QuoteRequest: QuoteRequest,
     QuoteResponse: QuoteResponse,
     RebateUserInfo: RebateUserInfo,
@@ -1993,6 +2107,7 @@ let typeMap: { [index: string]: any } = {
     RiskUnits: RiskUnits,
     SavedAddress: SavedAddress,
     SendChatMessageRequest: SendChatMessageRequest,
+    SetMerchantWorkHoursRequest: SetMerchantWorkHoursRequest,
     SmallBalance: SmallBalance,
     SmallBalanceHistory: SmallBalanceHistory,
     SpotAccount: SpotAccount,
@@ -2004,10 +2119,16 @@ let typeMap: { [index: string]: any } = {
     SpotInsuranceHistory: SpotInsuranceHistory,
     SpotMartingaleCreateParams: SpotMartingaleCreateParams,
     SpotMartingaleCreateRequest: SpotMartingaleCreateRequest,
+    SpotOrderStopLoss: SpotOrderStopLoss,
+    SpotOrderStopProfit: SpotOrderStopProfit,
     SpotPricePutOrder: SpotPricePutOrder,
     SpotPriceTrigger: SpotPriceTrigger,
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
+    StopAllChaseOrdersReq: StopAllChaseOrdersReq,
+    StopAllChaseOrdersResp: StopAllChaseOrdersResp,
     StopAllTrailOrders: StopAllTrailOrders,
+    StopChaseOrderReq: StopChaseOrderReq,
+    StopChaseOrderResp: StopChaseOrderResp,
     StopTrailOrder: StopTrailOrder,
     StpGroup: StpGroup,
     StpGroupUser: StpGroupUser,
@@ -2093,6 +2214,10 @@ let typeMap: { [index: string]: any } = {
     UnifiedModeSet: UnifiedModeSet,
     UnifiedPortfolioInput: UnifiedPortfolioInput,
     UnifiedPortfolioOutput: UnifiedPortfolioOutput,
+    UnifiedQuickRepayAvailableItem: UnifiedQuickRepayAvailableItem,
+    UnifiedQuickRepayDebtItem: UnifiedQuickRepayDebtItem,
+    UnifiedQuickRepayRepaidInfo: UnifiedQuickRepayRepaidInfo,
+    UnifiedQuickRepayUsedInfo: UnifiedQuickRepayUsedInfo,
     UnifiedRiskUnits: UnifiedRiskUnits,
     UnifiedSettings: UnifiedSettings,
     UnifiedTransferable: UnifiedTransferable,

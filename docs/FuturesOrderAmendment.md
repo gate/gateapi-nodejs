@@ -8,4 +8,5 @@ Name | Type | Description | Notes
 **price** | **string** | New order price | [optional] [default to undefined]
 **amendText** | **string** | Custom info during order amendment | [optional] [default to undefined]
 **text** | **string** | Internal users can modify information in the text field. | [optional] [default to undefined]
+**actionMode** | **string** | Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) | [optional] [default to undefined]
 

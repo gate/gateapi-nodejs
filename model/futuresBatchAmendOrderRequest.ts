@@ -33,6 +33,10 @@ export class FuturesBatchAmendOrderRequest {
      * Custom info during order amendment
      */
     'amendText'?: string;
+    /**
+     * Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
+     */
+    'actionMode'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -60,6 +64,11 @@ export class FuturesBatchAmendOrderRequest {
         {
             name: 'amendText',
             baseName: 'amend_text',
+            type: 'string',
+        },
+        {
+            name: 'actionMode',
+            baseName: 'action_mode',
             type: 'string',
         },
     ];

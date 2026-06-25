@@ -78,11 +78,11 @@ export class PlaceBizPushOrder {
      */
     'expireMin'?: string;
     /**
-     * Ad trading terms shown to the taker.
+     * Advertisement trade terms displayed to ordering users; goes through off-platform traffic diversion risk control on submission, and when hit, the advertisement is not saved and code 70305102 is returned
      */
     'tradeTips'?: string;
     /**
-     * Auto-reply message after order creation.
+     * Auto reply content after order creation; goes through off-platform traffic diversion risk control on submission, and when hit, the advertisement is not saved and code 70305102 is returned
      */
     'autoReply'?: string;
     /**

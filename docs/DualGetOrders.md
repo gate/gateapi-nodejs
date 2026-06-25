@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Order ID | [optional] [default to undefined]
 **planId** | **number** | Product ID | [optional] [default to undefined]
-**copies** | **string** | Units | [optional] [default to undefined]
 **investAmount** | **string** | Investment Quantity | [optional] [default to undefined]
 **settlementAmount** | **string** | Settlement Quantity | [optional] [default to undefined]
 **createTime** | **number** | Created time | [optional] [default to undefined]

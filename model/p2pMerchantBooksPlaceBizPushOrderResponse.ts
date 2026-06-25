@@ -9,6 +9,8 @@
  * Do not edit the class manually.
  */
 
+import { P2pMerchantBooksPlaceBizPushOrderResponseData } from './p2pMerchantBooksPlaceBizPushOrderResponseData';
+
 export class P2pMerchantBooksPlaceBizPushOrderResponse {
     /**
      * Response timestamp.
@@ -19,17 +21,14 @@ export class P2pMerchantBooksPlaceBizPushOrderResponse {
      */
     'method'?: string;
     /**
-     * Response code, 0 means success
+     * Response code. 0 means success; 70305102 means the advertisement trade terms or auto reply hit off-platform traffic diversion risk control
      */
     'code'?: number;
     /**
      * Response message
      */
     'message'?: string;
-    /**
-     * Empty object on successful publish or edit.
-     */
-    'data'?: object;
+    'data'?: P2pMerchantBooksPlaceBizPushOrderResponseData;
     /**
      * API version.
      */
@@ -61,7 +60,7 @@ export class P2pMerchantBooksPlaceBizPushOrderResponse {
         {
             name: 'data',
             baseName: 'data',
-            type: 'object',
+            type: 'P2pMerchantBooksPlaceBizPushOrderResponseData',
         },
         {
             name: 'version',

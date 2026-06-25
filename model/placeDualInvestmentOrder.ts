@@ -19,10 +19,6 @@ export class PlaceDualInvestmentOrder {
      */
     'planId'?: number;
     /**
-     * Units
-     */
-    'copies'?: string;
-    /**
      * Investment Quantity
      */
     'investAmount'?: string;
@@ -91,11 +87,6 @@ export class PlaceDualInvestmentOrder {
             name: 'planId',
             baseName: 'plan_id',
             type: 'number',
-        },
-        {
-            name: 'copies',
-            baseName: 'copies',
-            type: 'string',
         },
         {
             name: 'investAmount',

@@ -839,17 +839,21 @@ export class WalletApi {
 
     /**
      *
-     * @summary Query withdrawal address whitelist
-     * @param currency Currency
+     * @summary Query saved address
      * @param opts Optional parameters
+     * @param opts.currency Currency
      * @param opts.chain Chain name
+     * @param opts.verified 1 means verified address, 0 means normal address, empty string means no limit
      * @param opts.limit Maximum number returned, up to 100
      * @param opts.page page number
      */
-    public async listSavedAddress(
-        currency: string,
-        opts?: { chain?: string; limit?: string; page?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<SavedAddress> }> {
+    public async listSavedAddress(opts?: {
+        currency?: string;
+        chain?: string;
+        verified?: string;
+        limit?: string;
+        page?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<SavedAddress> }> {
         const localVarPath = this.client.basePath + '/wallet/saved_address';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -861,18 +865,15 @@ export class WalletApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'currency' is not null or undefined
-        if (currency === null || currency === undefined) {
-            throw new Error('Required parameter currency was null or undefined when calling listSavedAddress.');
-        }
-
         opts = opts || {};
-        let currencySerialized = ObjectSerializer.serialize(currency, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
-        if (Array.isArray(currencySerialized)) {
-            currencySerialized = currencySerialized.join(',');
+        if (opts.currency !== undefined) {
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
         }
-        localVarQueryParameters['currency'] = currencySerialized;
 
         if (opts.chain !== undefined) {
             let chainSerialized = ObjectSerializer.serialize(opts.chain, 'string');
@@ -881,6 +882,15 @@ export class WalletApi {
                 chainSerialized = chainSerialized.join(',');
             }
             localVarQueryParameters['chain'] = chainSerialized;
+        }
+
+        if (opts.verified !== undefined) {
+            let verifiedSerialized = ObjectSerializer.serialize(opts.verified, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(verifiedSerialized)) {
+                verifiedSerialized = verifiedSerialized.join(',');
+            }
+            localVarQueryParameters['verified'] = verifiedSerialized;
         }
 
         if (opts.limit !== undefined) {

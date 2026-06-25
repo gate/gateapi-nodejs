@@ -19,10 +19,6 @@ export class DualGetOrders {
      */
     'planId'?: number;
     /**
-     * Units
-     */
-    'copies'?: string;
-    /**
      * Investment Quantity
      */
     'investAmount'?: string;
@@ -91,11 +87,6 @@ export class DualGetOrders {
             name: 'planId',
             baseName: 'plan_id',
             type: 'number',
-        },
-        {
-            name: 'copies',
-            baseName: 'copies',
-            type: 'string',
         },
         {
             name: 'investAmount',

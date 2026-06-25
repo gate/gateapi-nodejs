@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** | Unique trading pair identifier in the form ExchangeType_BusinessType_Base_Counter. | [default to undefined]
-**exchangeType** | **string** | Exchange type (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;CROSSEX&#x60;). | [default to undefined]
+**exchangeType** | **string** | Venue bucket (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). | [default to undefined]
 **businessType** | **string** | Business type (&#x60;SPOT&#x60; Spot / &#x60;FUTURE&#x60; Futures / &#x60;MARGIN&#x60; Margin). | [default to undefined]
 **state** | **string** | Status (&#x60;live&#x60; running / &#x60;suspend&#x60; paused). | [default to undefined]
 **minSize** | **string** | Minimum order size allowed by the contract | [default to undefined]

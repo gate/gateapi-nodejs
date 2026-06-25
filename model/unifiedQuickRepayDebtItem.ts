@@ -9,59 +9,59 @@
  * Do not edit the class manually.
  */
 
-export class OtcUserDefaultBank {
+export class UnifiedQuickRepayDebtItem {
     /**
-     * Bank ID (required for order placement)
+     * Currency name
      */
-    'id': string;
-    'bankAccountName': string;
-    'bankName': string;
-    'bankCountry': string;
-    'bankAddress': string;
-    'bankCode': string;
-    'branchCode': string;
+    'currency'?: string;
+    /**
+     * Debt Quantity
+     */
+    'debtAmount'?: string;
+    /**
+     * Estimated USD value
+     */
+    'estimatedUsd'?: string;
+    /**
+     * Borrowed amount
+     */
+    'borrowed'?: string;
+    /**
+     * Negative balance
+     */
+    'negBalance'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'id',
-            baseName: 'id',
+            name: 'currency',
+            baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'bankAccountName',
-            baseName: 'bank_account_name',
+            name: 'debtAmount',
+            baseName: 'debt_amount',
             type: 'string',
         },
         {
-            name: 'bankName',
-            baseName: 'bank_name',
+            name: 'estimatedUsd',
+            baseName: 'estimated_usd',
             type: 'string',
         },
         {
-            name: 'bankCountry',
-            baseName: 'bank_country',
+            name: 'borrowed',
+            baseName: 'borrowed',
             type: 'string',
         },
         {
-            name: 'bankAddress',
-            baseName: 'bank_address',
-            type: 'string',
-        },
-        {
-            name: 'bankCode',
-            baseName: 'bank_code',
-            type: 'string',
-        },
-        {
-            name: 'branchCode',
-            baseName: 'branch_code',
+            name: 'negBalance',
+            baseName: 'neg_balance',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return OtcUserDefaultBank.attributeTypeMap;
+        return UnifiedQuickRepayDebtItem.attributeTypeMap;
     }
 }

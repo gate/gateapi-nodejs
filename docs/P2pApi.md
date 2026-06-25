@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**p2pMerchantAccountGetUserInfo**](P2pApi.md#p2pMerchantAccountGetUserInfo) | **POST** /p2p/merchant/account/get_user_info | Get account information
 [**p2pMerchantAccountGetCounterpartyUserInfo**](P2pApi.md#p2pMerchantAccountGetCounterpartyUserInfo) | **POST** /p2p/merchant/account/get_counterparty_user_info | Get counterparty information
 [**p2pMerchantAccountGetMyselfPayment**](P2pApi.md#p2pMerchantAccountGetMyselfPayment) | **POST** /p2p/merchant/account/get_myself_payment | Get payment method list
+[**p2pMerchantAccountSetMerchantWorkHours**](P2pApi.md#p2pMerchantAccountSetMerchantWorkHours) | **POST** /p2p/merchant/account/set_merchant_work_hours | Set merchant working status and custom working hours
 [**p2pMerchantTransactionGetPendingTransactionList**](P2pApi.md#p2pMerchantTransactionGetPendingTransactionList) | **POST** /p2p/merchant/transaction/get_pending_transaction_list | Get pending orders
 [**p2pMerchantTransactionGetCompletedTransactionList**](P2pApi.md#p2pMerchantTransactionGetCompletedTransactionList) | **POST** /p2p/merchant/transaction/get_completed_transaction_list | Get all/historical orders
 [**p2pMerchantTransactionGetTransactionDetails**](P2pApi.md#p2pMerchantTransactionGetTransactionDetails) | **POST** /p2p/merchant/transaction/get_transaction_details | Query order details
@@ -140,6 +141,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: P2pPaymentMethodsResponse; }> [P2pPaymentMethodsResponse](P2pPaymentMethodsResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## p2pMerchantAccountSetMerchantWorkHours
+
+> Promise<{ response: http.IncomingMessage; body: P2pMerchantWorkHoursResponse; }> p2pMerchantAccountSetMerchantWorkHours(setMerchantWorkHoursRequest)
+
+Set merchant working status and custom working hours
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.P2pApi(client);
+const setMerchantWorkHoursRequest = new SetMerchantWorkHoursRequest(); // SetMerchantWorkHoursRequest | 
+api.p2pMerchantAccountSetMerchantWorkHours(setMerchantWorkHoursRequest)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **setMerchantWorkHoursRequest** | [**SetMerchantWorkHoursRequest**](SetMerchantWorkHoursRequest.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: P2pMerchantWorkHoursResponse; }> [P2pMerchantWorkHoursResponse](P2pMerchantWorkHoursResponse.md)
 
 ### Authorization
 
@@ -414,6 +458,8 @@ Promise<{ response: AxiosResponse; body: P2pTransactionActionResponse; }> [P2pTr
 
 Publish ad order
 
+When publishing or editing an advertisement, trade_tips and auto_reply go through off-platform traffic diversion risk control; when hit, the advertisement is not saved, and code 70305102 with data.risk_event is returned.
+
 ### Example
 
 ```typescript
@@ -675,6 +721,8 @@ Promise<{ response: AxiosResponse; body: P2pChatListResponse; }> [P2pChatListRes
 > Promise<{ response: http.IncomingMessage; body: P2pSendChatMessageResponse; }> p2pMerchantChatSendChatMessage(sendChatMessageRequest)
 
 Send text message
+
+Text messages go through off-platform traffic diversion risk control. When hit, the API still returns code 0, and data contains risk_type&#x3D;1 and toast_msg.
 
 ### Example
 

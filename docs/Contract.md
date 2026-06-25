@@ -51,6 +51,7 @@ Name | Type | Description | Notes
 **fundingRateLimit** | **string** | Upper and lower limits of funding rate | [optional] [default to undefined]
 **contractType** | **string** | Contract classification type, e.g. stocks, metals, indices, forex, commodities, etc. | [optional] [default to undefined]
 **fundingImpactValue** | **string** | Funding rate depth impact value | [optional] [default to undefined]
+**enableCircuitBreaker** | **boolean** | Whether the newly launched contract activates mark price circuit breaker (If the platform intends to activate this mechanism for a newly launched contract market to prevent significant price fluctuations and excessive liquidations after launch, an advance announcement will be made). | [optional] [default to undefined]
 
 ## Enum: Contract.Type
 

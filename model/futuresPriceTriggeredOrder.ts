@@ -62,6 +62,10 @@ export class FuturesPriceTriggeredOrder {
      * Corresponding order ID for order take-profit/stop-loss orders
      */
     'meOrderId'?: bigint;
+    /**
+     * Position margin mode: `isolated` (isolated margin) or `cross` (cross margin). Returned by the server in simple split-position mode; when writing, use only the values below.
+     */
+    'posMarginMode'?: FuturesPriceTriggeredOrder.PosMarginMode;
 
     static discriminator: string | undefined = undefined;
 
@@ -131,6 +135,11 @@ export class FuturesPriceTriggeredOrder {
             baseName: 'me_order_id',
             type: 'bigint',
         },
+        {
+            name: 'posMarginMode',
+            baseName: 'pos_margin_mode',
+            type: 'FuturesPriceTriggeredOrder.PosMarginMode',
+        },
     ];
 
     static getAttributeTypeMap() {
@@ -150,5 +159,9 @@ export namespace FuturesPriceTriggeredOrder {
         Succeeded = <any>'succeeded',
         Failed = <any>'failed',
         Expired = <any>'expired',
+    }
+    export enum PosMarginMode {
+        Isolated = <any>'isolated',
+        Cross = <any>'cross',
     }
 }

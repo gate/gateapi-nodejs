@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **rewardCoin** | **string** | Reward currency | [default to undefined]
 **interest** | **string** | Interest amount | [default to undefined]
 **fee** | **string** | fee | [default to undefined]
-**status** | **number** | Status | [default to undefined]
+**status** | **number** | Status. 4 - success | [default to undefined]
 **bonusDate** | **string** | Date | [default to undefined]
 **shouldBonusStamp** | **number** | Scheduled distribution timestamp | [default to undefined]
 

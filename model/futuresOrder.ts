@@ -133,6 +133,26 @@ export class FuturesOrder {
      * Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode
      */
     'posMarginMode'?: string;
+    /**
+     * Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
+     */
+    'actionMode'?: string;
+    /**
+     * Take profit price
+     */
+    'tpslTpTriggerPrice'?: string;
+    /**
+     * Stop loss price
+     */
+    'tpslSlTriggerPrice'?: string;
+    /**
+     * Take profit BBO type
+     */
+    'tpslTpBboType'?: string;
+    /**
+     * Stop loss BBO type
+     */
+    'tpslSlBboType'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -285,6 +305,31 @@ export class FuturesOrder {
         {
             name: 'posMarginMode',
             baseName: 'pos_margin_mode',
+            type: 'string',
+        },
+        {
+            name: 'actionMode',
+            baseName: 'action_mode',
+            type: 'string',
+        },
+        {
+            name: 'tpslTpTriggerPrice',
+            baseName: 'tpsl_tp_trigger_price',
+            type: 'string',
+        },
+        {
+            name: 'tpslSlTriggerPrice',
+            baseName: 'tpsl_sl_trigger_price',
+            type: 'string',
+        },
+        {
+            name: 'tpslTpBboType',
+            baseName: 'tpsl_tp_bbo_type',
+            type: 'string',
+        },
+        {
+            name: 'tpslSlBboType',
+            baseName: 'tpsl_sl_bbo_type',
             type: 'string',
         },
     ];
