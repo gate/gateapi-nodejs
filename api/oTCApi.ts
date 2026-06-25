@@ -193,7 +193,7 @@ export class OTCApi {
      * @param bankAddress
      * @param iban
      * @param swift
-     * @param documentationFile Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment).
+     * @param documentationFile 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
      * @param opts Optional parameters
      * @param opts.remittanceLineNumber
      * @param opts.agentBankName
@@ -206,7 +206,7 @@ export class OTCApi {
         bankAddress: string,
         iban: string,
         swift: string,
-        documentationFile: RequestFile,
+        documentationFile: string,
         opts?: { remittanceLineNumber?: string; agentBankName?: string; agentBankSwift?: string },
     ): Promise<{ response: AxiosResponse; body: OtcBankCreateResponse }> {
         const localVarPath = this.client.basePath + '/otc/bank/create';

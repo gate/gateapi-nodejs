@@ -13,5 +13,5 @@ Name | Type | Description | Notes
 **remittanceLineNumber** | **string** |  | [optional] [default to undefined]
 **agentBankName** | **string** |  | [optional] [default to undefined]
 **agentBankSwift** | **string** |  | [optional] [default to undefined]
-**documentationFile** | **RequestFile** | Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment). | [default to undefined]
+**documentationFile** | **string** | 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准） | [default to undefined]
 

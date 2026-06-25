@@ -23,9 +23,9 @@ export class OtcBankCreateMultipartRequest {
     'agentBankName'?: string;
     'agentBankSwift'?: string;
     /**
-     * Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment).
+     * 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
      */
-    'documentationFile': RequestFile;
+    'documentationFile': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -78,7 +78,7 @@ export class OtcBankCreateMultipartRequest {
         {
             name: 'documentationFile',
             baseName: 'documentation_file',
-            type: 'RequestFile',
+            type: 'string',
         },
     ];
 
