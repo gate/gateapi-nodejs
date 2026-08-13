@@ -18,7 +18,7 @@ export class Mt5AccountData {
      */
     'mt5Uid'?: number;
     /**
-     * Position leverage
+     * Leverage multiplier
      */
     'leverage'?: number;
     /**

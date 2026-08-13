@@ -35,7 +35,7 @@ export class FuturesLiqOrder {
      */
     'fillPrice'?: string;
     /**
-     * System liquidation order maker size
+     * Reserved field with no current business significance.
      */
     'left'?: string;
 

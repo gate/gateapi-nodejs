@@ -9,40 +9,22 @@
  * Do not edit the class manually.
  */
 
+/**
+ * Supplementary document item
+ */
 export class OtcBankSupplementChecklistItem {
     /**
-     * Material item code, corresponding to the top-level key of `relationship_proof`
+     * Supplementary document submission description
      */
-    'code': string;
-    'zh'?: string;
-    'en'?: string;
-    /**
-     * Whether required
-     */
-    'required': boolean;
+    'description': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'code',
-            baseName: 'code',
+            name: 'description',
+            baseName: 'description',
             type: 'string',
-        },
-        {
-            name: 'zh',
-            baseName: 'zh',
-            type: 'string',
-        },
-        {
-            name: 'en',
-            baseName: 'en',
-            type: 'string',
-        },
-        {
-            name: 'required',
-            baseName: 'required',
-            type: 'boolean',
         },
     ];
 

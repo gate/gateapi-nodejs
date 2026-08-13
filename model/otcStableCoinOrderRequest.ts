@@ -16,31 +16,31 @@ export class OtcStableCoinOrderRequest {
     /**
      * Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
      */
-    'payCoin'?: string;
+    'payCoin': string;
     /**
      * Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
      */
-    'getCoin'?: string;
+    'getCoin': string;
     /**
      * User payment currency amount
      */
-    'payAmount'?: string;
+    'payAmount': string;
     /**
      * Amount of currency received by the user
      */
-    'getAmount'?: string;
+    'getAmount': string;
     /**
-     * Quote direction returned by the quote API (used for order validation)
+     * The side returned by the quote endpoint (used for order validation). For backward compatibility, `PAY`/`GET` are accepted; new integrations should use the value returned by the quote response.
      */
-    'side'?: string;
+    'side': string;
     /**
-     * promotion code
+     * Promotion code (optional)
      */
     'promotionCode'?: string;
     /**
      * Parameter returned by the quote API
      */
-    'quoteToken'?: string;
+    'quoteToken': string;
 
     static discriminator: string | undefined = undefined;
 

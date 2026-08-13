@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **marginRate** | **string** | Discount | [optional] [default to undefined]
 **lowerLimit** | **string** | Lower limit | [optional] [default to undefined]
 **upperLimit** | **string** | Upper limit, &#x60;&#x60; indicates greater than (the last tier) | [optional] [default to undefined]
-**leverage** | **string** | Position leverage | [optional] [default to undefined]
+**leverage** | **string** | Leverage multiplier | [optional] [default to undefined]
 

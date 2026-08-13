@@ -18,7 +18,7 @@ export class MarginMarketLeverage {
      */
     'currencyPair'?: string;
     /**
-     * Position leverage
+     * Leverage multiplier
      */
     'leverage': string;
 

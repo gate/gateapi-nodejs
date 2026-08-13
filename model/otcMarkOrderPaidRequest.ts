@@ -22,7 +22,7 @@ export class OtcMarkOrderPaidRequest {
      */
     'clientOrderId'?: string;
     /**
-     * User payment receipt: **required**. Stored as a file_key. Single file; jpg/jpeg/png/pdf; ≤4MB.
+     * User payment receipt: **required**. Stored as a file_key. One file; jpg/jpeg/png/pdf; maximum 10 MB.
      */
     'paymentReceiptFileKey': string;
     /**

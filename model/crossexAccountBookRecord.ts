@@ -19,7 +19,7 @@ export class CrossexAccountBookRecord {
      */
     'userId': string;
     /**
-     * Business ID
+     * Business ID. Its meaning varies by `statement_type`. `TRANSACTION`: order ID. `TRADING_FEE`: order ID. `LIQUIDATION_FEE`: liquidation order ID. `FUNDING_FEE`: position ID and funding fee settlement time. For other types, it is a system-generated processing ID with no business meaning.
      */
     'businessId': string;
     /**
@@ -34,6 +34,10 @@ export class CrossexAccountBookRecord {
      * Currency
      */
     'coin': string;
+    /**
+     * Trading Pair
+     */
+    'symbol'?: string;
     /**
      * Change amount (positive indicates transfer in; negative indicates transfer out)
      */
@@ -78,6 +82,11 @@ export class CrossexAccountBookRecord {
         {
             name: 'coin',
             baseName: 'coin',
+            type: 'string',
+        },
+        {
+            name: 'symbol',
+            baseName: 'symbol',
             type: 'string',
         },
         {

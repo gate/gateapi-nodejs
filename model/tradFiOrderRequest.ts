@@ -22,7 +22,7 @@ export class TradFiOrderRequest {
      */
     'priceType': TradFiOrderRequest.PriceType;
     /**
-     * Order side (1=sell, 2=buy)
+     * Side (1=sell, 2=buy)
      */
     'side': TradFiOrderRequest.Side;
     /**
@@ -30,7 +30,7 @@ export class TradFiOrderRequest {
      */
     'symbol': string;
     /**
-     * Order volume
+     * Order quantity
      */
     'volume': string;
     /**

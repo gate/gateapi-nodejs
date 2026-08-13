@@ -22,6 +22,10 @@ export class CrossexSpecialFee {
      * Maker fee rate
      */
     'makerFeeRate': string;
+    /**
+     * RPI order maker fee rate
+     */
+    'rpiFeeRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -39,6 +43,11 @@ export class CrossexSpecialFee {
         {
             name: 'makerFeeRate',
             baseName: 'maker_fee_rate',
+            type: 'string',
+        },
+        {
+            name: 'rpiFeeRate',
+            baseName: 'rpi_fee_rate',
             type: 'string',
         },
     ];

@@ -14,11 +14,11 @@
  */
 export class TradFiTickerData {
     /**
-     * Highest price
+     * High price
      */
     'highestPrice'?: string;
     /**
-     * Lowest price
+     * Low price
      */
     'lowestPrice'?: string;
     /**

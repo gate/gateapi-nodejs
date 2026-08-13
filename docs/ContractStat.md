@@ -26,6 +26,6 @@ Name | Type | Description | Notes
 **shortTakerSize** | **string** | Short taker trade volume (contracts) | [optional] [default to undefined]
 **topLongAccount** | **number** | Number of top long accounts (large holders) | [optional] [default to undefined]
 **topShortAccount** | **number** | Number of top short accounts (large holders) | [optional] [default to undefined]
-**longUsers** | **string** | Number of users holding long positions | [optional] [default to undefined]
-**shortUsers** | **string** | Number of users holding short positions | [optional] [default to undefined]
+**longUsers** | **number** | Number of users holding long positions | [optional] [default to undefined]
+**shortUsers** | **number** | Number of users holding short positions | [optional] [default to undefined]
 

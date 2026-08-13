@@ -9,6 +9,8 @@
  * Do not edit the class manually.
  */
 
+import { P2pAdsListTradeMethod } from './p2pAdsListTradeMethod';
+
 export class P2pAdsListItem {
     /**
      * Serial number
@@ -31,6 +33,10 @@ export class P2pAdsListItem {
      */
     'price'?: string;
     /**
+     * Remaining tradable crypto quantity
+     */
+    'surplusAmount'?: string;
+    /**
      * Maximum crypto size per trade.
      */
     'maxSingleTransAmount'?: string;
@@ -38,6 +44,26 @@ export class P2pAdsListItem {
      * Minimum crypto size per trade.
      */
     'minSingleTransAmount'?: string;
+    /**
+     * Minimum fiat amount per order
+     */
+    'fiatMinAmount'?: string;
+    /**
+     * Maximum fiat amount per order
+     */
+    'fiatMaxAmount'?: string;
+    /**
+     * Trading limit unit. 0: crypto quantity, 1: fiat amount
+     */
+    'limitBasis'?: P2pAdsListItem.LimitBasis;
+    /**
+     * Trading limit unit label. crypto: crypto quantity, fiat: fiat amount
+     */
+    'limitBasisText'?: P2pAdsListItem.LimitBasisText;
+    /**
+     * Supported payment methods list
+     */
+    'tradeMethods'?: Array<P2pAdsListTradeMethod>;
     /**
      * Advertiser Nickname
      */
@@ -72,6 +98,11 @@ export class P2pAdsListItem {
             type: 'string',
         },
         {
+            name: 'surplusAmount',
+            baseName: 'surplus_amount',
+            type: 'string',
+        },
+        {
             name: 'maxSingleTransAmount',
             baseName: 'max_single_trans_amount',
             type: 'string',
@@ -82,6 +113,31 @@ export class P2pAdsListItem {
             type: 'string',
         },
         {
+            name: 'fiatMinAmount',
+            baseName: 'fiat_min_amount',
+            type: 'string',
+        },
+        {
+            name: 'fiatMaxAmount',
+            baseName: 'fiat_max_amount',
+            type: 'string',
+        },
+        {
+            name: 'limitBasis',
+            baseName: 'limit_basis',
+            type: 'P2pAdsListItem.LimitBasis',
+        },
+        {
+            name: 'limitBasisText',
+            baseName: 'limit_basis_text',
+            type: 'P2pAdsListItem.LimitBasisText',
+        },
+        {
+            name: 'tradeMethods',
+            baseName: 'trade_methods',
+            type: 'Array<P2pAdsListTradeMethod>',
+        },
+        {
             name: 'nickName',
             baseName: 'nick_name',
             type: 'string',
@@ -90,5 +146,16 @@ export class P2pAdsListItem {
 
     static getAttributeTypeMap() {
         return P2pAdsListItem.attributeTypeMap;
+    }
+}
+
+export namespace P2pAdsListItem {
+    export enum LimitBasis {
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
+    }
+    export enum LimitBasisText {
+        Crypto = <any>'crypto',
+        Fiat = <any>'fiat',
     }
 }

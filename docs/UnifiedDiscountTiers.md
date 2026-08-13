@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **discount** | **string** | Discount | [optional] [default to undefined]
 **lowerLimit** | **string** | Lower limit | [optional] [default to undefined]
 **upperLimit** | **string** | Upper limit, + indicates positive infinity | [optional] [default to undefined]
-**leverage** | **string** | Position leverage | [optional] [default to undefined]
+**leverage** | **string** | Leverage multiplier | [optional] [default to undefined]
 

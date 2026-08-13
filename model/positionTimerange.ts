@@ -38,7 +38,7 @@ export class PositionTimerange {
      */
     'maintenanceRate'?: string;
     /**
-     * Position margin
+     * Margin
      */
     'margin'?: string;
     /**

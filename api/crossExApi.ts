@@ -15,6 +15,8 @@ import { CrossexAccountBookRecord } from '../model/crossexAccountBookRecord';
 import { CrossexAccountUpdateRequest } from '../model/crossexAccountUpdateRequest';
 import { CrossexAccountUpdateResponse } from '../model/crossexAccountUpdateResponse';
 import { CrossexAdlRank } from '../model/crossexAdlRank';
+import { CrossexBatchCancelOrderRequest } from '../model/crossexBatchCancelOrderRequest';
+import { CrossexBatchCancelOrderResponse } from '../model/crossexBatchCancelOrderResponse';
 import { CrossexClosePositionRequest } from '../model/crossexClosePositionRequest';
 import { CrossexCoinDiscountRate } from '../model/crossexCoinDiscountRate';
 import { CrossexConvertOrderRequest } from '../model/crossexConvertOrderRequest';
@@ -24,9 +26,13 @@ import { CrossexConvertQuoteResponse } from '../model/crossexConvertQuoteRespons
 import { CrossexHistoricalMarginPosition } from '../model/crossexHistoricalMarginPosition';
 import { CrossexHistoricalPosition } from '../model/crossexHistoricalPosition';
 import { CrossexInterestRate } from '../model/crossexInterestRate';
+import { CrossexIsolatedMarginRequest } from '../model/crossexIsolatedMarginRequest';
+import { CrossexIsolatedMarginResponse } from '../model/crossexIsolatedMarginResponse';
 import { CrossexLeverageRequest } from '../model/crossexLeverageRequest';
 import { CrossexLeverageResponse } from '../model/crossexLeverageResponse';
 import { CrossexMarginInterestRecord } from '../model/crossexMarginInterestRecord';
+import { CrossexMarginModeRequest } from '../model/crossexMarginModeRequest';
+import { CrossexMarginModeResponse } from '../model/crossexMarginModeResponse';
 import { CrossexMarginPosition } from '../model/crossexMarginPosition';
 import { CrossexOrder } from '../model/crossexOrder';
 import { CrossexOrderActionResponse } from '../model/crossexOrderActionResponse';
@@ -40,6 +46,8 @@ import { CrossexTransferRecord } from '../model/crossexTransferRecord';
 import { CrossexTransferRequest } from '../model/crossexTransferRequest';
 import { CrossexTransferResponse } from '../model/crossexTransferResponse';
 import { InlineResponse200 } from '../model/inlineResponse200';
+import { InlineResponse2001 } from '../model/inlineResponse2001';
+import { InlineResponse2002 } from '../model/inlineResponse2002';
 import { Symbol } from '../model/symbol';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -144,7 +152,7 @@ export class CrossExApi {
     }
 
     /**
-     * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * `est_fee`: On-chain withdrawal fee. When a fund transfer involves an on-chain withdrawal, the exchange charges this fee. This value is for reference only; the actual fee charged by the exchange applies
      * @summary Query supported transfer currencies
      * @param opts Optional parameters
      * @param opts.coin Query by specified currency name
@@ -316,7 +324,7 @@ export class CrossExApi {
 
     /**
      * Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
-     * @summary Create an order
+     * @summary Create order
      * @param opts Optional parameters
      * @param opts.crossexOrderRequest
      */
@@ -346,6 +354,48 @@ export class CrossExApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<CrossexOrderActionResponse>(config, 'CrossexOrderActionResponse', authSettings);
+    }
+
+    /**
+     * Cancel multiple specified orders. Either order_id or text is required; if both are provided, order_id takes precedence. Rate limit: 100 requests per 10 seconds
+     * @summary Batch cancel orders
+     * @param crossexBatchCancelOrderRequest
+     */
+    public async cancelBatchCrossexOrders(
+        crossexBatchCancelOrderRequest: Array<CrossexBatchCancelOrderRequest>,
+    ): Promise<{ response: AxiosResponse; body: Array<CrossexBatchCancelOrderResponse> }> {
+        const localVarPath = this.client.basePath + '/crossex/batch_cancel_orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'crossexBatchCancelOrderRequest' is not null or undefined
+        if (crossexBatchCancelOrderRequest === null || crossexBatchCancelOrderRequest === undefined) {
+            throw new Error(
+                'Required parameter crossexBatchCancelOrderRequest was null or undefined when calling cancelBatchCrossexOrders.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(crossexBatchCancelOrderRequest, 'Array<CrossexBatchCancelOrderRequest>'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<CrossexBatchCancelOrderResponse>>(
+            config,
+            'Array<CrossexBatchCancelOrderResponse>',
+            authSettings,
+        );
     }
 
     /**
@@ -464,7 +514,7 @@ export class CrossExApi {
     }
 
     /**
-     * Rate Limit: 100 requests per day
+     * Rate limit: 100 requests per day For HYPERLIQUID, swaps between `HYPERLIQUID_USDC` and `CROSSEX_USDT` are supported. Flash Swap in isolated exchange mode is not currently supported for HYPERLIQUID
      * @summary Flash Swap Inquiry
      * @param opts Optional parameters
      * @param opts.crossexConvertQuoteRequest
@@ -535,7 +585,7 @@ export class CrossExApi {
      * Rate Limit: 200 requests per 10 seconds If 100% ≤ initial_margin_rate < 110%, transferring out the margin currency is prohibited. If initial_margin_rate < 100%, the system will automatically cancel orders; only closing positions is allowed, not opening new ones. If maintenance_margin_rate ≤ 100%, the system will force liquidation.
      * @summary Query Account Assets
      * @param opts Optional parameters
-     * @param opts.exchangeType Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;).
+     * @param opts.exchangeType Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;).
      */
     public async getCrossexAccount(opts?: {
         exchangeType?: string;
@@ -757,7 +807,7 @@ export class CrossExApi {
     }
 
     /**
-     * Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FUTURE or MARGIN positions.  Prerequisites before using this interface: - No pending orders for the symbol exist in the current account. - When the system detects the position meets any of the following limits while prerequisites are met: - Less than or equal to the minimum notional amount (minNotional) - Less than or equal to the minimum order quantity (minSize)  After meeting the conditions, the system will automatically generate a close-out order and immediately fully close the position. This interface is used to avoid issues where orders are too small to be placed on the exchange, ensuring small positions can be closed smoothly when reaching the threshold.
+     * Rate limit: 100 requests per day. Automatic position-closing rules. FUTURE and MARGIN positions are supported.  Before using this endpoint, ensure that the following prerequisite is met: - There are no open orders for the symbol in the current account. - Once the prerequisite is met, the system checks whether the position meets either of the following conditions: - Less than the minimum notional amount (minNotional) - Less than the minimum order size (minSize)  When either condition is met, the system automatically creates a closing order and immediately closes the entire position. This endpoint prevents positions that are too small to be submitted to an exchange from becoming stranded and ensures that small positions can be closed when they fall below the threshold.
      * @summary Full Close Position
      * @param opts Optional parameters
      * @param opts.crossexClosePositionRequest
@@ -788,6 +838,122 @@ export class CrossExApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<CrossexOrderActionResponse>(config, 'CrossexOrderActionResponse', authSettings);
+    }
+
+    /**
+     * Rate Limit: 200 requests per 10 seconds
+     * @summary Get futures position margin mode
+     * @param symbol Futures trading pair
+     */
+    public async getCrossexPositionsMarginMode(
+        symbol: string,
+    ): Promise<{ response: AxiosResponse; body: CrossexMarginModeResponse }> {
+        const localVarPath = this.client.basePath + '/crossex/positions/margin_mode';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'symbol' is not null or undefined
+        if (symbol === null || symbol === undefined) {
+            throw new Error(
+                'Required parameter symbol was null or undefined when calling getCrossexPositionsMarginMode.',
+            );
+        }
+
+        let symbolSerialized = ObjectSerializer.serialize(symbol, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(symbolSerialized)) {
+            symbolSerialized = symbolSerialized.join(',');
+        }
+        localVarQueryParameters['symbol'] = symbolSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<CrossexMarginModeResponse>(config, 'CrossexMarginModeResponse', authSettings);
+    }
+
+    /**
+     * Rate limit: 100 requests per 10 seconds. Only Hyperliquid futures trading pairs are supported. The margin mode cannot be changed while open orders or positions exist
+     * @summary Update futures position margin mode
+     * @param opts Optional parameters
+     * @param opts.crossexMarginModeRequest
+     */
+    public async updateCrossexPositionsMarginMode(opts?: {
+        crossexMarginModeRequest?: CrossexMarginModeRequest;
+    }): Promise<{ response: AxiosResponse; body: CrossexMarginModeResponse }> {
+        const localVarPath = this.client.basePath + '/crossex/positions/margin_mode';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(opts.crossexMarginModeRequest, 'CrossexMarginModeRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<CrossexMarginModeResponse>(config, 'CrossexMarginModeResponse', authSettings);
+    }
+
+    /**
+     * Rate limit: 100 requests per 10 seconds. Only Hyperliquid isolated futures positions are supported. Positive values increase margin, while negative values decrease margin
+     * @summary Increase or decrease isolated margin
+     * @param opts Optional parameters
+     * @param opts.crossexIsolatedMarginRequest
+     */
+    public async updateCrossexPositionsMargin(opts?: {
+        crossexIsolatedMarginRequest?: CrossexIsolatedMarginRequest;
+    }): Promise<{ response: AxiosResponse; body: CrossexIsolatedMarginResponse }> {
+        const localVarPath = this.client.basePath + '/crossex/positions/margin';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(opts.crossexIsolatedMarginRequest, 'CrossexIsolatedMarginRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<CrossexIsolatedMarginResponse>(
+            config,
+            'CrossexIsolatedMarginResponse',
+            authSettings,
+        );
     }
 
     /**
@@ -978,7 +1144,7 @@ export class CrossExApi {
      * @summary Query ADL Position Reduction Ranking
      * @param symbol Trading Pair
      */
-    public async listCrossexAdlRank(symbol: string): Promise<{ response: AxiosResponse; body: Array<CrossexAdlRank> }> {
+    public async listCrossexAdlRank(symbol: string): Promise<{ response: AxiosResponse; body: CrossexAdlRank }> {
         const localVarPath = this.client.basePath + '/crossex/adl_rank';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1010,7 +1176,7 @@ export class CrossExApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<CrossexAdlRank>>(config, 'Array<CrossexAdlRank>', authSettings);
+        return this.client.request<CrossexAdlRank>(config, 'CrossexAdlRank', authSettings);
     }
 
     /**
@@ -1078,7 +1244,7 @@ export class CrossExApi {
 
     /**
      * Rate Limit: 200 requests per 10 seconds
-     * @summary queryorderhistory
+     * @summary Query order history
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in a single list
@@ -1452,7 +1618,7 @@ export class CrossExApi {
 
     /**
      * Rate Limit: 200 requests per 10 seconds
-     * @summary queryfilledhistory
+     * @summary Query filled history
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number returned by list, max 1000
@@ -1640,7 +1806,7 @@ export class CrossExApi {
      * @summary Query Currency Discount Rate
      * @param opts Optional parameters
      * @param opts.coin Query by specified currency name
-     * @param opts.exchangeType OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID
+     * @param opts.exchangeType OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT
      */
     public async listCrossexCoinDiscountRate(opts?: {
         coin?: string;
@@ -1689,5 +1855,87 @@ export class CrossExApi {
             'Array<CrossexCoinDiscountRate>',
             authSettings,
         );
+    }
+
+    /**
+     * Rate limit: 1 request per second - Margin trading pairs cannot be passed directly as parameters. For example, `GATE_MARGIN_BTC_USDT` is invalid.
+     * @summary Get exchange tickers
+     * @param opts Optional parameters
+     * @param opts.symbols Trading Pair List, multiple separated by commas
+     */
+    public async listCrossexMarketTickers(opts?: {
+        symbols?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse2001> }> {
+        const localVarPath = this.client.basePath + '/crossex/market/tickers';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.symbols !== undefined) {
+            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(symbolsSerialized)) {
+                symbolsSerialized = symbolsSerialized.join(',');
+            }
+            localVarQueryParameters['symbols'] = symbolsSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<InlineResponse2001>>(config, 'Array<InlineResponse2001>', authSettings);
+    }
+
+    /**
+     * Rate limit: 1 request per second - For `Deribit`, `funding_rate` is the current real-time rate calculated over an 8-hour period.
+     * @summary Get exchange futures funding rate information
+     * @param opts Optional parameters
+     * @param opts.symbols Trading Pair List, multiple separated by commas
+     */
+    public async listCrossexMarketFundingInfo(opts?: {
+        symbols?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<InlineResponse2002> }> {
+        const localVarPath = this.client.basePath + '/crossex/market/funding_info';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.symbols !== undefined) {
+            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(symbolsSerialized)) {
+                symbolsSerialized = symbolsSerialized.join(',');
+            }
+            localVarQueryParameters['symbols'] = symbolsSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<InlineResponse2002>>(config, 'Array<InlineResponse2002>', authSettings);
     }
 }

@@ -22,11 +22,11 @@ export class FuturesPremiumIndex {
      */
     'c'?: string;
     /**
-     * Highest price
+     * High price
      */
     'h'?: string;
     /**
-     * Lowest price
+     * Low price
      */
     'l'?: string;
     /**

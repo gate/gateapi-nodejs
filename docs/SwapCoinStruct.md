@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **amount** | **string** | Amount | [optional] [default to undefined]
 **exchangeRate** | **string** | Exchange ratio | [optional] [default to undefined]
 **exchangeAmount** | **string** | Redemption Amount | [optional] [default to undefined]
-**updateStamp** | **number** | UpdateTimestamp | [optional] [default to undefined]
+**updateStamp** | **number** | Update timestamp | [optional] [default to undefined]
 **createStamp** | **number** | Transaction timestamp | [optional] [default to undefined]
 **status** | **number** | status 1-success | [optional] [default to undefined]
 **protocolType** | **number** | DEFI Protocol Type | [optional] [default to undefined]

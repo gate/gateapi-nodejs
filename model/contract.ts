@@ -98,7 +98,7 @@ export class Contract {
      */
     'riskLimitMax'?: string;
     /**
-     * Minimum order size allowed by the contract
+     * Minimum order quantity
      */
     'orderSizeMin'?: string;
     /**
@@ -106,7 +106,7 @@ export class Contract {
      */
     'enableDecimal'?: boolean;
     /**
-     * Maximum order size allowed by the contract
+     * Maximum order quantity
      */
     'orderSizeMax'?: string;
     /**

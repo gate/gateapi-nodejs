@@ -62,7 +62,7 @@ export class FlashSwapOrderCreateRespData {
      */
     'price'?: string;
     /**
-     * Order Status
+     * Order status
      */
     'status'?: number;
     /**

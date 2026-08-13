@@ -15,7 +15,7 @@ export class CreateUserRespData {
      */
     'status'?: number;
     /**
-     * leverage
+     * Leverage
      */
     'leverage'?: number;
     /**

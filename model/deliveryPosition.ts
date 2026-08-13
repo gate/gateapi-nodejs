@@ -48,7 +48,7 @@ export class DeliveryPosition {
      */
     'value'?: string;
     /**
-     * Position margin
+     * Margin
      */
     'margin'?: string;
     /**

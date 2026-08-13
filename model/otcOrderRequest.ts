@@ -18,7 +18,7 @@ export class OtcOrderRequest {
      */
     'type': string;
     /**
-     * Quote direction returned by the quote API (used for order validation)
+     * The side returned by the quote endpoint (used for order validation). For backward compatibility, `FIAT`/`CRYPTO` or `PAY`/`GET` are accepted; new integrations should use the value returned by the quote response.
      */
     'side': string;
     /**
@@ -46,7 +46,7 @@ export class OtcOrderRequest {
      */
     'quoteToken': string;
     /**
-     * The bank card ID used for placing the order; select it from the list returned by `GET /otc/bank_list` (or `GET /otc/bank/list`); the default card has `is_default=1`
+     * Bank card ID used to place the order. Select one from the list returned by `GET /otc/bank/list`; the default card has `is_default=1`.
      */
     'bankId': string;
 

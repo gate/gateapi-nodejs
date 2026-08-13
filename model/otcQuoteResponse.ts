@@ -15,6 +15,10 @@ export class OtcQuoteResponse {
     'code': number;
     'message': string;
     'data': OtcQuoteResult;
+    /**
+     * Server Unix timestamp in seconds
+     */
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
@@ -33,6 +37,11 @@ export class OtcQuoteResponse {
             name: 'data',
             baseName: 'data',
             type: 'OtcQuoteResult',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **minQuoteAmount** | **string** | Minimum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
 **maxBaseAmount** | **string** | Maximum amount of base currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
 **maxQuoteAmount** | **string** | Maximum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
-**amountPrecision** | **number** | Amount scale | [optional] [default to undefined]
-**precision** | **number** | Price scale | [optional] [default to undefined]
+**amountPrecision** | **number** | Quantity precision | [optional] [default to undefined]
+**precision** | **number** | Price precision | [optional] [default to undefined]
 **tradeStatus** | **string** | Trading status  - untradable: cannot be traded - buyable: can be bought - sellable: can be sold - tradable: can be bought and sold | [optional] [default to undefined]
 **sellStart** | **number** | Sell start unix timestamp in seconds | [optional] [default to undefined]
 **buyStart** | **number** | Buy start unix timestamp in seconds | [optional] [default to undefined]
@@ -26,8 +26,8 @@ Name | Type | Description | Notes
 **upRate** | **string** | Maximum Quote Rise Percentage | [optional] [default to undefined]
 **downRate** | **string** | Maximum Quote Decline Percentage | [optional] [default to undefined]
 **slippage** | **string** | Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%) | [optional] [default to undefined]
-**marketOrderMaxStock** | **string** | Maximum Market Order Quantity | [optional] [default to undefined]
-**marketOrderMaxMoney** | **string** | Maximum Market Order Amount | [optional] [default to undefined]
+**marketOrderMaxStock** | **string** | Maximum market order quantity. &#x60;null&#x60; or &#x60;0&#x60; means no limit | [optional] [default to undefined]
+**marketOrderMaxMoney** | **string** | Maximum market order amount. &#x60;null&#x60; or &#x60;0&#x60; means no limit | [optional] [default to undefined]
 
 ## Enum: CurrencyPair.TradeStatus
 

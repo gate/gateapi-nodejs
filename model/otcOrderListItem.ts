@@ -30,16 +30,15 @@ export class OtcOrderListItem {
      */
     'tradeNo'?: string;
     /**
-     * Quote direction buy/sell/all
+     * BUY deposit / SELL withdrawal
      */
     'type'?: string;
     /**
-     * Order Status
+     * Order status
      */
     'status'?: string;
-    'dbStatus'?: string;
     /**
-     * Fiat type
+     * Fiat currency
      */
     'fiatCurrency'?: string;
     'fiatCurrencyInfo'?: OtcOrderListFiatCurrencyInfo;
@@ -48,30 +47,18 @@ export class OtcOrderListItem {
      */
     'fiatAmount'?: string;
     /**
-     * Stablecoin
+     * Digital currency
      */
     'cryptoCurrency'?: string;
     'cryptoCurrencyInfo'?: OtcOrderListCryptoCurrencyInfo;
     /**
-     * Stablecoin amount
+     * Cryptocurrency amount
      */
     'cryptoAmount'?: string;
     /**
      * Exchange rate
      */
     'rate'?: string;
-    /**
-     * Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
-     */
-    'transferRemark'?: string;
-    /**
-     * Unique bank transfer reference code for deposit buy orders (SGB deposit scenario)
-     */
-    'referenceCode'?: string;
-    /**
-     * Bank account
-     */
-    'gateBankAccountIban'?: string;
     /**
      * Promotion code
      */
@@ -111,11 +98,6 @@ export class OtcOrderListItem {
             type: 'string',
         },
         {
-            name: 'dbStatus',
-            baseName: 'db_status',
-            type: 'string',
-        },
-        {
             name: 'fiatCurrency',
             baseName: 'fiat_currency',
             type: 'string',
@@ -148,21 +130,6 @@ export class OtcOrderListItem {
         {
             name: 'rate',
             baseName: 'rate',
-            type: 'string',
-        },
-        {
-            name: 'transferRemark',
-            baseName: 'transfer_remark',
-            type: 'string',
-        },
-        {
-            name: 'referenceCode',
-            baseName: 'reference_code',
-            type: 'string',
-        },
-        {
-            name: 'gateBankAccountIban',
-            baseName: 'gate_bank_account_iban',
             type: 'string',
         },
         {

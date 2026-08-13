@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Record ID | [default to undefined]
-**type** | **string** | type | [default to undefined]
+**type** | **string** | Type | [default to undefined]
 **money** | **string** | SourceCurrency | [default to undefined]
 **userId** | **number** | User ID | [default to undefined]
 **planId** | **number** | Plan ID | [default to undefined]

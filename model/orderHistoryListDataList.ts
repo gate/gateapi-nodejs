@@ -22,7 +22,7 @@ export class OrderHistoryListDataList {
      */
     'symbol'?: string;
     /**
-     * Trading symbol description
+     * Symbol description
      */
     'symbolDesc'?: string;
     /**
@@ -42,11 +42,11 @@ export class OrderHistoryListDataList {
      */
     'stateDesc'?: string;
     /**
-     * Order side (1=sell, 2=buy)
+     * Side (1=sell, 2=buy)
      */
     'side'?: OrderHistoryListDataList.Side;
     /**
-     * Order volume
+     * Order quantity
      */
     'volume'?: string;
     /**

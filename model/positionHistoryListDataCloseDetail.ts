@@ -18,7 +18,7 @@ export class PositionHistoryListDataCloseDetail {
      */
     'marginLevel'?: string;
     /**
-     * Position margin
+     * Margin
      */
     'margin'?: string;
     /**

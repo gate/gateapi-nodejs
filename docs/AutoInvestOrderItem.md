@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Order ID | [default to undefined]
-**type** | **string** | type | [default to undefined]
+**type** | **string** | Type | [default to undefined]
 **amount** | **string** | Size | [default to undefined]
 **planId** | **number** | Plan ID | [default to undefined]
 **side** | **number** | direction | [default to undefined]

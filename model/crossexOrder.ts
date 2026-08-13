@@ -43,7 +43,7 @@ export class CrossexOrder {
      */
     'attribute': string;
     /**
-     * Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
+     * Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
      */
     'exchangeType': string;
     /**
@@ -63,7 +63,7 @@ export class CrossexOrder {
      */
     'price': string;
     /**
-     * Time in force (default `GTC`; enum: `GTC` / `IOC` / `FOK` / `POC`).
+     * Time-in-force policy (default: GTC; allowed values: GTC, IOC, FOK, POC, and RPI)
      */
     'timeInForce': string;
     /**

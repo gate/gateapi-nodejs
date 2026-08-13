@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **periodType** | **string** | Cycle type（e.g., monthly） | [default to undefined]
 **periodDay** | **number** | Cycle day | [default to undefined]
 **periodHour** | **number** | CycleHours | [default to undefined]
-**portfolio** | [**Array&lt;AutoInvestPortfolioItem&gt;**](AutoInvestPortfolioItem.md) | InvestmentPortfolio | [default to undefined]
+**portfolio** | [**Array&lt;AutoInvestPortfolioItem&gt;**](AutoInvestPortfolioItem.md) | Portfolio | [default to undefined]
 **nextTime** | **number** | Next execution time (Unix timestamp) | [default to undefined]
 **period** | **number** | Executed periods | [default to undefined]
 **fundSource** | **string** | Fund source（spot/earn） | [default to undefined]

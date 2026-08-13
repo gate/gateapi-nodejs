@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**listCurrencyDiscountTiers**](UnifiedApi.md#listCurrencyDiscountTiers) | **GET** /unified/currency_discount_tiers | Query unified account tiered
 [**listLoanMarginTiers**](UnifiedApi.md#listLoanMarginTiers) | **GET** /unified/loan_margin_tiers | Query unified account tiered loan margin
 [**calculatePortfolioMargin**](UnifiedApi.md#calculatePortfolioMargin) | **POST** /unified/portfolio_calculator | Portfolio margin calculator
+[**setUserLeverage**](UnifiedApi.md#setUserLeverage) | **POST** /unified/leverage/user_setting | Set leverage for all of the user\&#39;s borrowed currencies
 [**getUserLeverageCurrencyConfig**](UnifiedApi.md#getUserLeverageCurrencyConfig) | **GET** /unified/leverage/user_currency_config | Maximum and minimum currency leverage that can be set
 [**getUserLeverageCurrencySetting**](UnifiedApi.md#getUserLeverageCurrencySetting) | **GET** /unified/leverage/user_currency_setting | Get user currency leverage
 [**setUserLeverageCurrencySetting**](UnifiedApi.md#setUserLeverageCurrencySetting) | **POST** /unified/leverage/user_currency_setting | Set loan currency leverage
@@ -738,6 +739,51 @@ Promise<{ response: AxiosResponse; body: UnifiedPortfolioOutput; }> [UnifiedPort
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## setUserLeverage
+
+> Promise<{ response: http.IncomingMessage; body: Array<LeverageFailedCurrencies>; }> setUserLeverage(userLeverageSetting)
+
+Set leverage for all of the user\&#39;s borrowed currencies
+
+Note the following: - Leverage cannot be changed for currencies with outstanding loans. - A leverage value above a currency\&#39;s limit is capped at that limit. - Failures are not rolled back and affect only the currencies that failed. For example, if USDT has an outstanding loan, only the USDT leverage remains unchanged.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.UnifiedApi(client);
+const userLeverageSetting = new UserLeverageSetting(); // UserLeverageSetting | 
+api.setUserLeverage(userLeverageSetting)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userLeverageSetting** | [**UserLeverageSetting**](UserLeverageSetting.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<LeverageFailedCurrencies>; }> [LeverageFailedCurrencies](LeverageFailedCurrencies.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 

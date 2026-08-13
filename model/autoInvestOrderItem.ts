@@ -18,7 +18,7 @@ export class AutoInvestOrderItem {
      */
     'id': number;
     /**
-     * type
+     * Type
      */
     'type': string;
     /**

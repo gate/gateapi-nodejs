@@ -54,11 +54,11 @@ export class CurrencyPair {
      */
     'maxQuoteAmount'?: string;
     /**
-     * Amount scale
+     * Quantity precision
      */
     'amountPrecision'?: number;
     /**
-     * Price scale
+     * Price precision
      */
     'precision'?: number;
     /**
@@ -102,11 +102,11 @@ export class CurrencyPair {
      */
     'slippage'?: string;
     /**
-     * Maximum Market Order Quantity
+     * Maximum market order quantity. `null` or `0` means no limit
      */
     'marketOrderMaxStock'?: string;
     /**
-     * Maximum Market Order Amount
+     * Maximum market order amount. `null` or `0` means no limit
      */
     'marketOrderMaxMoney'?: string;
 

@@ -166,7 +166,7 @@ export class TrailOrder {
      */
     'errorLabel'?: string;
     /**
-     * leverage
+     * Leverage
      */
     'leverage'?: string;
 

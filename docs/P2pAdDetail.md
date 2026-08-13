@@ -7,8 +7,12 @@ Name | Type | Description | Notes
 **rate** | **string** | Advertisement price. | [optional] [default to undefined]
 **type** | **string** | Ad side: &#x60;buy&#x60; buy-crypto ad; &#x60;sell&#x60; sell-crypto ad. | [optional] [default to undefined]
 **amount** | **string** | Remaining crypto amount on the ad. | [optional] [default to undefined]
-**minAmount** | **string** | Minimum trade amount in &#x60;want_type&#x60;. | [optional] [default to undefined]
-**maxAmount** | **string** | Maximum trade amount priced in &#x60;want_type&#x60;. | [optional] [default to undefined]
+**minAmount** | **string** | Minimum quantity per order, denominated by currency_type | [optional] [default to undefined]
+**maxAmount** | **string** | Maximum quantity per order, denominated by currency_type | [optional] [default to undefined]
+**fiatMinAmount** | **string** | Minimum trade amount in &#x60;want_type&#x60;. | [optional] [default to undefined]
+**fiatMaxAmount** | **string** | Maximum trade amount priced in &#x60;want_type&#x60;. | [optional] [default to undefined]
+**limitBasis** | **number** | Trading limit unit. 0: crypto quantity, 1: fiat amount | [optional] [default to undefined]
+**limitBasisText** | **string** | Trading limit unit label. crypto: crypto quantity, fiat: fiat amount | [optional] [default to undefined]
 **total** | **string** | Fiat amount | [optional] [default to undefined]
 **payAli** | **number** | Whether Alipay is supported. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] [default to undefined]
 **payBank** | **number** | Whether bank transfer is supported. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] [default to undefined]
@@ -33,6 +37,7 @@ Name | Type | Description | Notes
 **tierLimit** | **number** | Tier limit | [optional] [default to undefined]
 **regTimeLimit** | **number** | Registration time limit | [optional] [default to undefined]
 **advertisersLimit** | **number** | Whether trading with the advertiser is restricted. &#x60;0&#x60;: no; &#x60;1&#x60;: yes. | [optional] [default to undefined]
+**polymarketLimit** | **number** | Whether to restrict trading with Polymarket users. 0: no restriction, 1: restricted | [optional] [default to undefined]
 **minCompletedLimit** | **number** | Minimum limit of completed orders | [optional] [default to undefined]
 **maxCompletedLimit** | **number** | Maximum limit of completed orders | [optional] [default to undefined]
 **userOrdersLimit** | **number** | Order count limit | [optional] [default to undefined]
@@ -41,4 +46,18 @@ Name | Type | Description | Notes
 **limitCountryEn** | **string** | Restricted nationality (English) | [optional] [default to undefined]
 **isHedge** | **number** | Whether auto-delegation is enabled. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] [default to undefined]
 **hidePayment** | **number** | Whether payment methods are hidden. &#x60;1&#x60;: hidden; &#x60;0&#x60;: visible. | [optional] [default to undefined]
+
+## Enum: P2pAdDetail.LimitBasis
+
+* `NUMBER_0` (value: `0`)
+
+* `NUMBER_1` (value: `1`)
+
+
+## Enum: P2pAdDetail.LimitBasisText
+
+* `Crypto` (value: `'crypto'`)
+
+* `Fiat` (value: `'fiat'`)
+
 

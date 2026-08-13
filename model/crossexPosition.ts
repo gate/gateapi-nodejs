@@ -31,6 +31,14 @@ export class CrossexPosition {
      */
     'initialMargin'?: string;
     /**
+     * Isolated margin. It is 0 in cross margin mode and applies only to isolated margin positions
+     */
+    'isolatedMargin'?: string;
+    /**
+     * Margin mode (CROSS/ISOLATED)
+     */
+    'marginMode'?: string;
+    /**
      * Maintenance margin
      */
     'maintenanceMargin'?: string;
@@ -55,6 +63,10 @@ export class CrossexPosition {
      */
     'entryPrice'?: string;
     /**
+     * Liquidation price. It is 0 in cross margin mode and applies only to isolated margin positions; 0 in isolated margin mode means the position will not be liquidated
+     */
+    'liqPrice'?: string;
+    /**
      * Mark price
      */
     'markPrice'?: string;
@@ -75,7 +87,7 @@ export class CrossexPosition {
      */
     'fee'?: string;
     /**
-     * Position Funding Fee
+     * Accumulated position funding fee. A positive value indicates a gain, while a negative value indicates a loss.
      */
     'fundingFee'?: string;
     /**
@@ -124,6 +136,16 @@ export class CrossexPosition {
             type: 'string',
         },
         {
+            name: 'isolatedMargin',
+            baseName: 'isolated_margin',
+            type: 'string',
+        },
+        {
+            name: 'marginMode',
+            baseName: 'margin_mode',
+            type: 'string',
+        },
+        {
             name: 'maintenanceMargin',
             baseName: 'maintenance_margin',
             type: 'string',
@@ -151,6 +173,11 @@ export class CrossexPosition {
         {
             name: 'entryPrice',
             baseName: 'entry_price',
+            type: 'string',
+        },
+        {
+            name: 'liqPrice',
+            baseName: 'liq_price',
             type: 'string',
         },
         {

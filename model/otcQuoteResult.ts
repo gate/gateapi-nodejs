@@ -54,6 +54,18 @@ export class OtcQuoteResult {
      * Quote token required when placing an order
      */
     'quoteToken': string;
+    /**
+     * Quote validity period (seconds)
+     */
+    'validityPeriod'?: string;
+    /**
+     * Quote refresh limit
+     */
+    'refreshLimit'?: number;
+    /**
+     * Quote refresh limit message
+     */
+    'refreshLimitMsg'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -111,6 +123,21 @@ export class OtcQuoteResult {
         {
             name: 'quoteToken',
             baseName: 'quote_token',
+            type: 'string',
+        },
+        {
+            name: 'validityPeriod',
+            baseName: 'validity_period',
+            type: 'string',
+        },
+        {
+            name: 'refreshLimit',
+            baseName: 'refresh_limit',
+            type: 'number',
+        },
+        {
+            name: 'refreshLimitMsg',
+            baseName: 'refresh_limit_msg',
             type: 'string',
         },
     ];

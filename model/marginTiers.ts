@@ -27,7 +27,7 @@ export class MarginTiers {
      */
     'upperLimit'?: string;
     /**
-     * Position leverage
+     * Leverage multiplier
      */
     'leverage'?: string;
 

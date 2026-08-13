@@ -15,4 +15,7 @@ Name | Type | Description | Notes
 **side** | **string** | Quote method | [default to undefined]
 **orderType** | **string** | Order type: FIAT (fiat) / STABLE (stablecoin) | [default to undefined]
 **quoteToken** | **string** | Quote token required when placing an order | [default to undefined]
+**validityPeriod** | **string** | Quote validity period (seconds) | [optional] [default to undefined]
+**refreshLimit** | **number** | Quote refresh limit | [optional] [default to undefined]
+**refreshLimitMsg** | **string** | Quote refresh limit message | [optional] [default to undefined]
 

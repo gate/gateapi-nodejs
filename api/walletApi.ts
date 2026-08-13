@@ -10,6 +10,7 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { AccountTransferDetail } from '../model/accountTransferDetail';
 import { ConvertSmallBalance } from '../model/convertSmallBalance';
 import { CurrencyChain } from '../model/currencyChain';
 import { DepositAddress } from '../model/depositAddress';
@@ -334,6 +335,46 @@ export class WalletApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<DepositRecord>>(config, 'Array<DepositRecord>', authSettings);
+    }
+
+    /**
+     * Get the current user\'s trading account transfer details using the tx_id returned by the transfer endpoint
+     * @summary Get trading account transfer
+     * @param txId Transfer transaction ID
+     */
+    public async getTransfer(txId: string): Promise<{ response: AxiosResponse; body: AccountTransferDetail }> {
+        const localVarPath = this.client.basePath + '/wallet/transfers';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'txId' is not null or undefined
+        if (txId === null || txId === undefined) {
+            throw new Error('Required parameter txId was null or undefined when calling getTransfer.');
+        }
+
+        let txIdSerialized = ObjectSerializer.serialize(txId, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(txIdSerialized)) {
+            txIdSerialized = txIdSerialized.join(',');
+        }
+        localVarQueryParameters['tx_id'] = txIdSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AccountTransferDetail>(config, 'AccountTransferDetail', authSettings);
     }
 
     /**

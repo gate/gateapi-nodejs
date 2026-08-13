@@ -60,7 +60,7 @@ export class Position {
      */
     'value'?: string;
     /**
-     * Position margin
+     * Margin
      */
     'margin'?: string;
     /**

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **asset** | **string** | Asset Type | [optional] [default to undefined]
 **type** | **string** | Trading Type | [optional] [default to undefined]
 **typeDesc** | **string** | Transaction Type Description | [optional] [default to undefined]
-**change** | **string** | Change Quantity | [optional] [default to undefined]
+**change** | **string** | Change amount | [optional] [default to undefined]
 **balance** | **string** | Current Balance | [optional] [default to undefined]
 **time** | **number** | Occurrence Time (Second-level Timestamp) | [optional] [default to undefined]
 

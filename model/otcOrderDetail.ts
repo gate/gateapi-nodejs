@@ -23,7 +23,7 @@ export class OtcOrderDetail {
      */
     'type': string;
     /**
-     * Fiat type
+     * Fiat currency
      */
     'fiatCurrency': string;
     /**
@@ -31,11 +31,11 @@ export class OtcOrderDetail {
      */
     'fiatAmount': string;
     /**
-     * Stablecoin
+     * Digital currency
      */
     'cryptoCurrency': string;
     /**
-     * Stablecoin amount
+     * Cryptocurrency amount
      */
     'cryptoAmount': string;
     /**
@@ -43,38 +43,85 @@ export class OtcOrderDetail {
      */
     'rate': string;
     /**
-     * Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
+     * User payment/receiving name
      */
-    'transferRemark': string;
+    'bankAccountName'?: string;
     /**
-     * Unique bank transfer reference code for deposit buy orders (SGB deposit scenario; mutually exclusive with transfer_remark)
+     * User payment/receiving bank name
      */
-    'referenceCode'?: string;
+    'bankName'?: string;
+    /**
+     * User payment/receiving bank country
+     */
+    'bankCountry'?: string;
+    /**
+     * User payment/receiving bank address
+     */
+    'bankAddress'?: string;
+    /**
+     * User payment/receiving bank account number/IBAN
+     */
+    'bankAccountNumberIban'?: string;
+    /**
+     * User payment/receiving bank SWIFT code
+     */
+    'swiftCode'?: string;
+    /**
+     * User payment/receiving intermediary bank name
+     */
+    'intermediateBankName'?: string;
+    /**
+     * User payment/receiving intermediary bank SWIFT code
+     */
+    'intermediaryBankSwiftCode'?: string;
+    /**
+     * Gate beneficiary name, shown for BUY only
+     */
+    'gateBankAccountName'?: string;
+    /**
+     * Gate beneficiary bank name, shown for BUY only
+     */
+    'gateBankName'?: string;
+    /**
+     * Gate beneficiary bank country, shown for BUY only
+     */
+    'gateBankCountry'?: string;
+    /**
+     * Gate beneficiary bank address, shown for BUY only
+     */
+    'gateBankAddress'?: string;
+    /**
+     * Gate beneficiary bank account number/IBAN, shown for BUY only
+     */
+    'gateBankAccountNumberIban'?: string;
+    /**
+     * Gate beneficiary bank SWIFT code, shown for BUY only
+     */
+    'gateSwiftCode'?: string;
+    /**
+     * Gate beneficiary intermediary bank name, shown for BUY only
+     */
+    'gateIntermediaryBankName'?: string;
+    /**
+     * Gate beneficiary intermediary bank SWIFT code, shown for BUY only
+     */
+    'gateIntermediaryBankSwiftCode'?: string;
+    /**
+     * Transfer remark (mutually exclusive with `gate_reference_code`; empty when a BUY deposit order has a reference code), shown for BUY only
+     */
+    'gateTransferRemark'?: string;
+    /**
+     * Be sure to include the reference code when making the transfer so that your order can be processed promptly. (Mutually exclusive with `gate_transfer_remark`.)
+     */
+    'gateReferenceCode'?: string;
     /**
      * Status
      */
     'status': string;
-    'dbStatus': string;
     /**
      * Created time
      */
     'createTime': string;
-    /**
-     * Cancellation or rejection reason
-     */
-    'memo': string;
-    /**
-     * Quote direction
-     */
-    'side': string;
-    /**
-     * Promotion code
-     */
-    'promotionCode': string;
-    /**
-     * Trade number
-     */
-    'tradeNo': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -120,13 +167,93 @@ export class OtcOrderDetail {
             type: 'string',
         },
         {
-            name: 'transferRemark',
-            baseName: 'transfer_remark',
+            name: 'bankAccountName',
+            baseName: 'bank_account_name',
             type: 'string',
         },
         {
-            name: 'referenceCode',
-            baseName: 'reference_code',
+            name: 'bankName',
+            baseName: 'bank_name',
+            type: 'string',
+        },
+        {
+            name: 'bankCountry',
+            baseName: 'bank_country',
+            type: 'string',
+        },
+        {
+            name: 'bankAddress',
+            baseName: 'bank_address',
+            type: 'string',
+        },
+        {
+            name: 'bankAccountNumberIban',
+            baseName: 'bank_account_number_iban',
+            type: 'string',
+        },
+        {
+            name: 'swiftCode',
+            baseName: 'swift_code',
+            type: 'string',
+        },
+        {
+            name: 'intermediateBankName',
+            baseName: 'intermediate_bank_name',
+            type: 'string',
+        },
+        {
+            name: 'intermediaryBankSwiftCode',
+            baseName: 'intermediary_bank_swift_code',
+            type: 'string',
+        },
+        {
+            name: 'gateBankAccountName',
+            baseName: 'gate_bank_account_name',
+            type: 'string',
+        },
+        {
+            name: 'gateBankName',
+            baseName: 'gate_bank_name',
+            type: 'string',
+        },
+        {
+            name: 'gateBankCountry',
+            baseName: 'gate_bank_country',
+            type: 'string',
+        },
+        {
+            name: 'gateBankAddress',
+            baseName: 'gate_bank_address',
+            type: 'string',
+        },
+        {
+            name: 'gateBankAccountNumberIban',
+            baseName: 'gate_bank_account_number_iban',
+            type: 'string',
+        },
+        {
+            name: 'gateSwiftCode',
+            baseName: 'gate_swift_code',
+            type: 'string',
+        },
+        {
+            name: 'gateIntermediaryBankName',
+            baseName: 'gate_intermediary_bank_name',
+            type: 'string',
+        },
+        {
+            name: 'gateIntermediaryBankSwiftCode',
+            baseName: 'gate_intermediary_bank_swift_code',
+            type: 'string',
+        },
+        {
+            name: 'gateTransferRemark',
+            baseName: 'gate_transfer_remark',
+            type: 'string',
+        },
+        {
+            name: 'gateReferenceCode',
+            baseName: 'gate_reference_code',
             type: 'string',
         },
         {
@@ -135,33 +262,8 @@ export class OtcOrderDetail {
             type: 'string',
         },
         {
-            name: 'dbStatus',
-            baseName: 'db_status',
-            type: 'string',
-        },
-        {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'string',
-        },
-        {
-            name: 'memo',
-            baseName: 'memo',
-            type: 'string',
-        },
-        {
-            name: 'side',
-            baseName: 'side',
-            type: 'string',
-        },
-        {
-            name: 'promotionCode',
-            baseName: 'promotion_code',
-            type: 'string',
-        },
-        {
-            name: 'tradeNo',
-            baseName: 'trade_no',
             type: 'string',
         },
     ];

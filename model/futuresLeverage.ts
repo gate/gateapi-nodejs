@@ -14,7 +14,7 @@
  */
 export class FuturesLeverage {
     /**
-     * leverage
+     * Leverage
      */
     'lever'?: string;
 

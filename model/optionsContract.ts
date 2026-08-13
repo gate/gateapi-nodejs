@@ -74,11 +74,11 @@ export class OptionsContract {
      */
     'markPriceRound'?: string;
     /**
-     * Minimum order size allowed by the contract
+     * Minimum order quantity
      */
     'orderSizeMin'?: number;
     /**
-     * Maximum order size allowed by the contract
+     * Maximum order quantity
      */
     'orderSizeMax'?: number;
     /**

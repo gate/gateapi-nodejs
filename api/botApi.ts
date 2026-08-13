@@ -557,12 +557,7 @@ export class BotApi {
      */
     public async getAIHubPortfolioRunning(opts?: {
         strategyType?:
-            | 'spot_grid'
-            | 'margin_grid'
-            | 'infinite_grid'
-            | 'futures_grid'
-            | 'spot_martingale'
-            | 'contract_martingale';
+            'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale';
         market?: string;
         page?: number;
         pageSize?: number;
@@ -664,12 +659,7 @@ export class BotApi {
     public async getAIHubPortfolioDetail(
         strategyId: string,
         strategyType:
-            | 'spot_grid'
-            | 'margin_grid'
-            | 'infinite_grid'
-            | 'futures_grid'
-            | 'spot_martingale'
-            | 'contract_martingale',
+            'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale',
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubPortfolioDetailSuccessResponse }> {
         const localVarPath = this.client.basePath + '/bot/portfolio/detail';

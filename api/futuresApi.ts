@@ -1319,7 +1319,7 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.holding Return only real positions - true, return all - false
-     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100].
      * @param opts.offset List offset, starting from 0
      */
     public async listPositions(
@@ -2767,7 +2767,7 @@ export class FuturesApi {
     }
 
     /**
-     * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.
+     * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  
      * @summary Query single order details
      * @param settle Settle currency
      * @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely.

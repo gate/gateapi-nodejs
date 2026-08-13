@@ -11,7 +11,7 @@
 
 export class OtcBankListItem {
     /**
-     * Bank ID (required for order placement)
+     * Bank card ID (used when placing an order; the synonymous `bank_id` field has been consolidated into `id`)
      */
     'id': string;
     /**
@@ -30,14 +30,6 @@ export class OtcBankListItem {
      * Bank address
      */
     'bankAddress'?: string;
-    /**
-     * Bank code
-     */
-    'bankCode'?: string;
-    /**
-     * Branch code
-     */
-    'branchCode'?: string;
     /**
      * IBAN number
      */
@@ -71,25 +63,9 @@ export class OtcBankListItem {
      */
     'status'?: string;
     /**
-     * Document file type
-     */
-    'documentationFileType'?: string;
-    /**
-     * Remark
-     */
-    'memo'?: string;
-    /**
      * Whether it is the default bank card. 1 - Yes, 0 - No
      */
     'isDefault'?: number;
-    /**
-     * Bank ID
-     */
-    'bankId'?: string;
-    /**
-     * Document file URL
-     */
-    'documentationFileKeyUrl'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -117,16 +93,6 @@ export class OtcBankListItem {
         {
             name: 'bankAddress',
             baseName: 'bank_address',
-            type: 'string',
-        },
-        {
-            name: 'bankCode',
-            baseName: 'bank_code',
-            type: 'string',
-        },
-        {
-            name: 'branchCode',
-            baseName: 'branch_code',
             type: 'string',
         },
         {
@@ -170,29 +136,9 @@ export class OtcBankListItem {
             type: 'string',
         },
         {
-            name: 'documentationFileType',
-            baseName: 'documentation_file_type',
-            type: 'string',
-        },
-        {
-            name: 'memo',
-            baseName: 'memo',
-            type: 'string',
-        },
-        {
             name: 'isDefault',
             baseName: 'is_default',
             type: 'number',
-        },
-        {
-            name: 'bankId',
-            baseName: 'bank_id',
-            type: 'string',
-        },
-        {
-            name: 'documentationFileKeyUrl',
-            baseName: 'documentation_file_key_url',
-            type: 'string',
         },
     ];
 

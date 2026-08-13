@@ -15,7 +15,7 @@ export class Symbol {
      */
     'symbol': string;
     /**
-     * Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
+     * Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
      */
     'exchangeType': string;
     /**
@@ -27,7 +27,7 @@ export class Symbol {
      */
     'state': string;
     /**
-     * Minimum order size allowed by the contract
+     * Minimum order quantity
      */
     'minSize': string;
     /**
@@ -55,7 +55,7 @@ export class Symbol {
      */
     'maxLimitSize': string;
     /**
-     * Contract Multiplier
+     * Contract multiplier (deprecated; quantity is used uniformly)
      */
     'contractSize': string;
     /**
@@ -66,6 +66,10 @@ export class Symbol {
      * Millisecond timestamp; `0` means not delisted.
      */
     'delistTime': string;
+    /**
+     * Whether RPI order placement is supported (true if supported; false otherwise)
+     */
+    'supportRpi'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -138,6 +142,11 @@ export class Symbol {
         {
             name: 'delistTime',
             baseName: 'delist_time',
+            type: 'string',
+        },
+        {
+            name: 'supportRpi',
+            baseName: 'support_rpi',
             type: 'string',
         },
     ];

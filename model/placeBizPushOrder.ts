@@ -34,11 +34,11 @@ export class PlaceBizPushOrder {
      */
     'number': string;
     /**
-     * Payment types, comma-separated; from pay type list `pay_type`, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
+     * Payment types enabled for the ad, comma-separated; values can be obtained from `pay_type` in the payment method list, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`. `pay_type_json` uses the types in this field as keys to specify the corresponding payment accounts.
      */
     'payType': string;
     /**
-     * JSON map of payment type -> user\'s payment method ID.
+     * JSON string of specific payment accounts corresponding to `payType`. Each key is a payment type listed in `payType`, and each value is the current user\'s payment method ID for that type. For example, when `payType` is `bank,swift`, this field can be {\"bank\":\"10001\",\"swift\":\"10002\"}.
      */
     'payTypeJson'?: string;
     /**
@@ -50,13 +50,25 @@ export class PlaceBizPushOrder {
      */
     'oid'?: string;
     /**
-     * Minimum trade amount in `exchangeType`.
+     * Minimum quantity per order, denominated by currencyType; required when limitBasis is not passed or is 0
      */
-    'minAmount': string;
+    'minAmount'?: string;
     /**
-     * Maximum amount per trade in `exchangeType` fiat units.
+     * Maximum quantity per order, denominated by currencyType; required when limitBasis is not passed or is 0
      */
-    'maxAmount': string;
+    'maxAmount'?: string;
+    /**
+     * Trading limit unit. 0: by crypto quantity, 1: by fiat amount; defaults to 0 when not passed for a new ad. The limit unit of an existing ad cannot be changed when editing; a fiat-limit ad must keep passing 1 when edited
+     */
+    'limitBasis'?: PlaceBizPushOrder.LimitBasis;
+    /**
+     * Minimum amount per order, denominated by exchangeType; required when limitBasis is 1
+     */
+    'fiatMinAmount'?: string;
+    /**
+     * Maximum amount per order, denominated by exchangeType; required when limitBasis is 1, and must not exceed the total fiat value of the ad quantity converted at the price
+     */
+    'fiatMaxAmount'?: string;
     /**
      * Minimum counterparty VIP level; `0` means no requirement.
      */
@@ -73,6 +85,10 @@ export class PlaceBizPushOrder {
      * Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
      */
     'advertisersLimit'?: string;
+    /**
+     * Whether to restrict trading with Polymarket users. 0: no restriction, 1: restricted
+     */
+    'polymarketLimit'?: PlaceBizPushOrder.PolymarketLimit;
     /**
      * Payment timeout in minutes.
      */
@@ -181,6 +197,21 @@ export class PlaceBizPushOrder {
             type: 'string',
         },
         {
+            name: 'limitBasis',
+            baseName: 'limitBasis',
+            type: 'PlaceBizPushOrder.LimitBasis',
+        },
+        {
+            name: 'fiatMinAmount',
+            baseName: 'fiatMinAmount',
+            type: 'string',
+        },
+        {
+            name: 'fiatMaxAmount',
+            baseName: 'fiatMaxAmount',
+            type: 'string',
+        },
+        {
             name: 'tierLimit',
             baseName: 'tierLimit',
             type: 'string',
@@ -199,6 +230,11 @@ export class PlaceBizPushOrder {
             name: 'advertisersLimit',
             baseName: 'advertisersLimit',
             type: 'string',
+        },
+        {
+            name: 'polymarketLimit',
+            baseName: 'polymarket_limit',
+            type: 'PlaceBizPushOrder.PolymarketLimit',
         },
         {
             name: 'expireMin',
@@ -273,5 +309,13 @@ export namespace PlaceBizPushOrder {
         _1 = <any>'1',
         _2 = <any>'2',
         _3 = <any>'3',
+    }
+    export enum LimitBasis {
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
+    }
+    export enum PolymarketLimit {
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
     }
 }

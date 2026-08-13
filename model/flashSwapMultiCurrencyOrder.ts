@@ -61,7 +61,7 @@ export class FlashSwapMultiCurrencyOrder {
      */
     'price'?: string;
     /**
-     * Order Status
+     * Order status
      */
     'status'?: number;
     /**

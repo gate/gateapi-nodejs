@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**highestPrice** | **string** | Highest price | [optional] [default to undefined]
-**lowestPrice** | **string** | Lowest price | [optional] [default to undefined]
+**highestPrice** | **string** | High price | [optional] [default to undefined]
+**lowestPrice** | **string** | Low price | [optional] [default to undefined]
 **priceChange** | **string** | Price change percentage (multiplied by 100) | [optional] [default to undefined]
 **priceChangeAmount** | **string** | Price change amount | [optional] [default to undefined]
 **todayOpenPrice** | **string** | Today\&#39;s open price | [optional] [default to undefined]

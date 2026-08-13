@@ -42,7 +42,7 @@ export class ContractDetailDataList {
      */
     'minOrderVolume'?: string;
     /**
-     * Position leverage
+     * Leverage multiplier
      */
     'leverage'?: string;
     /**

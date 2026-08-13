@@ -23,7 +23,7 @@ export class TransactionListDataList {
      */
     'typeDesc'?: string;
     /**
-     * Change Quantity
+     * Change amount
      */
     'change'?: string;
     /**

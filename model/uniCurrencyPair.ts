@@ -26,7 +26,7 @@ export class UniCurrencyPair {
      */
     'quoteMinBorrowAmount'?: string;
     /**
-     * Position leverage
+     * Leverage multiplier
      */
     'leverage'?: string;
 

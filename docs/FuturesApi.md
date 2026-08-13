@@ -939,7 +939,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'holding': true, // boolean | Return only real positions - true, return all - false
-  'limit': 100, // number | Maximum number of records returned in a single list
+  'limit': 100, // number | Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100].
   'offset': 0 // number | List offset, starting from 0
 };
 api.listPositions(settle, opts)
@@ -954,7 +954,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **holding** | **boolean**| Return only real positions - true, return all - false | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. | [optional] [default to undefined]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type

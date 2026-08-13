@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lever** | **string** | leverage | [optional] [default to undefined]
+**lever** | **string** | Leverage | [optional] [default to undefined]
 

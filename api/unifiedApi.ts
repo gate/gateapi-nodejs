@@ -12,6 +12,7 @@
 /* tslint:disable:no-unused-locals */
 import { DeltaNeutralEnabled } from '../model/deltaNeutralEnabled';
 import { GateErrorResponse } from '../model/gateErrorResponse';
+import { LeverageFailedCurrencies } from '../model/leverageFailedCurrencies';
 import { QuickEstimatedRepayment } from '../model/quickEstimatedRepayment';
 import { QuickRepaymentRequest } from '../model/quickRepaymentRequest';
 import { QuickRepaymentResponse } from '../model/quickRepaymentResponse';
@@ -36,6 +37,7 @@ import { UnifiedPortfolioInput } from '../model/unifiedPortfolioInput';
 import { UnifiedPortfolioOutput } from '../model/unifiedPortfolioOutput';
 import { UnifiedRiskUnits } from '../model/unifiedRiskUnits';
 import { UnifiedTransferable } from '../model/unifiedTransferable';
+import { UserLeverageSetting } from '../model/userLeverageSetting';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -770,6 +772,48 @@ export class UnifiedApi {
 
         const authSettings = [];
         return this.client.request<UnifiedPortfolioOutput>(config, 'UnifiedPortfolioOutput', authSettings);
+    }
+
+    /**
+     * Note the following: - Leverage cannot be changed for currencies with outstanding loans. - A leverage value above a currency\'s limit is capped at that limit. - Failures are not rolled back and affect only the currencies that failed. For example, if USDT has an outstanding loan, only the USDT leverage remains unchanged.
+     * @summary Set leverage for all of the user\'s borrowed currencies
+     * @param userLeverageSetting
+     */
+    public async setUserLeverage(
+        userLeverageSetting: UserLeverageSetting,
+    ): Promise<{ response: AxiosResponse; body: Array<LeverageFailedCurrencies> }> {
+        const localVarPath = this.client.basePath + '/unified/leverage/user_setting';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'userLeverageSetting' is not null or undefined
+        if (userLeverageSetting === null || userLeverageSetting === undefined) {
+            throw new Error(
+                'Required parameter userLeverageSetting was null or undefined when calling setUserLeverage.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(userLeverageSetting, 'UserLeverageSetting'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<LeverageFailedCurrencies>>(
+            config,
+            'Array<LeverageFailedCurrencies>',
+            authSettings,
+        );
     }
 
     /**

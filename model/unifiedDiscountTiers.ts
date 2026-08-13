@@ -27,7 +27,7 @@ export class UnifiedDiscountTiers {
      */
     'upperLimit'?: string;
     /**
-     * Position leverage
+     * Leverage multiplier
      */
     'leverage'?: string;
 

@@ -18,7 +18,7 @@ export class CrossexLeverageRequest {
      */
     'symbol': string;
     /**
-     * leverage
+     * Leverage
      */
     'leverage': string;
 

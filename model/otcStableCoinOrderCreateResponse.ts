@@ -10,8 +10,18 @@
  */
 
 export class OtcStableCoinOrderCreateResponse {
+    /**
+     * Business code; 0 indicates success
+     */
     'code': number;
+    /**
+     * Message
+     */
     'message': string;
+    /**
+     * Server Unix timestamp in seconds
+     */
+    'timestamp': number;
 
     static discriminator: string | undefined = undefined;
 
@@ -25,6 +35,11 @@ export class OtcStableCoinOrderCreateResponse {
             name: 'message',
             baseName: 'message',
             type: 'string',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'number',
         },
     ];
 

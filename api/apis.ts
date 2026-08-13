@@ -9,6 +9,8 @@ export * from './assetswapApi';
 import { AssetswapApi } from './assetswapApi';
 export * from './botApi';
 import { BotApi } from './botApi';
+export * from './cFDApi';
+import { CFDApi } from './cFDApi';
 export * from './couponApi';
 import { CouponApi } from './couponApi';
 export * from './crossExApi';
@@ -23,8 +25,6 @@ export * from './flashSwapApi';
 import { FlashSwapApi } from './flashSwapApi';
 export * from './futuresApi';
 import { FuturesApi } from './futuresApi';
-export * from './launchApi';
-import { LaunchApi } from './launchApi';
 export * from './marginApi';
 import { MarginApi } from './marginApi';
 export * from './marginUniApi';
@@ -43,10 +43,10 @@ export * from './spotApi';
 import { SpotApi } from './spotApi';
 export * from './squareApi';
 import { SquareApi } from './squareApi';
+export * from './stockApi';
+import { StockApi } from './stockApi';
 export * from './subAccountApi';
 import { SubAccountApi } from './subAccountApi';
-export * from './tradFiApi';
-import { TradFiApi } from './tradFiApi';
 export * from './unifiedApi';
 import { UnifiedApi } from './unifiedApi';
 export * from './walletApi';
@@ -62,6 +62,7 @@ export const APIS = [
     AlphaApi,
     AssetswapApi,
     BotApi,
+    CFDApi,
     CouponApi,
     CrossExApi,
     DeliveryApi,
@@ -69,7 +70,6 @@ export const APIS = [
     EarnUniApi,
     FlashSwapApi,
     FuturesApi,
-    LaunchApi,
     MarginApi,
     MarginUniApi,
     MultiCollateralLoanApi,
@@ -79,8 +79,8 @@ export const APIS = [
     RebateApi,
     SpotApi,
     SquareApi,
+    StockApi,
     SubAccountApi,
-    TradFiApi,
     UnifiedApi,
     WalletApi,
     WelfareApi,

@@ -19,7 +19,7 @@ export class DeliverySettlement {
      */
     'contract'?: string;
     /**
-     * Position leverage
+     * Leverage multiplier
      */
     'leverage'?: string;
     /**
@@ -27,7 +27,7 @@ export class DeliverySettlement {
      */
     'size'?: number;
     /**
-     * Position margin
+     * Margin
      */
     'margin'?: string;
     /**

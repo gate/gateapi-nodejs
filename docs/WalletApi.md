@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**getDepositAddress**](WalletApi.md#getDepositAddress) | **GET** /wallet/deposit_address | Generate currency deposit address
 [**listWithdrawals**](WalletApi.md#listWithdrawals) | **GET** /wallet/withdrawals | Get withdrawal records
 [**listDeposits**](WalletApi.md#listDeposits) | **GET** /wallet/deposits | Get deposit records
+[**getTransfer**](WalletApi.md#getTransfer) | **GET** /wallet/transfers | Get trading account transfer
 [**transfer**](WalletApi.md#transfer) | **POST** /wallet/transfers | Transfer between trading accounts
 [**listSubAccountTransfers**](WalletApi.md#listSubAccountTransfers) | **GET** /wallet/sub_account_transfers | Get transfer records between main and sub accounts
 [**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
@@ -220,6 +221,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<DepositRecord>; }> [DepositRecord](DepositRecord.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getTransfer
+
+> Promise<{ response: http.IncomingMessage; body: AccountTransferDetail; }> getTransfer(txId)
+
+Get trading account transfer
+
+Get the current user\&#39;s trading account transfer details using the tx_id returned by the transfer endpoint
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const txId = "59636381286"; // string | Transfer transaction ID
+api.getTransfer(txId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **txId** | **string**| Transfer transaction ID | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AccountTransferDetail; }> [AccountTransferDetail](AccountTransferDetail.md)
 
 ### Authorization
 

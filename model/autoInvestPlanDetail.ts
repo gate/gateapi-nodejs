@@ -60,7 +60,7 @@ export class AutoInvestPlanDetail {
      */
     'periodHour': number;
     /**
-     * InvestmentPortfolio
+     * Portfolio
      */
     'portfolio': Array<AutoInvestPortfolioItem>;
     /**

@@ -38,7 +38,7 @@ export class SubCrossMarginAccount {
      */
     'net'?: string;
     /**
-     * Position leverage
+     * Leverage multiplier
      */
     'leverage'?: string;
     /**

@@ -27,11 +27,11 @@ export class Tokens {
      */
     'address'?: string;
     /**
-     * Amount scale
+     * Quantity precision
      */
     'amountPrecision'?: number;
     /**
-     * Price scale
+     * Price precision
      */
     'precision'?: number;
     /**

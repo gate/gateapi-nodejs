@@ -26,7 +26,7 @@ export class UpdateOrderData {
      */
     'state'?: string;
     /**
-     * Order volume
+     * Order quantity
      */
     'volume'?: string;
     /**

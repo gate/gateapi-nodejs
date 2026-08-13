@@ -23,10 +23,11 @@ import { Order } from '../model/order';
 import { OrderBook } from '../model/orderBook';
 import { OrderCancel } from '../model/orderCancel';
 import { OrderPatch } from '../model/orderPatch';
-import { SpotAccount } from '../model/spotAccount';
 import { SpotAccountBook } from '../model/spotAccountBook';
 import { SpotFee } from '../model/spotFee';
 import { SpotInsuranceHistory } from '../model/spotInsuranceHistory';
+import { SpotPovOrder } from '../model/spotPovOrder';
+import { SpotPovOrderCreator } from '../model/spotPovOrderCreator';
 import { SpotPriceTriggeredOrder } from '../model/spotPriceTriggeredOrder';
 import { SystemTime } from '../model/systemTime';
 import { Ticker } from '../model/ticker';
@@ -586,47 +587,6 @@ export class SpotApi {
     }
 
     /**
-     *
-     * @summary List spot trading accounts
-     * @param opts Optional parameters
-     * @param opts.currency Query by specified currency name
-     */
-    public async listSpotAccounts(opts?: {
-        currency?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<SpotAccount> }> {
-        const localVarPath = this.client.basePath + '/spot/accounts';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-        if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
-            if (Array.isArray(currencySerialized)) {
-                currencySerialized = currencySerialized.join(',');
-            }
-            localVarQueryParameters['currency'] = currencySerialized;
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<SpotAccount>>(config, 'Array<SpotAccount>', authSettings);
-    }
-
-    /**
      * Record query time range cannot exceed 30 days.  When using limit&page pagination to retrieve data, the maximum number of pages is 100,000, that is, limit * (page - 1) <= 100,000.
      * @summary Query spot account transaction history
      * @param opts Optional parameters
@@ -999,7 +959,7 @@ export class SpotApi {
 
     /**
      * Supports spot, margin, leverage, and cross-margin leverage orders. Use different accounts through the `account` field. Default is `spot`, which means using the spot account to place orders. If the user has a `unified` account, the default is to place orders with the unified account.  When using leveraged account trading (i.e., when `account` is set to `margin`), you can set `auto_borrow` to `true`. In case of insufficient account balance, the system will automatically execute `POST /margin/uni/loans` to borrow the insufficient amount. Whether assets obtained after leveraged order execution are automatically used to repay borrowing orders of the isolated margin account depends on the automatic repayment settings of the user\'s isolated margin account. Account automatic repayment settings can be queried and set through `/margin/auto_repay`.  When using unified account trading (i.e., when `account` is set to `unified`), `auto_borrow` can also be enabled to realize automatic borrowing of insufficient amounts. However, unlike the isolated margin account, whether unified account orders are automatically repaid depends on the `auto_repay` setting when placing the order. This setting only applies to the current order, meaning only assets obtained after order execution will be used to repay borrowing orders of the cross-margin account. Unified account ordering currently supports enabling both `auto_borrow` and `auto_repay` simultaneously.  Auto repayment will be triggered when the order ends, i.e., when `status` is `cancelled` or `closed`.  **Order Status**  The order status in pending orders is `open`, which remains `open` until all quantity is filled. If fully filled, the order ends and status becomes `closed`. If the order is cancelled before all transactions are completed, regardless of partial fills, the status will become `cancelled`.  **Iceberg Orders**  `iceberg` is used to set the displayed quantity of iceberg orders and does not support complete hiding. Note that hidden portions are charged according to the taker\'s fee rate.  **Self-Trade Prevention**  Set `stp_act` to determine the self-trade prevention strategy to use
-     * @summary Create an order
+     * @summary Create order
      * @param order
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -1967,5 +1927,239 @@ export class SpotApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<SpotPriceTriggeredOrder>(config, 'SpotPriceTriggeredOrder', authSettings);
+    }
+
+    /**
+     *
+     * @summary List Spot POV orders
+     * @param status Order status. Defaults to open  - open: Active orders - finished: Finished orders
+     * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
+     * @param opts.side Specify all bids or all asks, both included if not specified
+     * @param opts.page Page number, up to 100
+     * @param opts.limit Maximum number of records returned in a single list
+     */
+    public async listSpotPovOrders(
+        status: string,
+        opts?: { currencyPair?: string; side?: string; page?: number; limit?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<SpotPovOrder> }> {
+        const localVarPath = this.client.basePath + '/spot/pov_orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'status' is not null or undefined
+        if (status === null || status === undefined) {
+            throw new Error('Required parameter status was null or undefined when calling listSpotPovOrders.');
+        }
+
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencyPairSerialized)) {
+                currencyPairSerialized = currencyPairSerialized.join(',');
+            }
+            localVarQueryParameters['currency_pair'] = currencyPairSerialized;
+        }
+
+        let statusSerialized = ObjectSerializer.serialize(status, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(statusSerialized)) {
+            statusSerialized = statusSerialized.join(',');
+        }
+        localVarQueryParameters['status'] = statusSerialized;
+
+        if (opts.side !== undefined) {
+            let sideSerialized = ObjectSerializer.serialize(opts.side, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sideSerialized)) {
+                sideSerialized = sideSerialized.join(',');
+            }
+            localVarQueryParameters['side'] = sideSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SpotPovOrder>>(config, 'Array<SpotPovOrder>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Create a Spot POV order
+     * @param spotPovOrderCreator
+     */
+    public async createSpotPovOrder(
+        spotPovOrderCreator: SpotPovOrderCreator,
+    ): Promise<{ response: AxiosResponse; body: SpotPovOrder }> {
+        const localVarPath = this.client.basePath + '/spot/pov_orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'spotPovOrderCreator' is not null or undefined
+        if (spotPovOrderCreator === null || spotPovOrderCreator === undefined) {
+            throw new Error(
+                'Required parameter spotPovOrderCreator was null or undefined when calling createSpotPovOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(spotPovOrderCreator, 'SpotPovOrderCreator'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<SpotPovOrder>(config, 'SpotPovOrder', authSettings);
+    }
+
+    /**
+     *
+     * @summary Cancel Spot POV orders
+     * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
+     */
+    public async cancelSpotPovOrders(opts?: {
+        currencyPair?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SpotPovOrder> }> {
+        const localVarPath = this.client.basePath + '/spot/pov_orders/cancel';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencyPairSerialized)) {
+                currencyPairSerialized = currencyPairSerialized.join(',');
+            }
+            localVarQueryParameters['currency_pair'] = currencyPairSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SpotPovOrder>>(config, 'Array<SpotPovOrder>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Query Spot POV order details
+     * @param orderId The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field.
+     */
+    public async getSpotPovOrder(orderId: string): Promise<{ response: AxiosResponse; body: SpotPovOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/pov_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling getSpotPovOrder.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<SpotPovOrder>(config, 'SpotPovOrder', authSettings);
+    }
+
+    /**
+     *
+     * @summary Cancel a Spot POV order
+     * @param orderId The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field.
+     */
+    public async cancelSpotPovOrder(orderId: string): Promise<{ response: AxiosResponse; body: SpotPovOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/pov_orders/{order_id}/cancel'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling cancelSpotPovOrder.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<SpotPovOrder>(config, 'SpotPovOrder', authSettings);
     }
 }

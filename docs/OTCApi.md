@@ -117,7 +117,7 @@ Promise<{ response: AxiosResponse; body: OtcActionResponse; }> [OtcActionRespons
 
 Create stablecoin order
 
-Create stablecoin order
+Create a stablecoin order. All request body fields except &#x60;promotion_code&#x60; are required.
 
 ### Example
 
@@ -162,7 +162,7 @@ Promise<{ response: AxiosResponse; body: OtcStableCoinOrderCreateResponse; }> [O
 
 Get user bank card list
 
-Retrieve the user\&#39;s bank card list, used to select a bank card when placing an order. **Default card**: refer to the list item field &#x60;is_default&#x60; (1&#x3D;default); there is no need to call the deprecated standalone \&quot;default bank card\&quot; endpoint. Corresponding Inner: &#x60;GET /bank_list&#x60; or &#x60;GET /bank/list&#x60;.
+List the user\&#39;s bank cards for selecting a card when placing an order. **Default card**: use the &#x60;is_default&#x60; field in each list item (&#x60;1&#x60; indicates the default). The deprecated standalone default-bank-card endpoint is no longer required.
 
 ### Example
 
@@ -222,7 +222,7 @@ const bankCountry = "bankCountry_example"; // string |
 const bankAddress = "bankAddress_example"; // string | 
 const iban = "iban_example"; // string | 
 const swift = "swift_example"; // string | 
-const documentationFile = "documentationFile_example"; // string | 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
+const documentationFile = "documentationFile_example"; // string | Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment)
 const opts = {
   'remittanceLineNumber': "remittanceLineNumber_example", // string | 
   'agentBankName': "agentBankName_example", // string | 
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
  **bankAddress** | **string**|  | [default to undefined]
  **iban** | **string**|  | [default to undefined]
  **swift** | **string**|  | [default to undefined]
- **documentationFile** | **string**| 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准） | [default to undefined]
+ **documentationFile** | **string**| Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) | [default to undefined]
  **remittanceLineNumber** | **string**|  | [optional] [default to undefined]
  **agentBankName** | **string**|  | [optional] [default to undefined]
  **agentBankSwift** | **string**|  | [optional] [default to undefined]
@@ -358,7 +358,7 @@ Promise<{ response: AxiosResponse; body: OtcActionResponse; }> [OtcActionRespons
 
 Query the checklist of materials to supplement for a bank card
 
-**①** &#x60;bank_id&#x60; must be specified: after verifying that the card belongs to the current user and its status allows supplementation, returns the items to be supplemented and whether each sub-item is required, based on the user\&#39;s **passed professional verification type** (personal/enterprise). Corresponding Inner: &#x60;GET /bank/bank_supplement_checklist&#x60;.
+**①** &#x60;bank_id&#x60; must be specified. After verifying that the card belongs to the current user and its status allows supplementary documents, the endpoint returns the required items based on the user\&#39;s **approved advanced verification type** (personal/enterprise); each item\&#39;s &#x60;description&#x60; states the submission requirements. Corresponding Inner endpoint: &#x60;GET /bank/bank_supplement_checklist&#x60;.
 
 ### Example
 
@@ -515,7 +515,7 @@ Promise<{ response: AxiosResponse; body: OtcActionResponse; }> [OtcActionRespons
 
 Mark fiat order as paid (deposit confirmation)
 
-Mark a fiat buy order as paid (deposit confirmation). **The user\&#39;s payment receipt must be uploaded**: &#x60;payment_receipt_file_key&#x60; is required; file format jpg / jpeg / png / pdf, single file no larger than 4MB (jointly validated by the server and gateway). The compatible field name &#x60;payment_receipt&#x60; is subject to the gateway/production environment. For the persisted field, see &#x60;otc_trade_record.payment_receipt_file_key&#x60;. The Pay Inner path is &#x60;POST .../pay/order_set_paid&#x60; (orders are usually associated via &#x60;client_order_id&#x60;); this OpenAPI path maps to Inner &#x60;POST /order/paid&#x60; and still uses &#x60;order_id&#x60; as the primary key—if the gateway unifies it to the merchant order number, the gateway documentation prevails.
+Mark a fiat BUY order as paid (deposit confirmation). **A user payment receipt must be uploaded**: &#x60;payment_receipt_file_key&#x60; is required; supported formats are jpg/jpeg/png/pdf, with a maximum size of 10 MB per file (validated jointly by the service and gateway). The compatibility field name &#x60;payment_receipt&#x60; is subject to the gateway/live environment. The persisted field is &#x60;otc_trade_record.payment_receipt_file_key&#x60;. The Pay Inner path is &#x60;POST .../pay/order_set_paid&#x60; (commonly associated by &#x60;client_order_id&#x60;); the Inner path corresponding to this OpenAPI endpoint, &#x60;POST /order/paid&#x60;, still primarily uses &#x60;order_id&#x60;. If the gateway standardizes on the merchant order ID, follow the gateway documentation.
 
 ### Example
 
@@ -624,7 +624,7 @@ const opts = {
   'cryptoCurrency': "cryptoCurrency_example", // string | Digital currency
   'startTime': "startTime_example", // string | starttime   for example : 2025-09-09
   'endTime': "endTime_example", // string | endtime  for example :2025-09-09
-  'status': "status_example", // string | DONE: Completed CANCEL: Canceled PROCESSING: In Progress
+  'status': "status_example", // string | DONE: completed CANCEL: canceled PROCESSING: in progress DISBURSED: disbursed
   'pn': "pn_example", // string | Page number
   'ps': "ps_example" // string | Number of items per page
 };
@@ -643,7 +643,7 @@ Name | Type | Description  | Notes
  **cryptoCurrency** | **string**| Digital currency | [optional] [default to undefined]
  **startTime** | **string**| starttime   for example : 2025-09-09 | [optional] [default to undefined]
  **endTime** | **string**| endtime  for example :2025-09-09 | [optional] [default to undefined]
- **status** | **string**| DONE: Completed CANCEL: Canceled PROCESSING: In Progress | [optional] [default to undefined]
+ **status** | **string**| DONE: completed CANCEL: canceled PROCESSING: in progress DISBURSED: disbursed | [optional] [default to undefined]
  **pn** | **string**| Page number | [optional] [default to undefined]
  **ps** | **string**| Number of items per page | [optional] [default to undefined]
 

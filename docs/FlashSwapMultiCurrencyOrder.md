@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **buyAmount** | **string** | Buy amount | [optional] [default to undefined]
 **buyAmountShow** | **string** | Buy amount display value | [optional] [default to undefined]
 **price** | **string** | Exchange price | [optional] [default to undefined]
-**status** | **number** | Order Status | [optional] [default to undefined]
+**status** | **number** | Order status | [optional] [default to undefined]
 **quoteId** | **string** | Quote ID | [optional] [default to undefined]
 **failedCode** | **number** | Failure error code, 0 means success | [optional] [default to undefined]
 **failedReason** | **string** | Failure Reason | [optional] [default to undefined]

@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 **posMarginMode** | **string** | Position margin mode: isolated/cross | [optional] [readonly] [default to undefined]
 **positionMode** | **string** | Position mode: single, dual, and dual_plus | [optional] [readonly] [default to undefined]
 **errorLabel** | **string** | Error label | [optional] [readonly] [default to undefined]
-**leverage** | **string** | leverage | [optional] [readonly] [default to undefined]
+**leverage** | **string** | Leverage | [optional] [readonly] [default to undefined]
 
 ## Enum: TrailOrder.PriceType
 

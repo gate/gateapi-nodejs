@@ -47,7 +47,7 @@ export class SwapCoinStruct {
      */
     'exchangeAmount'?: string;
     /**
-     * UpdateTimestamp
+     * Update timestamp
      */
     'updateStamp'?: number;
     /**

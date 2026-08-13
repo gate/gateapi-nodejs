@@ -21,6 +21,7 @@ export * from './accountDetailKey';
 export * from './accountKeyInfo';
 export * from './accountKeyInfoPerms';
 export * from './accountRateLimit';
+export * from './accountTransferDetail';
 export * from './accountsResponse';
 export * from './adsDetailRequest';
 export * from './adsListRequest';
@@ -84,23 +85,14 @@ export * from './brokerTransactionHistory';
 export * from './cancelBatchOrder';
 export * from './cancelOrder';
 export * from './cancelOrderResult';
-export * from './candyDropV4ActivityCd01';
-export * from './candyDropV4ActivityRulesCd03';
-export * from './candyDropV4AirdropRecordCd06';
-export * from './candyDropV4ErrorCd01';
-export * from './candyDropV4ParticipationRecordCd05';
-export * from './candyDropV4PrizePoolCd03';
-export * from './candyDropV4RegisterReqCd02';
-export * from './candyDropV4RegisterRespCd02';
-export * from './candyDropV4TaskCd03';
-export * from './candyDropV4TaskProgressCd04';
-export * from './candyDropV4TaskProgressItemCd04';
 export * from './categories';
 export * from './categoriesData';
 export * from './categoriesDataList';
 export * from './chaseOrder';
 export * from './claimRewardError';
 export * from './claimTaskError';
+export * from './closePosition';
+export * from './closePositionData';
 export * from './collateralAdjust';
 export * from './collateralAdjustRes';
 export * from './collateralCurrency';
@@ -134,12 +126,12 @@ export * from './createOrder';
 export * from './createOrder2';
 export * from './createOrder2Data';
 export * from './createOrderDetail';
-export * from './createOrderV4';
 export * from './createParam';
 export * from './createTrailOrder';
 export * from './createTrailOrderResponse';
 export * from './createTrailOrderResult';
 export * from './createTransaction';
+export * from './createTransaction2';
 export * from './createUniLend';
 export * from './createUniLoan';
 export * from './createUserResp';
@@ -153,6 +145,8 @@ export * from './crossexAccountBookRecord';
 export * from './crossexAccountUpdateRequest';
 export * from './crossexAccountUpdateResponse';
 export * from './crossexAdlRank';
+export * from './crossexBatchCancelOrderRequest';
+export * from './crossexBatchCancelOrderResponse';
 export * from './crossexClosePositionRequest';
 export * from './crossexCoinDiscountRate';
 export * from './crossexConvertOrderRequest';
@@ -162,9 +156,13 @@ export * from './crossexConvertQuoteResponse';
 export * from './crossexHistoricalMarginPosition';
 export * from './crossexHistoricalPosition';
 export * from './crossexInterestRate';
+export * from './crossexIsolatedMarginRequest';
+export * from './crossexIsolatedMarginResponse';
 export * from './crossexLeverageRequest';
 export * from './crossexLeverageResponse';
 export * from './crossexMarginInterestRecord';
+export * from './crossexMarginModeRequest';
+export * from './crossexMarginModeResponse';
 export * from './crossexMarginPosition';
 export * from './crossexOrder';
 export * from './crossexOrderActionResponse';
@@ -184,6 +182,7 @@ export * from './currencyChain';
 export * from './currencyPair';
 export * from './currencyQuota';
 export * from './debitFee';
+export * from './deleteOrder';
 export * from './deletePosition';
 export * from './deliveryAccount';
 export * from './deliveryAccountBook';
@@ -222,6 +221,12 @@ export * from './evaluateItem';
 export * from './evaluateResp';
 export * from './exSkillClaimRewardReq';
 export * from './exSkillClaimTaskReq';
+export * from './exchanges';
+export * from './exchangesData';
+export * from './exchangesDataList';
+export * from './feeRate';
+export * from './feeRateData';
+export * from './feeRateDataList';
 export * from './fixedTermBonusInfo';
 export * from './fixedTermCouponInfo';
 export * from './fixedTermHistoryRecord';
@@ -305,28 +310,20 @@ export * from './getTransactionDetailsRequest';
 export * from './getUserCouponDetailResponse';
 export * from './getUserCouponDetailResponseData';
 export * from './getUserIdentityError';
-export * from './hodlerAirdropV4ErrorResponse';
-export * from './hodlerAirdropV4OrderRequest';
-export * from './hodlerAirdropV4OrderResponse';
-export * from './hodlerAirdropV4ProjectItem';
-export * from './hodlerAirdropV4UserAirdropRecord';
-export * from './hodlerAirdropV4UserOrderRecord';
+export * from './i18nTxt';
 export * from './indexConstituent';
 export * from './infiniteGridCreateParams';
 export * from './infiniteGridCreateRequest';
 export * from './inlineResponse200';
+export * from './inlineResponse2001';
+export * from './inlineResponse2002';
 export * from './insuranceRecord';
 export * from './klines';
 export * from './klinesData';
 export * from './klinesDataList';
 export * from './ladderApr';
-export * from './launchPoolV4CreateOrderResponse';
-export * from './launchPoolV4ErrorResponse';
-export * from './launchPoolV4PledgeRecord';
-export * from './launchPoolV4Project';
-export * from './launchPoolV4RewardPool';
-export * from './launchPoolV4RewardRecord';
 export * from './ledgerRecord';
+export * from './leverageFailedCurrencies';
 export * from './liquidateOrder';
 export * from './listActivitiesResponse';
 export * from './listActivitiesResponseData';
@@ -413,15 +410,25 @@ export * from './optionsUnderlying';
 export * from './optionsUnderlyingTicker';
 export * from './order';
 export * from './orderBook';
+export * from './orderBook2';
+export * from './orderBook2Data';
+export * from './orderBookPrice';
 export * from './orderCancel';
 export * from './orderCreateV1Req';
 export * from './orderCreateV1Resp';
 export * from './orderHistoryList';
+export * from './orderHistoryList2';
+export * from './orderHistoryList2Data';
 export * from './orderHistoryListData';
 export * from './orderHistoryListDataList';
+export * from './orderHistoryListItem';
+export * from './orderHistoryListItemStatusDetail';
 export * from './orderList';
+export * from './orderList2';
+export * from './orderList2Data';
 export * from './orderListData';
 export * from './orderListDataList';
+export * from './orderListItem';
 export * from './orderListStruct';
 export * from './orderListStructList';
 export * from './orderListV1Resp';
@@ -467,6 +474,7 @@ export * from './p2pAdDetail';
 export * from './p2pAdDetailResponse';
 export * from './p2pAdsListItem';
 export * from './p2pAdsListResponse';
+export * from './p2pAdsListTradeMethod';
 export * from './p2pAdsUpdateStatusResponse';
 export * from './p2pAdsUpdateStatusResult';
 export * from './p2pChatListResponse';
@@ -529,8 +537,11 @@ export * from './positionHistoryListDataCloseDetail';
 export * from './positionHistoryListDataList';
 export * from './positionHistoryListDataRealizedPnlDetail';
 export * from './positionList';
+export * from './positionList2';
+export * from './positionList2Data';
 export * from './positionListData';
 export * from './positionListDataList';
+export * from './positionListItem';
 export * from './positionTimerange';
 export * from './previewFromParam';
 export * from './previewOrder';
@@ -546,8 +557,6 @@ export * from './rebateUserInfo';
 export * from './recommend';
 export * from './recommendV2Scheme';
 export * from './recommendV2Strategy';
-export * from './redeemLaunchPoolResponse';
-export * from './redeemV4';
 export * from './repayCurrencyRes';
 export * from './repayMultiLoan';
 export * from './repayRecordCurrency';
@@ -560,7 +569,6 @@ export * from './sendChatMessageRequest';
 export * from './setMerchantWorkHoursRequest';
 export * from './smallBalance';
 export * from './smallBalanceHistory';
-export * from './spotAccount';
 export * from './spotAccountBook';
 export * from './spotCurrencyChain';
 export * from './spotFee';
@@ -571,6 +579,8 @@ export * from './spotMartingaleCreateParams';
 export * from './spotMartingaleCreateRequest';
 export * from './spotOrderStopLoss';
 export * from './spotOrderStopProfit';
+export * from './spotPovOrder';
+export * from './spotPovOrderCreator';
 export * from './spotPricePutOrder';
 export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
@@ -598,7 +608,17 @@ export * from './subUserMode';
 export * from './swapCoin';
 export * from './swapCoinStruct';
 export * from './symbol';
+export * from './symbolCommissions';
+export * from './symbolCommissionsData';
+export * from './symbolCommissionsDataList';
+export * from './symbolDetail';
+export * from './symbolDetailData';
+export * from './symbolDetailItem';
+export * from './symbolDetailItemSymbolDescs';
+export * from './symbolListItem';
 export * from './symbols';
+export * from './symbols2';
+export * from './symbols2Data';
 export * from './symbolsData';
 export * from './symbolsDataList';
 export * from './systemTime';
@@ -610,6 +630,11 @@ export * from './tradFiError';
 export * from './tradFiOrderRequest';
 export * from './tradFiOrderUpdateRequest';
 export * from './tradFiPositionUpdateRequest';
+export * from './tradFiSpotClosePositionRequest';
+export * from './tradFiSpotError';
+export * from './tradFiSpotOrderRequest';
+export * from './tradFiSpotOrderUpdateRequest';
+export * from './tradFiSpotTransactionRequest';
 export * from './tradFiTicker';
 export * from './tradFiTickerData';
 export * from './tradFiTransactionRequest';
@@ -621,9 +646,11 @@ export * from './trailOrderChangeLogResponse';
 export * from './trailOrderDetailResponse';
 export * from './trailOrderListResponse';
 export * from './trailOrderResponse';
-export * from './transactionConfig';
 export * from './transactionID';
+export * from './transactionItem';
 export * from './transactionList';
+export * from './transactionList2';
+export * from './transactionList2Data';
 export * from './transactionListData';
 export * from './transactionListDataList';
 export * from './transfer';
@@ -674,12 +701,17 @@ export * from './unifiedSettings';
 export * from './unifiedTransferable';
 export * from './updateDualCompPositionCrossModeRequest';
 export * from './updateOrder';
+export * from './updateOrder2';
+export * from './updateOrder2Data';
 export * from './updateOrderData';
 export * from './updatePosition';
 export * from './updateTrailOrder';
 export * from './uploadChatFile';
 export * from './userAssetResp';
+export * from './userAssetResp2';
+export * from './userAssetResp2Data';
 export * from './userAssetRespData';
+export * from './userLeverageSetting';
 export * from './userSub';
 export * from './userSubRelation';
 export * from './withdrawStatus';
@@ -715,6 +747,7 @@ import { AccountDetailKey } from './accountDetailKey';
 import { AccountKeyInfo } from './accountKeyInfo';
 import { AccountKeyInfoPerms } from './accountKeyInfoPerms';
 import { AccountRateLimit } from './accountRateLimit';
+import { AccountTransferDetail } from './accountTransferDetail';
 import { AccountsResponse } from './accountsResponse';
 import { AdsDetailRequest } from './adsDetailRequest';
 import { AdsListRequest } from './adsListRequest';
@@ -778,23 +811,14 @@ import { BrokerTransactionHistory } from './brokerTransactionHistory';
 import { CancelBatchOrder } from './cancelBatchOrder';
 import { CancelOrder } from './cancelOrder';
 import { CancelOrderResult } from './cancelOrderResult';
-import { CandyDropV4ActivityCd01 } from './candyDropV4ActivityCd01';
-import { CandyDropV4ActivityRulesCd03 } from './candyDropV4ActivityRulesCd03';
-import { CandyDropV4AirdropRecordCd06 } from './candyDropV4AirdropRecordCd06';
-import { CandyDropV4ErrorCd01 } from './candyDropV4ErrorCd01';
-import { CandyDropV4ParticipationRecordCd05 } from './candyDropV4ParticipationRecordCd05';
-import { CandyDropV4PrizePoolCd03 } from './candyDropV4PrizePoolCd03';
-import { CandyDropV4RegisterReqCd02 } from './candyDropV4RegisterReqCd02';
-import { CandyDropV4RegisterRespCd02 } from './candyDropV4RegisterRespCd02';
-import { CandyDropV4TaskCd03 } from './candyDropV4TaskCd03';
-import { CandyDropV4TaskProgressCd04 } from './candyDropV4TaskProgressCd04';
-import { CandyDropV4TaskProgressItemCd04 } from './candyDropV4TaskProgressItemCd04';
 import { Categories } from './categories';
 import { CategoriesData } from './categoriesData';
 import { CategoriesDataList } from './categoriesDataList';
 import { ChaseOrder } from './chaseOrder';
 import { ClaimRewardError } from './claimRewardError';
 import { ClaimTaskError } from './claimTaskError';
+import { ClosePosition } from './closePosition';
+import { ClosePositionData } from './closePositionData';
 import { CollateralAdjust } from './collateralAdjust';
 import { CollateralAdjustRes } from './collateralAdjustRes';
 import { CollateralCurrency } from './collateralCurrency';
@@ -828,12 +852,12 @@ import { CreateOrder } from './createOrder';
 import { CreateOrder2 } from './createOrder2';
 import { CreateOrder2Data } from './createOrder2Data';
 import { CreateOrderDetail } from './createOrderDetail';
-import { CreateOrderV4 } from './createOrderV4';
 import { CreateParam } from './createParam';
 import { CreateTrailOrder } from './createTrailOrder';
 import { CreateTrailOrderResponse } from './createTrailOrderResponse';
 import { CreateTrailOrderResult } from './createTrailOrderResult';
 import { CreateTransaction } from './createTransaction';
+import { CreateTransaction2 } from './createTransaction2';
 import { CreateUniLend } from './createUniLend';
 import { CreateUniLoan } from './createUniLoan';
 import { CreateUserResp } from './createUserResp';
@@ -847,6 +871,8 @@ import { CrossexAccountBookRecord } from './crossexAccountBookRecord';
 import { CrossexAccountUpdateRequest } from './crossexAccountUpdateRequest';
 import { CrossexAccountUpdateResponse } from './crossexAccountUpdateResponse';
 import { CrossexAdlRank } from './crossexAdlRank';
+import { CrossexBatchCancelOrderRequest } from './crossexBatchCancelOrderRequest';
+import { CrossexBatchCancelOrderResponse } from './crossexBatchCancelOrderResponse';
 import { CrossexClosePositionRequest } from './crossexClosePositionRequest';
 import { CrossexCoinDiscountRate } from './crossexCoinDiscountRate';
 import { CrossexConvertOrderRequest } from './crossexConvertOrderRequest';
@@ -856,9 +882,13 @@ import { CrossexConvertQuoteResponse } from './crossexConvertQuoteResponse';
 import { CrossexHistoricalMarginPosition } from './crossexHistoricalMarginPosition';
 import { CrossexHistoricalPosition } from './crossexHistoricalPosition';
 import { CrossexInterestRate } from './crossexInterestRate';
+import { CrossexIsolatedMarginRequest } from './crossexIsolatedMarginRequest';
+import { CrossexIsolatedMarginResponse } from './crossexIsolatedMarginResponse';
 import { CrossexLeverageRequest } from './crossexLeverageRequest';
 import { CrossexLeverageResponse } from './crossexLeverageResponse';
 import { CrossexMarginInterestRecord } from './crossexMarginInterestRecord';
+import { CrossexMarginModeRequest } from './crossexMarginModeRequest';
+import { CrossexMarginModeResponse } from './crossexMarginModeResponse';
 import { CrossexMarginPosition } from './crossexMarginPosition';
 import { CrossexOrder } from './crossexOrder';
 import { CrossexOrderActionResponse } from './crossexOrderActionResponse';
@@ -878,6 +908,7 @@ import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
 import { CurrencyQuota } from './currencyQuota';
 import { DebitFee } from './debitFee';
+import { DeleteOrder } from './deleteOrder';
 import { DeletePosition } from './deletePosition';
 import { DeliveryAccount } from './deliveryAccount';
 import { DeliveryAccountBook } from './deliveryAccountBook';
@@ -916,6 +947,12 @@ import { EvaluateItem } from './evaluateItem';
 import { EvaluateResp } from './evaluateResp';
 import { ExSkillClaimRewardReq } from './exSkillClaimRewardReq';
 import { ExSkillClaimTaskReq } from './exSkillClaimTaskReq';
+import { Exchanges } from './exchanges';
+import { ExchangesData } from './exchangesData';
+import { ExchangesDataList } from './exchangesDataList';
+import { FeeRate } from './feeRate';
+import { FeeRateData } from './feeRateData';
+import { FeeRateDataList } from './feeRateDataList';
 import { FixedTermBonusInfo } from './fixedTermBonusInfo';
 import { FixedTermCouponInfo } from './fixedTermCouponInfo';
 import { FixedTermHistoryRecord } from './fixedTermHistoryRecord';
@@ -999,28 +1036,20 @@ import { GetTransactionDetailsRequest } from './getTransactionDetailsRequest';
 import { GetUserCouponDetailResponse } from './getUserCouponDetailResponse';
 import { GetUserCouponDetailResponseData } from './getUserCouponDetailResponseData';
 import { GetUserIdentityError } from './getUserIdentityError';
-import { HodlerAirdropV4ErrorResponse } from './hodlerAirdropV4ErrorResponse';
-import { HodlerAirdropV4OrderRequest } from './hodlerAirdropV4OrderRequest';
-import { HodlerAirdropV4OrderResponse } from './hodlerAirdropV4OrderResponse';
-import { HodlerAirdropV4ProjectItem } from './hodlerAirdropV4ProjectItem';
-import { HodlerAirdropV4UserAirdropRecord } from './hodlerAirdropV4UserAirdropRecord';
-import { HodlerAirdropV4UserOrderRecord } from './hodlerAirdropV4UserOrderRecord';
+import { I18nTxt } from './i18nTxt';
 import { IndexConstituent } from './indexConstituent';
 import { InfiniteGridCreateParams } from './infiniteGridCreateParams';
 import { InfiniteGridCreateRequest } from './infiniteGridCreateRequest';
 import { InlineResponse200 } from './inlineResponse200';
+import { InlineResponse2001 } from './inlineResponse2001';
+import { InlineResponse2002 } from './inlineResponse2002';
 import { InsuranceRecord } from './insuranceRecord';
 import { Klines } from './klines';
 import { KlinesData } from './klinesData';
 import { KlinesDataList } from './klinesDataList';
 import { LadderApr } from './ladderApr';
-import { LaunchPoolV4CreateOrderResponse } from './launchPoolV4CreateOrderResponse';
-import { LaunchPoolV4ErrorResponse } from './launchPoolV4ErrorResponse';
-import { LaunchPoolV4PledgeRecord } from './launchPoolV4PledgeRecord';
-import { LaunchPoolV4Project } from './launchPoolV4Project';
-import { LaunchPoolV4RewardPool } from './launchPoolV4RewardPool';
-import { LaunchPoolV4RewardRecord } from './launchPoolV4RewardRecord';
 import { LedgerRecord } from './ledgerRecord';
+import { LeverageFailedCurrencies } from './leverageFailedCurrencies';
 import { LiquidateOrder } from './liquidateOrder';
 import { ListActivitiesResponse } from './listActivitiesResponse';
 import { ListActivitiesResponseData } from './listActivitiesResponseData';
@@ -1107,15 +1136,25 @@ import { OptionsUnderlying } from './optionsUnderlying';
 import { OptionsUnderlyingTicker } from './optionsUnderlyingTicker';
 import { Order } from './order';
 import { OrderBook } from './orderBook';
+import { OrderBook2 } from './orderBook2';
+import { OrderBook2Data } from './orderBook2Data';
+import { OrderBookPrice } from './orderBookPrice';
 import { OrderCancel } from './orderCancel';
 import { OrderCreateV1Req } from './orderCreateV1Req';
 import { OrderCreateV1Resp } from './orderCreateV1Resp';
 import { OrderHistoryList } from './orderHistoryList';
+import { OrderHistoryList2 } from './orderHistoryList2';
+import { OrderHistoryList2Data } from './orderHistoryList2Data';
 import { OrderHistoryListData } from './orderHistoryListData';
 import { OrderHistoryListDataList } from './orderHistoryListDataList';
+import { OrderHistoryListItem } from './orderHistoryListItem';
+import { OrderHistoryListItemStatusDetail } from './orderHistoryListItemStatusDetail';
 import { OrderList } from './orderList';
+import { OrderList2 } from './orderList2';
+import { OrderList2Data } from './orderList2Data';
 import { OrderListData } from './orderListData';
 import { OrderListDataList } from './orderListDataList';
+import { OrderListItem } from './orderListItem';
 import { OrderListStruct } from './orderListStruct';
 import { OrderListStructList } from './orderListStructList';
 import { OrderListV1Resp } from './orderListV1Resp';
@@ -1161,6 +1200,7 @@ import { P2pAdDetail } from './p2pAdDetail';
 import { P2pAdDetailResponse } from './p2pAdDetailResponse';
 import { P2pAdsListItem } from './p2pAdsListItem';
 import { P2pAdsListResponse } from './p2pAdsListResponse';
+import { P2pAdsListTradeMethod } from './p2pAdsListTradeMethod';
 import { P2pAdsUpdateStatusResponse } from './p2pAdsUpdateStatusResponse';
 import { P2pAdsUpdateStatusResult } from './p2pAdsUpdateStatusResult';
 import { P2pChatListResponse } from './p2pChatListResponse';
@@ -1223,8 +1263,11 @@ import { PositionHistoryListDataCloseDetail } from './positionHistoryListDataClo
 import { PositionHistoryListDataList } from './positionHistoryListDataList';
 import { PositionHistoryListDataRealizedPnlDetail } from './positionHistoryListDataRealizedPnlDetail';
 import { PositionList } from './positionList';
+import { PositionList2 } from './positionList2';
+import { PositionList2Data } from './positionList2Data';
 import { PositionListData } from './positionListData';
 import { PositionListDataList } from './positionListDataList';
+import { PositionListItem } from './positionListItem';
 import { PositionTimerange } from './positionTimerange';
 import { PreviewFromParam } from './previewFromParam';
 import { PreviewOrder } from './previewOrder';
@@ -1240,8 +1283,6 @@ import { RebateUserInfo } from './rebateUserInfo';
 import { Recommend } from './recommend';
 import { RecommendV2Scheme } from './recommendV2Scheme';
 import { RecommendV2Strategy } from './recommendV2Strategy';
-import { RedeemLaunchPoolResponse } from './redeemLaunchPoolResponse';
-import { RedeemV4 } from './redeemV4';
 import { RepayCurrencyRes } from './repayCurrencyRes';
 import { RepayMultiLoan } from './repayMultiLoan';
 import { RepayRecordCurrency } from './repayRecordCurrency';
@@ -1254,7 +1295,6 @@ import { SendChatMessageRequest } from './sendChatMessageRequest';
 import { SetMerchantWorkHoursRequest } from './setMerchantWorkHoursRequest';
 import { SmallBalance } from './smallBalance';
 import { SmallBalanceHistory } from './smallBalanceHistory';
-import { SpotAccount } from './spotAccount';
 import { SpotAccountBook } from './spotAccountBook';
 import { SpotCurrencyChain } from './spotCurrencyChain';
 import { SpotFee } from './spotFee';
@@ -1265,6 +1305,8 @@ import { SpotMartingaleCreateParams } from './spotMartingaleCreateParams';
 import { SpotMartingaleCreateRequest } from './spotMartingaleCreateRequest';
 import { SpotOrderStopLoss } from './spotOrderStopLoss';
 import { SpotOrderStopProfit } from './spotOrderStopProfit';
+import { SpotPovOrder } from './spotPovOrder';
+import { SpotPovOrderCreator } from './spotPovOrderCreator';
 import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
@@ -1292,7 +1334,17 @@ import { SubUserMode } from './subUserMode';
 import { SwapCoin } from './swapCoin';
 import { SwapCoinStruct } from './swapCoinStruct';
 import { Symbol } from './symbol';
+import { SymbolCommissions } from './symbolCommissions';
+import { SymbolCommissionsData } from './symbolCommissionsData';
+import { SymbolCommissionsDataList } from './symbolCommissionsDataList';
+import { SymbolDetail } from './symbolDetail';
+import { SymbolDetailData } from './symbolDetailData';
+import { SymbolDetailItem } from './symbolDetailItem';
+import { SymbolDetailItemSymbolDescs } from './symbolDetailItemSymbolDescs';
+import { SymbolListItem } from './symbolListItem';
 import { Symbols } from './symbols';
+import { Symbols2 } from './symbols2';
+import { Symbols2Data } from './symbols2Data';
 import { SymbolsData } from './symbolsData';
 import { SymbolsDataList } from './symbolsDataList';
 import { SystemTime } from './systemTime';
@@ -1304,6 +1356,11 @@ import { TradFiError } from './tradFiError';
 import { TradFiOrderRequest } from './tradFiOrderRequest';
 import { TradFiOrderUpdateRequest } from './tradFiOrderUpdateRequest';
 import { TradFiPositionUpdateRequest } from './tradFiPositionUpdateRequest';
+import { TradFiSpotClosePositionRequest } from './tradFiSpotClosePositionRequest';
+import { TradFiSpotError } from './tradFiSpotError';
+import { TradFiSpotOrderRequest } from './tradFiSpotOrderRequest';
+import { TradFiSpotOrderUpdateRequest } from './tradFiSpotOrderUpdateRequest';
+import { TradFiSpotTransactionRequest } from './tradFiSpotTransactionRequest';
 import { TradFiTicker } from './tradFiTicker';
 import { TradFiTickerData } from './tradFiTickerData';
 import { TradFiTransactionRequest } from './tradFiTransactionRequest';
@@ -1315,9 +1372,11 @@ import { TrailOrderChangeLogResponse } from './trailOrderChangeLogResponse';
 import { TrailOrderDetailResponse } from './trailOrderDetailResponse';
 import { TrailOrderListResponse } from './trailOrderListResponse';
 import { TrailOrderResponse } from './trailOrderResponse';
-import { TransactionConfig } from './transactionConfig';
 import { TransactionID } from './transactionID';
+import { TransactionItem } from './transactionItem';
 import { TransactionList } from './transactionList';
+import { TransactionList2 } from './transactionList2';
+import { TransactionList2Data } from './transactionList2Data';
 import { TransactionListData } from './transactionListData';
 import { TransactionListDataList } from './transactionListDataList';
 import { Transfer } from './transfer';
@@ -1368,12 +1427,17 @@ import { UnifiedSettings } from './unifiedSettings';
 import { UnifiedTransferable } from './unifiedTransferable';
 import { UpdateDualCompPositionCrossModeRequest } from './updateDualCompPositionCrossModeRequest';
 import { UpdateOrder } from './updateOrder';
+import { UpdateOrder2 } from './updateOrder2';
+import { UpdateOrder2Data } from './updateOrder2Data';
 import { UpdateOrderData } from './updateOrderData';
 import { UpdatePosition } from './updatePosition';
 import { UpdateTrailOrder } from './updateTrailOrder';
 import { UploadChatFile } from './uploadChatFile';
 import { UserAssetResp } from './userAssetResp';
+import { UserAssetResp2 } from './userAssetResp2';
+import { UserAssetResp2Data } from './userAssetResp2Data';
 import { UserAssetRespData } from './userAssetRespData';
+import { UserLeverageSetting } from './userLeverageSetting';
 import { UserSub } from './userSub';
 import { UserSubRelation } from './userSubRelation';
 import { WithdrawStatus } from './withdrawStatus';
@@ -1385,6 +1449,9 @@ let primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'nu
 
 let enumsMap: { [index: string]: any } = {
     'AccountBalance.Currency': AccountBalance.Currency,
+    'AccountTransferDetail.Status': AccountTransferDetail.Status,
+    'AccountTransferDetail.FromAccount': AccountTransferDetail.FromAccount,
+    'AccountTransferDetail.ToAccount': AccountTransferDetail.ToAccount,
     'AdsUpdateStatus.AdvStatus': AdsUpdateStatus.AdvStatus,
     'ApiResponseExSkillGetBeginnerTaskListRespDataTasks.PrizeType':
         ApiResponseExSkillGetBeginnerTaskListRespDataTasks.PrizeType,
@@ -1411,6 +1478,8 @@ let enumsMap: { [index: string]: any } = {
     'CreateUniLend.Type': CreateUniLend.Type,
     'CreateUniLoan.Type': CreateUniLoan.Type,
     'CrossMarginLoan.Status': CrossMarginLoan.Status,
+    'CrossexIsolatedMarginRequest.PositionSide': CrossexIsolatedMarginRequest.PositionSide,
+    'CrossexMarginModeRequest.MarginMode': CrossexMarginModeRequest.MarginMode,
     'CrossexOrderRequest.Side': CrossexOrderRequest.Side,
     'CrossexOrderRequest.Type': CrossexOrderRequest.Type,
     'CrossexOrderRequest.TimeInForce': CrossexOrderRequest.TimeInForce,
@@ -1431,6 +1500,7 @@ let enumsMap: { [index: string]: any } = {
     'DeliveryPositionClose.Side': DeliveryPositionClose.Side,
     DiscoverScene: DiscoverScene,
     'Eligibility.BlockReasonCodes': Eligibility.BlockReasonCodes,
+    'ExchangesDataList.Exchange': ExchangesDataList.Exchange,
     'FuturesAccountBook.Type': FuturesAccountBook.Type,
     'FuturesBBOOrder.Tif': FuturesBBOOrder.Tif,
     'FuturesBBOOrder.AutoSize': FuturesBBOOrder.AutoSize,
@@ -1460,12 +1530,8 @@ let enumsMap: { [index: string]: any } = {
     'GetUserCouponDetailResponse.Code': GetUserCouponDetailResponse.Code,
     'GetUserCouponDetailResponseData.Status': GetUserCouponDetailResponseData.Status,
     'GetUserCouponDetailResponseData.IsTaskCoupon': GetUserCouponDetailResponseData.IsTaskCoupon,
-    'HodlerAirdropV4ErrorResponse.Label': HodlerAirdropV4ErrorResponse.Label,
-    'HodlerAirdropV4ProjectItem.Status': HodlerAirdropV4ProjectItem.Status,
     'InfiniteGridCreateParams.PriceType': InfiniteGridCreateParams.PriceType,
     'InfiniteGridCreateRequest.StrategyType': InfiniteGridCreateRequest.StrategyType,
-    'LaunchPoolV4ErrorResponse.Label': LaunchPoolV4ErrorResponse.Label,
-    'LaunchPoolV4Project.ProjectState': LaunchPoolV4Project.ProjectState,
     'ListUserCouponsResponse.Code': ListUserCouponsResponse.Code,
     'ListUserCouponsResponseDataList.Status': ListUserCouponsResponseDataList.Status,
     'ListUserCouponsResponseDataList.IsTaskCoupon': ListUserCouponsResponseDataList.IsTaskCoupon,
@@ -1494,12 +1560,25 @@ let enumsMap: { [index: string]: any } = {
     'OrderHistoryListDataList.PriceType': OrderHistoryListDataList.PriceType,
     'OrderHistoryListDataList.OrderOptType': OrderHistoryListDataList.OrderOptType,
     'OrderHistoryListDataList.Side': OrderHistoryListDataList.Side,
+    'OrderHistoryListItem.Exchange': OrderHistoryListItem.Exchange,
+    'OrderHistoryListItem.PriceType': OrderHistoryListItem.PriceType,
+    'OrderHistoryListItem.Side': OrderHistoryListItem.Side,
+    'OrderHistoryListItem.TimeInForce': OrderHistoryListItem.TimeInForce,
     'OrderListDataList.PriceType': OrderListDataList.PriceType,
     'OrderListDataList.Finished': OrderListDataList.Finished,
     'OrderListDataList.Side': OrderListDataList.Side,
+    'OrderListItem.Exchange': OrderListItem.Exchange,
+    'OrderListItem.TradeStatus': OrderListItem.TradeStatus,
+    'OrderListItem.TradeMode': OrderListItem.TradeMode,
+    'OrderListItem.PriceType': OrderListItem.PriceType,
+    'OrderListItem.Side': OrderListItem.Side,
     'OrderLogData.PriceType': OrderLogData.PriceType,
     'OrderLogData.Side': OrderLogData.Side,
     'OtcBankSupplementChecklistResponseData.UserType': OtcBankSupplementChecklistResponseData.UserType,
+    'P2pAdDetail.LimitBasis': P2pAdDetail.LimitBasis,
+    'P2pAdDetail.LimitBasisText': P2pAdDetail.LimitBasisText,
+    'P2pAdsListItem.LimitBasis': P2pAdsListItem.LimitBasis,
+    'P2pAdsListItem.LimitBasisText': P2pAdsListItem.LimitBasisText,
     'P2pChatMessage.RiskType': P2pChatMessage.RiskType,
     'P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent.Type':
         P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent.Type,
@@ -1514,16 +1593,21 @@ let enumsMap: { [index: string]: any } = {
     'P2pSendChatMessageResult.RiskType': P2pSendChatMessageResult.RiskType,
     'PartnerDataAggregated.BusinessType': PartnerDataAggregated.BusinessType,
     'PlaceBizPushOrder.Type': PlaceBizPushOrder.Type,
+    'PlaceBizPushOrder.LimitBasis': PlaceBizPushOrder.LimitBasis,
+    'PlaceBizPushOrder.PolymarketLimit': PlaceBizPushOrder.PolymarketLimit,
     'Position.HedgeStatus': Position.HedgeStatus,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'PositionHistoryListDataList.PositionDir': PositionHistoryListDataList.PositionDir,
+    'PositionListItem.Exchange': PositionListItem.Exchange,
+    'PositionListItem.TradeStatus': PositionListItem.TradeStatus,
     'SendChatMessageRequest.Type': SendChatMessageRequest.Type,
     'SetMerchantWorkHoursRequest.WorkStatus': SetMerchantWorkHoursRequest.WorkStatus,
     'SetMerchantWorkHoursRequest.CycleType': SetMerchantWorkHoursRequest.CycleType,
     'SpotGridCreateParams.PriceType': SpotGridCreateParams.PriceType,
     'SpotGridCreateRequest.StrategyType': SpotGridCreateRequest.StrategyType,
     'SpotMartingaleCreateRequest.StrategyType': SpotMartingaleCreateRequest.StrategyType,
+    'SpotPovOrderCreator.Side': SpotPovOrderCreator.Side,
     'SpotPricePutOrder.Type': SpotPricePutOrder.Type,
     'SpotPricePutOrder.Side': SpotPricePutOrder.Side,
     'SpotPricePutOrder.Account': SpotPricePutOrder.Account,
@@ -1531,15 +1615,31 @@ let enumsMap: { [index: string]: any } = {
     'SpotPriceTrigger.Rule': SpotPriceTrigger.Rule,
     'StopAllTrailOrders.RelatedPosition': StopAllTrailOrders.RelatedPosition,
     StrategyType: StrategyType,
+    'SymbolDetailItem.Exchange': SymbolDetailItem.Exchange,
+    'SymbolDetailItem.TradeStatus': SymbolDetailItem.TradeStatus,
+    'SymbolDetailItem.TradeMode': SymbolDetailItem.TradeMode,
+    'SymbolDetailItem.OrderFillTiming': SymbolDetailItem.OrderFillTiming,
+    'SymbolListItem.Exchange': SymbolListItem.Exchange,
+    'SymbolListItem.TradeStatus': SymbolListItem.TradeStatus,
+    'SymbolListItem.TradeMode': SymbolListItem.TradeMode,
+    'SymbolListItem.OrderFillTiming': SymbolListItem.OrderFillTiming,
     'TradFiClosePositionRequest.CloseType': TradFiClosePositionRequest.CloseType,
     'TradFiOrderRequest.PriceType': TradFiOrderRequest.PriceType,
     'TradFiOrderRequest.Side': TradFiOrderRequest.Side,
+    'TradFiSpotClosePositionRequest.CloseType': TradFiSpotClosePositionRequest.CloseType,
+    'TradFiSpotOrderRequest.Side': TradFiSpotOrderRequest.Side,
+    'TradFiSpotOrderRequest.PriceType': TradFiSpotOrderRequest.PriceType,
+    'TradFiSpotOrderRequest.TradingSession': TradFiSpotOrderRequest.TradingSession,
+    'TradFiSpotOrderRequest.TimeInForce': TradFiSpotOrderRequest.TimeInForce,
+    'TradFiSpotTransactionRequest.Asset': TradFiSpotTransactionRequest.Asset,
+    'TradFiSpotTransactionRequest.Type': TradFiSpotTransactionRequest.Type,
     'TradFiTransactionRequest.Type': TradFiTransactionRequest.Type,
     'Trade.Side': Trade.Side,
     'Trade.Role': Trade.Role,
     'TrailChangeLog.PriceType': TrailChangeLog.PriceType,
     'TrailOrder.PriceType': TrailOrder.PriceType,
     'TrailOrder.Status': TrailOrder.Status,
+    'TransactionItem.Type': TransactionItem.Type,
     'TransactionListDataList.Type': TransactionListDataList.Type,
     'Transfer.From': Transfer.From,
     'Transfer.To': Transfer.To,
@@ -1573,6 +1673,7 @@ let typeMap: { [index: string]: any } = {
     AccountKeyInfo: AccountKeyInfo,
     AccountKeyInfoPerms: AccountKeyInfoPerms,
     AccountRateLimit: AccountRateLimit,
+    AccountTransferDetail: AccountTransferDetail,
     AccountsResponse: AccountsResponse,
     AdsDetailRequest: AdsDetailRequest,
     AdsListRequest: AdsListRequest,
@@ -1636,23 +1737,14 @@ let typeMap: { [index: string]: any } = {
     CancelBatchOrder: CancelBatchOrder,
     CancelOrder: CancelOrder,
     CancelOrderResult: CancelOrderResult,
-    CandyDropV4ActivityCd01: CandyDropV4ActivityCd01,
-    CandyDropV4ActivityRulesCd03: CandyDropV4ActivityRulesCd03,
-    CandyDropV4AirdropRecordCd06: CandyDropV4AirdropRecordCd06,
-    CandyDropV4ErrorCd01: CandyDropV4ErrorCd01,
-    CandyDropV4ParticipationRecordCd05: CandyDropV4ParticipationRecordCd05,
-    CandyDropV4PrizePoolCd03: CandyDropV4PrizePoolCd03,
-    CandyDropV4RegisterReqCd02: CandyDropV4RegisterReqCd02,
-    CandyDropV4RegisterRespCd02: CandyDropV4RegisterRespCd02,
-    CandyDropV4TaskCd03: CandyDropV4TaskCd03,
-    CandyDropV4TaskProgressCd04: CandyDropV4TaskProgressCd04,
-    CandyDropV4TaskProgressItemCd04: CandyDropV4TaskProgressItemCd04,
     Categories: Categories,
     CategoriesData: CategoriesData,
     CategoriesDataList: CategoriesDataList,
     ChaseOrder: ChaseOrder,
     ClaimRewardError: ClaimRewardError,
     ClaimTaskError: ClaimTaskError,
+    ClosePosition: ClosePosition,
+    ClosePositionData: ClosePositionData,
     CollateralAdjust: CollateralAdjust,
     CollateralAdjustRes: CollateralAdjustRes,
     CollateralCurrency: CollateralCurrency,
@@ -1685,12 +1777,12 @@ let typeMap: { [index: string]: any } = {
     CreateOrder2: CreateOrder2,
     CreateOrder2Data: CreateOrder2Data,
     CreateOrderDetail: CreateOrderDetail,
-    CreateOrderV4: CreateOrderV4,
     CreateParam: CreateParam,
     CreateTrailOrder: CreateTrailOrder,
     CreateTrailOrderResponse: CreateTrailOrderResponse,
     CreateTrailOrderResult: CreateTrailOrderResult,
     CreateTransaction: CreateTransaction,
+    CreateTransaction2: CreateTransaction2,
     CreateUniLend: CreateUniLend,
     CreateUniLoan: CreateUniLoan,
     CreateUserResp: CreateUserResp,
@@ -1704,6 +1796,8 @@ let typeMap: { [index: string]: any } = {
     CrossexAccountUpdateRequest: CrossexAccountUpdateRequest,
     CrossexAccountUpdateResponse: CrossexAccountUpdateResponse,
     CrossexAdlRank: CrossexAdlRank,
+    CrossexBatchCancelOrderRequest: CrossexBatchCancelOrderRequest,
+    CrossexBatchCancelOrderResponse: CrossexBatchCancelOrderResponse,
     CrossexClosePositionRequest: CrossexClosePositionRequest,
     CrossexCoinDiscountRate: CrossexCoinDiscountRate,
     CrossexConvertOrderRequest: CrossexConvertOrderRequest,
@@ -1713,9 +1807,13 @@ let typeMap: { [index: string]: any } = {
     CrossexHistoricalMarginPosition: CrossexHistoricalMarginPosition,
     CrossexHistoricalPosition: CrossexHistoricalPosition,
     CrossexInterestRate: CrossexInterestRate,
+    CrossexIsolatedMarginRequest: CrossexIsolatedMarginRequest,
+    CrossexIsolatedMarginResponse: CrossexIsolatedMarginResponse,
     CrossexLeverageRequest: CrossexLeverageRequest,
     CrossexLeverageResponse: CrossexLeverageResponse,
     CrossexMarginInterestRecord: CrossexMarginInterestRecord,
+    CrossexMarginModeRequest: CrossexMarginModeRequest,
+    CrossexMarginModeResponse: CrossexMarginModeResponse,
     CrossexMarginPosition: CrossexMarginPosition,
     CrossexOrder: CrossexOrder,
     CrossexOrderActionResponse: CrossexOrderActionResponse,
@@ -1735,6 +1833,7 @@ let typeMap: { [index: string]: any } = {
     CurrencyPair: CurrencyPair,
     CurrencyQuota: CurrencyQuota,
     DebitFee: DebitFee,
+    DeleteOrder: DeleteOrder,
     DeletePosition: DeletePosition,
     DeliveryAccount: DeliveryAccount,
     DeliveryAccountBook: DeliveryAccountBook,
@@ -1772,6 +1871,12 @@ let typeMap: { [index: string]: any } = {
     EvaluateResp: EvaluateResp,
     ExSkillClaimRewardReq: ExSkillClaimRewardReq,
     ExSkillClaimTaskReq: ExSkillClaimTaskReq,
+    Exchanges: Exchanges,
+    ExchangesData: ExchangesData,
+    ExchangesDataList: ExchangesDataList,
+    FeeRate: FeeRate,
+    FeeRateData: FeeRateData,
+    FeeRateDataList: FeeRateDataList,
     FixedTermBonusInfo: FixedTermBonusInfo,
     FixedTermCouponInfo: FixedTermCouponInfo,
     FixedTermHistoryRecord: FixedTermHistoryRecord,
@@ -1854,28 +1959,20 @@ let typeMap: { [index: string]: any } = {
     GetUserCouponDetailResponse: GetUserCouponDetailResponse,
     GetUserCouponDetailResponseData: GetUserCouponDetailResponseData,
     GetUserIdentityError: GetUserIdentityError,
-    HodlerAirdropV4ErrorResponse: HodlerAirdropV4ErrorResponse,
-    HodlerAirdropV4OrderRequest: HodlerAirdropV4OrderRequest,
-    HodlerAirdropV4OrderResponse: HodlerAirdropV4OrderResponse,
-    HodlerAirdropV4ProjectItem: HodlerAirdropV4ProjectItem,
-    HodlerAirdropV4UserAirdropRecord: HodlerAirdropV4UserAirdropRecord,
-    HodlerAirdropV4UserOrderRecord: HodlerAirdropV4UserOrderRecord,
+    I18nTxt: I18nTxt,
     IndexConstituent: IndexConstituent,
     InfiniteGridCreateParams: InfiniteGridCreateParams,
     InfiniteGridCreateRequest: InfiniteGridCreateRequest,
     InlineResponse200: InlineResponse200,
+    InlineResponse2001: InlineResponse2001,
+    InlineResponse2002: InlineResponse2002,
     InsuranceRecord: InsuranceRecord,
     Klines: Klines,
     KlinesData: KlinesData,
     KlinesDataList: KlinesDataList,
     LadderApr: LadderApr,
-    LaunchPoolV4CreateOrderResponse: LaunchPoolV4CreateOrderResponse,
-    LaunchPoolV4ErrorResponse: LaunchPoolV4ErrorResponse,
-    LaunchPoolV4PledgeRecord: LaunchPoolV4PledgeRecord,
-    LaunchPoolV4Project: LaunchPoolV4Project,
-    LaunchPoolV4RewardPool: LaunchPoolV4RewardPool,
-    LaunchPoolV4RewardRecord: LaunchPoolV4RewardRecord,
     LedgerRecord: LedgerRecord,
+    LeverageFailedCurrencies: LeverageFailedCurrencies,
     LiquidateOrder: LiquidateOrder,
     ListActivitiesResponse: ListActivitiesResponse,
     ListActivitiesResponseData: ListActivitiesResponseData,
@@ -1962,15 +2059,25 @@ let typeMap: { [index: string]: any } = {
     OptionsUnderlyingTicker: OptionsUnderlyingTicker,
     Order: Order,
     OrderBook: OrderBook,
+    OrderBook2: OrderBook2,
+    OrderBook2Data: OrderBook2Data,
+    OrderBookPrice: OrderBookPrice,
     OrderCancel: OrderCancel,
     OrderCreateV1Req: OrderCreateV1Req,
     OrderCreateV1Resp: OrderCreateV1Resp,
     OrderHistoryList: OrderHistoryList,
+    OrderHistoryList2: OrderHistoryList2,
+    OrderHistoryList2Data: OrderHistoryList2Data,
     OrderHistoryListData: OrderHistoryListData,
     OrderHistoryListDataList: OrderHistoryListDataList,
+    OrderHistoryListItem: OrderHistoryListItem,
+    OrderHistoryListItemStatusDetail: OrderHistoryListItemStatusDetail,
     OrderList: OrderList,
+    OrderList2: OrderList2,
+    OrderList2Data: OrderList2Data,
     OrderListData: OrderListData,
     OrderListDataList: OrderListDataList,
+    OrderListItem: OrderListItem,
     OrderListStruct: OrderListStruct,
     OrderListStructList: OrderListStructList,
     OrderListV1Resp: OrderListV1Resp,
@@ -2016,6 +2123,7 @@ let typeMap: { [index: string]: any } = {
     P2pAdDetailResponse: P2pAdDetailResponse,
     P2pAdsListItem: P2pAdsListItem,
     P2pAdsListResponse: P2pAdsListResponse,
+    P2pAdsListTradeMethod: P2pAdsListTradeMethod,
     P2pAdsUpdateStatusResponse: P2pAdsUpdateStatusResponse,
     P2pAdsUpdateStatusResult: P2pAdsUpdateStatusResult,
     P2pChatListResponse: P2pChatListResponse,
@@ -2079,8 +2187,11 @@ let typeMap: { [index: string]: any } = {
     PositionHistoryListDataList: PositionHistoryListDataList,
     PositionHistoryListDataRealizedPnlDetail: PositionHistoryListDataRealizedPnlDetail,
     PositionList: PositionList,
+    PositionList2: PositionList2,
+    PositionList2Data: PositionList2Data,
     PositionListData: PositionListData,
     PositionListDataList: PositionListDataList,
+    PositionListItem: PositionListItem,
     PositionTimerange: PositionTimerange,
     PreviewFromParam: PreviewFromParam,
     PreviewOrder: PreviewOrder,
@@ -2096,8 +2207,6 @@ let typeMap: { [index: string]: any } = {
     Recommend: Recommend,
     RecommendV2Scheme: RecommendV2Scheme,
     RecommendV2Strategy: RecommendV2Strategy,
-    RedeemLaunchPoolResponse: RedeemLaunchPoolResponse,
-    RedeemV4: RedeemV4,
     RepayCurrencyRes: RepayCurrencyRes,
     RepayMultiLoan: RepayMultiLoan,
     RepayRecordCurrency: RepayRecordCurrency,
@@ -2110,7 +2219,6 @@ let typeMap: { [index: string]: any } = {
     SetMerchantWorkHoursRequest: SetMerchantWorkHoursRequest,
     SmallBalance: SmallBalance,
     SmallBalanceHistory: SmallBalanceHistory,
-    SpotAccount: SpotAccount,
     SpotAccountBook: SpotAccountBook,
     SpotCurrencyChain: SpotCurrencyChain,
     SpotFee: SpotFee,
@@ -2121,6 +2229,8 @@ let typeMap: { [index: string]: any } = {
     SpotMartingaleCreateRequest: SpotMartingaleCreateRequest,
     SpotOrderStopLoss: SpotOrderStopLoss,
     SpotOrderStopProfit: SpotOrderStopProfit,
+    SpotPovOrder: SpotPovOrder,
+    SpotPovOrderCreator: SpotPovOrderCreator,
     SpotPricePutOrder: SpotPricePutOrder,
     SpotPriceTrigger: SpotPriceTrigger,
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
@@ -2147,7 +2257,17 @@ let typeMap: { [index: string]: any } = {
     SwapCoin: SwapCoin,
     SwapCoinStruct: SwapCoinStruct,
     Symbol: Symbol,
+    SymbolCommissions: SymbolCommissions,
+    SymbolCommissionsData: SymbolCommissionsData,
+    SymbolCommissionsDataList: SymbolCommissionsDataList,
+    SymbolDetail: SymbolDetail,
+    SymbolDetailData: SymbolDetailData,
+    SymbolDetailItem: SymbolDetailItem,
+    SymbolDetailItemSymbolDescs: SymbolDetailItemSymbolDescs,
+    SymbolListItem: SymbolListItem,
     Symbols: Symbols,
+    Symbols2: Symbols2,
+    Symbols2Data: Symbols2Data,
     SymbolsData: SymbolsData,
     SymbolsDataList: SymbolsDataList,
     SystemTime: SystemTime,
@@ -2159,6 +2279,11 @@ let typeMap: { [index: string]: any } = {
     TradFiOrderRequest: TradFiOrderRequest,
     TradFiOrderUpdateRequest: TradFiOrderUpdateRequest,
     TradFiPositionUpdateRequest: TradFiPositionUpdateRequest,
+    TradFiSpotClosePositionRequest: TradFiSpotClosePositionRequest,
+    TradFiSpotError: TradFiSpotError,
+    TradFiSpotOrderRequest: TradFiSpotOrderRequest,
+    TradFiSpotOrderUpdateRequest: TradFiSpotOrderUpdateRequest,
+    TradFiSpotTransactionRequest: TradFiSpotTransactionRequest,
     TradFiTicker: TradFiTicker,
     TradFiTickerData: TradFiTickerData,
     TradFiTransactionRequest: TradFiTransactionRequest,
@@ -2170,9 +2295,11 @@ let typeMap: { [index: string]: any } = {
     TrailOrderDetailResponse: TrailOrderDetailResponse,
     TrailOrderListResponse: TrailOrderListResponse,
     TrailOrderResponse: TrailOrderResponse,
-    TransactionConfig: TransactionConfig,
     TransactionID: TransactionID,
+    TransactionItem: TransactionItem,
     TransactionList: TransactionList,
+    TransactionList2: TransactionList2,
+    TransactionList2Data: TransactionList2Data,
     TransactionListData: TransactionListData,
     TransactionListDataList: TransactionListDataList,
     Transfer: Transfer,
@@ -2223,12 +2350,17 @@ let typeMap: { [index: string]: any } = {
     UnifiedTransferable: UnifiedTransferable,
     UpdateDualCompPositionCrossModeRequest: UpdateDualCompPositionCrossModeRequest,
     UpdateOrder: UpdateOrder,
+    UpdateOrder2: UpdateOrder2,
+    UpdateOrder2Data: UpdateOrder2Data,
     UpdateOrderData: UpdateOrderData,
     UpdatePosition: UpdatePosition,
     UpdateTrailOrder: UpdateTrailOrder,
     UploadChatFile: UploadChatFile,
     UserAssetResp: UserAssetResp,
+    UserAssetResp2: UserAssetResp2,
+    UserAssetResp2Data: UserAssetResp2Data,
     UserAssetRespData: UserAssetRespData,
+    UserLeverageSetting: UserLeverageSetting,
     UserSub: UserSub,
     UserSubRelation: UserSubRelation,
     WithdrawStatus: WithdrawStatus,

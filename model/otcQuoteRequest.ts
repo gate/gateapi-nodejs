@@ -14,15 +14,15 @@
  */
 export class OtcQuoteRequest {
     /**
-     * PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
+     * PAY: specify the payment amount (`pay_amount` is required); GET: specify the receive amount (`get_amount` is required).
      */
     'side': string;
     /**
-     * Currency the user pays. Supported currencies can be found on the OTC web quote page.
+     * Payment currency. Supported currencies are available on the OTC web quote page.
      */
     'payCoin': string;
     /**
-     * Currency the user receives. Supported currencies can be found on the OTC web quote page.
+     * Receive currency. Supported currencies are available on the OTC web quote page.
      */
     'getCoin': string;
     /**
@@ -38,7 +38,7 @@ export class OtcQuoteRequest {
      */
     'createQuoteToken'?: string;
     /**
-     * Promotion code (optional)
+     * Promotion code
      */
     'promotionCode'?: string;
 

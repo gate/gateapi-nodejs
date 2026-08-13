@@ -18,7 +18,7 @@ export class CrossexOrderRequest {
      */
     'text'?: string;
     /**
-     * Unique identifier `{Exchange}_{Business}_{Base}_{Counter}` Examples: To send a Binance spot order on `ADA/USDT`, use `BINANCE_SPOT_ADA_USDT`; For an ADA/USDT-margined USDT perpetual futures order on OKX, use `OKX_FUTURE_ADA_USDT`; For ADA/USDT margin trading on Gate, use `GATE_MARGIN_ADA_USDT`; For ADA/USDT spot trading on Bybit, use `BYBIT_SPOT_ADA_USDT`; For an ADA/USD futures order on Kraken, use `KRAKEN_FUTURE_ADA_USD`; For an ADA/USDC futures order on Hyperliquid, use `HYPERLIQUID_FUTURE_ADA_USDC`; Supports spot trades, USDT-margined perpetual futures, and spot margin templates. BYBIT omits spot margin for now; Kraken and Hyperliquid omit dedicated spot/margin legs inside CrossEx.
+     * Unique identifier `{Exchange}_{Business}_{Base}_{Counter}` Examples: To send a Binance spot order on `ADA/USDT`, use `BINANCE_SPOT_ADA_USDT`; For an ADA/USDT-margined USDT perpetual futures order on OKX, use `OKX_FUTURE_ADA_USDT`; For ADA/USDT margin trading on Gate, use `GATE_MARGIN_ADA_USDT`; For ADA/USDT spot trading on Bybit, use `BYBIT_SPOT_ADA_USDT`; For an ADA/USD futures order on Kraken, use `KRAKEN_FUTURE_ADA_USD`; For an ADA/USDC futures order on Hyperliquid, use `HYPERLIQUID_FUTURE_ADA_USDC`; For an ADA/USDC futures order on Deribit, use `DERIBIT_FUTURE_ADA_USDC`; Supports spot trades, USDT-margined perpetual futures, and spot margin templates. BYBIT and DERIBIT omit spot margin for now; Kraken and Hyperliquid omit dedicated spot/margin legs inside CrossEx.
      */
     'symbol': string;
     /**
@@ -30,7 +30,7 @@ export class CrossexOrderRequest {
      */
     'type'?: CrossexOrderRequest.Type;
     /**
-     * Default GTC, supports enumerated types: GTC, IOC, FOK, POC GTC: GoodTillCancelled IOC: ImmediateOrCancelled FOK: FillOrKill POC: PendingOrCancelled or PostOnly
+     * Defaults to GTC. Supported values: `GTC`, `IOC`, `FOK`, `POC`, and `RPI` `GTC`: GoodTillCancelled `IOC`: ImmediateOrCancelled `FOK`: FillOrKill `POC`: PendingOrCancelled or PostOnly `RPI`: Retail Price Improvement
      */
     'timeInForce'?: CrossexOrderRequest.TimeInForce;
     /**
@@ -128,6 +128,7 @@ export namespace CrossexOrderRequest {
         IOC = <any>'IOC',
         FOK = <any>'FOK',
         POC = <any>'POC',
+        RPI = <any>'RPI',
     }
     export enum ReduceOnly {
         True = <any>'true',

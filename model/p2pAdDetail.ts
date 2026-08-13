@@ -23,13 +23,29 @@ export class P2pAdDetail {
      */
     'amount'?: string;
     /**
-     * Minimum trade amount in `want_type`.
+     * Minimum quantity per order, denominated by currency_type
      */
     'minAmount'?: string;
     /**
-     * Maximum trade amount priced in `want_type`.
+     * Maximum quantity per order, denominated by currency_type
      */
     'maxAmount'?: string;
+    /**
+     * Minimum trade amount in `want_type`.
+     */
+    'fiatMinAmount'?: string;
+    /**
+     * Maximum trade amount priced in `want_type`.
+     */
+    'fiatMaxAmount'?: string;
+    /**
+     * Trading limit unit. 0: crypto quantity, 1: fiat amount
+     */
+    'limitBasis'?: P2pAdDetail.LimitBasis;
+    /**
+     * Trading limit unit label. crypto: crypto quantity, fiat: fiat amount
+     */
+    'limitBasisText'?: P2pAdDetail.LimitBasisText;
     /**
      * Fiat amount
      */
@@ -127,6 +143,10 @@ export class P2pAdDetail {
      */
     'advertisersLimit'?: number;
     /**
+     * Whether to restrict trading with Polymarket users. 0: no restriction, 1: restricted
+     */
+    'polymarketLimit'?: number;
+    /**
      * Minimum limit of completed orders
      */
     'minCompletedLimit'?: number;
@@ -186,6 +206,26 @@ export class P2pAdDetail {
             name: 'maxAmount',
             baseName: 'max_amount',
             type: 'string',
+        },
+        {
+            name: 'fiatMinAmount',
+            baseName: 'fiat_min_amount',
+            type: 'string',
+        },
+        {
+            name: 'fiatMaxAmount',
+            baseName: 'fiat_max_amount',
+            type: 'string',
+        },
+        {
+            name: 'limitBasis',
+            baseName: 'limit_basis',
+            type: 'P2pAdDetail.LimitBasis',
+        },
+        {
+            name: 'limitBasisText',
+            baseName: 'limit_basis_text',
+            type: 'P2pAdDetail.LimitBasisText',
         },
         {
             name: 'total',
@@ -308,6 +348,11 @@ export class P2pAdDetail {
             type: 'number',
         },
         {
+            name: 'polymarketLimit',
+            baseName: 'polymarket_limit',
+            type: 'number',
+        },
+        {
             name: 'minCompletedLimit',
             baseName: 'min_completed_limit',
             type: 'number',
@@ -351,5 +396,16 @@ export class P2pAdDetail {
 
     static getAttributeTypeMap() {
         return P2pAdDetail.attributeTypeMap;
+    }
+}
+
+export namespace P2pAdDetail {
+    export enum LimitBasis {
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
+    }
+    export enum LimitBasisText {
+        Crypto = <any>'crypto',
+        Fiat = <any>'fiat',
     }
 }

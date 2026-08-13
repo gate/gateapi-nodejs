@@ -25,6 +25,10 @@ export class InlineResponse200 {
      */
     'spotTakerFee': string;
     /**
+     * Spot RPI order maker fee rate
+     */
+    'spotRpiMakerFee'?: string;
+    /**
      * contractMakerfee rate
      */
     'futureMakerFee': string;
@@ -32,6 +36,10 @@ export class InlineResponse200 {
      * contractTakerfee rate
      */
     'futureTakerFee': string;
+    /**
+     * Futures RPI order maker fee rate
+     */
+    'futureRpiMakerFee'?: string;
     'specialFeeList': Array<CrossexSpecialFee>;
 
     static discriminator: string | undefined = undefined;
@@ -53,6 +61,11 @@ export class InlineResponse200 {
             type: 'string',
         },
         {
+            name: 'spotRpiMakerFee',
+            baseName: 'spot_rpi_maker_fee',
+            type: 'string',
+        },
+        {
             name: 'futureMakerFee',
             baseName: 'future_maker_fee',
             type: 'string',
@@ -60,6 +73,11 @@ export class InlineResponse200 {
         {
             name: 'futureTakerFee',
             baseName: 'future_taker_fee',
+            type: 'string',
+        },
+        {
+            name: 'futureRpiMakerFee',
+            baseName: 'future_rpi_maker_fee',
             type: 'string',
         },
         {

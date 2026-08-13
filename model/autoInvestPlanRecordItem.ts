@@ -18,7 +18,7 @@ export class AutoInvestPlanRecordItem {
      */
     'id': number;
     /**
-     * type
+     * Type
      */
     'type': string;
     /**

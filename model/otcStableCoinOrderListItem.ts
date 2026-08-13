@@ -23,6 +23,10 @@ export class OtcStableCoinOrderListItem {
      */
     'payCoin'?: string;
     /**
+     * Payment currency icon
+     */
+    'payIcon'?: string;
+    /**
      * Payment amount
      */
     'payAmount'?: string;
@@ -30,6 +34,10 @@ export class OtcStableCoinOrderListItem {
      * Received currency
      */
     'getCoin'?: string;
+    /**
+     * Received currency icon
+     */
+    'getIcon'?: string;
     /**
      * Received amount
      */
@@ -47,7 +55,7 @@ export class OtcStableCoinOrderListItem {
      */
     'status'?: string;
     /**
-     * timetimestamp
+     * Created time
      */
     'createTimest'?: number;
     /**
@@ -74,6 +82,11 @@ export class OtcStableCoinOrderListItem {
             type: 'string',
         },
         {
+            name: 'payIcon',
+            baseName: 'pay_icon',
+            type: 'string',
+        },
+        {
             name: 'payAmount',
             baseName: 'pay_amount',
             type: 'string',
@@ -81,6 +94,11 @@ export class OtcStableCoinOrderListItem {
         {
             name: 'getCoin',
             baseName: 'get_coin',
+            type: 'string',
+        },
+        {
+            name: 'getIcon',
+            baseName: 'get_icon',
             type: 'string',
         },
         {

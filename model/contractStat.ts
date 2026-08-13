@@ -101,11 +101,11 @@ export class ContractStat {
     /**
      * Number of users holding long positions
      */
-    'longUsers'?: string;
+    'longUsers'?: number;
     /**
      * Number of users holding short positions
      */
-    'shortUsers'?: string;
+    'shortUsers'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -223,12 +223,12 @@ export class ContractStat {
         {
             name: 'longUsers',
             baseName: 'long_users',
-            type: 'string',
+            type: 'number',
         },
         {
             name: 'shortUsers',
             baseName: 'short_users',
-            type: 'string',
+            type: 'number',
         },
     ];
 
