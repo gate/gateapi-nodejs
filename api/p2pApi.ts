@@ -62,26 +62,6 @@ export class P2pApi {
     }
 
     /**
-     * Use Spot API `GET /spot/accounts` to query spot account balance; this entry is for guidance only and does not define separate P2P Merchant request parameters or response body.
-     * @summary Query spot balance
-     */
-    public async p2pMerchantQuerySpotBalance(): Promise<{ response: AxiosResponse; body?: any }> {
-        const localVarPath = this.client.basePath + '/spot/accounts';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
-    }
-
-    /**
      *
      * @summary Get account information
      */

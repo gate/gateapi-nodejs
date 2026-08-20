@@ -14,7 +14,7 @@
  */
 export class FuturesUpdatePriceTriggeredOrder {
     /**
-     * Settlement Currency (e.g., USDT, BTC)
+     * Perpetual futures settlement currency, e.g. usdt, btc, usd1
      */
     'settle'?: string;
     /**

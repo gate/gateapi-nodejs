@@ -16,7 +16,7 @@ import { CreateParam } from './createParam';
  */
 export class OrderCreateV1Req {
     /**
-     * Sell ​​side list, at least one item; each item is the currency and amount `amount` to be swapped out.
+     * Sell side list, at least one item; each item is the currency and amount `amount` to be swapped out.
      */
     'from': Array<CreateParam>;
     /**

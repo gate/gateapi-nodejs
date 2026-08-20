@@ -23,6 +23,7 @@ import { Order } from '../model/order';
 import { OrderBook } from '../model/orderBook';
 import { OrderCancel } from '../model/orderCancel';
 import { OrderPatch } from '../model/orderPatch';
+import { SpotAccount } from '../model/spotAccount';
 import { SpotAccountBook } from '../model/spotAccountBook';
 import { SpotFee } from '../model/spotFee';
 import { SpotInsuranceHistory } from '../model/spotInsuranceHistory';
@@ -584,6 +585,47 @@ export class SpotApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<{ [key: string]: SpotFee }>(config, '{ [key: string]: SpotFee; }', authSettings);
+    }
+
+    /**
+     *
+     * @summary List spot trading accounts
+     * @param opts Optional parameters
+     * @param opts.currency Query by specified currency name
+     */
+    public async listSpotAccounts(opts?: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SpotAccount> }> {
+        const localVarPath = this.client.basePath + '/spot/accounts';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(currencySerialized)) {
+                currencySerialized = currencySerialized.join(',');
+            }
+            localVarQueryParameters['currency'] = currencySerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SpotAccount>>(config, 'Array<SpotAccount>', authSettings);
     }
 
     /**
@@ -2061,7 +2103,7 @@ export class SpotApi {
     public async cancelSpotPovOrders(opts?: {
         currencyPair?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SpotPovOrder> }> {
-        const localVarPath = this.client.basePath + '/spot/pov_orders/cancel';
+        const localVarPath = this.client.basePath + '/spot/pov_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -2083,7 +2125,7 @@ export class SpotApi {
         }
 
         const config: AxiosRequestConfig = {
-            method: 'POST',
+            method: 'DELETE',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
@@ -2136,7 +2178,7 @@ export class SpotApi {
     public async cancelSpotPovOrder(orderId: string): Promise<{ response: AxiosResponse; body: SpotPovOrder }> {
         const localVarPath =
             this.client.basePath +
-            '/spot/pov_orders/{order_id}/cancel'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+            '/spot/pov_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -2153,7 +2195,7 @@ export class SpotApi {
         }
 
         const config: AxiosRequestConfig = {
-            method: 'POST',
+            method: 'DELETE',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,

@@ -265,6 +265,8 @@ export * from './flashSwapPreviewRequest';
 export * from './fundingAccount';
 export * from './fundingRateRecord';
 export * from './futureCancelOrderResult';
+export * from './futuresADLRiskState';
+export * from './futuresADLRiskStates';
 export * from './futuresAccount';
 export * from './futuresAccountBook';
 export * from './futuresAccountHistory';
@@ -569,6 +571,7 @@ export * from './sendChatMessageRequest';
 export * from './setMerchantWorkHoursRequest';
 export * from './smallBalance';
 export * from './smallBalanceHistory';
+export * from './spotAccount';
 export * from './spotAccountBook';
 export * from './spotCurrencyChain';
 export * from './spotFee';
@@ -991,6 +994,8 @@ import { FlashSwapPreviewRequest } from './flashSwapPreviewRequest';
 import { FundingAccount } from './fundingAccount';
 import { FundingRateRecord } from './fundingRateRecord';
 import { FutureCancelOrderResult } from './futureCancelOrderResult';
+import { FuturesADLRiskState } from './futuresADLRiskState';
+import { FuturesADLRiskStates } from './futuresADLRiskStates';
 import { FuturesAccount } from './futuresAccount';
 import { FuturesAccountBook } from './futuresAccountBook';
 import { FuturesAccountHistory } from './futuresAccountHistory';
@@ -1295,6 +1300,7 @@ import { SendChatMessageRequest } from './sendChatMessageRequest';
 import { SetMerchantWorkHoursRequest } from './setMerchantWorkHoursRequest';
 import { SmallBalance } from './smallBalance';
 import { SmallBalanceHistory } from './smallBalanceHistory';
+import { SpotAccount } from './spotAccount';
 import { SpotAccountBook } from './spotAccountBook';
 import { SpotCurrencyChain } from './spotCurrencyChain';
 import { SpotFee } from './spotFee';
@@ -1501,6 +1507,7 @@ let enumsMap: { [index: string]: any } = {
     DiscoverScene: DiscoverScene,
     'Eligibility.BlockReasonCodes': Eligibility.BlockReasonCodes,
     'ExchangesDataList.Exchange': ExchangesDataList.Exchange,
+    'FuturesADLRiskState.State': FuturesADLRiskState.State,
     'FuturesAccountBook.Type': FuturesAccountBook.Type,
     'FuturesBBOOrder.Tif': FuturesBBOOrder.Tif,
     'FuturesBBOOrder.AutoSize': FuturesBBOOrder.AutoSize,
@@ -1915,6 +1922,8 @@ let typeMap: { [index: string]: any } = {
     FundingAccount: FundingAccount,
     FundingRateRecord: FundingRateRecord,
     FutureCancelOrderResult: FutureCancelOrderResult,
+    FuturesADLRiskState: FuturesADLRiskState,
+    FuturesADLRiskStates: FuturesADLRiskStates,
     FuturesAccount: FuturesAccount,
     FuturesAccountBook: FuturesAccountBook,
     FuturesAccountHistory: FuturesAccountHistory,
@@ -2219,6 +2228,7 @@ let typeMap: { [index: string]: any } = {
     SetMerchantWorkHoursRequest: SetMerchantWorkHoursRequest,
     SmallBalance: SmallBalance,
     SmallBalanceHistory: SmallBalanceHistory,
+    SpotAccount: SpotAccount,
     SpotAccountBook: SpotAccountBook,
     SpotCurrencyChain: SpotCurrencyChain,
     SpotFee: SpotFee,

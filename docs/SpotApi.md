@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**listCandlesticks**](SpotApi.md#listCandlesticks) | **GET** /spot/candlesticks | Market K-line chart
 [**getFee**](SpotApi.md#getFee) | **GET** /spot/fee | Query account fee rates
 [**getBatchSpotFee**](SpotApi.md#getBatchSpotFee) | **GET** /spot/batch_fee | Batch query account fee rates
+[**listSpotAccounts**](SpotApi.md#listSpotAccounts) | **GET** /spot/accounts | List spot trading accounts
 [**listSpotAccountBook**](SpotApi.md#listSpotAccountBook) | **GET** /spot/account_book | Query spot account transaction history
 [**createBatchOrders**](SpotApi.md#createBatchOrders) | **POST** /spot/batch_orders | Batch place orders
 [**listAllOpenOrders**](SpotApi.md#listAllOpenOrders) | **GET** /spot/open_orders | List all open orders
@@ -37,9 +38,9 @@ Method | HTTP request | Description
 [**cancelSpotPriceTriggeredOrder**](SpotApi.md#cancelSpotPriceTriggeredOrder) | **DELETE** /spot/price_orders/{order_id} | Cancel single auto order
 [**listSpotPovOrders**](SpotApi.md#listSpotPovOrders) | **GET** /spot/pov_orders | List Spot POV orders
 [**createSpotPovOrder**](SpotApi.md#createSpotPovOrder) | **POST** /spot/pov_orders | Create a Spot POV order
-[**cancelSpotPovOrders**](SpotApi.md#cancelSpotPovOrders) | **POST** /spot/pov_orders/cancel | Cancel Spot POV orders
+[**cancelSpotPovOrders**](SpotApi.md#cancelSpotPovOrders) | **DELETE** /spot/pov_orders | Cancel Spot POV orders
 [**getSpotPovOrder**](SpotApi.md#getSpotPovOrder) | **GET** /spot/pov_orders/{order_id} | Query Spot POV order details
-[**cancelSpotPovOrder**](SpotApi.md#cancelSpotPovOrder) | **POST** /spot/pov_orders/{order_id}/cancel | Cancel a Spot POV order
+[**cancelSpotPovOrder**](SpotApi.md#cancelSpotPovOrder) | **DELETE** /spot/pov_orders/{order_id} | Cancel a Spot POV order
 
 
 ## listCurrencies
@@ -488,6 +489,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: { [key: string]: SpotFee; }; }> [SpotFee](SpotFee.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listSpotAccounts
+
+> Promise<{ response: http.IncomingMessage; body: Array<SpotAccount>; }> listSpotAccounts(opts)
+
+List spot trading accounts
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.SpotApi(client);
+const opts = {
+  'currency': "BTC" // string | Query by specified currency name
+};
+api.listSpotAccounts(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<SpotAccount>; }> [SpotAccount](SpotAccount.md)
 
 ### Authorization
 

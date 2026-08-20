@@ -23,6 +23,7 @@ import { CreateTrailOrder } from '../model/createTrailOrder';
 import { CreateTrailOrderResponse } from '../model/createTrailOrderResponse';
 import { FundingRateRecord } from '../model/fundingRateRecord';
 import { FutureCancelOrderResult } from '../model/futureCancelOrderResult';
+import { FuturesADLRiskStates } from '../model/futuresADLRiskStates';
 import { FuturesAccount } from '../model/futuresAccount';
 import { FuturesAccountBook } from '../model/futuresAccountBook';
 import { FuturesAutoDeleverage } from '../model/futuresAutoDeleverage';
@@ -89,13 +90,13 @@ export class FuturesApi {
     /**
      *
      * @summary Query all futures contracts
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
     public async listFuturesContracts(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Contract> }> {
         const localVarPath =
@@ -149,13 +150,13 @@ export class FuturesApi {
     /**
      *
      * @summary Query all contract information (including delisted)
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
     public async listFuturesContractsAll(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Contract> }> {
         const localVarPath =
@@ -209,11 +210,11 @@ export class FuturesApi {
     /**
      *
      * @summary Query single contract information
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      */
     public async getFuturesContract(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Contract }> {
         const localVarPath =
@@ -253,9 +254,46 @@ export class FuturesApi {
     }
 
     /**
+     * List the current ADL risk states of all futures markets for the specified settlement currency
+     * @summary List market-level ADL risk states
+     * @param settle Perpetual futures settlement currency
+     */
+    public async listFuturesADLRiskStates(
+        settle: 'btc' | 'usdt' | 'usd1',
+    ): Promise<{ response: AxiosResponse; body: FuturesADLRiskStates }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/adl_risk_states'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling listFuturesADLRiskStates.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<FuturesADLRiskStates>(config, 'FuturesADLRiskStates', authSettings);
+    }
+
+    /**
      * Bids will be sorted by price from high to low, while asks sorted reversely
      * @summary Query futures market depth information
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
@@ -263,7 +301,7 @@ export class FuturesApi {
      * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time the depth changes
      */
     public async listFuturesOrderBook(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         opts?: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
@@ -339,7 +377,7 @@ export class FuturesApi {
     /**
      *
      * @summary Futures market transaction records
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records returned in a single list
@@ -349,7 +387,7 @@ export class FuturesApi {
      * @param opts.to Specify end time in Unix seconds, default to current time.
      */
     public async listFuturesTrades(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         opts?: { limit?: number; offset?: number; lastId?: string; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
@@ -443,7 +481,7 @@ export class FuturesApi {
     /**
      * Return specified contract candlesticks. If prefix `contract` with `mark_`, the contract\'s mark price candlesticks are returned; if prefix with `index_`, index price candlesticks will be returned.  Maximum of 2000 points are returned in one query. Be sure not to exceed the limit when specifying `from`, `to` and `interval`
      * @summary Futures market K-line chart
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
@@ -453,7 +491,7 @@ export class FuturesApi {
      * @param opts.timezone Time zone: all/utc0/utc8, default utc0
      */
     public async listFuturesCandlesticks(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         opts?: {
             from?: number;
@@ -556,7 +594,7 @@ export class FuturesApi {
     /**
      * K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
      * @summary Premium Index K-line chart
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
@@ -565,7 +603,7 @@ export class FuturesApi {
      * @param opts.interval Time interval between data points
      */
     public async listFuturesPremiumIndex(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         opts?: {
             from?: number;
@@ -658,12 +696,12 @@ export class FuturesApi {
     /**
      *
      * @summary Get all futures trading statistics
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      */
     public async listFuturesTickers(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTicker> }> {
         const localVarPath =
@@ -708,7 +746,7 @@ export class FuturesApi {
     /**
      *
      * @summary Futures market historical funding rate
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records returned in a single list
@@ -716,7 +754,7 @@ export class FuturesApi {
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
     public async listFuturesFundingRateHistory(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         opts?: { limit?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FundingRateRecord> }> {
@@ -796,11 +834,11 @@ export class FuturesApi {
     /**
      *
      * @summary Batch Query Historical Funding Rate Data for Perpetual Contracts
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param batchFundingRatesRequest
      */
     public async listBatchFuturesFundingRates(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         batchFundingRatesRequest: BatchFundingRatesRequest,
     ): Promise<{ response: AxiosResponse; body: Array<BatchFundingRatesResponse> }> {
         const localVarPath =
@@ -849,12 +887,12 @@ export class FuturesApi {
     /**
      *
      * @summary Futures market insurance fund history
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records returned in a single list
      */
     public async listFuturesInsuranceLedger(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<InsuranceRecord> }> {
         const localVarPath =
@@ -899,7 +937,7 @@ export class FuturesApi {
     /**
      *
      * @summary Futures statistics
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start timestamp
@@ -907,7 +945,7 @@ export class FuturesApi {
      * @param opts.limit
      */
     public async listContractStats(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         opts?: { from?: number; interval?: string; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<ContractStat> }> {
@@ -983,11 +1021,11 @@ export class FuturesApi {
     /**
      *
      * @summary Query index constituents
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param index Index name
      */
     public async getIndexConstituents(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         index: string,
     ): Promise<{ response: AxiosResponse; body: FuturesIndexConstituents }> {
         const localVarPath =
@@ -1029,7 +1067,7 @@ export class FuturesApi {
     /**
      * The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for details
      * @summary Query liquidation order history
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
@@ -1037,7 +1075,7 @@ export class FuturesApi {
      * @param opts.limit Maximum number of records returned in a single list
      */
     public async listLiquidatedOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string; from?: number; to?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiqOrder> }> {
         const localVarPath =
@@ -1109,14 +1147,14 @@ export class FuturesApi {
     /**
      * When the \'contract\' parameter is not passed, the default is to query the risk limits for the top 100 markets. \'Limit\' and \'offset\' correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the contract parameter is empty.
      * @summary Query risk limit tiers
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.offset List offset, starting from 0
      */
     public async listFuturesRiskLimitTiers(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLimitRiskTiers> }> {
         const localVarPath =
@@ -1179,10 +1217,10 @@ export class FuturesApi {
     /**
      * Query account information for classic future account and unified account
      * @summary Get futures account
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      */
     public async listFuturesAccounts(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
             this.client.basePath +
@@ -1216,7 +1254,7 @@ export class FuturesApi {
     /**
      * If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。
      * @summary Query futures account change history
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records returned in a single list
@@ -1226,7 +1264,7 @@ export class FuturesApi {
      * @param opts.type Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction
      */
     public async listFuturesAccountBook(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; type?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook> }> {
         const localVarPath =
@@ -1316,14 +1354,14 @@ export class FuturesApi {
     /**
      *
      * @summary Get user position list
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.holding Return only real positions - true, return all - false
      * @param opts.limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100].
      * @param opts.offset List offset, starting from 0
      */
     public async listPositions(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { holding?: boolean; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
@@ -1386,7 +1424,7 @@ export class FuturesApi {
     /**
      *
      * @summary Get user\'s historical position information list by time
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
@@ -1395,7 +1433,7 @@ export class FuturesApi {
      * @param opts.offset List offset, starting from 0
      */
     public async listPositionsTimerange(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         opts?: { from?: number; to?: number; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<PositionTimerange> }> {
@@ -1480,11 +1518,11 @@ export class FuturesApi {
     /**
      * Get single position information from a contract. If you hold two postions in one contract market, please use this API: /futures/{settle}/dual_comp/positions/{contract}
      * @summary Get single position information
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      */
     public async getPosition(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
@@ -1526,13 +1564,13 @@ export class FuturesApi {
     /**
      * Get Leverage Information for Specified Mode
      * @summary Get Leverage Information for Specified Mode
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param posMarginMode Position Margin Mode, required for split position mode, values: isolated/cross.
      * @param dualSide dual_long - Long, dual_short - Short
      */
     public async getLeverage(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         posMarginMode: string,
         dualSide: string,
@@ -1600,12 +1638,12 @@ export class FuturesApi {
     /**
      * Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
      * @summary Update position margin
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param change Margin change amount, positive number increases, negative number decreases
      */
     public async updatePositionMargin(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         change: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -1660,7 +1698,7 @@ export class FuturesApi {
     /**
      * ⚠️ Position Mode Switching Rules:  - leverage ≠ 0: Isolated Margin Mode (Regardless of whether cross_leverage_limit is filled, this parameter will be ignored) - leverage = 0: Cross Margin Mode (Use cross_leverage_limit to set the leverage multiple)  Examples: - Set isolated margin with 10x leverage: leverage=10 - Set cross margin with 10x leverage: leverage=0&cross_leverage_limit=10 - leverage=5&cross_leverage_limit=10 → Result: Isolated margin with 5x leverage (cross_leverage_limit is ignored)  ⚠️ Warning: Incorrect settings may cause unexpected position mode switching, affecting risk management.
      * @summary Update position leverage
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty.
      * @param opts Optional parameters
@@ -1668,7 +1706,7 @@ export class FuturesApi {
      * @param opts.pid Product ID
      */
     public async updatePositionLeverage(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         leverage: string,
         opts?: { crossLeverageLimit?: string; pid?: number },
@@ -1743,7 +1781,7 @@ export class FuturesApi {
     /**
      * To simplify the complex logic of the leverage interface, added a new interface for modifying leverage
      * @summary Update Leverage for Specified Mode
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param leverage Position Leverage Multiple
      * @param marginMode Margin Mode isolated/cross
@@ -1751,7 +1789,7 @@ export class FuturesApi {
      * @param opts.dualSide dual_long - Long, dual_short - Short
      */
     public async updateContractPositionLeverage(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         leverage: string,
         marginMode: string,
@@ -1838,11 +1876,11 @@ export class FuturesApi {
     /**
      *
      * @summary Switch Position Margin Mode
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param futuresPositionCrossMode
      */
     public async updatePositionCrossMode(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         futuresPositionCrossMode: FuturesPositionCrossMode,
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
@@ -1885,11 +1923,11 @@ export class FuturesApi {
     /**
      *
      * @summary Switch Between Cross and Isolated Margin Modes Under Hedge Mode
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param updateDualCompPositionCrossModeRequest
      */
     public async updateDualCompPositionCrossMode(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         updateDualCompPositionCrossModeRequest: UpdateDualCompPositionCrossModeRequest,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
@@ -1940,12 +1978,12 @@ export class FuturesApi {
     /**
      * Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
      * @summary Update position risk limit
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param riskLimit New risk limit value
      */
     public async updatePositionRiskLimit(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -2000,11 +2038,11 @@ export class FuturesApi {
     /**
      * The prerequisite for changing mode is that all positions have no holdings and no pending orders
      * @summary Set position mode
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param dualMode Whether to enable Hedge Mode
      */
     public async setDualMode(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         dualMode: boolean,
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
@@ -2051,11 +2089,11 @@ export class FuturesApi {
     /**
      * The prerequisite for changing mode is that all positions have no holdings and no pending orders
      * @summary Set Position Holding Mode, replacing the dual_mode interface
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param positionMode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively
      */
     public async setPositionMode(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         positionMode: string,
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
@@ -2102,11 +2140,11 @@ export class FuturesApi {
     /**
      *
      * @summary Get position information in Hedge Mode
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      */
     public async getDualModePosition(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
@@ -2148,13 +2186,13 @@ export class FuturesApi {
     /**
      *
      * @summary Update position margin in Hedge Mode
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param change Margin change amount, positive number increases, negative number decreases
      * @param dualSide Long or short position
      */
     public async updateDualModePositionMargin(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         change: string,
         dualSide: string,
@@ -2230,14 +2268,14 @@ export class FuturesApi {
     /**
      *
      * @summary Update position leverage in Hedge Mode
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param leverage New position leverage
      * @param opts Optional parameters
      * @param opts.crossLeverageLimit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0)
      */
     public async updateDualModePositionLeverage(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         leverage: string,
         opts?: { crossLeverageLimit?: string },
@@ -2309,12 +2347,12 @@ export class FuturesApi {
     /**
      * Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
      * @summary Update position risk limit in Hedge Mode
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param contract Futures contract
      * @param riskLimit New risk limit value
      */
     public async updateDualModePositionRiskLimit(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
@@ -2375,7 +2413,7 @@ export class FuturesApi {
     /**
      * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/orders_timerange`.
      * @summary Query futures order list
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param status Query order list based on status
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
@@ -2384,7 +2422,7 @@ export class FuturesApi {
      * @param opts.lastId Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
      */
     public async listFuturesOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         status: string,
         opts?: { contract?: string; limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
@@ -2469,13 +2507,13 @@ export class FuturesApi {
     /**
      * - When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In dual warehouse mode,   - Reduce position: reduce_only=true, size is a positive number that indicates short position, negative number that indicates long position  - Add number that indicates adding long positions, and negative numbers indicate adding short positions  - Close position: size=0, set the direction of closing position according to auto_size, and set `reduce_only` to true  at the same time - reduce_only: Make sure to only perform position reduction operations to prevent increased positions - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
      * @summary Place futures order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param futuresOrder
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
     public async createFuturesOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         futuresOrder: FuturesOrder,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
@@ -2522,7 +2560,7 @@ export class FuturesApi {
     /**
      * Zero-fill orders cannot be retrieved 10 minutes after order cancellation
      * @summary Cancel all orders with \'open\' status
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      * @param opts.contract Contract Identifier; if specified, only cancel pending orders related to this contract
@@ -2532,7 +2570,7 @@ export class FuturesApi {
      * @param opts.text Remark for order cancellation
      */
     public async cancelFuturesOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: {
             xGateExptime?: string;
             contract?: string;
@@ -2624,7 +2662,7 @@ export class FuturesApi {
     /**
      *
      * @summary Query futures order list by time range
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
@@ -2633,7 +2671,7 @@ export class FuturesApi {
      * @param opts.offset List offset, starting from 0
      */
     public async getOrdersWithTimeRange(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string; from?: number; to?: number; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrderTimerange> }> {
         const localVarPath =
@@ -2714,13 +2752,13 @@ export class FuturesApi {
     /**
      * - Up to 10 orders per request - If any of the order\'s parameters are missing or in the wrong format, all of them will not be executed, and a http status 400 error will be returned directly - If the parameters are checked and passed, all are executed. Even if there is a business logic error in the middle (such as insufficient funds), it will not affect other execution orders - The returned result is in array format, and the order corresponds to the orders in the request body - In the returned result, the `succeeded` field of type bool indicates whether the execution was successful or not - If the execution is successful, the normal order content is included; if the execution fails, the `label` field is included to indicate the cause of the error - In the rate limiting, each order is counted individually
      * @summary Place batch futures orders
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param futuresOrder
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
     public async createBatchFuturesOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         futuresOrder: Array<FuturesOrder>,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
@@ -2769,11 +2807,11 @@ export class FuturesApi {
     /**
      * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  
      * @summary Query single order details
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely.
      */
     public async getFuturesOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -2815,14 +2853,14 @@ export class FuturesApi {
     /**
      *
      * @summary Amend single order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely.
      * @param futuresOrderAmendment
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
     public async amendFuturesOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         orderId: string,
         futuresOrderAmendment: FuturesOrderAmendment,
         opts?: { xGateExptime?: string },
@@ -2879,14 +2917,14 @@ export class FuturesApi {
     /**
      *
      * @summary Cancel single order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely.
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default)
      */
     public async cancelFuturesOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         orderId: string,
         opts?: { xGateExptime?: string; actionMode?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
@@ -2943,7 +2981,7 @@ export class FuturesApi {
     /**
      * By default, only supports querying data within 6 months. For older data, use `GET /futures/{settle}/my_trades_timerange`
      * @summary Query personal trading records
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.order Futures order ID, return related data only if specified
@@ -2952,7 +2990,7 @@ export class FuturesApi {
      * @param opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. If you need to iterate through and retrieve more records, we recommend using \&#39;GET /futures/{settle}/my_trades_timerange\&#39;.
      */
     public async getMyTrades(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string; order?: number; limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade> }> {
         const localVarPath =
@@ -3033,7 +3071,7 @@ export class FuturesApi {
     /**
      *
      * @summary Query personal trading records by time range
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
@@ -3043,7 +3081,7 @@ export class FuturesApi {
      * @param opts.role Query role, maker or taker
      */
     public async getMyTradesWithTimeRange(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string; from?: number; to?: number; limit?: number; offset?: number; role?: string },
     ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTradeTimeRange> }> {
         const localVarPath =
@@ -3137,7 +3175,7 @@ export class FuturesApi {
     /**
      *
      * @summary Query position close history
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records returned in a single list
@@ -3148,7 +3186,7 @@ export class FuturesApi {
      * @param opts.pnl Query profit or loss
      */
     public async listPositionClose(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: {
             contract?: string;
             limit?: number;
@@ -3255,7 +3293,7 @@ export class FuturesApi {
     /**
      *
      * @summary Query liquidation history
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records returned in a single list
@@ -3265,7 +3303,7 @@ export class FuturesApi {
      * @param opts.at Specify liquidation timestamp
      */
     public async listLiquidates(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
         const localVarPath =
@@ -3355,7 +3393,7 @@ export class FuturesApi {
     /**
      *
      * @summary Query ADL auto-deleveraging order information
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records returned in a single list
@@ -3365,7 +3403,7 @@ export class FuturesApi {
      * @param opts.at Specify auto-deleveraging timestamp
      */
     public async listAutoDeleverages(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesAutoDeleverage> }> {
         const localVarPath =
@@ -3455,11 +3493,11 @@ export class FuturesApi {
     /**
      * Heartbeat detection for contract orders: When the user-set `timeout` time is reached, if neither the existing countdown is canceled nor a new countdown is set, the relevant contract orders will be automatically canceled. This API can be called repeatedly to or cancel the countdown. Usage example: Repeatedly call this API at 30-second intervals, setting the `timeout` to 30 (seconds) each time. If this API is not called again within 30 seconds, all open orders on your specified `market` will be automatically canceled. If the `timeout` is set to 0 within 30 seconds, the countdown timer will terminate, and the automatic order cancellation function will be disabled.
      * @summary Countdown cancel orders
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param countdownCancelAllFuturesTask
      */
     public async countdownCancelAllFutures(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         countdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
     ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
         const localVarPath =
@@ -3502,12 +3540,12 @@ export class FuturesApi {
     /**
      *
      * @summary Query futures market trading fee rates
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      */
     public async getFuturesFee(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: { [key: string]: FuturesFee } }> {
         const localVarPath =
@@ -3556,13 +3594,13 @@ export class FuturesApi {
     /**
      * Multiple different order IDs can be specified. A maximum of 20 records can be cancelled in one request
      * @summary Cancel batch orders by specified ID list
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param requestBody
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
     public async cancelBatchFutureOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         requestBody: Array<string>,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FutureCancelOrderResult> }> {
@@ -3615,13 +3653,13 @@ export class FuturesApi {
     /**
      * Multiple different order IDs can be specified. A maximum of 10 orders can be modified in one request
      * @summary Batch modify orders by specified IDs
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param batchAmendOrderReq
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
     public async amendBatchFutureOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         batchAmendOrderReq: Array<BatchAmendOrderReq>,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
@@ -3670,11 +3708,11 @@ export class FuturesApi {
     /**
      * Just pass table_id
      * @summary Query risk limit table by table_id
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param tableId Risk limit table ID
      */
     public async getFuturesRiskLimitTable(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         tableId: string,
     ): Promise<{ response: AxiosResponse; body: Array<FuturesRiskLimitTier> }> {
         const localVarPath =
@@ -3721,13 +3759,13 @@ export class FuturesApi {
     /**
      * Compared to the futures trading order placement interface (futures/{settle}/orders), it adds the `level` and `direction` parameters.
      * @summary Level-based BBO Contract Order Placement
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param futuresBBOOrder
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
     public async createFuturesBBOOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         futuresBBOOrder: FuturesBBOOrder,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
@@ -3776,11 +3814,11 @@ export class FuturesApi {
     /**
      *
      * @summary Create trail order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param createTrailOrder
      */
     public async createTrailOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         createTrailOrder: CreateTrailOrder,
     ): Promise<{ response: AxiosResponse; body: CreateTrailOrderResponse }> {
         const localVarPath =
@@ -3824,11 +3862,11 @@ export class FuturesApi {
     /**
      *
      * @summary Terminate trail order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param stopTrailOrder
      */
     public async stopTrailOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         stopTrailOrder: StopTrailOrder,
     ): Promise<{ response: AxiosResponse; body: TrailOrderResponse }> {
         const localVarPath =
@@ -3872,11 +3910,11 @@ export class FuturesApi {
     /**
      *
      * @summary Batch terminate trail orders
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param stopAllTrailOrders
      */
     public async stopAllTrailOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         stopAllTrailOrders: StopAllTrailOrders,
     ): Promise<{ response: AxiosResponse; body: TrailOrderListResponse }> {
         const localVarPath =
@@ -3922,7 +3960,7 @@ export class FuturesApi {
     /**
      *
      * @summary Get trail order list
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Contract name
      * @param opts.isFinished Whether historical order
@@ -3938,7 +3976,7 @@ export class FuturesApi {
      * @param opts.side Direction, 1-long position, 2-short position
      */
     public async getTrailOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: {
             contract?: string;
             isFinished?: boolean;
@@ -4098,11 +4136,11 @@ export class FuturesApi {
     /**
      *
      * @summary Get trail order details
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param id Order ID
      */
     public async getTrailOrderDetail(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         id: number,
     ): Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse }> {
         const localVarPath =
@@ -4152,11 +4190,11 @@ export class FuturesApi {
     /**
      *
      * @summary Update trail order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param updateTrailOrder
      */
     public async updateTrailOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         updateTrailOrder: UpdateTrailOrder,
     ): Promise<{ response: AxiosResponse; body: TrailOrderResponse }> {
         const localVarPath =
@@ -4200,14 +4238,14 @@ export class FuturesApi {
     /**
      *
      * @summary Get trail order user modification records
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param id Order ID
      * @param opts Optional parameters
      * @param opts.pageNum Page number, starting from 1
      * @param opts.pageSize Number of items per page
      */
     public async getTrailOrderChangeLog(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         id: number,
         opts?: { pageNum?: number; pageSize?: number },
     ): Promise<{ response: AxiosResponse; body: TrailOrderChangeLogResponse }> {
@@ -4277,11 +4315,11 @@ export class FuturesApi {
     /**
      *
      * @summary Create a chase order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param createChaseOrderReq
      */
     public async createChaseOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         createChaseOrderReq: CreateChaseOrderReq,
     ): Promise<{ response: AxiosResponse; body: CreateChaseOrderResp }> {
         const localVarPath =
@@ -4327,11 +4365,11 @@ export class FuturesApi {
     /**
      *
      * @summary Stop a chase order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param stopChaseOrderReq
      */
     public async stopChaseOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         stopChaseOrderReq: StopChaseOrderReq,
     ): Promise<{ response: AxiosResponse; body: StopChaseOrderResp }> {
         const localVarPath =
@@ -4375,11 +4413,11 @@ export class FuturesApi {
     /**
      *
      * @summary Stop chase orders in batch
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param stopAllChaseOrdersReq
      */
     public async stopAllChaseOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         stopAllChaseOrdersReq: StopAllChaseOrdersReq,
     ): Promise<{ response: AxiosResponse; body: StopAllChaseOrdersResp }> {
         const localVarPath =
@@ -4425,7 +4463,7 @@ export class FuturesApi {
     /**
      *
      * @summary List chase orders
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param sortBy Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
      * @param opts Optional parameters
      * @param opts.contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
@@ -4439,7 +4477,7 @@ export class FuturesApi {
      * @param opts.side Filter by long/short side: 1 long, 2 short
      */
     public async getChaseOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         sortBy: 1 | 2,
         opts?: {
             contract?: string;
@@ -4582,11 +4620,11 @@ export class FuturesApi {
     /**
      *
      * @summary Get chase order detail
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param id Order ID, must be a non-zero positive integer
      */
     public async getChaseOrderDetail(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         id: string,
     ): Promise<{ response: AxiosResponse; body: GetChaseOrderDetailResp }> {
         const localVarPath =
@@ -4636,7 +4674,7 @@ export class FuturesApi {
     /**
      *
      * @summary Query auto order list
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param status Query order list based on status
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
@@ -4644,7 +4682,7 @@ export class FuturesApi {
      * @param opts.offset List offset, starting from 0
      */
     public async listPriceTriggeredOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         status: 'open' | 'finished',
         opts?: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
@@ -4724,11 +4762,11 @@ export class FuturesApi {
     /**
      *
      * @summary Create price-triggered order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param futuresPriceTriggeredOrder
      */
     public async createPriceTriggeredOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath =
@@ -4771,12 +4809,12 @@ export class FuturesApi {
     /**
      *
      * @summary Cancel all auto orders
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      */
     public async cancelPriceTriggeredOrderList(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
         const localVarPath =
@@ -4827,11 +4865,11 @@ export class FuturesApi {
     /**
      *
      * @summary Query single auto order details
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param orderId ID returned when order is successfully created
      */
     public async getPriceTriggeredOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         orderId: number,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
         const localVarPath =
@@ -4873,11 +4911,11 @@ export class FuturesApi {
     /**
      *
      * @summary Cancel single auto order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param orderId ID returned when order is successfully created
      */
     public async cancelPriceTriggeredOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         orderId: number,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
         const localVarPath =
@@ -4919,11 +4957,11 @@ export class FuturesApi {
     /**
      *
      * @summary Modify a Single Auto Order
-     * @param settle Settle currency
+     * @param settle Perpetual futures settlement currency
      * @param futuresUpdatePriceTriggeredOrder
      */
     public async updatePriceTriggeredOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd1',
         futuresUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath =

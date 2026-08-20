@@ -17,7 +17,7 @@ import { PreviewToParam } from './previewToParam';
  */
 export class OrderPreviewV1Req {
     /**
-     * Sell ​​side; each item is the currency + the swap amount `amount` (string decimal).
+     * Sell side; each item is the currency + the swap amount `amount` (string decimal).
      */
     'from': Array<PreviewFromParam>;
     /**

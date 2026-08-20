@@ -29,6 +29,14 @@ export class UniCurrencyPair {
      * Leverage multiplier
      */
     'leverage'?: string;
+    /**
+     * Status  - enabled: Enabled - disabled: Disabled
+     */
+    'status'?: string;
+    /**
+     * Delisting Time
+     */
+    'delistedTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -52,6 +60,16 @@ export class UniCurrencyPair {
             name: 'leverage',
             baseName: 'leverage',
             type: 'string',
+        },
+        {
+            name: 'status',
+            baseName: 'status',
+            type: 'string',
+        },
+        {
+            name: 'delistedTime',
+            baseName: 'delisted_time',
+            type: 'number',
         },
     ];
 

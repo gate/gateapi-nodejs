@@ -27,7 +27,7 @@ export class PartnerDataAggregated {
      */
     'customerCount': number;
     /**
-     * Transaction participant count​ (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
+     * Transaction participant count (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
      */
     'tradingUserCount': string | null;
     /**

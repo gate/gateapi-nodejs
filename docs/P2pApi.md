@@ -4,7 +4,6 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**p2pMerchantQuerySpotBalance**](P2pApi.md#p2pMerchantQuerySpotBalance) | **GET** /spot/accounts | Query spot balance
 [**p2pMerchantAccountGetUserInfo**](P2pApi.md#p2pMerchantAccountGetUserInfo) | **POST** /p2p/merchant/account/get_user_info | Get account information
 [**p2pMerchantAccountGetCounterpartyUserInfo**](P2pApi.md#p2pMerchantAccountGetCounterpartyUserInfo) | **POST** /p2p/merchant/account/get_counterparty_user_info | Get counterparty information
 [**p2pMerchantAccountGetMyselfPayment**](P2pApi.md#p2pMerchantAccountGetMyselfPayment) | **POST** /p2p/merchant/account/get_myself_payment | Get payment method list
@@ -24,47 +23,6 @@ Method | HTTP request | Description
 [**p2pMerchantChatSendChatMessage**](P2pApi.md#p2pMerchantChatSendChatMessage) | **POST** /p2p/merchant/chat/send_chat_message | Send text message
 [**p2pMerchantChatUploadChatFile**](P2pApi.md#p2pMerchantChatUploadChatFile) | **POST** /p2p/merchant/chat/upload_chat_file | Upload chat file
 
-
-## p2pMerchantQuerySpotBalance
-
-> Promise<{ response: http.IncomingMessage; body?: any; }> p2pMerchantQuerySpotBalance()
-
-Query spot balance
-
-Use Spot API &#x60;GET /spot/accounts&#x60; to query spot account balance; this entry is for guidance only and does not define separate P2P Merchant request parameters or response body.
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.P2pApi(client);
-api.p2pMerchantQuerySpotBalance()
-   .then(value => console.log('API called successfully.'),
-         error => console.error(error));
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-Promise<{ response: AxiosResponse; body?: any; }> 
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
 
 ## p2pMerchantAccountGetUserInfo
 
