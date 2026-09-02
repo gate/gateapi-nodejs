@@ -70,6 +70,10 @@ export class Symbol {
      * Whether RPI order placement is supported (true if supported; false otherwise)
      */
     'supportRpi'?: string;
+    /**
+     * Whether cross-margin order placement is supported (true if supported; false otherwise)
+     */
+    'supportCross'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -147,6 +151,11 @@ export class Symbol {
         {
             name: 'supportRpi',
             baseName: 'support_rpi',
+            type: 'string',
+        },
+        {
+            name: 'supportCross',
+            baseName: 'support_cross',
             type: 'string',
         },
     ];

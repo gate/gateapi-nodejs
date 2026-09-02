@@ -10,5 +10,5 @@ Name | Type | Description | Notes
 **toCoin** | **string** | Asset Bought | [default to undefined]
 **fromAmount** | **string** | Amount to sell | [default to undefined]
 **toAmount** | **string** | Amount to buy | [default to undefined]
-**price** | **string** | Price | [default to undefined]
+**price** | **string** | Quoted price | [default to undefined]
 

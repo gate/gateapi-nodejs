@@ -30,6 +30,8 @@ Method | HTTP request | Description
 
 Get account information
 
+To query the spot account balance, use the Spot API &#x60;GET /spot/accounts&#x60;.
+
 ### Example
 
 ```typescript

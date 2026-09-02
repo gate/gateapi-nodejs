@@ -79,6 +79,10 @@ export class CrossexHistoricalPosition {
      */
     'leverage'?: string;
     /**
+     * Margin mode (CROSS/ISOLATED)
+     */
+    'marginMode'?: string;
+    /**
      * Business Type
      */
     'businessType': string;
@@ -177,6 +181,11 @@ export class CrossexHistoricalPosition {
         {
             name: 'leverage',
             baseName: 'leverage',
+            type: 'string',
+        },
+        {
+            name: 'marginMode',
+            baseName: 'margin_mode',
             type: 'string',
         },
         {

@@ -67,7 +67,7 @@ export class CrossexHistoricalMarginPosition {
      */
     'leverage'?: string;
     /**
-     * Total Deducted Interest
+     * Accumulated position interest
      */
     'interest': string;
     /**

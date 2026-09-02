@@ -1000,7 +1000,7 @@ export class SpotApi {
     }
 
     /**
-     * Supports spot, margin, leverage, and cross-margin leverage orders. Use different accounts through the `account` field. Default is `spot`, which means using the spot account to place orders. If the user has a `unified` account, the default is to place orders with the unified account.  When using leveraged account trading (i.e., when `account` is set to `margin`), you can set `auto_borrow` to `true`. In case of insufficient account balance, the system will automatically execute `POST /margin/uni/loans` to borrow the insufficient amount. Whether assets obtained after leveraged order execution are automatically used to repay borrowing orders of the isolated margin account depends on the automatic repayment settings of the user\'s isolated margin account. Account automatic repayment settings can be queried and set through `/margin/auto_repay`.  When using unified account trading (i.e., when `account` is set to `unified`), `auto_borrow` can also be enabled to realize automatic borrowing of insufficient amounts. However, unlike the isolated margin account, whether unified account orders are automatically repaid depends on the `auto_repay` setting when placing the order. This setting only applies to the current order, meaning only assets obtained after order execution will be used to repay borrowing orders of the cross-margin account. Unified account ordering currently supports enabling both `auto_borrow` and `auto_repay` simultaneously.  Auto repayment will be triggered when the order ends, i.e., when `status` is `cancelled` or `closed`.  **Order Status**  The order status in pending orders is `open`, which remains `open` until all quantity is filled. If fully filled, the order ends and status becomes `closed`. If the order is cancelled before all transactions are completed, regardless of partial fills, the status will become `cancelled`.  **Iceberg Orders**  `iceberg` is used to set the displayed quantity of iceberg orders and does not support complete hiding. Note that hidden portions are charged according to the taker\'s fee rate.  **Self-Trade Prevention**  Set `stp_act` to determine the self-trade prevention strategy to use
+     * Supports placing orders from spot, margin, leveraged, and cross-margin accounts. Use the `account` field to select the account type. The default is `spot`, which places an order from the spot account. For a `unified` account, orders use the unified account by default.  When trading with a margin account by setting `account` to `margin`, you can set `auto_borrow` to `true`. If the account balance is insufficient, the system automatically calls `POST /margin/uni/loans` to borrow the shortfall. Whether assets received from a filled margin order are automatically used to repay an isolated-margin loan depends on the automatic repayment setting of the user\'s isolated-margin **account**. Use `/margin/auto_repay` to query or update this account-level automatic repayment setting.  When trading with a unified account by setting `account` to `unified`, `auto_borrow` can likewise be enabled to borrow any shortfall. Unlike an isolated-margin account, whether a unified-account order repays automatically depends on the order\'s `auto_repay` setting. This setting applies only to the current order, so only assets received when that order is filled are used to repay the cross-margin loan. Unified-account orders currently support enabling both `auto_borrow` and `auto_repay`.  Automatic repayment is triggered when the order finishes, that is, when `status` becomes `cancelled` or `closed`.  **Order status**  A resting order remains `open` until its entire quantity is filled. Once fully filled, the order finishes and its status becomes `closed`. If the order is cancelled before being fully filled, its status becomes `cancelled` regardless of whether it was partially filled.  **Iceberg orders**  Use `iceberg` to set the displayed quantity of an iceberg order. Fully hidden orders are not supported. Note that fills against the hidden portion are charged at the taker fee rate.  **Self-trade prevention**  Set `stp_act` to select the self-trade prevention action.  **Unified market**  A unified market supports matching orders that use different quote currencies. Specify the actual quote currency through `trade_quote`. For example, the BTC_USD market can match orders quoted in USDC, RLUSD, and other supported quote currencies. Query `GET /spot/currency_pairs` for the quote currencies supported by each unified market.
      * @summary Create order
      * @param order
      * @param opts Optional parameters
@@ -1050,6 +1050,7 @@ export class SpotApi {
      * @param opts.currencyPair Currency pair
      * @param opts.side Specify all bids or all asks, both included if not specified
      * @param opts.account Specify account type  Classic account: All are included if not specified Unified account: Specify &#x60;unified&#x60;
+     * @param opts.tradeQuote In a **unified market** only, specifies the actual quote currency for cancellation; when omitted, all orders matching the other criteria are cancelled
      * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default)
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
@@ -1057,6 +1058,7 @@ export class SpotApi {
         currencyPair?: string;
         side?: string;
         account?: string;
+        tradeQuote?: string;
         actionMode?: string;
         xGateExptime?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OrderCancel> }> {
@@ -1097,6 +1099,15 @@ export class SpotApi {
                 accountSerialized = accountSerialized.join(',');
             }
             localVarQueryParameters['account'] = accountSerialized;
+        }
+
+        if (opts.tradeQuote !== undefined) {
+            let tradeQuoteSerialized = ObjectSerializer.serialize(opts.tradeQuote, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(tradeQuoteSerialized)) {
+                tradeQuoteSerialized = tradeQuoteSerialized.join(',');
+            }
+            localVarQueryParameters['trade_quote'] = tradeQuoteSerialized;
         }
 
         if (opts.actionMode !== undefined) {

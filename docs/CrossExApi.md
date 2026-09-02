@@ -137,7 +137,7 @@ No authorization required
 
 Query supported transfer currencies
 
-&#x60;est_fee&#x60;: On-chain withdrawal fee. When a fund transfer involves an on-chain withdrawal, the exchange charges this fee. This value is for reference only; the actual fee charged by the exchange applies
+&#x60;est_fee&#x60;: Estimated fee. When a fund transfer involves an on-chain withdrawal, the exchange charges this fee. This value is for reference only; the actual fee charged by the exchange applies
 
 ### Example
 
@@ -517,7 +517,7 @@ Promise<{ response: AxiosResponse; body: CrossexOrderActionResponse; }> [Crossex
 
 Flash Swap Inquiry
 
-Rate limit: 100 requests per day For HYPERLIQUID, swaps between &#x60;HYPERLIQUID_USDC&#x60; and &#x60;CROSSEX_USDT&#x60; are supported. Flash Swap in isolated exchange mode is not currently supported for HYPERLIQUID
+Rate limit: 100 requests per day For HYPERLIQUID, swaps between &#x60;HYPERLIQUID_USDC&#x60; and &#x60;CROSSEX_USDT&#x60; are supported. Flash Swap in isolated exchange mode is not currently supported for HYPERLIQUID. For KRAKEN, only conversion from &#x60;KRAKEN_USD&#x60; to &#x60;CROSSEX_USDT&#x60; is supported. Flash Swap in isolated exchange mode is not currently supported for KRAKEN.
 
 ### Example
 
@@ -611,7 +611,7 @@ Promise<{ response: AxiosResponse; body: CrossexConvertOrderResponse; }> [Crosse
 
 Query Account Assets
 
-Rate Limit: 200 requests per 10 seconds If 100% ≤ initial_margin_rate &lt; 110%, transferring out the margin currency is prohibited. If initial_margin_rate &lt; 100%, the system will automatically cancel orders; only closing positions is allowed, not opening new ones. If maintenance_margin_rate ≤ 100%, the system will force liquidation.
+Rate limit: 200 requests per 10 seconds If 100% &lt;&#x3D; initial_margin_rate &lt; 110%, transferring out the margin currency is prohibited. If initial_margin_rate &lt; 100%, the system automatically cancels orders; only closing positions is allowed, not opening new ones. If maintenance_margin_rate &lt;&#x3D; 100%, the system forces liquidation.
 
 ### Example
 
@@ -1545,11 +1545,11 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.CrossExApi(client);
 const opts = {
   'symbol': "symbol_example", // string | Currency pair
-  'from': 56, // number | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
-  'to': 56, // number | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
-  'page': 56, // number | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
-  'limit': 56, // number | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
-  'exchangeType': "exchangeType_example" // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
+  'from': 56, // number | Start Millisecond Timestamp
+  'to': 56, // number | End Millisecond Timestamp
+  'page': 56, // number | Page number
+  'limit': 56, // number | Maximum number returned by list, max 1000
+  'exchangeType': "exchangeType_example" // string | Exchange
 };
 api.listCrossexHistoryMarginInterests(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1562,11 +1562,11 @@ api.listCrossexHistoryMarginInterests(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **string**| Currency pair | [optional] [default to undefined]
- **from** | **number**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | [optional] [default to undefined]
- **to** | **number**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | [optional] [default to undefined]
- **page** | **number**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | [optional] [default to undefined]
- **limit** | **number**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | [optional] [default to undefined]
- **exchangeType** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | [optional] [default to undefined]
+ **from** | **number**| Start Millisecond Timestamp | [optional] [default to undefined]
+ **to** | **number**| End Millisecond Timestamp | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to undefined]
+ **limit** | **number**| Maximum number returned by list, max 1000 | [optional] [default to undefined]
+ **exchangeType** | **string**| Exchange | [optional] [default to undefined]
 
 ### Return type
 
@@ -1809,7 +1809,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'symbols': "BINANCE_MARGIN_BTC_USDT,OKX_MARGIN_BTC_USDT,GATE_MARGIN_BTC_USDT" // string | Trading Pair List, multiple separated by commas
+  'symbols': "symbols_example" // string | Trading Pair List, multiple separated by commas
 };
 api.listCrossexMarketFundingInfo(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),

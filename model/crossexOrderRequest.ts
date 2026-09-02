@@ -34,7 +34,7 @@ export class CrossexOrderRequest {
      */
     'timeInForce'?: CrossexOrderRequest.TimeInForce;
     /**
-     * Order quantity (required unless spot market buy)
+     * Order quantity (required unless spot or margin market buy)
      */
     'qty'?: string;
     /**

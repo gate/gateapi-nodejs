@@ -23,7 +23,7 @@ export class CrossexOrder {
      */
     'text': string;
     /**
-     * Order status:  NEW: Validated and queued to be sent to the exchange.  OPEN: Resting on the exchange order book.  PARTIALLY_FILLED: Partially filled.  FILLED: Fully filled.  FAIL: CrossEx internal validation failed; see the `reason` field for details.  REJECT: Rejected by the exchange; see the `reason` field for details.
+     * Order status: `NEW`: validated locally, pending submission to the exchange `OPEN`: resting on the exchange order book `PARTIALLY_FILLED`: partially filled `FILLED`: fully filled `FAIL`: CrossEx validation failed; see `reason` `REJECT`: rejected by the exchange; see `reason` `CANCELLED`: cancelled
      */
     'state': string;
     /**
@@ -47,7 +47,7 @@ export class CrossexOrder {
      */
     'exchangeType': string;
     /**
-     * Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
+     * Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin / `CONVERT` Flash Swap).
      */
     'businessType': string;
     /**
@@ -111,7 +111,7 @@ export class CrossexOrder {
      */
     'lastExecutedAmount': string;
     /**
-     * Position side (`NONE` flat / `LONG` long / `SHORT` short).
+     * Position side (`NONE` one-way position / `LONG` long / `SHORT` short)
      */
     'positionSide': string;
     /**

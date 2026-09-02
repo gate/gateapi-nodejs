@@ -18,6 +18,10 @@ export class CrossexIsolatedMarginResponse {
      * Amount of isolated margin increased or decreased in this request
      */
     'margin': string;
+    /**
+     * Position side (NONE/LONG/SHORT). Defaults to NONE for one-way positions if omitted
+     */
+    'positionSide'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -30,6 +34,11 @@ export class CrossexIsolatedMarginResponse {
         {
             name: 'margin',
             baseName: 'margin',
+            type: 'string',
+        },
+        {
+            name: 'positionSide',
+            baseName: 'position_side',
             type: 'string',
         },
     ];

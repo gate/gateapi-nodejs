@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **updateTimeMs** | **number** | Last modification time of order (in milliseconds) | [optional] [readonly] [default to undefined]
 **status** | **string** | Order status  - &#x60;open&#x60;: to be filled - &#x60;closed&#x60;: closed order - &#x60;cancelled&#x60;: cancelled | [optional] [readonly] [default to undefined]
 **currencyPair** | **string** | Currency pair | [default to undefined]
+**tradeQuote** | **string** | Actual quote currency used for the trade; can be specified only in a unified market | [optional] [default to undefined]
 **type** | **string** | Order Type   - limit : Limit Order - market : Market Order | [optional] [default to &#39;limit&#39;]
 **account** | **string** | Account type, spot - spot account, margin - leveraged account, unified - unified account | [optional] [default to &#39;spot&#39;]
 **side** | **string** | Buy or sell order | [default to undefined]

@@ -34,6 +34,10 @@ export class CurrencyPair {
      */
     'quoteName'?: string;
     /**
+     * Quote currencies supported by the unified market; null means that the market does not support unified quote currencies
+     */
+    'tradeQuotes'?: Array<string> | null;
+    /**
      * Trading fee rate(deprecated)
      */
     'fee'?: string;
@@ -137,6 +141,11 @@ export class CurrencyPair {
             name: 'quoteName',
             baseName: 'quote_name',
             type: 'string',
+        },
+        {
+            name: 'tradeQuotes',
+            baseName: 'trade_quotes',
+            type: 'Array<string>',
         },
         {
             name: 'fee',

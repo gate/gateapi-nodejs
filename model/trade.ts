@@ -78,6 +78,10 @@ export class Trade {
      * Total Executed Value
      */
     'deal'?: string;
+    /**
+     * Actual quote currency used for the trade
+     */
+    'tradeQuote'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -165,6 +169,11 @@ export class Trade {
         {
             name: 'deal',
             baseName: 'deal',
+            type: 'string',
+        },
+        {
+            name: 'tradeQuote',
+            baseName: 'trade_quote',
             type: 'string',
         },
     ];

@@ -19,11 +19,11 @@ export class InlineResponse2002 {
      */
     'fundingRate': string;
     /**
-     * Tier
+     * Funding interval (in seconds)
      */
     'fundingInterval': string;
     /**
-     * Next funding time
+     * Next funding time (Unix timestamp in milliseconds)
      */
     'fundingTime': string;
 

@@ -13,5 +13,7 @@ Name | Type | Description | Notes
 **remittanceLineNumber** | **string** |  | [optional] [default to undefined]
 **agentBankName** | **string** |  | [optional] [default to undefined]
 **agentBankSwift** | **string** |  | [optional] [default to undefined]
-**documentationFile** | **string** | Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) | [default to undefined]
+**documentationFile** | **string** | Multipart direct upload; mutually exclusive with documentation_file_key | [optional] [default to undefined]
+**documentationFileKey** | **string** | Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted) | [optional] [default to undefined]
+**fileType** | **string** | Required when using documentation_file_key; plaintext MIME or its base64 | [optional] [default to undefined]
 

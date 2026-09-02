@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **side** | **string** | BUY, SELL | [default to undefined]
 **type** | **string** | Order type (default: &#x60;LIMIT&#x60;; supported types: &#x60;LIMIT&#x60;, &#x60;MARKET&#x60;) | [optional] [default to &#39;LIMIT&#39;]
 **timeInForce** | **string** | Defaults to GTC. Supported values: &#x60;GTC&#x60;, &#x60;IOC&#x60;, &#x60;FOK&#x60;, &#x60;POC&#x60;, and &#x60;RPI&#x60; &#x60;GTC&#x60;: GoodTillCancelled &#x60;IOC&#x60;: ImmediateOrCancelled &#x60;FOK&#x60;: FillOrKill &#x60;POC&#x60;: PendingOrCancelled or PostOnly &#x60;RPI&#x60;: Retail Price Improvement | [optional] [default to &#39;GTC&#39;]
-**qty** | **string** | Order quantity (required unless spot market buy) | [optional] [default to undefined]
+**qty** | **string** | Order quantity (required unless spot or margin market buy) | [optional] [default to undefined]
 **price** | **string** | Limit Order Price (Required for Limit Orders) | [optional] [default to undefined]
 **quoteQty** | **string** | Order quote quantity; required for spot and margin market buy orders | [optional] [default to undefined]
 **reduceOnly** | **string** | Reduce-only: &#x60;true&#x60; or &#x60;false&#x60; | [optional] [default to undefined]

@@ -53,6 +53,10 @@ export class Order {
      */
     'currencyPair': string;
     /**
+     * Actual quote currency used for the trade; can be specified only in a unified market
+     */
+    'tradeQuote'?: string;
+    /**
      * Order Type   - limit : Limit Order - market : Market Order
      */
     'type'?: Order.Type;
@@ -213,6 +217,11 @@ export class Order {
         {
             name: 'currencyPair',
             baseName: 'currency_pair',
+            type: 'string',
+        },
+        {
+            name: 'tradeQuote',
+            baseName: 'trade_quote',
             type: 'string',
         },
         {

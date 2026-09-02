@@ -15,7 +15,7 @@ export class CrossexTransferCoin {
      */
     'coin': string;
     /**
-     * Minimum Transfer Quantity (including estimated fees)
+     * Minimum transfer amount (estimated fee included)
      */
     'minTransAmount': number;
     /**

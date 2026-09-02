@@ -35,7 +35,7 @@ export class CrossexConvertQuoteResponse {
      */
     'toAmount': string;
     /**
-     * Price
+     * Quoted price
      */
     'price': string;
 

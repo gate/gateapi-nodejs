@@ -17,15 +17,19 @@ export class OtcBankPersonalSupplementMultipartRequest {
     /**
      * ID document front-side file content (multipart file field, binary/Base64)
      */
-    'idDocumentFront': string;
+    'idDocumentFront'?: string;
     /**
      * ID document back-side file content (multipart file field, binary/Base64)
      */
-    'idDocumentBack': string;
+    'idDocumentBack'?: string;
     /**
      * Proof-of-address file content (multipart file field, binary/Base64)
      */
-    'addressProof': string;
+    'addressProof'?: string;
+    /**
+     * Optional. JSON string of relationship_proof.
+     */
+    'relationshipProof'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -48,6 +52,11 @@ export class OtcBankPersonalSupplementMultipartRequest {
         {
             name: 'addressProof',
             baseName: 'address_proof',
+            type: 'string',
+        },
+        {
+            name: 'relationshipProof',
+            baseName: 'relationship_proof',
             type: 'string',
         },
     ];

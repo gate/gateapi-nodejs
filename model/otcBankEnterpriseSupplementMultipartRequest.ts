@@ -18,19 +18,19 @@ export class OtcBankEnterpriseSupplementMultipartRequest {
     /**
      * Business license / registration certificate file content (multipart file field, binary/Base64)
      */
-    'certificate': string;
+    'certificate'?: string;
     /**
      * Register of shareholders file content (multipart file field, binary/Base64)
      */
-    'shareHolders': string;
+    'shareHolders'?: string;
     /**
      * Legal representative / shareholder passport file content (multipart file field, binary/Base64)
      */
-    'passport': string;
+    'passport'?: string;
     /**
      * Ownership structure chart file content (multipart file field, binary/Base64)
      */
-    'shareHoldingStructure': string;
+    'shareHoldingStructure'?: string;
     /**
      * Proof-of-funds file content (multipart file field, binary/Base64, optional)
      */
@@ -39,6 +39,10 @@ export class OtcBankEnterpriseSupplementMultipartRequest {
      * Other supplementary material file content (multipart file field, binary/Base64, optional)
      */
     'additional'?: string;
+    /**
+     * Optional. JSON string of relationship_proof.
+     */
+    'relationshipProof'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -81,6 +85,11 @@ export class OtcBankEnterpriseSupplementMultipartRequest {
         {
             name: 'additional',
             baseName: 'additional',
+            type: 'string',
+        },
+        {
+            name: 'relationshipProof',
+            baseName: 'relationship_proof',
             type: 'string',
         },
     ];

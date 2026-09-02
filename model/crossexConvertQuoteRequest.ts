@@ -14,7 +14,7 @@
  */
 export class CrossexConvertQuoteRequest {
     /**
-     * Exchange Type
+     * Exchange type Currently supports only BINANCE, OKX, GATE, BYBIT, HYPERLIQUID, and KRAKEN
      */
     'exchangeType': string;
     /**
@@ -22,7 +22,7 @@ export class CrossexConvertQuoteRequest {
      */
     'fromCoin': string;
     /**
-     * Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
+     * Asset to receive OKX and GATE only support conversion to BTC, ETH, or USDT BYBIT and BINANCE only support conversion to USDT HYPERLIQUID only supports conversion to USDT or USDC KRAKEN only supports conversion to USDT
      */
     'toCoin': string;
     /**

@@ -24,6 +24,8 @@ import { OtcQuoteResponse } from '../model/otcQuoteResponse';
 import { OtcStableCoinOrderCreateResponse } from '../model/otcStableCoinOrderCreateResponse';
 import { OtcStableCoinOrderListResponse } from '../model/otcStableCoinOrderListResponse';
 import { OtcStableCoinOrderRequest } from '../model/otcStableCoinOrderRequest';
+import { OtcUploadPreUploadRequest } from '../model/otcUploadPreUploadRequest';
+import { OtcUploadPreUploadResponse } from '../model/otcUploadPreUploadResponse';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -185,7 +187,7 @@ export class OTCApi {
     }
 
     /**
-     * Bind a bank card. Under the Global entity, an account with a non-matching name may enter manual review (`status` pending) and require subsequent supplementary materials. Corresponding Inner: `POST /bank/create`. Fields and protocol are subject to the production form/gateway; in some environments `bank_account_name` is passed Base64-encoded, see the integration notes for details.
+     * Bind a bank card. Under the Global entity, non-same-name accounts may enter manual review (`status` pending) and require supplementary materials later. Corresponds to Inner: `POST /bank/create`. Fields and protocol follow the live form/gateway; `bank_account_name` may be Base64-encoded in some environments—see integration notes.  Account-opening proof supports two methods (choose one):  1. **Pre-upload (recommended)**: call `POST /otc/upload/pre_upload` (`scene=bank`) to obtain a temporary-bucket Policy and upload directly to S3, then pass `documentation_file_key` + `file_type` in this endpoint; 2. **Multipart direct upload**: pass the `documentation_file` file field; the server writes directly to the production bucket.  When using pre-upload, the server validates object existence and that the uid in the `file_key` path matches the caller; after validation, the object is moved to the production bucket and persisted. Cross-user references return `Invalid parameters file_key`; incomplete direct upload returns `Invalid parameters file not uploaded`.
      * @summary Create bank card
      * @param bankAccountName
      * @param bankName
@@ -193,11 +195,13 @@ export class OTCApi {
      * @param bankAddress
      * @param iban
      * @param swift
-     * @param documentationFile Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment)
      * @param opts Optional parameters
      * @param opts.remittanceLineNumber
      * @param opts.agentBankName
      * @param opts.agentBankSwift
+     * @param opts.documentationFile Multipart direct upload; mutually exclusive with documentation_file_key
+     * @param opts.documentationFileKey Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted)
+     * @param opts.fileType Required when using documentation_file_key; plaintext MIME or its base64
      */
     public async createOtcBank(
         bankAccountName: string,
@@ -206,8 +210,14 @@ export class OTCApi {
         bankAddress: string,
         iban: string,
         swift: string,
-        documentationFile: string,
-        opts?: { remittanceLineNumber?: string; agentBankName?: string; agentBankSwift?: string },
+        opts?: {
+            remittanceLineNumber?: string;
+            agentBankName?: string;
+            agentBankSwift?: string;
+            documentationFile?: string;
+            documentationFileKey?: string;
+            fileType?: string;
+        },
     ): Promise<{ response: AxiosResponse; body: OtcBankCreateResponse }> {
         const localVarPath = this.client.basePath + '/otc/bank/create';
         let localVarQueryParameters: any = {};
@@ -248,11 +258,6 @@ export class OTCApi {
         // verify required parameter 'swift' is not null or undefined
         if (swift === null || swift === undefined) {
             throw new Error('Required parameter swift was null or undefined when calling createOtcBank.');
-        }
-
-        // verify required parameter 'documentationFile' is not null or undefined
-        if (documentationFile === null || documentationFile === undefined) {
-            throw new Error('Required parameter documentationFile was null or undefined when calling createOtcBank.');
         }
 
         opts = opts || {};
@@ -391,18 +396,18 @@ export class OTCApi {
     }
 
     /**
-     * **Personal professional verification (type=1)** users submit non-same-person/supplementary materials. Must match `user_type=personal` returned by `GET /otc/bank/bank_supplement_checklist?bank_id=`, otherwise the request is rejected. **multipart/form-data** is recommended: each material item is a separate file field, with field names matching the checklist `code` (`id_document_front`, `id_document_back`, `address_proof`).
+     * **Personal professional verification (type=1)** users submit non-same-person/supplementary materials. Must match `user_type=personal` from `GET /otc/bank/bank_supplement_checklist?bank_id=`; otherwise rejected.  Two submission methods (can be mixed):  1. **Pre-upload (recommended)**: call `POST /otc/upload/pre_upload` (`scene=bank`) to upload to the temporary bucket, then fill file items by category in the `relationship_proof` JSON; pass **`key` as plaintext** object path (`base64_decode(pre_upload.file_key)`, e.g. `otc_temp/{uid}/bank/xxx.png`), and `file_type` as plaintext MIME; the server base64-encodes before persistence—do not pass base64 `file_key` directly; 2. **Multipart direct upload**: one file field per material item; field names match checklist `code` (`id_document_front`, `id_document_back`, `address_proof`).
      * @summary Submit Bank Card Supplement Materials (Personal)
      * @param bankId
-     * @param idDocumentFront ID document front-side file content (multipart file field, binary/Base64)
-     * @param idDocumentBack ID document back-side file content (multipart file field, binary/Base64)
-     * @param addressProof Proof-of-address file content (multipart file field, binary/Base64)
+     * @param opts Optional parameters
+     * @param opts.idDocumentFront ID document front-side file content (multipart file field, binary/Base64)
+     * @param opts.idDocumentBack ID document back-side file content (multipart file field, binary/Base64)
+     * @param opts.addressProof Proof-of-address file content (multipart file field, binary/Base64)
+     * @param opts.relationshipProof Optional. JSON string of relationship_proof.
      */
     public async submitOtcBankPersonalSupplement(
         bankId: string,
-        idDocumentFront: string,
-        idDocumentBack: string,
-        addressProof: string,
+        opts?: { idDocumentFront?: string; idDocumentBack?: string; addressProof?: string; relationshipProof?: string },
     ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
         const localVarPath = this.client.basePath + '/otc/bank/personal/bank_supplement';
         let localVarQueryParameters: any = {};
@@ -422,26 +427,7 @@ export class OTCApi {
             );
         }
 
-        // verify required parameter 'idDocumentFront' is not null or undefined
-        if (idDocumentFront === null || idDocumentFront === undefined) {
-            throw new Error(
-                'Required parameter idDocumentFront was null or undefined when calling submitOtcBankPersonalSupplement.',
-            );
-        }
-
-        // verify required parameter 'idDocumentBack' is not null or undefined
-        if (idDocumentBack === null || idDocumentBack === undefined) {
-            throw new Error(
-                'Required parameter idDocumentBack was null or undefined when calling submitOtcBankPersonalSupplement.',
-            );
-        }
-
-        // verify required parameter 'addressProof' is not null or undefined
-        if (addressProof === null || addressProof === undefined) {
-            throw new Error(
-                'Required parameter addressProof was null or undefined when calling submitOtcBankPersonalSupplement.',
-            );
-        }
+        opts = opts || {};
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -455,25 +441,31 @@ export class OTCApi {
     }
 
     /**
-     * **Enterprise professional verification (type=2)** users submit supplementary materials. Must match `user_type=enterprise` returned by the checklist. **multipart** file field names: `certificate`, `share_holders`, `passport`, `share_holding_structure`.
+     * **Enterprise professional verification (type=2)** users submit supplementary materials. Must match `user_type=enterprise` from the checklist.  Two submission methods (can be mixed):  1. **Pre-upload (recommended)**: call `POST /otc/upload/pre_upload` (`scene=bank`), fill file items by category in `relationship_proof`; pass **`key` as plaintext** object path (`base64_decode(pre_upload.file_key)`), and `file_type` as plaintext MIME; 2. **Multipart direct upload**: file field names `certificate`, `share_holders`, `passport`, `share_holding_structure`; optional `funds_statement`, `additional`.
      * @summary Submit Bank Card Supplement Materials (Enterprise)
      * @param bankId
-     * @param certificate Business license / registration certificate file content (multipart file field, binary/Base64)
-     * @param shareHolders Register of shareholders file content (multipart file field, binary/Base64)
-     * @param passport Legal representative / shareholder passport file content (multipart file field, binary/Base64)
-     * @param shareHoldingStructure Ownership structure chart file content (multipart file field, binary/Base64)
      * @param opts Optional parameters
      * @param opts.uid
+     * @param opts.certificate Business license / registration certificate file content (multipart file field, binary/Base64)
+     * @param opts.shareHolders Register of shareholders file content (multipart file field, binary/Base64)
+     * @param opts.passport Legal representative / shareholder passport file content (multipart file field, binary/Base64)
+     * @param opts.shareHoldingStructure Ownership structure chart file content (multipart file field, binary/Base64)
      * @param opts.fundsStatement Proof-of-funds file content (multipart file field, binary/Base64, optional)
      * @param opts.additional Other supplementary material file content (multipart file field, binary/Base64, optional)
+     * @param opts.relationshipProof Optional. JSON string of relationship_proof.
      */
     public async submitOtcBankEnterpriseSupplement(
         bankId: string,
-        certificate: string,
-        shareHolders: string,
-        passport: string,
-        shareHoldingStructure: string,
-        opts?: { uid?: string; fundsStatement?: string; additional?: string },
+        opts?: {
+            uid?: string;
+            certificate?: string;
+            shareHolders?: string;
+            passport?: string;
+            shareHoldingStructure?: string;
+            fundsStatement?: string;
+            additional?: string;
+            relationshipProof?: string;
+        },
     ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
         const localVarPath = this.client.basePath + '/otc/bank/enterprise/bank_supplement';
         let localVarQueryParameters: any = {};
@@ -493,34 +485,6 @@ export class OTCApi {
             );
         }
 
-        // verify required parameter 'certificate' is not null or undefined
-        if (certificate === null || certificate === undefined) {
-            throw new Error(
-                'Required parameter certificate was null or undefined when calling submitOtcBankEnterpriseSupplement.',
-            );
-        }
-
-        // verify required parameter 'shareHolders' is not null or undefined
-        if (shareHolders === null || shareHolders === undefined) {
-            throw new Error(
-                'Required parameter shareHolders was null or undefined when calling submitOtcBankEnterpriseSupplement.',
-            );
-        }
-
-        // verify required parameter 'passport' is not null or undefined
-        if (passport === null || passport === undefined) {
-            throw new Error(
-                'Required parameter passport was null or undefined when calling submitOtcBankEnterpriseSupplement.',
-            );
-        }
-
-        // verify required parameter 'shareHoldingStructure' is not null or undefined
-        if (shareHoldingStructure === null || shareHoldingStructure === undefined) {
-            throw new Error(
-                'Required parameter shareHoldingStructure was null or undefined when calling submitOtcBankEnterpriseSupplement.',
-            );
-        }
-
         opts = opts || {};
 
         const config: AxiosRequestConfig = {
@@ -535,7 +499,45 @@ export class OTCApi {
     }
 
     /**
-     * Mark a fiat BUY order as paid (deposit confirmation). **A user payment receipt must be uploaded**: `payment_receipt_file_key` is required; supported formats are jpg/jpeg/png/pdf, with a maximum size of 10 MB per file (validated jointly by the service and gateway). The compatibility field name `payment_receipt` is subject to the gateway/live environment. The persisted field is `otc_trade_record.payment_receipt_file_key`. The Pay Inner path is `POST .../pay/order_set_paid` (commonly associated by `client_order_id`); the Inner path corresponding to this OpenAPI endpoint, `POST /order/paid`, still primarily uses `order_id`. If the gateway standardizes on the merchant order ID, follow the gateway documentation.
+     * After selecting a file, the client calls this endpoint first to obtain a temporary-bucket POST Policy and `file_key`; then upload directly to S3 using the returned `url` and `fields` (success HTTP 204); finally, in business submit endpoints (e.g. `POST /otc/order/paid`, `POST /otc/bank/create`), pass the **same base64 `file_key` unchanged** (do not decode). The server validates ownership and object existence, then moves to the production bucket and persists. Unsubmitted files remain in the temporary bucket and are reclaimed by lifecycle rules.  Corresponds to Inner: `POST /upload/pre_upload`.  **`content_type` must be sent as base64** (plaintext containing `/` may be blocked by the gateway). Only the following MIME types are supported:  | MIME | base64 | Extension | | --- | --- | --- | | image/png | aW1hZ2UvcG5n | .png | | image/jpeg | aW1hZ2UvanBlZw== | .jpeg | | image/jpg | aW1hZ2UvanBn | .jpg | | application/pdf | YXBwbGljYXRpb24vcGRm | .pdf |  **`scene` mapping to downstream endpoints**:  | scene | Typical use | | --- | --- | | general | Fiat buy payment receipt (`payment_receipt_file_key` in `POST /otc/order/paid`) | | bank | Add card, bank card supplementary materials | | assessment | Professional verification materials | | credit | Credit limit increase materials |  **Credential validity**: response `expires_in` is **5400 seconds (90 minutes)**; `fields.Policy` `expiration` matches it. Complete the S3 direct upload within this window; after expiry, call this endpoint again for a new credential.  **File size**: the S3 POST Policy enforces `content-length-range` **1 byte ~ 10MB** (10485760 bytes). Uploads exceeding the limit are rejected by S3; all `scene` values share this limit.  **Direct S3 upload**: `url` is the upload address; send each key-value pair in `fields` unchanged as form-data; the `file` field must be last. Object path is generated as `otc_temp/{uid}/{scene}/{unique filename}`; uid is taken from the login session.  This endpoint returns `content type is required.` when `content_type` is missing. Ownership and object-existence checks for `file_key` are performed by the subsequent business submission endpoint.
+     * @summary Pre-upload file (temporary bucket)
+     * @param otcUploadPreUploadRequest
+     */
+    public async createOtcUploadPreUpload(
+        otcUploadPreUploadRequest: OtcUploadPreUploadRequest,
+    ): Promise<{ response: AxiosResponse; body: OtcUploadPreUploadResponse }> {
+        const localVarPath = this.client.basePath + '/otc/upload/pre_upload';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'otcUploadPreUploadRequest' is not null or undefined
+        if (otcUploadPreUploadRequest === null || otcUploadPreUploadRequest === undefined) {
+            throw new Error(
+                'Required parameter otcUploadPreUploadRequest was null or undefined when calling createOtcUploadPreUpload.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(otcUploadPreUploadRequest, 'OtcUploadPreUploadRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OtcUploadPreUploadResponse>(config, 'OtcUploadPreUploadResponse', authSettings);
+    }
+
+    /**
+     * Mark a fiat buy order as paid (deposit confirmation). **A user payment receipt must be uploaded**: `payment_receipt_file_key` is required; supported formats are jpg / jpeg / png / pdf, with a maximum size of 10 MB per file (validated jointly by the service and gateway). The compatible field name `payment_receipt` depends on the gateway and production contract. The persisted field is `otc_trade_record.payment_receipt_file_key`. The Pay Inner path is `POST .../pay/order_set_paid` (which commonly identifies orders by `client_order_id`); the Inner path corresponding to this OpenAPI operation, `POST /order/paid`, still primarily uses `order_id`. If the gateway standardizes on the merchant order ID, follow the gateway documentation.  **Recommended pre-upload flow**: first call `POST /otc/upload/pre_upload` (`scene=general`) and upload directly to the temporary bucket, then pass the returned **base64 `file_key` unchanged** (do not decode) to this endpoint. The service validates the uid and object existence before moving the object to the production bucket. A cross-user key returns `Invalid parameters file_key`; an object that has not been uploaded returns `Invalid parameters file not uploaded`. The legacy flow using a base64 key for an object uploaded directly to the production bucket remains supported.
      * @summary Mark fiat order as paid (deposit confirmation)
      * @param otcMarkOrderPaidRequest
      */

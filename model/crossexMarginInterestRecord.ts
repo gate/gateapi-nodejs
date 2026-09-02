@@ -43,7 +43,7 @@ export class CrossexMarginInterestRecord {
      */
     'interestRate': string;
     /**
-     * Interest deduction type (`PERIODIC_POSITION` hourly interest on position, `PERIODIC_OPEN_ORDER` hourly interest on open orders, `IMMEDIATE_OPEN_ORDER` interest charged on order placement, `PERIODIC_ISOLATED` hourly interest on debt)
+     * Interest deduction type `PERIODIC_POSITION`: hourly interest charged on positions `PERIODIC_OPEN_ORDER`: hourly interest charged on open orders `IMMEDIATE_OPEN_ORDER`: interest charged when an order is placed `PERIODIC_ISOLATED`: hourly interest charged on liabilities
      */
     'interestType': string;
     /**
@@ -60,7 +60,7 @@ export class CrossexMarginInterestRecord {
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
             name: 'userId',
-            baseName: 'userId',
+            baseName: 'user_id',
             type: 'string',
         },
         {

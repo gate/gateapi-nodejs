@@ -471,6 +471,10 @@ export * from './otcStableCoinOrderListItem';
 export * from './otcStableCoinOrderListResponse';
 export * from './otcStableCoinOrderListResult';
 export * from './otcStableCoinOrderRequest';
+export * from './otcUploadPreUploadData';
+export * from './otcUploadPreUploadPolicyFields';
+export * from './otcUploadPreUploadRequest';
+export * from './otcUploadPreUploadResponse';
 export * from './otherContact';
 export * from './p2pAdDetail';
 export * from './p2pAdDetailResponse';
@@ -1200,6 +1204,10 @@ import { OtcStableCoinOrderListItem } from './otcStableCoinOrderListItem';
 import { OtcStableCoinOrderListResponse } from './otcStableCoinOrderListResponse';
 import { OtcStableCoinOrderListResult } from './otcStableCoinOrderListResult';
 import { OtcStableCoinOrderRequest } from './otcStableCoinOrderRequest';
+import { OtcUploadPreUploadData } from './otcUploadPreUploadData';
+import { OtcUploadPreUploadPolicyFields } from './otcUploadPreUploadPolicyFields';
+import { OtcUploadPreUploadRequest } from './otcUploadPreUploadRequest';
+import { OtcUploadPreUploadResponse } from './otcUploadPreUploadResponse';
 import { OtherContact } from './otherContact';
 import { P2pAdDetail } from './p2pAdDetail';
 import { P2pAdDetailResponse } from './p2pAdDetailResponse';
@@ -1582,6 +1590,8 @@ let enumsMap: { [index: string]: any } = {
     'OrderLogData.PriceType': OrderLogData.PriceType,
     'OrderLogData.Side': OrderLogData.Side,
     'OtcBankSupplementChecklistResponseData.UserType': OtcBankSupplementChecklistResponseData.UserType,
+    'OtcUploadPreUploadRequest.ContentType': OtcUploadPreUploadRequest.ContentType,
+    'OtcUploadPreUploadRequest.Scene': OtcUploadPreUploadRequest.Scene,
     'P2pAdDetail.LimitBasis': P2pAdDetail.LimitBasis,
     'P2pAdDetail.LimitBasisText': P2pAdDetail.LimitBasisText,
     'P2pAdsListItem.LimitBasis': P2pAdsListItem.LimitBasis,
@@ -2127,6 +2137,10 @@ let typeMap: { [index: string]: any } = {
     OtcStableCoinOrderListResponse: OtcStableCoinOrderListResponse,
     OtcStableCoinOrderListResult: OtcStableCoinOrderListResult,
     OtcStableCoinOrderRequest: OtcStableCoinOrderRequest,
+    OtcUploadPreUploadData: OtcUploadPreUploadData,
+    OtcUploadPreUploadPolicyFields: OtcUploadPreUploadPolicyFields,
+    OtcUploadPreUploadRequest: OtcUploadPreUploadRequest,
+    OtcUploadPreUploadResponse: OtcUploadPreUploadResponse,
     OtherContact: OtherContact,
     P2pAdDetail: P2pAdDetail,
     P2pAdDetailResponse: P2pAdDetailResponse,

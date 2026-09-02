@@ -10,7 +10,7 @@
  */
 
 /**
- * Inner create-bank-card `multipart/form-data`. Use the form field `documentation_file` to upload the account-opening proof.
+ * Inner create-bank-card `multipart/form-data`. Account-opening proof file (choose one):  - **Pre-upload**: `documentation_file_key` + `file_type` (call `POST /otc/upload/pre_upload` first, `scene=bank`); - **Multipart direct upload**: `documentation_file` file field.
  */
 export class OtcBankCreateMultipartRequest {
     'bankAccountName': string;
@@ -23,9 +23,17 @@ export class OtcBankCreateMultipartRequest {
     'agentBankName'?: string;
     'agentBankSwift'?: string;
     /**
-     * Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment)
+     * Multipart direct upload; mutually exclusive with documentation_file_key
      */
-    'documentationFile': string;
+    'documentationFile'?: string;
+    /**
+     * Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted)
+     */
+    'documentationFileKey'?: string;
+    /**
+     * Required when using documentation_file_key; plaintext MIME or its base64
+     */
+    'fileType'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -78,6 +86,16 @@ export class OtcBankCreateMultipartRequest {
         {
             name: 'documentationFile',
             baseName: 'documentation_file',
+            type: 'string',
+        },
+        {
+            name: 'documentationFileKey',
+            baseName: 'documentation_file_key',
+            type: 'string',
+        },
+        {
+            name: 'fileType',
+            baseName: 'file_type',
             type: 'string',
         },
     ];
