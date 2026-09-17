@@ -10,7 +10,13 @@
  */
 
 export class SymbolDetailItemSymbolDescs {
+    /**
+     * Language
+     */
     'lang'?: string;
+    /**
+     * Localized description
+     */
     'value'?: string;
 
     static discriminator: string | undefined = undefined;

@@ -33,6 +33,11 @@ export * from './agencyTransactionHistory';
 export * from './alphaCurrency';
 export * from './alphaTicker';
 export * from './amendOptionsOrderRequest';
+export * from './announcementArticle';
+export * from './announcementArticleLanguage';
+export * from './announcementArticleListData';
+export * from './announcementArticleListRequest';
+export * from './announcementArticleListResponse';
 export * from './apiResponseAssetSwapConfig';
 export * from './apiResponseAssetSwapEvaluate';
 export * from './apiResponseAssetSwapListAssets';
@@ -766,6 +771,11 @@ import { AgencyTransactionHistory } from './agencyTransactionHistory';
 import { AlphaCurrency } from './alphaCurrency';
 import { AlphaTicker } from './alphaTicker';
 import { AmendOptionsOrderRequest } from './amendOptionsOrderRequest';
+import { AnnouncementArticle } from './announcementArticle';
+import { AnnouncementArticleLanguage } from './announcementArticleLanguage';
+import { AnnouncementArticleListData } from './announcementArticleListData';
+import { AnnouncementArticleListRequest } from './announcementArticleListRequest';
+import { AnnouncementArticleListResponse } from './announcementArticleListResponse';
 import { ApiResponseAssetSwapConfig } from './apiResponseAssetSwapConfig';
 import { ApiResponseAssetSwapEvaluate } from './apiResponseAssetSwapEvaluate';
 import { ApiResponseAssetSwapListAssets } from './apiResponseAssetSwapListAssets';
@@ -1590,6 +1600,7 @@ let enumsMap: { [index: string]: any } = {
     'OrderLogData.PriceType': OrderLogData.PriceType,
     'OrderLogData.Side': OrderLogData.Side,
     'OtcBankSupplementChecklistResponseData.UserType': OtcBankSupplementChecklistResponseData.UserType,
+    'OtcOrderRequest.ReceiveType': OtcOrderRequest.ReceiveType,
     'OtcUploadPreUploadRequest.ContentType': OtcUploadPreUploadRequest.ContentType,
     'OtcUploadPreUploadRequest.Scene': OtcUploadPreUploadRequest.Scene,
     'P2pAdDetail.LimitBasis': P2pAdDetail.LimitBasis,
@@ -1633,10 +1644,14 @@ let enumsMap: { [index: string]: any } = {
     'StopAllTrailOrders.RelatedPosition': StopAllTrailOrders.RelatedPosition,
     StrategyType: StrategyType,
     'SymbolDetailItem.Exchange': SymbolDetailItem.Exchange,
+    'SymbolDetailItem.Category': SymbolDetailItem.Category,
+    'SymbolDetailItem.AssetType': SymbolDetailItem.AssetType,
     'SymbolDetailItem.TradeStatus': SymbolDetailItem.TradeStatus,
     'SymbolDetailItem.TradeMode': SymbolDetailItem.TradeMode,
     'SymbolDetailItem.OrderFillTiming': SymbolDetailItem.OrderFillTiming,
     'SymbolListItem.Exchange': SymbolListItem.Exchange,
+    'SymbolListItem.Category': SymbolListItem.Category,
+    'SymbolListItem.AssetType': SymbolListItem.AssetType,
     'SymbolListItem.TradeStatus': SymbolListItem.TradeStatus,
     'SymbolListItem.TradeMode': SymbolListItem.TradeMode,
     'SymbolListItem.OrderFillTiming': SymbolListItem.OrderFillTiming,
@@ -1702,6 +1717,11 @@ let typeMap: { [index: string]: any } = {
     AlphaCurrency: AlphaCurrency,
     AlphaTicker: AlphaTicker,
     AmendOptionsOrderRequest: AmendOptionsOrderRequest,
+    AnnouncementArticle: AnnouncementArticle,
+    AnnouncementArticleLanguage: AnnouncementArticleLanguage,
+    AnnouncementArticleListData: AnnouncementArticleListData,
+    AnnouncementArticleListRequest: AnnouncementArticleListRequest,
+    AnnouncementArticleListResponse: AnnouncementArticleListResponse,
     ApiResponseAssetSwapConfig: ApiResponseAssetSwapConfig,
     ApiResponseAssetSwapEvaluate: ApiResponseAssetSwapEvaluate,
     ApiResponseAssetSwapListAssets: ApiResponseAssetSwapListAssets,

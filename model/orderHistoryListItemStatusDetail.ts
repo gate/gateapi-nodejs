@@ -9,8 +9,17 @@
  * Do not edit the class manually.
  */
 
+/**
+ * Order status details
+ */
 export class OrderHistoryListItemStatusDetail {
+    /**
+     * Status title
+     */
     'title'?: string;
+    /**
+     * Status message
+     */
     'message'?: string;
 
     static discriminator: string | undefined = undefined;

@@ -13,4 +13,16 @@ Name | Type | Description | Notes
 **promotionCode** | **string** | Promotion code | [optional] [default to undefined]
 **quoteToken** | **string** | Parameter returned by the quote API | [default to undefined]
 **bankId** | **string** | Bank card ID used to place the order. Select one from the list returned by &#x60;GET /otc/bank/list&#x60;; the default card has &#x60;is_default&#x3D;1&#x60;. | [default to undefined]
+**receiveType** | **string** | Name used for the remittance. Allowed values depend on the user type: Corporate users: YOU (remit in your company\&#39;s name), GATE (remit in Gate\&#39;s name), RECIPIENT (remit in the recipient\&#39;s name); Individual users: GATE (remit in Gate\&#39;s name), PERSON (remit in the user\&#39;s own name). | [optional] [default to undefined]
+
+## Enum: OtcOrderRequest.ReceiveType
+
+* `YOU` (value: `'YOU'`)
+
+* `GATE` (value: `'GATE'`)
+
+* `RECIPIENT` (value: `'RECIPIENT'`)
+
+* `PERSON` (value: `'PERSON'`)
+
 

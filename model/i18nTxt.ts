@@ -10,7 +10,13 @@
  */
 
 export class I18nTxt {
+    /**
+     * Language
+     */
     'lang'?: string;
+    /**
+     * Localized description
+     */
     'value'?: string;
 
     static discriminator: string | undefined = undefined;

@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Queue Task ID (not task ID) | [optional] [default to undefined]
+**id** | **string** | Queue Task ID (not order ID) | [optional] [default to undefined]
 

@@ -62,7 +62,7 @@ export class P2pApi {
     }
 
     /**
-     * To query the spot account balance, use the Spot API `GET /spot/accounts`.
+     * To query the spot account balance, use the Spot API [`GET /spot/accounts`](/docs/developers/apiv4/en/spot/#list-spot-trading-accounts).
      * @summary Get account information
      */
     public async p2pMerchantAccountGetUserInfo(): Promise<{

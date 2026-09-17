@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 Get account information
 
-To query the spot account balance, use the Spot API &#x60;GET /spot/accounts&#x60;.
+To query the spot account balance, use the Spot API [&#x60;GET /spot/accounts&#x60;](/docs/developers/apiv4/en/spot/#list-spot-trading-accounts).
 
 ### Example
 

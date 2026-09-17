@@ -12,34 +12,89 @@
 import { SymbolDetailItemSymbolDescs } from './symbolDetailItemSymbolDescs';
 
 export class SymbolDetailItem {
+    /**
+     * Symbol
+     */
     'symbol'?: string;
     /**
-     * Exchange, supports us, hk, and kr
+     * Exchange, supports us, hk, kr, and jp
      */
     'exchange'?: SymbolDetailItem.Exchange;
+    /**
+     * Exchange description
+     */
     'exchangeDesc'?: string;
+    /**
+     * Quote currency
+     */
     'quoteCurrency'?: string;
+    /**
+     * Quote currency precision
+     */
     'quoteCurrencyPrecision'?: number;
     /**
      * Quote currency to USD exchange rate
      */
     'fxRate'?: string;
+    /**
+     * Symbol description
+     */
     'symbolDesc'?: string;
-    'category'?: string;
+    /**
+     * Symbol category. - CS: Common stock. - ETF: Exchange-traded funds. - ADRC, ADR: Depositary receipts for foreign companies listed in the U.S. - ETV: Exchange-traded products. - PFD: Preferred stock. - ETS: Exchange-traded securities. - ETN: Exchange-traded notes. - FUND: Funds.
+     */
+    'category'?: SymbolDetailItem.Category;
+    /**
+     * Asset type. - STOCK: Stock. - ETF: Exchange-traded fund.
+     */
+    'assetType'?: SymbolDetailItem.AssetType;
+    /**
+     * Settlement currency
+     */
     'settlementCurrency'?: string;
+    /**
+     * Maximum order quantity
+     */
     'maxOrderVolume'?: string;
+    /**
+     * Order step size
+     */
     'stepOrderVolume'?: string;
+    /**
+     * Minimum order quantity
+     */
     'minOrderVolume'?: string;
     /**
      * Price precision
      */
     'pricePrecision'?: number;
+    /**
+     * Quantity precision
+     */
     'volumePrecision'?: number;
+    /**
+     * Whether it is an IPO symbol
+     */
     'isIpo'?: boolean;
+    /**
+     * IPO price
+     */
     'ipoPrice'?: string;
+    /**
+     * Price protection range
+     */
     'priceProtection'?: string;
+    /**
+     * Sell price protection rate
+     */
     'sellPriceProtection'?: string;
+    /**
+     * Buy price protection rate
+     */
     'buyPriceProtection'?: string;
+    /**
+     * Slippage
+     */
     'slippageRate'?: string;
     /**
      * Fee Rate
@@ -57,7 +112,13 @@ export class SymbolDetailItem {
      * Order fill timing (1=immediate, 2=after pre-market opens, 3=after regular session opens)
      */
     'orderFillTiming'?: SymbolDetailItem.OrderFillTiming;
+    /**
+     * Multilingual symbol description
+     */
     'symbolDescs'?: Array<SymbolDetailItemSymbolDescs>;
+    /**
+     * Icon URL
+     */
     'iconLink'?: string;
 
     static discriminator: string | undefined = undefined;
@@ -101,7 +162,12 @@ export class SymbolDetailItem {
         {
             name: 'category',
             baseName: 'category',
-            type: 'string',
+            type: 'SymbolDetailItem.Category',
+        },
+        {
+            name: 'assetType',
+            baseName: 'asset_type',
+            type: 'SymbolDetailItem.AssetType',
         },
         {
             name: 'settlementCurrency',
@@ -205,6 +271,22 @@ export namespace SymbolDetailItem {
         Us = <any>'us',
         Hk = <any>'hk',
         Kr = <any>'kr',
+        Jp = <any>'jp',
+    }
+    export enum Category {
+        CS = <any>'CS',
+        ETF = <any>'ETF',
+        ADRC = <any>'ADRC',
+        ADR = <any>'ADR',
+        ETV = <any>'ETV',
+        PFD = <any>'PFD',
+        ETS = <any>'ETS',
+        ETN = <any>'ETN',
+        FUND = <any>'FUND',
+    }
+    export enum AssetType {
+        STOCK = <any>'STOCK',
+        ETF = <any>'ETF',
     }
     export enum TradeStatus {
         PreMarket = <any>'pre_market',

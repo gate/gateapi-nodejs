@@ -35,6 +35,18 @@ export class UserAssetResp2Data {
      */
     'todayPnl'?: string;
     /**
+     * Option position market value
+     */
+    'optionPositionMarketValue'?: string;
+    /**
+     * Option position PnL
+     */
+    'optionPositionPnl'?: string;
+    /**
+     * Option today\'s PnL
+     */
+    'optionTodayPnl'?: string;
+    /**
      * Whether the user has activated the service
      */
     'userExists'?: boolean;
@@ -70,6 +82,21 @@ export class UserAssetResp2Data {
         {
             name: 'todayPnl',
             baseName: 'today_pnl',
+            type: 'string',
+        },
+        {
+            name: 'optionPositionMarketValue',
+            baseName: 'option_position_market_value',
+            type: 'string',
+        },
+        {
+            name: 'optionPositionPnl',
+            baseName: 'option_position_pnl',
+            type: 'string',
+        },
+        {
+            name: 'optionTodayPnl',
+            baseName: 'option_today_pnl',
             type: 'string',
         },
         {

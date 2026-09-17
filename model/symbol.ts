@@ -15,7 +15,7 @@ export class Symbol {
      */
     'symbol': string;
     /**
-     * Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
+     * Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT` / `LIGHTER`).
      */
     'exchangeType': string;
     /**

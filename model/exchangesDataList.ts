@@ -11,7 +11,7 @@
 
 export class ExchangesDataList {
     /**
-     * Trading market, supports us, hk, and kr
+     * Trading market, supports us, hk, kr, and jp
      */
     'exchange'?: ExchangesDataList.Exchange;
     /**
@@ -62,5 +62,6 @@ export namespace ExchangesDataList {
         Us = <any>'us',
         Hk = <any>'hk',
         Kr = <any>'kr',
+        Jp = <any>'jp',
     }
 }

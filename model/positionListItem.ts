@@ -15,7 +15,7 @@ export class PositionListItem {
      */
     'symbol'?: string;
     /**
-     * Exchange, supports us, hk, and kr
+     * Exchange, supports us, hk, kr, and jp
      */
     'exchange'?: PositionListItem.Exchange;
     /**
@@ -34,6 +34,9 @@ export class PositionListItem {
      * Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
      */
     'tradeStatus'?: PositionListItem.TradeStatus;
+    /**
+     * Symbol description
+     */
     'symbolDesc'?: string;
     /**
      * Position P&L
@@ -95,17 +98,41 @@ export class PositionListItem {
      * Extended hours latest price
      */
     'extendedLastPrice'?: string | null;
+    /**
+     * Maximum order quantity
+     */
     'maxOrderVolume'?: string;
+    /**
+     * Order step size
+     */
     'stepOrderVolume'?: string;
+    /**
+     * Minimum order quantity
+     */
     'minOrderVolume'?: string;
+    /**
+     * Price precision
+     */
     'pricePrecision'?: number;
+    /**
+     * Price protection range
+     */
     'priceProtection'?: string;
+    /**
+     * Sell price protection rate
+     */
     'sellPriceProtection'?: string;
+    /**
+     * Buy price protection rate
+     */
     'buyPriceProtection'?: string;
     /**
      * Fee Rate
      */
     'commissionRate'?: string;
+    /**
+     * Slippage
+     */
     'slippageRate'?: string;
 
     static discriminator: string | undefined = undefined;
@@ -278,6 +305,7 @@ export namespace PositionListItem {
         Us = <any>'us',
         Hk = <any>'hk',
         Kr = <any>'kr',
+        Jp = <any>'jp',
     }
     export enum TradeStatus {
         PreMarket = <any>'pre_market',

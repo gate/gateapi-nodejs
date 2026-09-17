@@ -49,6 +49,10 @@ export class OtcOrderRequest {
      * Bank card ID used to place the order. Select one from the list returned by `GET /otc/bank/list`; the default card has `is_default=1`.
      */
     'bankId': string;
+    /**
+     * Name used for the remittance. Allowed values depend on the user type: Corporate users: YOU (remit in your company\'s name), GATE (remit in Gate\'s name), RECIPIENT (remit in the recipient\'s name); Individual users: GATE (remit in Gate\'s name), PERSON (remit in the user\'s own name).
+     */
+    'receiveType'?: OtcOrderRequest.ReceiveType;
 
     static discriminator: string | undefined = undefined;
 
@@ -98,9 +102,23 @@ export class OtcOrderRequest {
             baseName: 'bank_id',
             type: 'string',
         },
+        {
+            name: 'receiveType',
+            baseName: 'receive_type',
+            type: 'OtcOrderRequest.ReceiveType',
+        },
     ];
 
     static getAttributeTypeMap() {
         return OtcOrderRequest.attributeTypeMap;
+    }
+}
+
+export namespace OtcOrderRequest {
+    export enum ReceiveType {
+        YOU = <any>'YOU',
+        GATE = <any>'GATE',
+        RECIPIENT = <any>'RECIPIENT',
+        PERSON = <any>'PERSON',
     }
 }

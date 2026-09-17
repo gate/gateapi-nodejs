@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **string** |  | [optional] [default to undefined]
-**symbol** | **string** |  | [optional] [default to undefined]
-**exchange** | **string** | Exchange, supports us, hk, and kr | [optional] [default to undefined]
-**quoteCurrency** | **string** |  | [optional] [default to undefined]
+**orderId** | **string** | Order ID | [optional] [default to undefined]
+**symbol** | **string** | Symbol | [optional] [default to undefined]
+**exchange** | **string** | Exchange, supports us, hk, kr, and jp | [optional] [default to undefined]
+**quoteCurrency** | **string** | Quote currency | [optional] [default to undefined]
 **fxRate** | **string** | Quote currency to USD exchange rate | [optional] [default to undefined]
-**symbolDesc** | **string** |  | [optional] [default to undefined]
+**symbolDesc** | **string** | Symbol description | [optional] [default to undefined]
 **priceType** | **string** | Price type (market &#x3D; market order, limit &#x3D; limit order) | [optional] [default to undefined]
 **status** | **number** | Order status | [optional] [default to undefined]
 **statusDesc** | **string** | Order status description | [optional] [default to undefined]
@@ -17,13 +17,13 @@ Name | Type | Description | Notes
 **finishAs** | **number** | Order completion reason | [optional] [default to undefined]
 **side** | **number** | Side (1&#x3D;sell, 2&#x3D;buy) | [optional] [default to undefined]
 **timeInForce** | **string** | Time in force. - day: Day order. | [optional] [default to undefined]
-**volume** | **string** |  | [optional] [default to undefined]
-**fillVolume** | **string** |  | [optional] [default to undefined]
-**price** | **string** |  | [optional] [default to undefined]
-**avgFillPrice** | **string** |  | [optional] [default to undefined]
+**volume** | **string** | Order quantity | [optional] [default to undefined]
+**fillVolume** | **string** | Trading size | [optional] [default to undefined]
+**price** | **string** | Order price | [optional] [default to undefined]
+**avgFillPrice** | **string** | Average fill price | [optional] [default to undefined]
 **commission** | **string** | fee | [optional] [default to undefined]
-**timeSetup** | **number** |  | [optional] [default to undefined]
-**timeDone** | **number** |  | [optional] [default to undefined]
+**timeSetup** | **number** | Order creation time (Unix timestamp, seconds) | [optional] [default to undefined]
+**timeDone** | **number** | Order completion time (Unix timestamp in seconds) | [optional] [default to undefined]
 
 ## Enum: OrderHistoryListItem.Exchange
 
@@ -32,6 +32,8 @@ Name | Type | Description | Notes
 * `Hk` (value: `'hk'`)
 
 * `Kr` (value: `'kr'`)
+
+* `Jp` (value: `'jp'`)
 
 
 ## Enum: OrderHistoryListItem.PriceType

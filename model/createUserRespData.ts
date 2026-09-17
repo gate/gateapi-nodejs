@@ -18,10 +18,6 @@ export class CreateUserRespData {
      * Leverage
      */
     'leverage'?: number;
-    /**
-     * mt5uid
-     */
-    'mt5Uid'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -35,11 +31,6 @@ export class CreateUserRespData {
             name: 'leverage',
             baseName: 'leverage',
             type: 'number',
-        },
-        {
-            name: 'mt5Uid',
-            baseName: 'mt5_uid',
-            type: 'string',
         },
     ];
 

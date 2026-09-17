@@ -5,6 +5,8 @@ export * from './activityApi';
 import { ActivityApi } from './activityApi';
 export * from './alphaApi';
 import { AlphaApi } from './alphaApi';
+export * from './announcementApi';
+import { AnnouncementApi } from './announcementApi';
 export * from './assetswapApi';
 import { AssetswapApi } from './assetswapApi';
 export * from './botApi';
@@ -60,6 +62,7 @@ export const APIS = [
     AccountApi,
     ActivityApi,
     AlphaApi,
+    AnnouncementApi,
     AssetswapApi,
     BotApi,
     CFDApi,

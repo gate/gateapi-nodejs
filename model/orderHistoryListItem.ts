@@ -12,17 +12,29 @@
 import { OrderHistoryListItemStatusDetail } from './orderHistoryListItemStatusDetail';
 
 export class OrderHistoryListItem {
+    /**
+     * Order ID
+     */
     'orderId'?: string;
+    /**
+     * Symbol
+     */
     'symbol'?: string;
     /**
-     * Exchange, supports us, hk, and kr
+     * Exchange, supports us, hk, kr, and jp
      */
     'exchange'?: OrderHistoryListItem.Exchange;
+    /**
+     * Quote currency
+     */
     'quoteCurrency'?: string;
     /**
      * Quote currency to USD exchange rate
      */
     'fxRate'?: string;
+    /**
+     * Symbol description
+     */
     'symbolDesc'?: string;
     /**
      * Price type (market = market order, limit = limit order)
@@ -49,15 +61,33 @@ export class OrderHistoryListItem {
      * Time in force. - day: Day order.
      */
     'timeInForce'?: OrderHistoryListItem.TimeInForce;
+    /**
+     * Order quantity
+     */
     'volume'?: string;
+    /**
+     * Trading size
+     */
     'fillVolume'?: string;
+    /**
+     * Order price
+     */
     'price'?: string;
+    /**
+     * Average fill price
+     */
     'avgFillPrice'?: string | null;
     /**
      * fee
      */
     'commission'?: string;
+    /**
+     * Order creation time (Unix timestamp, seconds)
+     */
     'timeSetup'?: number;
+    /**
+     * Order completion time (Unix timestamp in seconds)
+     */
     'timeDone'?: number;
 
     static discriminator: string | undefined = undefined;
@@ -175,6 +205,7 @@ export namespace OrderHistoryListItem {
         Us = <any>'us',
         Hk = <any>'hk',
         Kr = <any>'kr',
+        Jp = <any>'jp',
     }
     export enum PriceType {
         Market = <any>'market',

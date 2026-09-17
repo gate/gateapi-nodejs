@@ -17,7 +17,7 @@ export class SymbolListItem {
      */
     'symbol'?: string;
     /**
-     * Exchange, supports us, hk, and kr
+     * Exchange, supports us, hk, kr, and jp
      */
     'exchange'?: SymbolListItem.Exchange;
     /**
@@ -41,9 +41,13 @@ export class SymbolListItem {
      */
     'symbolDesc'?: string;
     /**
-     * Category
+     * Symbol category. - CS: Common stock. - ETF: Exchange-traded funds. - ADRC, ADR: Depositary receipts for foreign companies listed in the U.S. - ETV: Exchange-traded products. - PFD: Preferred stock. - ETS: Exchange-traded securities. - ETN: Exchange-traded notes. - FUND: Funds.
      */
-    'category'?: string;
+    'category'?: SymbolListItem.Category;
+    /**
+     * Asset type. - STOCK: Stock. - ETF: Exchange-traded fund.
+     */
+    'assetType'?: SymbolListItem.AssetType;
     /**
      * Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
      */
@@ -134,7 +138,12 @@ export class SymbolListItem {
         {
             name: 'category',
             baseName: 'category',
-            type: 'string',
+            type: 'SymbolListItem.Category',
+        },
+        {
+            name: 'assetType',
+            baseName: 'asset_type',
+            type: 'SymbolListItem.AssetType',
         },
         {
             name: 'tradeStatus',
@@ -208,6 +217,22 @@ export namespace SymbolListItem {
         Us = <any>'us',
         Hk = <any>'hk',
         Kr = <any>'kr',
+        Jp = <any>'jp',
+    }
+    export enum Category {
+        CS = <any>'CS',
+        ETF = <any>'ETF',
+        ADRC = <any>'ADRC',
+        ADR = <any>'ADR',
+        ETV = <any>'ETV',
+        PFD = <any>'PFD',
+        ETS = <any>'ETS',
+        ETN = <any>'ETN',
+        FUND = <any>'FUND',
+    }
+    export enum AssetType {
+        STOCK = <any>'STOCK',
+        ETF = <any>'ETF',
     }
     export enum TradeStatus {
         PreMarket = <any>'pre_market',

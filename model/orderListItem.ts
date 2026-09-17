@@ -19,7 +19,7 @@ export class OrderListItem {
      */
     'symbol'?: string;
     /**
-     * Exchange, supports us, hk, and kr
+     * Exchange, supports us, hk, kr, and jp
      */
     'exchange'?: OrderListItem.Exchange;
     /**
@@ -251,6 +251,7 @@ export namespace OrderListItem {
         Us = <any>'us',
         Hk = <any>'hk',
         Kr = <any>'kr',
+        Jp = <any>'jp',
     }
     export enum TradeStatus {
         PreMarket = <any>'pre_market',

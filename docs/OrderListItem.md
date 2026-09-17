@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **orderId** | **string** | Order ID | [optional] [default to undefined]
 **symbol** | **string** | Symbol | [optional] [default to undefined]
-**exchange** | **string** | Exchange, supports us, hk, and kr | [optional] [default to undefined]
+**exchange** | **string** | Exchange, supports us, hk, kr, and jp | [optional] [default to undefined]
 **quoteCurrency** | **string** | Quote currency | [optional] [default to undefined]
 **fxRate** | **string** | Quote currency to USD exchange rate | [optional] [default to undefined]
 **symbolDesc** | **string** | Symbol description | [optional] [default to undefined]
@@ -37,6 +37,8 @@ Name | Type | Description | Notes
 * `Hk` (value: `'hk'`)
 
 * `Kr` (value: `'kr'`)
+
+* `Jp` (value: `'jp'`)
 
 
 ## Enum: OrderListItem.TradeStatus

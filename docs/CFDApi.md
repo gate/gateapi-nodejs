@@ -116,6 +116,8 @@ const GateApi = require('gate-api');
 const client = new GateApi.ApiClient();
 // uncomment the next line to change base path
 // client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
 const opts = {
@@ -141,7 +143,7 @@ Promise<{ response: AxiosResponse; body: SymbolCommissions; }> [SymbolCommission
 
 ### Authorization
 
-No authorization required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
@@ -198,6 +200,8 @@ const GateApi = require('gate-api');
 const client = new GateApi.ApiClient();
 // uncomment the next line to change base path
 // client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
 const symbols = "EURUSD,XAGUSD"; // string | Trading symbol code list (comma-separated, max 10 symbols)
@@ -219,7 +223,7 @@ Promise<{ response: AxiosResponse; body: ContractDetail; }> [ContractDetail](Con
 
 ### Authorization
 
-No authorization required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 

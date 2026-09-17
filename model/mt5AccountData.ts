@@ -14,10 +14,6 @@
  */
 export class Mt5AccountData {
     /**
-     * MT5 userID
-     */
-    'mt5Uid'?: number;
-    /**
      * Leverage multiplier
      */
     'leverage'?: number;
@@ -33,11 +29,6 @@ export class Mt5AccountData {
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'mt5Uid',
-            baseName: 'mt5_uid',
-            type: 'number',
-        },
         {
             name: 'leverage',
             baseName: 'leverage',

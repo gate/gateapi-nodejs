@@ -10,5 +10,8 @@ Name | Type | Description | Notes
 **positionMarketValue** | **string** | Position market value | [optional] [default to undefined]
 **positionPnl** | **string** | Position P&amp;L | [optional] [default to undefined]
 **todayPnl** | **string** | Today\&#39;s P&amp;L | [optional] [default to undefined]
+**optionPositionMarketValue** | **string** | Option position market value | [optional] [default to undefined]
+**optionPositionPnl** | **string** | Option position PnL | [optional] [default to undefined]
+**optionTodayPnl** | **string** | Option today\&#39;s PnL | [optional] [default to undefined]
 **userExists** | **boolean** | Whether the user has activated the service | [optional] [default to undefined]
 

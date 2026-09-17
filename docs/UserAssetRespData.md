@@ -10,5 +10,4 @@ Name | Type | Description | Notes
 **margin** | **string** | Used margin | [optional] [default to undefined]
 **marginFree** | **string** | Available Margin | [optional] [default to undefined]
 **unrealizedPnl** | **string** | Unrealized PNL | [optional] [default to undefined]
-**mt5Uid** | **string** | MT5 userID | [optional] [default to undefined]
 

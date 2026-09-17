@@ -5,13 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** | Symbol | [optional] [default to undefined]
-**exchange** | **string** | Exchange, supports us, hk, and kr | [optional] [default to undefined]
+**exchange** | **string** | Exchange, supports us, hk, kr, and jp | [optional] [default to undefined]
 **exchangeDesc** | **string** | Exchange description | [optional] [default to undefined]
 **quoteCurrency** | **string** | Quote currency | [optional] [default to undefined]
 **quoteCurrencyPrecision** | **number** | Quote currency precision | [optional] [default to undefined]
 **fxRate** | **string** | Quote currency to USD exchange rate | [optional] [default to undefined]
 **symbolDesc** | **string** | Symbol description | [optional] [default to undefined]
-**category** | **string** | Category | [optional] [default to undefined]
+**category** | **string** | Symbol category. - CS: Common stock. - ETF: Exchange-traded funds. - ADRC, ADR: Depositary receipts for foreign companies listed in the U.S. - ETV: Exchange-traded products. - PFD: Preferred stock. - ETS: Exchange-traded securities. - ETN: Exchange-traded notes. - FUND: Funds. | [optional] [default to undefined]
+**assetType** | **string** | Asset type. - STOCK: Stock. - ETF: Exchange-traded fund. | [optional] [default to undefined]
 **tradeStatus** | **string** | Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session. | [optional] [default to undefined]
 **tradeMode** | **number** | Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. | [optional] [default to undefined]
 **orderFillTiming** | **number** | Order fill timing (1&#x3D;immediate, 2&#x3D;after pre-market opens, 3&#x3D;after regular session opens) | [optional] [default to undefined]
@@ -32,6 +33,36 @@ Name | Type | Description | Notes
 * `Hk` (value: `'hk'`)
 
 * `Kr` (value: `'kr'`)
+
+* `Jp` (value: `'jp'`)
+
+
+## Enum: SymbolListItem.Category
+
+* `CS` (value: `'CS'`)
+
+* `ETF` (value: `'ETF'`)
+
+* `ADRC` (value: `'ADRC'`)
+
+* `ADR` (value: `'ADR'`)
+
+* `ETV` (value: `'ETV'`)
+
+* `PFD` (value: `'PFD'`)
+
+* `ETS` (value: `'ETS'`)
+
+* `ETN` (value: `'ETN'`)
+
+* `FUND` (value: `'FUND'`)
+
+
+## Enum: SymbolListItem.AssetType
+
+* `STOCK` (value: `'STOCK'`)
+
+* `ETF` (value: `'ETF'`)
 
 
 ## Enum: SymbolListItem.TradeStatus

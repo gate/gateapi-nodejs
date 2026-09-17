@@ -90,7 +90,7 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.StockApi(client);
 const opts = {
   'symbols': "AAPL,TSLA", // string | Symbol list, multiple separated by commas
-  'exchange': "us", // 'us' | 'hk' | 'kr' | Exchange, supports us, hk, and kr
+  'exchange': "us", // 'us' | 'hk' | 'kr' | 'jp' | Exchange, supports us, hk, kr, and jp
   'withDescI18n': true, // boolean | Whether to return multilingual symbol description
   'page': 1, // number | Page number, defaults to 1
   'pageSize': 100 // number | Page size, defaults to 10, max 500; server caps at 500
@@ -106,7 +106,7 @@ api.queryStockSymbols(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbols** | **string**| Symbol list, multiple separated by commas | [optional] [default to undefined]
- **exchange** | **Exchange**| Exchange, supports us, hk, and kr | [optional] [default to undefined]
+ **exchange** | **Exchange**| Exchange, supports us, hk, kr, and jp | [optional] [default to undefined]
  **withDescI18n** | **boolean**| Whether to return multilingual symbol description | [optional] [default to undefined]
  **page** | **number**| Page number, defaults to 1 | [optional] [default to undefined]
  **pageSize** | **number**| Page size, defaults to 10, max 500; server caps at 500 | [optional] [default to undefined]
@@ -143,7 +143,7 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.StockApi(client);
 const opts = {
   'symbols': "AAPL,TSLA", // string | Symbol list, multiple separated by commas
-  'exchange': "us", // 'us' | 'hk' | 'kr' | Exchange, supports us, hk, and kr
+  'exchange': "us", // 'us' | 'hk' | 'kr' | 'jp' | Exchange, supports us, hk, kr, and jp
   'page': 1, // number | Page number, defaults to 1
   'pageSize': 100 // number | Page size, defaults to 10, max 500; server caps at 500
 };
@@ -158,7 +158,7 @@ api.queryStockSymbolDetail(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbols** | **string**| Symbol list, multiple separated by commas | [optional] [default to undefined]
- **exchange** | **Exchange**| Exchange, supports us, hk, and kr | [optional] [default to undefined]
+ **exchange** | **Exchange**| Exchange, supports us, hk, kr, and jp | [optional] [default to undefined]
  **page** | **number**| Page number, defaults to 1 | [optional] [default to undefined]
  **pageSize** | **number**| Page size, defaults to 10, max 500; server caps at 500 | [optional] [default to undefined]
 
@@ -525,7 +525,7 @@ const opts = {
   'pnlCalcType': 1, // 1 | 2 | PnL calculation cost type. Defaults to average cost price when omitted (1 = average cost price, 2 = diluted cost price)
   'pnlCalcPrice': 1, // 1 | 2 | PnL calculation price type. Defaults to intraday price when omitted (1 = intraday price, 2 = latest extended-hours price)
   'symbol': "AAPL", // string | Symbol
-  'exchange': "us" // 'us' | 'hk' | 'kr' | Exchange, supports us, hk, and kr
+  'exchange': "us" // 'us' | 'hk' | 'kr' | 'jp' | Exchange, supports us, hk, kr, and jp
 };
 api.queryStockPositions(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -540,7 +540,7 @@ Name | Type | Description  | Notes
  **pnlCalcType** | **PnlCalcType**| PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price) | [optional] [default to undefined]
  **pnlCalcPrice** | **PnlCalcPrice**| PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price) | [optional] [default to undefined]
  **symbol** | **string**| Symbol | [optional] [default to undefined]
- **exchange** | **Exchange**| Exchange, supports us, hk, and kr | [optional] [default to undefined]
+ **exchange** | **Exchange**| Exchange, supports us, hk, kr, and jp | [optional] [default to undefined]
 
 ### Return type
 

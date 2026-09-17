@@ -14,7 +14,7 @@
  */
 export class CreateOrder2Data {
     /**
-     * Queue Task ID (not task ID)
+     * Queue Task ID (not order ID)
      */
     'id'?: string;
 

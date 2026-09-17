@@ -37,10 +37,6 @@ export class UserAssetRespData {
      * Unrealized PNL
      */
     'unrealizedPnl'?: string;
-    /**
-     * MT5 userID
-     */
-    'mt5Uid'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -73,11 +69,6 @@ export class UserAssetRespData {
         {
             name: 'unrealizedPnl',
             baseName: 'unrealized_pnl',
-            type: 'string',
-        },
-        {
-            name: 'mt5Uid',
-            baseName: 'mt5_uid',
             type: 'string',
         },
     ];

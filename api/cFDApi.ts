@@ -157,7 +157,7 @@ export class CFDApi {
             url: localVarPath,
         };
 
-        const authSettings = [];
+        const authSettings = ['apiv4'];
         return this.client.request<SymbolCommissions>(config, 'SymbolCommissions', authSettings);
     }
 
@@ -224,7 +224,7 @@ export class CFDApi {
             url: localVarPath,
         };
 
-        const authSettings = [];
+        const authSettings = ['apiv4'];
         return this.client.request<ContractDetail>(config, 'ContractDetail', authSettings);
     }
 

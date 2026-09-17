@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** | Symbol | [optional] [default to undefined]
-**exchange** | **string** | Exchange, supports us, hk, and kr | [optional] [default to undefined]
+**exchange** | **string** | Exchange, supports us, hk, kr, and jp | [optional] [default to undefined]
 **quoteCurrency** | **string** | Quote currency | [optional] [default to undefined]
 **quoteCurrencyPrecision** | **number** | Quote currency precision | [optional] [default to undefined]
 **fxRate** | **string** | Quote currency to USD exchange rate | [optional] [default to undefined]
 **tradeStatus** | **string** | Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session. | [optional] [default to undefined]
-**symbolDesc** | **string** |  | [optional] [default to undefined]
+**symbolDesc** | **string** | Symbol description | [optional] [default to undefined]
 **positionPnl** | **string** | Position P&amp;L | [optional] [default to undefined]
 **todayPnl** | **string** | Today\&#39;s P&amp;L | [optional] [default to undefined]
 **pnlRate** | **string** | Yield | [optional] [default to undefined]
@@ -26,15 +26,15 @@ Name | Type | Description | Notes
 **dilutedCostPrice** | **string** | Diluted cost price | [optional] [default to undefined]
 **lastPrice** | **string** | Latest price | [optional] [default to undefined]
 **extendedLastPrice** | **string** | Extended hours latest price | [optional] [default to undefined]
-**maxOrderVolume** | **string** |  | [optional] [default to undefined]
-**stepOrderVolume** | **string** |  | [optional] [default to undefined]
-**minOrderVolume** | **string** |  | [optional] [default to undefined]
-**pricePrecision** | **number** |  | [optional] [default to undefined]
-**priceProtection** | **string** |  | [optional] [default to undefined]
-**sellPriceProtection** | **string** |  | [optional] [default to undefined]
-**buyPriceProtection** | **string** |  | [optional] [default to undefined]
+**maxOrderVolume** | **string** | Maximum order quantity | [optional] [default to undefined]
+**stepOrderVolume** | **string** | Order step size | [optional] [default to undefined]
+**minOrderVolume** | **string** | Minimum order quantity | [optional] [default to undefined]
+**pricePrecision** | **number** | Price precision | [optional] [default to undefined]
+**priceProtection** | **string** | Price protection range | [optional] [default to undefined]
+**sellPriceProtection** | **string** | Sell price protection rate | [optional] [default to undefined]
+**buyPriceProtection** | **string** | Buy price protection rate | [optional] [default to undefined]
 **commissionRate** | **string** | Fee Rate | [optional] [default to undefined]
-**slippageRate** | **string** |  | [optional] [default to undefined]
+**slippageRate** | **string** | Slippage | [optional] [default to undefined]
 
 ## Enum: PositionListItem.Exchange
 
@@ -43,6 +43,8 @@ Name | Type | Description | Notes
 * `Hk` (value: `'hk'`)
 
 * `Kr` (value: `'kr'`)
+
+* `Jp` (value: `'jp'`)
 
 
 ## Enum: PositionListItem.TradeStatus

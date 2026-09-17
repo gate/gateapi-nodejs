@@ -106,14 +106,14 @@ export class StockApi {
      * @summary Query symbol list
      * @param opts Optional parameters
      * @param opts.symbols Symbol list, multiple separated by commas
-     * @param opts.exchange Exchange, supports us, hk, and kr
+     * @param opts.exchange Exchange, supports us, hk, kr, and jp
      * @param opts.withDescI18n Whether to return multilingual symbol description
      * @param opts.page Page number, defaults to 1
      * @param opts.pageSize Page size, defaults to 10, max 500; server caps at 500
      */
     public async queryStockSymbols(opts?: {
         symbols?: string;
-        exchange?: 'us' | 'hk' | 'kr';
+        exchange?: 'us' | 'hk' | 'kr' | 'jp';
         withDescI18n?: boolean;
         page?: number;
         pageSize?: number;
@@ -140,7 +140,7 @@ export class StockApi {
         }
 
         if (opts.exchange !== undefined) {
-            let exchangeSerialized = ObjectSerializer.serialize(opts.exchange, "'us' | 'hk' | 'kr'");
+            let exchangeSerialized = ObjectSerializer.serialize(opts.exchange, "'us' | 'hk' | 'kr' | 'jp'");
             // For array query parameters with style:form and explode:false, convert to comma-separated string
             if (Array.isArray(exchangeSerialized)) {
                 exchangeSerialized = exchangeSerialized.join(',');
@@ -191,13 +191,13 @@ export class StockApi {
      * @summary Query symbol details
      * @param opts Optional parameters
      * @param opts.symbols Symbol list, multiple separated by commas
-     * @param opts.exchange Exchange, supports us, hk, and kr
+     * @param opts.exchange Exchange, supports us, hk, kr, and jp
      * @param opts.page Page number, defaults to 1
      * @param opts.pageSize Page size, defaults to 10, max 500; server caps at 500
      */
     public async queryStockSymbolDetail(opts?: {
         symbols?: string;
-        exchange?: 'us' | 'hk' | 'kr';
+        exchange?: 'us' | 'hk' | 'kr' | 'jp';
         page?: number;
         pageSize?: number;
     }): Promise<{ response: AxiosResponse; body: SymbolDetail }> {
@@ -223,7 +223,7 @@ export class StockApi {
         }
 
         if (opts.exchange !== undefined) {
-            let exchangeSerialized = ObjectSerializer.serialize(opts.exchange, "'us' | 'hk' | 'kr'");
+            let exchangeSerialized = ObjectSerializer.serialize(opts.exchange, "'us' | 'hk' | 'kr' | 'jp'");
             // For array query parameters with style:form and explode:false, convert to comma-separated string
             if (Array.isArray(exchangeSerialized)) {
                 exchangeSerialized = exchangeSerialized.join(',');
@@ -597,13 +597,13 @@ export class StockApi {
      * @param opts.pnlCalcType PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price)
      * @param opts.pnlCalcPrice PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price)
      * @param opts.symbol Symbol
-     * @param opts.exchange Exchange, supports us, hk, and kr
+     * @param opts.exchange Exchange, supports us, hk, kr, and jp
      */
     public async queryStockPositions(opts?: {
         pnlCalcType?: 1 | 2;
         pnlCalcPrice?: 1 | 2;
         symbol?: string;
-        exchange?: 'us' | 'hk' | 'kr';
+        exchange?: 'us' | 'hk' | 'kr' | 'jp';
     }): Promise<{ response: AxiosResponse; body: PositionList2 }> {
         const localVarPath = this.client.basePath + '/stock/positions';
         let localVarQueryParameters: any = {};
@@ -645,7 +645,7 @@ export class StockApi {
         }
 
         if (opts.exchange !== undefined) {
-            let exchangeSerialized = ObjectSerializer.serialize(opts.exchange, "'us' | 'hk' | 'kr'");
+            let exchangeSerialized = ObjectSerializer.serialize(opts.exchange, "'us' | 'hk' | 'kr' | 'jp'");
             // For array query parameters with style:form and explode:false, convert to comma-separated string
             if (Array.isArray(exchangeSerialized)) {
                 exchangeSerialized = exchangeSerialized.join(',');

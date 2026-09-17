@@ -12,7 +12,13 @@
 import { SymbolDetailItem } from './symbolDetailItem';
 
 export class SymbolDetailData {
+    /**
+     * Total quantity
+     */
     'total'?: number;
+    /**
+     * Total pages
+     */
     'totalPage'?: number;
     'list'?: Array<SymbolDetailItem>;
 

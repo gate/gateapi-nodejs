@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lang** | **string** |  | [optional] [default to undefined]
-**value** | **string** |  | [optional] [default to undefined]
+**lang** | **string** | Language | [optional] [default to undefined]
+**value** | **string** | Localized description | [optional] [default to undefined]
 

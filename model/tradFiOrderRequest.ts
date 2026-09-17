@@ -26,7 +26,7 @@ export class TradFiOrderRequest {
      */
     'side': TradFiOrderRequest.Side;
     /**
-     * Trading symbol code
+     * Base trading symbol code
      */
     'symbol': string;
     /**
@@ -41,6 +41,10 @@ export class TradFiOrderRequest {
      * Stop loss price (optional)
      */
     'priceSl'?: string;
+    /**
+     * Leverage multiplier (must be one of the leverage multipliers allowed for the symbol in the trading symbol details response)
+     */
+    'leverage'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -79,6 +83,11 @@ export class TradFiOrderRequest {
             name: 'priceSl',
             baseName: 'price_sl',
             type: 'string',
+        },
+        {
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'number',
         },
     ];
 
