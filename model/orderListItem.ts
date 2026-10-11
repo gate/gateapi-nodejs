@@ -39,7 +39,7 @@ export class OrderListItem {
      */
     'tradeStatus'?: OrderListItem.TradeStatus;
     /**
-     * Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported.
+     * Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: LP trading suspended (manual suspension). - 6: LP trading suspended (strategy exception). - 7: LP trading suspended (stock halt). - 8: LP trading suspended (stock circuit breaker halt).
      */
     'tradeMode'?: OrderListItem.TradeMode;
     /**
@@ -51,9 +51,9 @@ export class OrderListItem {
      */
     'side'?: OrderListItem.Side;
     /**
-     * Order status
+     * Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected.
      */
-    'status'?: number;
+    'status'?: OrderListItem.Status;
     /**
      * Order quantity
      */
@@ -167,7 +167,7 @@ export class OrderListItem {
         {
             name: 'status',
             baseName: 'status',
-            type: 'number',
+            type: 'OrderListItem.Status',
         },
         {
             name: 'volume',
@@ -265,6 +265,10 @@ export namespace OrderListItem {
         NUMBER_1 = <any>1,
         NUMBER_2 = <any>2,
         NUMBER_4 = <any>4,
+        NUMBER_5 = <any>5,
+        NUMBER_6 = <any>6,
+        NUMBER_7 = <any>7,
+        NUMBER_8 = <any>8,
     }
     export enum PriceType {
         Market = <any>'market',
@@ -273,5 +277,16 @@ export namespace OrderListItem {
     export enum Side {
         NUMBER_1 = <any>1,
         NUMBER_2 = <any>2,
+    }
+    export enum Status {
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
+        NUMBER_3 = <any>3,
+        NUMBER_4 = <any>4,
+        NUMBER_5 = <any>5,
+        NUMBER_6 = <any>6,
+        NUMBER_7 = <any>7,
+        NUMBER_8 = <any>8,
     }
 }

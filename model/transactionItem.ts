@@ -31,7 +31,7 @@ export class TransactionItem {
      */
     'typeDesc'?: string;
     /**
-     * Change amount
+     * Change amount. A positive value means a credit, and a negative value means a debit.
      */
     'change'?: string;
     /**

@@ -703,13 +703,13 @@ export class StockApi {
     }
 
     /**
-     * Rate limit: 5 qps.
+     * Rate limit: 5 qps. Query stock account transaction records, including fund transfers, trades, fees, dividends, rewards, and stock transfers.
      * @summary Query transaction records
      * @param opts Optional parameters
      * @param opts.beginTime Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months.
      * @param opts.endTime End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months.
      * @param opts.refId Business idempotent ID. When ref_id is provided, the server queries by ref_id, ignoring other parameters such as begin_time, end_time, type, page, page_size
-     * @param opts.type Transaction type
+     * @param opts.type 流水类型。 - deposit: 资金转入，从现货账户转入到股票账户。 - withdraw: 资金转出，从股票账户转出到现货账户。 - fee: 交易手续费。 - dividend: 分红派息。 - sell: 卖出股票入账。 - buy: 买入股票出账。 - award: 空投奖励。 - stock_transfer_in: 股票转入。 - stock_transfer_out: 股票转出。
      * @param opts.page Page number, defaults to 1
      * @param opts.pageSize Page size, defaults to 10, max 500; server caps at 500
      */
@@ -811,7 +811,7 @@ export class StockApi {
     }
 
     /**
-     * Rate limit: 5 qps.
+     * Rate limit: 5 qps. Fund transfer moves USDT between the spot account and the stock account. - deposit: transfer from the spot account to the stock account. - withdraw: transfer from the stock account to the spot account.
      * @summary Fund transfer
      * @param tradFiSpotTransactionRequest
      */
@@ -849,7 +849,7 @@ export class StockApi {
     }
 
     /**
-     *
+     * Query stock spot supported exchanges and whether stock transfers are supported. Rate limit: 5 qps.
      * @summary Query supported exchanges
      */
     public async queryStockExchanges(): Promise<{ response: AxiosResponse; body: Exchanges }> {

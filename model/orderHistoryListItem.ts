@@ -41,18 +41,18 @@ export class OrderHistoryListItem {
      */
     'priceType'?: OrderHistoryListItem.PriceType;
     /**
-     * Order status
+     * Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected.
      */
-    'status'?: number;
+    'status'?: OrderHistoryListItem.Status;
     /**
      * Order status description
      */
     'statusDesc'?: string;
     'statusDetail'?: OrderHistoryListItemStatusDetail | null;
     /**
-     * Order completion reason
+     * Order completion reason. - 0: Unknown. - 1: No quote found. - 2: No match found. - 3: Trigger price exceeded. - 4: Order value exceeds the limit. - 5: Unknown rejection. - 6: Unknown cancellation. - 7: Canceled by user. - 8: Canceled after the order time in force expired. - 9: Trading is not supported in the current session. - 13: Canceled due to corporate action.
      */
-    'finishAs'?: number;
+    'finishAs'?: OrderHistoryListItem.FinishAs;
     /**
      * Side (1=sell, 2=buy)
      */
@@ -131,7 +131,7 @@ export class OrderHistoryListItem {
         {
             name: 'status',
             baseName: 'status',
-            type: 'number',
+            type: 'OrderHistoryListItem.Status',
         },
         {
             name: 'statusDesc',
@@ -146,7 +146,7 @@ export class OrderHistoryListItem {
         {
             name: 'finishAs',
             baseName: 'finish_as',
-            type: 'number',
+            type: 'OrderHistoryListItem.FinishAs',
         },
         {
             name: 'side',
@@ -210,6 +210,30 @@ export namespace OrderHistoryListItem {
     export enum PriceType {
         Market = <any>'market',
         Limit = <any>'limit',
+    }
+    export enum Status {
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
+        NUMBER_3 = <any>3,
+        NUMBER_4 = <any>4,
+        NUMBER_5 = <any>5,
+        NUMBER_6 = <any>6,
+        NUMBER_7 = <any>7,
+        NUMBER_8 = <any>8,
+    }
+    export enum FinishAs {
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
+        NUMBER_3 = <any>3,
+        NUMBER_4 = <any>4,
+        NUMBER_5 = <any>5,
+        NUMBER_6 = <any>6,
+        NUMBER_7 = <any>7,
+        NUMBER_8 = <any>8,
+        NUMBER_9 = <any>9,
+        NUMBER_13 = <any>13,
     }
     export enum Side {
         NUMBER_1 = <any>1,

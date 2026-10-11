@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **fxRate** | **string** | Quote currency to USD exchange rate | [optional] [default to undefined]
 **symbolDesc** | **string** | Symbol description | [optional] [default to undefined]
 **tradeStatus** | **string** | Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session. | [optional] [default to undefined]
-**tradeMode** | **number** | Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. | [optional] [default to undefined]
+**tradeMode** | **number** | Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: LP trading suspended (manual suspension). - 6: LP trading suspended (strategy exception). - 7: LP trading suspended (stock halt). - 8: LP trading suspended (stock circuit breaker halt). | [optional] [default to undefined]
 **priceType** | **string** | Price type (market &#x3D; market order, limit &#x3D; limit order) | [optional] [default to undefined]
 **side** | **number** | Side (1&#x3D;sell, 2&#x3D;buy) | [optional] [default to undefined]
-**status** | **number** | Order status | [optional] [default to undefined]
+**status** | **number** | Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected. | [optional] [default to undefined]
 **volume** | **string** | Order quantity | [optional] [default to undefined]
 **fillVolume** | **string** | Trading size | [optional] [default to undefined]
 **price** | **string** | Order price | [optional] [default to undefined]
@@ -64,6 +64,14 @@ Name | Type | Description | Notes
 
 * `NUMBER_4` (value: `4`)
 
+* `NUMBER_5` (value: `5`)
+
+* `NUMBER_6` (value: `6`)
+
+* `NUMBER_7` (value: `7`)
+
+* `NUMBER_8` (value: `8`)
+
 
 ## Enum: OrderListItem.PriceType
 
@@ -77,5 +85,26 @@ Name | Type | Description | Notes
 * `NUMBER_1` (value: `1`)
 
 * `NUMBER_2` (value: `2`)
+
+
+## Enum: OrderListItem.Status
+
+* `NUMBER_0` (value: `0`)
+
+* `NUMBER_1` (value: `1`)
+
+* `NUMBER_2` (value: `2`)
+
+* `NUMBER_3` (value: `3`)
+
+* `NUMBER_4` (value: `4`)
+
+* `NUMBER_5` (value: `5`)
+
+* `NUMBER_6` (value: `6`)
+
+* `NUMBER_7` (value: `7`)
+
+* `NUMBER_8` (value: `8`)
 
 

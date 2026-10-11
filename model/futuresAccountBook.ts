@@ -23,7 +23,7 @@ export class FuturesAccountBook {
      */
     'balance'?: string;
     /**
-     * Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction
+     * Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction - dividend: Dividend payout
      */
     'type'?: FuturesAccountBook.Type;
     /**
@@ -104,5 +104,6 @@ export namespace FuturesAccountBook {
         PointFee = <any>'point_fee',
         PointRefr = <any>'point_refr',
         BonusOffset = <any>'bonus_offset',
+        Dividend = <any>'dividend',
     }
 }

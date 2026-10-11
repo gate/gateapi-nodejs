@@ -53,7 +53,7 @@ export class SymbolListItem {
      */
     'tradeStatus'?: SymbolListItem.TradeStatus;
     /**
-     * Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported.
+     * Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: LP trading suspended (manual suspension). - 6: LP trading suspended (strategy exception). - 7: LP trading suspended (stock halt). - 8: LP trading suspended (stock circuit breaker halt).
      */
     'tradeMode'?: SymbolListItem.TradeMode;
     /**
@@ -246,6 +246,10 @@ export namespace SymbolListItem {
         NUMBER_1 = <any>1,
         NUMBER_2 = <any>2,
         NUMBER_4 = <any>4,
+        NUMBER_5 = <any>5,
+        NUMBER_6 = <any>6,
+        NUMBER_7 = <any>7,
+        NUMBER_8 = <any>8,
     }
     export enum OrderFillTiming {
         NUMBER_1 = <any>1,
