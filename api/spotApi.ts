@@ -309,6 +309,81 @@ export class SpotApi {
     }
 
     /**
+     * Get the RPI order book, with bids sorted by descending price and asks by ascending price.
+     * @summary Get the RPI order book
+     * @param currencyPair Currency pair
+     * @param opts Optional parameters
+     * @param opts.interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
+     * @param opts.limit Number of depth levels
+     * @param opts.withId Return order book update ID
+     */
+    public async listSpotRpiOrderBook(
+        currencyPair: string,
+        opts?: { interval?: string; limit?: number; withId?: boolean },
+    ): Promise<{ response: AxiosResponse; body: OrderBook }> {
+        const localVarPath = this.client.basePath + '/spot/rpi_order_book';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling listSpotRpiOrderBook.');
+        }
+
+        opts = opts || {};
+        let currencyPairSerialized = ObjectSerializer.serialize(currencyPair, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(currencyPairSerialized)) {
+            currencyPairSerialized = currencyPairSerialized.join(',');
+        }
+        localVarQueryParameters['currency_pair'] = currencyPairSerialized;
+
+        if (opts.interval !== undefined) {
+            let intervalSerialized = ObjectSerializer.serialize(opts.interval, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(intervalSerialized)) {
+                intervalSerialized = intervalSerialized.join(',');
+            }
+            localVarQueryParameters['interval'] = intervalSerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        if (opts.withId !== undefined) {
+            let withIdSerialized = ObjectSerializer.serialize(opts.withId, 'boolean');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(withIdSerialized)) {
+                withIdSerialized = withIdSerialized.join(',');
+            }
+            localVarQueryParameters['with_id'] = withIdSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<OrderBook>(config, 'OrderBook', authSettings);
+    }
+
+    /**
      * Supports querying by time range using `from` and `to` parameters or pagination based on `last_id`. By default, queries the last 30 days.  Pagination based on `last_id` is no longer recommended. If `last_id` is specified, the time range query parameters will be ignored.  When using limit&page pagination to retrieve data, the maximum number of pages is 100,000, that is, limit * (page - 1) <= 100,000.
      * @summary Query market transaction records
      * @param currencyPair Currency pair

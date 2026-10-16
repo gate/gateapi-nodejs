@@ -375,6 +375,90 @@ export class FuturesApi {
     }
 
     /**
+     * Bids will be sorted by price from high to low, while asks sorted reversely
+     * @summary Query futures RPI order book
+     * @param settle Perpetual futures settlement currency
+     * @param contract Futures contract
+     * @param opts Optional parameters
+     * @param opts.interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
+     * @param opts.limit Number of depth levels
+     * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time the depth changes
+     */
+    public async listFuturesRPIOrderBook(
+        settle: 'btc' | 'usdt' | 'usd1',
+        contract: string,
+        opts?: { interval?: string; limit?: number; withId?: boolean },
+    ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/rpi_order_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling listFuturesRPIOrderBook.');
+        }
+
+        // verify required parameter 'contract' is not null or undefined
+        if (contract === null || contract === undefined) {
+            throw new Error('Required parameter contract was null or undefined when calling listFuturesRPIOrderBook.');
+        }
+
+        opts = opts || {};
+        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(contractSerialized)) {
+            contractSerialized = contractSerialized.join(',');
+        }
+        localVarQueryParameters['contract'] = contractSerialized;
+
+        if (opts.interval !== undefined) {
+            let intervalSerialized = ObjectSerializer.serialize(opts.interval, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(intervalSerialized)) {
+                intervalSerialized = intervalSerialized.join(',');
+            }
+            localVarQueryParameters['interval'] = intervalSerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        if (opts.withId !== undefined) {
+            let withIdSerialized = ObjectSerializer.serialize(opts.withId, 'boolean');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(withIdSerialized)) {
+                withIdSerialized = withIdSerialized.join(',');
+            }
+            localVarQueryParameters['with_id'] = withIdSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<FuturesOrderBook>(config, 'FuturesOrderBook', authSettings);
+    }
+
+    /**
      *
      * @summary Futures market transaction records
      * @param settle Perpetual futures settlement currency
@@ -4958,15 +5042,19 @@ export class FuturesApi {
      *
      * @summary Modify a Single Auto Order
      * @param settle Perpetual futures settlement currency
+     * @param orderId ID returned when order is successfully created
      * @param futuresUpdatePriceTriggeredOrder
      */
     public async updatePriceTriggeredOrder(
         settle: 'btc' | 'usdt' | 'usd1',
+        orderId: string,
         futuresUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath =
             this.client.basePath +
-            '/futures/{settle}/price_orders/amend'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+            '/futures/{settle}/price_orders/amend/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -4980,6 +5068,11 @@ export class FuturesApi {
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
             throw new Error('Required parameter settle was null or undefined when calling updatePriceTriggeredOrder.');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling updatePriceTriggeredOrder.');
         }
 
         // verify required parameter 'futuresUpdatePriceTriggeredOrder' is not null or undefined

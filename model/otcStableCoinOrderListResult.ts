@@ -16,7 +16,7 @@ export class OtcStableCoinOrderListResult {
     'pageSize': number;
     'pageNumber': number;
     'totalPage': number;
-    'list': Array<OtcStableCoinOrderListItem>;
+    'lists': Array<OtcStableCoinOrderListItem>;
 
     static discriminator: string | undefined = undefined;
 
@@ -42,8 +42,8 @@ export class OtcStableCoinOrderListResult {
             type: 'number',
         },
         {
-            name: 'list',
-            baseName: 'list',
+            name: 'lists',
+            baseName: 'lists',
             type: 'Array<OtcStableCoinOrderListItem>',
         },
     ];

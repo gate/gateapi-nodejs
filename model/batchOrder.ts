@@ -9,8 +9,8 @@
  * Do not edit the class manually.
  */
 
-import { SpotOrderStopLoss } from './spotOrderStopLoss';
-import { SpotOrderStopProfit } from './spotOrderStopProfit';
+import { PatchSpotOrderStopLoss } from './patchSpotOrderStopLoss';
+import { PatchSpotOrderStopProfit } from './patchSpotOrderStopProfit';
 
 /**
  * Batch order details
@@ -168,8 +168,8 @@ export class BatchOrder {
      * Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
      */
     'slippage'?: string;
-    'stopProfit'?: SpotOrderStopProfit;
-    'stopLoss'?: SpotOrderStopLoss;
+    'stopProfit'?: PatchSpotOrderStopProfit;
+    'stopLoss'?: PatchSpotOrderStopLoss;
 
     static discriminator: string | undefined = undefined;
 
@@ -367,12 +367,12 @@ export class BatchOrder {
         {
             name: 'stopProfit',
             baseName: 'stop_profit',
-            type: 'SpotOrderStopProfit',
+            type: 'PatchSpotOrderStopProfit',
         },
         {
             name: 'stopLoss',
             baseName: 'stop_loss',
-            type: 'SpotOrderStopLoss',
+            type: 'PatchSpotOrderStopLoss',
         },
     ];
 

@@ -43,11 +43,11 @@ export class CrossexOrder {
      */
     'attribute': string;
     /**
-     * Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT` / `LIGHTER`).
+     * Exchange type (BINANCE / OKX / GATE / BYBIT / KRAKEN / HYPERLIQUID / DERIBIT / LIGHTER). Stocks and ETFs return the listing market (US / HK / KR / JP)
      */
     'exchangeType': string;
     /**
-     * Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin / `CONVERT` Flash Swap).
+     * Business type (SPOT: spot / FUTURE: futures / MARGIN: margin / CONVERT: flash swap / STOCK: stocks / ETF: exchange-traded funds)
      */
     'businessType': string;
     /**
@@ -59,7 +59,7 @@ export class CrossexOrder {
      */
     'quoteQty': string;
     /**
-     * Order price.
+     * Order price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      */
     'price': string;
     /**
@@ -71,11 +71,11 @@ export class CrossexOrder {
      */
     'executedQty': string;
     /**
-     * Filled quote amount.
+     * Filled amount in the quote currency. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      */
     'executedAmount': string;
     /**
-     * Average Filled Price
+     * Average fill price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      */
     'executedAvgPrice': string;
     /**
@@ -103,11 +103,11 @@ export class CrossexOrder {
      */
     'lastExecutedQty': string;
     /**
-     * Price of the latest fill.
+     * Price of the latest fill. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      */
     'lastExecutedPrice': string;
     /**
-     * Quote amount of the latest fill.
+     * Amount of the latest fill. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      */
     'lastExecutedAmount': string;
     /**

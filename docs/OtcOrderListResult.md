@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **ps** | **number** |  | [default to undefined]
 **totalPn** | **number** |  | [default to undefined]
 **count** | **number** |  | [default to undefined]
-**list** | [**Array&lt;OtcOrderListItem&gt;**](OtcOrderListItem.md) |  | [default to undefined]
+**lists** | [**Array&lt;OtcOrderListItem&gt;**](OtcOrderListItem.md) |  | [default to undefined]
 

@@ -42,6 +42,7 @@ import { ListEarnFixedTermProductsResponse } from '../model/listEarnFixedTermPro
 import { OrderListStruct } from '../model/orderListStruct';
 import { PlaceDualInvestmentOrder } from '../model/placeDualInvestmentOrder';
 import { PlaceDualInvestmentOrderParams } from '../model/placeDualInvestmentOrderParams';
+import { PlaceDualStockInvestmentOrderParams } from '../model/placeDualStockInvestmentOrderParams';
 import { SwapCoin } from '../model/swapCoin';
 import { SwapCoinStruct } from '../model/swapCoinStruct';
 import { ObjectSerializer } from '../model/models';
@@ -518,6 +519,479 @@ export class EarnApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<DualProjectRecommend>>(config, 'Array<DualProjectRecommend>', authSettings);
+    }
+
+    /**
+     *
+     * @summary List stock dual investment products
+     * @param opts Optional parameters
+     * @param opts.planId Product/plan ID. If provided, only the matching product is returned
+     * @param opts.coin Underlying currency
+     * @param opts.type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high
+     * @param opts.quoteCurrency Settlement currency. Default: USDT
+     * @param opts.sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first
+     * @param opts.page page number
+     * @param opts.pageSize Items per page，Maximum 100
+     */
+    public async listDualStockInvestmentPlans(opts?: {
+        planId?: string;
+        coin?: string;
+        type?: 'call' | 'put';
+        quoteCurrency?: string;
+        sort?: string;
+        page?: number;
+        pageSize?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<DualGetPlans> }> {
+        const localVarPath = this.client.basePath + '/earn/dual/stock/investment_plan';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.planId !== undefined) {
+            let planIdSerialized = ObjectSerializer.serialize(opts.planId, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(planIdSerialized)) {
+                planIdSerialized = planIdSerialized.join(',');
+            }
+            localVarQueryParameters['plan_id'] = planIdSerialized;
+        }
+
+        if (opts.coin !== undefined) {
+            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(coinSerialized)) {
+                coinSerialized = coinSerialized.join(',');
+            }
+            localVarQueryParameters['coin'] = coinSerialized;
+        }
+
+        if (opts.type !== undefined) {
+            let typeSerialized = ObjectSerializer.serialize(opts.type, "'call' | 'put'");
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        if (opts.quoteCurrency !== undefined) {
+            let quoteCurrencySerialized = ObjectSerializer.serialize(opts.quoteCurrency, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(quoteCurrencySerialized)) {
+                quoteCurrencySerialized = quoteCurrencySerialized.join(',');
+            }
+            localVarQueryParameters['quote_currency'] = quoteCurrencySerialized;
+        }
+
+        if (opts.sort !== undefined) {
+            let sortSerialized = ObjectSerializer.serialize(opts.sort, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(sortSerialized)) {
+                sortSerialized = sortSerialized.join(',');
+            }
+            localVarQueryParameters['sort'] = sortSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<DualGetPlans>>(config, 'Array<DualGetPlans>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get recommendations for stock dual investment products
+     * @param opts Optional parameters
+     * @param opts.coin Underlying currency
+     * @param opts.type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low
+     * @param opts.mode Recommendation mode. Default: normal normal: Regular users senior: Experienced users
+     * @param opts.historyPids Previously recommended project IDs, separated by commas
+     */
+    public async getDualStockProjectRecommend(opts?: {
+        coin?: string;
+        type?: 'call' | 'put';
+        mode?: 'normal' | 'senior';
+        historyPids?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<DualProjectRecommend> }> {
+        const localVarPath = this.client.basePath + '/earn/dual/stock/project-recommend';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.coin !== undefined) {
+            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(coinSerialized)) {
+                coinSerialized = coinSerialized.join(',');
+            }
+            localVarQueryParameters['coin'] = coinSerialized;
+        }
+
+        if (opts.type !== undefined) {
+            let typeSerialized = ObjectSerializer.serialize(opts.type, "'call' | 'put'");
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        if (opts.mode !== undefined) {
+            let modeSerialized = ObjectSerializer.serialize(opts.mode, "'normal' | 'senior'");
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(modeSerialized)) {
+                modeSerialized = modeSerialized.join(',');
+            }
+            localVarQueryParameters['mode'] = modeSerialized;
+        }
+
+        if (opts.historyPids !== undefined) {
+            let historyPidsSerialized = ObjectSerializer.serialize(opts.historyPids, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(historyPidsSerialized)) {
+                historyPidsSerialized = historyPidsSerialized.join(',');
+            }
+            localVarQueryParameters['history_pids'] = historyPidsSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<DualProjectRecommend>>(config, 'Array<DualProjectRecommend>', authSettings);
+    }
+
+    /**
+     *
+     * @summary List stock dual investment orders
+     * @param opts Optional parameters
+     * @param opts.coin Investment Token
+     * @param opts.status Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders
+     * @param opts.type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high
+     * @param opts.from Start of the time range, in Unix seconds
+     * @param opts.to End of the time range, in Unix seconds
+     * @param opts.page Page number
+     * @param opts.pageSize Number of records per page, up to 100. Defaults to 100 when omitted
+     * @param opts.limit Maximum number of records returned in a single list
+     */
+    public async listDualStockOrders(opts?: {
+        coin?: string;
+        status?: string;
+        type?: 'call' | 'put';
+        from?: number;
+        to?: number;
+        page?: number;
+        pageSize?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<DualGetOrders> }> {
+        const localVarPath = this.client.basePath + '/earn/dual/stock/orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.coin !== undefined) {
+            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(coinSerialized)) {
+                coinSerialized = coinSerialized.join(',');
+            }
+            localVarQueryParameters['coin'] = coinSerialized;
+        }
+
+        if (opts.status !== undefined) {
+            let statusSerialized = ObjectSerializer.serialize(opts.status, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(statusSerialized)) {
+                statusSerialized = statusSerialized.join(',');
+            }
+            localVarQueryParameters['status'] = statusSerialized;
+        }
+
+        if (opts.type !== undefined) {
+            let typeSerialized = ObjectSerializer.serialize(opts.type, "'call' | 'put'");
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        if (opts.from !== undefined) {
+            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(fromSerialized)) {
+                fromSerialized = fromSerialized.join(',');
+            }
+            localVarQueryParameters['from'] = fromSerialized;
+        }
+
+        if (opts.to !== undefined) {
+            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(toSerialized)) {
+                toSerialized = toSerialized.join(',');
+            }
+            localVarQueryParameters['to'] = toSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
+        if (opts.limit !== undefined) {
+            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(limitSerialized)) {
+                limitSerialized = limitSerialized.join(',');
+            }
+            localVarQueryParameters['limit'] = limitSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<DualGetOrders>>(config, 'Array<DualGetOrders>', authSettings);
+    }
+
+    /**
+     * For buy-low (put) products, optionally pass `hit_spot`, `hit_stock`, and `hit_simple` (`1` selects the corresponding funding account) to collect funds from the spot, stock, or Simple Earn accounts before subscribing.
+     * @summary Place a stock dual investment order
+     * @param placeDualStockInvestmentOrderParams
+     */
+    public async placeDualStockOrder(
+        placeDualStockInvestmentOrderParams: PlaceDualStockInvestmentOrderParams,
+    ): Promise<{ response: AxiosResponse; body: PlaceDualInvestmentOrder }> {
+        const localVarPath = this.client.basePath + '/earn/dual/stock/orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'placeDualStockInvestmentOrderParams' is not null or undefined
+        if (placeDualStockInvestmentOrderParams === null || placeDualStockInvestmentOrderParams === undefined) {
+            throw new Error(
+                'Required parameter placeDualStockInvestmentOrderParams was null or undefined when calling placeDualStockOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(
+                placeDualStockInvestmentOrderParams,
+                'PlaceDualStockInvestmentOrderParams',
+            ),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<PlaceDualInvestmentOrder>(config, 'PlaceDualInvestmentOrder', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get stock dual investment asset statistics
+     */
+    public async listDualStockBalance(): Promise<{ response: AxiosResponse; body: DualGetBalance }> {
+        const localVarPath = this.client.basePath + '/earn/dual/stock/balance';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<DualGetBalance>(config, 'DualGetBalance', authSettings);
+    }
+
+    /**
+     *
+     * @summary Preview stock dual investment redemption
+     * @param orderId Order ID
+     */
+    public async getDualStockOrderRefundPreview(
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: DualOrderRefundPreview }> {
+        const localVarPath = this.client.basePath + '/earn/dual/stock/order-refund-preview';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling getDualStockOrderRefundPreview.',
+            );
+        }
+
+        let orderIdSerialized = ObjectSerializer.serialize(orderId, 'string');
+        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        if (Array.isArray(orderIdSerialized)) {
+            orderIdSerialized = orderIdSerialized.join(',');
+        }
+        localVarQueryParameters['order_id'] = orderIdSerialized;
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<DualOrderRefundPreview>(config, 'DualOrderRefundPreview', authSettings);
+    }
+
+    /**
+     *
+     * @summary Redeem a stock dual investment order
+     * @param dualOrderRefundParams
+     */
+    public async placeDualStockOrderRefund(
+        dualOrderRefundParams: DualOrderRefundParams,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/earn/dual/stock/order-refund';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'dualOrderRefundParams' is not null or undefined
+        if (dualOrderRefundParams === null || dualOrderRefundParams === undefined) {
+            throw new Error(
+                'Required parameter dualOrderRefundParams was null or undefined when calling placeDualStockOrderRefund.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(dualOrderRefundParams, 'DualOrderRefundParams'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary Reinvest a stock dual investment order
+     * @param dualModifyOrderReinvestParams
+     */
+    public async modifyDualStockOrderReinvest(
+        dualModifyOrderReinvestParams: DualModifyOrderReinvestParams,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/earn/dual/stock/modify-order-reinvest';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'dualModifyOrderReinvestParams' is not null or undefined
+        if (dualModifyOrderReinvestParams === null || dualModifyOrderReinvestParams === undefined) {
+            throw new Error(
+                'Required parameter dualModifyOrderReinvestParams was null or undefined when calling modifyDualStockOrderReinvest.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(dualModifyOrderReinvestParams, 'DualModifyOrderReinvestParams'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
     }
 
     /**

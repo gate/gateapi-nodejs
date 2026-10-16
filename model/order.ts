@@ -168,8 +168,8 @@ export class Order {
      * Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
      */
     'slippage'?: string;
-    'stopProfit'?: SpotOrderStopProfit;
-    'stopLoss'?: SpotOrderStopLoss;
+    'stopProfit'?: SpotOrderStopProfit | null;
+    'stopLoss'?: SpotOrderStopLoss | null;
 
     static discriminator: string | undefined = undefined;
 

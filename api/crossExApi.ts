@@ -40,6 +40,7 @@ import { CrossexOrderRequest } from '../model/crossexOrderRequest';
 import { CrossexOrderUpdateRequest } from '../model/crossexOrderUpdateRequest';
 import { CrossexPosition } from '../model/crossexPosition';
 import { CrossexRiskLimit } from '../model/crossexRiskLimit';
+import { CrossexSecurityPosition } from '../model/crossexSecurityPosition';
 import { CrossexTrade } from '../model/crossexTrade';
 import { CrossexTransferCoin } from '../model/crossexTransferCoin';
 import { CrossexTransferRecord } from '../model/crossexTransferRecord';
@@ -69,10 +70,10 @@ export class CrossExApi {
     }
 
     /**
-     * Query Trading Pair Information
+     * List trading pair information. Stock and ETF symbols use `{market}_{business_type}_{security_code}_USDT`, for example `US_STOCK_AAPL_USDT`, `HK_STOCK_00700_USDT`, or `US_ETF_SPY_USDT`.
      * @summary Query symbol information
      * @param opts Optional parameters
-     * @param opts.symbols List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+     * @param opts.symbols Comma-separated list of trading pairs Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT,US_STOCK_AAPL_USDT
      */
     public async listCrossexRuleSymbols(opts?: {
         symbols?: string;
@@ -323,7 +324,7 @@ export class CrossExApi {
     }
 
     /**
-     * Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
+     * Rate limit: 100 requests per 10 seconds; each user may have up to 1,000 open orders. Stocks and ETFs have an additional per-user limit of one request per second and support only cross-exchange account mode and GTC. Stock and ETF orders must use qty; quote_qty is not supported. Stock and ETF order prices use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
      * @summary Create order
      * @param opts Optional parameters
      * @param opts.crossexOrderRequest
@@ -1085,6 +1086,62 @@ export class CrossExApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<CrossexPosition>>(config, 'Array<CrossexPosition>', authSettings);
+    }
+
+    /**
+     * List stock and ETF positions. Rate limit: 200 requests per 10 seconds. Prices, position values, and unrealized profit and loss use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
+     * @summary List security positions
+     * @param opts Optional parameters
+     * @param opts.symbol Stock or ETF trading pair
+     * @param opts.exchangeType Stock market (US/HK/KR/JP)
+     */
+    public async listCrossexSecurityPositions(opts?: {
+        symbol?: string;
+        exchangeType?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<CrossexSecurityPosition> }> {
+        const localVarPath = this.client.basePath + '/crossex/security_positions';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.symbol !== undefined) {
+            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(symbolSerialized)) {
+                symbolSerialized = symbolSerialized.join(',');
+            }
+            localVarQueryParameters['symbol'] = symbolSerialized;
+        }
+
+        if (opts.exchangeType !== undefined) {
+            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
+            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            if (Array.isArray(exchangeTypeSerialized)) {
+                exchangeTypeSerialized = exchangeTypeSerialized.join(',');
+            }
+            localVarQueryParameters['exchange_type'] = exchangeTypeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<CrossexSecurityPosition>>(
+            config,
+            'Array<CrossexSecurityPosition>',
+            authSettings,
+        );
     }
 
     /**

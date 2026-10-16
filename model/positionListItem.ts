@@ -15,7 +15,7 @@ export class PositionListItem {
      */
     'symbol'?: string;
     /**
-     * Exchange, supports us, hk, kr, and jp
+     * Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      */
     'exchange'?: PositionListItem.Exchange;
     /**
@@ -31,7 +31,7 @@ export class PositionListItem {
      */
     'fxRate'?: string;
     /**
-     * Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
+     * Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market.
      */
     'tradeStatus'?: PositionListItem.TradeStatus;
     /**
@@ -311,7 +311,5 @@ export namespace PositionListItem {
         PreMarket = <any>'pre_market',
         Open = <any>'open',
         PostMarket = <any>'post_market',
-        Closed = <any>'closed',
-        GtLp = <any>'gt_lp',
     }
 }

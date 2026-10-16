@@ -21,7 +21,7 @@ export class OrderHistoryListItem {
      */
     'symbol'?: string;
     /**
-     * Exchange, supports us, hk, kr, and jp
+     * Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      */
     'exchange'?: OrderHistoryListItem.Exchange;
     /**

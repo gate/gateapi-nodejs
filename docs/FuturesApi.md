@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getFuturesContract**](FuturesApi.md#getFuturesContract) | **GET** /futures/{settle}/contracts/{contract} | Query single contract information
 [**listFuturesADLRiskStates**](FuturesApi.md#listFuturesADLRiskStates) | **GET** /futures/{settle}/adl_risk_states | List market-level ADL risk states
 [**listFuturesOrderBook**](FuturesApi.md#listFuturesOrderBook) | **GET** /futures/{settle}/order_book | Query futures market depth information
+[**listFuturesRPIOrderBook**](FuturesApi.md#listFuturesRPIOrderBook) | **GET** /futures/{settle}/rpi_order_book | Query futures RPI order book
 [**listFuturesTrades**](FuturesApi.md#listFuturesTrades) | **GET** /futures/{settle}/trades | Futures market transaction records
 [**listFuturesCandlesticks**](FuturesApi.md#listFuturesCandlesticks) | **GET** /futures/{settle}/candlesticks | Futures market K-line chart
 [**listFuturesPremiumIndex**](FuturesApi.md#listFuturesPremiumIndex) | **GET** /futures/{settle}/premium_index | Premium Index K-line chart
@@ -74,7 +75,7 @@ Method | HTTP request | Description
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all auto orders
 [**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/{settle}/price_orders/{order_id} | Query single auto order details
 [**cancelPriceTriggeredOrder**](FuturesApi.md#cancelPriceTriggeredOrder) | **DELETE** /futures/{settle}/price_orders/{order_id} | Cancel single auto order
-[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/amend | Modify a Single Auto Order
+[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/amend/{order_id} | Modify a Single Auto Order
 
 
 ## listFuturesContracts
@@ -282,6 +283,59 @@ const opts = {
   'withId': false // boolean | Whether to return depth update ID. This ID increments by 1 each time the depth changes
 };
 api.listFuturesOrderBook(settle, contract, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
+ **contract** | **string**| Futures contract | [default to undefined]
+ **interval** | **string**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
+ **limit** | **number**| Number of depth levels | [optional] [default to 10]
+ **withId** | **boolean**| Whether to return depth update ID. This ID increments by 1 each time the depth changes | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FuturesOrderBook; }> [FuturesOrderBook](FuturesOrderBook.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listFuturesRPIOrderBook
+
+> Promise<{ response: http.IncomingMessage; body: FuturesOrderBook; }> listFuturesRPIOrderBook(settle, contract, opts)
+
+Query futures RPI order book
+
+Bids will be sorted by price from high to low, while asks sorted reversely
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
+const contract = "BTC_USDT"; // string | Futures contract
+const opts = {
+  'interval': '0', // string | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
+  'limit': 10, // number | Number of depth levels
+  'withId': false // boolean | Whether to return depth update ID. This ID increments by 1 each time the depth changes
+};
+api.listFuturesRPIOrderBook(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -3581,7 +3635,7 @@ Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder; }> [Futures
 
 ## updatePriceTriggeredOrder
 
-> Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse; }> updatePriceTriggeredOrder(settle, futuresUpdatePriceTriggeredOrder)
+> Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse; }> updatePriceTriggeredOrder(settle, orderId, futuresUpdatePriceTriggeredOrder)
 
 Modify a Single Auto Order
 
@@ -3597,8 +3651,9 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
+const orderId = "2110911746238578688"; // string | ID returned when order is successfully created
 const futuresUpdatePriceTriggeredOrder = new FuturesUpdatePriceTriggeredOrder(); // FuturesUpdatePriceTriggeredOrder | 
-api.updatePriceTriggeredOrder(settle, futuresUpdatePriceTriggeredOrder)
+api.updatePriceTriggeredOrder(settle, orderId, futuresUpdatePriceTriggeredOrder)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -3609,6 +3664,7 @@ api.updatePriceTriggeredOrder(settle, futuresUpdatePriceTriggeredOrder)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
+ **orderId** | **string**| ID returned when order is successfully created | [default to undefined]
  **futuresUpdatePriceTriggeredOrder** | [**FuturesUpdatePriceTriggeredOrder**](FuturesUpdatePriceTriggeredOrder.md)|  | 
 
 ### Return type

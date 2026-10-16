@@ -11,7 +11,7 @@
 
 export class ExchangesDataList {
     /**
-     * Trading market, supports us, hk, kr, and jp
+     * Trading market. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      */
     'exchange'?: ExchangesDataList.Exchange;
     /**

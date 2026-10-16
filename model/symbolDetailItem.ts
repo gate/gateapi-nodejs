@@ -17,7 +17,7 @@ export class SymbolDetailItem {
      */
     'symbol'?: string;
     /**
-     * Exchange, supports us, hk, kr, and jp
+     * Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      */
     'exchange'?: SymbolDetailItem.Exchange;
     /**
@@ -101,11 +101,11 @@ export class SymbolDetailItem {
      */
     'commissionRate'?: string;
     /**
-     * Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
+     * Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market.
      */
     'tradeStatus'?: SymbolDetailItem.TradeStatus;
     /**
-     * Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: LP trading suspended (manual suspension). - 6: LP trading suspended (strategy exception). - 7: LP trading suspended (stock halt). - 8: LP trading suspended (stock circuit breaker halt).
+     * Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: Trading suspended. - 6: Trading suspended. - 7: Trading suspended. - 8: Trading suspended.
      */
     'tradeMode'?: SymbolDetailItem.TradeMode;
     /**
@@ -292,8 +292,6 @@ export namespace SymbolDetailItem {
         PreMarket = <any>'pre_market',
         Open = <any>'open',
         PostMarket = <any>'post_market',
-        Closed = <any>'closed',
-        GtLp = <any>'gt_lp',
     }
     export enum TradeMode {
         NUMBER_0 = <any>0,

@@ -176,6 +176,7 @@ export * from './crossexOrderUpdateRequest';
 export * from './crossexPosition';
 export * from './crossexRiskLimit';
 export * from './crossexRiskLimitTier';
+export * from './crossexSecurityPosition';
 export * from './crossexSpecialFee';
 export * from './crossexTrade';
 export * from './crossexTransferCoin';
@@ -533,10 +534,13 @@ export * from './partnerDataAggregatedResponseAllOf';
 export * from './partnerSub';
 export * from './partnerSubList';
 export * from './partnerTransactionHistory';
+export * from './patchSpotOrderStopLoss';
+export * from './patchSpotOrderStopProfit';
 export * from './patchUniLend';
 export * from './placeBizPushOrder';
 export * from './placeDualInvestmentOrder';
 export * from './placeDualInvestmentOrderParams';
+export * from './placeDualStockInvestmentOrderParams';
 export * from './placeOrderRequest';
 export * from './placeOrderResponse';
 export * from './position';
@@ -914,6 +918,7 @@ import { CrossexOrderUpdateRequest } from './crossexOrderUpdateRequest';
 import { CrossexPosition } from './crossexPosition';
 import { CrossexRiskLimit } from './crossexRiskLimit';
 import { CrossexRiskLimitTier } from './crossexRiskLimitTier';
+import { CrossexSecurityPosition } from './crossexSecurityPosition';
 import { CrossexSpecialFee } from './crossexSpecialFee';
 import { CrossexTrade } from './crossexTrade';
 import { CrossexTransferCoin } from './crossexTransferCoin';
@@ -1271,10 +1276,13 @@ import { PartnerDataAggregatedResponseAllOf } from './partnerDataAggregatedRespo
 import { PartnerSub } from './partnerSub';
 import { PartnerSubList } from './partnerSubList';
 import { PartnerTransactionHistory } from './partnerTransactionHistory';
+import { PatchSpotOrderStopLoss } from './patchSpotOrderStopLoss';
+import { PatchSpotOrderStopProfit } from './patchSpotOrderStopProfit';
 import { PatchUniLend } from './patchUniLend';
 import { PlaceBizPushOrder } from './placeBizPushOrder';
 import { PlaceDualInvestmentOrder } from './placeDualInvestmentOrder';
 import { PlaceDualInvestmentOrderParams } from './placeDualInvestmentOrderParams';
+import { PlaceDualStockInvestmentOrderParams } from './placeDualStockInvestmentOrderParams';
 import { PlaceOrderRequest } from './placeOrderRequest';
 import { PlaceOrderResponse } from './placeOrderResponse';
 import { Position } from './position';
@@ -1626,6 +1634,9 @@ let enumsMap: { [index: string]: any } = {
     'PlaceBizPushOrder.Type': PlaceBizPushOrder.Type,
     'PlaceBizPushOrder.LimitBasis': PlaceBizPushOrder.LimitBasis,
     'PlaceBizPushOrder.PolymarketLimit': PlaceBizPushOrder.PolymarketLimit,
+    'PlaceDualStockInvestmentOrderParams.HitSpot': PlaceDualStockInvestmentOrderParams.HitSpot,
+    'PlaceDualStockInvestmentOrderParams.HitStock': PlaceDualStockInvestmentOrderParams.HitStock,
+    'PlaceDualStockInvestmentOrderParams.HitSimple': PlaceDualStockInvestmentOrderParams.HitSimple,
     'Position.HedgeStatus': Position.HedgeStatus,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
@@ -1862,6 +1873,7 @@ let typeMap: { [index: string]: any } = {
     CrossexPosition: CrossexPosition,
     CrossexRiskLimit: CrossexRiskLimit,
     CrossexRiskLimitTier: CrossexRiskLimitTier,
+    CrossexSecurityPosition: CrossexSecurityPosition,
     CrossexSpecialFee: CrossexSpecialFee,
     CrossexTrade: CrossexTrade,
     CrossexTransferCoin: CrossexTransferCoin,
@@ -2218,10 +2230,13 @@ let typeMap: { [index: string]: any } = {
     PartnerSub: PartnerSub,
     PartnerSubList: PartnerSubList,
     PartnerTransactionHistory: PartnerTransactionHistory,
+    PatchSpotOrderStopLoss: PatchSpotOrderStopLoss,
+    PatchSpotOrderStopProfit: PatchSpotOrderStopProfit,
     PatchUniLend: PatchUniLend,
     PlaceBizPushOrder: PlaceBizPushOrder,
     PlaceDualInvestmentOrder: PlaceDualInvestmentOrder,
     PlaceDualInvestmentOrderParams: PlaceDualInvestmentOrderParams,
+    PlaceDualStockInvestmentOrderParams: PlaceDualStockInvestmentOrderParams,
     PlaceOrderRequest: PlaceOrderRequest,
     PlaceOrderResponse: PlaceOrderResponse,
     Position: Position,

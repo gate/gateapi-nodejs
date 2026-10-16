@@ -106,7 +106,7 @@ export class StockApi {
      * @summary Query symbol list
      * @param opts Optional parameters
      * @param opts.symbols Symbol list, multiple separated by commas
-     * @param opts.exchange Exchange, supports us, hk, kr, and jp
+     * @param opts.exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      * @param opts.withDescI18n Whether to return multilingual symbol description
      * @param opts.page Page number, defaults to 1
      * @param opts.pageSize Page size, defaults to 10, max 500; server caps at 500
@@ -191,7 +191,7 @@ export class StockApi {
      * @summary Query symbol details
      * @param opts Optional parameters
      * @param opts.symbols Symbol list, multiple separated by commas
-     * @param opts.exchange Exchange, supports us, hk, kr, and jp
+     * @param opts.exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      * @param opts.page Page number, defaults to 1
      * @param opts.pageSize Page size, defaults to 10, max 500; server caps at 500
      */
@@ -597,7 +597,7 @@ export class StockApi {
      * @param opts.pnlCalcType PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price)
      * @param opts.pnlCalcPrice PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price)
      * @param opts.symbol Symbol
-     * @param opts.exchange Exchange, supports us, hk, kr, and jp
+     * @param opts.exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      */
     public async queryStockPositions(opts?: {
         pnlCalcType?: 1 | 2;

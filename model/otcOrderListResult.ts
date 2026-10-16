@@ -16,7 +16,7 @@ export class OtcOrderListResult {
     'ps': number;
     'totalPn': number;
     'count': number;
-    'list': Array<OtcOrderListItem>;
+    'lists': Array<OtcOrderListItem>;
 
     static discriminator: string | undefined = undefined;
 
@@ -42,8 +42,8 @@ export class OtcOrderListResult {
             type: 'number',
         },
         {
-            name: 'list',
-            baseName: 'list',
+            name: 'lists',
+            baseName: 'lists',
             type: 'Array<OtcOrderListItem>',
         },
     ];

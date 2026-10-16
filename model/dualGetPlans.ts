@@ -19,6 +19,10 @@ export class DualGetPlans {
      */
     'instrumentName'?: string;
     /**
+     * `call`: sell high; `put`: buy low
+     */
+    'type'?: string;
+    /**
      * Investment Token
      */
     'investCurrency'?: string;
@@ -66,6 +70,11 @@ export class DualGetPlans {
         {
             name: 'instrumentName',
             baseName: 'instrument_name',
+            type: 'string',
+        },
+        {
+            name: 'type',
+            baseName: 'type',
             type: 'string',
         },
         {

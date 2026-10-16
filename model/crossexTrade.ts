@@ -47,7 +47,7 @@ export class CrossexTrade {
      */
     'qty'?: string;
     /**
-     * Fill Price
+     * Fill price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      */
     'price'?: string;
     /**

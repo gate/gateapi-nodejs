@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **orderId** | **string** | Order ID | [optional] [default to undefined]
 **symbol** | **string** | Symbol | [optional] [default to undefined]
-**exchange** | **string** | Exchange, supports us, hk, kr, and jp | [optional] [default to undefined]
+**exchange** | **string** | Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. | [optional] [default to undefined]
 **quoteCurrency** | **string** | Quote currency | [optional] [default to undefined]
 **fxRate** | **string** | Quote currency to USD exchange rate | [optional] [default to undefined]
 **symbolDesc** | **string** | Symbol description | [optional] [default to undefined]

@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getCurrencyPair**](SpotApi.md#getCurrencyPair) | **GET** /spot/currency_pairs/{currency_pair} | Query single currency pair details
 [**listTickers**](SpotApi.md#listTickers) | **GET** /spot/tickers | Get currency pair ticker information
 [**listOrderBook**](SpotApi.md#listOrderBook) | **GET** /spot/order_book | Get market depth information
+[**listSpotRpiOrderBook**](SpotApi.md#listSpotRpiOrderBook) | **GET** /spot/rpi_order_book | Get the RPI order book
 [**listTrades**](SpotApi.md#listTrades) | **GET** /spot/trades | Query market transaction records
 [**listCandlesticks**](SpotApi.md#listCandlesticks) | **GET** /spot/candlesticks | Market K-line chart
 [**getFee**](SpotApi.md#getFee) | **GET** /spot/fee | Query account fee rates
@@ -272,6 +273,57 @@ const opts = {
   'withId': false // boolean | Return order book update ID
 };
 api.listOrderBook(currencyPair, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyPair** | **string**| Currency pair | [default to undefined]
+ **interval** | **string**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
+ **limit** | **number**| Number of depth levels | [optional] [default to 10]
+ **withId** | **boolean**| Return order book update ID | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: OrderBook; }> [OrderBook](OrderBook.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listSpotRpiOrderBook
+
+> Promise<{ response: http.IncomingMessage; body: OrderBook; }> listSpotRpiOrderBook(currencyPair, opts)
+
+Get the RPI order book
+
+Get the RPI order book, with bids sorted by descending price and asks by ascending price.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.SpotApi(client);
+const currencyPair = "BTC_USDT"; // string | Currency pair
+const opts = {
+  'interval': '0', // string | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
+  'limit': 10, // number | Number of depth levels
+  'withId': false // boolean | Return order book update ID
+};
+api.listSpotRpiOrderBook(currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```

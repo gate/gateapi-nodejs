@@ -44,8 +44,8 @@ export class BatchAmendItem {
      * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
      */
     'actionMode'?: string;
-    'stopProfit'?: SpotOrderStopProfit;
-    'stopLoss'?: SpotOrderStopLoss;
+    'stopProfit'?: SpotOrderStopProfit | null;
+    'stopLoss'?: SpotOrderStopLoss | null;
 
     static discriminator: string | undefined = undefined;
 

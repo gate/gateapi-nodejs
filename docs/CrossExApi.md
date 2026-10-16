@@ -29,6 +29,7 @@ Method | HTTP request | Description
 [**getCrossexInterestRate**](CrossExApi.md#getCrossexInterestRate) | **GET** /crossex/interest_rate | Query margin asset interest rates
 [**getCrossexFee**](CrossExApi.md#getCrossexFee) | **GET** /crossex/fee | Query User Fee Rates
 [**listCrossexPositions**](CrossExApi.md#listCrossexPositions) | **GET** /crossex/positions | Query Contract Positions
+[**listCrossexSecurityPositions**](CrossExApi.md#listCrossexSecurityPositions) | **GET** /crossex/security_positions | List security positions
 [**listCrossexMarginPositions**](CrossExApi.md#listCrossexMarginPositions) | **GET** /crossex/margin_positions | Query Leveraged Positions
 [**listCrossexAdlRank**](CrossExApi.md#listCrossexAdlRank) | **GET** /crossex/adl_rank | Query ADL Position Reduction Ranking
 [**listCrossexOpenOrders**](CrossExApi.md#listCrossexOpenOrders) | **GET** /crossex/open_orders | Query All Current Open Orders
@@ -49,7 +50,7 @@ Method | HTTP request | Description
 
 Query symbol information
 
-Query Trading Pair Information
+List trading pair information. Stock and ETF symbols use &#x60;{market}_{business_type}_{security_code}_USDT&#x60;, for example &#x60;US_STOCK_AAPL_USDT&#x60;, &#x60;HK_STOCK_00700_USDT&#x60;, or &#x60;US_ETF_SPY_USDT&#x60;.
 
 ### Example
 
@@ -61,7 +62,7 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.CrossExApi(client);
 const opts = {
-  'symbols': "symbols_example" // string | List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+  'symbols': "symbols_example" // string | Comma-separated list of trading pairs Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT,US_STOCK_AAPL_USDT
 };
 api.listCrossexRuleSymbols(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -73,7 +74,7 @@ api.listCrossexRuleSymbols(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbols** | **string**| List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | [optional] [default to undefined]
+ **symbols** | **string**| Comma-separated list of trading pairs Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT,US_STOCK_AAPL_USDT | [optional] [default to undefined]
 
 ### Return type
 
@@ -286,7 +287,7 @@ Promise<{ response: AxiosResponse; body: CrossexTransferResponse; }> [CrossexTra
 
 Create order
 
-Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
+Rate limit: 100 requests per 10 seconds; each user may have up to 1,000 open orders. Stocks and ETFs have an additional per-user limit of one request per second and support only cross-exchange account mode and GTC. Stock and ETF orders must use qty; quote_qty is not supported. Stock and ETF order prices use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
 
 ### Example
 
@@ -1202,6 +1203,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<CrossexPosition>; }> [CrossexPosition](CrossexPosition.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listCrossexSecurityPositions
+
+> Promise<{ response: http.IncomingMessage; body: Array<CrossexSecurityPosition>; }> listCrossexSecurityPositions(opts)
+
+List security positions
+
+List stock and ETF positions. Rate limit: 200 requests per 10 seconds. Prices, position values, and unrealized profit and loss use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.CrossExApi(client);
+const opts = {
+  'symbol': "US_STOCK_AAPL_USDT", // string | Stock or ETF trading pair
+  'exchangeType': "US" // string | Stock market (US/HK/KR/JP)
+};
+api.listCrossexSecurityPositions(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Stock or ETF trading pair | [optional] [default to undefined]
+ **exchangeType** | **string**| Stock market (US/HK/KR/JP) | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<CrossexSecurityPosition>; }> [CrossexSecurityPosition](CrossexSecurityPosition.md)
 
 ### Authorization
 

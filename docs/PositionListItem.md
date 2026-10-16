@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** | Symbol | [optional] [default to undefined]
-**exchange** | **string** | Exchange, supports us, hk, kr, and jp | [optional] [default to undefined]
+**exchange** | **string** | Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. | [optional] [default to undefined]
 **quoteCurrency** | **string** | Quote currency | [optional] [default to undefined]
 **quoteCurrencyPrecision** | **number** | Quote currency precision | [optional] [default to undefined]
 **fxRate** | **string** | Quote currency to USD exchange rate | [optional] [default to undefined]
-**tradeStatus** | **string** | Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session. | [optional] [default to undefined]
+**tradeStatus** | **string** | Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. | [optional] [default to undefined]
 **symbolDesc** | **string** | Symbol description | [optional] [default to undefined]
 **positionPnl** | **string** | Position P&amp;L | [optional] [default to undefined]
 **todayPnl** | **string** | Today\&#39;s P&amp;L | [optional] [default to undefined]
@@ -54,9 +54,5 @@ Name | Type | Description | Notes
 * `Open` (value: `'open'`)
 
 * `PostMarket` (value: `'post_market'`)
-
-* `Closed` (value: `'closed'`)
-
-* `GtLp` (value: `'gt_lp'`)
 
 
