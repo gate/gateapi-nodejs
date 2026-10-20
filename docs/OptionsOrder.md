@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **number** | Options order ID | [optional] [readonly] [default to undefined]
+**id** | **bigint** | Options order ID | [optional] [readonly] [default to undefined]
 **user** | **number** | User ID | [optional] [readonly] [default to undefined]
 **createTime** | **number** | Creation time of order | [optional] [readonly] [default to undefined]
 **finishTime** | **number** | Order finished time. Not returned if order is open | [optional] [readonly] [default to undefined]

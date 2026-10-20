@@ -16,7 +16,7 @@ export class UpdateOrderData {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: bigint;
     /**
      * Currency pair
      */
@@ -48,7 +48,7 @@ export class UpdateOrderData {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'bigint',
         },
         {
             name: 'symbol',

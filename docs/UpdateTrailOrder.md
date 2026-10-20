@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **number** | Order ID | [default to undefined]
+**id** | **bigint** | Order ID | [default to undefined]
 **amount** | **string** | Total trading quantity in contracts, positive for buy, negative for sell, 0 means no modification | [optional] [default to undefined]
 **activationPrice** | **string** | Activation price, 0 means trigger immediately, empty means no modification | [optional] [default to undefined]
 **isGteStr** | **string** | true: activate when market price &gt;&#x3D; activation price, false: &lt;&#x3D; activation price, empty means no modification | [optional] [default to undefined]

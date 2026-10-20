@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **number** | Order ID | [optional] [default to undefined]
+**orderId** | **bigint** | Order ID | [optional] [default to undefined]
 **symbol** | **string** | Currency pair | [optional] [default to undefined]
 **state** | **string** | Order status code | [optional] [default to undefined]
 **volume** | **string** | Order quantity | [optional] [default to undefined]

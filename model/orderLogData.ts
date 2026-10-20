@@ -16,11 +16,11 @@ export class OrderLogData {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: bigint;
     /**
      * logID
      */
-    'logId'?: number;
+    'logId'?: bigint;
     /**
      * Trading pair of the order
      */
@@ -52,12 +52,12 @@ export class OrderLogData {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'bigint',
         },
         {
             name: 'logId',
             baseName: 'log_id',
-            type: 'number',
+            type: 'bigint',
         },
         {
             name: 'symbol',

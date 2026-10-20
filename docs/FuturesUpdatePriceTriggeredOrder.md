@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **settle** | **string** | Perpetual futures settlement currency, e.g. usdt, btc, usd1 | [optional] [default to undefined]
-**orderId** | **number** | ID of the Pending Take-Profit/Stop-Loss Trigger Order | [default to undefined]
+**orderId** | **bigint** | ID of the Pending Take-Profit/Stop-Loss Trigger Order | [default to undefined]
 **size** | **number** | Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic). | [optional] [default to undefined]
 **amount** | **string** | Same as &#x60;size&#x60;; used for decimal contract size. When both &#x60;size&#x60; and &#x60;amount&#x60; are provided, &#x60;amount&#x60; takes precedence. | [optional] [default to undefined]
 **price** | **string** | Represents the modified trading price. A value of 0 indicates a market order. | [optional] [default to undefined]

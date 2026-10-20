@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**positionId** | **number** | Position ID | [default to undefined]
+**positionId** | **bigint** | Position ID | [default to undefined]
 **symbol** | **string** | Market / Trading symbol | [default to undefined]
 **realizedPnl** | **string** | Realized PnL | [default to undefined]
 **realizedPnlRate** | **string** | Realized return rate | [optional] [default to undefined]

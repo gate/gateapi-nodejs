@@ -16,7 +16,7 @@ export class OrderHistoryListDataList {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: bigint;
     /**
      * Currency pair
      */
@@ -88,7 +88,7 @@ export class OrderHistoryListDataList {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'bigint',
         },
         {
             name: 'symbol',

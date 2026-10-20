@@ -597,7 +597,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
-const orderId = 1223; // number | Order ID
+const orderId = BigInt('1223'); // bigint | Order ID
 const tradFiOrderUpdateRequest = new TradFiOrderUpdateRequest(); // TradFiOrderUpdateRequest | 
 api.updateOrder(orderId, tradFiOrderUpdateRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -609,7 +609,7 @@ api.updateOrder(orderId, tradFiOrderUpdateRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **number**| Order ID | [default to undefined]
+ **orderId** | **bigint**| Order ID | [default to undefined]
  **tradFiOrderUpdateRequest** | [**TradFiOrderUpdateRequest**](TradFiOrderUpdateRequest.md)|  | 
 
 ### Return type
@@ -642,7 +642,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
-const orderId = 1223; // number | Order ID
+const orderId = BigInt('1223'); // bigint | Order ID
 api.deleteOrder(orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -653,7 +653,7 @@ api.deleteOrder(orderId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **number**| Order ID | [default to undefined]
+ **orderId** | **bigint**| Order ID | [default to undefined]
 
 ### Return type
 
@@ -736,7 +736,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
-const logId = 1223; // number | log_id returned from the order placement API
+const logId = BigInt('1223'); // bigint | log_id returned from the order placement API
 api.queryOrderLog(logId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -747,7 +747,7 @@ api.queryOrderLog(logId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **logId** | **number**| log_id returned from the order placement API | [default to undefined]
+ **logId** | **bigint**| log_id returned from the order placement API | [default to undefined]
 
 ### Return type
 
@@ -818,7 +818,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
-const positionId = 1223; // number | Position ID
+const positionId = BigInt('1223'); // bigint | Position ID
 const tradFiPositionUpdateRequest = new TradFiPositionUpdateRequest(); // TradFiPositionUpdateRequest | 
 api.updatePosition(positionId, tradFiPositionUpdateRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -830,7 +830,7 @@ api.updatePosition(positionId, tradFiPositionUpdateRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **positionId** | **number**| Position ID | [default to undefined]
+ **positionId** | **bigint**| Position ID | [default to undefined]
  **tradFiPositionUpdateRequest** | [**TradFiPositionUpdateRequest**](TradFiPositionUpdateRequest.md)|  | 
 
 ### Return type
@@ -863,7 +863,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
-const positionId = 1223; // number | Position ID
+const positionId = BigInt('1223'); // bigint | Position ID
 const tradFiClosePositionRequest = new TradFiClosePositionRequest(); // TradFiClosePositionRequest | 
 api.closePosition(positionId, tradFiClosePositionRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -875,7 +875,7 @@ api.closePosition(positionId, tradFiClosePositionRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **positionId** | **number**| Position ID | [default to undefined]
+ **positionId** | **bigint**| Position ID | [default to undefined]
  **tradFiClosePositionRequest** | [**TradFiClosePositionRequest**](TradFiClosePositionRequest.md)|  | 
 
 ### Return type

@@ -602,9 +602,13 @@ export class CFDApi {
      * @param tradFiOrderUpdateRequest
      */
     public async updateOrder(
-        orderId: number,
+        orderId: bigint,
         tradFiOrderUpdateRequest: TradFiOrderUpdateRequest,
     ): Promise<{ response: AxiosResponse; body: UpdateOrder }> {
+        // Reject already-rounded numbers before constructing a trading identifier path.
+        if (typeof orderId !== 'bigint') {
+            throw new TypeError('orderId must be a bigint; construct it from a decimal string.');
+        }
         const localVarPath =
             this.client.basePath +
             '/tradfi/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -647,7 +651,11 @@ export class CFDApi {
      * @summary Cancel order
      * @param orderId Order ID
      */
-    public async deleteOrder(orderId: number): Promise<{ response: AxiosResponse; body: object }> {
+    public async deleteOrder(orderId: bigint): Promise<{ response: AxiosResponse; body: object }> {
+        // Reject already-rounded numbers before constructing a trading identifier path.
+        if (typeof orderId !== 'bigint') {
+            throw new TypeError('orderId must be a bigint; construct it from a decimal string.');
+        }
         const localVarPath =
             this.client.basePath +
             '/tradfi/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -756,7 +764,11 @@ export class CFDApi {
      * @summary Get order details by log ID
      * @param logId log_id returned from the order placement API
      */
-    public async queryOrderLog(logId: number): Promise<{ response: AxiosResponse; body: OrderLog }> {
+    public async queryOrderLog(logId: bigint): Promise<{ response: AxiosResponse; body: OrderLog }> {
+        // Reject already-rounded numbers before constructing a trading identifier path.
+        if (typeof logId !== 'bigint') {
+            throw new TypeError('logId must be a bigint; construct it from a decimal string.');
+        }
         const localVarPath =
             this.client.basePath +
             '/tradfi/orders/log/{log_id}'.replace('{' + 'log_id' + '}', encodeURIComponent(String(logId)));
@@ -820,9 +832,13 @@ export class CFDApi {
      * @param tradFiPositionUpdateRequest
      */
     public async updatePosition(
-        positionId: number,
+        positionId: bigint,
         tradFiPositionUpdateRequest: TradFiPositionUpdateRequest,
     ): Promise<{ response: AxiosResponse; body: UpdatePosition }> {
+        // Reject already-rounded numbers before constructing a trading identifier path.
+        if (typeof positionId !== 'bigint') {
+            throw new TypeError('positionId must be a bigint; construct it from a decimal string.');
+        }
         const localVarPath =
             this.client.basePath +
             '/tradfi/positions/{position_id}'.replace(
@@ -870,9 +886,13 @@ export class CFDApi {
      * @param tradFiClosePositionRequest
      */
     public async closePosition(
-        positionId: number,
+        positionId: bigint,
         tradFiClosePositionRequest: TradFiClosePositionRequest,
     ): Promise<{ response: AxiosResponse; body: DeletePosition }> {
+        // Reject already-rounded numbers before constructing a trading identifier path.
+        if (typeof positionId !== 'bigint') {
+            throw new TypeError('positionId must be a bigint; construct it from a decimal string.');
+        }
         const localVarPath =
             this.client.basePath +
             '/tradfi/positions/{position_id}/close'.replace(

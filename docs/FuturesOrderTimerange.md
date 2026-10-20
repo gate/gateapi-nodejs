@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **number** | Futures order ID | [optional] [readonly] [default to undefined]
+**id** | **bigint** | Futures order ID | [optional] [readonly] [default to undefined]
 **user** | **number** | User ID | [optional] [readonly] [default to undefined]
 **createTime** | **number** | Creation time of order | [optional] [readonly] [default to undefined]
 **updateTime** | **string** | OrderUpdateTime | [optional] [readonly] [default to undefined]

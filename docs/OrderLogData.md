@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **number** | Order ID | [optional] [default to undefined]
-**logId** | **number** | logID | [optional] [default to undefined]
+**orderId** | **bigint** | Order ID | [optional] [default to undefined]
+**logId** | **bigint** | logID | [optional] [default to undefined]
 **symbol** | **string** | Trading pair of the order | [optional] [default to undefined]
 **priceType** | **string** | Trade type (market&#x3D;market price, trigger&#x3D;trigger price) | [optional] [default to undefined]
 **state** | **number** | Order status code (1&#x3D;placed, 2&#x3D;canceled, 3&#x3D;partially filled, 4&#x3D;filled, 5&#x3D;rejected) | [optional] [default to undefined]

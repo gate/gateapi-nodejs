@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**positionId** | **number** | Position ID | [optional] [default to undefined]
+**positionId** | **bigint** | Position ID | [optional] [default to undefined]
 **symbol** | **string** | Trading market code | [optional] [default to undefined]
 **symbolDesc** | **string** | Market description | [optional] [default to undefined]
 **margin** | **string** | Used margin | [optional] [default to undefined]

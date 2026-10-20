@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **number** | Order ID | [optional] [default to undefined]
+**orderId** | **bigint** | Order ID | [optional] [default to undefined]
 **symbol** | **string** | Currency pair | [optional] [default to undefined]
 **symbolDesc** | **string** | Symbol description | [optional] [default to undefined]
 **priceType** | **string** | Trade type (market&#x3D;market price, trigger&#x3D;trigger price) | [optional] [default to undefined]

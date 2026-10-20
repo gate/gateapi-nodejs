@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **number** | Order ID | [optional] [readonly] [default to undefined]
-**userId** | **number** | User ID | [optional] [readonly] [default to undefined]
-**user** | **number** | User ID | [optional] [readonly] [default to undefined]
+**id** | **bigint** | Order ID | [optional] [readonly] [default to undefined]
+**userId** | **bigint** | User ID | [optional] [readonly] [default to undefined]
+**user** | **bigint** | User ID | [optional] [readonly] [default to undefined]
 **contract** | **string** | Contract name | [optional] [default to undefined]
 **settle** | **string** | Settle currency | [optional] [default to undefined]
 **amount** | **string** | Trading quantity in contracts, positive for buy, negative for sell | [optional] [default to undefined]
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **suborderText** | **string** | Sub-order text field | [optional] [readonly] [default to undefined]
 **isDualMode** | **boolean** | Whether dual position mode when creating order | [optional] [readonly] [default to undefined]
 **triggerPrice** | **string** | Trigger price | [optional] [readonly] [default to undefined]
-**suborderId** | **number** | Sub-order ID | [optional] [readonly] [default to undefined]
+**suborderId** | **bigint** | Sub-order ID | [optional] [readonly] [default to undefined]
 **sideLabel** | **string** | Order direction label: long/short/open long/open short/close long/close short | [optional] [readonly] [default to undefined]
 **originalStatus** | **number** | Order status | [optional] [readonly] [default to undefined]
 **status** | **string** | Simplified order status: open/finished | [optional] [readonly] [default to undefined]

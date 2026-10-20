@@ -16,7 +16,7 @@ export class PositionListDataList {
     /**
      * Position ID
      */
-    'positionId'?: number;
+    'positionId'?: bigint;
     /**
      * Trading market code
      */
@@ -56,7 +56,7 @@ export class PositionListDataList {
         {
             name: 'positionId',
             baseName: 'position_id',
-            type: 'number',
+            type: 'bigint',
         },
         {
             name: 'symbol',
