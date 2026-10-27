@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;PositionListDataList&gt;**](PositionListDataList.md) | Position information | [optional] [default to undefined]
+**list** | [**Array<PositionListDataList>**](PositionListDataList.md) | Position information | [optional] [default to undefined]
 

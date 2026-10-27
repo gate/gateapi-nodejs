@@ -21,7 +21,7 @@ export class TradFiError {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -39,7 +39,7 @@ export class TradFiError {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

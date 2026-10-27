@@ -17,7 +17,7 @@ export class CrossMarginRepayment {
     /**
      * Repayment time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
     /**
      * Loan record ID
      */
@@ -50,7 +50,7 @@ export class CrossMarginRepayment {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'loanId',

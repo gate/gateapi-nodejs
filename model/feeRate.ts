@@ -13,7 +13,7 @@ import { FeeRateData } from './feeRateData';
 
 export class FeeRate {
     'data'?: FeeRateData;
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,7 +26,7 @@ export class FeeRate {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

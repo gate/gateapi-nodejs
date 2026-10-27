@@ -41,7 +41,7 @@ export class OptionsPositionClose {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'contract',

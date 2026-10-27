@@ -21,5 +21,5 @@ Name | Type | Description | Notes
 **endedAtFormat** | **string** | End time format | [optional] [default to undefined]
 **endedAtType** | **number** | End time type | [optional] [default to undefined]
 **tier** | **number** | Author level | [optional] [default to undefined]
-**tag** | **string** | Tag | [optional] [default to undefined]
+**tag** | **string &#124; null** | Tag | [optional] [default to undefined]
 

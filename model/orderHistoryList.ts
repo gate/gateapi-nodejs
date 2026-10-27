@@ -15,7 +15,7 @@ export class OrderHistoryList {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: OrderHistoryListData;
 
     static discriminator: string | undefined = undefined;
@@ -24,7 +24,7 @@ export class OrderHistoryList {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

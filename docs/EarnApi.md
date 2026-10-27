@@ -60,7 +60,7 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.EarnApi(client);
 const opts = {
-  'planId': 1, // number | Financial project ID
+  'planId': BigInt('1'), // number | Financial project ID
   'coin': "BTC", // string | Investment Token
   'type': "call", // string | Type enum: `put` — buy low; `call` — sell high
   'quoteCurrency': "quoteCurrency_example", // string | Settlement currency enum: defaults to USDT; GUSD optional
@@ -78,7 +78,7 @@ api.listDualInvestmentPlans(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **planId** | **number**| Financial project ID | [optional] [default to undefined]
+ **planId** | **number &#124; bigint**| Financial project ID | [optional] [default to undefined]
  **coin** | **string**| Investment Token | [optional] [default to undefined]
  **type** | **string**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | [optional] [default to undefined]
  **quoteCurrency** | **string**| Settlement currency enum: defaults to USDT; GUSD optional | [optional] [default to undefined]
@@ -117,8 +117,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnApi(client);
 const opts = {
-  'from': 1740727000, // number | Start settlement time
-  'to': 1740729000, // number | End settlement time
+  'from': BigInt('1740727000'), // number | Start settlement time
+  'to': BigInt('1740729000'), // number | End settlement time
   'type': "put", // string | Type enum: `put` — buy low; `call` — sell high
   'status': "HOLD", // string | Order status enum: `HOLD` — open position `REPAY` — historical position `PROCESSING` — position active `SETTLEMENT_PROCESSING` — settlement in progress `ALL` — all
   'coin': "BTC", // string | Investment Token
@@ -135,8 +135,8 @@ api.listDualOrders(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from** | **number**| Start settlement time | [optional] [default to undefined]
- **to** | **number**| End settlement time | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start settlement time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End settlement time | [optional] [default to undefined]
  **type** | **string**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | [optional] [default to undefined]
  **status** | **string**| Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all | [optional] [default to undefined]
  **coin** | **string**| Investment Token | [optional] [default to undefined]
@@ -543,8 +543,8 @@ const opts = {
   'coin': "BTC", // string | Investment Token
   'status': 'ALL', // string | Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders
   'type': "put", // 'call' | 'put' | Type enum: `put` — buy low; `call` — sell high
-  'from': 1740727000, // number | Start of the time range, in Unix seconds
-  'to': 1740729000, // number | End of the time range, in Unix seconds
+  'from': BigInt('1740727000'), // number | Start of the time range, in Unix seconds
+  'to': BigInt('1740729000'), // number | End of the time range, in Unix seconds
   'page': 1, // number | Page number
   'pageSize': 100, // number | Number of records per page, up to 100. Defaults to 100 when omitted
   'limit': 100 // number | Maximum number of records returned in a single list
@@ -562,8 +562,8 @@ Name | Type | Description  | Notes
  **coin** | **string**| Investment Token | [optional] [default to undefined]
  **status** | **string**| Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders | [optional] [default to &#39;ALL&#39;]
  **type** | **Type**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | [optional] [default to undefined]
- **from** | **number**| Start of the time range, in Unix seconds | [optional] [default to undefined]
- **to** | **number**| End of the time range, in Unix seconds | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start of the time range, in Unix seconds | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End of the time range, in Unix seconds | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **pageSize** | **number**| Number of records per page, up to 100. Defaults to 100 when omitted | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
@@ -796,7 +796,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 ## findCoin
 
-> Promise<{ response: http.IncomingMessage; body: Array<object>; }> findCoin(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<FindCoinStructItem>; }> findCoin(opts)
 
 Staking coins
 
@@ -828,7 +828,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<object>; }> [object](object.md)
+Promise<{ response: AxiosResponse; body: Array<FindCoinStructItem>; }> [FindCoinStructItem](FindCoinStructItem.md)
 
 ### Authorization
 
@@ -984,7 +984,7 @@ Promise<{ response: AxiosResponse; body: AwardListStruct; }> [AwardListStruct](A
 
 ## assetList
 
-> Promise<{ response: http.IncomingMessage; body: Array<object>; }> assetList(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<AssetListStructItem>; }> assetList(opts)
 
 On-chain coin-earning assets
 
@@ -1016,7 +1016,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<object>; }> [object](object.md)
+Promise<{ response: AxiosResponse; body: Array<AssetListStructItem>; }> [AssetListStructItem](AssetListStructItem.md)
 
 ### Authorization
 
@@ -1304,10 +1304,10 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnApi(client);
-const planId = 141378; // number | Plan ID
+const planId = BigInt('141378'); // number | Plan ID
 const opts = {
-  'page': 1, // number | page number
-  'pageSize': 10 // number | Items per page，Maximum 100
+  'page': BigInt('1'), // number | page number
+  'pageSize': BigInt('10') // number | Items per page，Maximum 100
 };
 api.listAutoInvestPlanRecords(planId, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1319,9 +1319,9 @@ api.listAutoInvestPlanRecords(planId, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **planId** | **number**| Plan ID | [default to undefined]
- **page** | **number**| page number | [optional] [default to undefined]
- **pageSize** | **number**| Items per page，Maximum 100 | [optional] [default to undefined]
+ **planId** | **number &#124; bigint**| Plan ID | [default to undefined]
+ **page** | **number &#124; bigint**| page number | [optional] [default to undefined]
+ **pageSize** | **number &#124; bigint**| Items per page，Maximum 100 | [optional] [default to undefined]
 
 ### Return type
 
@@ -1353,8 +1353,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnApi(client);
-const planId = 142583; // number | Plan ID
-const recordId = 1770805384904919; // number | Record ID
+const planId = BigInt('142583'); // number | Plan ID
+const recordId = BigInt('1770805384904919'); // number | Record ID
 api.listAutoInvestOrders(planId, recordId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1365,8 +1365,8 @@ api.listAutoInvestOrders(planId, recordId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **planId** | **number**| Plan ID | [default to undefined]
- **recordId** | **number**| Record ID | [default to undefined]
+ **planId** | **number &#124; bigint**| Plan ID | [default to undefined]
+ **recordId** | **number &#124; bigint**| Record ID | [default to undefined]
 
 ### Return type
 
@@ -1437,7 +1437,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnApi(client);
-const planId = 142609; // number | Plan ID
+const planId = BigInt('142609'); // number | Plan ID
 api.getAutoInvestPlanDetail(planId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1448,7 +1448,7 @@ api.getAutoInvestPlanDetail(planId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **planId** | **number**| Plan ID | [default to undefined]
+ **planId** | **number &#124; bigint**| Plan ID | [default to undefined]
 
 ### Return type
 
@@ -1482,8 +1482,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.EarnApi(client);
 const status = "active"; // string | Plan status，History history，Active active
 const opts = {
-  'page': 56, // number | page number
-  'pageSize': 56 // number | Items per page，Maximum 100
+  'page': BigInt('56'), // number | page number
+  'pageSize': BigInt('56') // number | Items per page，Maximum 100
 };
 api.listAutoInvestPlans(status, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1496,8 +1496,8 @@ api.listAutoInvestPlans(status, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **string**| Plan status，History history，Active active | [default to undefined]
- **page** | **number**| page number | [optional] [default to undefined]
- **pageSize** | **number**| Items per page，Maximum 100 | [optional] [default to undefined]
+ **page** | **number &#124; bigint**| page number | [optional] [default to undefined]
+ **pageSize** | **number &#124; bigint**| Items per page，Maximum 100 | [optional] [default to undefined]
 
 ### Return type
 
@@ -1634,7 +1634,7 @@ const page = 1; // number | Page number
 const limit = 10; // number | Page size
 const opts = {
   'productId': 56, // number | Product ID
-  'orderId': 56, // number | Order ID
+  'orderId': BigInt('56'), // number | Order ID
   'asset': "asset_example", // string | Currency
   'subBusiness': 56, // number | Sub-business
   'businessFilter': "[{\"business\":1, \"sub_business\": 0},{\"business\":2, \"sub_business\": 0}]" // string | Business filter conditions, JSON array format, e.g., [{\"business\":1, \"sub_business\": 0}]. business: 1 for regular, 2 for VIP
@@ -1653,7 +1653,7 @@ Name | Type | Description  | Notes
  **page** | **number**| Page number | [default to undefined]
  **limit** | **number**| Page size | [default to undefined]
  **productId** | **number**| Product ID | [optional] [default to undefined]
- **orderId** | **number**| Order ID | [optional] [default to undefined]
+ **orderId** | **number &#124; bigint**| Order ID | [optional] [default to undefined]
  **asset** | **string**| Currency | [optional] [default to undefined]
  **subBusiness** | **number**| Sub-business | [optional] [default to undefined]
  **businessFilter** | **string**| Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP | [optional] [default to undefined]

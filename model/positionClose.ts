@@ -53,7 +53,7 @@ export class PositionClose {
     /**
      * First Open Time
      */
-    'firstOpenTime'?: number;
+    'firstOpenTime'?: number | bigint;
     /**
      * When side is \'long\', it indicates the opening average price; when side is \'short\', it indicates the closing average price
      */
@@ -69,7 +69,7 @@ export class PositionClose {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'contract',
@@ -119,7 +119,7 @@ export class PositionClose {
         {
             name: 'firstOpenTime',
             baseName: 'first_open_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'longPrice',

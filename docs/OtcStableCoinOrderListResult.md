@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **pageSize** | **number** |  | [default to undefined]
 **pageNumber** | **number** |  | [default to undefined]
 **totalPage** | **number** |  | [default to undefined]
-**lists** | [**Array&lt;OtcStableCoinOrderListItem&gt;**](OtcStableCoinOrderListItem.md) |  | [default to undefined]
+**lists** | [**Array<OtcStableCoinOrderListItem>**](OtcStableCoinOrderListItem.md) |  | [default to undefined]
 

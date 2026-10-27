@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 **wantType** | **string** | Fiat currency | [optional] [default to undefined]
 **hidePayment** | **number** | Whether payment methods are hidden. &#x60;1&#x60;: hidden; &#x60;0&#x60;: visible. | [optional] [default to undefined]
 **selPaytype** | **string** | Selected payment type for this order, e.g. &#x60;bank&#x60;, &#x60;alipay&#x60;, &#x60;wechat&#x60;, &#x60;paypal&#x60;, &#x60;swift&#x60;, &#x60;wu&#x60;. | [optional] [default to undefined]
-**payOthers** | [**Array&lt;P2pTransactionListResultPayOthers&gt;**](P2pTransactionListResultPayOthers.md) | Other payment method details; may appear on historical orders. | [optional] [default to undefined]
+**payOthers** | [**Array<P2pTransactionListResultPayOthers>**](P2pTransactionListResultPayOthers.md) | Other payment method details; may appear on historical orders. | [optional] [default to undefined]
 **cdTime** | **number** | Countdown seconds for the current order. | [optional] [default to undefined]
 **orderType** | **number** | Order type: &#x60;1&#x60; standard; &#x60;2&#x60; partner; &#x60;3&#x60; flash swap; &#x60;4&#x60; Web3. | [optional] [default to undefined]
-**orderTag** | **Array&lt;string&gt;** | Order tags | [optional] [default to undefined]
+**orderTag** | **Array<string>** | Order tags | [optional] [default to undefined]
 **convertInfo** | [**P2pTransactionConvertInfo**](P2pTransactionConvertInfo.md) |  | [optional] [default to undefined]
 

@@ -21,7 +21,7 @@ export class MarginAccountBook {
     /**
      * The timestamp of the change (in milliseconds)
      */
-    'timeMs'?: number;
+    'timeMs'?: number | bigint;
     /**
      * Currency changed
      */
@@ -59,7 +59,7 @@ export class MarginAccountBook {
         {
             name: 'timeMs',
             baseName: 'time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'currency',

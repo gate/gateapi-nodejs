@@ -56,23 +56,23 @@ export class SpotPovOrder {
     /**
      * Order execution start time in milliseconds
      */
-    'startTimeMs'?: number;
+    'startTimeMs'?: number | bigint;
     /**
      * Order execution end time in milliseconds
      */
-    'endTimeMs'?: number;
+    'endTimeMs'?: number | bigint;
     /**
      * Order expiration time in milliseconds
      */
-    'expireTimeMs'?: number;
+    'expireTimeMs'?: number | bigint;
     /**
      * Creation time of order (in milliseconds)
      */
-    'createTimeMs': number;
+    'createTimeMs': number | bigint;
     /**
      * Last modification time of order (in milliseconds)
      */
-    'updateTimeMs'?: number;
+    'updateTimeMs'?: number | bigint;
     /**
      * Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
      */
@@ -134,27 +134,27 @@ export class SpotPovOrder {
         {
             name: 'startTimeMs',
             baseName: 'start_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'endTimeMs',
             baseName: 'end_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'expireTimeMs',
             baseName: 'expire_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'createTimeMs',
             baseName: 'create_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updateTimeMs',
             baseName: 'update_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'text',

@@ -16,7 +16,7 @@ export class RebateUserInfo {
     /**
      * My inviter\'s UID
      */
-    'inviteUid'?: number;
+    'inviteUid'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -24,7 +24,7 @@ export class RebateUserInfo {
         {
             name: 'inviteUid',
             baseName: 'invite_uid',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

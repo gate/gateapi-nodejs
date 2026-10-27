@@ -55,12 +55,13 @@ export class RebateApi {
      */
     public async agencyTransactionHistory(opts?: {
         currencyPair?: string;
-        userId?: number;
-        from?: number;
-        to?: number;
+        userId?: number | bigint;
+        from?: number | bigint;
+        to?: number | bigint;
         limit?: number;
         offset?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<AgencyTransactionHistory> }> {
+    }): Promise<{ response: AxiosResponse; body: AgencyTransactionHistory }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/agency/transaction_history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -74,8 +75,10 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currencyPair, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencyPairSerialized)) {
                 currencyPairSerialized = currencyPairSerialized.join(',');
             }
@@ -83,8 +86,10 @@ export class RebateApi {
         }
 
         if (opts.userId !== undefined) {
-            let userIdSerialized = ObjectSerializer.serialize(opts.userId, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let userIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.userId, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(userIdSerialized)) {
                 userIdSerialized = userIdSerialized.join(',');
             }
@@ -92,8 +97,10 @@ export class RebateApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -101,8 +108,8 @@ export class RebateApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -110,8 +117,10 @@ export class RebateApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -119,8 +128,10 @@ export class RebateApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -135,11 +146,7 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<AgencyTransactionHistory>>(
-            config,
-            'Array<AgencyTransactionHistory>',
-            authSettings,
-        );
+        return this.client.request<AgencyTransactionHistory>(config, 'AgencyTransactionHistory', authSettings);
     }
 
     /**
@@ -157,12 +164,13 @@ export class RebateApi {
     public async agencyCommissionsHistory(opts?: {
         currency?: string;
         commissionType?: number;
-        userId?: number;
-        from?: number;
-        to?: number;
+        userId?: number | bigint;
+        from?: number | bigint;
+        to?: number | bigint;
         limit?: number;
         offset?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<AgencyCommissionHistory> }> {
+    }): Promise<{ response: AxiosResponse; body: AgencyCommissionHistory }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/agency/commission_history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -176,8 +184,10 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencySerialized)) {
                 currencySerialized = currencySerialized.join(',');
             }
@@ -185,8 +195,10 @@ export class RebateApi {
         }
 
         if (opts.commissionType !== undefined) {
-            let commissionTypeSerialized = ObjectSerializer.serialize(opts.commissionType, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let commissionTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.commissionType, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(commissionTypeSerialized)) {
                 commissionTypeSerialized = commissionTypeSerialized.join(',');
             }
@@ -194,8 +206,10 @@ export class RebateApi {
         }
 
         if (opts.userId !== undefined) {
-            let userIdSerialized = ObjectSerializer.serialize(opts.userId, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let userIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.userId, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(userIdSerialized)) {
                 userIdSerialized = userIdSerialized.join(',');
             }
@@ -203,8 +217,10 @@ export class RebateApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -212,8 +228,8 @@ export class RebateApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -221,8 +237,10 @@ export class RebateApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -230,8 +248,10 @@ export class RebateApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -246,11 +266,7 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<AgencyCommissionHistory>>(
-            config,
-            'Array<AgencyCommissionHistory>',
-            authSettings,
-        );
+        return this.client.request<AgencyCommissionHistory>(config, 'AgencyCommissionHistory', authSettings);
     }
 
     /**
@@ -266,12 +282,13 @@ export class RebateApi {
      */
     public async partnerTransactionHistory(opts?: {
         currencyPair?: string;
-        userId?: number;
-        from?: number;
-        to?: number;
+        userId?: number | bigint;
+        from?: number | bigint;
+        to?: number | bigint;
         limit?: number;
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: PartnerTransactionHistory }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/partner/transaction_history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -285,8 +302,10 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currencyPair, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencyPairSerialized)) {
                 currencyPairSerialized = currencyPairSerialized.join(',');
             }
@@ -294,8 +313,10 @@ export class RebateApi {
         }
 
         if (opts.userId !== undefined) {
-            let userIdSerialized = ObjectSerializer.serialize(opts.userId, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let userIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.userId, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(userIdSerialized)) {
                 userIdSerialized = userIdSerialized.join(',');
             }
@@ -303,8 +324,10 @@ export class RebateApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -312,8 +335,8 @@ export class RebateApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -321,8 +344,10 @@ export class RebateApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -330,8 +355,10 @@ export class RebateApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -362,12 +389,13 @@ export class RebateApi {
      */
     public async partnerCommissionsHistory(opts?: {
         currency?: string;
-        userId?: number;
-        from?: number;
-        to?: number;
+        userId?: number | bigint;
+        from?: number | bigint;
+        to?: number | bigint;
         limit?: number;
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: PartnerCommissionHistory }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/partner/commission_history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -381,8 +409,10 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencySerialized)) {
                 currencySerialized = currencySerialized.join(',');
             }
@@ -390,8 +420,10 @@ export class RebateApi {
         }
 
         if (opts.userId !== undefined) {
-            let userIdSerialized = ObjectSerializer.serialize(opts.userId, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let userIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.userId, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(userIdSerialized)) {
                 userIdSerialized = userIdSerialized.join(',');
             }
@@ -399,8 +431,10 @@ export class RebateApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -408,8 +442,8 @@ export class RebateApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -417,8 +451,10 @@ export class RebateApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -426,8 +462,10 @@ export class RebateApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -454,10 +492,11 @@ export class RebateApi {
      * @param opts.offset List offset, starting from 0
      */
     public async partnerSubList(opts?: {
-        userId?: number;
+        userId?: number | bigint;
         limit?: number;
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: PartnerSubList }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/partner/sub_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -471,8 +510,10 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.userId !== undefined) {
-            let userIdSerialized = ObjectSerializer.serialize(opts.userId, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let userIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.userId, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(userIdSerialized)) {
                 userIdSerialized = userIdSerialized.join(',');
             }
@@ -480,8 +521,10 @@ export class RebateApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -489,8 +532,10 @@ export class RebateApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -521,10 +566,11 @@ export class RebateApi {
     public async rebateBrokerCommissionHistory(opts?: {
         limit?: number;
         offset?: number;
-        userId?: number;
-        from?: number;
-        to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<BrokerCommission> }> {
+        userId?: number | bigint;
+        from?: number | bigint;
+        to?: number | bigint;
+    }): Promise<{ response: AxiosResponse; body: BrokerCommission }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/broker/commission_history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -538,8 +584,10 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -547,8 +595,10 @@ export class RebateApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -556,8 +606,10 @@ export class RebateApi {
         }
 
         if (opts.userId !== undefined) {
-            let userIdSerialized = ObjectSerializer.serialize(opts.userId, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let userIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.userId, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(userIdSerialized)) {
                 userIdSerialized = userIdSerialized.join(',');
             }
@@ -565,8 +617,10 @@ export class RebateApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -574,8 +628,8 @@ export class RebateApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -590,7 +644,7 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<BrokerCommission>>(config, 'Array<BrokerCommission>', authSettings);
+        return this.client.request<BrokerCommission>(config, 'BrokerCommission', authSettings);
     }
 
     /**
@@ -606,10 +660,11 @@ export class RebateApi {
     public async rebateBrokerTransactionHistory(opts?: {
         limit?: number;
         offset?: number;
-        userId?: number;
-        from?: number;
-        to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<BrokerTransactionHistory> }> {
+        userId?: number | bigint;
+        from?: number | bigint;
+        to?: number | bigint;
+    }): Promise<{ response: AxiosResponse; body: BrokerTransactionHistory }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/broker/transaction_history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -623,8 +678,10 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -632,8 +689,10 @@ export class RebateApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -641,8 +700,10 @@ export class RebateApi {
         }
 
         if (opts.userId !== undefined) {
-            let userIdSerialized = ObjectSerializer.serialize(opts.userId, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let userIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.userId, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(userIdSerialized)) {
                 userIdSerialized = userIdSerialized.join(',');
             }
@@ -650,8 +711,10 @@ export class RebateApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -659,8 +722,8 @@ export class RebateApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -675,18 +738,15 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<BrokerTransactionHistory>>(
-            config,
-            'Array<BrokerTransactionHistory>',
-            authSettings,
-        );
+        return this.client.request<BrokerTransactionHistory>(config, 'BrokerTransactionHistory', authSettings);
     }
 
     /**
      *
      * @summary User obtains rebate information
      */
-    public async rebateUserInfo(): Promise<{ response: AxiosResponse; body: Array<RebateUserInfo> }> {
+    public async rebateUserInfo(): Promise<{ response: AxiosResponse; body: RebateUserInfo }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/user/info';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -706,7 +766,7 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<RebateUserInfo>>(config, 'Array<RebateUserInfo>', authSettings);
+        return this.client.request<RebateUserInfo>(config, 'RebateUserInfo', authSettings);
     }
 
     /**
@@ -715,6 +775,7 @@ export class RebateApi {
      * @param userIdList Query user ID list, separated by commas. If more than 100, only 100 will be returned
      */
     public async userSubRelation(userIdList: string): Promise<{ response: AxiosResponse; body: UserSubRelation }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/user/sub_relation';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -731,8 +792,10 @@ export class RebateApi {
             throw new Error('Required parameter userIdList was null or undefined when calling userSubRelation.');
         }
 
-        let userIdListSerialized = ObjectSerializer.serialize(userIdList, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let userIdListSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(userIdList, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(userIdListSerialized)) {
             userIdListSerialized = userIdListSerialized.join(',');
         }
@@ -754,6 +817,7 @@ export class RebateApi {
      * @summary Get recent partner application records
      */
     public async getPartnerApplicationRecent(): Promise<{ response: AxiosResponse; body: PartnerApplicationResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/partner/applications/recent';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -781,6 +845,7 @@ export class RebateApi {
      * @summary Check partner application eligibility
      */
     public async getPartnerEligibility(): Promise<{ response: AxiosResponse; body: EligibilityResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/partner/eligibility';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -816,6 +881,7 @@ export class RebateApi {
         endDate?: string;
         businessType?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
     }): Promise<{ response: AxiosResponse; body: PartnerDataAggregatedResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rebate/partner/data/aggregated';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -829,8 +895,10 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.startDate !== undefined) {
-            let startDateSerialized = ObjectSerializer.serialize(opts.startDate, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let startDateSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.startDate, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(startDateSerialized)) {
                 startDateSerialized = startDateSerialized.join(',');
             }
@@ -838,8 +906,10 @@ export class RebateApi {
         }
 
         if (opts.endDate !== undefined) {
-            let endDateSerialized = ObjectSerializer.serialize(opts.endDate, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endDateSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endDate, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endDateSerialized)) {
                 endDateSerialized = endDateSerialized.join(',');
             }
@@ -847,11 +917,10 @@ export class RebateApi {
         }
 
         if (opts.businessType !== undefined) {
-            let businessTypeSerialized = ObjectSerializer.serialize(
-                opts.businessType,
-                '0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8',
+            let businessTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.businessType, 'BusinessType'),
             );
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(businessTypeSerialized)) {
                 businessTypeSerialized = businessTypeSerialized.join(',');
             }

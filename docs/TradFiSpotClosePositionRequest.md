@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** | Symbol | [default to undefined]
 **closeVolume** | **string** | Close quantity; required for partial close | [optional] [default to undefined]
-**closeType** | **number** | Close type (1&#x3D;partial close, 2&#x3D;close all) | [default to undefined]
+**closeType** | **TradFiSpotClosePositionRequest.CloseType** | Close type (1&#x3D;partial close, 2&#x3D;close all) | [default to undefined]
 
 ## Enum: TradFiSpotClosePositionRequest.CloseType
 

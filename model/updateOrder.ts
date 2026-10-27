@@ -18,7 +18,7 @@ export class UpdateOrder {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: UpdateOrderData;
 
     static discriminator: string | undefined = undefined;
@@ -27,7 +27,7 @@ export class UpdateOrder {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

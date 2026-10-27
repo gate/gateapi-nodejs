@@ -15,7 +15,7 @@ export class PartnerSubList {
     /**
      * Total
      */
-    'total'?: number;
+    'total'?: number | bigint;
     /**
      * Subordinate list
      */
@@ -27,7 +27,7 @@ export class PartnerSubList {
         {
             name: 'total',
             baseName: 'total',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'list',

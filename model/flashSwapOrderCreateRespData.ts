@@ -16,7 +16,7 @@ export class FlashSwapOrderCreateRespData {
     /**
      * Order ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * User ID
      */
@@ -84,7 +84,7 @@ export class FlashSwapOrderCreateRespData {
     /**
      * Creation timestamp (in milliseconds)
      */
-    'createTimeMs'?: number;
+    'createTimeMs'?: number | bigint;
     /**
      * Account Mode
      */
@@ -96,7 +96,7 @@ export class FlashSwapOrderCreateRespData {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'userId',
@@ -181,7 +181,7 @@ export class FlashSwapOrderCreateRespData {
         {
             name: 'createTimeMs',
             baseName: 'create_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'accountMode',

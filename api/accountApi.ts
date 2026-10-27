@@ -40,6 +40,7 @@ export class AccountApi {
      * @summary Retrieve user account information
      */
     public async getAccountDetail(): Promise<{ response: AxiosResponse; body: AccountDetail }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/account/detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -67,6 +68,7 @@ export class AccountApi {
      * @summary Query All Main Account Key Information
      */
     public async getAccountMainKeys(): Promise<{ response: AxiosResponse; body: AccountKeyInfo }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/account/main_keys';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -94,6 +96,7 @@ export class AccountApi {
      * @summary Get user transaction rate limit information
      */
     public async getAccountRateLimit(): Promise<{ response: AxiosResponse; body: Array<AccountRateLimit> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/account/rate_limit';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -123,6 +126,7 @@ export class AccountApi {
      * @param opts.name Fuzzy search by name
      */
     public async listSTPGroups(opts?: { name?: string }): Promise<{ response: AxiosResponse; body: Array<StpGroup> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/account/stp_groups';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -136,8 +140,10 @@ export class AccountApi {
 
         opts = opts || {};
         if (opts.name !== undefined) {
-            let nameSerialized = ObjectSerializer.serialize(opts.name, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let nameSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.name, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(nameSerialized)) {
                 nameSerialized = nameSerialized.join(',');
             }
@@ -161,6 +167,7 @@ export class AccountApi {
      * @param stpGroup
      */
     public async createSTPGroup(stpGroup: StpGroup): Promise<{ response: AxiosResponse; body: StpGroup }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/account/stp_groups';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -194,10 +201,16 @@ export class AccountApi {
      * @summary Query users in the STP user group
      * @param stpId STP Group ID
      */
-    public async listSTPGroupsUsers(stpId: number): Promise<{ response: AxiosResponse; body: Array<StpGroupUser> }> {
+    public async listSTPGroupsUsers(
+        stpId: number | bigint,
+    ): Promise<{ response: AxiosResponse; body: Array<StpGroupUser> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/account/stp_groups/{stp_id}/users'.replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
+            '/account/stp_groups/{stp_id}/users'.replace(
+                '{' + 'stp_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(stpId, 'stpId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -231,12 +244,16 @@ export class AccountApi {
      * @param requestBody User ID
      */
     public async addSTPGroupUsers(
-        stpId: number,
-        requestBody: Array<number>,
+        stpId: number | bigint,
+        requestBody: Array<number | bigint>,
     ): Promise<{ response: AxiosResponse; body: Array<StpGroupUser> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/account/stp_groups/{stp_id}/users'.replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
+            '/account/stp_groups/{stp_id}/users'.replace(
+                '{' + 'stp_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(stpId, 'stpId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -262,7 +279,7 @@ export class AccountApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(requestBody, 'Array<number>'),
+            data: ObjectSerializer.serialize(requestBody, 'Array<int64>'),
         };
 
         const authSettings = ['apiv4'];
@@ -276,12 +293,16 @@ export class AccountApi {
      * @param userId STP user IDs, multiple IDs can be separated by commas
      */
     public async deleteSTPGroupUsers(
-        stpId: number,
-        userId: number,
+        stpId: number | bigint,
+        userId: number | bigint,
     ): Promise<{ response: AxiosResponse; body: Array<StpGroupUser> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/account/stp_groups/{stp_id}/users'.replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
+            '/account/stp_groups/{stp_id}/users'.replace(
+                '{' + 'stp_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(stpId, 'stpId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -302,8 +323,8 @@ export class AccountApi {
             throw new Error('Required parameter userId was null or undefined when calling deleteSTPGroupUsers.');
         }
 
-        let userIdSerialized = ObjectSerializer.serialize(userId, 'number');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let userIdSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(userId, 'int64'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(userIdSerialized)) {
             userIdSerialized = userIdSerialized.join(',');
         }
@@ -325,6 +346,7 @@ export class AccountApi {
      * @summary Query GT fee deduction configuration
      */
     public async getDebitFee(): Promise<{ response: AxiosResponse; body: DebitFee }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/account/debit_fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -353,6 +375,7 @@ export class AccountApi {
      * @param debitFee
      */
     public async setDebitFee(debitFee: DebitFee): Promise<{ response: AxiosResponse; body?: any }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/account/debit_fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

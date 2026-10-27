@@ -39,6 +39,7 @@ export class AnnouncementApi {
     public async listAnnouncementArticles(
         announcementArticleListRequest: AnnouncementArticleListRequest,
     ): Promise<{ response: AxiosResponse; body: AnnouncementArticleListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/ann/list_article';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

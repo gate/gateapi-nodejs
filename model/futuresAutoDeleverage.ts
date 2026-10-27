@@ -13,15 +13,15 @@ export class FuturesAutoDeleverage {
     /**
      * Automatic deleveraging time
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * User ID
      */
-    'user'?: number;
+    'user'?: number | bigint;
     /**
      * Order ID. Order IDs before 2023-02-20 are null
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * Futures contract
      */
@@ -57,17 +57,17 @@ export class FuturesAutoDeleverage {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'user',
             baseName: 'user',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'contract',

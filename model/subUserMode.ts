@@ -13,7 +13,7 @@ export class SubUserMode {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Whether it is a unified account
      */
@@ -29,7 +29,7 @@ export class SubUserMode {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'isUnified',

@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | **Array&lt;string&gt;** |  | [default to undefined]
+**list** | **Array<string>** |  | [default to undefined]
 

@@ -21,7 +21,7 @@ export class CreateTrailOrderResult {
         {
             name: 'id',
             baseName: 'id',
-            type: 'bigint',
+            type: 'bigint-string',
         },
     ];
 

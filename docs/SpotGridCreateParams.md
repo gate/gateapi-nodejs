@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **lowPrice** | **string** | Range lower limit | [default to undefined]
 **highPrice** | **string** | Range upper limit | [default to undefined]
 **gridNum** | **number** | Number of grids | [default to undefined]
-**priceType** | **number** |  | [default to undefined]
+**priceType** | **SpotGridCreateParams.PriceType** |  | [default to undefined]
 **triggerPrice** | **string** |  | [optional] [default to undefined]
 **stopProfit** | **string** |  | [optional] [default to undefined]
 **stopLoss** | **string** |  | [optional] [default to undefined]

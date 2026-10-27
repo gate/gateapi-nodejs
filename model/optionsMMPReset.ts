@@ -36,11 +36,11 @@ export class OptionsMMPReset {
     /**
      * Trigger freeze time (milliseconds), 0 means no freeze is triggered
      */
-    'triggerTimeMs'?: number;
+    'triggerTimeMs'?: number | bigint;
     /**
      * Unfreeze time (milliseconds). If the freeze duration is not configured, there will be no unfreeze time after the freeze is triggered
      */
-    'frozenUntilMs'?: number;
+    'frozenUntilMs'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -73,12 +73,12 @@ export class OptionsMMPReset {
         {
             name: 'triggerTimeMs',
             baseName: 'trigger_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'frozenUntilMs',
             baseName: 'frozen_until_ms',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

@@ -34,7 +34,7 @@ export class ApiResponseAssetSwapListAssets {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp': number;
+    'timestamp': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -62,7 +62,7 @@ export class ApiResponseAssetSwapListAssets {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

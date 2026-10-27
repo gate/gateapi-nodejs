@@ -15,7 +15,7 @@ export class SymbolCommissions {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: SymbolCommissionsData;
 
     static discriminator: string | undefined = undefined;
@@ -24,7 +24,7 @@ export class SymbolCommissions {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

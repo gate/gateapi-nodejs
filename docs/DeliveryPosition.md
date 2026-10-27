@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | **number** | User ID | [optional] [readonly] [default to undefined]
+**user** | **number &#124; bigint** | User ID | [optional] [readonly] [default to undefined]
 **contract** | **string** | Futures contract | [optional] [readonly] [default to undefined]
-**size** | **number** | Position size | [optional] [readonly] [default to undefined]
+**size** | **number &#124; bigint** | Position size | [optional] [readonly] [default to undefined]
 **leverage** | **string** | Position leverage. 0 means cross margin; positive number means isolated margin | [optional] [default to undefined]
 **riskLimit** | **string** | Position risk limit | [optional] [default to undefined]
 **leverageMax** | **string** | Maximum leverage under current risk limit | [optional] [readonly] [default to undefined]
@@ -29,12 +29,12 @@ Name | Type | Description | Notes
 **historyPoint** | **string** | History realized POINT PNL | [optional] [readonly] [default to undefined]
 **adlRanking** | **number** | Ranking of auto deleveraging, a total of 1-5 grades, &#x60;1&#x60; is the highest, &#x60;5&#x60; is the lowest, and &#x60;6&#x60; is the special case when there is no position held or in liquidation | [optional] [readonly] [default to undefined]
 **pendingOrders** | **number** | Current pending order quantity | [optional] [readonly] [default to undefined]
-**closeOrder** | [**PositionCloseOrder**](PositionCloseOrder.md) |  | [optional] [default to undefined]
-**mode** | **string** | Position mode, including:  - &#x60;single&#x60;: One-way Mode - &#x60;dual_long&#x60;: Long position in Hedge Mode - &#x60;dual_short&#x60;: Short position in Hedge Mode | [optional] [default to undefined]
+**closeOrder** | [**PositionCloseOrder &#124; null**](PositionCloseOrder.md) |  | [optional] [default to undefined]
+**mode** | **DeliveryPosition.Mode** | Position mode, including:  - &#x60;single&#x60;: One-way Mode - &#x60;dual_long&#x60;: Long position in Hedge Mode - &#x60;dual_short&#x60;: Short position in Hedge Mode | [optional] [default to undefined]
 **crossLeverageLimit** | **string** | Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | [optional] [default to undefined]
-**updateTime** | **number** | Last update time | [optional] [readonly] [default to undefined]
-**updateId** | **number** | Update ID. The value increments by 1 each time the position is updated | [optional] [readonly] [default to undefined]
-**openTime** | **number** | First Open Time | [optional] [default to undefined]
+**updateTime** | **number &#124; bigint** | Last update time | [optional] [readonly] [default to undefined]
+**updateId** | **number &#124; bigint** | Update ID. The value increments by 1 each time the position is updated | [optional] [readonly] [default to undefined]
+**openTime** | **number &#124; bigint** | First Open Time | [optional] [default to undefined]
 **riskLimitTable** | **string** | Risk limit table ID | [optional] [readonly] [default to undefined]
 **averageMaintenanceRate** | **string** | Average maintenance margin rate | [optional] [readonly] [default to undefined]
 

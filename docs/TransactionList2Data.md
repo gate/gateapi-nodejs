@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | **number** |  | [optional] [default to undefined]
-**totalPage** | **number** |  | [optional] [default to undefined]
-**list** | [**Array&lt;TransactionItem&gt;**](TransactionItem.md) | Transaction record list | [optional] [default to undefined]
+**total** | **number &#124; bigint** |  | [optional] [default to undefined]
+**totalPage** | **number &#124; bigint** |  | [optional] [default to undefined]
+**list** | [**Array<TransactionItem>**](TransactionItem.md) | Transaction record list | [optional] [default to undefined]
 

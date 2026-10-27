@@ -12,8 +12,8 @@
 import { TransactionItem } from './transactionItem';
 
 export class TransactionList2Data {
-    'total'?: number;
-    'totalPage'?: number;
+    'total'?: number | bigint;
+    'totalPage'?: number | bigint;
     /**
      * Transaction record list
      */
@@ -25,12 +25,12 @@ export class TransactionList2Data {
         {
             name: 'total',
             baseName: 'total',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'totalPage',
             baseName: 'total_page',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'list',

@@ -15,7 +15,7 @@ export class SubCrossMarginAccount {
     /**
      * Cross margin account user ID. 0 means this sub-account has not yet opened a cross margin account
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Whether the account is locked
      */
@@ -80,7 +80,7 @@ export class SubCrossMarginAccount {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'locked',

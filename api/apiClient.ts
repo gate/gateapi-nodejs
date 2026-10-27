@@ -19,12 +19,12 @@ import {
     OAuth,
     ObjectSerializer,
     serializeRequestData,
+    parseResponseData,
 } from '../model/models';
 
-import JSONBig from 'json-bigint';
+import { randomBytes } from 'crypto';
+import querystring = require('querystring');
 import globalAxios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-
-const JSONBigInt = JSONBig({ useNativeBigInt: true });
 
 function isJsonRequestBody(data: any): boolean {
     if (data === undefined || data === null) {
@@ -63,6 +63,8 @@ export class ApiClient {
         apiv4: new GateApiV4Auth(),
     };
 
+    // Keep host/global interceptors and explicit mock adapters. SDK codecs are
+    // installed on an owned request config, never on shared Axios defaults.
     constructor(
         basePath?: string,
         protected axiosInstance: AxiosInstance = globalAxios,
@@ -71,25 +73,6 @@ export class ApiClient {
 
         // Set default X-Gate-Size-Decimal header for futures API
         this._defaultHeaders['X-Gate-Size-Decimal'] = '1';
-
-        this.axiosInstance.defaults.transformResponse = [
-            (data) => {
-                try {
-                    return JSONBigInt.parse(data);
-                } catch (error) {
-                    console.error('Failed to parse JSON:', error);
-                    return data;
-                }
-            },
-        ];
-        this.axiosInstance.defaults.transformRequest = [
-            (data, headers) => {
-                if (isJsonRequestBody(data)) {
-                    ensureJsonContentType(headers);
-                }
-                return serializeRequestData(data);
-            },
-        ];
     }
 
     set basePath(basePath: string) {
@@ -124,12 +107,86 @@ export class ApiClient {
         return config;
     }
 
+    /** Encode a form once so authentication hashes the exact bytes Axios sends. */
+    public setFormData(config: AxiosRequestConfig, fields: { [key: string]: any }, mediaTypes: string[]): void {
+        config.headers = config.headers || {};
+        if (mediaTypes.indexOf('multipart/form-data') === -1) {
+            const values: { [key: string]: any } = {};
+            for (const key of Object.keys(fields)) {
+                values[key] = ObjectSerializer.serializeQueryParameter(fields[key]);
+            }
+            config.data = querystring.stringify(values);
+            config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            return;
+        }
+        // A cryptographically random boundary prevents user text from becoming
+        // a predictable MIME delimiter. Field names are generator-controlled.
+        const boundary = 'gate-sdk-' + randomBytes(24).toString('hex');
+        const chunks: Buffer[] = [];
+        for (const key of Object.keys(fields)) {
+            const value = fields[key];
+            if (value === undefined) {
+                continue;
+            }
+            if (/[\r\n"]/.test(key)) {
+                throw new TypeError('Invalid multipart field name.');
+            }
+            chunks.push(
+                Buffer.from('--' + boundary + '\r\nContent-Disposition: form-data; name="' + key + '"\r\n\r\n'),
+            );
+            chunks.push(
+                Buffer.isBuffer(value)
+                    ? value
+                    : Buffer.from(
+                          typeof value === 'object' && value !== null
+                              ? serializeRequestData(value)
+                              : String(value ?? ''),
+                      ),
+            );
+            chunks.push(Buffer.from('\r\n'));
+        }
+        chunks.push(Buffer.from('--' + boundary + '--\r\n'));
+        config.data = Buffer.concat(chunks);
+        config.headers['Content-Type'] = 'multipart/form-data; boundary=' + boundary;
+    }
+
     public async request<T>(
         config: AxiosRequestConfig,
         responseType: string,
         authSettings: Array<string>,
     ): Promise<{ response: AxiosResponse; body: T }> {
-        return Promise.resolve(config)
+        // Fresh config/arrays isolate SDK behavior while preserving explicit
+        // per-request transforms and the original client's interceptors.
+        const requestConfig: AxiosRequestConfig = { ...config };
+        if (requestConfig.transformResponse === undefined) {
+            requestConfig.transformResponse = [
+                // Success cannot hide broken JSON. For an already rejected HTTP
+                // status, retain its body/status instead of a parser error.
+                (data, headers, status) => {
+                    try {
+                        return parseResponseData(data, headers && headers['content-type']);
+                    } catch (error) {
+                        if (typeof status === 'number' && (status < 200 || status >= 300)) {
+                            return data;
+                        }
+                        throw error;
+                    }
+                },
+            ];
+        }
+        if (requestConfig.transformRequest === undefined) {
+            requestConfig.transformRequest = [
+                (data, headers) => {
+                    if (isJsonRequestBody(data)) {
+                        ensureJsonContentType(headers);
+                    }
+                    return serializeRequestData(data);
+                },
+            ];
+        }
+        // Public and internal clients must encode repeated query names identically.
+        requestConfig.paramsSerializer = requestConfig.paramsSerializer || ((params) => querystring.stringify(params));
+        return Promise.resolve(requestConfig)
             .then((c) => this.applyToRequest(c, authSettings))
             .then((c) => {
                 return this.axiosInstance.request(c).then((rsp) => {

@@ -13,15 +13,15 @@ export class PartnerSub {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Time when user joined the system, Unix timestamp in seconds
      */
-    'userJoinTime'?: number;
+    'userJoinTime'?: number | bigint;
     /**
      * Type (1-Sub-agent 2-Indirect direct customer 3-Direct direct customer)
      */
-    'type'?: number;
+    'type'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -29,17 +29,17 @@ export class PartnerSub {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'userJoinTime',
             baseName: 'user_join_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'type',
             baseName: 'type',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

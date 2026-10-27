@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **amount** | **string** | Trading quantity in contracts, positive for buy, negative for sell | [default to undefined]
 **activationPrice** | **string** | Activation price, 0 means trigger immediately | [optional] [default to &#39;0&#39;]
 **isGte** | **boolean** | true: activate when market price &gt;&#x3D; activation price, false: &lt;&#x3D; activation price | [optional] [default to undefined]
-**priceType** | **number** | Activation price type: 1-latest price, 2-index price, 3-mark price | [optional] [default to undefined]
+**priceType** | **CreateTrailOrder.PriceType** | Activation price type: 1-latest price, 2-index price, 3-mark price | [optional] [default to undefined]
 **priceOffset** | **string** | Callback ratio or price distance, e.g., &#x60;0.1&#x60; or &#x60;0.1%&#x60; | [optional] [default to undefined]
 **reduceOnly** | **boolean** | Whether reduce only | [optional] [default to undefined]
 **positionRelated** | **boolean** | Whether bound to a position (if position_related &#x3D; true (position-related), then reduce_only must also be true) | [optional] [default to undefined]

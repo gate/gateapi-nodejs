@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **eligible** | **boolean** | Whether eligible for application | [default to undefined]
-**blockReasons** | **Array&lt;string&gt;** | List of ineligibility reason descriptions | [default to undefined]
-**blockReasonCodes** | **Array&lt;string&gt;** | List of ineligibility reason codes | [default to undefined]
+**blockReasons** | **Array<string>** | List of ineligibility reason descriptions | [default to undefined]
+**blockReasonCodes** | **Array<Eligibility.BlockReasonCodes>** | List of ineligibility reason codes | [default to undefined]
 
 ## Enum: Array&lt;Eligibility.BlockReasonCodes&gt;
 

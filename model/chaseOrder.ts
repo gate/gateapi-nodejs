@@ -24,8 +24,8 @@ export class ChaseOrder {
     'priceLimit'?: string;
     'reduceOnly'?: boolean;
     'text'?: string;
-    'createTime'?: number;
-    'finishTime'?: number;
+    'createTime'?: number | bigint;
+    'finishTime'?: number | bigint;
     /**
      * Raw status enum
      */
@@ -43,7 +43,7 @@ export class ChaseOrder {
     'positionSideOutput'?: string;
     'chasePrice'?: string;
     'intervalSec'?: number;
-    'updatedAt'?: number;
+    'updatedAt'?: number | bigint;
     'suborderPrice'?: string;
     'suborderOngoing'?: boolean;
     'suborderFinishAs'?: string;
@@ -110,12 +110,12 @@ export class ChaseOrder {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'finishTime',
             baseName: 'finish_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'originalStatus',
@@ -175,7 +175,7 @@ export class ChaseOrder {
         {
             name: 'updatedAt',
             baseName: 'updated_at',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'suborderPrice',

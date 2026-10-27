@@ -64,7 +64,7 @@ export class OrderListDataList {
     /**
      * Order time (Unix timestamp in seconds)
      */
-    'timeSetup'?: number;
+    'timeSetup'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -132,7 +132,7 @@ export class OrderListDataList {
         {
             name: 'timeSetup',
             baseName: 'time_setup',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

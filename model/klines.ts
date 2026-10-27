@@ -15,7 +15,7 @@ export class Klines {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: KlinesData;
 
     static discriminator: string | undefined = undefined;
@@ -24,7 +24,7 @@ export class Klines {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

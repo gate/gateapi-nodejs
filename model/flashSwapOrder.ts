@@ -16,15 +16,15 @@ export class FlashSwapOrder {
     /**
      * Flash swap order ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Creation time of order (in milliseconds)
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Currency to sell
      */
@@ -56,17 +56,17 @@ export class FlashSwapOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'sellCurrency',

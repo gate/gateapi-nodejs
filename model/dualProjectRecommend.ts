@@ -13,7 +13,7 @@ export class DualProjectRecommend {
     /**
      * Product ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Strategy category
      */
@@ -41,7 +41,7 @@ export class DualProjectRecommend {
     /**
      * Settlement time
      */
-    'deliveryTimest'?: number;
+    'deliveryTimest'?: number | bigint;
     /**
      * Minimum investment amount
      */
@@ -53,15 +53,15 @@ export class DualProjectRecommend {
     /**
      * Minimum Units
      */
-    'minCopies'?: number;
+    'minCopies'?: number | bigint;
     /**
      * Maximum Units
      */
-    'maxCopies'?: number;
+    'maxCopies'?: number | bigint;
     /**
      * Lock-up days
      */
-    'investDays'?: number;
+    'investDays'?: number | bigint;
     /**
      * Lock-up hours
      */
@@ -73,7 +73,7 @@ export class DualProjectRecommend {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'category',
@@ -108,7 +108,7 @@ export class DualProjectRecommend {
         {
             name: 'deliveryTimest',
             baseName: 'delivery_timest',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'minAmount',
@@ -123,17 +123,17 @@ export class DualProjectRecommend {
         {
             name: 'minCopies',
             baseName: 'min_copies',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'maxCopies',
             baseName: 'max_copies',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'investDays',
             baseName: 'invest_days',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'investHours',

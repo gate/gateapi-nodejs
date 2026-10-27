@@ -13,7 +13,7 @@ export class FuturesLiqOrder {
     /**
      * Liquidation time
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * Futures contract
      */
@@ -45,7 +45,7 @@ export class FuturesLiqOrder {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'contract',

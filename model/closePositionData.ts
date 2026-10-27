@@ -13,7 +13,7 @@ export class ClosePositionData {
     /**
      * Close order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -21,7 +21,7 @@ export class ClosePositionData {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

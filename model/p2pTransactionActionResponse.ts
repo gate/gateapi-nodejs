@@ -41,7 +41,7 @@ export class P2pTransactionActionResponse {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'method',

@@ -53,6 +53,10 @@ export * from './apiResponseExSkillGetBeginnerTaskListRespData';
 export * from './apiResponseExSkillGetBeginnerTaskListRespDataTasks';
 export * from './apiResponseExSkillGetUserIdentityResp';
 export * from './assetListResp';
+export * from './assetListStructItem';
+export * from './assetListStructItemDefiIncome';
+export * from './assetListStructItemDefiIncomeTotalItem';
+export * from './assetListStructItemRewardCoinsItem';
 export * from './assetSwapFrontend';
 export * from './autoInvestCoinsItem';
 export * from './autoInvestConfigItem';
@@ -90,6 +94,17 @@ export * from './brokerTransactionHistory';
 export * from './cancelBatchOrder';
 export * from './cancelOrder';
 export * from './cancelOrderResult';
+export * from './candyDropV4ActivityCd01';
+export * from './candyDropV4ActivityRulesCd03';
+export * from './candyDropV4AirdropRecordCd06';
+export * from './candyDropV4ErrorCd01';
+export * from './candyDropV4ParticipationRecordCd05';
+export * from './candyDropV4PrizePoolCd03';
+export * from './candyDropV4RegisterReqCd02';
+export * from './candyDropV4RegisterRespCd02';
+export * from './candyDropV4TaskCd03';
+export * from './candyDropV4TaskProgressCd04';
+export * from './candyDropV4TaskProgressItemCd04';
 export * from './categories';
 export * from './categoriesData';
 export * from './categoriesDataList';
@@ -121,6 +136,7 @@ export * from './convertSmallBalance';
 export * from './countdownCancelAllFuturesTask';
 export * from './countdownCancelAllOptionsTask';
 export * from './countdownCancelAllSpotTask';
+export * from './couponDetailExtraItem';
 export * from './createChaseOrderReq';
 export * from './createChaseOrderResp';
 export * from './createEarnFixedTermLendResponse';
@@ -131,6 +147,7 @@ export * from './createOrder';
 export * from './createOrder2';
 export * from './createOrder2Data';
 export * from './createOrderDetail';
+export * from './createOrderV4';
 export * from './createParam';
 export * from './createTrailOrder';
 export * from './createTrailOrderResponse';
@@ -233,6 +250,10 @@ export * from './exchangesDataList';
 export * from './feeRate';
 export * from './feeRateData';
 export * from './feeRateDataList';
+export * from './findCoinStructItem';
+export * from './findCoinStructItemCurrencyRewardsItem';
+export * from './findCoinStructItemExtraInterestItem';
+export * from './findCoinStructItemExtraInterestItemSegmentInterestItem';
 export * from './fixedTermBonusInfo';
 export * from './fixedTermCouponInfo';
 export * from './fixedTermHistoryRecord';
@@ -318,6 +339,12 @@ export * from './getTransactionDetailsRequest';
 export * from './getUserCouponDetailResponse';
 export * from './getUserCouponDetailResponseData';
 export * from './getUserIdentityError';
+export * from './hodlerAirdropV4ErrorResponse';
+export * from './hodlerAirdropV4OrderRequest';
+export * from './hodlerAirdropV4OrderResponse';
+export * from './hodlerAirdropV4ProjectItem';
+export * from './hodlerAirdropV4UserAirdropRecord';
+export * from './hodlerAirdropV4UserOrderRecord';
 export * from './i18nTxt';
 export * from './indexConstituent';
 export * from './infiniteGridCreateParams';
@@ -330,6 +357,12 @@ export * from './klines';
 export * from './klinesData';
 export * from './klinesDataList';
 export * from './ladderApr';
+export * from './launchPoolV4CreateOrderResponse';
+export * from './launchPoolV4ErrorResponse';
+export * from './launchPoolV4PledgeRecord';
+export * from './launchPoolV4Project';
+export * from './launchPoolV4RewardPool';
+export * from './launchPoolV4RewardRecord';
 export * from './ledgerRecord';
 export * from './leverageFailedCurrencies';
 export * from './liquidateOrder';
@@ -572,6 +605,8 @@ export * from './rebateUserInfo';
 export * from './recommend';
 export * from './recommendV2Scheme';
 export * from './recommendV2Strategy';
+export * from './redeemLaunchPoolResponse';
+export * from './redeemV4';
 export * from './repayCurrencyRes';
 export * from './repayMultiLoan';
 export * from './repayRecordCurrency';
@@ -662,6 +697,7 @@ export * from './trailOrderChangeLogResponse';
 export * from './trailOrderDetailResponse';
 export * from './trailOrderListResponse';
 export * from './trailOrderResponse';
+export * from './transactionConfig';
 export * from './transactionID';
 export * from './transactionItem';
 export * from './transactionList';
@@ -795,6 +831,10 @@ import { ApiResponseExSkillGetBeginnerTaskListRespData } from './apiResponseExSk
 import { ApiResponseExSkillGetBeginnerTaskListRespDataTasks } from './apiResponseExSkillGetBeginnerTaskListRespDataTasks';
 import { ApiResponseExSkillGetUserIdentityResp } from './apiResponseExSkillGetUserIdentityResp';
 import { AssetListResp } from './assetListResp';
+import { AssetListStructItem } from './assetListStructItem';
+import { AssetListStructItemDefiIncome } from './assetListStructItemDefiIncome';
+import { AssetListStructItemDefiIncomeTotalItem } from './assetListStructItemDefiIncomeTotalItem';
+import { AssetListStructItemRewardCoinsItem } from './assetListStructItemRewardCoinsItem';
 import { AssetSwapFrontend } from './assetSwapFrontend';
 import { AutoInvestCoinsItem } from './autoInvestCoinsItem';
 import { AutoInvestConfigItem } from './autoInvestConfigItem';
@@ -832,6 +872,17 @@ import { BrokerTransactionHistory } from './brokerTransactionHistory';
 import { CancelBatchOrder } from './cancelBatchOrder';
 import { CancelOrder } from './cancelOrder';
 import { CancelOrderResult } from './cancelOrderResult';
+import { CandyDropV4ActivityCd01 } from './candyDropV4ActivityCd01';
+import { CandyDropV4ActivityRulesCd03 } from './candyDropV4ActivityRulesCd03';
+import { CandyDropV4AirdropRecordCd06 } from './candyDropV4AirdropRecordCd06';
+import { CandyDropV4ErrorCd01 } from './candyDropV4ErrorCd01';
+import { CandyDropV4ParticipationRecordCd05 } from './candyDropV4ParticipationRecordCd05';
+import { CandyDropV4PrizePoolCd03 } from './candyDropV4PrizePoolCd03';
+import { CandyDropV4RegisterReqCd02 } from './candyDropV4RegisterReqCd02';
+import { CandyDropV4RegisterRespCd02 } from './candyDropV4RegisterRespCd02';
+import { CandyDropV4TaskCd03 } from './candyDropV4TaskCd03';
+import { CandyDropV4TaskProgressCd04 } from './candyDropV4TaskProgressCd04';
+import { CandyDropV4TaskProgressItemCd04 } from './candyDropV4TaskProgressItemCd04';
 import { Categories } from './categories';
 import { CategoriesData } from './categoriesData';
 import { CategoriesDataList } from './categoriesDataList';
@@ -863,6 +914,7 @@ import { ConvertSmallBalance } from './convertSmallBalance';
 import { CountdownCancelAllFuturesTask } from './countdownCancelAllFuturesTask';
 import { CountdownCancelAllOptionsTask } from './countdownCancelAllOptionsTask';
 import { CountdownCancelAllSpotTask } from './countdownCancelAllSpotTask';
+import { CouponDetailExtraItem } from './couponDetailExtraItem';
 import { CreateChaseOrderReq } from './createChaseOrderReq';
 import { CreateChaseOrderResp } from './createChaseOrderResp';
 import { CreateEarnFixedTermLendResponse } from './createEarnFixedTermLendResponse';
@@ -873,6 +925,7 @@ import { CreateOrder } from './createOrder';
 import { CreateOrder2 } from './createOrder2';
 import { CreateOrder2Data } from './createOrder2Data';
 import { CreateOrderDetail } from './createOrderDetail';
+import { CreateOrderV4 } from './createOrderV4';
 import { CreateParam } from './createParam';
 import { CreateTrailOrder } from './createTrailOrder';
 import { CreateTrailOrderResponse } from './createTrailOrderResponse';
@@ -975,6 +1028,10 @@ import { ExchangesDataList } from './exchangesDataList';
 import { FeeRate } from './feeRate';
 import { FeeRateData } from './feeRateData';
 import { FeeRateDataList } from './feeRateDataList';
+import { FindCoinStructItem } from './findCoinStructItem';
+import { FindCoinStructItemCurrencyRewardsItem } from './findCoinStructItemCurrencyRewardsItem';
+import { FindCoinStructItemExtraInterestItem } from './findCoinStructItemExtraInterestItem';
+import { FindCoinStructItemExtraInterestItemSegmentInterestItem } from './findCoinStructItemExtraInterestItemSegmentInterestItem';
 import { FixedTermBonusInfo } from './fixedTermBonusInfo';
 import { FixedTermCouponInfo } from './fixedTermCouponInfo';
 import { FixedTermHistoryRecord } from './fixedTermHistoryRecord';
@@ -1060,6 +1117,12 @@ import { GetTransactionDetailsRequest } from './getTransactionDetailsRequest';
 import { GetUserCouponDetailResponse } from './getUserCouponDetailResponse';
 import { GetUserCouponDetailResponseData } from './getUserCouponDetailResponseData';
 import { GetUserIdentityError } from './getUserIdentityError';
+import { HodlerAirdropV4ErrorResponse } from './hodlerAirdropV4ErrorResponse';
+import { HodlerAirdropV4OrderRequest } from './hodlerAirdropV4OrderRequest';
+import { HodlerAirdropV4OrderResponse } from './hodlerAirdropV4OrderResponse';
+import { HodlerAirdropV4ProjectItem } from './hodlerAirdropV4ProjectItem';
+import { HodlerAirdropV4UserAirdropRecord } from './hodlerAirdropV4UserAirdropRecord';
+import { HodlerAirdropV4UserOrderRecord } from './hodlerAirdropV4UserOrderRecord';
 import { I18nTxt } from './i18nTxt';
 import { IndexConstituent } from './indexConstituent';
 import { InfiniteGridCreateParams } from './infiniteGridCreateParams';
@@ -1072,6 +1135,12 @@ import { Klines } from './klines';
 import { KlinesData } from './klinesData';
 import { KlinesDataList } from './klinesDataList';
 import { LadderApr } from './ladderApr';
+import { LaunchPoolV4CreateOrderResponse } from './launchPoolV4CreateOrderResponse';
+import { LaunchPoolV4ErrorResponse } from './launchPoolV4ErrorResponse';
+import { LaunchPoolV4PledgeRecord } from './launchPoolV4PledgeRecord';
+import { LaunchPoolV4Project } from './launchPoolV4Project';
+import { LaunchPoolV4RewardPool } from './launchPoolV4RewardPool';
+import { LaunchPoolV4RewardRecord } from './launchPoolV4RewardRecord';
 import { LedgerRecord } from './ledgerRecord';
 import { LeverageFailedCurrencies } from './leverageFailedCurrencies';
 import { LiquidateOrder } from './liquidateOrder';
@@ -1314,6 +1383,8 @@ import { RebateUserInfo } from './rebateUserInfo';
 import { Recommend } from './recommend';
 import { RecommendV2Scheme } from './recommendV2Scheme';
 import { RecommendV2Strategy } from './recommendV2Strategy';
+import { RedeemLaunchPoolResponse } from './redeemLaunchPoolResponse';
+import { RedeemV4 } from './redeemV4';
 import { RepayCurrencyRes } from './repayCurrencyRes';
 import { RepayMultiLoan } from './repayMultiLoan';
 import { RepayRecordCurrency } from './repayRecordCurrency';
@@ -1404,6 +1475,7 @@ import { TrailOrderChangeLogResponse } from './trailOrderChangeLogResponse';
 import { TrailOrderDetailResponse } from './trailOrderDetailResponse';
 import { TrailOrderListResponse } from './trailOrderListResponse';
 import { TrailOrderResponse } from './trailOrderResponse';
+import { TransactionConfig } from './transactionConfig';
 import { TransactionID } from './transactionID';
 import { TransactionItem } from './transactionItem';
 import { TransactionList } from './transactionList';
@@ -1477,7 +1549,19 @@ import { WithdrawalRecord } from './withdrawalRecord';
 import { WithdrawalsDel } from './withdrawalsDel';
 
 /* tslint:disable:no-unused-variable */
-let primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any', 'bigint'];
+let primitives = [
+    'string',
+    'boolean',
+    'double',
+    'integer',
+    'long',
+    'float',
+    'number',
+    'any',
+    'bigint',
+    'int64',
+    'bigint-string',
+];
 
 let enumsMap: { [index: string]: any } = {
     'AccountBalance.Currency': AccountBalance.Currency,
@@ -1506,6 +1590,7 @@ let enumsMap: { [index: string]: any } = {
     'Contract.MarkType': Contract.MarkType,
     'ContractMartingaleCreateRequest.StrategyType': ContractMartingaleCreateRequest.StrategyType,
     ContractMartingaleDirection: ContractMartingaleDirection,
+    'CouponDetailExtraItem.Type': CouponDetailExtraItem.Type,
     'CreateTrailOrder.PriceType': CreateTrailOrder.PriceType,
     'CreateUniLend.Type': CreateUniLend.Type,
     'CreateUniLoan.Type': CreateUniLoan.Type,
@@ -1563,8 +1648,12 @@ let enumsMap: { [index: string]: any } = {
     'GetUserCouponDetailResponse.Code': GetUserCouponDetailResponse.Code,
     'GetUserCouponDetailResponseData.Status': GetUserCouponDetailResponseData.Status,
     'GetUserCouponDetailResponseData.IsTaskCoupon': GetUserCouponDetailResponseData.IsTaskCoupon,
+    'HodlerAirdropV4ErrorResponse.Label': HodlerAirdropV4ErrorResponse.Label,
+    'HodlerAirdropV4ProjectItem.Status': HodlerAirdropV4ProjectItem.Status,
     'InfiniteGridCreateParams.PriceType': InfiniteGridCreateParams.PriceType,
     'InfiniteGridCreateRequest.StrategyType': InfiniteGridCreateRequest.StrategyType,
+    'LaunchPoolV4ErrorResponse.Label': LaunchPoolV4ErrorResponse.Label,
+    'LaunchPoolV4Project.ProjectState': LaunchPoolV4Project.ProjectState,
     'ListUserCouponsResponse.Code': ListUserCouponsResponse.Code,
     'ListUserCouponsResponseDataList.Status': ListUserCouponsResponseDataList.Status,
     'ListUserCouponsResponseDataList.IsTaskCoupon': ListUserCouponsResponseDataList.IsTaskCoupon,
@@ -1751,6 +1840,10 @@ let typeMap: { [index: string]: any } = {
     ApiResponseExSkillGetBeginnerTaskListRespDataTasks: ApiResponseExSkillGetBeginnerTaskListRespDataTasks,
     ApiResponseExSkillGetUserIdentityResp: ApiResponseExSkillGetUserIdentityResp,
     AssetListResp: AssetListResp,
+    AssetListStructItem: AssetListStructItem,
+    AssetListStructItemDefiIncome: AssetListStructItemDefiIncome,
+    AssetListStructItemDefiIncomeTotalItem: AssetListStructItemDefiIncomeTotalItem,
+    AssetListStructItemRewardCoinsItem: AssetListStructItemRewardCoinsItem,
     AssetSwapFrontend: AssetSwapFrontend,
     AutoInvestCoinsItem: AutoInvestCoinsItem,
     AutoInvestConfigItem: AutoInvestConfigItem,
@@ -1788,6 +1881,17 @@ let typeMap: { [index: string]: any } = {
     CancelBatchOrder: CancelBatchOrder,
     CancelOrder: CancelOrder,
     CancelOrderResult: CancelOrderResult,
+    CandyDropV4ActivityCd01: CandyDropV4ActivityCd01,
+    CandyDropV4ActivityRulesCd03: CandyDropV4ActivityRulesCd03,
+    CandyDropV4AirdropRecordCd06: CandyDropV4AirdropRecordCd06,
+    CandyDropV4ErrorCd01: CandyDropV4ErrorCd01,
+    CandyDropV4ParticipationRecordCd05: CandyDropV4ParticipationRecordCd05,
+    CandyDropV4PrizePoolCd03: CandyDropV4PrizePoolCd03,
+    CandyDropV4RegisterReqCd02: CandyDropV4RegisterReqCd02,
+    CandyDropV4RegisterRespCd02: CandyDropV4RegisterRespCd02,
+    CandyDropV4TaskCd03: CandyDropV4TaskCd03,
+    CandyDropV4TaskProgressCd04: CandyDropV4TaskProgressCd04,
+    CandyDropV4TaskProgressItemCd04: CandyDropV4TaskProgressItemCd04,
     Categories: Categories,
     CategoriesData: CategoriesData,
     CategoriesDataList: CategoriesDataList,
@@ -1818,6 +1922,7 @@ let typeMap: { [index: string]: any } = {
     CountdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
     CountdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
     CountdownCancelAllSpotTask: CountdownCancelAllSpotTask,
+    CouponDetailExtraItem: CouponDetailExtraItem,
     CreateChaseOrderReq: CreateChaseOrderReq,
     CreateChaseOrderResp: CreateChaseOrderResp,
     CreateEarnFixedTermLendResponse: CreateEarnFixedTermLendResponse,
@@ -1828,6 +1933,7 @@ let typeMap: { [index: string]: any } = {
     CreateOrder2: CreateOrder2,
     CreateOrder2Data: CreateOrder2Data,
     CreateOrderDetail: CreateOrderDetail,
+    CreateOrderV4: CreateOrderV4,
     CreateParam: CreateParam,
     CreateTrailOrder: CreateTrailOrder,
     CreateTrailOrderResponse: CreateTrailOrderResponse,
@@ -1929,6 +2035,10 @@ let typeMap: { [index: string]: any } = {
     FeeRate: FeeRate,
     FeeRateData: FeeRateData,
     FeeRateDataList: FeeRateDataList,
+    FindCoinStructItem: FindCoinStructItem,
+    FindCoinStructItemCurrencyRewardsItem: FindCoinStructItemCurrencyRewardsItem,
+    FindCoinStructItemExtraInterestItem: FindCoinStructItemExtraInterestItem,
+    FindCoinStructItemExtraInterestItemSegmentInterestItem: FindCoinStructItemExtraInterestItemSegmentInterestItem,
     FixedTermBonusInfo: FixedTermBonusInfo,
     FixedTermCouponInfo: FixedTermCouponInfo,
     FixedTermHistoryRecord: FixedTermHistoryRecord,
@@ -2013,6 +2123,12 @@ let typeMap: { [index: string]: any } = {
     GetUserCouponDetailResponse: GetUserCouponDetailResponse,
     GetUserCouponDetailResponseData: GetUserCouponDetailResponseData,
     GetUserIdentityError: GetUserIdentityError,
+    HodlerAirdropV4ErrorResponse: HodlerAirdropV4ErrorResponse,
+    HodlerAirdropV4OrderRequest: HodlerAirdropV4OrderRequest,
+    HodlerAirdropV4OrderResponse: HodlerAirdropV4OrderResponse,
+    HodlerAirdropV4ProjectItem: HodlerAirdropV4ProjectItem,
+    HodlerAirdropV4UserAirdropRecord: HodlerAirdropV4UserAirdropRecord,
+    HodlerAirdropV4UserOrderRecord: HodlerAirdropV4UserOrderRecord,
     I18nTxt: I18nTxt,
     IndexConstituent: IndexConstituent,
     InfiniteGridCreateParams: InfiniteGridCreateParams,
@@ -2025,6 +2141,12 @@ let typeMap: { [index: string]: any } = {
     KlinesData: KlinesData,
     KlinesDataList: KlinesDataList,
     LadderApr: LadderApr,
+    LaunchPoolV4CreateOrderResponse: LaunchPoolV4CreateOrderResponse,
+    LaunchPoolV4ErrorResponse: LaunchPoolV4ErrorResponse,
+    LaunchPoolV4PledgeRecord: LaunchPoolV4PledgeRecord,
+    LaunchPoolV4Project: LaunchPoolV4Project,
+    LaunchPoolV4RewardPool: LaunchPoolV4RewardPool,
+    LaunchPoolV4RewardRecord: LaunchPoolV4RewardRecord,
     LedgerRecord: LedgerRecord,
     LeverageFailedCurrencies: LeverageFailedCurrencies,
     LiquidateOrder: LiquidateOrder,
@@ -2268,6 +2390,8 @@ let typeMap: { [index: string]: any } = {
     Recommend: Recommend,
     RecommendV2Scheme: RecommendV2Scheme,
     RecommendV2Strategy: RecommendV2Strategy,
+    RedeemLaunchPoolResponse: RedeemLaunchPoolResponse,
+    RedeemV4: RedeemV4,
     RepayCurrencyRes: RepayCurrencyRes,
     RepayMultiLoan: RepayMultiLoan,
     RepayRecordCurrency: RepayRecordCurrency,
@@ -2357,6 +2481,7 @@ let typeMap: { [index: string]: any } = {
     TrailOrderDetailResponse: TrailOrderDetailResponse,
     TrailOrderListResponse: TrailOrderListResponse,
     TrailOrderResponse: TrailOrderResponse,
+    TransactionConfig: TransactionConfig,
     TransactionID: TransactionID,
     TransactionItem: TransactionItem,
     TransactionList: TransactionList,
@@ -2431,15 +2556,113 @@ let typeMap: { [index: string]: any } = {
 };
 
 const JSONBigInt = JSONBig({ useNativeBigInt: true });
+// The BigNumber parse mode handles long fractional tokens as well as integers.
+// Convert only unsafe integral values to bigint; ordinary numbers remain numbers.
+const ResponseJSON = JSONBig({ useNativeBigInt: false });
+
+export function parseResponseData(data: any, contentType?: unknown): any {
+    if (typeof data !== 'string' || data.length === 0) {
+        return data;
+    }
+    if (contentType && !/json/i.test(String(contentType))) {
+        return data;
+    }
+    // A malformed JSON response must reject the request, never become a string
+    // subsequently iterated as a list of fabricated empty model instances.
+    return ResponseJSON.parse(data, (_key: string, value: any) => {
+        if (
+            value &&
+            typeof value === 'object' &&
+            typeof value.isInteger === 'function' &&
+            typeof value.toFixed === 'function'
+        ) {
+            if (value.isInteger()) {
+                const integer = BigInt(value.toFixed(0));
+                return integer >= BigInt(Number.MIN_SAFE_INTEGER) && integer <= BigInt(Number.MAX_SAFE_INTEGER)
+                    ? Number(integer)
+                    : integer;
+            }
+            const number = Number(value.toString());
+            if (!Number.isFinite(number)) {
+                throw new RangeError('JSON number exceeds the JavaScript finite number range.');
+            }
+            return number;
+        }
+        return value;
+    });
+}
 
 export function serializeRequestData(data: any) {
-    if (data === undefined || data === null || typeof data === 'string') {
+    // Multipart is encoded once before signing. Re-serializing its Buffer here
+    // would change both the MIME payload and the authenticated bytes.
+    if (
+        data === undefined ||
+        data === null ||
+        typeof data === 'string' ||
+        Buffer.isBuffer(data) ||
+        data instanceof ArrayBuffer ||
+        ArrayBuffer.isView(data)
+    ) {
         return data;
     }
     return JSONBigInt.stringify(data);
 }
 
 export class ObjectSerializer {
+    /** Validate int64 before serialization; an unsafe number has already lost its original ID. */
+    private static integerValue(value: any): number | bigint {
+        if (typeof value === 'bigint' || (typeof value === 'number' && Number.isSafeInteger(value))) {
+            return value;
+        }
+        throw new TypeError('int64 must be a safe integer or bigint; construct large IDs from a decimal string.');
+    }
+
+    private static bigintValue(value: any): bigint {
+        if (typeof value === 'number') {
+            ObjectSerializer.integerValue(value);
+        }
+        return BigInt(value);
+    }
+
+    /** querystring does not encode bigint; normalize leaves without rounding them. */
+    public static serializeQueryParameter(value: any): any {
+        if (typeof value === 'bigint') {
+            return String(value);
+        }
+        return Array.isArray(value) ? value.map((item) => ObjectSerializer.serializeQueryParameter(item)) : value;
+    }
+
+    private static dictionaryValueType(type: string): string | undefined {
+        const match = /^\{\s*\[\s*key:\s*string\s*\]\s*:\s*([\s\S]+?)\s*;?\s*\}$/.exec(type);
+        return match ? match[1] : undefined;
+    }
+
+    /** Preserve own keys, including __proto__, without mutating an object's prototype. */
+    private static dictionary(data: any, type: string, deserialize: boolean): any {
+        if (typeof data !== 'object' || Array.isArray(data)) {
+            throw new TypeError('Expected a JSON object for dictionary response or request.');
+        }
+        const result: { [key: string]: any } = {};
+        for (const key of Object.keys(data)) {
+            Object.defineProperty(result, key, {
+                value: deserialize
+                    ? ObjectSerializer.deserialize(data[key], type)
+                    : ObjectSerializer.serialize(data[key], type),
+                enumerable: true,
+                writable: true,
+                configurable: true,
+            });
+        }
+        return result;
+    }
+    /** Preserve legacy safe integers while rejecting numbers whose original ID is already lost. */
+    public static serializeIntegerPathParameter(value: number | bigint, name: string): string {
+        if (typeof value === 'bigint' || (typeof value === 'number' && Number.isSafeInteger(value))) {
+            return String(value);
+        }
+        throw new TypeError(`${name} must be a safe integer or bigint; construct large IDs from a decimal string.`);
+    }
+
     public static findCorrectType(data: any, expectedType: string) {
         if (data == undefined) {
             return expectedType;
@@ -2478,10 +2701,22 @@ export class ObjectSerializer {
     public static serialize(data: any, type: string) {
         if (data == undefined) {
             return data;
+        } else if (type.toLowerCase() === 'bigint-string') {
+            // The extension changes the JavaScript representation, not the
+            // authoritative JSON string wire type.
+            return ObjectSerializer.bigintValue(data).toString();
+        } else if (type.toLowerCase() === 'int64') {
+            return ObjectSerializer.integerValue(data);
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
+            if (type.toLowerCase() === 'bigint' && typeof data === 'number') {
+                ObjectSerializer.integerValue(data);
+            }
             return data;
         } else if (type.lastIndexOf('Array<', 0) === 0) {
             // string.startsWith pre es6
+            if (!Array.isArray(data)) {
+                throw new TypeError('Expected an array for ' + type + '.');
+            }
             let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
             let transformedData: any[] = [];
@@ -2490,6 +2725,8 @@ export class ObjectSerializer {
                 transformedData.push(ObjectSerializer.serialize(date, subType));
             }
             return transformedData;
+        } else if (ObjectSerializer.dictionaryValueType(type) !== undefined) {
+            return ObjectSerializer.dictionary(data, ObjectSerializer.dictionaryValueType(type) as string, false);
         } else if (type === 'Date') {
             return data.toISOString();
         } else {
@@ -2523,13 +2760,38 @@ export class ObjectSerializer {
         type = ObjectSerializer.findCorrectType(data, type);
         if (data == undefined) {
             return data;
+        } else if (type.toLowerCase() === 'bigint-string') {
+            return ObjectSerializer.bigintValue(data);
+        } else if (type.toLowerCase() === 'int64') {
+            return ObjectSerializer.integerValue(data);
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
             if (type.toLowerCase() === 'bigint') {
+                if (typeof data === 'number') {
+                    ObjectSerializer.integerValue(data);
+                }
                 return BigInt(data);
+            }
+            if (typeof data === 'bigint') {
+                // An integral JSON token may belong to a floating-point schema.
+                // Convert only explicitly floating fields; integer declarations
+                // must never receive an undeclared bigint or a rounded number.
+                if (type.toLowerCase() === 'double' || type.toLowerCase() === 'float') {
+                    const value = Number(data);
+                    if (!Number.isFinite(value)) {
+                        throw new RangeError('JSON number exceeds the JavaScript finite number range.');
+                    }
+                    return value;
+                }
+                if (type.toLowerCase() === 'number' || type.toLowerCase() === 'integer') {
+                    throw new RangeError('JSON integer requires an int64 or bigint schema.');
+                }
             }
             return data;
         } else if (type.lastIndexOf('Array<', 0) === 0) {
             // string.startsWith pre es6
+            if (!Array.isArray(data)) {
+                throw new TypeError('Expected an array for ' + type + '.');
+            }
             let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
             let transformedData: any[] = [];
@@ -2538,6 +2800,8 @@ export class ObjectSerializer {
                 transformedData.push(ObjectSerializer.deserialize(date, subType));
             }
             return transformedData;
+        } else if (ObjectSerializer.dictionaryValueType(type) !== undefined) {
+            return ObjectSerializer.dictionary(data, ObjectSerializer.dictionaryValueType(type) as string, true);
         } else if (type === 'Date') {
             return new Date(data);
         } else {
@@ -2549,6 +2813,9 @@ export class ObjectSerializer {
             if (!typeMap[type]) {
                 // dont know the type
                 return data;
+            }
+            if (typeof data !== 'object' || Array.isArray(data)) {
+                throw new TypeError('Expected an object for ' + type + '.');
             }
             let instance = new typeMap[type]();
             let attributeTypes = typeMap[type].getAttributeTypeMap();
@@ -2641,8 +2908,10 @@ export class GateApiV4Auth implements Authentication {
         };
         const timestamp: string = (new Date().getTime() / 1000).toString();
         const resourcePath: string = new URL(config.url as string).pathname;
-        const queryString: string = unescape(querystring.stringify(config.params));
-        let bodyParam = '';
+        // Decode UTF-8 percent sequences exactly once. Encoded literal plus
+        // remains plus; only a raw form-query plus denotes a space.
+        const queryString: string = decodeURIComponent(querystring.stringify(config.params).replace(/\+/g, ' '));
+        let bodyParam: string | Buffer = '';
         if (config.data) {
             bodyParam = serializeRequestData(config.data);
         }

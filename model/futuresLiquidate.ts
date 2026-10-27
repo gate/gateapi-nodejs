@@ -13,7 +13,7 @@ export class FuturesLiquidate {
     /**
      * Liquidation time
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * Futures contract
      */
@@ -45,7 +45,7 @@ export class FuturesLiquidate {
     /**
      * Liquidation order ID. Not returned in public endpoints
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * Liquidation order price
      */
@@ -65,7 +65,7 @@ export class FuturesLiquidate {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'contract',
@@ -105,7 +105,7 @@ export class FuturesLiquidate {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'orderPrice',

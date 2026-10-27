@@ -33,7 +33,7 @@ export class TransactionListDataList {
     /**
      * Occurrence Time (Second-level Timestamp)
      */
-    'time'?: number;
+    'time'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -66,7 +66,7 @@ export class TransactionListDataList {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

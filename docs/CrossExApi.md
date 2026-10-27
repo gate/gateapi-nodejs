@@ -358,7 +358,7 @@ api.cancelBatchCrossexOrders(crossexBatchCancelOrderRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **crossexBatchCancelOrderRequest** | [**Array&lt;CrossexBatchCancelOrderRequest&gt;**](CrossexBatchCancelOrderRequest.md)|  | 
+ **crossexBatchCancelOrderRequest** | [**Array<CrossexBatchCancelOrderRequest>**](CrossexBatchCancelOrderRequest.md)|  | 
 
 ### Return type
 

@@ -13,11 +13,11 @@ export class AgencyCommission {
     /**
      * Commission time (Unix timestamp in seconds)
      */
-    'commissionTime'?: number;
+    'commissionTime'?: number | bigint;
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Group name
      */
@@ -41,12 +41,12 @@ export class AgencyCommission {
         {
             name: 'commissionTime',
             baseName: 'commission_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'groupName',

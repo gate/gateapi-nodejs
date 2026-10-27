@@ -177,8 +177,8 @@ const opts = {
   'borrowCurrency': "USDT", // string | Borrowed currency
   'page': 1, // number | Page number
   'limit': 10, // number | Maximum number of records returned in a single list
-  'from': 1609459200, // number | Start timestamp for the query
-  'to': 1609459200 // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1609459200'), // number | Start timestamp for the query
+  'to': BigInt('1609459200') // number | End timestamp for the query, defaults to current time if not specified
 };
 api.listMultiRepayRecords(type, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -194,8 +194,8 @@ Name | Type | Description  | Notes
  **borrowCurrency** | **string**| Borrowed currency | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 10]
- **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
 
 ### Return type
 
@@ -273,8 +273,8 @@ const api = new GateApi.MultiCollateralLoanApi(client);
 const opts = {
   'page': 1, // number | Page number
   'limit': 10, // number | Maximum number of records returned in a single list
-  'from': 1609459200, // number | Start timestamp for the query
-  'to': 1609459200, // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1609459200'), // number | Start timestamp for the query
+  'to': BigInt('1609459200'), // number | End timestamp for the query, defaults to current time if not specified
   'collateralCurrency': "BTC" // string | Collateral currency
 };
 api.listMultiCollateralRecords(opts)
@@ -289,8 +289,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 10]
- **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **collateralCurrency** | **string**| Collateral currency | [optional] [default to undefined]
 
 ### Return type
@@ -538,7 +538,7 @@ api.getMultiCollateralCurrentRate(currencies, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencies** | [**Array&lt;string&gt;**](string.md)| Specify currency name query array, separated by commas, maximum 100 | [default to undefined]
+ **currencies** | [**Array<string>**](string.md)| Specify currency name query array, separated by commas, maximum 100 | [default to undefined]
  **vipLevel** | **string**| VIP level, defaults to 0 if not specified | [optional] [default to &#39;0&#39;]
 
 ### Return type

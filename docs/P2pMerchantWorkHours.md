@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workStatus** | **number** | Merchant\&#39;s current working status. 0: normal resting, 1: normal working, 2: custom resting, 3: custom working | [optional] [default to undefined]
+**workStatus** | **P2pMerchantWorkHours.WorkStatus** | Merchant\&#39;s current working status. 0: normal resting, 1: normal working, 2: custom resting, 3: custom working | [optional] [default to undefined]
 
 ## Enum: P2pMerchantWorkHours.WorkStatus
 

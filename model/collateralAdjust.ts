@@ -15,7 +15,7 @@ export class CollateralAdjust {
     /**
      * Order ID
      */
-    'orderId': number;
+    'orderId': number | bigint;
     /**
      * Operation type: append - add collateral, redeem - withdraw collateral
      */
@@ -31,7 +31,7 @@ export class CollateralAdjust {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'type',

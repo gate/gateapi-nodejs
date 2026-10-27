@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **askPrice** | **string** | Ask price | [optional] [default to undefined]
 **favorite** | **boolean** | Is favorited | [optional] [default to undefined]
 **status** | **string** | Trading status (open&#x3D;tradable, closed&#x3D;non-tradable) | [optional] [default to undefined]
-**closeTime** | **number** | Close time (Unix timestamp in seconds) | [optional] [default to undefined]
-**openTime** | **number** | Open time (Unix timestamp in seconds) | [optional] [default to undefined]
-**nextOpenTime** | **number** | Next open time (0 means none) | [optional] [default to undefined]
+**closeTime** | **number &#124; bigint** | Close time (Unix timestamp in seconds) | [optional] [default to undefined]
+**openTime** | **number &#124; bigint** | Open time (Unix timestamp in seconds) | [optional] [default to undefined]
+**nextOpenTime** | **number &#124; bigint** | Next open time (0 means none) | [optional] [default to undefined]
 **tradeMode** | **string** | Trading mode code | [optional] [default to undefined]
 **categoryName** | **string** | Category name | [optional] [default to undefined]
 

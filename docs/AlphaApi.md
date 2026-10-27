@@ -75,9 +75,9 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AlphaApi(client);
-const from = 56; // number | Start timestamp for the query
+const from = BigInt('56'); // number | Start timestamp for the query
 const opts = {
-  'to': 56, // number | End timestamp for the query, defaults to current time if not specified
+  'to': BigInt('56'), // number | End timestamp for the query, defaults to current time if not specified
   'page': 56, // number | Page number
   'limit': 56 // number | Maximum 100 items per page
 };
@@ -91,8 +91,8 @@ api.listAlphaAccountBook(from, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from** | **number**| Start timestamp for the query | [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp for the query | [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to undefined]
  **limit** | **number**| Maximum 100 items per page | [optional] [default to undefined]
 
@@ -175,8 +175,8 @@ const opts = {
   'currency': "memeboxsst", // string | Trading symbol
   'side': "buy", // string | Buy or sell orders - buy - sell
   'status': 2, // number | Order Status - `0` : All - `1` : Processing - `2` : Successful - `3` : Failed - `4` : Cancelled - `5` : Buy order placed but transfer not completed - `6` : Order cancelled but transfer not completed
-  'from': 1627706330, // number | Start time for order query
-  'to': 1635329650, // number | End time for order query, defaults to current time if not specified
+  'from': BigInt('1627706330'), // number | Start time for order query
+  'to': BigInt('1635329650'), // number | End time for order query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
   'page': 1 // number | Page number
 };
@@ -193,8 +193,8 @@ Name | Type | Description  | Notes
  **currency** | **string**| Trading symbol | [optional] [default to undefined]
  **side** | **string**| Buy or sell orders - buy - sell | [optional] [default to undefined]
  **status** | **number**| Order Status - &#x60;0&#x60; : All - &#x60;1&#x60; : Processing - &#x60;2&#x60; : Successful - &#x60;3&#x60; : Failed - &#x60;4&#x60; : Cancelled - &#x60;5&#x60; : Buy order placed but transfer not completed - &#x60;6&#x60; : Order cancelled but transfer not completed | [optional] [default to undefined]
- **from** | **number**| Start time for order query | [optional] [default to undefined]
- **to** | **number**| End time for order query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time for order query | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End time for order query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 | [optional] [default to 100]
  **page** | **number**| Page number | [optional] [default to 1]
 

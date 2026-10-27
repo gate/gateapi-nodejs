@@ -53,6 +53,7 @@ export class OTCApi {
     public async createOtcQuote(
         otcQuoteRequest: OtcQuoteRequest,
     ): Promise<{ response: AxiosResponse; body: OtcQuoteResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/quote';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -89,6 +90,7 @@ export class OTCApi {
     public async createOtcOrder(
         otcOrderRequest: OtcOrderRequest,
     ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -125,6 +127,7 @@ export class OTCApi {
     public async createStableCoinOrder(
         otcStableCoinOrderRequest: OtcStableCoinOrderRequest,
     ): Promise<{ response: AxiosResponse; body: OtcStableCoinOrderCreateResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/stable_coin/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -164,6 +167,7 @@ export class OTCApi {
      * @summary Get user bank card list
      */
     public async getBankListInnerPath(): Promise<{ response: AxiosResponse; body: OtcBankListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/bank/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -219,6 +223,7 @@ export class OTCApi {
             fileType?: string;
         },
     ): Promise<{ response: AxiosResponse; body: OtcBankCreateResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/bank/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -262,12 +267,47 @@ export class OTCApi {
 
         opts = opts || {};
 
+        // Final form encoding is centralized in ApiClient before HMAC is applied.
+        const localVarFormParameters: { [key: string]: any } = {};
+        localVarFormParameters['bank_account_name'] = ObjectSerializer.serialize(bankAccountName, 'string');
+        localVarFormParameters['bank_name'] = ObjectSerializer.serialize(bankName, 'string');
+        localVarFormParameters['bank_country'] = ObjectSerializer.serialize(bankCountry, 'string');
+        localVarFormParameters['bank_address'] = ObjectSerializer.serialize(bankAddress, 'string');
+        localVarFormParameters['iban'] = ObjectSerializer.serialize(iban, 'string');
+        localVarFormParameters['swift'] = ObjectSerializer.serialize(swift, 'string');
+        if (opts.remittanceLineNumber !== undefined) {
+            localVarFormParameters['remittance_line_number'] = ObjectSerializer.serialize(
+                opts.remittanceLineNumber,
+                'string',
+            );
+        }
+        if (opts.agentBankName !== undefined) {
+            localVarFormParameters['agent_bank_name'] = ObjectSerializer.serialize(opts.agentBankName, 'string');
+        }
+        if (opts.agentBankSwift !== undefined) {
+            localVarFormParameters['agent_bank_swift'] = ObjectSerializer.serialize(opts.agentBankSwift, 'string');
+        }
+        if (opts.documentationFile !== undefined) {
+            localVarFormParameters['documentation_file'] = ObjectSerializer.serialize(opts.documentationFile, 'string');
+        }
+        if (opts.documentationFileKey !== undefined) {
+            localVarFormParameters['documentation_file_key'] = ObjectSerializer.serialize(
+                opts.documentationFileKey,
+                'string',
+            );
+        }
+        if (opts.fileType !== undefined) {
+            localVarFormParameters['file_type'] = ObjectSerializer.serialize(opts.fileType, 'string');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
         };
+
+        this.client.setFormData(config, localVarFormParameters, ['multipart/form-data']);
 
         const authSettings = ['apiv4'];
         return this.client.request<OtcBankCreateResponse>(config, 'OtcBankCreateResponse', authSettings);
@@ -281,6 +321,7 @@ export class OTCApi {
     public async deleteOtcBank(
         otcBankIdRequest: OtcBankIdRequest,
     ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/bank/delete';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -317,6 +358,7 @@ export class OTCApi {
     public async setDefaultOtcBank(
         otcBankIdRequest: OtcBankIdRequest,
     ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/bank/set_default';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -355,6 +397,7 @@ export class OTCApi {
     public async getOtcBankSupplementChecklist(
         bankId: string,
     ): Promise<{ response: AxiosResponse; body: OtcBankSupplementChecklistResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/bank/bank_supplement_checklist';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -373,8 +416,8 @@ export class OTCApi {
             );
         }
 
-        let bankIdSerialized = ObjectSerializer.serialize(bankId, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let bankIdSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(bankId, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(bankIdSerialized)) {
             bankIdSerialized = bankIdSerialized.join(',');
         }
@@ -409,6 +452,7 @@ export class OTCApi {
         bankId: string,
         opts?: { idDocumentFront?: string; idDocumentBack?: string; addressProof?: string; relationshipProof?: string },
     ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/bank/personal/bank_supplement';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -429,12 +473,30 @@ export class OTCApi {
 
         opts = opts || {};
 
+        // Final form encoding is centralized in ApiClient before HMAC is applied.
+        const localVarFormParameters: { [key: string]: any } = {};
+        localVarFormParameters['bank_id'] = ObjectSerializer.serialize(bankId, 'string');
+        if (opts.idDocumentFront !== undefined) {
+            localVarFormParameters['id_document_front'] = ObjectSerializer.serialize(opts.idDocumentFront, 'string');
+        }
+        if (opts.idDocumentBack !== undefined) {
+            localVarFormParameters['id_document_back'] = ObjectSerializer.serialize(opts.idDocumentBack, 'string');
+        }
+        if (opts.addressProof !== undefined) {
+            localVarFormParameters['address_proof'] = ObjectSerializer.serialize(opts.addressProof, 'string');
+        }
+        if (opts.relationshipProof !== undefined) {
+            localVarFormParameters['relationship_proof'] = ObjectSerializer.serialize(opts.relationshipProof, 'string');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
         };
+
+        this.client.setFormData(config, localVarFormParameters, ['multipart/form-data']);
 
         const authSettings = ['apiv4'];
         return this.client.request<OtcActionResponse>(config, 'OtcActionResponse', authSettings);
@@ -467,6 +529,7 @@ export class OTCApi {
             relationshipProof?: string;
         },
     ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/bank/enterprise/bank_supplement';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -487,12 +550,45 @@ export class OTCApi {
 
         opts = opts || {};
 
+        // Final form encoding is centralized in ApiClient before HMAC is applied.
+        const localVarFormParameters: { [key: string]: any } = {};
+        if (opts.uid !== undefined) {
+            localVarFormParameters['uid'] = ObjectSerializer.serialize(opts.uid, 'string');
+        }
+        localVarFormParameters['bank_id'] = ObjectSerializer.serialize(bankId, 'string');
+        if (opts.certificate !== undefined) {
+            localVarFormParameters['certificate'] = ObjectSerializer.serialize(opts.certificate, 'string');
+        }
+        if (opts.shareHolders !== undefined) {
+            localVarFormParameters['share_holders'] = ObjectSerializer.serialize(opts.shareHolders, 'string');
+        }
+        if (opts.passport !== undefined) {
+            localVarFormParameters['passport'] = ObjectSerializer.serialize(opts.passport, 'string');
+        }
+        if (opts.shareHoldingStructure !== undefined) {
+            localVarFormParameters['share_holding_structure'] = ObjectSerializer.serialize(
+                opts.shareHoldingStructure,
+                'string',
+            );
+        }
+        if (opts.fundsStatement !== undefined) {
+            localVarFormParameters['funds_statement'] = ObjectSerializer.serialize(opts.fundsStatement, 'string');
+        }
+        if (opts.additional !== undefined) {
+            localVarFormParameters['additional'] = ObjectSerializer.serialize(opts.additional, 'string');
+        }
+        if (opts.relationshipProof !== undefined) {
+            localVarFormParameters['relationship_proof'] = ObjectSerializer.serialize(opts.relationshipProof, 'string');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
         };
+
+        this.client.setFormData(config, localVarFormParameters, ['multipart/form-data']);
 
         const authSettings = ['apiv4'];
         return this.client.request<OtcActionResponse>(config, 'OtcActionResponse', authSettings);
@@ -506,6 +602,7 @@ export class OTCApi {
     public async createOtcUploadPreUpload(
         otcUploadPreUploadRequest: OtcUploadPreUploadRequest,
     ): Promise<{ response: AxiosResponse; body: OtcUploadPreUploadResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/upload/pre_upload';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -544,6 +641,7 @@ export class OTCApi {
     public async markOtcOrderPaid(
         otcMarkOrderPaidRequest: OtcMarkOrderPaidRequest,
     ): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/order/paid';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -580,6 +678,7 @@ export class OTCApi {
      * @param orderId Order ID
      */
     public async cancelOtcOrder(orderId: string): Promise<{ response: AxiosResponse; body: OtcActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/order/cancel';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -596,8 +695,8 @@ export class OTCApi {
             throw new Error('Required parameter orderId was null or undefined when calling cancelOtcOrder.');
         }
 
-        let orderIdSerialized = ObjectSerializer.serialize(orderId, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let orderIdSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(orderId, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(orderIdSerialized)) {
             orderIdSerialized = orderIdSerialized.join(',');
         }
@@ -637,6 +736,7 @@ export class OTCApi {
         pn?: string;
         ps?: string;
     }): Promise<{ response: AxiosResponse; body: OtcOrderListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/order/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -650,8 +750,10 @@ export class OTCApi {
 
         opts = opts || {};
         if (opts.type !== undefined) {
-            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let typeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.type, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(typeSerialized)) {
                 typeSerialized = typeSerialized.join(',');
             }
@@ -659,8 +761,10 @@ export class OTCApi {
         }
 
         if (opts.fiatCurrency !== undefined) {
-            let fiatCurrencySerialized = ObjectSerializer.serialize(opts.fiatCurrency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fiatCurrencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.fiatCurrency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fiatCurrencySerialized)) {
                 fiatCurrencySerialized = fiatCurrencySerialized.join(',');
             }
@@ -668,8 +772,10 @@ export class OTCApi {
         }
 
         if (opts.cryptoCurrency !== undefined) {
-            let cryptoCurrencySerialized = ObjectSerializer.serialize(opts.cryptoCurrency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let cryptoCurrencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.cryptoCurrency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(cryptoCurrencySerialized)) {
                 cryptoCurrencySerialized = cryptoCurrencySerialized.join(',');
             }
@@ -677,8 +783,10 @@ export class OTCApi {
         }
 
         if (opts.startTime !== undefined) {
-            let startTimeSerialized = ObjectSerializer.serialize(opts.startTime, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let startTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.startTime, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(startTimeSerialized)) {
                 startTimeSerialized = startTimeSerialized.join(',');
             }
@@ -686,8 +794,10 @@ export class OTCApi {
         }
 
         if (opts.endTime !== undefined) {
-            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endTime, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endTimeSerialized)) {
                 endTimeSerialized = endTimeSerialized.join(',');
             }
@@ -695,8 +805,10 @@ export class OTCApi {
         }
 
         if (opts.status !== undefined) {
-            let statusSerialized = ObjectSerializer.serialize(opts.status, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let statusSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.status, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(statusSerialized)) {
                 statusSerialized = statusSerialized.join(',');
             }
@@ -704,8 +816,8 @@ export class OTCApi {
         }
 
         if (opts.pn !== undefined) {
-            let pnSerialized = ObjectSerializer.serialize(opts.pn, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pnSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.pn, 'string'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pnSerialized)) {
                 pnSerialized = pnSerialized.join(',');
             }
@@ -713,8 +825,8 @@ export class OTCApi {
         }
 
         if (opts.ps !== undefined) {
-            let psSerialized = ObjectSerializer.serialize(opts.ps, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let psSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.ps, 'string'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(psSerialized)) {
                 psSerialized = psSerialized.join(',');
             }
@@ -751,6 +863,7 @@ export class OTCApi {
         endTime?: string;
         status?: string;
     }): Promise<{ response: AxiosResponse; body: OtcStableCoinOrderListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/stable_coin/order/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -764,8 +877,10 @@ export class OTCApi {
 
         opts = opts || {};
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -773,8 +888,10 @@ export class OTCApi {
         }
 
         if (opts.pageNumber !== undefined) {
-            let pageNumberSerialized = ObjectSerializer.serialize(opts.pageNumber, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageNumberSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageNumber, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageNumberSerialized)) {
                 pageNumberSerialized = pageNumberSerialized.join(',');
             }
@@ -782,8 +899,10 @@ export class OTCApi {
         }
 
         if (opts.coinName !== undefined) {
-            let coinNameSerialized = ObjectSerializer.serialize(opts.coinName, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let coinNameSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.coinName, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(coinNameSerialized)) {
                 coinNameSerialized = coinNameSerialized.join(',');
             }
@@ -791,8 +910,10 @@ export class OTCApi {
         }
 
         if (opts.startTime !== undefined) {
-            let startTimeSerialized = ObjectSerializer.serialize(opts.startTime, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let startTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.startTime, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(startTimeSerialized)) {
                 startTimeSerialized = startTimeSerialized.join(',');
             }
@@ -800,8 +921,10 @@ export class OTCApi {
         }
 
         if (opts.endTime !== undefined) {
-            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endTime, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endTimeSerialized)) {
                 endTimeSerialized = endTimeSerialized.join(',');
             }
@@ -809,8 +932,10 @@ export class OTCApi {
         }
 
         if (opts.status !== undefined) {
-            let statusSerialized = ObjectSerializer.serialize(opts.status, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let statusSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.status, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(statusSerialized)) {
                 statusSerialized = statusSerialized.join(',');
             }
@@ -840,6 +965,7 @@ export class OTCApi {
     public async getOtcOrderDetail(
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: OtcOrderDetailResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/otc/order/detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -856,8 +982,8 @@ export class OTCApi {
             throw new Error('Required parameter orderId was null or undefined when calling getOtcOrderDetail.');
         }
 
-        let orderIdSerialized = ObjectSerializer.serialize(orderId, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let orderIdSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(orderId, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(orderIdSerialized)) {
             orderIdSerialized = orderIdSerialized.join(',');
         }

@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Interest rate boost coupon record ID | [default to undefined]
 **business** | **number** | Business Type | [default to undefined]
-**userId** | **number** | User ID | [default to undefined]
+**userId** | **number &#124; bigint** | User ID | [default to undefined]
 **asset** | **string** | Currency | [default to undefined]
-**orderId** | **number** | Associated order ID | [default to undefined]
+**orderId** | **number &#124; bigint** | Associated order ID | [default to undefined]
 **financialRateId** | **number** | Interest rate boost coupon ID | [default to undefined]
 **buyLimitLow** | **string** | Minimum subscription amount for interest rate boost coupon | [default to undefined]
 **buyLimitHigh** | **string** | Maximum subscription amount for interest rate boost coupon | [default to undefined]

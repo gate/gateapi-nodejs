@@ -17,7 +17,7 @@ export class FuturesInitialOrder {
     /**
      * Represents the number of contracts that need to be closed, full closing: size=0 Partial closing: plan-close-short-position size>0  Partial closing: plan-close-long-position size<0
      */
-    'size'?: number;
+    'size'?: number | bigint;
     /**
      * Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
      */
@@ -66,7 +66,7 @@ export class FuturesInitialOrder {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'amount',

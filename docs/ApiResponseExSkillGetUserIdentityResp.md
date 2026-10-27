@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **label** | **string** | Error identifier code. Empty string on success, machine-readable error label on error | [optional] [default to undefined]
 **message** | **string** | Error description | [optional] [default to undefined]
 **data** | [**object**](.md) | Empty object {} on success, null on failure | [optional] [default to undefined]
-**timestamp** | **number** | Server timestamp (milliseconds) | [optional] [default to undefined]
+**timestamp** | **number &#124; bigint** | Server timestamp (milliseconds) | [optional] [default to undefined]
 

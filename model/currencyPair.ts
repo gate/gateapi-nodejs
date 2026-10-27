@@ -72,15 +72,15 @@ export class CurrencyPair {
     /**
      * Sell start unix timestamp in seconds
      */
-    'sellStart'?: number;
+    'sellStart'?: number | bigint;
     /**
      * Buy start unix timestamp in seconds
      */
-    'buyStart'?: number;
+    'buyStart'?: number | bigint;
     /**
      * Expected time to remove the shelves, Unix timestamp in seconds
      */
-    'delistingTime'?: number;
+    'delistingTime'?: number | bigint;
     /**
      * Trading pair type, normal: normal, premarket: pre-market
      */
@@ -190,17 +190,17 @@ export class CurrencyPair {
         {
             name: 'sellStart',
             baseName: 'sell_start',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'buyStart',
             baseName: 'buy_start',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'delistingTime',
             baseName: 'delisting_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'type',

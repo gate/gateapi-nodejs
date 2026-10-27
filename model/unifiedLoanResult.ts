@@ -16,7 +16,7 @@ export class UnifiedLoanResult {
     /**
      * Transaction ID
      */
-    'tranId'?: number;
+    'tranId'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -24,7 +24,7 @@ export class UnifiedLoanResult {
         {
             name: 'tranId',
             baseName: 'tran_id',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

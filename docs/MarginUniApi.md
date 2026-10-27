@@ -122,7 +122,7 @@ api.getMarginUniEstimateRate(currencies)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencies** | [**Array&lt;string&gt;**](string.md)| Array of currency names to query, maximum 10 | [default to undefined]
+ **currencies** | [**Array<string>**](string.md)| Array of currency names to query, maximum 10 | [default to undefined]
 
 ### Return type
 
@@ -306,8 +306,8 @@ const opts = {
   'currency': "BTC", // string | Query by specified currency name
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of records returned in a single list
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332') // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
 api.listUniLoanInterestRecords(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -323,8 +323,8 @@ Name | Type | Description  | Notes
  **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
 ### Return type
 

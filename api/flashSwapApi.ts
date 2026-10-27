@@ -59,6 +59,7 @@ export class FlashSwapApi {
         page?: number;
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<FlashSwapCurrencyPair> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/currency_pairs';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -72,8 +73,10 @@ export class FlashSwapApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencySerialized)) {
                 currencySerialized = currencySerialized.join(',');
             }
@@ -81,8 +84,10 @@ export class FlashSwapApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -90,8 +95,10 @@ export class FlashSwapApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -128,6 +135,7 @@ export class FlashSwapApi {
         limit?: number;
         page?: number;
     }): Promise<{ response: AxiosResponse; body: Array<FlashSwapOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -141,8 +149,10 @@ export class FlashSwapApi {
 
         opts = opts || {};
         if (opts.status !== undefined) {
-            let statusSerialized = ObjectSerializer.serialize(opts.status, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let statusSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.status, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(statusSerialized)) {
                 statusSerialized = statusSerialized.join(',');
             }
@@ -150,8 +160,10 @@ export class FlashSwapApi {
         }
 
         if (opts.sellCurrency !== undefined) {
-            let sellCurrencySerialized = ObjectSerializer.serialize(opts.sellCurrency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sellCurrencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sellCurrency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sellCurrencySerialized)) {
                 sellCurrencySerialized = sellCurrencySerialized.join(',');
             }
@@ -159,8 +171,10 @@ export class FlashSwapApi {
         }
 
         if (opts.buyCurrency !== undefined) {
-            let buyCurrencySerialized = ObjectSerializer.serialize(opts.buyCurrency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let buyCurrencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.buyCurrency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(buyCurrencySerialized)) {
                 buyCurrencySerialized = buyCurrencySerialized.join(',');
             }
@@ -168,8 +182,10 @@ export class FlashSwapApi {
         }
 
         if (opts.reverse !== undefined) {
-            let reverseSerialized = ObjectSerializer.serialize(opts.reverse, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let reverseSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.reverse, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(reverseSerialized)) {
                 reverseSerialized = reverseSerialized.join(',');
             }
@@ -177,8 +193,10 @@ export class FlashSwapApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -186,8 +204,10 @@ export class FlashSwapApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -213,6 +233,7 @@ export class FlashSwapApi {
     public async createFlashSwapOrder(
         flashSwapOrderRequest: FlashSwapOrderRequest,
     ): Promise<{ response: AxiosResponse; body: FlashSwapOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -249,6 +270,7 @@ export class FlashSwapApi {
      * @param orderId Flash swap order ID
      */
     public async getFlashSwapOrder(orderId: number): Promise<{ response: AxiosResponse; body: FlashSwapOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/flash_swap/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -286,6 +308,7 @@ export class FlashSwapApi {
     public async previewFlashSwapOrder(
         flashSwapPreviewRequest: FlashSwapPreviewRequest,
     ): Promise<{ response: AxiosResponse; body: FlashSwapOrderPreview }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/orders/preview';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -324,6 +347,7 @@ export class FlashSwapApi {
     public async createFlashSwapMultiCurrencyManyToOneOrder(
         flashSwapMultiCurrencyManyToOneOrderCreateReq: FlashSwapMultiCurrencyManyToOneOrderCreateReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyManyToOneOrderCreateResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/multi-currency/many-to-one/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -372,6 +396,7 @@ export class FlashSwapApi {
     public async previewFlashSwapMultiCurrencyManyToOneOrder(
         flashSwapMultiCurrencyManyToOneOrderPreviewReq: FlashSwapMultiCurrencyManyToOneOrderPreviewReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyManyToOneOrderPreviewResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/multi-currency/many-to-one/order/preview';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -420,6 +445,7 @@ export class FlashSwapApi {
     public async createFlashSwapOrderV1(
         flashSwapOrderCreateReq: FlashSwapOrderCreateReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapOrderCreateResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -458,6 +484,7 @@ export class FlashSwapApi {
     public async createFlashSwapMultiCurrencyOneToManyOrder(
         flashSwapMultiCurrencyOneToManyOrderCreateReq: FlashSwapMultiCurrencyOneToManyOrderCreateReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyOneToManyOrderCreateResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/multi-currency/one-to-many/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -506,6 +533,7 @@ export class FlashSwapApi {
     public async previewFlashSwapMultiCurrencyOneToManyOrder(
         flashSwapMultiCurrencyOneToManyOrderPreviewReq: FlashSwapMultiCurrencyOneToManyOrderPreviewReq,
     ): Promise<{ response: AxiosResponse; body: FlashSwapMultiCurrencyOneToManyOrderPreviewResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/multi-currency/one-to-many/order/preview';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -560,6 +588,7 @@ export class FlashSwapApi {
         buyAsset: string,
         opts?: { sellAmount?: string; buyAmount?: string },
     ): Promise<{ response: AxiosResponse; body: FlashSwapOrderPreviewResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/flash_swap/order/preview';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -582,32 +611,40 @@ export class FlashSwapApi {
         }
 
         opts = opts || {};
-        let sellAssetSerialized = ObjectSerializer.serialize(sellAsset, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let sellAssetSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(sellAsset, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(sellAssetSerialized)) {
             sellAssetSerialized = sellAssetSerialized.join(',');
         }
         localVarQueryParameters['sell_asset'] = sellAssetSerialized;
 
         if (opts.sellAmount !== undefined) {
-            let sellAmountSerialized = ObjectSerializer.serialize(opts.sellAmount, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sellAmountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sellAmount, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sellAmountSerialized)) {
                 sellAmountSerialized = sellAmountSerialized.join(',');
             }
             localVarQueryParameters['sell_amount'] = sellAmountSerialized;
         }
 
-        let buyAssetSerialized = ObjectSerializer.serialize(buyAsset, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let buyAssetSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(buyAsset, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(buyAssetSerialized)) {
             buyAssetSerialized = buyAssetSerialized.join(',');
         }
         localVarQueryParameters['buy_asset'] = buyAssetSerialized;
 
         if (opts.buyAmount !== undefined) {
-            let buyAmountSerialized = ObjectSerializer.serialize(opts.buyAmount, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let buyAmountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.buyAmount, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(buyAmountSerialized)) {
                 buyAmountSerialized = buyAmountSerialized.join(',');
             }

@@ -13,15 +13,15 @@ export class OrderBook {
     /**
      * Order book ID, which is updated whenever the order book is changed. Valid only when `with_id` is set to `true`
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * The timestamp of the response data being generated (in milliseconds)
      */
-    'current'?: number;
+    'current'?: number | bigint;
     /**
      * The timestamp of when the orderbook last changed (in milliseconds)
      */
-    'update'?: number;
+    'update'?: number | bigint;
     /**
      * Ask Depth
      */
@@ -37,17 +37,17 @@ export class OrderBook {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'current',
             baseName: 'current',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'update',
             baseName: 'update',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'asks',

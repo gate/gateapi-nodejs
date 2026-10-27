@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **number** | Order ID | [default to undefined]
-**repayItems** | [**Array&lt;MultiLoanRepayItem&gt;**](MultiLoanRepayItem.md) | Repay Currency Item | [default to undefined]
+**orderId** | **number &#124; bigint** | Order ID | [default to undefined]
+**repayItems** | [**Array<MultiLoanRepayItem>**](MultiLoanRepayItem.md) | Repay Currency Item | [default to undefined]
 

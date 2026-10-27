@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time** | **number** | Liquidation time | [optional] [readonly] [default to undefined]
+**time** | **number &#124; bigint** | Liquidation time | [optional] [readonly] [default to undefined]
 **contract** | **string** | Futures contract | [optional] [readonly] [default to undefined]
 **size** | **string** | User position size | [optional] [readonly] [default to undefined]
 **orderSize** | **string** | Number of forced liquidation orders | [optional] [readonly] [default to undefined]

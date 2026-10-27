@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currencyPair** | **string** | Currency pair | [default to undefined]
-**side** | **string** | Buy or sell order | [default to undefined]
+**side** | **SpotPovOrderCreator.Side** | Buy or sell order | [default to undefined]
 **amount** | **string** | Trade amount | [default to undefined]
 **participationRate** | **number** | Target participation rate as a percentage. Valid values: 5, 10, 20, and 40 | [default to undefined]
 **ttl** | **string** | Time to live. Valid values: 1h, 6h, 12h, 1d, 2d, 3d, 4d, 5d, 6d, and 7d | [default to undefined]

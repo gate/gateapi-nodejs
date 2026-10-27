@@ -124,7 +124,7 @@ export class FuturesOrder {
     /**
      * Position ID
      */
-    'pid'?: number;
+    'pid'?: number | bigint;
     /**
      * Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used
      */
@@ -170,17 +170,17 @@ export class FuturesOrder {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'finishTime',
             baseName: 'finish_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'finishAs',
@@ -295,7 +295,7 @@ export class FuturesOrder {
         {
             name: 'pid',
             baseName: 'pid',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'marketOrderSlipRatio',

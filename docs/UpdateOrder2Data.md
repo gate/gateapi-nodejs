@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **number** | Order ID | [optional] [default to undefined]
+**orderId** | **number &#124; bigint** | Order ID | [optional] [default to undefined]
 

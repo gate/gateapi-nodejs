@@ -74,6 +74,7 @@ export class BotApi {
         xRequestId?: string;
         xTraceId?: string;
     }): Promise<{ response: AxiosResponse; body: AIHubDiscoverSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/strategy/recommend';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -87,8 +88,10 @@ export class BotApi {
 
         opts = opts || {};
         if (opts.market !== undefined) {
-            let marketSerialized = ObjectSerializer.serialize(opts.market, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let marketSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.market, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(marketSerialized)) {
                 marketSerialized = marketSerialized.join(',');
             }
@@ -96,11 +99,10 @@ export class BotApi {
         }
 
         if (opts.strategyType !== undefined) {
-            let strategyTypeSerialized = ObjectSerializer.serialize(
-                opts.strategyType,
-                "'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale'",
+            let strategyTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.strategyType, 'StrategyType'),
             );
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(strategyTypeSerialized)) {
                 strategyTypeSerialized = strategyTypeSerialized.join(',');
             }
@@ -108,8 +110,10 @@ export class BotApi {
         }
 
         if (opts.direction !== undefined) {
-            let directionSerialized = ObjectSerializer.serialize(opts.direction, "'buy' | 'sell' | 'neutral'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let directionSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.direction, 'Direction'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(directionSerialized)) {
                 directionSerialized = directionSerialized.join(',');
             }
@@ -117,8 +121,10 @@ export class BotApi {
         }
 
         if (opts.investAmount !== undefined) {
-            let investAmountSerialized = ObjectSerializer.serialize(opts.investAmount, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let investAmountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.investAmount, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(investAmountSerialized)) {
                 investAmountSerialized = investAmountSerialized.join(',');
             }
@@ -126,8 +132,10 @@ export class BotApi {
         }
 
         if (opts.scene !== undefined) {
-            let sceneSerialized = ObjectSerializer.serialize(opts.scene, "'top1' | 'bundle' | 'filter' | 'refresh'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sceneSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.scene, 'Scene'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sceneSerialized)) {
                 sceneSerialized = sceneSerialized.join(',');
             }
@@ -135,8 +143,10 @@ export class BotApi {
         }
 
         if (opts.refreshRecommendationId !== undefined) {
-            let refreshRecommendationIdSerialized = ObjectSerializer.serialize(opts.refreshRecommendationId, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let refreshRecommendationIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.refreshRecommendationId, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(refreshRecommendationIdSerialized)) {
                 refreshRecommendationIdSerialized = refreshRecommendationIdSerialized.join(',');
             }
@@ -144,8 +154,10 @@ export class BotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -153,8 +165,10 @@ export class BotApi {
         }
 
         if (opts.maxDrawdownLte !== undefined) {
-            let maxDrawdownLteSerialized = ObjectSerializer.serialize(opts.maxDrawdownLte, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let maxDrawdownLteSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.maxDrawdownLte, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(maxDrawdownLteSerialized)) {
                 maxDrawdownLteSerialized = maxDrawdownLteSerialized.join(',');
             }
@@ -162,8 +176,10 @@ export class BotApi {
         }
 
         if (opts.backtestAprGte !== undefined) {
-            let backtestAprGteSerialized = ObjectSerializer.serialize(opts.backtestAprGte, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let backtestAprGteSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.backtestAprGte, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(backtestAprGteSerialized)) {
                 backtestAprGteSerialized = backtestAprGteSerialized.join(',');
             }
@@ -208,6 +224,7 @@ export class BotApi {
         spotGridCreateRequest: SpotGridCreateRequest,
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/spot-grid/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -266,6 +283,7 @@ export class BotApi {
         marginGridCreateRequest: MarginGridCreateRequest,
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/margin-grid/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -324,6 +342,7 @@ export class BotApi {
         infiniteGridCreateRequest: InfiniteGridCreateRequest,
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/infinite-grid/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -382,6 +401,7 @@ export class BotApi {
         futuresGridCreateRequest: FuturesGridCreateRequest,
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/futures-grid/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -440,6 +460,7 @@ export class BotApi {
         spotMartingaleCreateRequest: SpotMartingaleCreateRequest,
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/spot-martingale/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -498,6 +519,7 @@ export class BotApi {
         contractMartingaleCreateRequest: ContractMartingaleCreateRequest,
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/contract-martingale/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -566,6 +588,7 @@ export class BotApi {
         xRequestId?: string;
         xTraceId?: string;
     }): Promise<{ response: AxiosResponse; body: AIHubPortfolioRunningSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/portfolio/running';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -579,11 +602,10 @@ export class BotApi {
 
         opts = opts || {};
         if (opts.strategyType !== undefined) {
-            let strategyTypeSerialized = ObjectSerializer.serialize(
-                opts.strategyType,
-                "'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale'",
+            let strategyTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.strategyType, 'StrategyType'),
             );
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(strategyTypeSerialized)) {
                 strategyTypeSerialized = strategyTypeSerialized.join(',');
             }
@@ -591,8 +613,10 @@ export class BotApi {
         }
 
         if (opts.market !== undefined) {
-            let marketSerialized = ObjectSerializer.serialize(opts.market, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let marketSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.market, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(marketSerialized)) {
                 marketSerialized = marketSerialized.join(',');
             }
@@ -600,8 +624,10 @@ export class BotApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -609,8 +635,10 @@ export class BotApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -662,6 +690,7 @@ export class BotApi {
             'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale',
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubPortfolioDetailSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/portfolio/detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -688,18 +717,19 @@ export class BotApi {
         }
 
         opts = opts || {};
-        let strategyIdSerialized = ObjectSerializer.serialize(strategyId, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let strategyIdSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(strategyId, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(strategyIdSerialized)) {
             strategyIdSerialized = strategyIdSerialized.join(',');
         }
         localVarQueryParameters['strategy_id'] = strategyIdSerialized;
 
-        let strategyTypeSerialized = ObjectSerializer.serialize(
-            strategyType,
-            "'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale'",
+        let strategyTypeSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(strategyType, 'StrategyType'),
         );
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(strategyTypeSerialized)) {
             strategyTypeSerialized = strategyTypeSerialized.join(',');
         }
@@ -747,6 +777,7 @@ export class BotApi {
         aIHubPortfolioStopRequest: AIHubPortfolioStopRequest,
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubPortfolioStopSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/portfolio/stop';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

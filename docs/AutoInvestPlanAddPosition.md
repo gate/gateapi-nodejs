@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**planId** | **number** | Plan ID | [default to undefined]
+**planId** | **number &#124; bigint** | Plan ID | [default to undefined]
 **amount** | **string** | Amount | [default to undefined]
 

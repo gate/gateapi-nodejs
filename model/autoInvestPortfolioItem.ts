@@ -40,7 +40,7 @@ export class AutoInvestPortfolioItem {
     /**
      * Redemption status
      */
-    'redeemStatus': number;
+    'redeemStatus': number | bigint;
     /**
      * LendingQuantity
      */
@@ -82,7 +82,7 @@ export class AutoInvestPortfolioItem {
         {
             name: 'redeemStatus',
             baseName: 'redeem_status',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'lendAmount',

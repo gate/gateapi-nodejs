@@ -45,15 +45,15 @@ export class DeliveryPositionClose {
     /**
      * Max Trade Size
      */
-    'maxSize'?: number;
+    'maxSize'?: number | bigint;
     /**
      * Cumulative closed position volume
      */
-    'accumSize'?: number;
+    'accumSize'?: number | bigint;
     /**
      * First Open Time
      */
-    'firstOpenTime'?: number;
+    'firstOpenTime'?: number | bigint;
     /**
      * When side is \'long\', it indicates the opening average price; when side is \'short\', it indicates the closing average price
      */
@@ -69,7 +69,7 @@ export class DeliveryPositionClose {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'contract',
@@ -109,17 +109,17 @@ export class DeliveryPositionClose {
         {
             name: 'maxSize',
             baseName: 'max_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'accumSize',
             baseName: 'accum_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'firstOpenTime',
             baseName: 'first_open_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'longPrice',

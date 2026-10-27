@@ -13,7 +13,7 @@ import { ExchangesData } from './exchangesData';
 
 export class Exchanges {
     'data'?: ExchangesData;
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,7 +26,7 @@ export class Exchanges {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

@@ -13,7 +13,7 @@ export class ExSkillClaimTaskReq {
     /**
      * Rewards Center task ID
      */
-    'welfareTaskId': number;
+    'welfareTaskId': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -21,7 +21,7 @@ export class ExSkillClaimTaskReq {
         {
             name: 'welfareTaskId',
             baseName: 'welfare_task_id',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

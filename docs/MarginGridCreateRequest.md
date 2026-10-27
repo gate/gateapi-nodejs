@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**strategyType** | **string** |  | [default to undefined]
+**strategyType** | **MarginGridCreateRequest.StrategyType** |  | [default to undefined]
 **market** | **string** |  | [default to undefined]
 **createParams** | [**MarginGridCreateParams**](MarginGridCreateParams.md) |  | [default to undefined]
 

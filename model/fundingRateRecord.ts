@@ -13,7 +13,7 @@ export class FundingRateRecord {
     /**
      * Unix timestamp in seconds
      */
-    't'?: number;
+    't'?: number | bigint;
     /**
      * Funding rate
      */
@@ -25,7 +25,7 @@ export class FundingRateRecord {
         {
             name: 't',
             baseName: 't',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'r',

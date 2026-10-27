@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **contract** | **string** | Contract name | [optional] [default to undefined]
-**relatedPosition** | **number** | Associated position, if provided, only cancel orders associated with this position, 1-long, 2-short | [optional] [default to undefined]
+**relatedPosition** | **StopAllTrailOrders.RelatedPosition** | Associated position, if provided, only cancel orders associated with this position, 1-long, 2-short | [optional] [default to undefined]
 
 ## Enum: StopAllTrailOrders.RelatedPosition
 

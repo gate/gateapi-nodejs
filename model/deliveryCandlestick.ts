@@ -20,7 +20,7 @@ export class DeliveryCandlestick {
     /**
      * size volume (contract size). Only returned if `contract` is not prefixed
      */
-    'v'?: number;
+    'v'?: number | bigint;
     /**
      * Close price (quote currency)
      */
@@ -44,12 +44,12 @@ export class DeliveryCandlestick {
         {
             name: 't',
             baseName: 't',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'v',
             baseName: 'v',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'c',

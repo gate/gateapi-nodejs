@@ -18,7 +18,7 @@ export class CollateralAdjustRes {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * Collateral currency information
      */
@@ -30,7 +30,7 @@ export class CollateralAdjustRes {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'collateralCurrencies',

@@ -66,7 +66,7 @@ export class MyFuturesTradeTimeRange {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'contract',

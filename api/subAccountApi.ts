@@ -41,6 +41,7 @@ export class SubAccountApi {
     public async listSubAccounts(opts?: {
         type?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccount> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/sub_accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -54,8 +55,10 @@ export class SubAccountApi {
 
         opts = opts || {};
         if (opts.type !== undefined) {
-            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let typeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.type, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(typeSerialized)) {
                 typeSerialized = typeSerialized.join(',');
             }
@@ -79,6 +82,7 @@ export class SubAccountApi {
      * @param subAccount
      */
     public async createSubAccounts(subAccount: SubAccount): Promise<{ response: AxiosResponse; body: SubAccount }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/sub_accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -112,10 +116,14 @@ export class SubAccountApi {
      * @summary Get sub-account
      * @param userId Sub-account user ID
      */
-    public async getSubAccount(userId: number): Promise<{ response: AxiosResponse; body: SubAccount }> {
+    public async getSubAccount(userId: number | bigint): Promise<{ response: AxiosResponse; body: SubAccount }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/sub_accounts/{user_id}'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
+            '/sub_accounts/{user_id}'.replace(
+                '{' + 'user_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(userId, 'userId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -148,6 +156,7 @@ export class SubAccountApi {
      * @param userId Sub-account user ID
      */
     public async listSubAccountKeys(userId: number): Promise<{ response: AxiosResponse; body: Array<SubAccountKey> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}/keys'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
@@ -184,12 +193,16 @@ export class SubAccountApi {
      * @param subAccountKey
      */
     public async createSubAccountKeys(
-        userId: number,
+        userId: number | bigint,
         subAccountKey: SubAccountKey,
     ): Promise<{ response: AxiosResponse; body: SubAccountKey }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/sub_accounts/{user_id}/keys'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
+            '/sub_accounts/{user_id}/keys'.replace(
+                '{' + 'user_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(userId, 'userId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -234,6 +247,7 @@ export class SubAccountApi {
         userId: number,
         key: string,
     ): Promise<{ response: AxiosResponse; body: SubAccountKey }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}/keys/{key}'
@@ -282,6 +296,7 @@ export class SubAccountApi {
         key: string,
         subAccountKey: SubAccountKey,
     ): Promise<{ response: AxiosResponse; body?: any }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}/keys/{key}'
@@ -326,6 +341,7 @@ export class SubAccountApi {
      * @param key Sub-account API key
      */
     public async deleteSubAccountKeys(userId: number, key: string): Promise<{ response: AxiosResponse; body?: any }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}/keys/{key}'
@@ -360,10 +376,14 @@ export class SubAccountApi {
      * @summary Lock sub-account
      * @param userId Sub-account user ID
      */
-    public async lockSubAccount(userId: number): Promise<{ response: AxiosResponse; body?: any }> {
+    public async lockSubAccount(userId: number | bigint): Promise<{ response: AxiosResponse; body?: any }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/sub_accounts/{user_id}/lock'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
+            '/sub_accounts/{user_id}/lock'.replace(
+                '{' + 'user_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(userId, 'userId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
@@ -388,10 +408,14 @@ export class SubAccountApi {
      * @summary Unlock sub-account
      * @param userId Sub-account user ID
      */
-    public async unlockSubAccount(userId: number): Promise<{ response: AxiosResponse; body?: any }> {
+    public async unlockSubAccount(userId: number | bigint): Promise<{ response: AxiosResponse; body?: any }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/sub_accounts/{user_id}/unlock'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
+            '/sub_accounts/{user_id}/unlock'.replace(
+                '{' + 'user_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(userId, 'userId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
@@ -416,6 +440,7 @@ export class SubAccountApi {
      * @summary Get sub-account mode
      */
     public async listUnifiedMode(): Promise<{ response: AxiosResponse; body: Array<SubUserMode> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/sub_accounts/unified_mode';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

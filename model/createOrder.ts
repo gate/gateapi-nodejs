@@ -12,7 +12,7 @@
 import { CreateOrderDetail } from './createOrderDetail';
 
 export class CreateOrder {
-    'id': number;
+    'id': number | bigint;
     'userId': number;
     'from': Array<CreateOrderDetail>;
     'to': Array<CreateOrderDetail>;
@@ -20,7 +20,7 @@ export class CreateOrder {
     'appId': string;
     'clientReqId': string;
     'status': number;
-    'createTime': number;
+    'createTime': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -28,7 +28,7 @@ export class CreateOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'userId',
@@ -68,7 +68,7 @@ export class CreateOrder {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

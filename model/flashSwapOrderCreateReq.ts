@@ -41,7 +41,7 @@ export class FlashSwapOrderCreateReq {
     /**
      * Request timestamp (in milliseconds)
      */
-    'requestTimeMs'?: number;
+    'requestTimeMs'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -84,7 +84,7 @@ export class FlashSwapOrderCreateReq {
         {
             name: 'requestTimeMs',
             baseName: 'request_time_ms',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

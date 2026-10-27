@@ -40,7 +40,7 @@ export class UniLendRecord {
     /**
      * Created time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -78,7 +78,7 @@ export class UniLendRecord {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

@@ -60,15 +60,15 @@ export class TradFiTickerData {
     /**
      * Close time (Unix timestamp in seconds)
      */
-    'closeTime'?: number;
+    'closeTime'?: number | bigint;
     /**
      * Open time (Unix timestamp in seconds)
      */
-    'openTime'?: number;
+    'openTime'?: number | bigint;
     /**
      * Next open time (0 means none)
      */
-    'nextOpenTime'?: number;
+    'nextOpenTime'?: number | bigint;
     /**
      * Trading mode code
      */
@@ -139,17 +139,17 @@ export class TradFiTickerData {
         {
             name: 'closeTime',
             baseName: 'close_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'openTime',
             baseName: 'open_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'nextOpenTime',
             baseName: 'next_open_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'tradeMode',

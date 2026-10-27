@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **number** | Order ID | [optional] [default to undefined]
-**collateralCurrencies** | [**Array&lt;CollateralCurrencyRes&gt;**](CollateralCurrencyRes.md) | Collateral currency information | [optional] [default to undefined]
+**orderId** | **number &#124; bigint** | Order ID | [optional] [default to undefined]
+**collateralCurrencies** | [**Array<CollateralCurrencyRes>**](CollateralCurrencyRes.md) | Collateral currency information | [optional] [default to undefined]
 

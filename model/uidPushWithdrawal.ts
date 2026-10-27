@@ -13,7 +13,7 @@ export class UidPushWithdrawal {
     /**
      * Recipient UID
      */
-    'receiveUid': number;
+    'receiveUid': number | bigint;
     /**
      * Currency name
      */
@@ -29,7 +29,7 @@ export class UidPushWithdrawal {
         {
             name: 'receiveUid',
             baseName: 'receive_uid',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'currency',

@@ -13,11 +13,11 @@ export class DualOrderRefundPreview {
     /**
      * Order creation timestamp
      */
-    'createTimest'?: number;
+    'createTimest'?: number | bigint;
     /**
      * Order delivery timestamp
      */
-    'deliveryTimest'?: number;
+    'deliveryTimest'?: number | bigint;
     /**
      * Strike price
      */
@@ -37,7 +37,7 @@ export class DualOrderRefundPreview {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * Request ID used for actual redemption
      */
@@ -45,7 +45,7 @@ export class DualOrderRefundPreview {
     /**
      * Refund fee
      */
-    'refundServiceCharge'?: number;
+    'refundServiceCharge'?: number | bigint;
     /**
      * Settlement price
      */
@@ -73,7 +73,7 @@ export class DualOrderRefundPreview {
     /**
      * Redemption time
      */
-    'moneyBackTimest'?: number;
+    'moneyBackTimest'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -81,12 +81,12 @@ export class DualOrderRefundPreview {
         {
             name: 'createTimest',
             baseName: 'create_timest',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'deliveryTimest',
             baseName: 'delivery_timest',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'exercisePrice',
@@ -111,7 +111,7 @@ export class DualOrderRefundPreview {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'reqId',
@@ -121,7 +121,7 @@ export class DualOrderRefundPreview {
         {
             name: 'refundServiceCharge',
             baseName: 'refund_service_charge',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'settlePrice',
@@ -156,7 +156,7 @@ export class DualOrderRefundPreview {
         {
             name: 'moneyBackTimest',
             baseName: 'money_back_timest',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

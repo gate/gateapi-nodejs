@@ -21,7 +21,7 @@ export class SpotInsuranceHistory {
     /**
      * Creation time, timestamp, milliseconds
      */
-    'time'?: number;
+    'time'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -39,7 +39,7 @@ export class SpotInsuranceHistory {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

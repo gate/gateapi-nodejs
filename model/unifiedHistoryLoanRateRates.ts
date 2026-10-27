@@ -13,7 +13,7 @@ export class UnifiedHistoryLoanRateRates {
     /**
      * Hourly timestamp corresponding to this interest rate, in milliseconds
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * Historical interest rate for this hour
      */
@@ -25,7 +25,7 @@ export class UnifiedHistoryLoanRateRates {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'rate',

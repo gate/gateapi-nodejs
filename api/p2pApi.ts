@@ -69,6 +69,7 @@ export class P2pApi {
         response: AxiosResponse;
         body: P2pMerchantUserInfoResponse;
     }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/account/get_user_info';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -99,6 +100,7 @@ export class P2pApi {
     public async p2pMerchantAccountGetCounterpartyUserInfo(
         getCounterpartyUserInfoRequest: GetCounterpartyUserInfoRequest,
     ): Promise<{ response: AxiosResponse; body: P2pCounterpartyUserInfoResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/account/get_counterparty_user_info';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -142,6 +144,7 @@ export class P2pApi {
     public async p2pMerchantAccountGetMyselfPayment(opts?: {
         getMyselfPaymentRequest?: GetMyselfPaymentRequest;
     }): Promise<{ response: AxiosResponse; body: P2pPaymentMethodsResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/account/get_myself_payment';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -175,6 +178,7 @@ export class P2pApi {
     public async p2pMerchantAccountSetMerchantWorkHours(
         setMerchantWorkHoursRequest: SetMerchantWorkHoursRequest,
     ): Promise<{ response: AxiosResponse; body: P2pMerchantWorkHoursResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/account/set_merchant_work_hours';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -213,6 +217,7 @@ export class P2pApi {
     public async p2pMerchantTransactionGetPendingTransactionList(
         getPendingTransactionListRequest: GetPendingTransactionListRequest,
     ): Promise<{ response: AxiosResponse; body: P2pTransactionListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/get_pending_transaction_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -251,6 +256,7 @@ export class P2pApi {
     public async p2pMerchantTransactionGetCompletedTransactionList(
         getCompletedTransactionListRequest: GetCompletedTransactionListRequest,
     ): Promise<{ response: AxiosResponse; body: P2pTransactionListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/get_completed_transaction_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -289,6 +295,7 @@ export class P2pApi {
     public async p2pMerchantTransactionGetTransactionDetails(
         getTransactionDetailsRequest: GetTransactionDetailsRequest,
     ): Promise<{ response: AxiosResponse; body: P2pTransactionDetailResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/get_transaction_details';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -327,6 +334,7 @@ export class P2pApi {
     public async p2pMerchantTransactionConfirmPayment(
         confirmPayment: ConfirmPayment,
     ): Promise<{ response: AxiosResponse; body: P2pTransactionActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/confirm-payment';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -365,6 +373,7 @@ export class P2pApi {
     public async p2pMerchantTransactionConfirmReceipt(
         confirmReceipt: ConfirmReceipt,
     ): Promise<{ response: AxiosResponse; body: P2pTransactionActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/confirm-receipt';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -403,6 +412,7 @@ export class P2pApi {
     public async p2pMerchantTransactionCancel(
         cancelOrder: CancelOrder,
     ): Promise<{ response: AxiosResponse; body: P2pTransactionActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/transaction/cancel';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -441,6 +451,7 @@ export class P2pApi {
     public async p2pMerchantBooksPlaceBizPushOrder(
         placeBizPushOrder: PlaceBizPushOrder,
     ): Promise<{ response: AxiosResponse; body: P2pMerchantBooksPlaceBizPushOrderResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/books/place_biz_push_order';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -483,6 +494,7 @@ export class P2pApi {
     public async p2pMerchantBooksAdsUpdateStatus(
         adsUpdateStatus: AdsUpdateStatus,
     ): Promise<{ response: AxiosResponse; body: P2pAdsUpdateStatusResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/books/ads_update_status';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -521,6 +533,7 @@ export class P2pApi {
     public async p2pMerchantBooksAdsDetail(
         adsDetailRequest: AdsDetailRequest,
     ): Promise<{ response: AxiosResponse; body: P2pAdDetailResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/books/ads_detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -560,6 +573,7 @@ export class P2pApi {
     public async p2pMerchantBooksMyAdsList(opts?: {
         myAdsListRequest?: MyAdsListRequest;
     }): Promise<{ response: AxiosResponse; body: P2pMyAdsListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/books/my_ads_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -593,6 +607,7 @@ export class P2pApi {
     public async p2pMerchantBooksAdsList(
         adsListRequest: AdsListRequest,
     ): Promise<{ response: AxiosResponse; body: P2pAdsListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/books/ads_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -631,6 +646,7 @@ export class P2pApi {
     public async p2pMerchantChatGetChatsList(
         getChatsListRequest: GetChatsListRequest,
     ): Promise<{ response: AxiosResponse; body: P2pChatListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/get_chats_list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -669,6 +685,7 @@ export class P2pApi {
     public async p2pMerchantChatSendChatMessage(
         sendChatMessageRequest: SendChatMessageRequest,
     ): Promise<{ response: AxiosResponse; body: P2pSendChatMessageResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/send_chat_message';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -707,6 +724,7 @@ export class P2pApi {
     public async p2pMerchantChatUploadChatFile(
         uploadChatFile: UploadChatFile,
     ): Promise<{ response: AxiosResponse; body: P2pUploadChatFileResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/p2p/merchant/chat/upload_chat_file';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

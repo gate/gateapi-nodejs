@@ -310,7 +310,7 @@ export class P2pAdDetail {
         {
             name: 'rateOffset',
             baseName: 'rate_offset',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'status',
@@ -370,7 +370,7 @@ export class P2pAdDetail {
         {
             name: 'completedRateLimit',
             baseName: 'completed_rate_limit',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'limitCountryCn',

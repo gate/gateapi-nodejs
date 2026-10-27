@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;CategoriesDataList&gt;**](CategoriesDataList.md) |  | [optional] [default to undefined]
+**list** | [**Array<CategoriesDataList>**](CategoriesDataList.md) |  | [optional] [default to undefined]
 

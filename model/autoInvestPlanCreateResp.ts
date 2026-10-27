@@ -16,7 +16,7 @@ export class AutoInvestPlanCreateResp {
     /**
      * Plan ID
      */
-    'id': number;
+    'id': number | bigint;
     /**
      * Per PeriodAuto InvestAmount
      */
@@ -28,7 +28,7 @@ export class AutoInvestPlanCreateResp {
     /**
      * Next execution time
      */
-    'nextTime'?: number;
+    'nextTime'?: number | bigint;
     /**
      * Cycle type
      */
@@ -36,11 +36,11 @@ export class AutoInvestPlanCreateResp {
     /**
      * Cycle day
      */
-    'periodDay'?: number;
+    'periodDay'?: number | bigint;
     /**
      * CycleHours
      */
-    'periodHour'?: number;
+    'periodHour'?: number | bigint;
     /**
      * Fund Flow Direction
      */
@@ -56,7 +56,7 @@ export class AutoInvestPlanCreateResp {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'amount',
@@ -71,7 +71,7 @@ export class AutoInvestPlanCreateResp {
         {
             name: 'nextTime',
             baseName: 'next_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'periodType',
@@ -81,12 +81,12 @@ export class AutoInvestPlanCreateResp {
         {
             name: 'periodDay',
             baseName: 'period_day',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'periodHour',
             baseName: 'period_hour',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'fundFlow',

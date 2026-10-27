@@ -64,7 +64,7 @@ export class OrderResponse {
     /**
      * Creation timestamp
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -132,7 +132,7 @@ export class OrderResponse {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **number** | Flash swap order ID | [optional] [readonly] [default to undefined]
-**createTime** | **number** | Creation time of order (in milliseconds) | [optional] [readonly] [default to undefined]
-**userId** | **number** | User ID | [optional] [readonly] [default to undefined]
+**id** | **number &#124; bigint** | Flash swap order ID | [optional] [readonly] [default to undefined]
+**createTime** | **number &#124; bigint** | Creation time of order (in milliseconds) | [optional] [readonly] [default to undefined]
+**userId** | **number &#124; bigint** | User ID | [optional] [readonly] [default to undefined]
 **sellCurrency** | **string** | Currency to sell | [optional] [readonly] [default to undefined]
 **sellAmount** | **string** | Amount to sell | [optional] [readonly] [default to undefined]
 **buyCurrency** | **string** | Currency to buy | [optional] [readonly] [default to undefined]

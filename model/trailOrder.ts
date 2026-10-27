@@ -68,27 +68,27 @@ export class TrailOrder {
     /**
      * Created time
      */
-    'createdAt'?: number;
+    'createdAt'?: number | bigint;
     /**
      * Activation time
      */
-    'activatedAt'?: number;
+    'activatedAt'?: number | bigint;
     /**
      * End time
      */
-    'finishedAt'?: number;
+    'finishedAt'?: number | bigint;
     /**
      * Created time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
     /**
      * Activation time
      */
-    'activeTime'?: number;
+    'activeTime'?: number | bigint;
     /**
      * End time
      */
-    'finishTime'?: number;
+    'finishTime'?: number | bigint;
     /**
      * End reason
      */
@@ -128,7 +128,7 @@ export class TrailOrder {
     /**
      * Update time
      */
-    'updatedAt'?: number;
+    'updatedAt'?: number | bigint;
     /**
      * Extremum price
      */
@@ -241,32 +241,32 @@ export class TrailOrder {
         {
             name: 'createdAt',
             baseName: 'created_at',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'activatedAt',
             baseName: 'activated_at',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'finishedAt',
             baseName: 'finished_at',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'activeTime',
             baseName: 'active_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'finishTime',
             baseName: 'finish_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'reason',
@@ -316,7 +316,7 @@ export class TrailOrder {
         {
             name: 'updatedAt',
             baseName: 'updated_at',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'extremumPrice',

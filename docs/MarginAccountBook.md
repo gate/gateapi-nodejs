@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Balance change record ID | [optional] [default to undefined]
 **time** | **string** | Account change timestamp | [optional] [default to undefined]
-**timeMs** | **number** | The timestamp of the change (in milliseconds) | [optional] [default to undefined]
+**timeMs** | **number &#124; bigint** | The timestamp of the change (in milliseconds) | [optional] [default to undefined]
 **currency** | **string** | Currency changed | [optional] [default to undefined]
 **currencyPair** | **string** | Account trading pair | [optional] [default to undefined]
 **change** | **string** | Amount changed. Positive value means transferring in, while negative out | [optional] [default to undefined]

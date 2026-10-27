@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **advNo** | **number** | Advertisement ID. | [default to undefined]
-**advStatus** | **number** | Ad status. &#x60;1&#x60;: listed; &#x60;3&#x60;: delisted; &#x60;4&#x60;: closed. | [default to undefined]
+**advStatus** | **AdsUpdateStatus.AdvStatus** | Ad status. &#x60;1&#x60;: listed; &#x60;3&#x60;: delisted; &#x60;4&#x60;: closed. | [default to undefined]
 
 ## Enum: AdsUpdateStatus.AdvStatus
 

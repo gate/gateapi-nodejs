@@ -28,7 +28,7 @@ export class BatchFuturesOrder {
     /**
      * Futures order ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * User ID
      */
@@ -151,7 +151,7 @@ export class BatchFuturesOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'user',
@@ -161,12 +161,12 @@ export class BatchFuturesOrder {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'finishTime',
             baseName: 'finish_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'finishAs',

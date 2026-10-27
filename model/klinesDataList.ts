@@ -32,7 +32,7 @@ export class KlinesDataList {
     /**
      * Timestamp (Unix seconds)
      */
-    't'?: number;
+    't'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -60,7 +60,7 @@ export class KlinesDataList {
         {
             name: 't',
             baseName: 't',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

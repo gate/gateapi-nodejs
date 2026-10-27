@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **email** | **string** | The sub-account\&#39;s email address. (Default: the same as main account\&#39;s email address) | [optional] [default to undefined]
 **state** | **number** | Sub-account status: 1-normal, 2-locked | [optional] [readonly] [default to undefined]
 **type** | **number** | Sub-account type: 1-Regular sub-account, 3-Cross margin sub-account | [optional] [readonly] [default to undefined]
-**userId** | **number** | Sub-account user ID | [optional] [readonly] [default to undefined]
-**createTime** | **number** | Created time | [optional] [readonly] [default to undefined]
+**userId** | **number &#124; bigint** | Sub-account user ID | [optional] [readonly] [default to undefined]
+**createTime** | **number &#124; bigint** | Created time | [optional] [readonly] [default to undefined]
 

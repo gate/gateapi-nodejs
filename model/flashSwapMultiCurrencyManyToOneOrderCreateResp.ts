@@ -24,7 +24,7 @@ export class FlashSwapMultiCurrencyManyToOneOrderCreateResp {
     /**
      * Response timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -47,7 +47,7 @@ export class FlashSwapMultiCurrencyManyToOneOrderCreateResp {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

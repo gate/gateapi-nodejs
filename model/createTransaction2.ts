@@ -14,7 +14,7 @@ export class CreateTransaction2 {
      * Returns empty object on success
      */
     'data'?: object;
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -27,7 +27,7 @@ export class CreateTransaction2 {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

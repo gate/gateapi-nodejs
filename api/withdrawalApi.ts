@@ -39,6 +39,7 @@ export class WithdrawalApi {
      * @param ledgerRecord
      */
     public async withdraw(ledgerRecord: LedgerRecord): Promise<{ response: AxiosResponse; body: LedgerRecord }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/withdrawals';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -75,6 +76,7 @@ export class WithdrawalApi {
     public async withdrawPushOrder(
         uidPushWithdrawal: UidPushWithdrawal,
     ): Promise<{ response: AxiosResponse; body: UidPushWithdrawalResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/withdrawals/push';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -111,6 +113,7 @@ export class WithdrawalApi {
      * @param withdrawalId
      */
     public async cancelWithdrawal(withdrawalId: string): Promise<{ response: AxiosResponse; body: WithdrawalsDel }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/withdrawals/{withdrawal_id}'.replace(

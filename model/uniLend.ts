@@ -48,11 +48,11 @@ export class UniLend {
     /**
      * Lending Order Creation Time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
     /**
      * Lending Order Last Update Time
      */
-    'updateTime'?: number;
+    'updateTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -100,12 +100,12 @@ export class UniLend {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

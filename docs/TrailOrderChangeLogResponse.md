@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**changeLog** | [**Array&lt;TrailChangeLog&gt;**](TrailChangeLog.md) |  | [optional] [default to undefined]
+**changeLog** | [**Array<TrailChangeLog>**](TrailChangeLog.md) |  | [optional] [default to undefined]
 

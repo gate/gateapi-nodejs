@@ -5,5 +5,5 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**OrderHistoryList2Data**](OrderHistoryList2Data.md) |  | [optional] [default to undefined]
-**timestamp** | **number** |  | [optional] [default to undefined]
+**timestamp** | **number &#124; bigint** |  | [optional] [default to undefined]
 

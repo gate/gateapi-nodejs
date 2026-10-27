@@ -13,7 +13,7 @@ import { PositionList2Data } from './positionList2Data';
 
 export class PositionList2 {
     'data'?: PositionList2Data;
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,7 +26,7 @@ export class PositionList2 {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

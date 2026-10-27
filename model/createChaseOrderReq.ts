@@ -48,11 +48,11 @@ export class CreateChaseOrderReq {
     /**
      * Price type: 1 best bid/ask, 2 distance from best bid/ask
      */
-    'priceType'?: number;
+    'priceType'?: number | bigint;
     /**
      * Used when price_type == 2: 1 absolute price gap, 2 percentage
      */
-    'priceGapType'?: number;
+    'priceGapType'?: number | bigint;
     /**
      * Price gap value paired with price_gap_type
      */
@@ -112,12 +112,12 @@ export class CreateChaseOrderReq {
         {
             name: 'priceType',
             baseName: 'price_type',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'priceGapType',
             baseName: 'price_gap_type',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'priceGapValue',

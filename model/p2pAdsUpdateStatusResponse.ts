@@ -25,7 +25,7 @@ export class P2pAdsUpdateStatusResponse {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'method',

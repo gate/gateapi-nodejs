@@ -5,7 +5,7 @@ info:
     APIv4 provides operations related to spot, margin, and contract trading, including
     public interfaces for querying market data and authenticated private interfaces
     for implementing API-based automated trading.'
-  version: v4.106.161
+  version: v4.106.164
   x-betaNum: 1
   title: Gate API
   contact:
@@ -4405,8 +4405,6 @@ components:
         name:
           type: string
           description: API Key Remark
-          items:
-            type: string
         currency_pairs:
           type: array
           description: Trading Pair Whitelist, Maximum 30 Pairs
@@ -9092,31 +9090,32 @@ components:
                 type: array
                 description: A display block containing multiple items
                 items:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                      description: Display type. `string` = plain text; `timestamp`
-                        = Unix timestamp (frontend formats as date); `day` = number
-                        of days (integer); `hour` = number of hours (integer); `status`
-                        = status enum value; `btn` = button with redirect (value is
-                        button label)
-                      enum:
-                      - string
-                      - timestamp
-                      - day
-                      - hour
-                      - status
-                      - btn
-                    key:
-                      type: string
-                      description: Label Text (already i18n translated)
-                    value:
-                      description: Value. Integer when type is timestamp/day/hour;
-                        string otherwise
-                      oneOf:
-                      - type: string
-                      - type: integer
+                  $ref: '#/components/schemas/CouponDetailExtraItem'
+    CouponDetailExtraItem:
+      title: CouponDetailExtraItem
+      type: object
+      properties:
+        type:
+          type: string
+          description: Display type. `string` = plain text; `timestamp` = Unix timestamp
+            (frontend formats as date); `day` = number of days (integer); `hour` =
+            number of hours (integer); `status` = status enum value; `btn` = button
+            with redirect (value is button label)
+          enum:
+          - string
+          - timestamp
+          - day
+          - hour
+          - status
+          - btn
+        key:
+          type: string
+          description: Label Text (already i18n translated)
+        value:
+          description: Value. Integer when type is timestamp/day/hour; string otherwise
+          oneOf:
+          - type: string
+          - type: integer
     ListSquareAiSearchResponse:
       type: object
       properties:
@@ -10999,6 +10998,565 @@ components:
       - name
       - ratio
       - priority
+    LaunchPoolV4Project:
+      type: object
+      properties:
+        pid:
+          type: integer
+          description: Product ID
+        name:
+          type: string
+          description: Product Name
+        total_amount:
+          type: string
+          description: Total rewards
+        start_timest:
+          type: integer
+          description: Project start timestamp
+        end_timest:
+          type: integer
+          description: Project end timestamp
+        days:
+          type: integer
+          description: Staking period (in days)
+        project_state:
+          type: integer
+          description: 'Project status: 1 for ongoing, 2 for warming up, 3 for ended'
+          enum:
+          - 1
+          - 2
+          - 3
+        reward_pools:
+          type: array
+          items:
+            $ref: '#/components/schemas/LaunchPoolV4RewardPool'
+          description: Collateral currency list
+      required:
+      - pid
+      - name
+      - total_amount
+      - start_timest
+      - end_timest
+      - days
+      - project_state
+      - reward_pools
+    CreateOrderV4:
+      type: object
+      properties:
+        pid:
+          type: integer
+          minimum: 1
+          description: Product ID
+        rid:
+          type: integer
+          minimum: 1
+          description: Reward pool ID
+        amount:
+          type: string
+          description: Pledge amount (string format to preserve precision)
+      required:
+      - pid
+      - rid
+      - amount
+    RedeemV4:
+      type: object
+      properties:
+        pid:
+          type: integer
+          minimum: 1
+          description: Product ID
+        rid:
+          type: integer
+          minimum: 1
+          description: Reward pool ID
+        amount:
+          type: string
+          description: Redemption amount (string format to preserve precision)
+      required:
+      - pid
+      - rid
+      - amount
+    LaunchPoolV4CreateOrderResponse:
+      type: object
+      properties:
+        flow_id:
+          type: integer
+          description: Order ID
+      required:
+      - flow_id
+    LaunchPoolV4PledgeRecord:
+      type: object
+      properties:
+        create_timest:
+          type: string
+          description: Creation date
+        reward_coin:
+          type: string
+          description: Reward currency
+        coin:
+          type: string
+          description: Collateral currency
+        type:
+          type: integer
+          description: 'Type: 1 for pledge, 2 for redemption'
+        amount:
+          type: string
+          description: Size
+        id:
+          type: integer
+          format: int64
+          description: Record ID
+      required:
+      - create_timest
+      - reward_coin
+      - coin
+      - type
+      - amount
+      - id
+    LaunchPoolV4RewardRecord:
+      type: object
+      properties:
+        reward_timest:
+          type: string
+          description: Reward date
+        coin:
+          type: string
+          description: Reward currency
+        valid_mortgage_amount:
+          type: string
+          description: Active pledge count
+        amount_base:
+          type: string
+          description: Base airdrop
+        amount_ext:
+          type: string
+          description: Bonus airdrop
+      required:
+      - reward_timest
+      - coin
+      - valid_mortgage_amount
+      - amount_base
+      - amount_ext
+    LaunchPoolV4ErrorResponse:
+      type: object
+      properties:
+        label:
+          type: string
+          description: Error label
+          enum:
+          - INVALID_PARAM_VALUE
+          - INVALID_CREDENTIALS
+          - INSUFFICIENT_BALANCE
+          - PROJECT_NOT_FOUND
+        message:
+          type: string
+          description: Error message
+      required:
+      - label
+      - message
+    HodlerAirdropV4ProjectItem:
+      type: object
+      description: HODLer Airdrop activity list item
+      properties:
+        hodler_id:
+          type: string
+          description: Product ID
+        name:
+          type: string
+          description: Product Name
+        asset:
+          type: string
+          description: Airdrop currency
+        status:
+          type: string
+          description: Project status
+          enum:
+          - UNDERWAY
+          - PREHEAT
+          - FINISH
+        total_amount:
+          type: string
+          description: Total airdrop amount
+        open_timest:
+          type: string
+          description: Event start time, format Y-m-d H:i:s, UTC
+        close_timest:
+          type: string
+          description: Event end time, format Y-m-d H:i:s, UTC
+        per_gt_reward_token:
+          type: string
+          description: The number of airdrop coins that can be obtained for each GT.
+            When the calculation is in progress, an empty string is returned.
+        user_count:
+          type: string
+          description: Number of participants
+        max_queue_amount:
+          type: string
+          description: Personal GT limit
+      required:
+      - hodler_id
+      - name
+      - asset
+      - status
+      - total_amount
+      - open_timest
+      - close_timest
+    HodlerAirdropV4OrderRequest:
+      type: object
+      description: Participation activity request body
+      properties:
+        hodler_id:
+          type: integer
+          minimum: 1
+          description: Activity ID, required
+      required:
+      - hodler_id
+    HodlerAirdropV4OrderResponse:
+      type: object
+      description: Participate in event response
+      properties:
+        interest_coin:
+          type: array
+          items:
+            type: string
+          description: Get the list of airdropped currencies
+      required:
+      - interest_coin
+    HodlerAirdropV4UserOrderRecord:
+      type: object
+      description: User participation record single item
+      properties:
+        hodler_id:
+          type: string
+          description: Product ID
+        asset:
+          type: string
+          description: Airdrop currency
+        user_gt_avg_amount:
+          type: string
+          description: Effective number of GT positions (average number of GT held
+            when participating in the event)
+        receive_amount_base:
+          type: string
+          description: Basic airdrop amount, it will be an empty string before the
+            end of the activity
+        receive_amount_ext:
+          type: string
+          description: Additional airdrop amount (Yubibao bonus), it will be an empty
+            string before the end of the event
+        close_timest:
+          type: string
+          description: Event end time, format Y-m-d H:i:s, UTC
+      required:
+      - hodler_id
+      - asset
+      - close_timest
+    HodlerAirdropV4UserAirdropRecord:
+      type: object
+      description: User airdrop distribution record single item
+      properties:
+        hodler_id:
+          type: string
+          description: Product ID
+        asset:
+          type: string
+          description: Airdrop currency
+        receive_amount_base:
+          type: string
+          description: Basic airdrop amount
+        receive_amount_ext:
+          type: string
+          description: Additional airdrop amount (Yubibao bonus)
+        delivery_timest:
+          type: string
+          description: Airdrop distribution time, format Y-m-d H:i:s, UTC; may be
+            an empty string when not distributed
+        exchange:
+          type: string
+          description: Automatic exchange status, 0 has not been exchanged, 1 has
+            been exchanged for GT
+      required:
+      - hodler_id
+      - asset
+      - delivery_timest
+    HodlerAirdropV4ErrorResponse:
+      type: object
+      description: v4 interface unified error response
+      properties:
+        label:
+          type: string
+          description: Error label
+          enum:
+          - INVALID_PARAM_VALUE
+          - UNAUTHORIZED
+          - FORBIDDEN
+          - INELIGIBLE
+          - KYC_REQUIRED
+          - RISK_CONTROL
+          - SERVER_ERROR
+        message:
+          type: string
+          description: Error messages (multilingual)
+      required:
+      - label
+      - message
+    RedeemLaunchPoolResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether redemption was successful
+    CandyDropV4Activity_cd01:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Activity ID
+        currency:
+          type: string
+          description: Project/currency name
+          example: BTC
+        total_rewards:
+          type: string
+          description: total prize pool
+          example: '1000000.00'
+        start_time:
+          type: string
+          description: Event start time (UTC formatted)
+          example: 2024-05-16 08:00:00(UTC)
+        end_time:
+          type: string
+          description: Event end time (UTC format)
+          example: 2024-05-23 08:00:00(UTC)
+        rule_name:
+          type: array
+          items:
+            type: string
+          description: Task type list
+          example:
+          - spot
+          - futures
+        participants:
+          type: integer
+          format: int64
+          description: Number of participants
+          example: 12345
+        user_max_rewards:
+          type: string
+          description: Maximum reward available
+          example: '100.00'
+    CandyDropV4RegisterReq_cd02:
+      type: object
+      required:
+      - currency
+      properties:
+        activity_id:
+          type: integer
+          format: int64
+          description: Activity ID (optional, used with currency)
+        currency:
+          type: string
+          description: Project/currency name (required)
+          example: BTC
+    CandyDropV4RegisterResp_cd02:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the registration is successful
+          example: true
+    CandyDropV4ActivityRules_cd03:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Project/currency name
+          example: BTC
+        total_rewards:
+          type: string
+          description: total prize pool
+          example: '1000000.00'
+        start_time:
+          type: string
+          description: Event start time (UTC formatted)
+          example: 2024-05-16 08:00:00(UTC)
+        end_time:
+          type: string
+          description: Event end time (UTC format)
+          example: 2024-05-23 08:00:00(UTC)
+        prize_pools:
+          type: array
+          items:
+            $ref: '#/components/schemas/CandyDropV4PrizePool_cd03'
+          description: Prize pool list
+    CandyDropV4TaskProgress_cd04:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Project/currency name
+          example: BTC
+        total_rewards:
+          type: string
+          description: total prize pool
+          example: '1000000.00'
+        start_time:
+          type: string
+          description: Event start time (UTC formatted)
+          example: 2024-05-16 08:00:00(UTC)
+        end_time:
+          type: string
+          description: Event end time (UTC format)
+          example: 2024-05-23 08:00:00(UTC)
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/CandyDropV4TaskProgressItem_cd04'
+          description: Progress list of tasks received
+    CandyDropV4ParticipationRecord_cd05:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Activity ID
+        currency:
+          type: string
+          description: Product Name
+          example: BTC
+        status:
+          type: string
+          description: 'Project status: ongoing/awaiting_draw/won/not_win'
+          example: ongoing
+        register_time:
+          type: string
+          description: Participation time (UTC formatted)
+          example: 2024-05-16 08:00:00(UTC)
+    CandyDropV4AirdropRecord_cd06:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Product Name
+          example: BTC
+        airdrop_time:
+          type: string
+          description: Airdrop time (UTC format)
+          example: 2024-05-16 08:00:00(UTC)
+        rewards:
+          type: string
+          description: Airdrop rewards
+          example: '10.50'
+        convert_amount:
+          type: string
+          description: Automatic exchange amount
+          example: '10.50'
+    CandyDropV4Error_cd01:
+      type: object
+      properties:
+        label:
+          type: string
+          description: Error label
+          example: INVALID_PARAM_VALUE
+        message:
+          type: string
+          description: Error message
+          example: Invalid request parameters
+    LaunchPoolV4RewardPool:
+      type: object
+      properties:
+        rid:
+          type: integer
+          description: Reward pool ID
+        coin:
+          type: string
+          description: Collateral currency
+        rate_year:
+          type: string
+          description: Estimated APR
+        already_buy_total_amount:
+          type: string
+          description: Total liquid staking amount
+        personal_max_amount:
+          type: string
+          description: Maximum individual pledge amount
+        personal_min_amount:
+          type: string
+          description: Minimum individual pledge amount
+        transaction_config:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionConfig'
+          description: Participation requirements
+      required:
+      - rid
+      - coin
+      - rate_year
+      - already_buy_total_amount
+      - personal_max_amount
+      - personal_min_amount
+    TransactionConfig:
+      type: object
+      properties:
+        transaction_amount:
+          type: number
+          format: float
+          description: Trading amount requirement
+        mortgage_limit:
+          type: number
+          format: float
+          description: Pledge limit
+    CandyDropV4PrizePool_cd03:
+      type: object
+      properties:
+        prize_pool_type:
+          type: integer
+          description: Prize pool type
+        prize_all:
+          type: string
+          description: Total prize pool amount
+          example: '500000.00'
+        prize_limit:
+          type: string
+          description: Maximum share per person
+          example: '100.00'
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/CandyDropV4Task_cd03'
+          description: task list
+    CandyDropV4Task_cd03:
+      type: object
+      properties:
+        task_name:
+          type: string
+          description: Task main title
+          example: Spot Trading
+        task_desc:
+          type: string
+          description: Task subtitle, if none is returned -
+          example: Trade at least 100 USDT
+        exclusive_label:
+          type: string
+          description: Exclusive task label copywriting, if not configured, it will
+            return -
+          example: '-'
+    CandyDropV4TaskProgressItem_cd04:
+      type: object
+      properties:
+        task_name:
+          type: string
+          description: Task main title
+          example: Spot Trading
+        task_desc:
+          type: string
+          description: Task subtitle
+          example: Trade >= 100 USDT
+        value:
+          type: string
+          description: Task progress data (transaction volume/recharge volume, etc.)
+          example: '50.00'
     LedgerRecord:
       type: object
       required:
@@ -37122,6 +37680,7 @@ paths:
       example: usdt
     - name: order_id
       in: path
+      x-is-bigint: true
       required: true
       description: ID returned when order is successfully created
       schema:
@@ -38913,6 +39472,7 @@ paths:
     parameters:
     - name: order_id
       in: path
+      x-is-bigint: true
       required: true
       description: Order ID
       schema:
@@ -42568,6 +43128,7 @@ paths:
     parameters:
     - name: order_id
       in: path
+      x-is-bigint: true
       required: true
       description: Order ID returned when order is successfully created
       schema:
@@ -46425,8 +46986,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/AgencyTransactionHistory'
+                $ref: '#/components/schemas/AgencyTransactionHistory'
               example:
                 total: 100
                 list:
@@ -46514,8 +47074,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/AgencyCommissionHistory'
+                $ref: '#/components/schemas/AgencyCommissionHistory'
               example:
                 total: 100
                 list:
@@ -46798,8 +47357,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/BrokerCommission'
+                $ref: '#/components/schemas/BrokerCommission'
               example:
                 list:
                 - user_id: 110285113
@@ -46878,8 +47436,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/BrokerTransactionHistory'
+                $ref: '#/components/schemas/BrokerTransactionHistory'
               example:
                 list:
                 - user_id: 110285442
@@ -46910,8 +47467,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/RebateUserInfo'
+                $ref: '#/components/schemas/RebateUserInfo'
               example:
                 invite_uid: 987
       parameters: []
@@ -57230,6 +57786,968 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiResponse_AssetSwapOrderQueryV1'
           headers: {}
+  /launch/project-list:
+    get:
+      operationId: listLaunchPoolProjects
+      security: []
+      summary: Query LaunchPool project list
+      description: Retrieve the list of available LaunchPool projects, including basic
+        project information and reward pool configuration. This endpoint does not
+        require user authentication.
+      tags:
+      - launch
+      parameters:
+      - name: status
+        in: query
+        description: 'Filter by project status: 0 for all, 1 for ongoing, 2 for warming
+          up, 3 for ended, 4 for ongoing and warming up'
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 4
+      - name: mortgageCoin
+        in: query
+        description: Exact match by staking currency
+        required: false
+        schema:
+          type: string
+      - name: searchCoin
+        in: query
+        description: Fuzzy match by reward currency and name
+        required: false
+        schema:
+          type: string
+      - name: limitRule
+        in: query
+        description: 'Limit rule: 0 for regular pool, 1 for beginner pool'
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 2
+      - name: sortType
+        in: query
+        description: 'Sort type: 1 for max APR descending, 2 for max APR ascending'
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 2
+      - name: page
+        in: query
+        description: Page number, default 1
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: pageSize
+        in: query
+        description: Number of items per page, default 10, maximum 30
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 30
+          default: 10
+      responses:
+        '200':
+          description: Successfully returns project list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LaunchPoolV4Project'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4ErrorResponse'
+      x-group-parameters: true
+  /launch/create-order:
+    post:
+      operationId: createLaunchPoolOrder
+      x-gate-auth-apiv4: true
+      summary: Create LaunchPool staking order
+      description: Create a new staking order for asset staking mining. This endpoint
+        requires API Key signature authentication.
+      tags:
+      - launch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderV4'
+        required: true
+      responses:
+        '200':
+          description: Successfully created staking order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4CreateOrderResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4ErrorResponse'
+        '401':
+          description: User not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4ErrorResponse'
+      parameters: []
+  /launch/redeem:
+    post:
+      operationId: redeemLaunchPool
+      x-gate-auth-apiv4: true
+      summary: Redeem LaunchPool staked assets
+      description: Redeem staked assets and end staking mining. This endpoint requires
+        API Key signature authentication.
+      tags:
+      - launch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RedeemV4'
+        required: true
+      responses:
+        '200':
+          description: Successfully redeemed pledged assets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedeemLaunchPoolResponse'
+          headers: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4ErrorResponse'
+        '401':
+          description: User not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4ErrorResponse'
+      parameters: []
+  /launch/user-pledge-records:
+    get:
+      operationId: listLaunchPoolPledgeRecords
+      x-gate-auth-apiv4: true
+      summary: Query user pledge records
+      description: Query user's staking and redemption operation records. This endpoint
+        requires user authentication.
+      tags:
+      - launch
+      parameters:
+      - name: page
+        in: query
+        description: Page number, default 1
+        required: false
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+          default: 1
+      - name: pageSize
+        in: query
+        description: Number of items per page, maximum 30
+        required: false
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 30
+          default: 10
+      - name: type
+        in: query
+        description: 'Type: 1 for pledge, 2 for redemption'
+        required: false
+        schema:
+          type: integer
+      - name: startTime
+        in: query
+        description: 'Start time, format: YYYY-MM-DD HH:MM:SS'
+        required: false
+        schema:
+          type: string
+          pattern: ^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$
+          example: '2026-03-17 00:00:00'
+      - name: endTime
+        in: query
+        description: 'End time, format: YYYY-MM-DD HH:MM:SS'
+        required: false
+        schema:
+          type: string
+          pattern: ^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$
+          example: '2026-03-17 23:59:59'
+      - name: coin
+        in: query
+        description: Collateral currency
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully returns user staking records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LaunchPoolV4PledgeRecord'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4ErrorResponse'
+        '401':
+          description: User not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4ErrorResponse'
+      x-group-parameters: true
+  /launch/get-user-reward-records:
+    get:
+      operationId: listLaunchPoolRewardRecords
+      x-gate-auth-apiv4: true
+      summary: Query user reward records
+      description: Query the user's staking reward records. This endpoint requires
+        user authentication.
+      tags:
+      - launch
+      parameters:
+      - name: page
+        in: query
+        description: Page number, default 1
+        required: false
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+          default: 1
+      - name: pageSize
+        in: query
+        description: Number of items per page, maximum 30
+        required: false
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 30
+          default: 10
+      - name: start_time
+        in: query
+        description: Start timestamp
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: end_time
+        in: query
+        description: End Timestamp
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: coin
+        in: query
+        description: Reward currency
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully returns user reward records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LaunchPoolV4RewardRecord'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4ErrorResponse'
+        '401':
+          description: User not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPoolV4ErrorResponse'
+      x-group-parameters: true
+  /launch/hodler-airdrop/project-list:
+    get:
+      summary: Check the list of HODLer Airdrop activities
+      deprecated: false
+      description: Get the HODLer Airdrop activity list, which supports filtering
+        by status, currency/project name, and participation status. This interface
+        does not require user login, and logged in users can obtain personal participation
+        information.
+      operationId: getHodlerAirdropProjectList
+      tags:
+      - launch
+      parameters:
+      - name: status
+        in: query
+        description: 'Activity status filtering, optional values: ACTIVE (in progress
+          + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended),
+          return all if not passed'
+        required: false
+        schema:
+          type: string
+          enum:
+          - ACTIVE
+          - UNDERWAY
+          - PREHEAT
+          - FINISH
+      - name: keyword
+        in: query
+        description: Currency/project name keywords, fuzzy matching
+        required: false
+        schema:
+          type: string
+      - name: join
+        in: query
+        description: 'Participation filter: 0 all (default), 1 only participated'
+        required: false
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: page
+        in: query
+        description: Page number, default 1
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: size
+        in: query
+        description: Number of items per page, default 10
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 10
+      responses:
+        '200':
+          description: Successfully returns activity list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HodlerAirdropV4ProjectItem'
+              example:
+              - hodler_id: '123'
+                name: BTC Airdrop
+                asset: BTC
+                status: UNDERWAY
+                total_amount: '100000.00'
+                open_timest: '2024-03-09 16:00:00'
+                close_timest: '2024-04-08 16:00:00'
+                per_gt_reward_token: '0.0001'
+                user_count: '50000'
+                max_queue_amount: '10000'
+          headers: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HodlerAirdropV4ErrorResponse'
+          headers: {}
+      security: []
+      x-group-parameters: true
+  /launch/hodler-airdrop/order:
+    post:
+      summary: Participate in the HODLer Airdrop event
+      x-gate-auth-apiv4: true
+      deprecated: false
+      description: To participate in designated HODLer Airdrop activities, you need
+        to hold GT. This interface requires user login authentication and must meet
+        KYC requirements. It does not support sub-accounts and enterprise/institutional
+        users.
+      operationId: hodlerAirdropOrder
+      tags:
+      - launch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HodlerAirdropV4OrderRequest'
+            example:
+              hodler_id: 123
+        required: true
+      responses:
+        '200':
+          description: Successfully participated in the event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HodlerAirdropV4OrderResponse'
+              example:
+                interest_coin:
+                - BTC
+                - ETH
+          headers: {}
+        '400':
+          description: Incorrect request parameters or failed business verification
+            (insufficient KYC, sub-account restrictions, enterprise user restrictions,
+            etc.)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HodlerAirdropV4ErrorResponse'
+          headers: {}
+        '401':
+          description: User is not logged in
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HodlerAirdropV4ErrorResponse'
+          headers: {}
+      parameters: []
+  /launch/hodler-airdrop/user-order-records:
+    get:
+      summary: Check HODLer Airdrop participation records
+      x-gate-auth-apiv4: true
+      deprecated: false
+      description: Query the user's HODLer Airdrop participation record and return
+        the effective holdings and airdrop amount of each activity. This interface
+        requires user login authentication.
+      operationId: getHodlerAirdropUserOrderRecords
+      tags:
+      - launch
+      parameters:
+      - name: keyword
+        in: query
+        description: Currency name keyword filtering
+        required: false
+        schema:
+          type: string
+      - name: start_timest
+        in: query
+        description: Start timestamp (seconds)
+        required: false
+        schema:
+          type: integer
+      - name: end_timest
+        in: query
+        description: end timestamp (seconds)
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: Page number, default 1
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: size
+        in: query
+        description: Number of items per page, default 10
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 10
+      responses:
+        '200':
+          description: Successfully returned the participation record list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HodlerAirdropV4UserOrderRecord'
+              example:
+              - hodler_id: '123'
+                asset: BTC
+                user_gt_avg_amount: '1000.00'
+                receive_amount_base: '0.0100'
+                receive_amount_ext: '0.0010'
+                close_timest: '2024-04-08 16:00:00'
+          headers: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HodlerAirdropV4ErrorResponse'
+          headers: {}
+        '401':
+          description: User is not logged in
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HodlerAirdropV4ErrorResponse'
+          headers: {}
+      x-group-parameters: true
+  /launch/hodler-airdrop/user-airdrop-records:
+    get:
+      summary: Query HODLer Airdrop records
+      deprecated: false
+      x-gate-auth-apiv4: true
+      description: Query the HODLer Airdrop airdrop distribution record that the user
+        has obtained, including basic airdrops, additional airdrops and automatic
+        redemption status. This interface requires user login authentication.
+      operationId: getHodlerAirdropUserAirdropRecords
+      tags:
+      - launch
+      parameters:
+      - name: keyword
+        in: query
+        description: Currency name keyword filtering
+        required: false
+        schema:
+          type: string
+      - name: start_timest
+        in: query
+        description: Start timestamp (seconds)
+        required: false
+        schema:
+          type: integer
+      - name: end_timest
+        in: query
+        description: end timestamp (seconds)
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: Page number, default 1
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: size
+        in: query
+        description: Number of items per page, default 10
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 10
+      responses:
+        '200':
+          description: Successfully returns the airdrop record list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HodlerAirdropV4UserAirdropRecord'
+              example:
+              - hodler_id: '123'
+                asset: BTC
+                receive_amount_base: '0.0100'
+                receive_amount_ext: '0.0010'
+                delivery_timest: '2024-04-10 12:00:00'
+                exchange: '1'
+          headers: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HodlerAirdropV4ErrorResponse'
+          headers: {}
+        '401':
+          description: User is not logged in
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HodlerAirdropV4ErrorResponse'
+          headers: {}
+      x-group-parameters: true
+  /launch/candydrop/activity-list:
+    get:
+      summary: Query activity list
+      deprecated: false
+      description: Supports multi-dimensional filtering of CandyDrop activities, and
+        each query returns the top ten data sorted by the list. No login required.
+      operationId: getCandyDropActivityListV4
+      tags:
+      - launch
+      parameters:
+      - name: status
+        in: query
+        description: 'Activity status filtering: ongoing (in progress), upcoming (about
+          to start), ended (ended), if not passed, all will be returned'
+        required: false
+        schema:
+          type: string
+          enum:
+          - ongoing
+          - upcoming
+          - ended
+      - name: rule_name
+        in: query
+        description: 'Task type filtering: spot (spot), futures (contract), deposit
+          (recharge), invite (invitation), trading_bot (trading robot), simple_earn
+          (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash
+          swap), tradfi (TradFi), etf (ETF)'
+        required: false
+        schema:
+          type: string
+      - name: register_status
+        in: query
+        description: 'Participation status screening: registered (already participated),
+          unregistered (not participated), if not passed, all will be returned'
+        required: false
+        schema:
+          type: string
+          enum:
+          - registered
+          - unregistered
+      - name: currency
+        in: query
+        description: Currency name filter
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of items returned, default 10, maximum 30
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 30
+          default: 10
+      - name: offset
+        in: query
+        description: Offset, default 0
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      responses:
+        '200':
+          description: Successfully returns the activity list array
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CandyDropV4Activity_cd01'
+          headers: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+      security: []
+      x-group-parameters: true
+  /launch/candydrop/register:
+    post:
+      x-gate-auth-apiv4: true
+      summary: Sign up for events
+      deprecated: false
+      description: Sign up for select CandyDrop events. Login is required and API
+        Key signature authentication is required.
+      operationId: registerCandyDropV4
+      tags:
+      - launch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CandyDropV4RegisterReq_cd02'
+        required: true
+      responses:
+        '200':
+          description: Registration successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4RegisterResp_cd02'
+          headers: {}
+        '400':
+          description: Request failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+        '401':
+          description: User not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+      parameters: []
+  /launch/candydrop/activity-rules:
+    get:
+      summary: Query activity rules
+      deprecated: false
+      description: Query the rules of a specific activity, including prize pool and
+        corresponding task data. No login required.
+      operationId: getCandyDropActivityRulesV4
+      tags:
+      - launch
+      parameters:
+      - name: activity_id
+        in: query
+        description: Activity ID, choose one from currency, at least one of them must
+          be passed
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: currency
+        in: query
+        description: Project/currency name, choose one from activity_id, at least
+          one of them must be passed
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful return to activity rules
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4ActivityRules_cd03'
+          headers: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+      security: []
+      x-group-parameters: true
+  /launch/candydrop/task-progress:
+    get:
+      summary: Query task completion progress
+      x-gate-auth-apiv4: true
+      deprecated: false
+      description: Check the completion progress of tasks that are in progress and
+        have been registered/participated. Login required.
+      operationId: getCandyDropTaskProgressV4
+      tags:
+      - launch
+      parameters:
+      - name: activity_id
+        in: query
+        description: Activity ID, choose one from currency, at least one of them must
+          be passed
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: currency
+        in: query
+        description: Project/currency name, choose one from activity_id, at least
+          one of them must be passed
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully return task progress
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4TaskProgress_cd04'
+          headers: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+        '401':
+          description: User not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+      x-group-parameters: true
+  /launch/candydrop/participation-records:
+    get:
+      summary: Query participation records
+      x-gate-auth-apiv4: true
+      deprecated: false
+      description: Query the user's CandyDrop participation details. Login required.
+      operationId: getCandyDropParticipationRecordsV4
+      tags:
+      - launch
+      parameters:
+      - name: currency
+        in: query
+        description: Currency name filter
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: 'Status filtering: ongoing (in progress), awaiting_draw (to be
+          drawn), won (already won), not_win (not won)'
+        required: false
+        schema:
+          type: string
+          enum:
+          - ongoing
+          - awaiting_draw
+          - won
+          - not_win
+      - name: start_time
+        in: query
+        description: Start time (Unix timestamp seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: end_time
+        in: query
+        description: End time (Unix timestamp seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: page
+        in: query
+        description: Page number, default 1
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: limit
+        in: query
+        description: Number of items per page, default 10, maximum 30
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 30
+          default: 10
+      responses:
+        '200':
+          description: Successfully returned the participation record list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CandyDropV4ParticipationRecord_cd05'
+          headers: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+        '401':
+          description: User not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+      x-group-parameters: true
+  /launch/candydrop/airdrop-records:
+    get:
+      summary: Query airdrop records
+      x-gate-auth-apiv4: true
+      deprecated: false
+      description: Query the user's CandyDrop airdrop details. Login required.
+      operationId: getCandyDropAirdropRecordsV4
+      tags:
+      - launch
+      parameters:
+      - name: currency
+        in: query
+        description: Currency name filter
+        required: false
+        schema:
+          type: string
+      - name: start_time
+        in: query
+        description: Start time (Unix timestamp seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: end_time
+        in: query
+        description: End time (Unix timestamp seconds)
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: page
+        in: query
+        description: Page number, default 1
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: limit
+        in: query
+        description: Number of items per page, default 10, maximum 30
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 30
+          default: 10
+      responses:
+        '200':
+          description: Successfully returns the airdrop record list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CandyDropV4AirdropRecord_cd06'
+          headers: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+        '401':
+          description: User not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandyDropV4Error_cd01'
+          headers: {}
+      x-group-parameters: true
 tags:
 - name: withdrawal
   description: Withdrawal API
@@ -57334,3 +58852,6 @@ tags:
   x-external: true
   description: Activity Center APIs
 - name: assetswap
+- name: launch
+  description: LaunchPool project queries, pledge orders, and reward records
+  x-external: true

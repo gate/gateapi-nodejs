@@ -18,19 +18,19 @@ export class AutoInvestPlanListInfoResp {
     /**
      * page number
      */
-    'page': number;
+    'page': number | bigint;
     /**
      * Items per page
      */
-    'pageSize': number;
+    'pageSize': number | bigint;
     /**
      * Total pages
      */
-    'pageCount': number;
+    'pageCount': number | bigint;
     /**
      * Total entries
      */
-    'totalCount': number;
+    'totalCount': number | bigint;
     /**
      * PlanList
      */
@@ -42,22 +42,22 @@ export class AutoInvestPlanListInfoResp {
         {
             name: 'page',
             baseName: 'page',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'pageSize',
             baseName: 'page_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'pageCount',
             baseName: 'page_count',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'totalCount',
             baseName: 'total_count',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'list',

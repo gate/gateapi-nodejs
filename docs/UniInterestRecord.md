@@ -9,5 +9,5 @@ Name | Type | Description | Notes
 **actualRate** | **string** | Actual Rate | [optional] [readonly] [default to undefined]
 **interest** | **string** | Interest | [optional] [readonly] [default to undefined]
 **interestStatus** | **string** | Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment | [optional] [readonly] [default to undefined]
-**createTime** | **number** | Created time | [optional] [readonly] [default to undefined]
+**createTime** | **number &#124; bigint** | Created time | [optional] [readonly] [default to undefined]
 

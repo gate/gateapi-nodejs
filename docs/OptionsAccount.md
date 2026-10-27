@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | **number** | User ID | [optional] [default to undefined]
+**user** | **number &#124; bigint** | User ID | [optional] [default to undefined]
 **total** | **string** | Account balance, invalid for unified account | [optional] [default to undefined]
 **positionValue** | **string** | Position value, long position value is positive, short position value is negative | [optional] [default to undefined]
 **equity** | **string** | Account equity &#x3D; balance + option position value, invalid for unified account | [optional] [default to undefined]
 **shortEnabled** | **boolean** | If the account is allowed to short | [optional] [default to undefined]
 **mmpEnabled** | **boolean** | Whether to enable MMP | [optional] [default to undefined]
 **liqTriggered** | **boolean** | Whether the account is in a liquidation state | [optional] [default to undefined]
-**marginMode** | **number** | This field indicates the margin mode used by the unified account:  - 0: Classic Spot Margin Mode - 1: Cross-Currency Margin Mode - 2: Portfolio Margin Mode - 3: Single-Currency Margin Mode | [optional] [default to undefined]
+**marginMode** | **OptionsAccount.MarginMode** | This field indicates the margin mode used by the unified account:  - 0: Classic Spot Margin Mode - 1: Cross-Currency Margin Mode - 2: Portfolio Margin Mode - 3: Single-Currency Margin Mode | [optional] [default to undefined]
 **unrealisedPnl** | **string** | Unrealised PnL &#x3D; (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only. | [optional] [default to undefined]
 **initMargin** | **string** | Initial position margin | [optional] [default to undefined]
 **maintMargin** | **string** | Position maintenance margin | [optional] [default to undefined]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **point** | **string** | Point card amount | [optional] [default to undefined]
 **currency** | **string** | Settlement currency | [optional] [default to undefined]
 **ordersLimit** | **number** | Maximum number of outstanding orders | [optional] [default to undefined]
-**positionNotionalLimit** | **number** | Notional value upper limit, including the nominal value of positions and outstanding orders | [optional] [default to undefined]
+**positionNotionalLimit** | **number &#124; bigint** | Notional value upper limit, including the nominal value of positions and outstanding orders | [optional] [default to undefined]
 
 ## Enum: OptionsAccount.MarginMode
 

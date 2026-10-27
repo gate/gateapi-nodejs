@@ -19,7 +19,7 @@ export class AgencyCommissionHistory {
     /**
      * Total
      */
-    'total'?: number;
+    'total'?: number | bigint;
     /**
      * List of commission history
      */
@@ -36,7 +36,7 @@ export class AgencyCommissionHistory {
         {
             name: 'total',
             baseName: 'total',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'list',

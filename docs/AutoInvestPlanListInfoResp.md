@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page** | **number** | page number | [default to undefined]
-**pageSize** | **number** | Items per page | [default to undefined]
-**pageCount** | **number** | Total pages | [default to undefined]
-**totalCount** | **number** | Total entries | [default to undefined]
-**list** | [**Array&lt;AutoInvestPlanDetail&gt;**](AutoInvestPlanDetail.md) | PlanList | [default to undefined]
+**page** | **number &#124; bigint** | page number | [default to undefined]
+**pageSize** | **number &#124; bigint** | Items per page | [default to undefined]
+**pageCount** | **number &#124; bigint** | Total pages | [default to undefined]
+**totalCount** | **number &#124; bigint** | Total entries | [default to undefined]
+**list** | [**Array<AutoInvestPlanDetail>**](AutoInvestPlanDetail.md) | PlanList | [default to undefined]
 

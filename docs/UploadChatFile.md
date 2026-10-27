@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**imageContentType** | **string** | File MIME type: supports &#x60;image/jpeg&#x60;, &#x60;image/jpg&#x60;, &#x60;image/png&#x60;, &#x60;video/mp4&#x60;. | [default to undefined]
+**imageContentType** | **UploadChatFile.ImageContentType** | File MIME type: supports &#x60;image/jpeg&#x60;, &#x60;image/jpg&#x60;, &#x60;image/png&#x60;, &#x60;video/mp4&#x60;. | [default to undefined]
 **base64Img** | **string** | Base64 file content; max 20 MB. | [default to undefined]
 
 ## Enum: UploadChatFile.ImageContentType

@@ -24,7 +24,7 @@ export class FlashSwapOrderPreviewResp {
     /**
      * Response timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -47,7 +47,7 @@ export class FlashSwapOrderPreviewResp {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

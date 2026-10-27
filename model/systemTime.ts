@@ -13,7 +13,7 @@ export class SystemTime {
     /**
      * Server current time(ms)
      */
-    'serverTime'?: number;
+    'serverTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -21,7 +21,7 @@ export class SystemTime {
         {
             name: 'serverTime',
             baseName: 'server_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

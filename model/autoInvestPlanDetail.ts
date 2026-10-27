@@ -18,11 +18,11 @@ export class AutoInvestPlanDetail {
     /**
      * Plan ID
      */
-    'id': number;
+    'id': number | bigint;
     /**
      * PlanVersion
      */
-    'version'?: number;
+    'version'?: number | bigint;
     /**
      * Plan name
      */
@@ -30,15 +30,15 @@ export class AutoInvestPlanDetail {
     /**
      * Creation time (Unix timestamp)
      */
-    'createTime': number;
+    'createTime': number | bigint;
     /**
      * Update time (Unix timestamp)
      */
-    'updateTime': number;
+    'updateTime': number | bigint;
     /**
      * User ID
      */
-    'userId': number;
+    'userId': number | bigint;
     /**
      * Quote Currency
      */
@@ -54,11 +54,11 @@ export class AutoInvestPlanDetail {
     /**
      * Cycle day
      */
-    'periodDay': number;
+    'periodDay': number | bigint;
     /**
      * CycleHours
      */
-    'periodHour': number;
+    'periodHour': number | bigint;
     /**
      * Portfolio
      */
@@ -66,11 +66,11 @@ export class AutoInvestPlanDetail {
     /**
      * Next execution time (Unix timestamp)
      */
-    'nextTime': number;
+    'nextTime': number | bigint;
     /**
      * Executed periods
      */
-    'period': number;
+    'period': number | bigint;
     /**
      * Fund source（spot/earn）
      */
@@ -86,12 +86,12 @@ export class AutoInvestPlanDetail {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'version',
             baseName: 'version',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'name',
@@ -101,17 +101,17 @@ export class AutoInvestPlanDetail {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'money',
@@ -131,12 +131,12 @@ export class AutoInvestPlanDetail {
         {
             name: 'periodDay',
             baseName: 'period_day',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'periodHour',
             baseName: 'period_hour',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'portfolio',
@@ -146,12 +146,12 @@ export class AutoInvestPlanDetail {
         {
             name: 'nextTime',
             baseName: 'next_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'period',
             baseName: 'period',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'fundSource',

@@ -60,7 +60,7 @@ export class FlashSwapOrderPreviewRespData {
     /**
      * Quote expiration timestamp (in seconds)
      */
-    'validTimestamp'?: number;
+    'validTimestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -123,7 +123,7 @@ export class FlashSwapOrderPreviewRespData {
         {
             name: 'validTimestamp',
             baseName: 'valid_timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

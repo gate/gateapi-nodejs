@@ -10,7 +10,7 @@
  */
 
 export class UniChartPoint {
-    'time'?: number;
+    'time'?: number | bigint;
     'value'?: string;
 
     static discriminator: string | undefined = undefined;
@@ -19,7 +19,7 @@ export class UniChartPoint {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'value',

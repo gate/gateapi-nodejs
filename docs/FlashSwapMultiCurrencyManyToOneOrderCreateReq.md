@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**params** | [**Array&lt;FlashSwapMultiCurrencyCreateParam&gt;**](FlashSwapMultiCurrencyCreateParam.md) | Multi-currency exchange parameter list | [default to undefined]
+**params** | [**Array<FlashSwapMultiCurrencyCreateParam>**](FlashSwapMultiCurrencyCreateParam.md) | Multi-currency exchange parameter list | [default to undefined]
 

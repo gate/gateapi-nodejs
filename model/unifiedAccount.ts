@@ -19,11 +19,11 @@ export class UnifiedAccount {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Last refresh time
      */
-    'refreshTime'?: number;
+    'refreshTime'?: number | bigint;
     /**
      * Whether the account is locked, valid in cross-currency margin/combined margin mode, false in other modes such as single-currency margin mode
      */
@@ -109,12 +109,12 @@ export class UnifiedAccount {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'refreshTime',
             baseName: 'refresh_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'locked',

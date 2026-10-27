@@ -76,11 +76,11 @@ export class OptionsContract {
     /**
      * Minimum order quantity
      */
-    'orderSizeMin'?: number;
+    'orderSizeMin'?: number | bigint;
     /**
      * Maximum order quantity
      */
-    'orderSizeMax'?: number;
+    'orderSizeMax'?: number | bigint;
     /**
      * Deprecated
      */
@@ -96,19 +96,19 @@ export class OptionsContract {
     /**
      * Orderbook update ID
      */
-    'orderbookId'?: number;
+    'orderbookId'?: number | bigint;
     /**
      * Deprecated
      */
-    'tradeId'?: number;
+    'tradeId'?: number | bigint;
     /**
      * Historical cumulative trading volume
      */
-    'tradeSize'?: number;
+    'tradeSize'?: number | bigint;
     /**
      * Current total long position size
      */
-    'positionSize'?: number;
+    'positionSize'?: number | bigint;
     /**
      * The maximum number of open orders each user can place in this order book.
      */
@@ -130,12 +130,12 @@ export class OptionsContract {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'expirationTime',
             baseName: 'expiration_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'isCall',
@@ -195,12 +195,12 @@ export class OptionsContract {
         {
             name: 'orderSizeMin',
             baseName: 'order_size_min',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'orderSizeMax',
             baseName: 'order_size_max',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'orderPriceDeviate',
@@ -220,22 +220,22 @@ export class OptionsContract {
         {
             name: 'orderbookId',
             baseName: 'orderbook_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'tradeId',
             baseName: 'trade_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'tradeSize',
             baseName: 'trade_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'positionSize',
             baseName: 'position_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'ordersLimit',

@@ -20,7 +20,7 @@ export class FutureCancelOrderResult {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Whether cancellation succeeded
      */
@@ -41,7 +41,7 @@ export class FutureCancelOrderResult {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'succeeded',

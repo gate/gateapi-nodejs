@@ -15,7 +15,7 @@ export class CreateOrder2 {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: CreateOrder2Data;
 
     static discriminator: string | undefined = undefined;
@@ -24,7 +24,7 @@ export class CreateOrder2 {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

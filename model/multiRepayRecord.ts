@@ -21,11 +21,11 @@ export class MultiRepayRecord {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * Repayment record ID
      */
-    'recordId'?: number;
+    'recordId'?: number | bigint;
     /**
      * Initial collateralization rate
      */
@@ -41,11 +41,11 @@ export class MultiRepayRecord {
     /**
      * Borrowing time, timestamp in seconds
      */
-    'borrowTime'?: number;
+    'borrowTime'?: number | bigint;
     /**
      * Repayment time, timestamp in seconds
      */
-    'repayTime'?: number;
+    'repayTime'?: number | bigint;
     /**
      * List of borrowing information
      */
@@ -73,12 +73,12 @@ export class MultiRepayRecord {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'recordId',
             baseName: 'record_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'initLtv',
@@ -98,12 +98,12 @@ export class MultiRepayRecord {
         {
             name: 'borrowTime',
             baseName: 'borrow_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'repayTime',
             baseName: 'repay_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'borrowCurrencies',

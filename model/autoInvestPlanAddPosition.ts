@@ -16,7 +16,7 @@ export class AutoInvestPlanAddPosition {
     /**
      * Plan ID
      */
-    'planId': number;
+    'planId': number | bigint;
     /**
      * Amount
      */
@@ -28,7 +28,7 @@ export class AutoInvestPlanAddPosition {
         {
             name: 'planId',
             baseName: 'plan_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'amount',

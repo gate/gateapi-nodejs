@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **currency** | **string** | Currency | [optional] [readonly] [default to undefined]
 **amount** | **string** | Swap Amount | [optional] [readonly] [default to undefined]
 **gtAmount** | **string** | GT amount | [optional] [readonly] [default to undefined]
-**createTime** | **number** | Exchange time (in seconds) | [optional] [readonly] [default to undefined]
+**createTime** | **number &#124; bigint** | Exchange time (in seconds) | [optional] [readonly] [default to undefined]
 

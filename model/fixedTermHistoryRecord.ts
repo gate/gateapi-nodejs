@@ -20,11 +20,11 @@ export class FixedTermHistoryRecord {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * User ID
      */
-    'userId': number;
+    'userId': number | bigint;
     /**
      * Currency
      */
@@ -89,12 +89,12 @@ export class FixedTermHistoryRecord {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'asset',

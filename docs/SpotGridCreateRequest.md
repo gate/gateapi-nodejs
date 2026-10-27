@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**strategyType** | **string** |  | [default to undefined]
+**strategyType** | **SpotGridCreateRequest.StrategyType** |  | [default to undefined]
 **market** | **string** |  | [default to undefined]
 **createParams** | [**SpotGridCreateParams**](SpotGridCreateParams.md) |  | [default to undefined]
 

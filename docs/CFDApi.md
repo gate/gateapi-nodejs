@@ -248,8 +248,8 @@ const api = new GateApi.CFDApi(client);
 const symbol = "EURUSD"; // string | Trading symbol code
 const klineType = "1m"; // '1m' | '15m' | '1h' | '4h' | '1d' | '7d' | '30d' | Kline type (time period)
 const opts = {
-  'beginTime': 1769378400, // number | Start time (Unix timestamp in seconds)
-  'endTime': 1769464800, // number | End time (Unix timestamp in seconds)
+  'beginTime': BigInt('1769378400'), // number | Start time (Unix timestamp in seconds)
+  'endTime': BigInt('1769464800'), // number | End time (Unix timestamp in seconds)
   'limit': 100 // number | Kline limit (max 500, error if exceeded)
 };
 api.querySymbolKline(symbol, klineType, opts)
@@ -264,8 +264,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **string**| Trading symbol code | [default to undefined]
  **klineType** | **KlineType**| Kline type (time period) | [default to undefined]
- **beginTime** | **number**| Start time (Unix timestamp in seconds) | [optional] [default to undefined]
- **endTime** | **number**| End time (Unix timestamp in seconds) | [optional] [default to undefined]
+ **beginTime** | **number &#124; bigint**| Start time (Unix timestamp in seconds) | [optional] [default to undefined]
+ **endTime** | **number &#124; bigint**| End time (Unix timestamp in seconds) | [optional] [default to undefined]
  **limit** | **number**| Kline limit (max 500, error if exceeded) | [optional] [default to undefined]
 
 ### Return type
@@ -420,8 +420,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
 const opts = {
-  'beginTime': 1704067200, // number | Start Time (Second-level Timestamp)
-  'endTime': 1706745599, // number | End Time (Second-level Timestamp)
+  'beginTime': BigInt('1704067200'), // number | Start Time (Second-level Timestamp)
+  'endTime': BigInt('1706745599'), // number | End Time (Second-level Timestamp)
   'type': "withdraw", // 'deposit' | 'withdraw' | 'dividend' | 'fill_negative' | Transaction Type (deposit - transfer in, withdraw - transfer out, dividend - dividend payment, fill_negative - cover negative balance)
   'page': 1, // number | page number
   'pageSize': 20 // number | Number per page, default 10, maximum 50
@@ -436,8 +436,8 @@ api.queryTransaction(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **beginTime** | **number**| Start Time (Second-level Timestamp) | [optional] [default to undefined]
- **endTime** | **number**| End Time (Second-level Timestamp) | [optional] [default to undefined]
+ **beginTime** | **number &#124; bigint**| Start Time (Second-level Timestamp) | [optional] [default to undefined]
+ **endTime** | **number &#124; bigint**| End Time (Second-level Timestamp) | [optional] [default to undefined]
  **type** | **Type**| Transaction Type (deposit - transfer in, withdraw - transfer out, dividend - dividend payment, fill_negative - cover negative balance) | [optional] [default to undefined]
  **page** | **number**| page number | [optional] [default to undefined]
  **pageSize** | **number**| Number per page, default 10, maximum 50 | [optional] [default to undefined]
@@ -609,7 +609,7 @@ api.updateOrder(orderId, tradFiOrderUpdateRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **bigint**| Order ID | [default to undefined]
+ **orderId** | **number &#124; bigint**| Order ID | [default to undefined]
  **tradFiOrderUpdateRequest** | [**TradFiOrderUpdateRequest**](TradFiOrderUpdateRequest.md)|  | 
 
 ### Return type
@@ -653,7 +653,7 @@ api.deleteOrder(orderId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **bigint**| Order ID | [default to undefined]
+ **orderId** | **number &#124; bigint**| Order ID | [default to undefined]
 
 ### Return type
 
@@ -686,8 +686,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
 const opts = {
-  'beginTime': 1769397000, // number | Start time (Unix timestamp in seconds), earliest query is one month ago
-  'endTime': 1769398000, // number | End time (Unix timestamp in seconds)
+  'beginTime': BigInt('1769397000'), // number | Start time (Unix timestamp in seconds), earliest query is one month ago
+  'endTime': BigInt('1769398000'), // number | End time (Unix timestamp in seconds)
   'symbol': "USDCAD", // string | Currency pair
   'side': 2 // 1 | 2 | Side (1=sell, 2=buy)
 };
@@ -701,8 +701,8 @@ api.queryOrderHistoryList(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **beginTime** | **number**| Start time (Unix timestamp in seconds), earliest query is one month ago | [optional] [default to undefined]
- **endTime** | **number**| End time (Unix timestamp in seconds) | [optional] [default to undefined]
+ **beginTime** | **number &#124; bigint**| Start time (Unix timestamp in seconds), earliest query is one month ago | [optional] [default to undefined]
+ **endTime** | **number &#124; bigint**| End time (Unix timestamp in seconds) | [optional] [default to undefined]
  **symbol** | **string**| Currency pair | [optional] [default to undefined]
  **side** | **Side**| Side (1&#x3D;sell, 2&#x3D;buy) | [optional] [default to undefined]
 
@@ -747,7 +747,7 @@ api.queryOrderLog(logId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **logId** | **bigint**| log_id returned from the order placement API | [default to undefined]
+ **logId** | **number &#124; bigint**| log_id returned from the order placement API | [default to undefined]
 
 ### Return type
 
@@ -830,7 +830,7 @@ api.updatePosition(positionId, tradFiPositionUpdateRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **positionId** | **bigint**| Position ID | [default to undefined]
+ **positionId** | **number &#124; bigint**| Position ID | [default to undefined]
  **tradFiPositionUpdateRequest** | [**TradFiPositionUpdateRequest**](TradFiPositionUpdateRequest.md)|  | 
 
 ### Return type
@@ -875,7 +875,7 @@ api.closePosition(positionId, tradFiClosePositionRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **positionId** | **bigint**| Position ID | [default to undefined]
+ **positionId** | **number &#124; bigint**| Position ID | [default to undefined]
  **tradFiClosePositionRequest** | [**TradFiClosePositionRequest**](TradFiClosePositionRequest.md)|  | 
 
 ### Return type
@@ -909,10 +909,10 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
 const opts = {
-  'page': 1, // number | Page number; defaults to 1 if omitted.
-  'pageSize': 10, // number | Page size; defaults to 10 if omitted. Maximum 100.
-  'beginTime': 56, // number | Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
-  'endTime': 56, // number | End time (timestamp in seconds)
+  'page': BigInt('1'), // number | Page number; defaults to 1 if omitted.
+  'pageSize': BigInt('10'), // number | Page size; defaults to 10 if omitted. Maximum 100.
+  'beginTime': BigInt('56'), // number | Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
+  'endTime': BigInt('56'), // number | End time (timestamp in seconds)
   'symbol': "symbol_example", // string | Trading symbol (e.g., EURUSD)
   'positionDir': "positionDir_example" // 'Long' | 'Short' | Position direction (Long=long position, Short=short position)
 };
@@ -926,10 +926,10 @@ api.queryPositionHistoryList(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **number**| Page number; defaults to 1 if omitted. | [optional] [default to undefined]
- **pageSize** | **number**| Page size; defaults to 10 if omitted. Maximum 100. | [optional] [default to undefined]
- **beginTime** | **number**| Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago | [optional] [default to undefined]
- **endTime** | **number**| End time (timestamp in seconds) | [optional] [default to undefined]
+ **page** | **number &#124; bigint**| Page number; defaults to 1 if omitted. | [optional] [default to undefined]
+ **pageSize** | **number &#124; bigint**| Page size; defaults to 10 if omitted. Maximum 100. | [optional] [default to undefined]
+ **beginTime** | **number &#124; bigint**| Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago | [optional] [default to undefined]
+ **endTime** | **number &#124; bigint**| End time (timestamp in seconds) | [optional] [default to undefined]
  **symbol** | **string**| Trading symbol (e.g., EURUSD) | [optional] [default to undefined]
  **positionDir** | **PositionDir**| Position direction (Long&#x3D;long position, Short&#x3D;short position) | [optional] [default to undefined]
 

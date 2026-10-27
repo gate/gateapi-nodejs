@@ -18,7 +18,7 @@ export class DeliveryPosition {
     /**
      * User ID
      */
-    'user'?: number;
+    'user'?: number | bigint;
     /**
      * Futures contract
      */
@@ -26,7 +26,7 @@ export class DeliveryPosition {
     /**
      * Position size
      */
-    'size'?: number;
+    'size'?: number | bigint;
     /**
      * Position leverage. 0 means cross margin; positive number means isolated margin
      */
@@ -127,15 +127,15 @@ export class DeliveryPosition {
     /**
      * Last update time
      */
-    'updateTime'?: number;
+    'updateTime'?: number | bigint;
     /**
      * Update ID. The value increments by 1 each time the position is updated
      */
-    'updateId'?: number;
+    'updateId'?: number | bigint;
     /**
      * First Open Time
      */
-    'openTime'?: number;
+    'openTime'?: number | bigint;
     /**
      * Risk limit table ID
      */
@@ -151,7 +151,7 @@ export class DeliveryPosition {
         {
             name: 'user',
             baseName: 'user',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'contract',
@@ -161,7 +161,7 @@ export class DeliveryPosition {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'leverage',
@@ -291,17 +291,17 @@ export class DeliveryPosition {
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updateId',
             baseName: 'update_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'openTime',
             baseName: 'open_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'riskLimitTable',

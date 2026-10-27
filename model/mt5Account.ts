@@ -23,7 +23,7 @@ export class Mt5Account {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: Mt5AccountData;
 
     static discriminator: string | undefined = undefined;
@@ -42,7 +42,7 @@ export class Mt5Account {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

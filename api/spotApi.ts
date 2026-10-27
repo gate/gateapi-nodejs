@@ -59,6 +59,7 @@ export class SpotApi {
      * @summary Query all currency information
      */
     public async listCurrencies(): Promise<{ response: AxiosResponse; body: Array<Currency> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/currencies';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -87,6 +88,7 @@ export class SpotApi {
      * @param currency Currency name
      */
     public async getCurrency(currency: string): Promise<{ response: AxiosResponse; body: Currency }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/spot/currencies/{currency}'.replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
@@ -121,6 +123,7 @@ export class SpotApi {
      * @summary Query all supported currency pairs
      */
     public async listCurrencyPairs(): Promise<{ response: AxiosResponse; body: Array<CurrencyPair> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/currency_pairs';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -149,6 +152,7 @@ export class SpotApi {
      * @param currencyPair Currency pair
      */
     public async getCurrencyPair(currencyPair: string): Promise<{ response: AxiosResponse; body: CurrencyPair }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/spot/currency_pairs/{currency_pair}'.replace(
@@ -192,6 +196,7 @@ export class SpotApi {
         currencyPair?: string;
         timezone?: 'utc0' | 'utc8' | 'all';
     }): Promise<{ response: AxiosResponse; body: Array<Ticker> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/tickers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -205,8 +210,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currencyPair, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencyPairSerialized)) {
                 currencyPairSerialized = currencyPairSerialized.join(',');
             }
@@ -214,8 +221,10 @@ export class SpotApi {
         }
 
         if (opts.timezone !== undefined) {
-            let timezoneSerialized = ObjectSerializer.serialize(opts.timezone, "'utc0' | 'utc8' | 'all'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let timezoneSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.timezone, 'Timezone'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(timezoneSerialized)) {
                 timezoneSerialized = timezoneSerialized.join(',');
             }
@@ -246,6 +255,7 @@ export class SpotApi {
         currencyPair: string,
         opts?: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: OrderBook }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/order_book';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -263,16 +273,20 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        let currencyPairSerialized = ObjectSerializer.serialize(currencyPair, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currencyPair, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencyPairSerialized)) {
             currencyPairSerialized = currencyPairSerialized.join(',');
         }
         localVarQueryParameters['currency_pair'] = currencyPairSerialized;
 
         if (opts.interval !== undefined) {
-            let intervalSerialized = ObjectSerializer.serialize(opts.interval, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let intervalSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.interval, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(intervalSerialized)) {
                 intervalSerialized = intervalSerialized.join(',');
             }
@@ -280,8 +294,10 @@ export class SpotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -289,8 +305,10 @@ export class SpotApi {
         }
 
         if (opts.withId !== undefined) {
-            let withIdSerialized = ObjectSerializer.serialize(opts.withId, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let withIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.withId, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(withIdSerialized)) {
                 withIdSerialized = withIdSerialized.join(',');
             }
@@ -321,6 +339,7 @@ export class SpotApi {
         currencyPair: string,
         opts?: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: OrderBook }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/rpi_order_book';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -338,16 +357,20 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        let currencyPairSerialized = ObjectSerializer.serialize(currencyPair, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currencyPair, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencyPairSerialized)) {
             currencyPairSerialized = currencyPairSerialized.join(',');
         }
         localVarQueryParameters['currency_pair'] = currencyPairSerialized;
 
         if (opts.interval !== undefined) {
-            let intervalSerialized = ObjectSerializer.serialize(opts.interval, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let intervalSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.interval, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(intervalSerialized)) {
                 intervalSerialized = intervalSerialized.join(',');
             }
@@ -355,8 +378,10 @@ export class SpotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -364,8 +389,10 @@ export class SpotApi {
         }
 
         if (opts.withId !== undefined) {
-            let withIdSerialized = ObjectSerializer.serialize(opts.withId, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let withIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.withId, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(withIdSerialized)) {
                 withIdSerialized = withIdSerialized.join(',');
             }
@@ -397,8 +424,16 @@ export class SpotApi {
      */
     public async listTrades(
         currencyPair: string,
-        opts?: { limit?: number; lastId?: string; reverse?: boolean; from?: number; to?: number; page?: number },
+        opts?: {
+            limit?: number;
+            lastId?: string;
+            reverse?: boolean;
+            from?: number | bigint;
+            to?: number | bigint;
+            page?: number;
+        },
     ): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/trades';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -416,16 +451,20 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        let currencyPairSerialized = ObjectSerializer.serialize(currencyPair, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currencyPair, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencyPairSerialized)) {
             currencyPairSerialized = currencyPairSerialized.join(',');
         }
         localVarQueryParameters['currency_pair'] = currencyPairSerialized;
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -433,8 +472,10 @@ export class SpotApi {
         }
 
         if (opts.lastId !== undefined) {
-            let lastIdSerialized = ObjectSerializer.serialize(opts.lastId, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let lastIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.lastId, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(lastIdSerialized)) {
                 lastIdSerialized = lastIdSerialized.join(',');
             }
@@ -442,8 +483,10 @@ export class SpotApi {
         }
 
         if (opts.reverse !== undefined) {
-            let reverseSerialized = ObjectSerializer.serialize(opts.reverse, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let reverseSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.reverse, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(reverseSerialized)) {
                 reverseSerialized = reverseSerialized.join(',');
             }
@@ -451,8 +494,10 @@ export class SpotApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -460,8 +505,8 @@ export class SpotApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -469,8 +514,10 @@ export class SpotApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -502,11 +549,12 @@ export class SpotApi {
         currencyPair: string,
         opts?: {
             limit?: number;
-            from?: number;
-            to?: number;
+            from?: number | bigint;
+            to?: number | bigint;
             interval?: '1s' | '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d';
         },
     ): Promise<{ response: AxiosResponse; body: Array<Array<string>> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/candlesticks';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -524,16 +572,20 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        let currencyPairSerialized = ObjectSerializer.serialize(currencyPair, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currencyPair, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencyPairSerialized)) {
             currencyPairSerialized = currencyPairSerialized.join(',');
         }
         localVarQueryParameters['currency_pair'] = currencyPairSerialized;
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -541,8 +593,10 @@ export class SpotApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -550,8 +604,8 @@ export class SpotApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -559,11 +613,10 @@ export class SpotApi {
         }
 
         if (opts.interval !== undefined) {
-            let intervalSerialized = ObjectSerializer.serialize(
-                opts.interval,
-                "'1s' | '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d'",
+            let intervalSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.interval, 'Interval'),
             );
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(intervalSerialized)) {
                 intervalSerialized = intervalSerialized.join(',');
             }
@@ -588,6 +641,7 @@ export class SpotApi {
      * @param opts.currencyPair Specify currency pair to get more accurate fee settings.  This field is optional. Usually fee settings are the same for all currency pairs.
      */
     public async getFee(opts?: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: SpotFee }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -601,8 +655,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currencyPair, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencyPairSerialized)) {
                 currencyPairSerialized = currencyPairSerialized.join(',');
             }
@@ -628,6 +684,7 @@ export class SpotApi {
     public async getBatchSpotFee(
         currencyPairs: string,
     ): Promise<{ response: AxiosResponse; body: { [key: string]: SpotFee } }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/batch_fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -644,8 +701,10 @@ export class SpotApi {
             throw new Error('Required parameter currencyPairs was null or undefined when calling getBatchSpotFee.');
         }
 
-        let currencyPairsSerialized = ObjectSerializer.serialize(currencyPairs, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencyPairsSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currencyPairs, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencyPairsSerialized)) {
             currencyPairsSerialized = currencyPairsSerialized.join(',');
         }
@@ -671,6 +730,7 @@ export class SpotApi {
     public async listSpotAccounts(opts?: {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SpotAccount> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -684,8 +744,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencySerialized)) {
                 currencySerialized = currencySerialized.join(',');
             }
@@ -717,13 +779,14 @@ export class SpotApi {
      */
     public async listSpotAccountBook(opts?: {
         currency?: string;
-        from?: number;
-        to?: number;
+        from?: number | bigint;
+        to?: number | bigint;
         page?: number;
         limit?: number;
         type?: string;
         code?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SpotAccountBook> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/account_book';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -737,8 +800,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencySerialized)) {
                 currencySerialized = currencySerialized.join(',');
             }
@@ -746,8 +811,10 @@ export class SpotApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -755,8 +822,8 @@ export class SpotApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -764,8 +831,10 @@ export class SpotApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -773,8 +842,10 @@ export class SpotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -782,8 +853,10 @@ export class SpotApi {
         }
 
         if (opts.type !== undefined) {
-            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let typeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.type, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(typeSerialized)) {
                 typeSerialized = typeSerialized.join(',');
             }
@@ -791,8 +864,10 @@ export class SpotApi {
         }
 
         if (opts.code !== undefined) {
-            let codeSerialized = ObjectSerializer.serialize(opts.code, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let codeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.code, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(codeSerialized)) {
                 codeSerialized = codeSerialized.join(',');
             }
@@ -821,6 +896,7 @@ export class SpotApi {
         order: Array<Order>,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/batch_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -867,6 +943,7 @@ export class SpotApi {
         limit?: number;
         account?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OpenOrders> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/open_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -880,8 +957,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -889,8 +968,10 @@ export class SpotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -898,8 +979,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            let accountSerialized = ObjectSerializer.serialize(opts.account, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let accountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.account, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(accountSerialized)) {
                 accountSerialized = accountSerialized.join(',');
             }
@@ -925,6 +1008,7 @@ export class SpotApi {
     public async createCrossLiquidateOrder(
         liquidateOrder: LiquidateOrder,
     ): Promise<{ response: AxiosResponse; body: Order }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/cross_liquidate_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -971,8 +1055,16 @@ export class SpotApi {
     public async listOrders(
         currencyPair: string,
         status: string,
-        opts?: { page?: number; limit?: number; account?: string; from?: number; to?: number; side?: string },
+        opts?: {
+            page?: number;
+            limit?: number;
+            account?: string;
+            from?: number | bigint;
+            to?: number | bigint;
+            side?: string;
+        },
     ): Promise<{ response: AxiosResponse; body: Array<Order> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -995,23 +1087,27 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        let currencyPairSerialized = ObjectSerializer.serialize(currencyPair, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currencyPair, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencyPairSerialized)) {
             currencyPairSerialized = currencyPairSerialized.join(',');
         }
         localVarQueryParameters['currency_pair'] = currencyPairSerialized;
 
-        let statusSerialized = ObjectSerializer.serialize(status, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let statusSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(status, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(statusSerialized)) {
             statusSerialized = statusSerialized.join(',');
         }
         localVarQueryParameters['status'] = statusSerialized;
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -1019,8 +1115,10 @@ export class SpotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1028,8 +1126,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            let accountSerialized = ObjectSerializer.serialize(opts.account, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let accountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.account, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(accountSerialized)) {
                 accountSerialized = accountSerialized.join(',');
             }
@@ -1037,8 +1137,10 @@ export class SpotApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1046,8 +1148,8 @@ export class SpotApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1055,8 +1157,10 @@ export class SpotApi {
         }
 
         if (opts.side !== undefined) {
-            let sideSerialized = ObjectSerializer.serialize(opts.side, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.side, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sideSerialized)) {
                 sideSerialized = sideSerialized.join(',');
             }
@@ -1085,6 +1189,7 @@ export class SpotApi {
         order: Order,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1137,6 +1242,7 @@ export class SpotApi {
         actionMode?: string;
         xGateExptime?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OrderCancel> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1150,8 +1256,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currencyPair, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencyPairSerialized)) {
                 currencyPairSerialized = currencyPairSerialized.join(',');
             }
@@ -1159,8 +1267,10 @@ export class SpotApi {
         }
 
         if (opts.side !== undefined) {
-            let sideSerialized = ObjectSerializer.serialize(opts.side, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.side, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sideSerialized)) {
                 sideSerialized = sideSerialized.join(',');
             }
@@ -1168,8 +1278,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            let accountSerialized = ObjectSerializer.serialize(opts.account, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let accountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.account, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(accountSerialized)) {
                 accountSerialized = accountSerialized.join(',');
             }
@@ -1177,8 +1289,10 @@ export class SpotApi {
         }
 
         if (opts.tradeQuote !== undefined) {
-            let tradeQuoteSerialized = ObjectSerializer.serialize(opts.tradeQuote, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let tradeQuoteSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.tradeQuote, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(tradeQuoteSerialized)) {
                 tradeQuoteSerialized = tradeQuoteSerialized.join(',');
             }
@@ -1186,8 +1300,10 @@ export class SpotApi {
         }
 
         if (opts.actionMode !== undefined) {
-            let actionModeSerialized = ObjectSerializer.serialize(opts.actionMode, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let actionModeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.actionMode, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(actionModeSerialized)) {
                 actionModeSerialized = actionModeSerialized.join(',');
             }
@@ -1220,6 +1336,7 @@ export class SpotApi {
         cancelBatchOrder: Array<CancelBatchOrder>,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<CancelOrderResult> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/cancel_batch_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1268,6 +1385,7 @@ export class SpotApi {
         currencyPair: string,
         opts?: { account?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -1292,16 +1410,20 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        let currencyPairSerialized = ObjectSerializer.serialize(currencyPair, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currencyPair, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencyPairSerialized)) {
             currencyPairSerialized = currencyPairSerialized.join(',');
         }
         localVarQueryParameters['currency_pair'] = currencyPairSerialized;
 
         if (opts.account !== undefined) {
-            let accountSerialized = ObjectSerializer.serialize(opts.account, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let accountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.account, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(accountSerialized)) {
                 accountSerialized = accountSerialized.join(',');
             }
@@ -1334,6 +1456,7 @@ export class SpotApi {
         currencyPair: string,
         opts?: { account?: string; actionMode?: string; xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -1358,16 +1481,20 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        let currencyPairSerialized = ObjectSerializer.serialize(currencyPair, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currencyPair, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencyPairSerialized)) {
             currencyPairSerialized = currencyPairSerialized.join(',');
         }
         localVarQueryParameters['currency_pair'] = currencyPairSerialized;
 
         if (opts.account !== undefined) {
-            let accountSerialized = ObjectSerializer.serialize(opts.account, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let accountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.account, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(accountSerialized)) {
                 accountSerialized = accountSerialized.join(',');
             }
@@ -1375,8 +1502,10 @@ export class SpotApi {
         }
 
         if (opts.actionMode !== undefined) {
-            let actionModeSerialized = ObjectSerializer.serialize(opts.actionMode, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let actionModeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.actionMode, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(actionModeSerialized)) {
                 actionModeSerialized = actionModeSerialized.join(',');
             }
@@ -1413,6 +1542,7 @@ export class SpotApi {
         orderPatch: OrderPatch,
         opts?: { currencyPair?: string; account?: string; xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -1438,8 +1568,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currencyPair, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencyPairSerialized)) {
                 currencyPairSerialized = currencyPairSerialized.join(',');
             }
@@ -1447,8 +1579,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            let accountSerialized = ObjectSerializer.serialize(opts.account, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let accountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.account, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(accountSerialized)) {
                 accountSerialized = accountSerialized.join(',');
             }
@@ -1489,9 +1623,10 @@ export class SpotApi {
         page?: number;
         orderId?: string;
         account?: string;
-        from?: number;
-        to?: number;
+        from?: number | bigint;
+        to?: number | bigint;
     }): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/my_trades';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1505,8 +1640,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currencyPair, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencyPairSerialized)) {
                 currencyPairSerialized = currencyPairSerialized.join(',');
             }
@@ -1514,8 +1651,10 @@ export class SpotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1523,8 +1662,10 @@ export class SpotApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -1532,8 +1673,10 @@ export class SpotApi {
         }
 
         if (opts.orderId !== undefined) {
-            let orderIdSerialized = ObjectSerializer.serialize(opts.orderId, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let orderIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.orderId, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(orderIdSerialized)) {
                 orderIdSerialized = orderIdSerialized.join(',');
             }
@@ -1541,8 +1684,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            let accountSerialized = ObjectSerializer.serialize(opts.account, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let accountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.account, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(accountSerialized)) {
                 accountSerialized = accountSerialized.join(',');
             }
@@ -1550,8 +1695,10 @@ export class SpotApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1559,8 +1706,8 @@ export class SpotApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1583,6 +1730,7 @@ export class SpotApi {
      * @summary Get server current time
      */
     public async getSystemTime(): Promise<{ response: AxiosResponse; body: SystemTime }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/time';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1613,6 +1761,7 @@ export class SpotApi {
     public async countdownCancelAllSpot(
         countdownCancelAllSpotTask: CountdownCancelAllSpotTask,
     ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/countdown_cancel_all';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1654,6 +1803,7 @@ export class SpotApi {
         batchAmendItem: Array<BatchAmendItem>,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/amend_batch_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1701,10 +1851,11 @@ export class SpotApi {
     public async getSpotInsuranceHistory(
         business: string,
         currency: string,
-        from: number,
-        to: number,
+        from: number | bigint,
+        to: number | bigint,
         opts?: { page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SpotInsuranceHistory> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/insurance_history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1737,23 +1888,29 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        let businessSerialized = ObjectSerializer.serialize(business, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let businessSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(business, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(businessSerialized)) {
             businessSerialized = businessSerialized.join(',');
         }
         localVarQueryParameters['business'] = businessSerialized;
 
-        let currencySerialized = ObjectSerializer.serialize(currency, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencySerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currency, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencySerialized)) {
             currencySerialized = currencySerialized.join(',');
         }
         localVarQueryParameters['currency'] = currencySerialized;
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -1761,23 +1918,25 @@ export class SpotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
             localVarQueryParameters['limit'] = limitSerialized;
         }
 
-        let fromSerialized = ObjectSerializer.serialize(from, 'number');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let fromSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(from, 'int64'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(fromSerialized)) {
             fromSerialized = fromSerialized.join(',');
         }
         localVarQueryParameters['from'] = fromSerialized;
 
-        let toSerialized = ObjectSerializer.serialize(to, 'number');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(to, 'int64'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(toSerialized)) {
             toSerialized = toSerialized.join(',');
         }
@@ -1808,6 +1967,7 @@ export class SpotApi {
         status: 'open' | 'finished',
         opts?: { market?: string; account?: 'normal' | 'margin' | 'unified'; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/price_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1827,16 +1987,18 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        let statusSerialized = ObjectSerializer.serialize(status, "'open' | 'finished'");
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let statusSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(status, 'Status'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(statusSerialized)) {
             statusSerialized = statusSerialized.join(',');
         }
         localVarQueryParameters['status'] = statusSerialized;
 
         if (opts.market !== undefined) {
-            let marketSerialized = ObjectSerializer.serialize(opts.market, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let marketSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.market, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(marketSerialized)) {
                 marketSerialized = marketSerialized.join(',');
             }
@@ -1844,8 +2006,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            let accountSerialized = ObjectSerializer.serialize(opts.account, "'normal' | 'margin' | 'unified'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let accountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.account, 'Account'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(accountSerialized)) {
                 accountSerialized = accountSerialized.join(',');
             }
@@ -1853,8 +2017,10 @@ export class SpotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1862,8 +2028,10 @@ export class SpotApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -1893,6 +2061,7 @@ export class SpotApi {
     public async createSpotPriceTriggeredOrder(
         spotPriceTriggeredOrder: SpotPriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/price_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1934,6 +2103,7 @@ export class SpotApi {
         market?: string;
         account?: 'normal' | 'margin' | 'unified';
     }): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/price_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1947,8 +2117,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.market !== undefined) {
-            let marketSerialized = ObjectSerializer.serialize(opts.market, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let marketSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.market, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(marketSerialized)) {
                 marketSerialized = marketSerialized.join(',');
             }
@@ -1956,8 +2128,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            let accountSerialized = ObjectSerializer.serialize(opts.account, "'normal' | 'margin' | 'unified'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let accountSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.account, 'Account'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(accountSerialized)) {
                 accountSerialized = accountSerialized.join(',');
             }
@@ -1987,6 +2161,7 @@ export class SpotApi {
     public async getSpotPriceTriggeredOrder(
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: SpotPriceTriggeredOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/spot/price_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -2026,6 +2201,7 @@ export class SpotApi {
     public async cancelSpotPriceTriggeredOrder(
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: SpotPriceTriggeredOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/spot/price_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -2071,6 +2247,7 @@ export class SpotApi {
         status: string,
         opts?: { currencyPair?: string; side?: string; page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SpotPovOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/pov_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -2089,24 +2266,28 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currencyPair, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencyPairSerialized)) {
                 currencyPairSerialized = currencyPairSerialized.join(',');
             }
             localVarQueryParameters['currency_pair'] = currencyPairSerialized;
         }
 
-        let statusSerialized = ObjectSerializer.serialize(status, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let statusSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(status, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(statusSerialized)) {
             statusSerialized = statusSerialized.join(',');
         }
         localVarQueryParameters['status'] = statusSerialized;
 
         if (opts.side !== undefined) {
-            let sideSerialized = ObjectSerializer.serialize(opts.side, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.side, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sideSerialized)) {
                 sideSerialized = sideSerialized.join(',');
             }
@@ -2114,8 +2295,10 @@ export class SpotApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -2123,8 +2306,10 @@ export class SpotApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -2150,6 +2335,7 @@ export class SpotApi {
     public async createSpotPovOrder(
         spotPovOrderCreator: SpotPovOrderCreator,
     ): Promise<{ response: AxiosResponse; body: SpotPovOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/pov_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -2189,6 +2375,7 @@ export class SpotApi {
     public async cancelSpotPovOrders(opts?: {
         currencyPair?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SpotPovOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/spot/pov_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -2202,8 +2389,10 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            let currencyPairSerialized = ObjectSerializer.serialize(opts.currencyPair, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencyPairSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currencyPair, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencyPairSerialized)) {
                 currencyPairSerialized = currencyPairSerialized.join(',');
             }
@@ -2227,6 +2416,7 @@ export class SpotApi {
      * @param orderId The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field.
      */
     public async getSpotPovOrder(orderId: string): Promise<{ response: AxiosResponse; body: SpotPovOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/spot/pov_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -2262,6 +2452,7 @@ export class SpotApi {
      * @param orderId The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field.
      */
     public async cancelSpotPovOrder(orderId: string): Promise<{ response: AxiosResponse; body: SpotPovOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/spot/pov_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));

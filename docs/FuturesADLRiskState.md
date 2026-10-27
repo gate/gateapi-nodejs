@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**state** | **string** | Market ADL risk state | [default to undefined]
-**calculatedAtMs** | **number** | State calculation time, as a Unix timestamp in milliseconds | [default to undefined]
+**state** | **FuturesADLRiskState.State** | Market ADL risk state | [default to undefined]
+**calculatedAtMs** | **number &#124; bigint** | State calculation time, as a Unix timestamp in milliseconds | [default to undefined]
 
 ## Enum: FuturesADLRiskState.State
 

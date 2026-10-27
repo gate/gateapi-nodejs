@@ -37,6 +37,7 @@ export class ActivityApi {
      * @summary My activity entry
      */
     public async getMyActivityEntry(): Promise<{ response: AxiosResponse; body: GetMyActivityEntryResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rewards/activity/my-activity-entry';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -78,6 +79,7 @@ export class ActivityApi {
         pageSize?: number;
         sortBy?: string;
     }): Promise<{ response: AxiosResponse; body: ListActivitiesResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rewards/activity/activity-list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -91,8 +93,10 @@ export class ActivityApi {
 
         opts = opts || {};
         if (opts.recommendType !== undefined) {
-            let recommendTypeSerialized = ObjectSerializer.serialize(opts.recommendType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let recommendTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.recommendType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(recommendTypeSerialized)) {
                 recommendTypeSerialized = recommendTypeSerialized.join(',');
             }
@@ -100,8 +104,10 @@ export class ActivityApi {
         }
 
         if (opts.typeIds !== undefined) {
-            let typeIdsSerialized = ObjectSerializer.serialize(opts.typeIds, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let typeIdsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.typeIds, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(typeIdsSerialized)) {
                 typeIdsSerialized = typeIdsSerialized.join(',');
             }
@@ -109,8 +115,10 @@ export class ActivityApi {
         }
 
         if (opts.keywords !== undefined) {
-            let keywordsSerialized = ObjectSerializer.serialize(opts.keywords, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let keywordsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.keywords, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(keywordsSerialized)) {
                 keywordsSerialized = keywordsSerialized.join(',');
             }
@@ -118,8 +126,10 @@ export class ActivityApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -127,8 +137,10 @@ export class ActivityApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -136,8 +148,10 @@ export class ActivityApi {
         }
 
         if (opts.sortBy !== undefined) {
-            let sortBySerialized = ObjectSerializer.serialize(opts.sortBy, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sortBySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sortBy, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sortBySerialized)) {
                 sortBySerialized = sortBySerialized.join(',');
             }
@@ -160,6 +174,7 @@ export class ActivityApi {
      * @summary Activity type list
      */
     public async listActivityTypes(): Promise<{ response: AxiosResponse; body: ListActivityTypesResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rewards/activity/activity-type';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

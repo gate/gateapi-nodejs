@@ -86,8 +86,8 @@ const opts = {
   'currency': "currency_example", // string | Query history for specified currency. If `currency` is specified, `currency_pair` must also be specified.
   'currencyPair': "currencyPair_example", // string | Specify margin account currency pair. Used in combination with `currency`. Ignored if `currency` is not specified
   'type': "lend", // string | Query by specified account change type. If not specified, all change types will be included.
-  'from': 1627706330, // number | Start timestamp for the query
-  'to': 1635329650, // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1627706330'), // number | Start timestamp for the query
+  'to': BigInt('1635329650'), // number | End timestamp for the query, defaults to current time if not specified
   'page': 1, // number | Page number
   'limit': 100 // number | Maximum number of records returned in a single list
 };
@@ -104,8 +104,8 @@ Name | Type | Description  | Notes
  **currency** | **string**| Query history for specified currency. If &#x60;currency&#x60; is specified, &#x60;currency_pair&#x60; must also be specified. | [optional] [default to undefined]
  **currencyPair** | **string**| Specify margin account currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not specified | [optional] [default to undefined]
  **type** | **string**| Query by specified account change type. If not specified, all change types will be included. | [optional] [default to undefined]
- **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
 

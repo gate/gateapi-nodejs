@@ -32,7 +32,7 @@ export class OptionsTicker {
     /**
      * Best ask size
      */
-    'ask1Size'?: number;
+    'ask1Size'?: number | bigint;
     /**
      * Best ask price
      */
@@ -40,7 +40,7 @@ export class OptionsTicker {
     /**
      * Best bid size
      */
-    'bid1Size'?: number;
+    'bid1Size'?: number | bigint;
     /**
      * Best bid price
      */
@@ -48,7 +48,7 @@ export class OptionsTicker {
     /**
      * Current total long position size
      */
-    'positionSize'?: number;
+    'positionSize'?: number | bigint;
     /**
      * Implied volatility
      */
@@ -112,7 +112,7 @@ export class OptionsTicker {
         {
             name: 'ask1Size',
             baseName: 'ask1_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'ask1Price',
@@ -122,7 +122,7 @@ export class OptionsTicker {
         {
             name: 'bid1Size',
             baseName: 'bid1_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'bid1Price',
@@ -132,7 +132,7 @@ export class OptionsTicker {
         {
             name: 'positionSize',
             baseName: 'position_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'markIv',

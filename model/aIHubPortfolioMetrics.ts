@@ -15,14 +15,14 @@
 export class AIHubPortfolioMetrics {
     'gridProfit'?: string;
     'floatingPnl'?: string;
-    'arbitrageCount'?: number;
+    'arbitrageCount'?: number | bigint;
     'priceRange'?: string;
-    'gridCount'?: number;
+    'gridCount'?: number | bigint;
     'estimatedLiquidationPrice'?: string;
     'priceFloor'?: string;
     'gridProfitRate'?: string;
     'realizedPnl'?: string;
-    'finishedRounds'?: number;
+    'finishedRounds'?: number | bigint;
     'avgCost'?: string;
     'takeProfitPrice'?: string;
     'maintenanceMarginRatio'?: string;
@@ -43,7 +43,7 @@ export class AIHubPortfolioMetrics {
         {
             name: 'arbitrageCount',
             baseName: 'arbitrage_count',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'priceRange',
@@ -53,7 +53,7 @@ export class AIHubPortfolioMetrics {
         {
             name: 'gridCount',
             baseName: 'grid_count',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'estimatedLiquidationPrice',
@@ -78,7 +78,7 @@ export class AIHubPortfolioMetrics {
         {
             name: 'finishedRounds',
             baseName: 'finished_rounds',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'avgCost',

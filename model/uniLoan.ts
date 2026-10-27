@@ -32,11 +32,11 @@ export class UniLoan {
     /**
      * Created time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
     /**
      * Last Update Time
      */
-    'updateTime'?: number;
+    'updateTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -64,12 +64,12 @@ export class UniLoan {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

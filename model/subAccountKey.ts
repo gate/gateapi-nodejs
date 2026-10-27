@@ -15,7 +15,7 @@ export class SubAccountKey {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Mode: 1 - classic 2 - portfolio account
      */
@@ -40,15 +40,15 @@ export class SubAccountKey {
     /**
      * Created time
      */
-    'createdAt'?: number;
+    'createdAt'?: number | bigint;
     /**
      * Last Update Time
      */
-    'updatedAt'?: number;
+    'updatedAt'?: number | bigint;
     /**
      * Last Access Time
      */
-    'lastAccess'?: number;
+    'lastAccess'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -56,7 +56,7 @@ export class SubAccountKey {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'mode',
@@ -91,17 +91,17 @@ export class SubAccountKey {
         {
             name: 'createdAt',
             baseName: 'created_at',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updatedAt',
             baseName: 'updated_at',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'lastAccess',
             baseName: 'last_access',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

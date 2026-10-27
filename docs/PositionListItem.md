@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **symbol** | **string** | Symbol | [optional] [default to undefined]
-**exchange** | **string** | Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. | [optional] [default to undefined]
+**exchange** | **PositionListItem.Exchange** | Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. | [optional] [default to undefined]
 **quoteCurrency** | **string** | Quote currency | [optional] [default to undefined]
 **quoteCurrencyPrecision** | **number** | Quote currency precision | [optional] [default to undefined]
 **fxRate** | **string** | Quote currency to USD exchange rate | [optional] [default to undefined]
-**tradeStatus** | **string** | Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. | [optional] [default to undefined]
+**tradeStatus** | **PositionListItem.TradeStatus** | Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. | [optional] [default to undefined]
 **symbolDesc** | **string** | Symbol description | [optional] [default to undefined]
 **positionPnl** | **string** | Position P&amp;L | [optional] [default to undefined]
 **todayPnl** | **string** | Today\&#39;s P&amp;L | [optional] [default to undefined]
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **avgCostPrice** | **string** | Cost price | [optional] [default to undefined]
 **dilutedCostPrice** | **string** | Diluted cost price | [optional] [default to undefined]
 **lastPrice** | **string** | Latest price | [optional] [default to undefined]
-**extendedLastPrice** | **string** | Extended hours latest price | [optional] [default to undefined]
+**extendedLastPrice** | **string &#124; null** | Extended hours latest price | [optional] [default to undefined]
 **maxOrderVolume** | **string** | Maximum order quantity | [optional] [default to undefined]
 **stepOrderVolume** | **string** | Order step size | [optional] [default to undefined]
 **minOrderVolume** | **string** | Minimum order quantity | [optional] [default to undefined]

@@ -41,7 +41,7 @@ export class OptionsSettlement {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'contract',

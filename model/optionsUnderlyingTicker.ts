@@ -16,11 +16,11 @@ export class OptionsUnderlyingTicker {
     /**
      * Total put options trades amount in last 24h
      */
-    'tradePut'?: number;
+    'tradePut'?: number | bigint;
     /**
      * Total call options trades amount in last 24h
      */
-    'tradeCall'?: number;
+    'tradeCall'?: number | bigint;
     /**
      * Index price (quote currency)
      */
@@ -32,12 +32,12 @@ export class OptionsUnderlyingTicker {
         {
             name: 'tradePut',
             baseName: 'trade_put',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'tradeCall',
             baseName: 'trade_call',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'indexPrice',

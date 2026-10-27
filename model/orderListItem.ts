@@ -69,11 +69,11 @@ export class OrderListItem {
     /**
      * Order creation time (Unix timestamp, seconds)
      */
-    'timeSetup'?: number;
+    'timeSetup'?: number | bigint;
     /**
      * Order update time (Unix timestamp, seconds)
      */
-    'timeUpdate'?: number;
+    'timeUpdate'?: number | bigint;
     /**
      * Maximum order quantity
      */
@@ -187,12 +187,12 @@ export class OrderListItem {
         {
             name: 'timeSetup',
             baseName: 'time_setup',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'timeUpdate',
             baseName: 'time_update',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'maxOrderVolume',

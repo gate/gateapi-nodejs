@@ -122,7 +122,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user ID
+const userId = BigInt('56'); // number | Sub-account user ID
 api.getSubAccount(userId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -133,7 +133,7 @@ api.getSubAccount(userId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user ID | [default to undefined]
+ **userId** | **number &#124; bigint**| Sub-account user ID | [default to undefined]
 
 ### Return type
 
@@ -208,7 +208,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user ID
+const userId = BigInt('56'); // number | Sub-account user ID
 const subAccountKey = new SubAccountKey(); // SubAccountKey | 
 api.createSubAccountKeys(userId, subAccountKey)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -220,7 +220,7 @@ api.createSubAccountKeys(userId, subAccountKey)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user ID | [default to undefined]
+ **userId** | **number &#124; bigint**| Sub-account user ID | [default to undefined]
  **subAccountKey** | [**SubAccountKey**](SubAccountKey.md)|  | 
 
 ### Return type
@@ -392,7 +392,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user ID
+const userId = BigInt('56'); // number | Sub-account user ID
 api.lockSubAccount(userId)
    .then(value => console.log('API called successfully.'),
          error => console.error(error));
@@ -403,7 +403,7 @@ api.lockSubAccount(userId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user ID | [default to undefined]
+ **userId** | **number &#124; bigint**| Sub-account user ID | [default to undefined]
 
 ### Return type
 
@@ -435,7 +435,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user ID
+const userId = BigInt('56'); // number | Sub-account user ID
 api.unlockSubAccount(userId)
    .then(value => console.log('API called successfully.'),
          error => console.error(error));
@@ -446,7 +446,7 @@ api.unlockSubAccount(userId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user ID | [default to undefined]
+ **userId** | **number &#124; bigint**| Sub-account user ID | [default to undefined]
 
 ### Return type
 

@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;FixedTermProductSimple&gt;**](FixedTermProductSimple.md) | Product list | [default to undefined]
+**list** | [**Array<FixedTermProductSimple>**](FixedTermProductSimple.md) | Product list | [default to undefined]
 

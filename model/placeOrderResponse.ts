@@ -32,7 +32,7 @@ export class PlaceOrderResponse {
     /**
      * Creation timestamp
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
     /**
      * Trade Quantity - `side` : `buy` refers to the quote currency, i.e., `USDT` - `side` : `sell` refers to the base currency
      */
@@ -72,7 +72,7 @@ export class PlaceOrderResponse {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'amount',

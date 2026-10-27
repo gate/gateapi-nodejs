@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orders** | [**Array&lt;CreateOrder&gt;**](CreateOrder.md) |  | [default to undefined]
+**orders** | [**Array<CreateOrder>**](CreateOrder.md) |  | [default to undefined]
 **total** | **number** |  | [default to undefined]
 

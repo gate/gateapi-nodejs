@@ -239,7 +239,7 @@ api.getUnifiedBorrowableList(currencies)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencies** | [**Array&lt;string&gt;**](string.md)| Specify currency names for querying in an array, separated by commas, maximum 10 currencies | [default to undefined]
+ **currencies** | [**Array<string>**](string.md)| Specify currency names for querying in an array, separated by commas, maximum 10 currencies | [default to undefined]
 
 ### Return type
 
@@ -422,8 +422,8 @@ const opts = {
   'currency': "BTC", // string | Query by specified currency name
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
-  'from': 1627706330, // number | Start timestamp for the query
-  'to': 1635329650, // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1627706330'), // number | Start timestamp for the query
+  'to': BigInt('1635329650'), // number | End timestamp for the query, defaults to current time if not specified
   'type': "platform" // string | Loan type: platform borrowing - platform, margin borrowing - margin. Defaults to margin if not specified
 };
 api.listUnifiedLoanInterestRecords(opts)
@@ -439,8 +439,8 @@ Name | Type | Description  | Notes
  **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 | [optional] [default to 100]
- **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **type** | **string**| Loan type: platform borrowing - platform, margin borrowing - margin. Defaults to margin if not specified | [optional] [default to undefined]
 
 ### Return type
@@ -613,7 +613,7 @@ api.getUnifiedEstimateRate(currencies)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencies** | [**Array&lt;string&gt;**](string.md)| Specify currency names for querying in an array, separated by commas, maximum 10 currencies | [default to undefined]
+ **currencies** | [**Array<string>**](string.md)| Specify currency names for querying in an array, separated by commas, maximum 10 currencies | [default to undefined]
 
 ### Return type
 

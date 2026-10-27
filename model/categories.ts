@@ -15,7 +15,7 @@ export class Categories {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: CategoriesData;
 
     static discriminator: string | undefined = undefined;
@@ -24,7 +24,7 @@ export class Categories {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

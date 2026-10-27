@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Loan record ID | [optional] [default to undefined]
-**createTime** | **number** | Repayment time | [optional] [default to undefined]
+**createTime** | **number &#124; bigint** | Repayment time | [optional] [default to undefined]
 **loanId** | **string** | Loan record ID | [optional] [default to undefined]
 **currency** | **string** | Currency name | [optional] [default to undefined]
 **principal** | **string** | Repaid principal | [optional] [default to undefined]

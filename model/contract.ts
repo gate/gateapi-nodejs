@@ -124,11 +124,11 @@ export class Contract {
     /**
      * Orderbook update ID
      */
-    'orderbookId'?: number;
+    'orderbookId'?: number | bigint;
     /**
      * Current trade ID
      */
-    'tradeId'?: number;
+    'tradeId'?: number | bigint;
     /**
      * Historical cumulative trading volume
      */
@@ -172,15 +172,15 @@ export class Contract {
     /**
      * Contract expiry timestamp
      */
-    'launchTime'?: number;
+    'launchTime'?: number | bigint;
     /**
      * Timestamp when contract enters reduce-only state
      */
-    'delistingTime'?: number;
+    'delistingTime'?: number | bigint;
     /**
      * Contract delisting time
      */
-    'delistedTime'?: number;
+    'delistedTime'?: number | bigint;
     /**
      * The maximum slippage allowed for market orders, with the slippage rate calculated based on the latest market price
      */
@@ -292,7 +292,7 @@ export class Contract {
         {
             name: 'fundingNextApply',
             baseName: 'funding_next_apply',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'riskLimitBase',
@@ -347,12 +347,12 @@ export class Contract {
         {
             name: 'orderbookId',
             baseName: 'orderbook_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'tradeId',
             baseName: 'trade_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'tradeSize',
@@ -367,7 +367,7 @@ export class Contract {
         {
             name: 'configChangeTime',
             baseName: 'config_change_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'inDelisting',
@@ -392,7 +392,7 @@ export class Contract {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'fundingCapRatio',
@@ -407,17 +407,17 @@ export class Contract {
         {
             name: 'launchTime',
             baseName: 'launch_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'delistingTime',
             baseName: 'delisting_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'delistedTime',
             baseName: 'delisted_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'marketOrderSlipRatio',

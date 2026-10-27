@@ -19,7 +19,7 @@ export class AgencyTransactionHistory {
     /**
      * Total
      */
-    'total'?: number;
+    'total'?: number | bigint;
     /**
      * List of transaction history
      */
@@ -36,7 +36,7 @@ export class AgencyTransactionHistory {
         {
             name: 'total',
             baseName: 'total',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'list',

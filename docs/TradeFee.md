@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **number** | User ID | [optional] [default to undefined]
+**userId** | **number &#124; bigint** | User ID | [optional] [default to undefined]
 **takerFee** | **string** | spot taker fee rate | [optional] [default to undefined]
 **makerFee** | **string** | spot maker fee rate | [optional] [default to undefined]
 **rpiMakerFee** | **string** | spot RPI MM maker fee rate | [optional] [default to undefined]

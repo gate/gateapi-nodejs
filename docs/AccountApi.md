@@ -246,7 +246,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AccountApi(client);
-const stpId = 1; // number | STP Group ID
+const stpId = BigInt('1'); // number | STP Group ID
 api.listSTPGroupsUsers(stpId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -257,7 +257,7 @@ api.listSTPGroupsUsers(stpId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stpId** | **number**| STP Group ID | [default to undefined]
+ **stpId** | **number &#124; bigint**| STP Group ID | [default to undefined]
 
 ### Return type
 
@@ -291,7 +291,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AccountApi(client);
-const stpId = 1; // number | STP Group ID
+const stpId = BigInt('1'); // number | STP Group ID
 const requestBody = [[1,2,3]]; // Array<number> | User ID
 api.addSTPGroupUsers(stpId, requestBody)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -303,8 +303,8 @@ api.addSTPGroupUsers(stpId, requestBody)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stpId** | **number**| STP Group ID | [default to undefined]
- **requestBody** | [**Array&lt;number&gt;**](number.md)| User ID | 
+ **stpId** | **number &#124; bigint**| STP Group ID | [default to undefined]
+ **requestBody** | [**Array<number &#124; bigint>**](number.md)| User ID | 
 
 ### Return type
 
@@ -338,8 +338,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AccountApi(client);
-const stpId = 1; // number | STP Group ID
-const userId = 1; // number | STP user IDs, multiple IDs can be separated by commas
+const stpId = BigInt('1'); // number | STP Group ID
+const userId = BigInt('1'); // number | STP user IDs, multiple IDs can be separated by commas
 api.deleteSTPGroupUsers(stpId, userId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -350,8 +350,8 @@ api.deleteSTPGroupUsers(stpId, userId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stpId** | **number**| STP Group ID | [default to undefined]
- **userId** | **number**| STP user IDs, multiple IDs can be separated by commas | [default to undefined]
+ **stpId** | **number &#124; bigint**| STP Group ID | [default to undefined]
+ **userId** | **number &#124; bigint**| STP user IDs, multiple IDs can be separated by commas | [default to undefined]
 
 ### Return type
 

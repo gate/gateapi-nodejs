@@ -13,7 +13,7 @@ export class ListSquareAiSearchResponseDataItems {
     /**
      * Post ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Post content
      */
@@ -33,11 +33,11 @@ export class ListSquareAiSearchResponseDataItems {
     /**
      * Like count
      */
-    'likeCount'?: number;
+    'likeCount'?: number | bigint;
     /**
      * View count
      */
-    'pageView'?: number;
+    'pageView'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -45,7 +45,7 @@ export class ListSquareAiSearchResponseDataItems {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'content',
@@ -70,12 +70,12 @@ export class ListSquareAiSearchResponseDataItems {
         {
             name: 'likeCount',
             baseName: 'like_count',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'pageView',
             baseName: 'page_view',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

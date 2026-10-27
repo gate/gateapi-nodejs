@@ -373,8 +373,8 @@ const opts = {
   'limit': 100, // number | Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000
   'lastId': "12345", // string | Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
   'reverse': true, // boolean | Whether to retrieve data less than `last_id`. Default returns records greater than `last_id`.  Set to `true` to trace back market trade records, `false` to get latest trades.  No effect when `last_id` is not set.
-  'from': 1627706330, // number | Start timestamp for the query
-  'to': 1635329650, // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1627706330'), // number | Start timestamp for the query
+  'to': BigInt('1635329650'), // number | End timestamp for the query, defaults to current time if not specified
   'page': 1 // number | Page number
 };
 api.listTrades(currencyPair, opts)
@@ -391,8 +391,8 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 | [optional] [default to 100]
  **lastId** | **string**| Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used | [optional] [default to undefined]
  **reverse** | **boolean**| Whether to retrieve data less than &#x60;last_id&#x60;. Default returns records greater than &#x60;last_id&#x60;.  Set to &#x60;true&#x60; to trace back market trade records, &#x60;false&#x60; to get latest trades.  No effect when &#x60;last_id&#x60; is not set. | [optional] [default to undefined]
- **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
 
 ### Return type
@@ -428,8 +428,8 @@ const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
   'limit': 100, // number | Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
-  'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
+  'from': BigInt('1546905600'), // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
+  'to': BigInt('1546935600'), // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   'interval': '30m' // '1s' | '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d' | Time interval between data points. Note that `30d` represents a calendar month, not aligned to 30 days
 };
 api.listCandlesticks(currencyPair, opts)
@@ -444,8 +444,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [default to undefined]
  **limit** | **number**| Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
- **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
- **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional] [default to undefined]
  **interval** | **Interval**| Time interval between data points. Note that &#x60;30d&#x60; represents a calendar month, not aligned to 30 days | [optional] [default to &#39;30m&#39;]
 
 ### Return type
@@ -617,8 +617,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const opts = {
   'currency': "BTC", // string | Query by specified currency name
-  'from': 1627706330, // number | Start timestamp for the query
-  'to': 1635329650, // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1627706330'), // number | Start timestamp for the query
+  'to': BigInt('1635329650'), // number | End timestamp for the query, defaults to current time if not specified
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of records returned in a single list
   'type': "lend", // string | Query by specified account change type. If not specified, all change types will be included.
@@ -635,8 +635,8 @@ api.listSpotAccountBook(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
- **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **type** | **string**| Query by specified account change type. If not specified, all change types will be included. | [optional] [default to undefined]
@@ -688,7 +688,7 @@ api.createBatchOrders(order, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order** | [**Array&lt;Order&gt;**](Order.md)|  | 
+ **order** | [**Array<Order>**](Order.md)|  | 
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
@@ -825,8 +825,8 @@ const opts = {
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of records to be returned. If `status` is `open`, maximum of `limit` is 100
   'account': "spot", // string | Specify query account
-  'from': 1627706330, // number | Start timestamp for the query
-  'to': 1635329650, // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1627706330'), // number | Start timestamp for the query
+  'to': BigInt('1635329650'), // number | End timestamp for the query, defaults to current time if not specified
   'side': "sell" // string | Specify all bids or all asks, both included if not specified
 };
 api.listOrders(currencyPair, status, opts)
@@ -844,8 +844,8 @@ Name | Type | Description  | Notes
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100 | [optional] [default to 100]
  **account** | **string**| Specify query account | [optional] [default to undefined]
- **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **side** | **string**| Specify all bids or all asks, both included if not specified | [optional] [default to undefined]
 
 ### Return type
@@ -1000,7 +1000,7 @@ api.cancelBatchOrders(cancelBatchOrder, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancelBatchOrder** | [**Array&lt;CancelBatchOrder&gt;**](CancelBatchOrder.md)|  | 
+ **cancelBatchOrder** | [**Array<CancelBatchOrder>**](CancelBatchOrder.md)|  | 
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
@@ -1202,8 +1202,8 @@ const opts = {
   'page': 1, // number | Page number
   'orderId': "12345", // string | Filter trades with specified order ID. `currency_pair` is also required if this field is present
   'account': "spot", // string | The accountparameter has been deprecated. The interface supports querying all transaction records of the account.
-  'from': 1627706330, // number | Start timestamp for the query
-  'to': 1635329650 // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1627706330'), // number | Start timestamp for the query
+  'to': BigInt('1635329650') // number | End timestamp for the query, defaults to current time if not specified
 };
 api.listMyTrades(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1220,8 +1220,8 @@ Name | Type | Description  | Notes
  **page** | **number**| Page number | [optional] [default to 1]
  **orderId** | **string**| Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present | [optional] [default to undefined]
  **account** | **string**| The accountparameter has been deprecated. The interface supports querying all transaction records of the account. | [optional] [default to undefined]
- **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
 
 ### Return type
 
@@ -1351,7 +1351,7 @@ api.amendBatchOrders(batchAmendItem, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **batchAmendItem** | [**Array&lt;BatchAmendItem&gt;**](BatchAmendItem.md)|  | 
+ **batchAmendItem** | [**Array<BatchAmendItem>**](BatchAmendItem.md)|  | 
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
@@ -1384,8 +1384,8 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.SpotApi(client);
 const business = "margin"; // string | Leverage business, margin - position by position; unified - unified account
 const currency = "BTC"; // string | Currency
-const from = 1547706332; // number | Start timestamp in seconds
-const to = 1547706332; // number | End timestamp in seconds
+const from = BigInt('1547706332'); // number | Start timestamp in seconds
+const to = BigInt('1547706332'); // number | End timestamp in seconds
 const opts = {
   'page': 1, // number | Page number
   'limit': 30 // number | The maximum number of items returned in the list, the default value is 30
@@ -1402,8 +1402,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business** | **string**| Leverage business, margin - position by position; unified - unified account | [default to undefined]
  **currency** | **string**| Currency | [default to undefined]
- **from** | **number**| Start timestamp in seconds | [default to undefined]
- **to** | **number**| End timestamp in seconds | [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp in seconds | [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp in seconds | [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| The maximum number of items returned in the list, the default value is 30 | [optional] [default to 30]
 

@@ -15,7 +15,7 @@ export class PartnerCommissionHistory {
     /**
      * Total
      */
-    'total'?: number;
+    'total'?: number | bigint;
     /**
      * List of commission history
      */
@@ -27,7 +27,7 @@ export class PartnerCommissionHistory {
         {
             name: 'total',
             baseName: 'total',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'list',

@@ -16,11 +16,11 @@ export class AccountBookResponse {
     /**
      * Order ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Operation timestamp
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * Currency name
      */
@@ -40,12 +40,12 @@ export class AccountBookResponse {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'currency',

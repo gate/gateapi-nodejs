@@ -24,7 +24,7 @@ export class FixedTermCouponInfo {
     /**
      * User ID
      */
-    'userId': number;
+    'userId': number | bigint;
     /**
      * Currency
      */
@@ -32,7 +32,7 @@ export class FixedTermCouponInfo {
     /**
      * Associated order ID
      */
-    'orderId': number;
+    'orderId': number | bigint;
     /**
      * Interest rate boost coupon ID
      */
@@ -98,7 +98,7 @@ export class FixedTermCouponInfo {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'asset',
@@ -108,7 +108,7 @@ export class FixedTermCouponInfo {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'financialRateId',

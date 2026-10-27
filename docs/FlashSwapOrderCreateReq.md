@@ -11,5 +11,5 @@ Name | Type | Description | Notes
 **buyAsset** | **string** | Currency to buy | [default to undefined]
 **buyAmount** | **string** | Buy amount | [default to undefined]
 **clientReqId** | **string** | Client request ID for idempotency check | [optional] [default to undefined]
-**requestTimeMs** | **number** | Request timestamp (in milliseconds) | [optional] [default to undefined]
+**requestTimeMs** | **number &#124; bigint** | Request timestamp (in milliseconds) | [optional] [default to undefined]
 

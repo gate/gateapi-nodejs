@@ -13,11 +13,11 @@ export class AgencyTransaction {
     /**
      * Transaction Time. (unix timestamp)
      */
-    'transactionTime'?: number;
+    'transactionTime'?: number | bigint;
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Group name
      */
@@ -53,12 +53,12 @@ export class AgencyTransaction {
         {
             name: 'transactionTime',
             baseName: 'transaction_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'groupName',

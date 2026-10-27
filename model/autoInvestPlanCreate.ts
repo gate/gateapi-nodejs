@@ -38,11 +38,11 @@ export class AutoInvestPlanCreate {
     /**
      * Cycle day. For monthly: day of month (1-30); For weekly/biweekly: day of week (1-7, 1=Monday); For daily/hourly/4-hourly: ignored
      */
-    'planPeriodDay': number;
+    'planPeriodDay': number | bigint;
     /**
      * Execution hourAuto Invest 0-23
      */
-    'planPeriodHour': number;
+    'planPeriodHour': number | bigint;
     /**
      * Investment portfolio, asset cannot be repeated; Sum of all items\' ratios must be 100
      */
@@ -58,7 +58,7 @@ export class AutoInvestPlanCreate {
     /**
      * 0 Normal creation, 1 QuickInvestment
      */
-    'type'?: number;
+    'type'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -91,12 +91,12 @@ export class AutoInvestPlanCreate {
         {
             name: 'planPeriodDay',
             baseName: 'plan_period_day',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'planPeriodHour',
             baseName: 'plan_period_hour',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'items',
@@ -116,7 +116,7 @@ export class AutoInvestPlanCreate {
         {
             name: 'type',
             baseName: 'type',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

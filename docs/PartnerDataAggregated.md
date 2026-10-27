@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **tradeVolume** | **string** | Trading volume as a string for precision. Up to 6 decimal places; trailing zeros removed. | [default to undefined]
 **netFee** | **string** | Net fee as a string for precision. Up to 6 decimal places; trailing zeros removed. | [default to undefined]
 **customerCount** | **number** | Customer count (invited users) | [default to undefined]
-**tradingUserCount** | **string** | Transaction participant count (string format, consistent with online JSON serialization) only returns a specific value when business_type&#x3D;0(all), and returns nullfor other business types. | [default to undefined]
+**tradingUserCount** | **string &#124; null** | Transaction participant count (string format, consistent with online JSON serialization) only returns a specific value when business_type&#x3D;0(all), and returns nullfor other business types. | [default to undefined]
 **timeRangeDesc** | **string** | Time range description | [default to undefined]
-**businessType** | **number** | Business Type | [default to undefined]
+**businessType** | **PartnerDataAggregated.BusinessType** | Business Type | [default to undefined]
 **businessTypeDesc** | **string** | Business type description; allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi | [default to undefined]
 
 ## Enum: PartnerDataAggregated.BusinessType

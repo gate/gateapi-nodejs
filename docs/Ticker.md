@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **high24h** | **string** | 24h High | [optional] [default to undefined]
 **low24h** | **string** | 24h Low | [optional] [default to undefined]
 **etfNetValue** | **string** | ETF net value | [optional] [default to undefined]
-**etfPreNetValue** | **string** | ETF net value at previous rebalancing point | [optional] [default to undefined]
-**etfPreTimestamp** | **number** | ETF previous rebalancing time | [optional] [default to undefined]
-**etfLeverage** | **string** | ETF current leverage | [optional] [default to undefined]
+**etfPreNetValue** | **string &#124; null** | ETF net value at previous rebalancing point | [optional] [default to undefined]
+**etfPreTimestamp** | **number &#124; bigint &#124; null** | ETF previous rebalancing time | [optional] [default to undefined]
+**etfLeverage** | **string &#124; null** | ETF current leverage | [optional] [default to undefined]
 

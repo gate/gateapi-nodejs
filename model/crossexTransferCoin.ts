@@ -42,12 +42,12 @@ export class CrossexTransferCoin {
         {
             name: 'minTransAmount',
             baseName: 'min_trans_amount',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'estFee',
             baseName: 'est_fee',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'precision',

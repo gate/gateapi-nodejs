@@ -21,7 +21,7 @@ export class AIHubPortfolioBaseInfo {
     /**
      * Runtime duration in seconds.
      */
-    'runningDuration': number;
+    'runningDuration': number | bigint;
     'investAmount': string;
     'totalProfit': string;
     'profitRate': string;
@@ -42,7 +42,7 @@ export class AIHubPortfolioBaseInfo {
         {
             name: 'runningDuration',
             baseName: 'running_duration',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'investAmount',

@@ -16,7 +16,7 @@ export class FuturesBatchAmendOrderRequest {
     /**
      * Order id, order_id and text must contain at least one
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * User-defined order text, at least one of order_id and text must be passed
      */
@@ -44,7 +44,7 @@ export class FuturesBatchAmendOrderRequest {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'text',

@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **cumHold** | **string** | AccumulatedPosition | [default to undefined]
 **cumRedeem** | **string** | Accumulated redemption | [default to undefined]
 **avgPrice** | **string** | Average Cost Price | [default to undefined]
-**redeemStatus** | **number** | Redemption status | [default to undefined]
+**redeemStatus** | **number &#124; bigint** | Redemption status | [default to undefined]
 **lendAmount** | **string** | LendingQuantity | [default to undefined]
 

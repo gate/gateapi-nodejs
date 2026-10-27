@@ -32,7 +32,7 @@ export class ApiResponseExSkillClaimTaskResp {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -60,7 +60,7 @@ export class ApiResponseExSkillClaimTaskResp {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

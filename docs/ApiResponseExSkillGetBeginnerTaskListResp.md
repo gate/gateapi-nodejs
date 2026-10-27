@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **label** | **string** | Error identifier code. Empty string on success, machine-readable error label on error | [optional] [default to undefined]
 **message** | **string** | Error description | [optional] [default to undefined]
 **data** | [**ApiResponseExSkillGetBeginnerTaskListRespData**](ApiResponseExSkillGetBeginnerTaskListRespData.md) |  | [optional] [default to undefined]
-**timestamp** | **number** | Server timestamp (milliseconds) | [default to undefined]
+**timestamp** | **number &#124; bigint** | Server timestamp (milliseconds) | [default to undefined]
 

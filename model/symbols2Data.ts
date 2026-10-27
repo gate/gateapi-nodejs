@@ -15,7 +15,7 @@ export class Symbols2Data {
     /**
      * Total quantity
      */
-    'total'?: number;
+    'total'?: number | bigint;
     /**
      * Total pages
      */
@@ -31,7 +31,7 @@ export class Symbols2Data {
         {
             name: 'total',
             baseName: 'total',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'totalPage',

@@ -80,7 +80,7 @@ export class PositionTimerange {
     /**
      * Timestamp
      */
-    'time'?: number;
+    'time'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -168,7 +168,7 @@ export class PositionTimerange {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

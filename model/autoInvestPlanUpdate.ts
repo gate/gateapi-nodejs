@@ -16,7 +16,7 @@ export class AutoInvestPlanUpdate {
     /**
      * Plan ID
      */
-    'planId': number;
+    'planId': number | bigint;
     /**
      * Fund source Spotspot or Flexible Savingsearn，Default spot
      */
@@ -32,7 +32,7 @@ export class AutoInvestPlanUpdate {
         {
             name: 'planId',
             baseName: 'plan_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'fundSource',

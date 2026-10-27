@@ -13,7 +13,7 @@ export class SpotFee {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * taker fee rate
      */
@@ -65,7 +65,7 @@ export class SpotFee {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'takerFee',

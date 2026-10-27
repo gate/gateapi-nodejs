@@ -139,8 +139,8 @@ const opts = {
   'withdrawId': "withdrawId_example", // string | Withdrawal record ID starts with \'w\', such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled
   'assetClass': "assetClass_example", // string | Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone
   'withdrawOrderId': "withdrawOrderId_example", // string | User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried
-  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
-  'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1602120000'), // number | Start time for querying records. If not specified, defaults to 7 days before current time
+  'to': BigInt('1602123600'), // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -158,8 +158,8 @@ Name | Type | Description  | Notes
  **withdrawId** | **string**| Withdrawal record ID starts with \&#39;w\&#39;, such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled | [optional] [default to undefined]
  **assetClass** | **string**| Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone | [optional] [default to undefined]
  **withdrawOrderId** | **string**| User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried | [optional] [default to undefined]
- **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -197,8 +197,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const opts = {
   'currency': "BTC", // string | Specify the currency. If not specified, returns all currencies
-  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
-  'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1602120000'), // number | Start time for querying records. If not specified, defaults to 7 days before current time
+  'to': BigInt('1602123600'), // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of entries returned in the list, limited to 500 transactions
   'offset': 0 // number | List offset, starting from 0
 };
@@ -213,8 +213,8 @@ api.listDeposits(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Specify the currency. If not specified, returns all currencies | [optional] [default to undefined]
- **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of entries returned in the list, limited to 500 transactions | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -342,8 +342,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const opts = {
   'subUid': "10003", // string | Sub-account user ID, you can query multiple records separated by `,`. If not specified, it will return records of all sub-accounts
-  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
-  'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
+  'from': BigInt('1602120000'), // number | Start time for querying records. If not specified, defaults to 7 days before current time
+  'to': BigInt('1602123600'), // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -358,8 +358,8 @@ api.listSubAccountTransfers(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subUid** | **string**| Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts | [optional] [default to undefined]
- **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 

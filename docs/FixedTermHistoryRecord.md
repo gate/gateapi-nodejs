@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Record ID | [default to undefined]
-**orderId** | **number** | Order ID | [optional] [default to undefined]
-**userId** | **number** | User ID | [default to undefined]
+**orderId** | **number &#124; bigint** | Order ID | [optional] [default to undefined]
+**userId** | **number &#124; bigint** | User ID | [default to undefined]
 **asset** | **string** | Currency | [default to undefined]
 **uniqTime** | **string** | Unique time identifier (date) | [optional] [default to undefined]
 **bonusId** | **number** | Reward campaign ID | [optional] [default to undefined]

@@ -43,6 +43,7 @@ export class AssetswapApi {
      * @summary Portfolio optimization — currency list
      */
     public async listAssetSwapAssets(): Promise<{ response: AxiosResponse; body: ApiResponseAssetSwapListAssets }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/asset-swap/asset/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -74,6 +75,7 @@ export class AssetswapApi {
      * @summary Portfolio optimization — configuration
      */
     public async getAssetSwapConfig(): Promise<{ response: AxiosResponse; body: ApiResponseAssetSwapConfig }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/asset-swap/config';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -109,6 +111,7 @@ export class AssetswapApi {
         cursor?: string;
         size?: number;
     }): Promise<{ response: AxiosResponse; body: ApiResponseAssetSwapEvaluate }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/asset-swap/evaluate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -122,8 +125,10 @@ export class AssetswapApi {
 
         opts = opts || {};
         if (opts.maxEvaluateValue !== undefined) {
-            let maxEvaluateValueSerialized = ObjectSerializer.serialize(opts.maxEvaluateValue, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let maxEvaluateValueSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.maxEvaluateValue, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(maxEvaluateValueSerialized)) {
                 maxEvaluateValueSerialized = maxEvaluateValueSerialized.join(',');
             }
@@ -131,8 +136,10 @@ export class AssetswapApi {
         }
 
         if (opts.cursor !== undefined) {
-            let cursorSerialized = ObjectSerializer.serialize(opts.cursor, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let cursorSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.cursor, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(cursorSerialized)) {
                 cursorSerialized = cursorSerialized.join(',');
             }
@@ -140,8 +147,10 @@ export class AssetswapApi {
         }
 
         if (opts.size !== undefined) {
-            let sizeSerialized = ObjectSerializer.serialize(opts.size, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.size, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sizeSerialized)) {
                 sizeSerialized = sizeSerialized.join(',');
             }
@@ -167,6 +176,7 @@ export class AssetswapApi {
     public async createAssetSwapOrderV1(
         orderCreateV1Req: OrderCreateV1Req,
     ): Promise<{ response: AxiosResponse; body: ApiResponseAssetSwapOrderCreateV1 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/asset-swap/order/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -222,6 +232,7 @@ export class AssetswapApi {
         sortMode?: number;
         orderBy?: number;
     }): Promise<{ response: AxiosResponse; body: ApiResponseAssetSwapOrderListV1 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/asset-swap/order/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -235,8 +246,10 @@ export class AssetswapApi {
 
         opts = opts || {};
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -244,8 +257,8 @@ export class AssetswapApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -253,8 +266,10 @@ export class AssetswapApi {
         }
 
         if (opts.status !== undefined) {
-            let statusSerialized = ObjectSerializer.serialize(opts.status, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let statusSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.status, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(statusSerialized)) {
                 statusSerialized = statusSerialized.join(',');
             }
@@ -262,8 +277,10 @@ export class AssetswapApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -271,8 +288,10 @@ export class AssetswapApi {
         }
 
         if (opts.size !== undefined) {
-            let sizeSerialized = ObjectSerializer.serialize(opts.size, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.size, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sizeSerialized)) {
                 sizeSerialized = sizeSerialized.join(',');
             }
@@ -280,8 +299,10 @@ export class AssetswapApi {
         }
 
         if (opts.sortMode !== undefined) {
-            let sortModeSerialized = ObjectSerializer.serialize(opts.sortMode, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sortModeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sortMode, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sortModeSerialized)) {
                 sortModeSerialized = sortModeSerialized.join(',');
             }
@@ -289,8 +310,10 @@ export class AssetswapApi {
         }
 
         if (opts.orderBy !== undefined) {
-            let orderBySerialized = ObjectSerializer.serialize(opts.orderBy, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let orderBySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.orderBy, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(orderBySerialized)) {
                 orderBySerialized = orderBySerialized.join(',');
             }
@@ -320,6 +343,7 @@ export class AssetswapApi {
     public async previewAssetSwapOrderV1(
         orderPreviewV1Req: OrderPreviewV1Req,
     ): Promise<{ response: AxiosResponse; body: ApiResponseAssetSwapOrderPreviewV1 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/asset-swap/order/preview';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -362,6 +386,7 @@ export class AssetswapApi {
     public async getAssetSwapOrderV1(
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: ApiResponseAssetSwapOrderQueryV1 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/asset-swap/order/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));

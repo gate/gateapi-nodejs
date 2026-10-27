@@ -12,5 +12,5 @@ Name | Type | Description | Notes
 **autoRepay** | **boolean** | Fixed interest rate, auto-repayment | [optional] [default to undefined]
 **borrowCurrency** | **string** | Borrowed currency | [default to undefined]
 **borrowAmount** | **string** | Borrowed amount | [default to undefined]
-**collateralCurrencies** | [**Array&lt;CollateralCurrency&gt;**](CollateralCurrency.md) | Collateral currency and amount | [optional] [default to undefined]
+**collateralCurrencies** | [**Array<CollateralCurrency>**](CollateralCurrency.md) | Collateral currency and amount | [optional] [default to undefined]
 

@@ -44,11 +44,11 @@ export class OptionsOrder {
     /**
      * Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
      */
-    'size': number;
+    'size': number | bigint;
     /**
      * Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
      */
-    'iceberg'?: number;
+    'iceberg'?: number | bigint;
     /**
      * Order price. Price of 0 with `tif` set as `ioc` represents market order (quote currency)
      */
@@ -88,7 +88,7 @@ export class OptionsOrder {
     /**
      * Unfilled quantity
      */
-    'left'?: number;
+    'left'?: number | bigint;
     /**
      * Fill price
      */
@@ -130,12 +130,12 @@ export class OptionsOrder {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'finishTime',
             baseName: 'finish_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'finishAs',
@@ -155,12 +155,12 @@ export class OptionsOrder {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'iceberg',
             baseName: 'iceberg',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'price',
@@ -210,7 +210,7 @@ export class OptionsOrder {
         {
             name: 'left',
             baseName: 'left',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'fillPrice',

@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+import { CouponDetailExtraItem } from './couponDetailExtraItem';
 import { ListUserCouponsResponseDataHelpUrl } from './listUserCouponsResponseDataHelpUrl';
 import { ListUserCouponsResponseDataJumpUrl } from './listUserCouponsResponseDataJumpUrl';
 import { ListUserCouponsResponseDataProgressConfig } from './listUserCouponsResponseDataProgressConfig';
@@ -115,7 +116,7 @@ export class GetUserCouponDetailResponseData {
     /**
      * [Detail endpoint only] Coupon detail attributes organized by display blocks. The frontend renders them as separate sections. Point card type always returns empty array []. Other types return a 2D array composed of blocks: block 1 = coupon name/source/status, block 2 = coupon core attributes, block 3 = time information. Each item contains: type (display type: string/timestamp/day/hour/status/btn), key (label text, i18n translated), value (string or integer, timestamp type is Unix timestamp)
      */
-    'extra'?: Array<Array<object>>;
+    'extra'?: Array<Array<CouponDetailExtraItem>>;
 
     static discriminator: string | undefined = undefined;
 
@@ -253,7 +254,7 @@ export class GetUserCouponDetailResponseData {
         {
             name: 'extra',
             baseName: 'extra',
-            type: 'Array<Array<object>>',
+            type: 'Array<Array<CouponDetailExtraItem>>',
         },
     ];
 

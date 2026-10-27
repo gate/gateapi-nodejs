@@ -16,7 +16,7 @@ export class AutoInvestPlanStop {
     /**
      * Plan ID
      */
-    'planId': number;
+    'planId': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -24,7 +24,7 @@ export class AutoInvestPlanStop {
         {
             name: 'planId',
             baseName: 'plan_id',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

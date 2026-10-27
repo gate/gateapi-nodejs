@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orders** | [**Array&lt;ChaseOrder&gt;**](ChaseOrder.md) |  | [optional] [default to undefined]
+**orders** | [**Array<ChaseOrder>**](ChaseOrder.md) |  | [optional] [default to undefined]
 

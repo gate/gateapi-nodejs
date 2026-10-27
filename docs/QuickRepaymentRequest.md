@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**debtCurrencies** | **Array&lt;string&gt;** | Liability currencies | [default to undefined]
-**availableCurrencies** | **Array&lt;string&gt;** | Currencies to repay with | [default to undefined]
+**debtCurrencies** | **Array<string>** | Liability currencies | [default to undefined]
+**availableCurrencies** | **Array<string>** | Currencies to repay with | [default to undefined]
 

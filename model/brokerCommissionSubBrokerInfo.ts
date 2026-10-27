@@ -16,7 +16,7 @@ export class BrokerCommissionSubBrokerInfo {
     /**
      * Sub-broker user ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Sub-broker original commission rate
      */
@@ -36,7 +36,7 @@ export class BrokerCommissionSubBrokerInfo {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'originalCommissionRate',

@@ -21,7 +21,7 @@ export class SpotPriceTriggeredOrder {
     /**
      * Auto order ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * User ID
      */
@@ -33,15 +33,15 @@ export class SpotPriceTriggeredOrder {
     /**
      * Created time
      */
-    'ctime'?: number;
+    'ctime'?: number | bigint;
     /**
      * End time
      */
-    'ftime'?: number;
+    'ftime'?: number | bigint;
     /**
      * ID of the order created after trigger
      */
-    'firedOrderId'?: number;
+    'firedOrderId'?: number | bigint;
     /**
      * Status  - open: Running - cancelled: Manually cancelled - finish: Successfully completed - failed: Failed to execute - expired: Expired
      */
@@ -67,7 +67,7 @@ export class SpotPriceTriggeredOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'user',
@@ -82,17 +82,17 @@ export class SpotPriceTriggeredOrder {
         {
             name: 'ctime',
             baseName: 'ctime',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'ftime',
             baseName: 'ftime',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'firedOrderId',
             baseName: 'fired_order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'status',

@@ -15,7 +15,7 @@ export class OrderLog {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: OrderLogData;
 
     static discriminator: string | undefined = undefined;
@@ -24,7 +24,7 @@ export class OrderLog {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

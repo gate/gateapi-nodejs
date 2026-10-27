@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transactionTime** | **number** | Transaction Time. (unix timestamp) | [optional] [default to undefined]
-**userId** | **number** | User ID | [optional] [default to undefined]
+**transactionTime** | **number &#124; bigint** | Transaction Time. (unix timestamp) | [optional] [default to undefined]
+**userId** | **number &#124; bigint** | User ID | [optional] [default to undefined]
 **groupName** | **string** | Group name | [optional] [default to undefined]
 **fee** | **string** | Fee amount (USDT) | [optional] [default to undefined]
 **currencyPair** | **string** | Currency pair | [optional] [default to undefined]

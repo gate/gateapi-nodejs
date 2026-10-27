@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;OrderHistoryListDataList&gt;**](OrderHistoryListDataList.md) | Historical order list | [optional] [default to undefined]
+**list** | [**Array<OrderHistoryListDataList>**](OrderHistoryListDataList.md) | Historical order list | [optional] [default to undefined]
 

@@ -16,7 +16,7 @@ export class AutoInvestPlanRecordItem {
     /**
      * Record ID
      */
-    'id': number;
+    'id': number | bigint;
     /**
      * Type
      */
@@ -28,15 +28,15 @@ export class AutoInvestPlanRecordItem {
     /**
      * User ID
      */
-    'userId': number;
+    'userId': number | bigint;
     /**
      * Plan ID
      */
-    'planId': number;
+    'planId': number | bigint;
     /**
      * PlanVersion
      */
-    'planVersion': number;
+    'planVersion': number | bigint;
     /**
      * Investment amount
      */
@@ -44,11 +44,11 @@ export class AutoInvestPlanRecordItem {
     /**
      * Investment time
      */
-    'createTime': number;
+    'createTime': number | bigint;
     /**
      * Update time
      */
-    'updateTime': number;
+    'updateTime': number | bigint;
     /**
      * Status
      */
@@ -56,11 +56,11 @@ export class AutoInvestPlanRecordItem {
     /**
      * Status enum
      */
-    'statusType': number;
+    'statusType': number | bigint;
     /**
      * 2 = Buy, Other = Sell
      */
-    'side': number;
+    'side': number | bigint;
     /**
      * Status description
      */
@@ -80,7 +80,7 @@ export class AutoInvestPlanRecordItem {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'type',
@@ -95,17 +95,17 @@ export class AutoInvestPlanRecordItem {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'planId',
             baseName: 'plan_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'planVersion',
             baseName: 'plan_version',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'amount',
@@ -115,12 +115,12 @@ export class AutoInvestPlanRecordItem {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'status',
@@ -130,12 +130,12 @@ export class AutoInvestPlanRecordItem {
         {
             name: 'statusType',
             baseName: 'status_type',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'side',
             baseName: 'side',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'statusMessage',

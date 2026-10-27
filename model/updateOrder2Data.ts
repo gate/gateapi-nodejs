@@ -13,7 +13,7 @@ export class UpdateOrder2Data {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -21,7 +21,7 @@ export class UpdateOrder2Data {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

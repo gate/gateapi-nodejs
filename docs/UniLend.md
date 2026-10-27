@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **minRate** | **string** | Minimum interest rate | [optional] [readonly] [default to undefined]
 **interestStatus** | **string** | Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment | [optional] [readonly] [default to undefined]
 **reinvestLeftAmount** | **string** | Non-reinvested Amount | [optional] [readonly] [default to undefined]
-**createTime** | **number** | Lending Order Creation Time | [optional] [readonly] [default to undefined]
-**updateTime** | **number** | Lending Order Last Update Time | [optional] [readonly] [default to undefined]
+**createTime** | **number &#124; bigint** | Lending Order Creation Time | [optional] [readonly] [default to undefined]
+**updateTime** | **number &#124; bigint** | Lending Order Last Update Time | [optional] [readonly] [default to undefined]
 

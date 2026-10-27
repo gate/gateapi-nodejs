@@ -15,5 +15,5 @@ Name | Type | Description | Notes
 **price** | **string** | Exchange price | [optional] [default to undefined]
 **priceDiff** | **string** | Spread percentage | [optional] [default to undefined]
 **reversePrice** | **string** | Reverse price | [optional] [default to undefined]
-**validTimestamp** | **number** | Quote expiration timestamp (in seconds) | [optional] [default to undefined]
+**validTimestamp** | **number &#124; bigint** | Quote expiration timestamp (in seconds) | [optional] [default to undefined]
 

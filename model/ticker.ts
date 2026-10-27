@@ -73,7 +73,7 @@ export class Ticker {
     /**
      * ETF previous rebalancing time
      */
-    'etfPreTimestamp'?: number | null;
+    'etfPreTimestamp'?: number | bigint | null;
     /**
      * ETF current leverage
      */
@@ -160,7 +160,7 @@ export class Ticker {
         {
             name: 'etfPreTimestamp',
             baseName: 'etf_pre_timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'etfLeverage',

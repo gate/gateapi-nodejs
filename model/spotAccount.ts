@@ -25,7 +25,7 @@ export class SpotAccount {
     /**
      * Version number
      */
-    'updateId'?: number;
+    'updateId'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -48,7 +48,7 @@ export class SpotAccount {
         {
             name: 'updateId',
             baseName: 'update_id',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

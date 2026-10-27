@@ -13,7 +13,7 @@ export class OptionsAccount {
     /**
      * User ID
      */
-    'user'?: number;
+    'user'?: number | bigint;
     /**
      * Account balance, invalid for unified account
      */
@@ -85,7 +85,7 @@ export class OptionsAccount {
     /**
      * Notional value upper limit, including the nominal value of positions and outstanding orders
      */
-    'positionNotionalLimit'?: number;
+    'positionNotionalLimit'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -93,7 +93,7 @@ export class OptionsAccount {
         {
             name: 'user',
             baseName: 'user',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'total',
@@ -183,7 +183,7 @@ export class OptionsAccount {
         {
             name: 'positionNotionalLimit',
             baseName: 'position_notional_limit',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

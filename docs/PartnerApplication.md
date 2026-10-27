@@ -32,8 +32,8 @@ Name | Type | Description | Notes
 **phone** | **string** | Phone number | [optional] [default to undefined]
 **telegram** | **string** | Telegram account | [optional] [default to undefined]
 **otherContact** | [**OtherContact**](OtherContact.md) |  | [optional] [default to undefined]
-**proofImagesUrlList** | **Array&lt;string&gt;** | List of proof image URLs | [optional] [default to undefined]
-**proofVideosUrlList** | **Array&lt;string&gt;** | List of proof video URLs | [optional] [default to undefined]
+**proofImagesUrlList** | **Array<string>** | List of proof image URLs | [optional] [default to undefined]
+**proofVideosUrlList** | **Array<string>** | List of proof video URLs | [optional] [default to undefined]
 **applyMsg** | **string** | Application message | [optional] [default to undefined]
 **jumpUrl** | **string** | Redirect URL | [optional] [default to undefined]
 

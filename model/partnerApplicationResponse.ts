@@ -26,7 +26,7 @@ export class PartnerApplicationResponse {
     /**
      * Unix timestamp
      */
-    'timestamp': number;
+    'timestamp': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -49,7 +49,7 @@ export class PartnerApplicationResponse {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

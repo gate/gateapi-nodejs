@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **needReplenish** | **number** | Whether additional margin is required. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] [default to undefined]
 **merchantInfo** | [**P2pMerchantMarketInfo**](P2pMerchantMarketInfo.md) |  | [optional] [default to undefined]
 **onlineStatus** | **number** | Merchant online status: &#x60;1&#x60; online; &#x60;0&#x60; offline. | [optional] [default to undefined]
-**workHours** | [**object**](.md) | Merchant online status details | [optional] [default to undefined]
+**workHours** | [**object &#124; null**](.md) | Merchant online status details | [optional] [default to undefined]
 **transactionsMonth** | **number** | 30-day transaction volume | [optional] [default to undefined]
 **transactionsAll** | **number** | Total transaction volume | [optional] [default to undefined]
 **tradeVersatile** | **boolean** | Single user or composite user | [optional] [default to undefined]

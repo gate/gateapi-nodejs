@@ -24,7 +24,7 @@ export class AmendOptionsOrderRequest {
     /**
      * Trade amount
      */
-    'size': number;
+    'size': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -42,7 +42,7 @@ export class AmendOptionsOrderRequest {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

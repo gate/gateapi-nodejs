@@ -60,6 +60,7 @@ export class StockApi {
         pnlCalcType?: 1 | 2;
         pnlCalcPrice?: 1 | 2;
     }): Promise<{ response: AxiosResponse; body: UserAssetResp2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/users/assets';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -73,8 +74,10 @@ export class StockApi {
 
         opts = opts || {};
         if (opts.pnlCalcType !== undefined) {
-            let pnlCalcTypeSerialized = ObjectSerializer.serialize(opts.pnlCalcType, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pnlCalcTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pnlCalcType, 'PnlCalcType'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pnlCalcTypeSerialized)) {
                 pnlCalcTypeSerialized = pnlCalcTypeSerialized.join(',');
             }
@@ -82,8 +85,10 @@ export class StockApi {
         }
 
         if (opts.pnlCalcPrice !== undefined) {
-            let pnlCalcPriceSerialized = ObjectSerializer.serialize(opts.pnlCalcPrice, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pnlCalcPriceSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pnlCalcPrice, 'PnlCalcPrice'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pnlCalcPriceSerialized)) {
                 pnlCalcPriceSerialized = pnlCalcPriceSerialized.join(',');
             }
@@ -118,6 +123,7 @@ export class StockApi {
         page?: number;
         pageSize?: number;
     }): Promise<{ response: AxiosResponse; body: Symbols2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/symbols';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -131,8 +137,10 @@ export class StockApi {
 
         opts = opts || {};
         if (opts.symbols !== undefined) {
-            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbols, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolsSerialized)) {
                 symbolsSerialized = symbolsSerialized.join(',');
             }
@@ -140,8 +148,10 @@ export class StockApi {
         }
 
         if (opts.exchange !== undefined) {
-            let exchangeSerialized = ObjectSerializer.serialize(opts.exchange, "'us' | 'hk' | 'kr' | 'jp'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchange, 'Exchange'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeSerialized)) {
                 exchangeSerialized = exchangeSerialized.join(',');
             }
@@ -149,8 +159,10 @@ export class StockApi {
         }
 
         if (opts.withDescI18n !== undefined) {
-            let withDescI18nSerialized = ObjectSerializer.serialize(opts.withDescI18n, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let withDescI18nSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.withDescI18n, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(withDescI18nSerialized)) {
                 withDescI18nSerialized = withDescI18nSerialized.join(',');
             }
@@ -158,8 +170,10 @@ export class StockApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -167,8 +181,10 @@ export class StockApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -201,6 +217,7 @@ export class StockApi {
         page?: number;
         pageSize?: number;
     }): Promise<{ response: AxiosResponse; body: SymbolDetail }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/symbols/detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -214,8 +231,10 @@ export class StockApi {
 
         opts = opts || {};
         if (opts.symbols !== undefined) {
-            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbols, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolsSerialized)) {
                 symbolsSerialized = symbolsSerialized.join(',');
             }
@@ -223,8 +242,10 @@ export class StockApi {
         }
 
         if (opts.exchange !== undefined) {
-            let exchangeSerialized = ObjectSerializer.serialize(opts.exchange, "'us' | 'hk' | 'kr' | 'jp'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchange, 'Exchange'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeSerialized)) {
                 exchangeSerialized = exchangeSerialized.join(',');
             }
@@ -232,8 +253,10 @@ export class StockApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -241,8 +264,10 @@ export class StockApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -266,6 +291,7 @@ export class StockApi {
      * @param symbol Symbol
      */
     public async queryStockOrderBook(symbol: string): Promise<{ response: AxiosResponse; body: OrderBook2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/stock/market/{symbol}/orderbook'.replace('{' + 'symbol' + '}', encodeURIComponent(String(symbol)));
@@ -304,6 +330,7 @@ export class StockApi {
     public async queryStockOrderList(opts?: {
         symbol?: string;
     }): Promise<{ response: AxiosResponse; body: OrderList2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -317,8 +344,10 @@ export class StockApi {
 
         opts = opts || {};
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -344,6 +373,7 @@ export class StockApi {
     public async createStockOrder(
         tradFiSpotOrderRequest: TradFiSpotOrderRequest,
     ): Promise<{ response: AxiosResponse; body: CreateOrder2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -379,6 +409,7 @@ export class StockApi {
      * @summary Cancel all open orders
      */
     public async deleteAllStockOrders(): Promise<{ response: AxiosResponse; body: DeleteOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -422,6 +453,7 @@ export class StockApi {
         page?: number;
         pageSize?: number;
     }): Promise<{ response: AxiosResponse; body: OrderHistoryList2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/orders/history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -435,8 +467,10 @@ export class StockApi {
 
         opts = opts || {};
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -444,8 +478,10 @@ export class StockApi {
         }
 
         if (opts.orderIds !== undefined) {
-            let orderIdsSerialized = ObjectSerializer.serialize(opts.orderIds, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let orderIdsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.orderIds, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(orderIdsSerialized)) {
                 orderIdsSerialized = orderIdsSerialized.join(',');
             }
@@ -453,8 +489,10 @@ export class StockApi {
         }
 
         if (opts.beginTime !== undefined) {
-            let beginTimeSerialized = ObjectSerializer.serialize(opts.beginTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let beginTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.beginTime, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(beginTimeSerialized)) {
                 beginTimeSerialized = beginTimeSerialized.join(',');
             }
@@ -462,8 +500,10 @@ export class StockApi {
         }
 
         if (opts.endTime !== undefined) {
-            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endTime, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endTimeSerialized)) {
                 endTimeSerialized = endTimeSerialized.join(',');
             }
@@ -471,8 +511,10 @@ export class StockApi {
         }
 
         if (opts.side !== undefined) {
-            let sideSerialized = ObjectSerializer.serialize(opts.side, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.side, 'Side'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sideSerialized)) {
                 sideSerialized = sideSerialized.join(',');
             }
@@ -480,8 +522,10 @@ export class StockApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -489,8 +533,10 @@ export class StockApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -515,12 +561,16 @@ export class StockApi {
      * @param tradFiSpotOrderUpdateRequest
      */
     public async updateStockOrder(
-        orderId: number,
+        orderId: number | bigint,
         tradFiSpotOrderUpdateRequest: TradFiSpotOrderUpdateRequest,
     ): Promise<{ response: AxiosResponse; body: UpdateOrder2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/stock/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+            '/stock/orders/{order_id}'.replace(
+                '{' + 'order_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(orderId, 'orderId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -560,10 +610,14 @@ export class StockApi {
      * @summary Cancel order
      * @param orderId Order ID
      */
-    public async deleteStockOrder(orderId: number): Promise<{ response: AxiosResponse; body: DeleteOrder }> {
+    public async deleteStockOrder(orderId: number | bigint): Promise<{ response: AxiosResponse; body: DeleteOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/stock/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+            '/stock/orders/{order_id}'.replace(
+                '{' + 'order_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(orderId, 'orderId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -605,6 +659,7 @@ export class StockApi {
         symbol?: string;
         exchange?: 'us' | 'hk' | 'kr' | 'jp';
     }): Promise<{ response: AxiosResponse; body: PositionList2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -618,8 +673,10 @@ export class StockApi {
 
         opts = opts || {};
         if (opts.pnlCalcType !== undefined) {
-            let pnlCalcTypeSerialized = ObjectSerializer.serialize(opts.pnlCalcType, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pnlCalcTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pnlCalcType, 'PnlCalcType'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pnlCalcTypeSerialized)) {
                 pnlCalcTypeSerialized = pnlCalcTypeSerialized.join(',');
             }
@@ -627,8 +684,10 @@ export class StockApi {
         }
 
         if (opts.pnlCalcPrice !== undefined) {
-            let pnlCalcPriceSerialized = ObjectSerializer.serialize(opts.pnlCalcPrice, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pnlCalcPriceSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pnlCalcPrice, 'PnlCalcPrice'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pnlCalcPriceSerialized)) {
                 pnlCalcPriceSerialized = pnlCalcPriceSerialized.join(',');
             }
@@ -636,8 +695,10 @@ export class StockApi {
         }
 
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -645,8 +706,10 @@ export class StockApi {
         }
 
         if (opts.exchange !== undefined) {
-            let exchangeSerialized = ObjectSerializer.serialize(opts.exchange, "'us' | 'hk' | 'kr' | 'jp'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchange, 'Exchange'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeSerialized)) {
                 exchangeSerialized = exchangeSerialized.join(',');
             }
@@ -672,6 +735,7 @@ export class StockApi {
     public async closeStockPosition(
         tradFiSpotClosePositionRequest: TradFiSpotClosePositionRequest,
     ): Promise<{ response: AxiosResponse; body: ClosePosition }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/positions/close';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -714,8 +778,8 @@ export class StockApi {
      * @param opts.pageSize Page size, defaults to 10, max 500; server caps at 500
      */
     public async queryStockTransactions(opts?: {
-        beginTime?: number;
-        endTime?: number;
+        beginTime?: number | bigint;
+        endTime?: number | bigint;
         refId?: string;
         type?:
             | 'deposit'
@@ -730,6 +794,7 @@ export class StockApi {
         page?: number;
         pageSize?: number;
     }): Promise<{ response: AxiosResponse; body: TransactionList2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/transactions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -743,8 +808,10 @@ export class StockApi {
 
         opts = opts || {};
         if (opts.beginTime !== undefined) {
-            let beginTimeSerialized = ObjectSerializer.serialize(opts.beginTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let beginTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.beginTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(beginTimeSerialized)) {
                 beginTimeSerialized = beginTimeSerialized.join(',');
             }
@@ -752,8 +819,10 @@ export class StockApi {
         }
 
         if (opts.endTime !== undefined) {
-            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endTimeSerialized)) {
                 endTimeSerialized = endTimeSerialized.join(',');
             }
@@ -761,8 +830,10 @@ export class StockApi {
         }
 
         if (opts.refId !== undefined) {
-            let refIdSerialized = ObjectSerializer.serialize(opts.refId, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let refIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.refId, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(refIdSerialized)) {
                 refIdSerialized = refIdSerialized.join(',');
             }
@@ -770,11 +841,10 @@ export class StockApi {
         }
 
         if (opts.type !== undefined) {
-            let typeSerialized = ObjectSerializer.serialize(
-                opts.type,
-                "'deposit' | 'withdraw' | 'fee' | 'dividend' | 'sell' | 'buy' | 'award' | 'stock_transfer_in' | 'stock_transfer_out'",
+            let typeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.type, 'Type'),
             );
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(typeSerialized)) {
                 typeSerialized = typeSerialized.join(',');
             }
@@ -782,8 +852,10 @@ export class StockApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -791,8 +863,10 @@ export class StockApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -818,6 +892,7 @@ export class StockApi {
     public async createStockTransaction(
         tradFiSpotTransactionRequest: TradFiSpotTransactionRequest,
     ): Promise<{ response: AxiosResponse; body: CreateTransaction2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/transactions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -853,6 +928,7 @@ export class StockApi {
      * @summary Query supported exchanges
      */
     public async queryStockExchanges(): Promise<{ response: AxiosResponse; body: Exchanges }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/exchanges';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -880,6 +956,7 @@ export class StockApi {
      * @summary Query fee rates for Japanese and Korean stocks
      */
     public async queryStockFeeRate(): Promise<{ response: AxiosResponse; body: FeeRate }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/stock/fee-rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

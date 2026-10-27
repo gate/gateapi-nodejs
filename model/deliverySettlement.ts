@@ -13,7 +13,7 @@ export class DeliverySettlement {
     /**
      * Liquidation time
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * Futures contract
      */
@@ -25,7 +25,7 @@ export class DeliverySettlement {
     /**
      * Position size
      */
-    'size'?: number;
+    'size'?: number | bigint;
     /**
      * Margin
      */
@@ -53,7 +53,7 @@ export class DeliverySettlement {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'contract',
@@ -68,7 +68,7 @@ export class DeliverySettlement {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'margin',

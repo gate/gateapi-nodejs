@@ -16,7 +16,7 @@ export class TrailChangeLog {
     /**
      * Update time
      */
-    'updatedAt'?: number;
+    'updatedAt'?: number | bigint;
     /**
      * Trading quantity in contracts, positive for buy, negative for sell
      */
@@ -48,7 +48,7 @@ export class TrailChangeLog {
         {
             name: 'updatedAt',
             baseName: 'updated_at',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'amount',

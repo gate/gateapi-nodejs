@@ -18,5 +18,5 @@ Name | Type | Description | Notes
 **isTop** | **number** | Pinned status indicator for the article. | [default to undefined]
 **cateId** | **number** | ID of the category to which the article belongs. | [default to undefined]
 **source** | **string** | Article source | [default to undefined]
-**contentLangList** | [**Array&lt;AnnouncementArticleLanguage&gt;**](AnnouncementArticleLanguage.md) | Languages supported by the article, with the code and name of each language. | [default to undefined]
+**contentLangList** | [**Array<AnnouncementArticleLanguage>**](AnnouncementArticleLanguage.md) | Languages supported by the article, with the code and name of each language. | [default to undefined]
 

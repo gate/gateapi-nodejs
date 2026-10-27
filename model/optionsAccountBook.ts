@@ -37,7 +37,7 @@ export class OptionsAccountBook {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'change',

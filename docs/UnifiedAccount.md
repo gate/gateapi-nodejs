@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mode** | **string** | Unified account mode: - classic: Classic account mode - multi_currency: Multi-currency margin mode - portfolio: Portfolio margin mode - single_currency: Single-currency margin mode | [optional] [default to undefined]
-**userId** | **number** | User ID | [optional] [default to undefined]
-**refreshTime** | **number** | Last refresh time | [optional] [default to undefined]
+**userId** | **number &#124; bigint** | User ID | [optional] [default to undefined]
+**refreshTime** | **number &#124; bigint** | Last refresh time | [optional] [default to undefined]
 **locked** | **boolean** | Whether the account is locked, valid in cross-currency margin/combined margin mode, false in other modes such as single-currency margin mode | [optional] [default to undefined]
 **balances** | [**{ [key: string]: UnifiedBalance; }**](UnifiedBalance.md) |  | [optional] [default to undefined]
 **total** | **string** | Total account assets converted to USD, i.e. the sum of &#x60;(available + freeze) * price&#x60; in all currencies (deprecated, to be removed, replaced by unified_account_total) | [optional] [default to undefined]

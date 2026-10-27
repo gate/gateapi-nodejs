@@ -40,7 +40,7 @@ export class FuturesPremiumIndex {
         {
             name: 't',
             baseName: 't',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'c',

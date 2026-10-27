@@ -15,7 +15,7 @@ export class FlashSwapMultiCurrencyOrder {
     /**
      * Order ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * User ID
      */
@@ -83,7 +83,7 @@ export class FlashSwapMultiCurrencyOrder {
     /**
      * Creation timestamp (in milliseconds)
      */
-    'createTimeMs'?: number;
+    'createTimeMs'?: number | bigint;
     'error': ErrCodeMsg;
 
     static discriminator: string | undefined = undefined;
@@ -92,7 +92,7 @@ export class FlashSwapMultiCurrencyOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'userId',
@@ -177,7 +177,7 @@ export class FlashSwapMultiCurrencyOrder {
         {
             name: 'createTimeMs',
             baseName: 'create_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'error',

@@ -44,6 +44,7 @@ export class WelfareApi {
      * @summary Get user identity
      */
     public async getUserIdentity(): Promise<{ response: AxiosResponse; body: ApiResponseExSkillGetUserIdentityResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rewards/getUserIdentity';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -78,6 +79,7 @@ export class WelfareApi {
         response: AxiosResponse;
         body: ApiResponseExSkillGetBeginnerTaskListResp;
     }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rewards/getBeginnerTaskList';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -112,6 +114,7 @@ export class WelfareApi {
     public async claimTask(
         exSkillClaimTaskReq: ExSkillClaimTaskReq,
     ): Promise<{ response: AxiosResponse; body: ApiResponseExSkillClaimTaskResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rewards/claimTask';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -152,6 +155,7 @@ export class WelfareApi {
     public async claimReward(
         exSkillClaimRewardReq: ExSkillClaimRewardReq,
     ): Promise<{ response: AxiosResponse; body: ApiResponseExSkillClaimRewardResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/rewards/claimReward';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

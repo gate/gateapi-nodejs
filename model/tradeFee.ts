@@ -13,7 +13,7 @@ export class TradeFee {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * spot taker fee rate
      */
@@ -81,7 +81,7 @@ export class TradeFee {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'takerFee',

@@ -58,6 +58,7 @@ export class MultiCollateralLoanApi {
         sort?: string;
         orderType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<MultiCollateralOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -71,8 +72,10 @@ export class MultiCollateralLoanApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -80,8 +83,10 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -89,8 +94,10 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.sort !== undefined) {
-            let sortSerialized = ObjectSerializer.serialize(opts.sort, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sortSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sort, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sortSerialized)) {
                 sortSerialized = sortSerialized.join(',');
             }
@@ -98,8 +105,10 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.orderType !== undefined) {
-            let orderTypeSerialized = ObjectSerializer.serialize(opts.orderType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let orderTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.orderType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(orderTypeSerialized)) {
                 orderTypeSerialized = orderTypeSerialized.join(',');
             }
@@ -125,6 +134,7 @@ export class MultiCollateralLoanApi {
     public async createMultiCollateral(
         createMultiCollateralOrder: CreateMultiCollateralOrder,
     ): Promise<{ response: AxiosResponse; body: OrderResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -163,6 +173,7 @@ export class MultiCollateralLoanApi {
     public async getMultiCollateralOrderDetail(
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: MultiCollateralOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/loan/multi_collateral/orders/{order_id}'.replace(
@@ -210,8 +221,9 @@ export class MultiCollateralLoanApi {
      */
     public async listMultiRepayRecords(
         type: string,
-        opts?: { borrowCurrency?: string; page?: number; limit?: number; from?: number; to?: number },
+        opts?: { borrowCurrency?: string; page?: number; limit?: number; from?: number | bigint; to?: number | bigint },
     ): Promise<{ response: AxiosResponse; body: Array<MultiRepayRecord> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/repay';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -229,16 +241,18 @@ export class MultiCollateralLoanApi {
         }
 
         opts = opts || {};
-        let typeSerialized = ObjectSerializer.serialize(type, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let typeSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(type, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(typeSerialized)) {
             typeSerialized = typeSerialized.join(',');
         }
         localVarQueryParameters['type'] = typeSerialized;
 
         if (opts.borrowCurrency !== undefined) {
-            let borrowCurrencySerialized = ObjectSerializer.serialize(opts.borrowCurrency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let borrowCurrencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.borrowCurrency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(borrowCurrencySerialized)) {
                 borrowCurrencySerialized = borrowCurrencySerialized.join(',');
             }
@@ -246,8 +260,10 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -255,8 +271,10 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -264,8 +282,10 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -273,8 +293,8 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -300,6 +320,7 @@ export class MultiCollateralLoanApi {
     public async repayMultiCollateralLoan(
         repayMultiLoan: RepayMultiLoan,
     ): Promise<{ response: AxiosResponse; body: MultiRepayResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/repay';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -343,10 +364,11 @@ export class MultiCollateralLoanApi {
     public async listMultiCollateralRecords(opts?: {
         page?: number;
         limit?: number;
-        from?: number;
-        to?: number;
+        from?: number | bigint;
+        to?: number | bigint;
         collateralCurrency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<MultiCollateralRecord> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/mortgage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -360,8 +382,10 @@ export class MultiCollateralLoanApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -369,8 +393,10 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -378,8 +404,10 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -387,8 +415,8 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -396,8 +424,10 @@ export class MultiCollateralLoanApi {
         }
 
         if (opts.collateralCurrency !== undefined) {
-            let collateralCurrencySerialized = ObjectSerializer.serialize(opts.collateralCurrency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let collateralCurrencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.collateralCurrency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(collateralCurrencySerialized)) {
                 collateralCurrencySerialized = collateralCurrencySerialized.join(',');
             }
@@ -423,6 +453,7 @@ export class MultiCollateralLoanApi {
     public async operateMultiCollateral(
         collateralAdjust: CollateralAdjust,
     ): Promise<{ response: AxiosResponse; body: CollateralAdjustRes }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/mortgage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -463,6 +494,7 @@ export class MultiCollateralLoanApi {
         type: string,
         currency: string,
     ): Promise<{ response: AxiosResponse; body: Array<CurrencyQuota> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/currency_quota';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -484,15 +516,17 @@ export class MultiCollateralLoanApi {
             throw new Error('Required parameter currency was null or undefined when calling listUserCurrencyQuota.');
         }
 
-        let typeSerialized = ObjectSerializer.serialize(type, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let typeSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(type, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(typeSerialized)) {
             typeSerialized = typeSerialized.join(',');
         }
         localVarQueryParameters['type'] = typeSerialized;
 
-        let currencySerialized = ObjectSerializer.serialize(currency, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currencySerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currency, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currencySerialized)) {
             currencySerialized = currencySerialized.join(',');
         }
@@ -514,6 +548,7 @@ export class MultiCollateralLoanApi {
      * @summary Query borrow currencies and collateral currencies supported by multi-currency collateral
      */
     public async listMultiCollateralCurrencies(): Promise<{ response: AxiosResponse; body: MultiCollateralCurrency }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/currencies';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -541,6 +576,7 @@ export class MultiCollateralLoanApi {
      * @summary Query collateralization ratio information
      */
     public async getMultiCollateralLtv(): Promise<{ response: AxiosResponse; body: CollateralLtv }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/ltv';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -568,6 +604,7 @@ export class MultiCollateralLoanApi {
      * @summary Query currency\'s 7-day and 30-day fixed interest rates
      */
     public async getMultiCollateralFixRate(): Promise<{ response: AxiosResponse; body: Array<CollateralFixRate> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/fixed_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -601,6 +638,7 @@ export class MultiCollateralLoanApi {
         currencies: Array<string>,
         opts?: { vipLevel?: string },
     ): Promise<{ response: AxiosResponse; body: Array<CollateralCurrentRate> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/loan/multi_collateral/current_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -620,16 +658,20 @@ export class MultiCollateralLoanApi {
         }
 
         opts = opts || {};
-        let currenciesSerialized = ObjectSerializer.serialize(currencies, 'Array<string>');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let currenciesSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(currencies, 'Array<string>'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(currenciesSerialized)) {
             currenciesSerialized = currenciesSerialized.join(',');
         }
         localVarQueryParameters['currencies'] = currenciesSerialized;
 
         if (opts.vipLevel !== undefined) {
-            let vipLevelSerialized = ObjectSerializer.serialize(opts.vipLevel, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let vipLevelSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.vipLevel, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(vipLevelSerialized)) {
                 vipLevelSerialized = vipLevelSerialized.join(',');
             }

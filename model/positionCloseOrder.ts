@@ -16,7 +16,7 @@ export class PositionCloseOrder {
     /**
      * Order ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Order price
      */
@@ -32,7 +32,7 @@ export class PositionCloseOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'price',

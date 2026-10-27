@@ -13,7 +13,7 @@ export class StpGroup {
     /**
      * STP Group ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * STP Group name
      */
@@ -21,11 +21,11 @@ export class StpGroup {
     /**
      * Creator ID
      */
-    'creatorId'?: number;
+    'creatorId'?: number | bigint;
     /**
      * Created time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -33,7 +33,7 @@ export class StpGroup {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'name',
@@ -43,12 +43,12 @@ export class StpGroup {
         {
             name: 'creatorId',
             baseName: 'creator_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **lowPrice** | **string** |  | [default to undefined]
 **highPrice** | **string** |  | [default to undefined]
 **gridNum** | **number** |  | [default to undefined]
-**priceType** | **number** |  | [default to undefined]
+**priceType** | **FuturesGridCreateParams.PriceType** |  | [default to undefined]
 **leverage** | **string** |  | [default to undefined]
 **direction** | [**FuturesDirection**](FuturesDirection.md) |  | [optional] [default to undefined]
 **triggerPrice** | **string** |  | [optional] [default to undefined]

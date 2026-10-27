@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contracts** | **Array&lt;string&gt;** | Array of Contract Names | [default to undefined]
+**contracts** | **Array<string>** | Array of Contract Names | [default to undefined]
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**strategyType** | **string** |  | [default to undefined]
+**strategyType** | **ContractMartingaleCreateRequest.StrategyType** |  | [default to undefined]
 **market** | **string** |  | [default to undefined]
 **createParams** | [**ContractMartingaleCreateParams**](ContractMartingaleCreateParams.md) |  | [default to undefined]
 

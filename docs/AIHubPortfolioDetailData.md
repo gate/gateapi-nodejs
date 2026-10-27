@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **status** | **string** |  | [default to undefined]
 **baseInfo** | [**AIHubPortfolioBaseInfo**](AIHubPortfolioBaseInfo.md) |  | [default to undefined]
 **metrics** | [**AIHubPortfolioMetrics**](AIHubPortfolioMetrics.md) |  | [default to undefined]
-**position** | [**AIHubPortfolioPosition**](AIHubPortfolioPosition.md) |  | [optional] [default to undefined]
+**position** | [**AIHubPortfolioPosition &#124; null**](AIHubPortfolioPosition.md) |  | [optional] [default to undefined]
 **stopSupported** | **boolean** |  | [default to undefined]
 

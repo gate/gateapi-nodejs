@@ -13,7 +13,7 @@ export class UserSub {
     /**
      * User ID
      */
-    'uid'?: number;
+    'uid'?: number | bigint;
     /**
      * User\'s system affiliation (partner/referral). Empty means not belonging to any system
      */
@@ -21,11 +21,11 @@ export class UserSub {
     /**
      * Type (0-Not in system 1-Direct subordinate agent 2-Indirect subordinate agent 3-Direct direct customer 4-Indirect direct customer 5-Regular user)
      */
-    'type'?: number;
+    'type'?: number | bigint;
     /**
      * Inviter user ID
      */
-    'refUid'?: number;
+    'refUid'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -33,7 +33,7 @@ export class UserSub {
         {
             name: 'uid',
             baseName: 'uid',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'belong',
@@ -43,12 +43,12 @@ export class UserSub {
         {
             name: 'type',
             baseName: 'type',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'refUid',
             baseName: 'ref_uid',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

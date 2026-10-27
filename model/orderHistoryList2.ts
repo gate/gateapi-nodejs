@@ -13,7 +13,7 @@ import { OrderHistoryList2Data } from './orderHistoryList2Data';
 
 export class OrderHistoryList2 {
     'data'?: OrderHistoryList2Data;
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,7 +26,7 @@ export class OrderHistoryList2 {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

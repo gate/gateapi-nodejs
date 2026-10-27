@@ -59,7 +59,7 @@ export class FlashSwapMultiCurrencyPreviewOrder {
     /**
      * Quote expiration timestamp (in seconds)
      */
-    'validTimestamp'?: number;
+    'validTimestamp'?: number | bigint;
     'error': ErrCodeMsg;
 
     static discriminator: string | undefined = undefined;
@@ -123,7 +123,7 @@ export class FlashSwapMultiCurrencyPreviewOrder {
         {
             name: 'validTimestamp',
             baseName: 'valid_timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'error',

@@ -44,6 +44,7 @@ export class EarnUniApi {
      * @summary Query lending currency list
      */
     public async listUniCurrencies(): Promise<{ response: AxiosResponse; body: Array<UniCurrency> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/earn/uni/currencies';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -72,6 +73,7 @@ export class EarnUniApi {
      * @param currency Currency
      */
     public async getUniCurrency(currency: string): Promise<{ response: AxiosResponse; body: UniCurrency }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/earn/uni/currencies/{currency}'.replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
@@ -114,6 +116,7 @@ export class EarnUniApi {
         page?: number;
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<UniLend> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/earn/uni/lends';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -127,8 +130,10 @@ export class EarnUniApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencySerialized)) {
                 currencySerialized = currencySerialized.join(',');
             }
@@ -136,8 +141,10 @@ export class EarnUniApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -145,8 +152,10 @@ export class EarnUniApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -170,6 +179,7 @@ export class EarnUniApi {
      * @param createUniLend
      */
     public async createUniLend(createUniLend: CreateUniLend): Promise<{ response: AxiosResponse; body?: any }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/earn/uni/lends';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -197,6 +207,7 @@ export class EarnUniApi {
      * @param patchUniLend
      */
     public async changeUniLend(patchUniLend: PatchUniLend): Promise<{ response: AxiosResponse; body?: any }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/earn/uni/lends';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -233,10 +244,11 @@ export class EarnUniApi {
         currency?: string;
         page?: number;
         limit?: number;
-        from?: number;
-        to?: number;
+        from?: number | bigint;
+        to?: number | bigint;
         type?: 'lend' | 'redeem';
     }): Promise<{ response: AxiosResponse; body: Array<UniLendRecord> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/earn/uni/lend_records';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -250,8 +262,10 @@ export class EarnUniApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencySerialized)) {
                 currencySerialized = currencySerialized.join(',');
             }
@@ -259,8 +273,10 @@ export class EarnUniApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -268,8 +284,10 @@ export class EarnUniApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -277,8 +295,10 @@ export class EarnUniApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -286,8 +306,8 @@ export class EarnUniApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -295,8 +315,10 @@ export class EarnUniApi {
         }
 
         if (opts.type !== undefined) {
-            let typeSerialized = ObjectSerializer.serialize(opts.type, "'lend' | 'redeem'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let typeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.type, 'Type'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(typeSerialized)) {
                 typeSerialized = typeSerialized.join(',');
             }
@@ -320,6 +342,7 @@ export class EarnUniApi {
      * @param currency Currency
      */
     public async getUniInterest(currency: string): Promise<{ response: AxiosResponse; body: UniLendInterest }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/earn/uni/interests/{currency}'.replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
@@ -363,9 +386,10 @@ export class EarnUniApi {
         currency?: string;
         page?: number;
         limit?: number;
-        from?: number;
-        to?: number;
+        from?: number | bigint;
+        to?: number | bigint;
     }): Promise<{ response: AxiosResponse; body: Array<UniInterestRecord> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/earn/uni/interest_records';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -379,8 +403,10 @@ export class EarnUniApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencySerialized)) {
                 currencySerialized = currencySerialized.join(',');
             }
@@ -388,8 +414,10 @@ export class EarnUniApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -397,8 +425,10 @@ export class EarnUniApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -406,8 +436,10 @@ export class EarnUniApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -415,8 +447,8 @@ export class EarnUniApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -442,6 +474,7 @@ export class EarnUniApi {
     public async getUniInterestStatus(
         currency: string,
     ): Promise<{ response: AxiosResponse; body: UniCurrencyInterest }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/earn/uni/interest_status/{currency}'.replace(
@@ -482,10 +515,11 @@ export class EarnUniApi {
      * @param asset Currency name
      */
     public async listUniChart(
-        from: number,
-        to: number,
+        from: number | bigint,
+        to: number | bigint,
         asset: string,
     ): Promise<{ response: AxiosResponse; body: Array<UniChartPoint> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/earn/uni/chart';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -512,22 +546,22 @@ export class EarnUniApi {
             throw new Error('Required parameter asset was null or undefined when calling listUniChart.');
         }
 
-        let fromSerialized = ObjectSerializer.serialize(from, 'number');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let fromSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(from, 'int64'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(fromSerialized)) {
             fromSerialized = fromSerialized.join(',');
         }
         localVarQueryParameters['from'] = fromSerialized;
 
-        let toSerialized = ObjectSerializer.serialize(to, 'number');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(to, 'int64'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(toSerialized)) {
             toSerialized = toSerialized.join(',');
         }
         localVarQueryParameters['to'] = toSerialized;
 
-        let assetSerialized = ObjectSerializer.serialize(asset, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let assetSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(asset, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(assetSerialized)) {
             assetSerialized = assetSerialized.join(',');
         }
@@ -549,6 +583,7 @@ export class EarnUniApi {
      * @summary Currency estimated annualized interest rate
      */
     public async listUniRate(): Promise<{ response: AxiosResponse; body: Array<UniEstimatedRate> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/earn/uni/rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);

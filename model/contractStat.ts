@@ -13,7 +13,7 @@ export class ContractStat {
     /**
      * Stat timestamp
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * Long/short taker ratio
      */
@@ -93,19 +93,19 @@ export class ContractStat {
     /**
      * Number of top long accounts (large holders)
      */
-    'topLongAccount'?: number;
+    'topLongAccount'?: number | bigint;
     /**
      * Number of top short accounts (large holders)
      */
-    'topShortAccount'?: number;
+    'topShortAccount'?: number | bigint;
     /**
      * Number of users holding long positions
      */
-    'longUsers'?: number;
+    'longUsers'?: number | bigint;
     /**
      * Number of users holding short positions
      */
-    'shortUsers'?: number;
+    'shortUsers'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -113,17 +113,17 @@ export class ContractStat {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'lsrTaker',
             baseName: 'lsr_taker',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'lsrAccount',
             baseName: 'lsr_account',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'longLiqSize',
@@ -133,17 +133,17 @@ export class ContractStat {
         {
             name: 'longLiqAmount',
             baseName: 'long_liq_amount',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'longLiqUsd',
             baseName: 'long_liq_usd',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'longLiqUsdNew',
             baseName: 'long_liq_usd_new',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'shortLiqSize',
@@ -153,17 +153,17 @@ export class ContractStat {
         {
             name: 'shortLiqAmount',
             baseName: 'short_liq_amount',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'shortLiqUsd',
             baseName: 'short_liq_usd',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'shortLiqUsdNew',
             baseName: 'short_liq_usd_new',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'openInterest',
@@ -173,12 +173,12 @@ export class ContractStat {
         {
             name: 'openInterestUsd',
             baseName: 'open_interest_usd',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'topLsrAccount',
             baseName: 'top_lsr_account',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'topLsrSize',
@@ -188,7 +188,7 @@ export class ContractStat {
         {
             name: 'markPrice',
             baseName: 'mark_price',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'topLongSize',
@@ -213,22 +213,22 @@ export class ContractStat {
         {
             name: 'topLongAccount',
             baseName: 'top_long_account',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'topShortAccount',
             baseName: 'top_short_account',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'longUsers',
             baseName: 'long_users',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'shortUsers',
             baseName: 'short_users',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

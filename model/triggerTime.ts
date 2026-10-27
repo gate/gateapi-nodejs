@@ -13,7 +13,7 @@ export class TriggerTime {
     /**
      * Timestamp when countdown ends, in milliseconds
      */
-    'triggerTime'?: number;
+    'triggerTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -21,7 +21,7 @@ export class TriggerTime {
         {
             name: 'triggerTime',
             baseName: 'triggerTime',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

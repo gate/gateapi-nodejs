@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **c** | **string** | Close price | [optional] [default to undefined]
 **h** | **string** | High price | [optional] [default to undefined]
 **l** | **string** | Low price | [optional] [default to undefined]
-**t** | **number** | Timestamp (Unix seconds) | [optional] [default to undefined]
+**t** | **number &#124; bigint** | Timestamp (Unix seconds) | [optional] [default to undefined]
 

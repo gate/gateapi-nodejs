@@ -13,7 +13,7 @@ export class DeliveryTrade {
     /**
      * Fill ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Fill Time
      */
@@ -29,7 +29,7 @@ export class DeliveryTrade {
     /**
      * Trading size
      */
-    'size'?: number;
+    'size'?: number | bigint;
     /**
      * Trade price (quote currency)
      */
@@ -45,17 +45,17 @@ export class DeliveryTrade {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'createTimeMs',
             baseName: 'create_time_ms',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'contract',
@@ -65,7 +65,7 @@ export class DeliveryTrade {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'price',

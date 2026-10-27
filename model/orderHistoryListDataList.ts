@@ -76,11 +76,11 @@ export class OrderHistoryListDataList {
     /**
      * Order time (Unix timestamp in seconds)
      */
-    'timeSetup'?: number;
+    'timeSetup'?: number | bigint;
     /**
      * End time (Unix timestamp in seconds)
      */
-    'timeDone'?: number;
+    'timeDone'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -163,12 +163,12 @@ export class OrderHistoryListDataList {
         {
             name: 'timeSetup',
             baseName: 'time_setup',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'timeDone',
             baseName: 'time_done',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

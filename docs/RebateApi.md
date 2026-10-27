@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## agencyTransactionHistory
 
-> Promise<{ response: http.IncomingMessage; body: Array<AgencyTransactionHistory>; }> agencyTransactionHistory(opts)
+> Promise<{ response: http.IncomingMessage; body: AgencyTransactionHistory; }> agencyTransactionHistory(opts)
 
 Broker obtains transaction history of recommended users
 
@@ -39,9 +39,9 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.RebateApi(client);
 const opts = {
   'currencyPair': "BTC_USDT", // string | Specify the trading pair. If not specified, returns all trading pairs
-  'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
-  'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
+  'userId': BigInt('10003'), // number | User ID. If not specified, all user records will be returned
+  'from': BigInt('1602120000'), // number | Start time for querying records. If not specified, defaults to 7 days before current time
+  'to': BigInt('1602123600'), // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -56,15 +56,15 @@ api.agencyTransactionHistory(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Specify the trading pair. If not specified, returns all trading pairs | [optional] [default to undefined]
- **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **userId** | **number &#124; bigint**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<AgencyTransactionHistory>; }> [AgencyTransactionHistory](AgencyTransactionHistory.md)
+Promise<{ response: AxiosResponse; body: AgencyTransactionHistory; }> [AgencyTransactionHistory](AgencyTransactionHistory.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ Promise<{ response: AxiosResponse; body: Array<AgencyTransactionHistory>; }> [Ag
 
 ## agencyCommissionsHistory
 
-> Promise<{ response: http.IncomingMessage; body: Array<AgencyCommissionHistory>; }> agencyCommissionsHistory(opts)
+> Promise<{ response: http.IncomingMessage; body: AgencyCommissionHistory; }> agencyCommissionsHistory(opts)
 
 Broker obtains rebate history of recommended users
 
@@ -97,9 +97,9 @@ const api = new GateApi.RebateApi(client);
 const opts = {
   'currency': "BTC", // string | Specify the currency. If not specified, returns all currencies
   'commissionType': 1, // number | Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate
-  'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
-  'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
+  'userId': BigInt('10003'), // number | User ID. If not specified, all user records will be returned
+  'from': BigInt('1602120000'), // number | Start time for querying records. If not specified, defaults to 7 days before current time
+  'to': BigInt('1602123600'), // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -115,15 +115,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Specify the currency. If not specified, returns all currencies | [optional] [default to undefined]
  **commissionType** | **number**| Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate | [optional] [default to undefined]
- **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **userId** | **number &#124; bigint**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<AgencyCommissionHistory>; }> [AgencyCommissionHistory](AgencyCommissionHistory.md)
+Promise<{ response: AxiosResponse; body: AgencyCommissionHistory; }> [AgencyCommissionHistory](AgencyCommissionHistory.md)
 
 ### Authorization
 
@@ -155,9 +155,9 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.RebateApi(client);
 const opts = {
   'currencyPair': "BTC_USDT", // string | Specify the trading pair. If not specified, returns all trading pairs
-  'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
-  'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
+  'userId': BigInt('10003'), // number | User ID. If not specified, all user records will be returned
+  'from': BigInt('1602120000'), // number | Start time for querying records. If not specified, defaults to 7 days before current time
+  'to': BigInt('1602123600'), // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -172,9 +172,9 @@ api.partnerTransactionHistory(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Specify the trading pair. If not specified, returns all trading pairs | [optional] [default to undefined]
- **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **userId** | **number &#124; bigint**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -212,9 +212,9 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.RebateApi(client);
 const opts = {
   'currency': "BTC", // string | Specify the currency. If not specified, returns all currencies
-  'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1602120000, // number | Start time for querying records. If not specified, defaults to 7 days before current time
-  'to': 1602123600, // number | End timestamp for the query, defaults to current time if not specified
+  'userId': BigInt('10003'), // number | User ID. If not specified, all user records will be returned
+  'from': BigInt('1602120000'), // number | Start time for querying records. If not specified, defaults to 7 days before current time
+  'to': BigInt('1602123600'), // number | End timestamp for the query, defaults to current time if not specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -229,9 +229,9 @@ api.partnerCommissionsHistory(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Specify the currency. If not specified, returns all currencies | [optional] [default to undefined]
- **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **userId** | **number &#124; bigint**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -268,7 +268,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.RebateApi(client);
 const opts = {
-  'userId': 10003, // number | User ID. If not specified, all user records will be returned
+  'userId': BigInt('10003'), // number | User ID. If not specified, all user records will be returned
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -282,7 +282,7 @@ api.partnerSubList(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
+ **userId** | **number &#124; bigint**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -301,7 +301,7 @@ Promise<{ response: AxiosResponse; body: PartnerSubList; }> [PartnerSubList](Par
 
 ## rebateBrokerCommissionHistory
 
-> Promise<{ response: http.IncomingMessage; body: Array<BrokerCommission>; }> rebateBrokerCommissionHistory(opts)
+> Promise<{ response: http.IncomingMessage; body: BrokerCommission; }> rebateBrokerCommissionHistory(opts)
 
 Broker obtains user\&#39;s rebate records
 
@@ -321,9 +321,9 @@ const api = new GateApi.RebateApi(client);
 const opts = {
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1711929600, // number | Start time of the query record. If not specified, defaults to 30 days before the current time
-  'to': 1714521600 // number | End timestamp for the query, defaults to current time if not specified
+  'userId': BigInt('10003'), // number | User ID. If not specified, all user records will be returned
+  'from': BigInt('1711929600'), // number | Start time of the query record. If not specified, defaults to 30 days before the current time
+  'to': BigInt('1714521600') // number | End timestamp for the query, defaults to current time if not specified
 };
 api.rebateBrokerCommissionHistory(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -337,13 +337,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time of the query record. If not specified, defaults to 30 days before the current time | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **userId** | **number &#124; bigint**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time of the query record. If not specified, defaults to 30 days before the current time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<BrokerCommission>; }> [BrokerCommission](BrokerCommission.md)
+Promise<{ response: AxiosResponse; body: BrokerCommission; }> [BrokerCommission](BrokerCommission.md)
 
 ### Authorization
 
@@ -356,7 +356,7 @@ Promise<{ response: AxiosResponse; body: Array<BrokerCommission>; }> [BrokerComm
 
 ## rebateBrokerTransactionHistory
 
-> Promise<{ response: http.IncomingMessage; body: Array<BrokerTransactionHistory>; }> rebateBrokerTransactionHistory(opts)
+> Promise<{ response: http.IncomingMessage; body: BrokerTransactionHistory; }> rebateBrokerTransactionHistory(opts)
 
 Broker obtains user\&#39;s trading history
 
@@ -376,9 +376,9 @@ const api = new GateApi.RebateApi(client);
 const opts = {
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1711929600, // number | Start time of the query record. If not specified, defaults to 30 days before the current time
-  'to': 1714521600 // number | End timestamp for the query, defaults to current time if not specified
+  'userId': BigInt('10003'), // number | User ID. If not specified, all user records will be returned
+  'from': BigInt('1711929600'), // number | Start time of the query record. If not specified, defaults to 30 days before the current time
+  'to': BigInt('1714521600') // number | End timestamp for the query, defaults to current time if not specified
 };
 api.rebateBrokerTransactionHistory(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -392,13 +392,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| Start time of the query record. If not specified, defaults to 30 days before the current time | [optional] [default to undefined]
- **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **userId** | **number &#124; bigint**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time of the query record. If not specified, defaults to 30 days before the current time | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<BrokerTransactionHistory>; }> [BrokerTransactionHistory](BrokerTransactionHistory.md)
+Promise<{ response: AxiosResponse; body: BrokerTransactionHistory; }> [BrokerTransactionHistory](BrokerTransactionHistory.md)
 
 ### Authorization
 
@@ -411,7 +411,7 @@ Promise<{ response: AxiosResponse; body: Array<BrokerTransactionHistory>; }> [Br
 
 ## rebateUserInfo
 
-> Promise<{ response: http.IncomingMessage; body: Array<RebateUserInfo>; }> rebateUserInfo()
+> Promise<{ response: http.IncomingMessage; body: RebateUserInfo; }> rebateUserInfo()
 
 User obtains rebate information
 
@@ -437,7 +437,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<RebateUserInfo>; }> [RebateUserInfo](RebateUserInfo.md)
+Promise<{ response: AxiosResponse; body: RebateUserInfo; }> [RebateUserInfo](RebateUserInfo.md)
 
 ### Authorization
 

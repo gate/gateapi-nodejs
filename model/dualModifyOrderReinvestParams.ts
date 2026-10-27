@@ -16,7 +16,7 @@ export class DualModifyOrderReinvestParams {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * `0` — off; `1` — on
      */
@@ -24,7 +24,7 @@ export class DualModifyOrderReinvestParams {
     /**
      * Effective duration in seconds; default 1 day (86400)
      */
-    'effectiveTimeDuration'?: number;
+    'effectiveTimeDuration'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -32,7 +32,7 @@ export class DualModifyOrderReinvestParams {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'status',
@@ -42,7 +42,7 @@ export class DualModifyOrderReinvestParams {
         {
             name: 'effectiveTimeDuration',
             baseName: 'effective_time_duration',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

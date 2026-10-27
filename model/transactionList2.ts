@@ -13,7 +13,7 @@ import { TransactionList2Data } from './transactionList2Data';
 
 export class TransactionList2 {
     'data'?: TransactionList2Data;
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,7 +26,7 @@ export class TransactionList2 {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

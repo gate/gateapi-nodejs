@@ -37,11 +37,11 @@ export class SubAccount {
     /**
      * Sub-account user ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Created time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -79,12 +79,12 @@ export class SubAccount {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

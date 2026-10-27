@@ -15,7 +15,7 @@ export class BrokerTransactionHistory {
     /**
      * Total
      */
-    'total'?: number;
+    'total'?: number | bigint;
     /**
      * List of transaction history
      */
@@ -27,7 +27,7 @@ export class BrokerTransactionHistory {
         {
             name: 'total',
             baseName: 'total',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'list',

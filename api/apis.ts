@@ -27,6 +27,8 @@ export * from './flashSwapApi';
 import { FlashSwapApi } from './flashSwapApi';
 export * from './futuresApi';
 import { FuturesApi } from './futuresApi';
+export * from './launchApi';
+import { LaunchApi } from './launchApi';
 export * from './marginApi';
 import { MarginApi } from './marginApi';
 export * from './marginUniApi';
@@ -73,6 +75,7 @@ export const APIS = [
     EarnUniApi,
     FlashSwapApi,
     FuturesApi,
+    LaunchApi,
     MarginApi,
     MarginUniApi,
     MultiCollateralLoanApi,

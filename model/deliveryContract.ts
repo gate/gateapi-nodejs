@@ -104,7 +104,7 @@ export class DeliveryContract {
     /**
      * Contract expiry timestamp
      */
-    'expireTime'?: number;
+    'expireTime'?: number | bigint;
     /**
      * Risk limit base
      */
@@ -120,11 +120,11 @@ export class DeliveryContract {
     /**
      * Minimum order quantity
      */
-    'orderSizeMin'?: number;
+    'orderSizeMin'?: number | bigint;
     /**
      * Maximum order quantity
      */
-    'orderSizeMax'?: number;
+    'orderSizeMax'?: number | bigint;
     /**
      * Maximum allowed deviation between order price and current mark price. The order price `order_price` must satisfy the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
      */
@@ -140,19 +140,19 @@ export class DeliveryContract {
     /**
      * Orderbook update ID
      */
-    'orderbookId'?: number;
+    'orderbookId'?: number | bigint;
     /**
      * Current trade ID
      */
-    'tradeId'?: number;
+    'tradeId'?: number | bigint;
     /**
      * Historical cumulative trading volume
      */
-    'tradeSize'?: number;
+    'tradeSize'?: number | bigint;
     /**
      * Current total long position size
      */
-    'positionSize'?: number;
+    'positionSize'?: number | bigint;
     /**
      * Last configuration update time
      */
@@ -282,7 +282,7 @@ export class DeliveryContract {
         {
             name: 'expireTime',
             baseName: 'expire_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'riskLimitBase',
@@ -302,12 +302,12 @@ export class DeliveryContract {
         {
             name: 'orderSizeMin',
             baseName: 'order_size_min',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'orderSizeMax',
             baseName: 'order_size_max',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'orderPriceDeviate',
@@ -327,27 +327,27 @@ export class DeliveryContract {
         {
             name: 'orderbookId',
             baseName: 'orderbook_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'tradeId',
             baseName: 'trade_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'tradeSize',
             baseName: 'trade_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'positionSize',
             baseName: 'position_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'configChangeTime',
             baseName: 'config_change_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'inDelisting',

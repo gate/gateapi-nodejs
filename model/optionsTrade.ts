@@ -13,11 +13,11 @@ export class OptionsTrade {
     /**
      * Fill ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Fill Time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
     /**
      * Options contract name
      */
@@ -25,7 +25,7 @@ export class OptionsTrade {
     /**
      * Trading size
      */
-    'size'?: number;
+    'size'?: number | bigint;
     /**
      * Transaction Price (Quoted Currency, Unit: Underlying Option Price)
      */
@@ -37,12 +37,12 @@ export class OptionsTrade {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'contract',
@@ -52,7 +52,7 @@ export class OptionsTrade {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'price',

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**strategyType** | **string** |  | [default to undefined]
+**strategyType** | **FuturesGridCreateRequest.StrategyType** |  | [default to undefined]
 **market** | **string** |  | [default to undefined]
 **createParams** | [**FuturesGridCreateParams**](FuturesGridCreateParams.md) |  | [default to undefined]
 

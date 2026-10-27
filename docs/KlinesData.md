@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;KlinesDataList&gt;**](KlinesDataList.md) | Kline data list | [optional] [default to undefined]
+**list** | [**Array<KlinesDataList>**](KlinesDataList.md) | Kline data list | [optional] [default to undefined]
 

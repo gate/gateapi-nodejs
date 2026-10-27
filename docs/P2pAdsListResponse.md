@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **method** | **string** |  | [optional] [default to undefined]
 **code** | **number** |  | [optional] [default to undefined]
 **message** | **string** |  | [optional] [default to undefined]
-**data** | [**Array&lt;P2pAdsListItem&gt;**](P2pAdsListItem.md) |  | [optional] [default to undefined]
+**data** | [**Array<P2pAdsListItem>**](P2pAdsListItem.md) |  | [optional] [default to undefined]
 **version** | **string** |  | [optional] [default to undefined]
 

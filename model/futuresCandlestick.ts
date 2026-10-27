@@ -48,7 +48,7 @@ export class FuturesCandlestick {
         {
             name: 't',
             baseName: 't',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'v',

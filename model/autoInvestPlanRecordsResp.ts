@@ -18,19 +18,19 @@ export class AutoInvestPlanRecordsResp {
     /**
      * page number
      */
-    'page': number;
+    'page': number | bigint;
     /**
      * Items per page
      */
-    'pageSize': number;
+    'pageSize': number | bigint;
     /**
      * TotalPage number
      */
-    'totalPage': number;
+    'totalPage': number | bigint;
     /**
      * Total entries
      */
-    'total': number;
+    'total': number | bigint;
     'list': Array<AutoInvestPlanRecordItem>;
 
     static discriminator: string | undefined = undefined;
@@ -39,22 +39,22 @@ export class AutoInvestPlanRecordsResp {
         {
             name: 'page',
             baseName: 'page',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'pageSize',
             baseName: 'page_size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'totalPage',
             baseName: 'total_page',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'total',
             baseName: 'total',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'list',

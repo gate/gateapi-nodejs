@@ -13,15 +13,15 @@ export class StpGroupUser {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * STP Group ID
      */
-    'stpId'?: number;
+    'stpId'?: number | bigint;
     /**
      * Created time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -29,17 +29,17 @@ export class StpGroupUser {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'stpId',
             baseName: 'stp_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

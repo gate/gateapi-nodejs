@@ -39,11 +39,11 @@ export class Order {
     /**
      * Creation time of order (in milliseconds)
      */
-    'createTimeMs'?: number;
+    'createTimeMs'?: number | bigint;
     /**
      * Last modification time of order (in milliseconds)
      */
-    'updateTimeMs'?: number;
+    'updateTimeMs'?: number | bigint;
     /**
      * Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
      */
@@ -202,12 +202,12 @@ export class Order {
         {
             name: 'createTimeMs',
             baseName: 'create_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updateTimeMs',
             baseName: 'update_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'status',

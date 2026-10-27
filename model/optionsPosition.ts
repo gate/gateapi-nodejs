@@ -34,7 +34,7 @@ export class OptionsPosition {
     /**
      * Position size (contract quantity)
      */
-    'size'?: number;
+    'size'?: number | bigint;
     /**
      * Entry size (quote currency)
      */
@@ -103,7 +103,7 @@ export class OptionsPosition {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'entryPrice',

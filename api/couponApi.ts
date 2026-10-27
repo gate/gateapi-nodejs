@@ -70,6 +70,7 @@ export class CouponApi {
             | 'etf_voucher';
         isTaskCoupon?: 0 | 1;
     }): Promise<{ response: AxiosResponse; body: ListUserCouponsResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/coupon/user-coupon-list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -83,8 +84,10 @@ export class CouponApi {
 
         opts = opts || {};
         if (opts.expired !== undefined) {
-            let expiredSerialized = ObjectSerializer.serialize(opts.expired, '0 | 1');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let expiredSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.expired, 'Expired'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(expiredSerialized)) {
                 expiredSerialized = expiredSerialized.join(',');
             }
@@ -92,8 +95,10 @@ export class CouponApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -101,8 +106,10 @@ export class CouponApi {
         }
 
         if (opts.lastId !== undefined) {
-            let lastIdSerialized = ObjectSerializer.serialize(opts.lastId, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let lastIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.lastId, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(lastIdSerialized)) {
                 lastIdSerialized = lastIdSerialized.join(',');
             }
@@ -110,8 +117,10 @@ export class CouponApi {
         }
 
         if (opts.expireTime !== undefined) {
-            let expireTimeSerialized = ObjectSerializer.serialize(opts.expireTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let expireTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.expireTime, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(expireTimeSerialized)) {
                 expireTimeSerialized = expireTimeSerialized.join(',');
             }
@@ -119,8 +128,10 @@ export class CouponApi {
         }
 
         if (opts.orderBy !== undefined) {
-            let orderBySerialized = ObjectSerializer.serialize(opts.orderBy, "'latest' | 'expired'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let orderBySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.orderBy, 'OrderBy'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(orderBySerialized)) {
                 orderBySerialized = orderBySerialized.join(',');
             }
@@ -128,11 +139,10 @@ export class CouponApi {
         }
 
         if (opts.type !== undefined) {
-            let typeSerialized = ObjectSerializer.serialize(
-                opts.type,
-                "'position_voucher' | 'tradfi_position_voucher' | 'contract_bonus' | 'contract_bonus_new' | 'commission_rebate' | 'hold_bonus' | 'point' | 'financial_rate' | 'robot_bonus' | 'loss_protection_copier' | 'vip_card' | 'interest_voucher' | 'p2p' | 'cash' | 'crypto_loan_interest' | 'copy_trading' | 'alpha_voucher' | 'etf_voucher'",
+            let typeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.type, 'Type'),
             );
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(typeSerialized)) {
                 typeSerialized = typeSerialized.join(',');
             }
@@ -140,8 +150,10 @@ export class CouponApi {
         }
 
         if (opts.isTaskCoupon !== undefined) {
-            let isTaskCouponSerialized = ObjectSerializer.serialize(opts.isTaskCoupon, '0 | 1');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let isTaskCouponSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.isTaskCoupon, 'IsTaskCoupon'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(isTaskCouponSerialized)) {
                 isTaskCouponSerialized = isTaskCouponSerialized.join(',');
             }
@@ -190,6 +202,7 @@ export class CouponApi {
         detailId: number,
         opts?: { isTaskCoupon?: 0 | 1 },
     ): Promise<{ response: AxiosResponse; body: GetUserCouponDetailResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/coupon/user-coupon-detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -212,26 +225,29 @@ export class CouponApi {
         }
 
         opts = opts || {};
-        let couponTypeSerialized = ObjectSerializer.serialize(
-            couponType,
-            "'position_voucher' | 'tradfi_position_voucher' | 'contract_bonus' | 'contract_bonus_new' | 'commission_rebate' | 'hold_bonus' | 'point' | 'financial_rate' | 'robot_bonus' | 'loss_protection_copier' | 'vip_card' | 'interest_voucher' | 'p2p' | 'cash' | 'crypto_loan_interest' | 'copy_trading' | 'alpha_voucher' | 'etf_voucher'",
+        let couponTypeSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(couponType, 'CouponType'),
         );
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(couponTypeSerialized)) {
             couponTypeSerialized = couponTypeSerialized.join(',');
         }
         localVarQueryParameters['coupon_type'] = couponTypeSerialized;
 
-        let detailIdSerialized = ObjectSerializer.serialize(detailId, 'number');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let detailIdSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(detailId, 'number'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(detailIdSerialized)) {
             detailIdSerialized = detailIdSerialized.join(',');
         }
         localVarQueryParameters['detail_id'] = detailIdSerialized;
 
         if (opts.isTaskCoupon !== undefined) {
-            let isTaskCouponSerialized = ObjectSerializer.serialize(opts.isTaskCoupon, '0 | 1');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let isTaskCouponSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.isTaskCoupon, 'IsTaskCoupon'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(isTaskCouponSerialized)) {
                 isTaskCouponSerialized = isTaskCouponSerialized.join(',');
             }

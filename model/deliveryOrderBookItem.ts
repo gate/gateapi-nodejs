@@ -17,7 +17,7 @@ export class DeliveryOrderBookItem {
     /**
      * Size
      */
-    's'?: number;
+    's'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -30,7 +30,7 @@ export class DeliveryOrderBookItem {
         {
             name: 's',
             baseName: 's',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

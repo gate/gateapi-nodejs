@@ -16,7 +16,7 @@ export class CreateEarnFixedTermLendResponseData {
     /**
      * Subscription order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -24,7 +24,7 @@ export class CreateEarnFixedTermLendResponseData {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

@@ -15,7 +15,7 @@ export class FuturesOrderBook {
     /**
      * Order Book ID. Increases by 1 on every order book change. Set `with_id=true` to include this field in response
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Response data generation timestamp
      */
@@ -39,17 +39,17 @@ export class FuturesOrderBook {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'current',
             baseName: 'current',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'update',
             baseName: 'update',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'asks',

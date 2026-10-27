@@ -11,5 +11,5 @@ Name | Type | Description | Notes
 **futureMakerFee** | **string** | contractMakerfee rate | [default to undefined]
 **futureTakerFee** | **string** | contractTakerfee rate | [default to undefined]
 **futureRpiMakerFee** | **string** | Futures RPI order maker fee rate | [optional] [default to undefined]
-**specialFeeList** | [**Array&lt;CrossexSpecialFee&gt;**](CrossexSpecialFee.md) |  | [default to undefined]
+**specialFeeList** | [**Array<CrossexSpecialFee>**](CrossexSpecialFee.md) |  | [default to undefined]
 

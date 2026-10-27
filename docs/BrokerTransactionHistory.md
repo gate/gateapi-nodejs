@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | **number** | Total | [optional] [default to undefined]
-**list** | [**Array&lt;BrokerTransaction&gt;**](BrokerTransaction.md) | List of transaction history | [optional] [default to undefined]
+**total** | **number &#124; bigint** | Total | [optional] [default to undefined]
+**list** | [**Array<BrokerTransaction>**](BrokerTransaction.md) | List of transaction history | [optional] [default to undefined]
 

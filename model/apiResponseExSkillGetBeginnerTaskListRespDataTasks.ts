@@ -16,11 +16,11 @@ export class ApiResponseExSkillGetBeginnerTaskListRespDataTasks {
     /**
      * Rewards Center task ID
      */
-    'welfareTaskId'?: number;
+    'welfareTaskId'?: number | bigint;
     /**
      * Task center task ID (fixed at 0 for registration tasks)
      */
-    'taskCenterId': number;
+    'taskCenterId': number | bigint;
     /**
      * Task type: 1=KYC secondary certification 2=Spot 3=Contract 4=Invitation 5=Quantification 6=Yu Bibao 7=startup 8=First deposit 10=Registration task 11=Guide task 23=Download task
      */
@@ -56,12 +56,12 @@ export class ApiResponseExSkillGetBeginnerTaskListRespDataTasks {
         {
             name: 'welfareTaskId',
             baseName: 'welfare_task_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'taskCenterId',
             baseName: 'task_center_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'taskType',

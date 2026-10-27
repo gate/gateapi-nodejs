@@ -201,7 +201,7 @@ export class UnifiedBalance {
         {
             name: 'balanceVersion',
             baseName: 'balance_version',
-            type: 'number',
+            type: 'double',
         },
     ];
 

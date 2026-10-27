@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contentType** | **string** | **Base64** of the file MIME type, required. Only image/png, image/jpeg, image/jpg, and application/pdf are supported. | [default to undefined]
-**scene** | **string** | Business scene, optional, defaults to general; determines temporary path and production directory after relocation | [optional] [default to &#39;general&#39;]
+**contentType** | **OtcUploadPreUploadRequest.ContentType** | **Base64** of the file MIME type, required. Only image/png, image/jpeg, image/jpg, and application/pdf are supported. | [default to undefined]
+**scene** | **OtcUploadPreUploadRequest.Scene** | Business scene, optional, defaults to general; determines temporary path and production directory after relocation | [optional] [default to &#39;general&#39;]
 
 ## Enum: OtcUploadPreUploadRequest.ContentType
 

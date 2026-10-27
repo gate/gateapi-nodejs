@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;FeeRateDataList&gt;**](FeeRateDataList.md) |  | [optional] [default to undefined]
+**list** | [**Array<FeeRateDataList>**](FeeRateDataList.md) |  | [optional] [default to undefined]
 

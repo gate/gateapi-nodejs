@@ -41,7 +41,7 @@ export class FuturesPriceTriggeredOrder {
     /**
      * ID of the order created after trigger
      */
-    'tradeId'?: number;
+    'tradeId'?: number | bigint;
     /**
      * Order status  - `open`: Active - `finished`: Finished - `inactive`: Inactive, only applies to order take-profit/stop-loss - `invalid`: Invalid, only applies to order take-profit/stop-loss
      */
@@ -98,17 +98,17 @@ export class FuturesPriceTriggeredOrder {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'finishTime',
             baseName: 'finish_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'tradeId',
             baseName: 'trade_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'status',

@@ -15,7 +15,7 @@ export class Symbols {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: SymbolsData;
 
     static discriminator: string | undefined = undefined;
@@ -24,7 +24,7 @@ export class Symbols {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

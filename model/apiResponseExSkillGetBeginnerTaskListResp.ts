@@ -31,7 +31,7 @@ export class ApiResponseExSkillGetBeginnerTaskListResp {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp': number;
+    'timestamp': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -59,7 +59,7 @@ export class ApiResponseExSkillGetBeginnerTaskListResp {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

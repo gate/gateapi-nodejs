@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **asset** | **string** | Product currency | [optional] [default to undefined]
 **bonusAsset** | **string** | Reward currency | [optional] [default to undefined]
 **kycLimit** | **string** | KYC level restrictions, comma-separated | [optional] [default to undefined]
-**ladderApr** | [**Array&lt;LadderApr&gt;**](LadderApr.md) | Tiered annual interest rate | [optional] [default to undefined]
+**ladderApr** | [**Array<LadderApr>**](LadderApr.md) | Tiered annual interest rate | [optional] [default to undefined]
 **totalBonusAmount** | **string** | Total reward amount | [optional] [default to undefined]
 **userTotalBonusAmount** | **string** | Maximum reward per user | [optional] [default to undefined]
 **status** | **number** | Activity status: 1 for unlisted, 2 for listed, 3 for delisted | [optional] [default to undefined]

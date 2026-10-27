@@ -153,7 +153,7 @@ export class P2pCounterpartyUserInfo {
         {
             name: 'completeRateMonth',
             baseName: 'complete_rate_month',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'isFollow',

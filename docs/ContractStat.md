@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time** | **number** | Stat timestamp | [optional] [default to undefined]
+**time** | **number &#124; bigint** | Stat timestamp | [optional] [default to undefined]
 **lsrTaker** | **number** | Long/short taker ratio | [optional] [default to undefined]
 **lsrAccount** | **number** | Long/short position user ratio | [optional] [default to undefined]
 **longLiqSize** | **string** | Long liquidation size (contracts) | [optional] [default to undefined]
@@ -24,8 +24,8 @@ Name | Type | Description | Notes
 **topShortSize** | **string** | Top short open interest (contracts) | [optional] [default to undefined]
 **longTakerSize** | **string** | Long taker trade volume (contracts) | [optional] [default to undefined]
 **shortTakerSize** | **string** | Short taker trade volume (contracts) | [optional] [default to undefined]
-**topLongAccount** | **number** | Number of top long accounts (large holders) | [optional] [default to undefined]
-**topShortAccount** | **number** | Number of top short accounts (large holders) | [optional] [default to undefined]
-**longUsers** | **number** | Number of users holding long positions | [optional] [default to undefined]
-**shortUsers** | **number** | Number of users holding short positions | [optional] [default to undefined]
+**topLongAccount** | **number &#124; bigint** | Number of top long accounts (large holders) | [optional] [default to undefined]
+**topShortAccount** | **number &#124; bigint** | Number of top short accounts (large holders) | [optional] [default to undefined]
+**longUsers** | **number &#124; bigint** | Number of users holding long positions | [optional] [default to undefined]
+**shortUsers** | **number &#124; bigint** | Number of users holding short positions | [optional] [default to undefined]
 

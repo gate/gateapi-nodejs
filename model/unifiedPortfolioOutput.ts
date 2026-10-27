@@ -26,7 +26,7 @@ export class UnifiedPortfolioOutput {
     /**
      * Calculation time
      */
-    'calculateTime'?: number;
+    'calculateTime'?: number | bigint;
     /**
      * Risk unit
      */
@@ -48,7 +48,7 @@ export class UnifiedPortfolioOutput {
         {
             name: 'calculateTime',
             baseName: 'calculate_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'riskUnit',

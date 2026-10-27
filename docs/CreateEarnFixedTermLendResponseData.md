@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **number** | Subscription order ID | [optional] [default to undefined]
+**orderId** | **number &#124; bigint** | Subscription order ID | [optional] [default to undefined]
 

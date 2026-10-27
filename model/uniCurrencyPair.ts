@@ -69,7 +69,7 @@ export class UniCurrencyPair {
         {
             name: 'delistedTime',
             baseName: 'delisted_time',
-            type: 'number',
+            type: 'double',
         },
     ];
 

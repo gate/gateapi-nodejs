@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **pic** | **string** | File link | [optional] [default to undefined]
 **fileKey** | **string** | File key | [optional] [default to undefined]
 **fileType** | **string** | File type: &#x60;image&#x60; for images, &#x60;video&#x60; for videos. | [optional] [default to undefined]
-**riskType** | **number** | Risk control display type. 1: off-platform traffic diversion risk; returned when a text message hits risk control | [optional] [default to undefined]
+**riskType** | **P2pChatMessage.RiskType** | Risk control display type. 1: off-platform traffic diversion risk; returned when a text message hits risk control | [optional] [default to undefined]
 **toastMsg** | **string** | Risk control prompt message; returned only when risk_type&#x3D;1 | [optional] [default to undefined]
 
 ## Enum: P2pChatMessage.RiskType

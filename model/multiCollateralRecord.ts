@@ -18,11 +18,11 @@ export class MultiCollateralRecord {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * Collateral record ID
      */
-    'recordId'?: number;
+    'recordId'?: number | bigint;
     /**
      * Collateral ratio before adjustment
      */
@@ -34,7 +34,7 @@ export class MultiCollateralRecord {
     /**
      * Operation time, timestamp in seconds
      */
-    'operateTime'?: number;
+    'operateTime'?: number | bigint;
     /**
      * Borrowing Currency List
      */
@@ -50,12 +50,12 @@ export class MultiCollateralRecord {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'recordId',
             baseName: 'record_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'beforeLtv',
@@ -70,7 +70,7 @@ export class MultiCollateralRecord {
         {
             name: 'operateTime',
             baseName: 'operate_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'borrowCurrencies',

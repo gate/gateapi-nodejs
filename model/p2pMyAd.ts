@@ -268,7 +268,7 @@ export class P2pMyAd {
         {
             name: 'completedRateLimit',
             baseName: 'completed_rate_limit',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'userOrdersLimit',

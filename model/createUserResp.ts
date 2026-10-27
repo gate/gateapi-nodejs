@@ -15,7 +15,7 @@ export class CreateUserResp {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: CreateUserRespData;
 
     static discriminator: string | undefined = undefined;
@@ -24,7 +24,7 @@ export class CreateUserResp {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

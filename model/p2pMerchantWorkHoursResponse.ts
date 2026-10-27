@@ -40,7 +40,7 @@ export class P2pMerchantWorkHoursResponse {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'method',

@@ -40,15 +40,15 @@ export class SymbolsDataList {
     /**
      * Close time (Unix timestamp in seconds)
      */
-    'closeTime'?: number;
+    'closeTime'?: number | bigint;
     /**
      * Open time (Unix timestamp in seconds)
      */
-    'openTime'?: number;
+    'openTime'?: number | bigint;
     /**
      * Next open time (Unix timestamp in seconds, 0 means none)
      */
-    'nextOpenTime'?: number;
+    'nextOpenTime'?: number | bigint;
     /**
      * Settlement currency
      */
@@ -98,17 +98,17 @@ export class SymbolsDataList {
         {
             name: 'closeTime',
             baseName: 'close_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'openTime',
             baseName: 'open_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'nextOpenTime',
             baseName: 'next_open_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'settlementCurrency',

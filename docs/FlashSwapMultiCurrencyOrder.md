@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **number** | Order ID | [optional] [default to undefined]
+**id** | **number &#124; bigint** | Order ID | [optional] [default to undefined]
 **userId** | **number** | User ID | [optional] [default to undefined]
 **source** | **string** | Request source | [optional] [default to undefined]
 **appId** | **string** | Application ID | [optional] [default to undefined]
@@ -21,6 +21,6 @@ Name | Type | Description | Notes
 **failedCode** | **number** | Failure error code, 0 means success | [optional] [default to undefined]
 **failedReason** | **string** | Failure Reason | [optional] [default to undefined]
 **createTime** | **string** | Created time | [optional] [default to undefined]
-**createTimeMs** | **number** | Creation timestamp (in milliseconds) | [optional] [default to undefined]
+**createTimeMs** | **number &#124; bigint** | Creation timestamp (in milliseconds) | [optional] [default to undefined]
 **error** | [**ErrCodeMsg**](ErrCodeMsg.md) |  | [default to undefined]
 

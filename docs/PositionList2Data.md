@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;PositionListItem&gt;**](PositionListItem.md) | Query active position list | [optional] [default to undefined]
+**list** | [**Array<PositionListItem>**](PositionListItem.md) | Query active position list | [optional] [default to undefined]
 

@@ -90,7 +90,7 @@ export class DualGetPlans {
         {
             name: 'exercisePrice',
             baseName: 'exercise_price',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'deliveryTime',

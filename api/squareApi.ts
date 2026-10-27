@@ -52,6 +52,7 @@ export class SquareApi {
         limit?: number;
         page?: number;
     }): Promise<{ response: AxiosResponse; body: ListSquareAiSearchResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/social/message/search';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -65,8 +66,10 @@ export class SquareApi {
 
         opts = opts || {};
         if (opts.keyword !== undefined) {
-            let keywordSerialized = ObjectSerializer.serialize(opts.keyword, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let keywordSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.keyword, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(keywordSerialized)) {
                 keywordSerialized = keywordSerialized.join(',');
             }
@@ -74,8 +77,10 @@ export class SquareApi {
         }
 
         if (opts.currency !== undefined) {
-            let currencySerialized = ObjectSerializer.serialize(opts.currency, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let currencySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.currency, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(currencySerialized)) {
                 currencySerialized = currencySerialized.join(',');
             }
@@ -83,8 +88,10 @@ export class SquareApi {
         }
 
         if (opts.timeRange !== undefined) {
-            let timeRangeSerialized = ObjectSerializer.serialize(opts.timeRange, '0 | 1 | 2 | 3');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let timeRangeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.timeRange, 'TimeRange'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(timeRangeSerialized)) {
                 timeRangeSerialized = timeRangeSerialized.join(',');
             }
@@ -92,8 +99,10 @@ export class SquareApi {
         }
 
         if (opts.sort !== undefined) {
-            let sortSerialized = ObjectSerializer.serialize(opts.sort, '0 | 1');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sortSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sort, 'Sort'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sortSerialized)) {
                 sortSerialized = sortSerialized.join(',');
             }
@@ -101,8 +110,10 @@ export class SquareApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -110,8 +121,10 @@ export class SquareApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -144,6 +157,7 @@ export class SquareApi {
         sort?: 'hot' | 'new';
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: ListLiveReplayResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/social/live/tag_coin_live_replay';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -157,8 +171,10 @@ export class SquareApi {
 
         opts = opts || {};
         if (opts.tag !== undefined) {
-            let tagSerialized = ObjectSerializer.serialize(opts.tag, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let tagSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.tag, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(tagSerialized)) {
                 tagSerialized = tagSerialized.join(',');
             }
@@ -166,8 +182,10 @@ export class SquareApi {
         }
 
         if (opts.coin !== undefined) {
-            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let coinSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.coin, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(coinSerialized)) {
                 coinSerialized = coinSerialized.join(',');
             }
@@ -175,8 +193,10 @@ export class SquareApi {
         }
 
         if (opts.sort !== undefined) {
-            let sortSerialized = ObjectSerializer.serialize(opts.sort, "'hot' | 'new'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sortSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sort, 'Sort'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sortSerialized)) {
                 sortSerialized = sortSerialized.join(',');
             }
@@ -184,8 +204,10 @@ export class SquareApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }

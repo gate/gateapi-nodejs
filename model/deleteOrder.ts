@@ -14,7 +14,7 @@ export class DeleteOrder {
      * Returns empty object on success
      */
     'data'?: object;
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -27,7 +27,7 @@ export class DeleteOrder {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

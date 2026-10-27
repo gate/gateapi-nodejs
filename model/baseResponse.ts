@@ -25,7 +25,7 @@ export class BaseResponse {
     /**
      * Unix timestamp
      */
-    'timestamp': number;
+    'timestamp': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -48,7 +48,7 @@ export class BaseResponse {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

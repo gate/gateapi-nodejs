@@ -10,5 +10,5 @@ Name | Type | Description | Notes
 **interest** | **string** | Interest | [optional] [readonly] [default to undefined]
 **status** | **number** | Status: 0 - fail, 1 - success | [optional] [readonly] [default to undefined]
 **type** | **string** | Loan Type margin: margin borrowing | [optional] [readonly] [default to undefined]
-**createTime** | **number** | Created time | [optional] [readonly] [default to undefined]
+**createTime** | **number &#124; bigint** | Created time | [optional] [readonly] [default to undefined]
 

@@ -18,7 +18,7 @@ export class RepayMultiLoan {
     /**
      * Order ID
      */
-    'orderId': number;
+    'orderId': number | bigint;
     /**
      * Repay Currency Item
      */
@@ -30,7 +30,7 @@ export class RepayMultiLoan {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'repayItems',

@@ -28,7 +28,7 @@ export class CollateralFixRate {
     /**
      * Update time, timestamp in seconds
      */
-    'updateTime'?: number;
+    'updateTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -51,7 +51,7 @@ export class CollateralFixRate {
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

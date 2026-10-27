@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **currencyPair** | **string** | Currency pair | [optional] [readonly] [default to undefined]
 **currency** | **string** | Currency | [optional] [readonly] [default to undefined]
 **amount** | **string** | Borrow or repayment amount | [optional] [readonly] [default to undefined]
-**createTime** | **number** | Created time | [optional] [readonly] [default to undefined]
+**createTime** | **number &#124; bigint** | Created time | [optional] [readonly] [default to undefined]
 

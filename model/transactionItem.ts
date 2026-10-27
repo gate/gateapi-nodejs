@@ -45,7 +45,7 @@ export class TransactionItem {
     /**
      * Unix timestamp (seconds)
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * Unit display text
      */
@@ -53,7 +53,7 @@ export class TransactionItem {
     /**
      * Business details
      */
-    'detail'?: { [key: string]: object };
+    'detail'?: { [key: string]: any };
 
     static discriminator: string | undefined = undefined;
 
@@ -101,7 +101,7 @@ export class TransactionItem {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'unitText',
@@ -111,7 +111,7 @@ export class TransactionItem {
         {
             name: 'detail',
             baseName: 'detail',
-            type: '{ [key: string]: object; }',
+            type: '{ [key: string]: any; }',
         },
     ];
 

@@ -26,11 +26,11 @@ export class AccountDetail {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * User VIP level
      */
-    'tier'?: number;
+    'tier'?: number | bigint;
     'key'?: AccountDetailKey;
     /**
      * User role: 0 - Normal user 1 - Copy trading leader 2 - Copy trading follower 3 - Both leader and follower
@@ -53,12 +53,12 @@ export class AccountDetail {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'tier',
             baseName: 'tier',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'key',

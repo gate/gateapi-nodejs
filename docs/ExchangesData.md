@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;ExchangesDataList&gt;**](ExchangesDataList.md) |  | [optional] [default to undefined]
+**list** | [**Array<ExchangesDataList>**](ExchangesDataList.md) |  | [optional] [default to undefined]
 

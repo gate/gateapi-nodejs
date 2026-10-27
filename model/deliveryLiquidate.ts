@@ -13,7 +13,7 @@ export class DeliveryLiquidate {
     /**
      * Liquidation time
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * Futures contract
      */
@@ -25,7 +25,7 @@ export class DeliveryLiquidate {
     /**
      * Position size
      */
-    'size'?: number;
+    'size'?: number | bigint;
     /**
      * Position margin. Not returned in public endpoints
      */
@@ -45,7 +45,7 @@ export class DeliveryLiquidate {
     /**
      * Liquidation order ID. Not returned in public endpoints
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * Liquidation order price
      */
@@ -57,7 +57,7 @@ export class DeliveryLiquidate {
     /**
      * Liquidation order maker size
      */
-    'left'?: number;
+    'left'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -65,7 +65,7 @@ export class DeliveryLiquidate {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'contract',
@@ -80,7 +80,7 @@ export class DeliveryLiquidate {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'margin',
@@ -105,7 +105,7 @@ export class DeliveryLiquidate {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'orderPrice',
@@ -120,7 +120,7 @@ export class DeliveryLiquidate {
         {
             name: 'left',
             baseName: 'left',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

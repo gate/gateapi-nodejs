@@ -60,6 +60,7 @@ export class CFDApi {
      * @summary Query MT5 account information
      */
     public async queryMt5AccountInfo(): Promise<{ response: AxiosResponse; body: Mt5Account }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/users/mt5-account';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -87,6 +88,7 @@ export class CFDApi {
      * @summary Query trading symbol categories
      */
     public async queryCategories(): Promise<{ response: AxiosResponse; body: Categories }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/symbols/categories';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -120,6 +122,7 @@ export class CFDApi {
         symbols?: string;
         categoryCode?: string;
     }): Promise<{ response: AxiosResponse; body: SymbolCommissions }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/symbols/commissions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -133,8 +136,10 @@ export class CFDApi {
 
         opts = opts || {};
         if (opts.symbols !== undefined) {
-            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbols, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolsSerialized)) {
                 symbolsSerialized = symbolsSerialized.join(',');
             }
@@ -142,8 +147,10 @@ export class CFDApi {
         }
 
         if (opts.categoryCode !== undefined) {
-            let categoryCodeSerialized = ObjectSerializer.serialize(opts.categoryCode, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let categoryCodeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.categoryCode, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(categoryCodeSerialized)) {
                 categoryCodeSerialized = categoryCodeSerialized.join(',');
             }
@@ -166,6 +173,7 @@ export class CFDApi {
      * @summary Query trading symbol list
      */
     public async querySymbols(): Promise<{ response: AxiosResponse; body: Symbols }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/symbols';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -194,6 +202,7 @@ export class CFDApi {
      * @param symbols Trading symbol code list (comma-separated, max 10 symbols)
      */
     public async querySymbolDetail(symbols: string): Promise<{ response: AxiosResponse; body: ContractDetail }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/symbols/detail';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -210,8 +219,8 @@ export class CFDApi {
             throw new Error('Required parameter symbols was null or undefined when calling querySymbolDetail.');
         }
 
-        let symbolsSerialized = ObjectSerializer.serialize(symbols, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let symbolsSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(symbols, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(symbolsSerialized)) {
             symbolsSerialized = symbolsSerialized.join(',');
         }
@@ -241,8 +250,9 @@ export class CFDApi {
     public async querySymbolKline(
         symbol: string,
         klineType: '1m' | '15m' | '1h' | '4h' | '1d' | '7d' | '30d',
-        opts?: { beginTime?: number; endTime?: number; limit?: number },
+        opts?: { beginTime?: number | bigint; endTime?: number | bigint; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Klines }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/tradfi/symbols/{symbol}/klines'.replace('{' + 'symbol' + '}', encodeURIComponent(String(symbol)));
@@ -267,19 +277,20 @@ export class CFDApi {
         }
 
         opts = opts || {};
-        let klineTypeSerialized = ObjectSerializer.serialize(
-            klineType,
-            "'1m' | '15m' | '1h' | '4h' | '1d' | '7d' | '30d'",
+        let klineTypeSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(klineType, 'KlineType'),
         );
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(klineTypeSerialized)) {
             klineTypeSerialized = klineTypeSerialized.join(',');
         }
         localVarQueryParameters['kline_type'] = klineTypeSerialized;
 
         if (opts.beginTime !== undefined) {
-            let beginTimeSerialized = ObjectSerializer.serialize(opts.beginTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let beginTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.beginTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(beginTimeSerialized)) {
                 beginTimeSerialized = beginTimeSerialized.join(',');
             }
@@ -287,8 +298,10 @@ export class CFDApi {
         }
 
         if (opts.endTime !== undefined) {
-            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endTimeSerialized)) {
                 endTimeSerialized = endTimeSerialized.join(',');
             }
@@ -296,8 +309,10 @@ export class CFDApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -321,6 +336,7 @@ export class CFDApi {
      * @param symbol Trading symbol code
      */
     public async querySymbolTicker(symbol: string): Promise<{ response: AxiosResponse; body: TradFiTicker }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/tradfi/symbols/{symbol}/tickers'.replace('{' + 'symbol' + '}', encodeURIComponent(String(symbol)));
@@ -355,6 +371,7 @@ export class CFDApi {
      * @summary Create CFD user
      */
     public async createTradFiUser(): Promise<{ response: AxiosResponse; body: CreateUserResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/users';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -382,6 +399,7 @@ export class CFDApi {
      * @summary Query account assets
      */
     public async queryUserAssets(): Promise<{ response: AxiosResponse; body: UserAssetResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/users/assets';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -415,12 +433,13 @@ export class CFDApi {
      * @param opts.pageSize Number per page, default 10, maximum 50
      */
     public async queryTransaction(opts?: {
-        beginTime?: number;
-        endTime?: number;
+        beginTime?: number | bigint;
+        endTime?: number | bigint;
         type?: 'deposit' | 'withdraw' | 'dividend' | 'fill_negative';
         page?: number;
         pageSize?: number;
     }): Promise<{ response: AxiosResponse; body: TransactionList }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/transactions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -434,8 +453,10 @@ export class CFDApi {
 
         opts = opts || {};
         if (opts.beginTime !== undefined) {
-            let beginTimeSerialized = ObjectSerializer.serialize(opts.beginTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let beginTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.beginTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(beginTimeSerialized)) {
                 beginTimeSerialized = beginTimeSerialized.join(',');
             }
@@ -443,8 +464,10 @@ export class CFDApi {
         }
 
         if (opts.endTime !== undefined) {
-            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endTimeSerialized)) {
                 endTimeSerialized = endTimeSerialized.join(',');
             }
@@ -452,11 +475,10 @@ export class CFDApi {
         }
 
         if (opts.type !== undefined) {
-            let typeSerialized = ObjectSerializer.serialize(
-                opts.type,
-                "'deposit' | 'withdraw' | 'dividend' | 'fill_negative'",
+            let typeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.type, 'Type'),
             );
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(typeSerialized)) {
                 typeSerialized = typeSerialized.join(',');
             }
@@ -464,8 +486,10 @@ export class CFDApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -473,8 +497,10 @@ export class CFDApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -500,6 +526,7 @@ export class CFDApi {
     public async createTransaction(
         tradFiTransactionRequest: TradFiTransactionRequest,
     ): Promise<{ response: AxiosResponse; body: CreateTransaction }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/transactions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -535,6 +562,7 @@ export class CFDApi {
      * @summary Query active order list
      */
     public async queryOrderList(): Promise<{ response: AxiosResponse; body: OrderList }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -565,6 +593,7 @@ export class CFDApi {
     public async createTradFiOrder(
         tradFiOrderRequest: TradFiOrderRequest,
     ): Promise<{ response: AxiosResponse; body: CreateOrder2 }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -602,16 +631,16 @@ export class CFDApi {
      * @param tradFiOrderUpdateRequest
      */
     public async updateOrder(
-        orderId: bigint,
+        orderId: number | bigint,
         tradFiOrderUpdateRequest: TradFiOrderUpdateRequest,
     ): Promise<{ response: AxiosResponse; body: UpdateOrder }> {
-        // Reject already-rounded numbers before constructing a trading identifier path.
-        if (typeof orderId !== 'bigint') {
-            throw new TypeError('orderId must be a bigint; construct it from a decimal string.');
-        }
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/tradfi/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+            '/tradfi/orders/{order_id}'.replace(
+                '{' + 'order_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(orderId, 'orderId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -651,14 +680,14 @@ export class CFDApi {
      * @summary Cancel order
      * @param orderId Order ID
      */
-    public async deleteOrder(orderId: bigint): Promise<{ response: AxiosResponse; body: object }> {
-        // Reject already-rounded numbers before constructing a trading identifier path.
-        if (typeof orderId !== 'bigint') {
-            throw new TypeError('orderId must be a bigint; construct it from a decimal string.');
-        }
+    public async deleteOrder(orderId: number | bigint): Promise<{ response: AxiosResponse; body: object }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/tradfi/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+            '/tradfi/orders/{order_id}'.replace(
+                '{' + 'order_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(orderId, 'orderId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -695,11 +724,12 @@ export class CFDApi {
      * @param opts.side Side (1&#x3D;sell, 2&#x3D;buy)
      */
     public async queryOrderHistoryList(opts?: {
-        beginTime?: number;
-        endTime?: number;
+        beginTime?: number | bigint;
+        endTime?: number | bigint;
         symbol?: string;
         side?: 1 | 2;
     }): Promise<{ response: AxiosResponse; body: OrderHistoryList }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/orders/history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -713,8 +743,10 @@ export class CFDApi {
 
         opts = opts || {};
         if (opts.beginTime !== undefined) {
-            let beginTimeSerialized = ObjectSerializer.serialize(opts.beginTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let beginTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.beginTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(beginTimeSerialized)) {
                 beginTimeSerialized = beginTimeSerialized.join(',');
             }
@@ -722,8 +754,10 @@ export class CFDApi {
         }
 
         if (opts.endTime !== undefined) {
-            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endTimeSerialized)) {
                 endTimeSerialized = endTimeSerialized.join(',');
             }
@@ -731,8 +765,10 @@ export class CFDApi {
         }
 
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -740,8 +776,10 @@ export class CFDApi {
         }
 
         if (opts.side !== undefined) {
-            let sideSerialized = ObjectSerializer.serialize(opts.side, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.side, 'Side'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sideSerialized)) {
                 sideSerialized = sideSerialized.join(',');
             }
@@ -764,14 +802,14 @@ export class CFDApi {
      * @summary Get order details by log ID
      * @param logId log_id returned from the order placement API
      */
-    public async queryOrderLog(logId: bigint): Promise<{ response: AxiosResponse; body: OrderLog }> {
-        // Reject already-rounded numbers before constructing a trading identifier path.
-        if (typeof logId !== 'bigint') {
-            throw new TypeError('logId must be a bigint; construct it from a decimal string.');
-        }
+    public async queryOrderLog(logId: number | bigint): Promise<{ response: AxiosResponse; body: OrderLog }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
-            '/tradfi/orders/log/{log_id}'.replace('{' + 'log_id' + '}', encodeURIComponent(String(logId)));
+            '/tradfi/orders/log/{log_id}'.replace(
+                '{' + 'log_id' + '}',
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(logId, 'logId')),
+            );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -803,6 +841,7 @@ export class CFDApi {
      * @summary Query active position list
      */
     public async queryPositionList(): Promise<{ response: AxiosResponse; body: PositionList }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -832,18 +871,15 @@ export class CFDApi {
      * @param tradFiPositionUpdateRequest
      */
     public async updatePosition(
-        positionId: bigint,
+        positionId: number | bigint,
         tradFiPositionUpdateRequest: TradFiPositionUpdateRequest,
     ): Promise<{ response: AxiosResponse; body: UpdatePosition }> {
-        // Reject already-rounded numbers before constructing a trading identifier path.
-        if (typeof positionId !== 'bigint') {
-            throw new TypeError('positionId must be a bigint; construct it from a decimal string.');
-        }
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/tradfi/positions/{position_id}'.replace(
                 '{' + 'position_id' + '}',
-                encodeURIComponent(String(positionId)),
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(positionId, 'positionId')),
             );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -886,18 +922,15 @@ export class CFDApi {
      * @param tradFiClosePositionRequest
      */
     public async closePosition(
-        positionId: bigint,
+        positionId: number | bigint,
         tradFiClosePositionRequest: TradFiClosePositionRequest,
     ): Promise<{ response: AxiosResponse; body: DeletePosition }> {
-        // Reject already-rounded numbers before constructing a trading identifier path.
-        if (typeof positionId !== 'bigint') {
-            throw new TypeError('positionId must be a bigint; construct it from a decimal string.');
-        }
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/tradfi/positions/{position_id}/close'.replace(
                 '{' + 'position_id' + '}',
-                encodeURIComponent(String(positionId)),
+                encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(positionId, 'positionId')),
             );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -945,13 +978,14 @@ export class CFDApi {
      * @param opts.positionDir Position direction (Long&#x3D;long position, Short&#x3D;short position)
      */
     public async queryPositionHistoryList(opts?: {
-        page?: number;
-        pageSize?: number;
-        beginTime?: number;
-        endTime?: number;
+        page?: number | bigint;
+        pageSize?: number | bigint;
+        beginTime?: number | bigint;
+        endTime?: number | bigint;
         symbol?: string;
         positionDir?: 'Long' | 'Short';
     }): Promise<{ response: AxiosResponse; body: PositionHistoryList }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/tradfi/positions/history';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -965,8 +999,10 @@ export class CFDApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -974,8 +1010,10 @@ export class CFDApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -983,8 +1021,10 @@ export class CFDApi {
         }
 
         if (opts.beginTime !== undefined) {
-            let beginTimeSerialized = ObjectSerializer.serialize(opts.beginTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let beginTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.beginTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(beginTimeSerialized)) {
                 beginTimeSerialized = beginTimeSerialized.join(',');
             }
@@ -992,8 +1032,10 @@ export class CFDApi {
         }
 
         if (opts.endTime !== undefined) {
-            let endTimeSerialized = ObjectSerializer.serialize(opts.endTime, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endTimeSerialized)) {
                 endTimeSerialized = endTimeSerialized.join(',');
             }
@@ -1001,8 +1043,10 @@ export class CFDApi {
         }
 
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1010,8 +1054,10 @@ export class CFDApi {
         }
 
         if (opts.positionDir !== undefined) {
-            let positionDirSerialized = ObjectSerializer.serialize(opts.positionDir, "'Long' | 'Short'");
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let positionDirSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.positionDir, 'PositionDir'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(positionDirSerialized)) {
                 positionDirSerialized = positionDirSerialized.join(',');
             }

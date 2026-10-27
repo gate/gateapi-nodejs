@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lists** | [**Array&lt;OtcBankListItem&gt;**](OtcBankListItem.md) | Bank card list | [default to undefined]
+**lists** | [**Array<OtcBankListItem>**](OtcBankListItem.md) | Bank card list | [default to undefined]
 

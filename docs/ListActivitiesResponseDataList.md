@@ -23,5 +23,5 @@ Name | Type | Description | Notes
 **parentId** | **number** | Parent activity ID, 0 means no parent activity | [default to undefined]
 **newImg** | **string** | New activity image URL (light mode) | [default to undefined]
 **newImgDark** | **string** | New activity image URL (dark mode) | [default to undefined]
-**tag** | **Array&lt;string&gt;** | Activity tag list | [default to undefined]
+**tag** | **Array<string>** | Activity tag list | [default to undefined]
 

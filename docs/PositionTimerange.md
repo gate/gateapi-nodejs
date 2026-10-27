@@ -20,5 +20,5 @@ Name | Type | Description | Notes
 **mode** | **string** | Position mode, including: - &#x60;single&#x60;: One-way Mode - &#x60;dual_long&#x60;: Long position in Hedge Mode - &#x60;dual_short&#x60;: Short position in Hedge Mode | [optional] [default to undefined]
 **crossLeverageLimit** | **string** | Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | [optional] [default to undefined]
 **entryPrice** | **string** | Entry price | [optional] [readonly] [default to undefined]
-**time** | **number** | Timestamp | [optional] [default to undefined]
+**time** | **number &#124; bigint** | Timestamp | [optional] [default to undefined]
 

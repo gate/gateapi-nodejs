@@ -16,7 +16,7 @@ export class UnifiedLoanRecord {
     /**
      * ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Type: `borrow` - borrow, `repay` - repay
      */
@@ -44,7 +44,7 @@ export class UnifiedLoanRecord {
     /**
      * Created time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -52,7 +52,7 @@ export class UnifiedLoanRecord {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'type',
@@ -87,7 +87,7 @@ export class UnifiedLoanRecord {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

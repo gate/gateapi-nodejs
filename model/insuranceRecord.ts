@@ -13,7 +13,7 @@ export class InsuranceRecord {
     /**
      * Unix timestamp in seconds
      */
-    't'?: number;
+    't'?: number | bigint;
     /**
      * Insurance balance
      */
@@ -25,7 +25,7 @@ export class InsuranceRecord {
         {
             name: 't',
             baseName: 't',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'b',

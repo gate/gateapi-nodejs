@@ -26,7 +26,7 @@ export class FlashSwapMultiCurrencyOneToManyOrderCreateRespData {
     /**
      * Exchange timestamp (in milliseconds)
      */
-    'exchangeTimeMs': number;
+    'exchangeTimeMs': number | bigint;
     /**
      * Total consumed amount
      */
@@ -52,7 +52,7 @@ export class FlashSwapMultiCurrencyOneToManyOrderCreateRespData {
         {
             name: 'exchangeTimeMs',
             baseName: 'exchange_time_ms',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'totalConsumeAmount',

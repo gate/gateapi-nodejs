@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time** | **number** | Automatic deleveraging time | [optional] [readonly] [default to undefined]
-**user** | **number** | User ID | [optional] [readonly] [default to undefined]
-**orderId** | **number** | Order ID. Order IDs before 2023-02-20 are null | [optional] [readonly] [default to undefined]
+**time** | **number &#124; bigint** | Automatic deleveraging time | [optional] [readonly] [default to undefined]
+**user** | **number &#124; bigint** | User ID | [optional] [readonly] [default to undefined]
+**orderId** | **number &#124; bigint** | Order ID. Order IDs before 2023-02-20 are null | [optional] [readonly] [default to undefined]
 **contract** | **string** | Futures contract | [optional] [readonly] [default to undefined]
 **leverage** | **string** |  leverage for isolated margin. 0 means cross margin. For leverage of cross margin, please refer to &#x60;cross_leverage_limit&#x60;. | [optional] [readonly] [default to undefined]
 **crossLeverageLimit** | **string** | leverage for cross margin | [optional] [readonly] [default to undefined]

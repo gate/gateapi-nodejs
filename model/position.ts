@@ -18,7 +18,7 @@ export class Position {
     /**
      * User ID
      */
-    'user'?: number;
+    'user'?: number | bigint;
     /**
      * Futures contract
      */
@@ -139,15 +139,15 @@ export class Position {
     /**
      * Last update time
      */
-    'updateTime'?: number;
+    'updateTime'?: number | bigint;
     /**
      * Update ID. The value increments by 1 each time the position is updated
      */
-    'updateId'?: number;
+    'updateId'?: number | bigint;
     /**
      * First Open Time
      */
-    'openTime'?: number;
+    'openTime'?: number | bigint;
     /**
      * Risk limit table ID
      */
@@ -159,7 +159,7 @@ export class Position {
     /**
      * Sub-account position ID
      */
-    'pid'?: number;
+    'pid'?: number | bigint;
     /**
      * Position Margin Mode isolated - Isolated Margin, cross - Cross Margin
      */
@@ -175,7 +175,7 @@ export class Position {
         {
             name: 'user',
             baseName: 'user',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'contract',
@@ -330,17 +330,17 @@ export class Position {
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updateId',
             baseName: 'update_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'openTime',
             baseName: 'open_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'riskLimitTable',
@@ -355,7 +355,7 @@ export class Position {
         {
             name: 'pid',
             baseName: 'pid',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'posMarginMode',

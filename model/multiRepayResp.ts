@@ -18,7 +18,7 @@ export class MultiRepayResp {
     /**
      * Order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * Repay Currency List
      */
@@ -30,7 +30,7 @@ export class MultiRepayResp {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'repaidCurrencies',

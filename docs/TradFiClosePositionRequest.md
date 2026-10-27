@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**closeType** | **number** | Close Type Description: - 1: Partial Close (close_volume is required) - 2: Full Close (close_volume is not required) | [default to undefined]
-**closeVolume** | **string** | Close Volume Description: - Required when close_type &#x3D; 1 - Ignored when close_type &#x3D; 2 | [optional] [default to undefined]
+**closeType** | **TradFiClosePositionRequest.CloseType** | Close Type Description: - 1: Partial Close (close_volume is required) - 2: Full Close (close_volume is not required) | [default to undefined]
+**closeVolume** | **string &#124; null** | Close Volume Description: - Required when close_type &#x3D; 1 - Ignored when close_type &#x3D; 2 | [optional] [default to undefined]
 
 ## Enum: TradFiClosePositionRequest.CloseType
 

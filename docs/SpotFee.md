@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **number** | User ID | [optional] [default to undefined]
+**userId** | **number &#124; bigint** | User ID | [optional] [default to undefined]
 **takerFee** | **string** | taker fee rate | [optional] [default to undefined]
 **makerFee** | **string** | maker fee rate | [optional] [default to undefined]
 **rpiMakerFee** | **string** | RPI MM maker fee rate | [optional] [default to undefined]

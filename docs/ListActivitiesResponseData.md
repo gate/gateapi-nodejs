@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**Array&lt;ListActivitiesResponseDataList&gt;**](ListActivitiesResponseDataList.md) | Activity list | [default to undefined]
+**list** | [**Array<ListActivitiesResponseDataList>**](ListActivitiesResponseDataList.md) | Activity list | [default to undefined]
 **page** | **number** | Current page number | [default to undefined]
 **pageSize** | **number** | Items per page | [default to undefined]
 **pageCount** | **number** | Total pages | [default to undefined]

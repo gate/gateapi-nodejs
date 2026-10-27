@@ -35,7 +35,7 @@ export class MultiCollateralOrder {
     /**
      * Expiration time, timestamp, unit in seconds
      */
-    'expireTime'?: number;
+    'expireTime'?: number | bigint;
     /**
      * Fixed interest rate, auto-renewal
      */
@@ -55,7 +55,7 @@ export class MultiCollateralOrder {
     /**
      * Borrowing time, timestamp in seconds
      */
-    'borrowTime'?: number;
+    'borrowTime'?: number | bigint;
     /**
      * Total outstanding value converted to USDT
      */
@@ -99,7 +99,7 @@ export class MultiCollateralOrder {
         {
             name: 'expireTime',
             baseName: 'expire_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'autoRenew',
@@ -124,7 +124,7 @@ export class MultiCollateralOrder {
         {
             name: 'borrowTime',
             baseName: 'borrow_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'totalLeftRepayUsdt',

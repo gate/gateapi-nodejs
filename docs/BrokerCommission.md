@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | **number** | Total | [optional] [default to undefined]
-**list** | [**Array&lt;BrokerCommissionItem&gt;**](BrokerCommissionItem.md) | List of commission history | [optional] [default to undefined]
+**total** | **number &#124; bigint** | Total | [optional] [default to undefined]
+**list** | [**Array<BrokerCommissionItem>**](BrokerCommissionItem.md) | List of commission history | [optional] [default to undefined]
 

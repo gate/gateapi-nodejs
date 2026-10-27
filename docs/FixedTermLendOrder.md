@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | Subscription record ID | [optional] [default to undefined]
 **business** | **number** | Business type: 1 for regular, 2 for VIP | [optional] [default to undefined]
-**orderId** | **number** | Order ID | [optional] [default to undefined]
-**userId** | **number** | User ID | [optional] [default to undefined]
+**orderId** | **number &#124; bigint** | Order ID | [optional] [default to undefined]
+**userId** | **number &#124; bigint** | User ID | [optional] [default to undefined]
 **asset** | **string** | Currency | [optional] [default to undefined]
 **productId** | **number** | Product ID | [optional] [default to undefined]
 **lockUpPeriod** | **number** | Lock-up period (in days) | [optional] [default to undefined]

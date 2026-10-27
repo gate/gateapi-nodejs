@@ -15,7 +15,7 @@ export class ContractDetail {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: ContractDetailData;
 
     static discriminator: string | undefined = undefined;
@@ -24,7 +24,7 @@ export class ContractDetail {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

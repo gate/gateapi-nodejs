@@ -78,6 +78,7 @@ export class CrossExApi {
     public async listCrossexRuleSymbols(opts?: {
         symbols?: string;
     }): Promise<{ response: AxiosResponse; body: Array<Symbol> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/rule/symbols';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -91,8 +92,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbols !== undefined) {
-            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbols, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolsSerialized)) {
                 symbolsSerialized = symbolsSerialized.join(',');
             }
@@ -118,6 +121,7 @@ export class CrossExApi {
     public async listCrossexRuleRiskLimits(
         symbols: string,
     ): Promise<{ response: AxiosResponse; body: Array<CrossexRiskLimit> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/rule/risk_limits';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -134,8 +138,8 @@ export class CrossExApi {
             throw new Error('Required parameter symbols was null or undefined when calling listCrossexRuleRiskLimits.');
         }
 
-        let symbolsSerialized = ObjectSerializer.serialize(symbols, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let symbolsSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(symbols, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(symbolsSerialized)) {
             symbolsSerialized = symbolsSerialized.join(',');
         }
@@ -161,6 +165,7 @@ export class CrossExApi {
     public async listCrossexTransferCoins(opts?: {
         coin?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexTransferCoin> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/transfers/coin';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -174,8 +179,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.coin !== undefined) {
-            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let coinSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.coin, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(coinSerialized)) {
                 coinSerialized = coinSerialized.join(',');
             }
@@ -212,6 +219,7 @@ export class CrossExApi {
         page?: number;
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexTransferRecord> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/transfers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -225,8 +233,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.coin !== undefined) {
-            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let coinSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.coin, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(coinSerialized)) {
                 coinSerialized = coinSerialized.join(',');
             }
@@ -234,8 +244,10 @@ export class CrossExApi {
         }
 
         if (opts.orderId !== undefined) {
-            let orderIdSerialized = ObjectSerializer.serialize(opts.orderId, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let orderIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.orderId, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(orderIdSerialized)) {
                 orderIdSerialized = orderIdSerialized.join(',');
             }
@@ -243,8 +255,10 @@ export class CrossExApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -252,8 +266,8 @@ export class CrossExApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -261,8 +275,10 @@ export class CrossExApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -270,8 +286,10 @@ export class CrossExApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -298,6 +316,7 @@ export class CrossExApi {
     public async createCrossexTransfer(opts?: {
         crossexTransferRequest?: CrossexTransferRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexTransferResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/transfers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -332,6 +351,7 @@ export class CrossExApi {
     public async createCrossexOrder(opts?: {
         crossexOrderRequest?: CrossexOrderRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexOrderActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -365,6 +385,7 @@ export class CrossExApi {
     public async cancelBatchCrossexOrders(
         crossexBatchCancelOrderRequest: Array<CrossexBatchCancelOrderRequest>,
     ): Promise<{ response: AxiosResponse; body: Array<CrossexBatchCancelOrderResponse> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/batch_cancel_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -405,6 +426,7 @@ export class CrossExApi {
      * @param orderId 1. Supports querying order IDs returned when creating orders 2. Supports custom IDs specified by users when creating orders (i.e., the text field)
      */
     public async getCrossexOrder(orderId: string): Promise<{ response: AxiosResponse; body: CrossexOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/crossex/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -445,6 +467,7 @@ export class CrossExApi {
         orderId: string,
         opts?: { crossexOrderUpdateRequest?: CrossexOrderUpdateRequest },
     ): Promise<{ response: AxiosResponse; body: CrossexOrderActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/crossex/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -485,6 +508,7 @@ export class CrossExApi {
     public async cancelCrossexOrder(
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: CrossexOrderActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/crossex/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -523,6 +547,7 @@ export class CrossExApi {
     public async createCrossexConvertQuote(opts?: {
         crossexConvertQuoteRequest?: CrossexConvertQuoteRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexConvertQuoteResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/convert/quote';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -557,6 +582,7 @@ export class CrossExApi {
     public async createCrossexConvertOrder(opts?: {
         crossexConvertOrderRequest?: CrossexConvertOrderRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexConvertOrderResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/convert/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -591,6 +617,7 @@ export class CrossExApi {
     public async getCrossexAccount(opts?: {
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: CrossexAccount }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -604,8 +631,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.exchangeType !== undefined) {
-            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchangeType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeTypeSerialized)) {
                 exchangeTypeSerialized = exchangeTypeSerialized.join(',');
             }
@@ -632,6 +661,7 @@ export class CrossExApi {
     public async updateCrossexAccount(opts?: {
         crossexAccountUpdateRequest?: CrossexAccountUpdateRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexAccountUpdateResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -666,6 +696,7 @@ export class CrossExApi {
     public async getCrossexPositionsLeverage(opts?: {
         symbols?: string;
     }): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -679,8 +710,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbols !== undefined) {
-            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbols, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolsSerialized)) {
                 symbolsSerialized = symbolsSerialized.join(',');
             }
@@ -707,6 +740,7 @@ export class CrossExApi {
     public async updateCrossexPositionsLeverage(opts?: {
         crossexLeverageRequest?: CrossexLeverageRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexLeverageResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -741,6 +775,7 @@ export class CrossExApi {
     public async getCrossexMarginPositionsLeverage(opts?: {
         symbols?: string;
     }): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/margin_positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -754,8 +789,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbols !== undefined) {
-            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbols, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolsSerialized)) {
                 symbolsSerialized = symbolsSerialized.join(',');
             }
@@ -782,6 +819,7 @@ export class CrossExApi {
     public async updateCrossexMarginPositionsLeverage(opts?: {
         crossexLeverageRequest?: CrossexLeverageRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexLeverageResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/margin_positions/leverage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -816,6 +854,7 @@ export class CrossExApi {
     public async closeCrossexPosition(opts?: {
         crossexClosePositionRequest?: CrossexClosePositionRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexOrderActionResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/position';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -849,6 +888,7 @@ export class CrossExApi {
     public async getCrossexPositionsMarginMode(
         symbol: string,
     ): Promise<{ response: AxiosResponse; body: CrossexMarginModeResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/positions/margin_mode';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -867,8 +907,8 @@ export class CrossExApi {
             );
         }
 
-        let symbolSerialized = ObjectSerializer.serialize(symbol, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let symbolSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(symbol, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(symbolSerialized)) {
             symbolSerialized = symbolSerialized.join(',');
         }
@@ -894,6 +934,7 @@ export class CrossExApi {
     public async updateCrossexPositionsMarginMode(opts?: {
         crossexMarginModeRequest?: CrossexMarginModeRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexMarginModeResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/positions/margin_mode';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -928,6 +969,7 @@ export class CrossExApi {
     public async updateCrossexPositionsMargin(opts?: {
         crossexIsolatedMarginRequest?: CrossexIsolatedMarginRequest;
     }): Promise<{ response: AxiosResponse; body: CrossexIsolatedMarginResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/positions/margin';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -968,6 +1010,7 @@ export class CrossExApi {
         coin?: string;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexInterestRate> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/interest_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -981,8 +1024,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.coin !== undefined) {
-            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let coinSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.coin, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(coinSerialized)) {
                 coinSerialized = coinSerialized.join(',');
             }
@@ -990,8 +1035,10 @@ export class CrossExApi {
         }
 
         if (opts.exchangeType !== undefined) {
-            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchangeType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeTypeSerialized)) {
                 exchangeTypeSerialized = exchangeTypeSerialized.join(',');
             }
@@ -1014,6 +1061,7 @@ export class CrossExApi {
      * @summary Query User Fee Rates
      */
     public async getCrossexFee(): Promise<{ response: AxiosResponse; body: Array<InlineResponse200> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/fee';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1047,6 +1095,7 @@ export class CrossExApi {
         symbol?: string;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexPosition> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1060,8 +1109,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1069,8 +1120,10 @@ export class CrossExApi {
         }
 
         if (opts.exchangeType !== undefined) {
-            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchangeType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeTypeSerialized)) {
                 exchangeTypeSerialized = exchangeTypeSerialized.join(',');
             }
@@ -1099,6 +1152,7 @@ export class CrossExApi {
         symbol?: string;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexSecurityPosition> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/security_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1112,8 +1166,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1121,8 +1177,10 @@ export class CrossExApi {
         }
 
         if (opts.exchangeType !== undefined) {
-            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchangeType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeTypeSerialized)) {
                 exchangeTypeSerialized = exchangeTypeSerialized.join(',');
             }
@@ -1155,6 +1213,7 @@ export class CrossExApi {
         symbol?: string;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexMarginPosition> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/margin_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1168,8 +1227,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1177,8 +1238,10 @@ export class CrossExApi {
         }
 
         if (opts.exchangeType !== undefined) {
-            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchangeType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeTypeSerialized)) {
                 exchangeTypeSerialized = exchangeTypeSerialized.join(',');
             }
@@ -1202,6 +1265,7 @@ export class CrossExApi {
      * @param symbol Trading Pair
      */
     public async listCrossexAdlRank(symbol: string): Promise<{ response: AxiosResponse; body: CrossexAdlRank }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/adl_rank';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1218,8 +1282,8 @@ export class CrossExApi {
             throw new Error('Required parameter symbol was null or undefined when calling listCrossexAdlRank.');
         }
 
-        let symbolSerialized = ObjectSerializer.serialize(symbol, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let symbolSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(symbol, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(symbolSerialized)) {
             symbolSerialized = symbolSerialized.join(',');
         }
@@ -1249,6 +1313,7 @@ export class CrossExApi {
         exchangeType?: string;
         businessType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/open_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1262,8 +1327,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1271,8 +1338,10 @@ export class CrossExApi {
         }
 
         if (opts.exchangeType !== undefined) {
-            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchangeType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeTypeSerialized)) {
                 exchangeTypeSerialized = exchangeTypeSerialized.join(',');
             }
@@ -1280,8 +1349,10 @@ export class CrossExApi {
         }
 
         if (opts.businessType !== undefined) {
-            let businessTypeSerialized = ObjectSerializer.serialize(opts.businessType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let businessTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.businessType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(businessTypeSerialized)) {
                 businessTypeSerialized = businessTypeSerialized.join(',');
             }
@@ -1318,6 +1389,7 @@ export class CrossExApi {
         to?: number;
         attributes?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/history_orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1331,8 +1403,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -1340,8 +1414,10 @@ export class CrossExApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1349,8 +1425,10 @@ export class CrossExApi {
         }
 
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1358,8 +1436,10 @@ export class CrossExApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1367,8 +1447,8 @@ export class CrossExApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1376,8 +1456,10 @@ export class CrossExApi {
         }
 
         if (opts.attributes !== undefined) {
-            let attributesSerialized = ObjectSerializer.serialize(opts.attributes, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let attributesSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.attributes, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(attributesSerialized)) {
                 attributesSerialized = attributesSerialized.join(',');
             }
@@ -1412,6 +1494,7 @@ export class CrossExApi {
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexHistoricalPosition> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/history_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1425,8 +1508,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -1434,8 +1519,10 @@ export class CrossExApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1443,8 +1530,10 @@ export class CrossExApi {
         }
 
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1452,8 +1541,10 @@ export class CrossExApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1461,8 +1552,8 @@ export class CrossExApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1501,6 +1592,7 @@ export class CrossExApi {
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexHistoricalMarginPosition> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/history_margin_positions';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1514,8 +1606,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -1523,8 +1617,10 @@ export class CrossExApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1532,8 +1628,10 @@ export class CrossExApi {
         }
 
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1541,8 +1639,10 @@ export class CrossExApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1550,8 +1650,8 @@ export class CrossExApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1592,6 +1692,7 @@ export class CrossExApi {
         limit?: number;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexMarginInterestRecord> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/history_margin_interests';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1605,8 +1706,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1614,8 +1717,10 @@ export class CrossExApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1623,8 +1728,8 @@ export class CrossExApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1632,8 +1737,10 @@ export class CrossExApi {
         }
 
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -1641,8 +1748,10 @@ export class CrossExApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1650,8 +1759,10 @@ export class CrossExApi {
         }
 
         if (opts.exchangeType !== undefined) {
-            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchangeType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeTypeSerialized)) {
                 exchangeTypeSerialized = exchangeTypeSerialized.join(',');
             }
@@ -1690,6 +1801,7 @@ export class CrossExApi {
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexTrade> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/history_trades';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1703,8 +1815,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -1712,8 +1826,10 @@ export class CrossExApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1721,8 +1837,10 @@ export class CrossExApi {
         }
 
         if (opts.symbol !== undefined) {
-            let symbolSerialized = ObjectSerializer.serialize(opts.symbol, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolSerialized)) {
                 symbolSerialized = symbolSerialized.join(',');
             }
@@ -1730,8 +1848,10 @@ export class CrossExApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1739,8 +1859,8 @@ export class CrossExApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1777,6 +1897,7 @@ export class CrossExApi {
         from?: number;
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexAccountBookRecord> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/account_book';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1790,8 +1911,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            let pageSerialized = ObjectSerializer.serialize(opts.page, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSerialized)) {
                 pageSerialized = pageSerialized.join(',');
             }
@@ -1799,8 +1922,10 @@ export class CrossExApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1808,8 +1933,10 @@ export class CrossExApi {
         }
 
         if (opts.coin !== undefined) {
-            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let coinSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.coin, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(coinSerialized)) {
                 coinSerialized = coinSerialized.join(',');
             }
@@ -1817,8 +1944,10 @@ export class CrossExApi {
         }
 
         if (opts.statementType !== undefined) {
-            let statementTypeSerialized = ObjectSerializer.serialize(opts.statementType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let statementTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.statementType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(statementTypeSerialized)) {
                 statementTypeSerialized = statementTypeSerialized.join(',');
             }
@@ -1826,8 +1955,10 @@ export class CrossExApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1835,8 +1966,8 @@ export class CrossExApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1869,6 +2000,7 @@ export class CrossExApi {
         coin?: string;
         exchangeType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossexCoinDiscountRate> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/coin_discount_rate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1882,8 +2014,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.coin !== undefined) {
-            let coinSerialized = ObjectSerializer.serialize(opts.coin, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let coinSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.coin, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(coinSerialized)) {
                 coinSerialized = coinSerialized.join(',');
             }
@@ -1891,8 +2025,10 @@ export class CrossExApi {
         }
 
         if (opts.exchangeType !== undefined) {
-            let exchangeTypeSerialized = ObjectSerializer.serialize(opts.exchangeType, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let exchangeTypeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.exchangeType, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(exchangeTypeSerialized)) {
                 exchangeTypeSerialized = exchangeTypeSerialized.join(',');
             }
@@ -1923,6 +2059,7 @@ export class CrossExApi {
     public async listCrossexMarketTickers(opts?: {
         symbols?: string;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse2001> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/market/tickers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1936,8 +2073,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbols !== undefined) {
-            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbols, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolsSerialized)) {
                 symbolsSerialized = symbolsSerialized.join(',');
             }
@@ -1964,6 +2103,7 @@ export class CrossExApi {
     public async listCrossexMarketFundingInfo(opts?: {
         symbols?: string;
     }): Promise<{ response: AxiosResponse; body: Array<InlineResponse2002> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/crossex/market/funding_info';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1977,8 +2117,10 @@ export class CrossExApi {
 
         opts = opts || {};
         if (opts.symbols !== undefined) {
-            let symbolsSerialized = ObjectSerializer.serialize(opts.symbols, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let symbolsSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbols, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(symbolsSerialized)) {
                 symbolsSerialized = symbolsSerialized.join(',');
             }

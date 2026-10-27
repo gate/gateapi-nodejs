@@ -33,7 +33,7 @@ export class OptionsMySettlements {
     /**
      * Settlement size
      */
-    'size'?: number;
+    'size'?: number | bigint;
     /**
      * Settlement profit (quote currency)
      */
@@ -53,7 +53,7 @@ export class OptionsMySettlements {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'underlying',
@@ -78,7 +78,7 @@ export class OptionsMySettlements {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'settleProfit',

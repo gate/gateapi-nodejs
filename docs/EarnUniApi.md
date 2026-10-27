@@ -255,8 +255,8 @@ const opts = {
   'currency': "BTC", // string | Query by specified currency name
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'type': "lend" // 'lend' | 'redeem' | Operation type: lend - Lend, redeem - Redeem
 };
 api.listUniLendRecords(opts)
@@ -272,8 +272,8 @@ Name | Type | Description  | Notes
  **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 | [optional] [default to 100]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **type** | **Type**| Operation type: lend - Lend, redeem - Redeem | [optional] [default to undefined]
 
 ### Return type
@@ -353,8 +353,8 @@ const opts = {
   'currency': "BTC", // string | Query by specified currency name
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332') // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
 api.listUniInterestRecords(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -369,8 +369,8 @@ Name | Type | Description  | Notes
  **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 | [optional] [default to 100]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
 ### Return type
 
@@ -445,8 +445,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnUniApi(client);
-const from = 1719763200; // number | Start timestamp in seconds, maximum span 30 days
-const to = 1722441600; // number | End timestamp in seconds, maximum span 30 days
+const from = BigInt('1719763200'); // number | Start timestamp in seconds, maximum span 30 days
+const to = BigInt('1722441600'); // number | End timestamp in seconds, maximum span 30 days
 const asset = "BTC"; // string | Currency name
 api.listUniChart(from, to, asset)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -458,8 +458,8 @@ api.listUniChart(from, to, asset)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from** | **number**| Start timestamp in seconds, maximum span 30 days | [default to undefined]
- **to** | **number**| End timestamp in seconds, maximum span 30 days | [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp in seconds, maximum span 30 days | [default to undefined]
+ **to** | **number &#124; bigint**| End timestamp in seconds, maximum span 30 days | [default to undefined]
  **asset** | **string**| Currency name | [default to undefined]
 
 ### Return type

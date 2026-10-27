@@ -20,7 +20,7 @@ export class FuturesBBOOrder {
     /**
      * Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
      */
-    'size': number;
+    'size': number | bigint;
     /**
      * Direction: \'sell\' fetches the bid side, \'buy\' fetches the ask side.
      */
@@ -28,11 +28,11 @@ export class FuturesBBOOrder {
     /**
      * Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
      */
-    'iceberg'?: number;
+    'iceberg'?: number | bigint;
     /**
      * Level: maximum 20 levels
      */
-    'level': number;
+    'level': number | bigint;
     /**
      * Set as `true` to close the position, with `size` set to 0
      */
@@ -60,7 +60,7 @@ export class FuturesBBOOrder {
     /**
      * Unfilled quantity
      */
-    'left'?: number;
+    'left'?: number | bigint;
     /**
      * Fill price
      */
@@ -100,7 +100,7 @@ export class FuturesBBOOrder {
     /**
      * Position ID
      */
-    'pid'?: number;
+    'pid'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -113,7 +113,7 @@ export class FuturesBBOOrder {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'direction',
@@ -123,12 +123,12 @@ export class FuturesBBOOrder {
         {
             name: 'iceberg',
             baseName: 'iceberg',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'level',
             baseName: 'level',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'close',
@@ -163,7 +163,7 @@ export class FuturesBBOOrder {
         {
             name: 'left',
             baseName: 'left',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'fillPrice',
@@ -213,7 +213,7 @@ export class FuturesBBOOrder {
         {
             name: 'pid',
             baseName: 'pid',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

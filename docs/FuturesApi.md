@@ -385,8 +385,8 @@ const opts = {
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'lastId': "12345", // string | Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use `from` and `to` instead to limit time range
-  'from': 1546905600, // number | Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
-  'to': 1546935600 // number | Specify end time in Unix seconds, default to current time.
+  'from': BigInt('1546905600'), // number | Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
+  'to': BigInt('1546935600') // number | Specify end time in Unix seconds, default to current time.
 };
 api.listFuturesTrades(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -403,8 +403,8 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **lastId** | **string**| Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range | [optional] [default to undefined]
- **from** | **number**| Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.  | [optional] [default to undefined]
- **to** | **number**| Specify end time in Unix seconds, default to current time. | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.  | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Specify end time in Unix seconds, default to current time. | [optional] [default to undefined]
 
 ### Return type
 
@@ -439,8 +439,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
-  'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
+  'from': BigInt('1546905600'), // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
+  'to': BigInt('1546935600'), // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   'limit': 100, // number | Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'interval': '5m', // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month
   'timezone': 'utc0' // string | Time zone: all/utc0/utc8, default utc0
@@ -457,8 +457,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
- **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional] [default to undefined]
  **limit** | **number**| Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **interval** | **Interval**| Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month | [optional] [default to &#39;5m&#39;]
  **timezone** | **string**| Time zone: all/utc0/utc8, default utc0 | [optional] [default to &#39;utc0&#39;]
@@ -496,8 +496,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
-  'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
+  'from': BigInt('1546905600'), // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
+  'to': BigInt('1546935600'), // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   'limit': 100, // number | Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'interval': '5m' // '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Time interval between data points
 };
@@ -513,8 +513,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
- **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional] [default to undefined]
  **limit** | **number**| Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **interval** | **Interval**| Time interval between data points | [optional] [default to &#39;5m&#39;]
 
@@ -595,8 +595,8 @@ const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'limit': 100, // number | Maximum number of records returned in a single list
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332') // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
 api.listFuturesFundingRateHistory(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -611,8 +611,8 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
 ### Return type
 
@@ -733,7 +733,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'from': 1604561000, // number | Start timestamp
+  'from': BigInt('1604561000'), // number | Start timestamp
   'interval': '5m', // string | 
   'limit': 30 // number | 
 };
@@ -749,7 +749,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp | [optional] [default to undefined]
  **interval** | **string**|  | [optional] [default to &#39;5m&#39;]
  **limit** | **number**|  | [optional] [default to 30]
 
@@ -829,8 +829,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'limit': 100 // number | Maximum number of records returned in a single list
 };
 api.listLiquidatedOrders(settle, opts)
@@ -845,8 +845,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
 
 ### Return type
@@ -982,8 +982,8 @@ const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'type': "dnw" // string | Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction - dividend: Dividend payout
 };
 api.listFuturesAccountBook(settle, opts)
@@ -1000,8 +1000,8 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **type** | **string**| Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction - dividend: Dividend payout | [optional] [default to undefined]
 
 ### Return type
@@ -1088,8 +1088,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -1105,8 +1105,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -1994,8 +1994,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -2011,8 +2011,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -2064,7 +2064,7 @@ api.createBatchFuturesOrder(settle, futuresOrder, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
- **futuresOrder** | [**Array&lt;FuturesOrder&gt;**](FuturesOrder.md)|  | 
+ **futuresOrder** | [**Array<FuturesOrder>**](FuturesOrder.md)|  | 
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
@@ -2251,7 +2251,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'order': 12345, // number | Futures order ID, return related data only if specified
+  'order': BigInt('12345'), // number | Futures order ID, return related data only if specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'lastId': "12345" // string | Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. If you need to iterate through and retrieve more records, we recommend using \'GET /futures/{settle}/my_trades_timerange\'.
@@ -2268,7 +2268,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **order** | **number**| Futures order ID, return related data only if specified | [optional] [default to undefined]
+ **order** | **number &#124; bigint**| Futures order ID, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **lastId** | **string**| Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. If you need to iterate through and retrieve more records, we recommend using \&#39;GET /futures/{settle}/my_trades_timerange\&#39;. | [optional] [default to undefined]
@@ -2306,8 +2306,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'role': "maker" // string | Query role, maker or taker
@@ -2324,8 +2324,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **role** | **string**| Query role, maker or taker | [optional] [default to undefined]
@@ -2365,8 +2365,8 @@ const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'side': "short", // string | Query side. long or shot
   'pnl': "profit" // string | Query profit or loss
 };
@@ -2384,8 +2384,8 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **side** | **string**| Query side. long or shot | [optional] [default to undefined]
  **pnl** | **string**| Query profit or loss | [optional] [default to undefined]
 
@@ -2424,8 +2424,8 @@ const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'at': 0 // number | Specify liquidation timestamp
 };
 api.listLiquidates(settle, opts)
@@ -2442,8 +2442,8 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **at** | **number**| Specify liquidation timestamp | [optional] [default to 0]
 
 ### Return type
@@ -2481,8 +2481,8 @@ const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
-  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+  'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'at': 0 // number | Specify auto-deleveraging timestamp
 };
 api.listAutoDeleverages(settle, opts)
@@ -2499,8 +2499,8 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
- **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
+ **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **at** | **number**| Specify auto-deleveraging timestamp | [optional] [default to 0]
 
 ### Return type
@@ -2645,7 +2645,7 @@ api.cancelBatchFutureOrders(settle, requestBody, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
- **requestBody** | [**Array&lt;string&gt;**](string.md)|  | 
+ **requestBody** | [**Array<string>**](string.md)|  | 
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
@@ -2696,7 +2696,7 @@ api.amendBatchFutureOrders(settle, batchAmendOrderReq, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
- **batchAmendOrderReq** | [**Array&lt;BatchAmendOrderReq&gt;**](BatchAmendOrderReq.md)|  | 
+ **batchAmendOrderReq** | [**Array<BatchAmendOrderReq>**](BatchAmendOrderReq.md)|  | 
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
@@ -2964,8 +2964,8 @@ const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement
 const opts = {
   'contract': "contract_example", // string | Contract name
   'isFinished': True, // boolean | Whether historical order
-  'startAt': 56, // number | Start time of time range
-  'endAt': 56, // number | End time of time range
+  'startAt': BigInt('56'), // number | Start time of time range
+  'endAt': BigInt('56'), // number | End time of time range
   'pageNum': 1, // number | Page number, starting from 1
   'pageSize': 20, // number | Number of items per page
   'sortBy': 1, // 1 | 2 | Common sort field, 1-creation time, 2-end time
@@ -2988,8 +2988,8 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
  **contract** | **string**| Contract name | [optional] [default to undefined]
  **isFinished** | **boolean**| Whether historical order | [optional] [default to undefined]
- **startAt** | **number**| Start time of time range | [optional] [default to undefined]
- **endAt** | **number**| End time of time range | [optional] [default to undefined]
+ **startAt** | **number &#124; bigint**| Start time of time range | [optional] [default to undefined]
+ **endAt** | **number &#124; bigint**| End time of time range | [optional] [default to undefined]
  **pageNum** | **number**| Page number, starting from 1 | [optional] [default to 1]
  **pageSize** | **number**| Number of items per page | [optional] [default to 20]
  **sortBy** | **SortBy**| Common sort field, 1-creation time, 2-end time | [optional] [default to 1]
@@ -3030,7 +3030,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
-const id = 56; // number | Order ID
+const id = BigInt('56'); // number | Order ID
 api.getTrailOrderDetail(settle, id)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -3042,7 +3042,7 @@ api.getTrailOrderDetail(settle, id)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
- **id** | **number**| Order ID | [default to undefined]
+ **id** | **number &#124; bigint**| Order ID | [default to undefined]
 
 ### Return type
 
@@ -3120,7 +3120,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
-const id = 56; // number | Order ID
+const id = BigInt('56'); // number | Order ID
 const opts = {
   'pageNum': 1, // number | Page number, starting from 1
   'pageSize': 20 // number | Number of items per page
@@ -3136,7 +3136,7 @@ api.getTrailOrderChangeLog(settle, id, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
- **id** | **number**| Order ID | [default to undefined]
+ **id** | **number &#124; bigint**| Order ID | [default to undefined]
  **pageNum** | **number**| Page number, starting from 1 | [optional] [default to 1]
  **pageSize** | **number**| Number of items per page | [optional] [default to 20]
 
@@ -3310,8 +3310,8 @@ const sortBy = 56; // 1 | 2 | Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_
 const opts = {
   'contract': "contract_example", // string | Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
   'isFinished': True, // boolean | true to query finished orders, false to query in-progress orders
-  'startAt': 56, // number | Lower time bound for the history list, paired with end_at. Required when is_finished is true
-  'endAt': 56, // number | Upper time bound for the history list, paired with start_at. Required when is_finished is true
+  'startAt': BigInt('56'), // number | Lower time bound for the history list, paired with end_at. Required when is_finished is true
+  'endAt': BigInt('56'), // number | Upper time bound for the history list, paired with start_at. Required when is_finished is true
   'pageNum': 56, // number | Page number, starting from 1
   'pageSize': 56, // number | Page size; must be between 1 and 100
   'hideCancel': True, // boolean | When true, cancelled orders are hidden in the list
@@ -3332,8 +3332,8 @@ Name | Type | Description  | Notes
  **sortBy** | **SortBy**| Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 | [default to undefined]
  **contract** | **string**| Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase | [optional] [default to undefined]
  **isFinished** | **boolean**| true to query finished orders, false to query in-progress orders | [optional] [default to undefined]
- **startAt** | **number**| Lower time bound for the history list, paired with end_at. Required when is_finished is true | [optional] [default to undefined]
- **endAt** | **number**| Upper time bound for the history list, paired with start_at. Required when is_finished is true | [optional] [default to undefined]
+ **startAt** | **number &#124; bigint**| Lower time bound for the history list, paired with end_at. Required when is_finished is true | [optional] [default to undefined]
+ **endAt** | **number &#124; bigint**| Upper time bound for the history list, paired with start_at. Required when is_finished is true | [optional] [default to undefined]
  **pageNum** | **number**| Page number, starting from 1 | [optional] [default to undefined]
  **pageSize** | **number**| Page size; must be between 1 and 100 | [optional] [default to undefined]
  **hideCancel** | **boolean**| When true, cancelled orders are hidden in the list | [optional] [default to undefined]
@@ -3561,7 +3561,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
-const orderId = 56; // number | ID returned when order is successfully created
+const orderId = BigInt('56'); // bigint | ID returned when order is successfully created
 api.getPriceTriggeredOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -3573,7 +3573,7 @@ api.getPriceTriggeredOrder(settle, orderId)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
- **orderId** | **number**| ID returned when order is successfully created | [default to undefined]
+ **orderId** | **number &#124; bigint**| ID returned when order is successfully created | [default to undefined]
 
 ### Return type
 
@@ -3606,7 +3606,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
-const orderId = 56; // number | ID returned when order is successfully created
+const orderId = BigInt('56'); // bigint | ID returned when order is successfully created
 api.cancelPriceTriggeredOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -3618,7 +3618,7 @@ api.cancelPriceTriggeredOrder(settle, orderId)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
- **orderId** | **number**| ID returned when order is successfully created | [default to undefined]
+ **orderId** | **number &#124; bigint**| ID returned when order is successfully created | [default to undefined]
 
 ### Return type
 

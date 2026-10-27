@@ -16,5 +16,5 @@ Name | Type | Description | Notes
 **gasFee** | **string** | Gas Fee (USDT-based) | [optional] [default to undefined]
 **transactionFee** | **string** | Trading Fee (USDT-based) | [optional] [default to undefined]
 **failedReason** | **string** | Failure reason (if applicable) | [optional] [default to undefined]
-**createTime** | **number** | Creation timestamp | [optional] [default to undefined]
+**createTime** | **number &#124; bigint** | Creation timestamp | [optional] [default to undefined]
 

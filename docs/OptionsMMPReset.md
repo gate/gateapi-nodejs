@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **frozenPeriod** | **number** | Freeze duration (milliseconds), 0 means always frozen, need to call reset API to unfreeze | [optional] [readonly] [default to undefined]
 **qtyLimit** | **string** | Trading volume upper limit (positive number, up to 2 decimal places) | [optional] [readonly] [default to undefined]
 **deltaLimit** | **string** | Upper limit of net delta value (positive number, up to 2 decimal places) | [optional] [readonly] [default to undefined]
-**triggerTimeMs** | **number** | Trigger freeze time (milliseconds), 0 means no freeze is triggered | [optional] [readonly] [default to undefined]
-**frozenUntilMs** | **number** | Unfreeze time (milliseconds). If the freeze duration is not configured, there will be no unfreeze time after the freeze is triggered | [optional] [readonly] [default to undefined]
+**triggerTimeMs** | **number &#124; bigint** | Trigger freeze time (milliseconds), 0 means no freeze is triggered | [optional] [readonly] [default to undefined]
+**frozenUntilMs** | **number &#124; bigint** | Unfreeze time (milliseconds). If the freeze duration is not configured, there will be no unfreeze time after the freeze is triggered | [optional] [readonly] [default to undefined]
 

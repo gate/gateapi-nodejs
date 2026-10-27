@@ -28,7 +28,7 @@ export class AutoInvestCoinsItem {
     /**
      * Sort
      */
-    'sort'?: number;
+    'sort'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -51,7 +51,7 @@ export class AutoInvestCoinsItem {
         {
             name: 'sort',
             baseName: 'sort',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

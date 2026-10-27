@@ -24,7 +24,7 @@ export class FuturesUpdatePriceTriggeredOrder {
     /**
      * Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
      */
-    'size'?: number;
+    'size'?: number | bigint;
     /**
      * Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
      */
@@ -66,7 +66,7 @@ export class FuturesUpdatePriceTriggeredOrder {
         {
             name: 'size',
             baseName: 'size',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'amount',

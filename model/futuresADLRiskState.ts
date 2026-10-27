@@ -17,7 +17,7 @@ export class FuturesADLRiskState {
     /**
      * State calculation time, as a Unix timestamp in milliseconds
      */
-    'calculatedAtMs': number;
+    'calculatedAtMs': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -30,7 +30,7 @@ export class FuturesADLRiskState {
         {
             name: 'calculatedAtMs',
             baseName: 'calculated_at_ms',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

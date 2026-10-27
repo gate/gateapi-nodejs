@@ -17,11 +17,11 @@ export class CrossMarginLoan {
     /**
      * Creation timestamp, in milliseconds
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
     /**
      * Update timestamp, in milliseconds
      */
-    'updateTime'?: number;
+    'updateTime'?: number | bigint;
     /**
      * Currency name
      */
@@ -62,12 +62,12 @@ export class CrossMarginLoan {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'updateTime',
             baseName: 'update_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'currency',

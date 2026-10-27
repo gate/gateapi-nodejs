@@ -15,7 +15,7 @@ export class UnifiedRiskUnits {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * Spot hedging status: true - enabled, false - disabled
      */
@@ -31,7 +31,7 @@ export class UnifiedRiskUnits {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'spotHedge',

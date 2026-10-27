@@ -13,7 +13,7 @@ export class TransactionID {
     /**
      * Order ID
      */
-    'txId'?: number;
+    'txId'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -21,7 +21,7 @@ export class TransactionID {
         {
             name: 'txId',
             baseName: 'tx_id',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

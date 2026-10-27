@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **volume** | **string** | Position size / Maximum position size | [default to undefined]
 **volumeClosed** | **string** | Close volume | [default to undefined]
 **priceOpen** | **string** | Average Opening Price | [default to undefined]
-**positionDir** | **string** | Position Direction - Long: Long Position - Short: Short Position | [default to undefined]
+**positionDir** | **PositionHistoryListDataList.PositionDir** | Position Direction - Long: Long Position - Short: Short Position | [default to undefined]
 **priceTp** | **string** | Take profit price | [optional] [default to undefined]
 **priceSl** | **string** | Stop loss price | [optional] [default to undefined]
 **counterpartyPrice** | **string** | Counterparty price | [optional] [default to undefined]
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **timeCreate** | **string** | Open time (timestamp in seconds) | [default to undefined]
 **timeClose** | **string** | Close time (timestamp in seconds) | [default to undefined]
 **positionStatus** | **string** | Position Status - 1: Fully Closed - 2: Forced Liquidation | [default to undefined]
-**closeDetail** | [**PositionHistoryListDataCloseDetail**](PositionHistoryListDataCloseDetail.md) |  | [optional] [default to undefined]
+**closeDetail** | [**PositionHistoryListDataCloseDetail &#124; null**](PositionHistoryListDataCloseDetail.md) |  | [optional] [default to undefined]
 **realizedPnlDetail** | [**PositionHistoryListDataRealizedPnlDetail**](PositionHistoryListDataRealizedPnlDetail.md) |  | [default to undefined]
 
 ## Enum: PositionHistoryListDataList.PositionDir

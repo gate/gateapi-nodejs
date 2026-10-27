@@ -13,15 +13,15 @@ export class UidPushOrder {
     /**
      * Order ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Initiator User ID
      */
-    'pushUid'?: number;
+    'pushUid'?: number | bigint;
     /**
      * Recipient User ID
      */
-    'receiveUid'?: number;
+    'receiveUid'?: number | bigint;
     /**
      * Currency name
      */
@@ -33,7 +33,7 @@ export class UidPushOrder {
     /**
      * Created time
      */
-    'createTime'?: number;
+    'createTime'?: number | bigint;
     /**
      * Withdrawal status:  - CREATING: Creating - PENDING: Waiting for recipient (Please contact the recipient to accept the transfer on Gate official website) - CANCELLING: Cancelling - CANCELLED: Cancelled - REFUSING: Refusing - REFUSED: Refused - RECEIVING: Receiving - RECEIVED: Success
      */
@@ -53,17 +53,17 @@ export class UidPushOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'pushUid',
             baseName: 'push_uid',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'receiveUid',
             baseName: 'receive_uid',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'currency',
@@ -78,7 +78,7 @@ export class UidPushOrder {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'status',

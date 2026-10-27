@@ -84,11 +84,11 @@ export class OrderHistoryListItem {
     /**
      * Order creation time (Unix timestamp, seconds)
      */
-    'timeSetup'?: number;
+    'timeSetup'?: number | bigint;
     /**
      * Order completion time (Unix timestamp in seconds)
      */
-    'timeDone'?: number;
+    'timeDone'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -186,12 +186,12 @@ export class OrderHistoryListItem {
         {
             name: 'timeSetup',
             baseName: 'time_setup',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'timeDone',
             baseName: 'time_done',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

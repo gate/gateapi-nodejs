@@ -16,7 +16,7 @@ export class AutoInvestOrderItem {
     /**
      * Order ID
      */
-    'id': number;
+    'id': number | bigint;
     /**
      * Type
      */
@@ -28,11 +28,11 @@ export class AutoInvestOrderItem {
     /**
      * Plan ID
      */
-    'planId': number;
+    'planId': number | bigint;
     /**
      * direction
      */
-    'side': number;
+    'side': number | bigint;
     /**
      * Currency
      */
@@ -40,7 +40,7 @@ export class AutoInvestOrderItem {
     /**
      * Record ID
      */
-    'recordId': number;
+    'recordId': number | bigint;
     /**
      * TotalAmount
      */
@@ -56,7 +56,7 @@ export class AutoInvestOrderItem {
     /**
      * Creation time (Unix timestamp)
      */
-    'createTime': number;
+    'createTime': number | bigint;
     /**
      * Total
      */
@@ -68,7 +68,7 @@ export class AutoInvestOrderItem {
     /**
      * Error code
      */
-    'errorCode': number;
+    'errorCode': number | bigint;
     /**
      * Error message
      */
@@ -76,7 +76,7 @@ export class AutoInvestOrderItem {
     /**
      * Status
      */
-    'status': number;
+    'status': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -84,7 +84,7 @@ export class AutoInvestOrderItem {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'type',
@@ -99,12 +99,12 @@ export class AutoInvestOrderItem {
         {
             name: 'planId',
             baseName: 'plan_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'side',
             baseName: 'side',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'asset',
@@ -114,7 +114,7 @@ export class AutoInvestOrderItem {
         {
             name: 'recordId',
             baseName: 'record_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'totalMoney',
@@ -134,7 +134,7 @@ export class AutoInvestOrderItem {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'total',
@@ -149,7 +149,7 @@ export class AutoInvestOrderItem {
         {
             name: 'errorCode',
             baseName: 'error_code',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'errorMsg',
@@ -159,7 +159,7 @@ export class AutoInvestOrderItem {
         {
             name: 'status',
             baseName: 'status',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

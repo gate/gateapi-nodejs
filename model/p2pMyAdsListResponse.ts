@@ -28,7 +28,7 @@ export class P2pMyAdsListResponse {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'method',

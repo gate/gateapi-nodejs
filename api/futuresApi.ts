@@ -99,6 +99,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         opts?: { limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Contract> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/contracts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -119,8 +120,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -128,8 +131,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -159,6 +164,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         opts?: { limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Contract> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/contracts_all'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -179,8 +185,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -188,8 +196,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -217,6 +227,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Contract }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/contracts/{contract}'
@@ -261,6 +272,7 @@ export class FuturesApi {
     public async listFuturesADLRiskStates(
         settle: 'btc' | 'usdt' | 'usd1',
     ): Promise<{ response: AxiosResponse; body: FuturesADLRiskStates }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/adl_risk_states'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -305,6 +317,7 @@ export class FuturesApi {
         contract: string,
         opts?: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/order_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -329,16 +342,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let contractSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(contract, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(contractSerialized)) {
             contractSerialized = contractSerialized.join(',');
         }
         localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.interval !== undefined) {
-            let intervalSerialized = ObjectSerializer.serialize(opts.interval, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let intervalSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.interval, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(intervalSerialized)) {
                 intervalSerialized = intervalSerialized.join(',');
             }
@@ -346,8 +363,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -355,8 +374,10 @@ export class FuturesApi {
         }
 
         if (opts.withId !== undefined) {
-            let withIdSerialized = ObjectSerializer.serialize(opts.withId, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let withIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.withId, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(withIdSerialized)) {
                 withIdSerialized = withIdSerialized.join(',');
             }
@@ -389,6 +410,7 @@ export class FuturesApi {
         contract: string,
         opts?: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/rpi_order_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -413,16 +435,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let contractSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(contract, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(contractSerialized)) {
             contractSerialized = contractSerialized.join(',');
         }
         localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.interval !== undefined) {
-            let intervalSerialized = ObjectSerializer.serialize(opts.interval, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let intervalSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.interval, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(intervalSerialized)) {
                 intervalSerialized = intervalSerialized.join(',');
             }
@@ -430,8 +456,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -439,8 +467,10 @@ export class FuturesApi {
         }
 
         if (opts.withId !== undefined) {
-            let withIdSerialized = ObjectSerializer.serialize(opts.withId, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let withIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.withId, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(withIdSerialized)) {
                 withIdSerialized = withIdSerialized.join(',');
             }
@@ -473,8 +503,9 @@ export class FuturesApi {
     public async listFuturesTrades(
         settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
-        opts?: { limit?: number; offset?: number; lastId?: string; from?: number; to?: number },
+        opts?: { limit?: number; offset?: number; lastId?: string; from?: number | bigint; to?: number | bigint },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -499,16 +530,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let contractSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(contract, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(contractSerialized)) {
             contractSerialized = contractSerialized.join(',');
         }
         localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -516,8 +551,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -525,8 +562,10 @@ export class FuturesApi {
         }
 
         if (opts.lastId !== undefined) {
-            let lastIdSerialized = ObjectSerializer.serialize(opts.lastId, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let lastIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.lastId, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(lastIdSerialized)) {
                 lastIdSerialized = lastIdSerialized.join(',');
             }
@@ -534,8 +573,10 @@ export class FuturesApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -543,8 +584,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -578,13 +619,14 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         opts?: {
-            from?: number;
-            to?: number;
+            from?: number | bigint;
+            to?: number | bigint;
             limit?: number;
             interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
             timezone?: string;
         },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/candlesticks'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -609,16 +651,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let contractSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(contract, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(contractSerialized)) {
             contractSerialized = contractSerialized.join(',');
         }
         localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -626,8 +672,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -635,8 +681,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -644,11 +692,10 @@ export class FuturesApi {
         }
 
         if (opts.interval !== undefined) {
-            let intervalSerialized = ObjectSerializer.serialize(
-                opts.interval,
-                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
+            let intervalSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.interval, 'Interval'),
             );
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(intervalSerialized)) {
                 intervalSerialized = intervalSerialized.join(',');
             }
@@ -656,8 +703,10 @@ export class FuturesApi {
         }
 
         if (opts.timezone !== undefined) {
-            let timezoneSerialized = ObjectSerializer.serialize(opts.timezone, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let timezoneSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.timezone, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(timezoneSerialized)) {
                 timezoneSerialized = timezoneSerialized.join(',');
             }
@@ -690,12 +739,13 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
         opts?: {
-            from?: number;
-            to?: number;
+            from?: number | bigint;
+            to?: number | bigint;
             limit?: number;
             interval?: '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
         },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPremiumIndex> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/premium_index'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -720,16 +770,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let contractSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(contract, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(contractSerialized)) {
             contractSerialized = contractSerialized.join(',');
         }
         localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -737,8 +791,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -746,8 +800,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -755,11 +811,10 @@ export class FuturesApi {
         }
 
         if (opts.interval !== undefined) {
-            let intervalSerialized = ObjectSerializer.serialize(
-                opts.interval,
-                "'1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
+            let intervalSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.interval, 'Interval'),
             );
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(intervalSerialized)) {
                 intervalSerialized = intervalSerialized.join(',');
             }
@@ -788,6 +843,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTicker> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/tickers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -808,8 +864,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -840,8 +898,9 @@ export class FuturesApi {
     public async listFuturesFundingRateHistory(
         settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
-        opts?: { limit?: number; from?: number; to?: number },
+        opts?: { limit?: number; from?: number | bigint; to?: number | bigint },
     ): Promise<{ response: AxiosResponse; body: Array<FundingRateRecord> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/funding_rate'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -870,16 +929,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let contractSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(contract, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(contractSerialized)) {
             contractSerialized = contractSerialized.join(',');
         }
         localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -887,8 +950,10 @@ export class FuturesApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -896,8 +961,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -925,6 +990,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         batchFundingRatesRequest: BatchFundingRatesRequest,
     ): Promise<{ response: AxiosResponse; body: Array<BatchFundingRatesResponse> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/funding_rates'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -979,6 +1045,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         opts?: { limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<InsuranceRecord> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/insurance'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -999,8 +1066,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1031,8 +1100,9 @@ export class FuturesApi {
     public async listContractStats(
         settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
-        opts?: { from?: number; interval?: string; limit?: number },
+        opts?: { from?: number | bigint; interval?: string; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<ContractStat> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/contract_stats'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1057,16 +1127,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let contractSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(contract, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(contractSerialized)) {
             contractSerialized = contractSerialized.join(',');
         }
         localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1074,8 +1148,10 @@ export class FuturesApi {
         }
 
         if (opts.interval !== undefined) {
-            let intervalSerialized = ObjectSerializer.serialize(opts.interval, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let intervalSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.interval, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(intervalSerialized)) {
                 intervalSerialized = intervalSerialized.join(',');
             }
@@ -1083,8 +1159,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1112,6 +1190,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         index: string,
     ): Promise<{ response: AxiosResponse; body: FuturesIndexConstituents }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/index_constituents/{index}'
@@ -1160,8 +1239,9 @@ export class FuturesApi {
      */
     public async listLiquidatedOrders(
         settle: 'btc' | 'usdt' | 'usd1',
-        opts?: { contract?: string; from?: number; to?: number; limit?: number },
+        opts?: { contract?: string; from?: number | bigint; to?: number | bigint; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiqOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/liq_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1182,8 +1262,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -1191,8 +1273,10 @@ export class FuturesApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1200,8 +1284,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1209,8 +1293,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1241,6 +1327,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLimitRiskTiers> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/risk_limit_tiers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1261,8 +1348,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -1270,8 +1359,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1279,8 +1370,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -1306,6 +1399,7 @@ export class FuturesApi {
     public async listFuturesAccounts(
         settle: 'btc' | 'usdt' | 'usd1',
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/accounts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1349,8 +1443,16 @@ export class FuturesApi {
      */
     public async listFuturesAccountBook(
         settle: 'btc' | 'usdt' | 'usd1',
-        opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; type?: string },
+        opts?: {
+            contract?: string;
+            limit?: number;
+            offset?: number;
+            from?: number | bigint;
+            to?: number | bigint;
+            type?: string;
+        },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/account_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1371,8 +1473,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -1380,8 +1484,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1389,8 +1495,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -1398,8 +1506,10 @@ export class FuturesApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1407,8 +1517,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1416,8 +1526,10 @@ export class FuturesApi {
         }
 
         if (opts.type !== undefined) {
-            let typeSerialized = ObjectSerializer.serialize(opts.type, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let typeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.type, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(typeSerialized)) {
                 typeSerialized = typeSerialized.join(',');
             }
@@ -1448,6 +1560,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         opts?: { holding?: boolean; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1468,8 +1581,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.holding !== undefined) {
-            let holdingSerialized = ObjectSerializer.serialize(opts.holding, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let holdingSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.holding, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(holdingSerialized)) {
                 holdingSerialized = holdingSerialized.join(',');
             }
@@ -1477,8 +1592,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1486,8 +1603,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -1519,8 +1638,9 @@ export class FuturesApi {
     public async listPositionsTimerange(
         settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
-        opts?: { from?: number; to?: number; limit?: number; offset?: number },
+        opts?: { from?: number | bigint; to?: number | bigint; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<PositionTimerange> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions_timerange'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1545,16 +1665,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let contractSerialized = ObjectSerializer.serialize(contract, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let contractSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(contract, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(contractSerialized)) {
             contractSerialized = contractSerialized.join(',');
         }
         localVarQueryParameters['contract'] = contractSerialized;
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -1562,8 +1686,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -1571,8 +1695,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -1580,8 +1706,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -1609,6 +1737,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions/{contract}'
@@ -1659,6 +1788,7 @@ export class FuturesApi {
         posMarginMode: string,
         dualSide: string,
     ): Promise<{ response: AxiosResponse; body: FuturesLeverage }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/get_leverage/{contract}'
@@ -1694,15 +1824,19 @@ export class FuturesApi {
             throw new Error('Required parameter dualSide was null or undefined when calling getLeverage.');
         }
 
-        let posMarginModeSerialized = ObjectSerializer.serialize(posMarginMode, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let posMarginModeSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(posMarginMode, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(posMarginModeSerialized)) {
             posMarginModeSerialized = posMarginModeSerialized.join(',');
         }
         localVarQueryParameters['pos_margin_mode'] = posMarginModeSerialized;
 
-        let dualSideSerialized = ObjectSerializer.serialize(dualSide, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let dualSideSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(dualSide, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(dualSideSerialized)) {
             dualSideSerialized = dualSideSerialized.join(',');
         }
@@ -1731,6 +1865,7 @@ export class FuturesApi {
         contract: string,
         change: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions/{contract}/margin'
@@ -1761,8 +1896,8 @@ export class FuturesApi {
             throw new Error('Required parameter change was null or undefined when calling updatePositionMargin.');
         }
 
-        let changeSerialized = ObjectSerializer.serialize(change, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let changeSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(change, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(changeSerialized)) {
             changeSerialized = changeSerialized.join(',');
         }
@@ -1795,6 +1930,7 @@ export class FuturesApi {
         leverage: string,
         opts?: { crossLeverageLimit?: string; pid?: number },
     ): Promise<{ response: AxiosResponse; body: Position }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions/{contract}/leverage'
@@ -1826,16 +1962,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let leverageSerialized = ObjectSerializer.serialize(leverage, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let leverageSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(leverage, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(leverageSerialized)) {
             leverageSerialized = leverageSerialized.join(',');
         }
         localVarQueryParameters['leverage'] = leverageSerialized;
 
         if (opts.crossLeverageLimit !== undefined) {
-            let crossLeverageLimitSerialized = ObjectSerializer.serialize(opts.crossLeverageLimit, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let crossLeverageLimitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.crossLeverageLimit, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(crossLeverageLimitSerialized)) {
                 crossLeverageLimitSerialized = crossLeverageLimitSerialized.join(',');
             }
@@ -1843,8 +1983,10 @@ export class FuturesApi {
         }
 
         if (opts.pid !== undefined) {
-            let pidSerialized = ObjectSerializer.serialize(opts.pid, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pidSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pid, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pidSerialized)) {
                 pidSerialized = pidSerialized.join(',');
             }
@@ -1879,6 +2021,7 @@ export class FuturesApi {
         marginMode: string,
         opts?: { dualSide?: string },
     ): Promise<{ response: AxiosResponse; body: Position }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions/{contract}/set_leverage'
@@ -1923,23 +2066,29 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let leverageSerialized = ObjectSerializer.serialize(leverage, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let leverageSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(leverage, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(leverageSerialized)) {
             leverageSerialized = leverageSerialized.join(',');
         }
         localVarQueryParameters['leverage'] = leverageSerialized;
 
-        let marginModeSerialized = ObjectSerializer.serialize(marginMode, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let marginModeSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(marginMode, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(marginModeSerialized)) {
             marginModeSerialized = marginModeSerialized.join(',');
         }
         localVarQueryParameters['margin_mode'] = marginModeSerialized;
 
         if (opts.dualSide !== undefined) {
-            let dualSideSerialized = ObjectSerializer.serialize(opts.dualSide, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let dualSideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.dualSide, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(dualSideSerialized)) {
                 dualSideSerialized = dualSideSerialized.join(',');
             }
@@ -1967,6 +2116,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         futuresPositionCrossMode: FuturesPositionCrossMode,
     ): Promise<{ response: AxiosResponse; body: Position }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions/cross_mode'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -2014,6 +2164,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         updateDualCompPositionCrossModeRequest: UpdateDualCompPositionCrossModeRequest,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/dual_comp/positions/cross_mode'.replace(
@@ -2071,6 +2222,7 @@ export class FuturesApi {
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions/{contract}/risk_limit'
@@ -2101,8 +2253,10 @@ export class FuturesApi {
             throw new Error('Required parameter riskLimit was null or undefined when calling updatePositionRiskLimit.');
         }
 
-        let riskLimitSerialized = ObjectSerializer.serialize(riskLimit, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let riskLimitSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(riskLimit, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(riskLimitSerialized)) {
             riskLimitSerialized = riskLimitSerialized.join(',');
         }
@@ -2129,6 +2283,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         dualMode: boolean,
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/dual_mode'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -2152,8 +2307,10 @@ export class FuturesApi {
             throw new Error('Required parameter dualMode was null or undefined when calling setDualMode.');
         }
 
-        let dualModeSerialized = ObjectSerializer.serialize(dualMode, 'boolean');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let dualModeSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(dualMode, 'boolean'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(dualModeSerialized)) {
             dualModeSerialized = dualModeSerialized.join(',');
         }
@@ -2180,6 +2337,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         positionMode: string,
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/set_position_mode'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -2203,8 +2361,10 @@ export class FuturesApi {
             throw new Error('Required parameter positionMode was null or undefined when calling setPositionMode.');
         }
 
-        let positionModeSerialized = ObjectSerializer.serialize(positionMode, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let positionModeSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(positionMode, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(positionModeSerialized)) {
             positionModeSerialized = positionModeSerialized.join(',');
         }
@@ -2231,6 +2391,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/dual_comp/positions/{contract}'
@@ -2281,6 +2442,7 @@ export class FuturesApi {
         change: string,
         dualSide: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/dual_comp/positions/{contract}/margin'
@@ -2324,15 +2486,17 @@ export class FuturesApi {
             );
         }
 
-        let changeSerialized = ObjectSerializer.serialize(change, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let changeSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(change, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(changeSerialized)) {
             changeSerialized = changeSerialized.join(',');
         }
         localVarQueryParameters['change'] = changeSerialized;
 
-        let dualSideSerialized = ObjectSerializer.serialize(dualSide, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let dualSideSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(dualSide, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(dualSideSerialized)) {
             dualSideSerialized = dualSideSerialized.join(',');
         }
@@ -2364,6 +2528,7 @@ export class FuturesApi {
         leverage: string,
         opts?: { crossLeverageLimit?: string },
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/dual_comp/positions/{contract}/leverage'
@@ -2401,16 +2566,20 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let leverageSerialized = ObjectSerializer.serialize(leverage, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let leverageSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(leverage, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(leverageSerialized)) {
             leverageSerialized = leverageSerialized.join(',');
         }
         localVarQueryParameters['leverage'] = leverageSerialized;
 
         if (opts.crossLeverageLimit !== undefined) {
-            let crossLeverageLimitSerialized = ObjectSerializer.serialize(opts.crossLeverageLimit, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let crossLeverageLimitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.crossLeverageLimit, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(crossLeverageLimitSerialized)) {
                 crossLeverageLimitSerialized = crossLeverageLimitSerialized.join(',');
             }
@@ -2440,6 +2609,7 @@ export class FuturesApi {
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/dual_comp/positions/{contract}/risk_limit'
@@ -2476,8 +2646,10 @@ export class FuturesApi {
             );
         }
 
-        let riskLimitSerialized = ObjectSerializer.serialize(riskLimit, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let riskLimitSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(riskLimit, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(riskLimitSerialized)) {
             riskLimitSerialized = riskLimitSerialized.join(',');
         }
@@ -2510,6 +2682,7 @@ export class FuturesApi {
         status: string,
         opts?: { contract?: string; limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -2535,24 +2708,28 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
             localVarQueryParameters['contract'] = contractSerialized;
         }
 
-        let statusSerialized = ObjectSerializer.serialize(status, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let statusSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(status, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(statusSerialized)) {
             statusSerialized = statusSerialized.join(',');
         }
         localVarQueryParameters['status'] = statusSerialized;
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -2560,8 +2737,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -2569,8 +2748,10 @@ export class FuturesApi {
         }
 
         if (opts.lastId !== undefined) {
-            let lastIdSerialized = ObjectSerializer.serialize(opts.lastId, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let lastIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.lastId, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(lastIdSerialized)) {
                 lastIdSerialized = lastIdSerialized.join(',');
             }
@@ -2601,6 +2782,7 @@ export class FuturesApi {
         futuresOrder: FuturesOrder,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -2664,6 +2846,7 @@ export class FuturesApi {
             text?: string;
         },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -2684,8 +2867,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -2693,8 +2878,10 @@ export class FuturesApi {
         }
 
         if (opts.actionMode !== undefined) {
-            let actionModeSerialized = ObjectSerializer.serialize(opts.actionMode, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let actionModeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.actionMode, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(actionModeSerialized)) {
                 actionModeSerialized = actionModeSerialized.join(',');
             }
@@ -2702,8 +2889,10 @@ export class FuturesApi {
         }
 
         if (opts.side !== undefined) {
-            let sideSerialized = ObjectSerializer.serialize(opts.side, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.side, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sideSerialized)) {
                 sideSerialized = sideSerialized.join(',');
             }
@@ -2711,8 +2900,10 @@ export class FuturesApi {
         }
 
         if (opts.excludeReduceOnly !== undefined) {
-            let excludeReduceOnlySerialized = ObjectSerializer.serialize(opts.excludeReduceOnly, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let excludeReduceOnlySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.excludeReduceOnly, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(excludeReduceOnlySerialized)) {
                 excludeReduceOnlySerialized = excludeReduceOnlySerialized.join(',');
             }
@@ -2720,8 +2911,10 @@ export class FuturesApi {
         }
 
         if (opts.text !== undefined) {
-            let textSerialized = ObjectSerializer.serialize(opts.text, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let textSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.text, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(textSerialized)) {
                 textSerialized = textSerialized.join(',');
             }
@@ -2756,8 +2949,9 @@ export class FuturesApi {
      */
     public async getOrdersWithTimeRange(
         settle: 'btc' | 'usdt' | 'usd1',
-        opts?: { contract?: string; from?: number; to?: number; limit?: number; offset?: number },
+        opts?: { contract?: string; from?: number | bigint; to?: number | bigint; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrderTimerange> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders_timerange'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -2778,8 +2972,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -2787,8 +2983,10 @@ export class FuturesApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -2796,8 +2994,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -2805,8 +3003,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -2814,8 +3014,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -2846,6 +3048,7 @@ export class FuturesApi {
         futuresOrder: Array<FuturesOrder>,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/batch_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -2898,6 +3101,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders/{order_id}'
@@ -2949,6 +3153,7 @@ export class FuturesApi {
         futuresOrderAmendment: FuturesOrderAmendment,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders/{order_id}'
@@ -3012,6 +3217,7 @@ export class FuturesApi {
         orderId: string,
         opts?: { xGateExptime?: string; actionMode?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders/{order_id}'
@@ -3039,8 +3245,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.actionMode !== undefined) {
-            let actionModeSerialized = ObjectSerializer.serialize(opts.actionMode, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let actionModeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.actionMode, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(actionModeSerialized)) {
                 actionModeSerialized = actionModeSerialized.join(',');
             }
@@ -3075,8 +3283,9 @@ export class FuturesApi {
      */
     public async getMyTrades(
         settle: 'btc' | 'usdt' | 'usd1',
-        opts?: { contract?: string; order?: number; limit?: number; offset?: number; lastId?: string },
+        opts?: { contract?: string; order?: number | bigint; limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/my_trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3097,8 +3306,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -3106,8 +3317,10 @@ export class FuturesApi {
         }
 
         if (opts.order !== undefined) {
-            let orderSerialized = ObjectSerializer.serialize(opts.order, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let orderSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.order, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(orderSerialized)) {
                 orderSerialized = orderSerialized.join(',');
             }
@@ -3115,8 +3328,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -3124,8 +3339,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -3133,8 +3350,10 @@ export class FuturesApi {
         }
 
         if (opts.lastId !== undefined) {
-            let lastIdSerialized = ObjectSerializer.serialize(opts.lastId, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let lastIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.lastId, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(lastIdSerialized)) {
                 lastIdSerialized = lastIdSerialized.join(',');
             }
@@ -3166,8 +3385,16 @@ export class FuturesApi {
      */
     public async getMyTradesWithTimeRange(
         settle: 'btc' | 'usdt' | 'usd1',
-        opts?: { contract?: string; from?: number; to?: number; limit?: number; offset?: number; role?: string },
+        opts?: {
+            contract?: string;
+            from?: number | bigint;
+            to?: number | bigint;
+            limit?: number;
+            offset?: number;
+            role?: string;
+        },
     ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTradeTimeRange> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/my_trades_timerange'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3188,8 +3415,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -3197,8 +3426,10 @@ export class FuturesApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -3206,8 +3437,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -3215,8 +3446,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -3224,8 +3457,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -3233,8 +3468,10 @@ export class FuturesApi {
         }
 
         if (opts.role !== undefined) {
-            let roleSerialized = ObjectSerializer.serialize(opts.role, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let roleSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.role, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(roleSerialized)) {
                 roleSerialized = roleSerialized.join(',');
             }
@@ -3275,12 +3512,13 @@ export class FuturesApi {
             contract?: string;
             limit?: number;
             offset?: number;
-            from?: number;
-            to?: number;
+            from?: number | bigint;
+            to?: number | bigint;
             side?: string;
             pnl?: string;
         },
     ): Promise<{ response: AxiosResponse; body: Array<PositionClose> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/position_close'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3301,8 +3539,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -3310,8 +3550,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -3319,8 +3561,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -3328,8 +3572,10 @@ export class FuturesApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -3337,8 +3583,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -3346,8 +3592,10 @@ export class FuturesApi {
         }
 
         if (opts.side !== undefined) {
-            let sideSerialized = ObjectSerializer.serialize(opts.side, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.side, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sideSerialized)) {
                 sideSerialized = sideSerialized.join(',');
             }
@@ -3355,8 +3603,10 @@ export class FuturesApi {
         }
 
         if (opts.pnl !== undefined) {
-            let pnlSerialized = ObjectSerializer.serialize(opts.pnl, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pnlSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pnl, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pnlSerialized)) {
                 pnlSerialized = pnlSerialized.join(',');
             }
@@ -3388,8 +3638,16 @@ export class FuturesApi {
      */
     public async listLiquidates(
         settle: 'btc' | 'usdt' | 'usd1',
-        opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
+        opts?: {
+            contract?: string;
+            limit?: number;
+            offset?: number;
+            from?: number | bigint;
+            to?: number | bigint;
+            at?: number;
+        },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/liquidates'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3410,8 +3668,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -3419,8 +3679,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -3428,8 +3690,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -3437,8 +3701,10 @@ export class FuturesApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -3446,8 +3712,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -3455,8 +3721,8 @@ export class FuturesApi {
         }
 
         if (opts.at !== undefined) {
-            let atSerialized = ObjectSerializer.serialize(opts.at, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let atSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.at, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(atSerialized)) {
                 atSerialized = atSerialized.join(',');
             }
@@ -3488,8 +3754,16 @@ export class FuturesApi {
      */
     public async listAutoDeleverages(
         settle: 'btc' | 'usdt' | 'usd1',
-        opts?: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
+        opts?: {
+            contract?: string;
+            limit?: number;
+            offset?: number;
+            from?: number | bigint;
+            to?: number | bigint;
+            at?: number;
+        },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesAutoDeleverage> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/auto_deleverages'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3510,8 +3784,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -3519,8 +3795,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -3528,8 +3806,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -3537,8 +3817,10 @@ export class FuturesApi {
         }
 
         if (opts.from !== undefined) {
-            let fromSerialized = ObjectSerializer.serialize(opts.from, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let fromSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.from, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(fromSerialized)) {
                 fromSerialized = fromSerialized.join(',');
             }
@@ -3546,8 +3828,8 @@ export class FuturesApi {
         }
 
         if (opts.to !== undefined) {
-            let toSerialized = ObjectSerializer.serialize(opts.to, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let toSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.to, 'int64'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(toSerialized)) {
                 toSerialized = toSerialized.join(',');
             }
@@ -3555,8 +3837,8 @@ export class FuturesApi {
         }
 
         if (opts.at !== undefined) {
-            let atSerialized = ObjectSerializer.serialize(opts.at, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let atSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(opts.at, 'number'));
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(atSerialized)) {
                 atSerialized = atSerialized.join(',');
             }
@@ -3584,6 +3866,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         countdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
     ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/countdown_cancel_all'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3632,6 +3915,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: { [key: string]: FuturesFee } }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/fee'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3652,8 +3936,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -3688,6 +3974,7 @@ export class FuturesApi {
         requestBody: Array<string>,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FutureCancelOrderResult> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/batch_cancel_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3747,6 +4034,7 @@ export class FuturesApi {
         batchAmendOrderReq: Array<BatchAmendOrderReq>,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/batch_amend_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3799,6 +4087,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         tableId: string,
     ): Promise<{ response: AxiosResponse; body: Array<FuturesRiskLimitTier> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/risk_limit_table'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3822,8 +4111,8 @@ export class FuturesApi {
             throw new Error('Required parameter tableId was null or undefined when calling getFuturesRiskLimitTable.');
         }
 
-        let tableIdSerialized = ObjectSerializer.serialize(tableId, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let tableIdSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(tableId, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(tableIdSerialized)) {
             tableIdSerialized = tableIdSerialized.join(',');
         }
@@ -3853,6 +4142,7 @@ export class FuturesApi {
         futuresBBOOrder: FuturesBBOOrder,
         opts?: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/bbo_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -3905,6 +4195,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         createTrailOrder: CreateTrailOrder,
     ): Promise<{ response: AxiosResponse; body: CreateTrailOrderResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/create'.replace(
@@ -3953,6 +4244,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         stopTrailOrder: StopTrailOrder,
     ): Promise<{ response: AxiosResponse; body: TrailOrderResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/stop'.replace(
@@ -4001,6 +4293,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         stopAllTrailOrders: StopAllTrailOrders,
     ): Promise<{ response: AxiosResponse; body: TrailOrderListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/stop_all'.replace(
@@ -4064,8 +4357,8 @@ export class FuturesApi {
         opts?: {
             contract?: string;
             isFinished?: boolean;
-            startAt?: number;
-            endAt?: number;
+            startAt?: number | bigint;
+            endAt?: number | bigint;
             pageNum?: number;
             pageSize?: number;
             sortBy?: 1 | 2;
@@ -4076,6 +4369,7 @@ export class FuturesApi {
             side?: 1 | 2;
         },
     ): Promise<{ response: AxiosResponse; body: TrailOrderListResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/list'.replace(
@@ -4099,8 +4393,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -4108,8 +4404,10 @@ export class FuturesApi {
         }
 
         if (opts.isFinished !== undefined) {
-            let isFinishedSerialized = ObjectSerializer.serialize(opts.isFinished, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let isFinishedSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.isFinished, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(isFinishedSerialized)) {
                 isFinishedSerialized = isFinishedSerialized.join(',');
             }
@@ -4117,8 +4415,10 @@ export class FuturesApi {
         }
 
         if (opts.startAt !== undefined) {
-            let startAtSerialized = ObjectSerializer.serialize(opts.startAt, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let startAtSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.startAt, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(startAtSerialized)) {
                 startAtSerialized = startAtSerialized.join(',');
             }
@@ -4126,8 +4426,10 @@ export class FuturesApi {
         }
 
         if (opts.endAt !== undefined) {
-            let endAtSerialized = ObjectSerializer.serialize(opts.endAt, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endAtSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endAt, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endAtSerialized)) {
                 endAtSerialized = endAtSerialized.join(',');
             }
@@ -4135,8 +4437,10 @@ export class FuturesApi {
         }
 
         if (opts.pageNum !== undefined) {
-            let pageNumSerialized = ObjectSerializer.serialize(opts.pageNum, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageNumSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageNum, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageNumSerialized)) {
                 pageNumSerialized = pageNumSerialized.join(',');
             }
@@ -4144,8 +4448,10 @@ export class FuturesApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -4153,8 +4459,10 @@ export class FuturesApi {
         }
 
         if (opts.sortBy !== undefined) {
-            let sortBySerialized = ObjectSerializer.serialize(opts.sortBy, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sortBySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sortBy, 'SortBy'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sortBySerialized)) {
                 sortBySerialized = sortBySerialized.join(',');
             }
@@ -4162,8 +4470,10 @@ export class FuturesApi {
         }
 
         if (opts.hideCancel !== undefined) {
-            let hideCancelSerialized = ObjectSerializer.serialize(opts.hideCancel, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let hideCancelSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.hideCancel, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(hideCancelSerialized)) {
                 hideCancelSerialized = hideCancelSerialized.join(',');
             }
@@ -4171,8 +4481,10 @@ export class FuturesApi {
         }
 
         if (opts.relatedPosition !== undefined) {
-            let relatedPositionSerialized = ObjectSerializer.serialize(opts.relatedPosition, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let relatedPositionSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.relatedPosition, 'RelatedPosition'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(relatedPositionSerialized)) {
                 relatedPositionSerialized = relatedPositionSerialized.join(',');
             }
@@ -4180,8 +4492,10 @@ export class FuturesApi {
         }
 
         if (opts.sortByTrigger !== undefined) {
-            let sortByTriggerSerialized = ObjectSerializer.serialize(opts.sortByTrigger, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sortByTriggerSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sortByTrigger, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sortByTriggerSerialized)) {
                 sortByTriggerSerialized = sortByTriggerSerialized.join(',');
             }
@@ -4189,8 +4503,10 @@ export class FuturesApi {
         }
 
         if (opts.reduceOnly !== undefined) {
-            let reduceOnlySerialized = ObjectSerializer.serialize(opts.reduceOnly, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let reduceOnlySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.reduceOnly, 'ReduceOnly'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(reduceOnlySerialized)) {
                 reduceOnlySerialized = reduceOnlySerialized.join(',');
             }
@@ -4198,8 +4514,10 @@ export class FuturesApi {
         }
 
         if (opts.side !== undefined) {
-            let sideSerialized = ObjectSerializer.serialize(opts.side, '1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.side, 'Side'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sideSerialized)) {
                 sideSerialized = sideSerialized.join(',');
             }
@@ -4225,8 +4543,9 @@ export class FuturesApi {
      */
     public async getTrailOrderDetail(
         settle: 'btc' | 'usdt' | 'usd1',
-        id: number,
+        id: number | bigint,
     ): Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/detail'.replace(
@@ -4253,8 +4572,8 @@ export class FuturesApi {
             throw new Error('Required parameter id was null or undefined when calling getTrailOrderDetail.');
         }
 
-        let idSerialized = ObjectSerializer.serialize(id, 'number');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let idSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(id, 'int64'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(idSerialized)) {
             idSerialized = idSerialized.join(',');
         }
@@ -4281,6 +4600,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         updateTrailOrder: UpdateTrailOrder,
     ): Promise<{ response: AxiosResponse; body: TrailOrderResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/update'.replace(
@@ -4330,9 +4650,10 @@ export class FuturesApi {
      */
     public async getTrailOrderChangeLog(
         settle: 'btc' | 'usdt' | 'usd1',
-        id: number,
+        id: number | bigint,
         opts?: { pageNum?: number; pageSize?: number },
     ): Promise<{ response: AxiosResponse; body: TrailOrderChangeLogResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/trail/change_log'.replace(
@@ -4360,16 +4681,18 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let idSerialized = ObjectSerializer.serialize(id, 'number');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let idSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(id, 'int64'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(idSerialized)) {
             idSerialized = idSerialized.join(',');
         }
         localVarQueryParameters['id'] = idSerialized;
 
         if (opts.pageNum !== undefined) {
-            let pageNumSerialized = ObjectSerializer.serialize(opts.pageNum, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageNumSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageNum, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageNumSerialized)) {
                 pageNumSerialized = pageNumSerialized.join(',');
             }
@@ -4377,8 +4700,10 @@ export class FuturesApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
@@ -4406,6 +4731,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         createChaseOrderReq: CreateChaseOrderReq,
     ): Promise<{ response: AxiosResponse; body: CreateChaseOrderResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/chase/create'.replace(
@@ -4456,6 +4782,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         stopChaseOrderReq: StopChaseOrderReq,
     ): Promise<{ response: AxiosResponse; body: StopChaseOrderResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/chase/stop'.replace(
@@ -4504,6 +4831,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         stopAllChaseOrdersReq: StopAllChaseOrdersReq,
     ): Promise<{ response: AxiosResponse; body: StopAllChaseOrdersResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/chase/stop_all'.replace(
@@ -4566,8 +4894,8 @@ export class FuturesApi {
         opts?: {
             contract?: string;
             isFinished?: boolean;
-            startAt?: number;
-            endAt?: number;
+            startAt?: number | bigint;
+            endAt?: number | bigint;
             pageNum?: number;
             pageSize?: number;
             hideCancel?: boolean;
@@ -4575,6 +4903,7 @@ export class FuturesApi {
             side?: 0 | 1 | 2;
         },
     ): Promise<{ response: AxiosResponse; body: GetChaseOrdersResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/chase/list'.replace(
@@ -4603,8 +4932,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -4612,8 +4943,10 @@ export class FuturesApi {
         }
 
         if (opts.isFinished !== undefined) {
-            let isFinishedSerialized = ObjectSerializer.serialize(opts.isFinished, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let isFinishedSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.isFinished, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(isFinishedSerialized)) {
                 isFinishedSerialized = isFinishedSerialized.join(',');
             }
@@ -4621,8 +4954,10 @@ export class FuturesApi {
         }
 
         if (opts.startAt !== undefined) {
-            let startAtSerialized = ObjectSerializer.serialize(opts.startAt, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let startAtSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.startAt, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(startAtSerialized)) {
                 startAtSerialized = startAtSerialized.join(',');
             }
@@ -4630,8 +4965,10 @@ export class FuturesApi {
         }
 
         if (opts.endAt !== undefined) {
-            let endAtSerialized = ObjectSerializer.serialize(opts.endAt, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let endAtSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endAt, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(endAtSerialized)) {
                 endAtSerialized = endAtSerialized.join(',');
             }
@@ -4639,8 +4976,10 @@ export class FuturesApi {
         }
 
         if (opts.pageNum !== undefined) {
-            let pageNumSerialized = ObjectSerializer.serialize(opts.pageNum, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageNumSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageNum, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageNumSerialized)) {
                 pageNumSerialized = pageNumSerialized.join(',');
             }
@@ -4648,24 +4987,28 @@ export class FuturesApi {
         }
 
         if (opts.pageSize !== undefined) {
-            let pageSizeSerialized = ObjectSerializer.serialize(opts.pageSize, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(pageSizeSerialized)) {
                 pageSizeSerialized = pageSizeSerialized.join(',');
             }
             localVarQueryParameters['page_size'] = pageSizeSerialized;
         }
 
-        let sortBySerialized = ObjectSerializer.serialize(sortBy, '1 | 2');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let sortBySerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(sortBy, 'SortBy'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(sortBySerialized)) {
             sortBySerialized = sortBySerialized.join(',');
         }
         localVarQueryParameters['sort_by'] = sortBySerialized;
 
         if (opts.hideCancel !== undefined) {
-            let hideCancelSerialized = ObjectSerializer.serialize(opts.hideCancel, 'boolean');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let hideCancelSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.hideCancel, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(hideCancelSerialized)) {
                 hideCancelSerialized = hideCancelSerialized.join(',');
             }
@@ -4673,8 +5016,10 @@ export class FuturesApi {
         }
 
         if (opts.reduceOnly !== undefined) {
-            let reduceOnlySerialized = ObjectSerializer.serialize(opts.reduceOnly, '0 | 1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let reduceOnlySerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.reduceOnly, 'ReduceOnly'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(reduceOnlySerialized)) {
                 reduceOnlySerialized = reduceOnlySerialized.join(',');
             }
@@ -4682,8 +5027,10 @@ export class FuturesApi {
         }
 
         if (opts.side !== undefined) {
-            let sideSerialized = ObjectSerializer.serialize(opts.side, '0 | 1 | 2');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let sideSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.side, 'Side'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(sideSerialized)) {
                 sideSerialized = sideSerialized.join(',');
             }
@@ -4711,6 +5058,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         id: string,
     ): Promise<{ response: AxiosResponse; body: GetChaseOrderDetailResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/autoorder/v1/chase/detail'.replace(
@@ -4737,8 +5085,8 @@ export class FuturesApi {
             throw new Error('Required parameter id was null or undefined when calling getChaseOrderDetail.');
         }
 
-        let idSerialized = ObjectSerializer.serialize(id, 'string');
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let idSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(id, 'string'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(idSerialized)) {
             idSerialized = idSerialized.join(',');
         }
@@ -4770,6 +5118,7 @@ export class FuturesApi {
         status: 'open' | 'finished',
         opts?: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -4794,16 +5143,18 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        let statusSerialized = ObjectSerializer.serialize(status, "'open' | 'finished'");
-        // For array query parameters with style:form and explode:false, convert to comma-separated string
+        let statusSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(status, 'Status'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
         if (Array.isArray(statusSerialized)) {
             statusSerialized = statusSerialized.join(',');
         }
         localVarQueryParameters['status'] = statusSerialized;
 
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -4811,8 +5162,10 @@ export class FuturesApi {
         }
 
         if (opts.limit !== undefined) {
-            let limitSerialized = ObjectSerializer.serialize(opts.limit, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let limitSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.limit, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(limitSerialized)) {
                 limitSerialized = limitSerialized.join(',');
             }
@@ -4820,8 +5173,10 @@ export class FuturesApi {
         }
 
         if (opts.offset !== undefined) {
-            let offsetSerialized = ObjectSerializer.serialize(opts.offset, 'number');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let offsetSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.offset, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(offsetSerialized)) {
                 offsetSerialized = offsetSerialized.join(',');
             }
@@ -4853,6 +5208,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -4901,6 +5257,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt' | 'usd1',
         opts?: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -4923,8 +5280,10 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            let contractSerialized = ObjectSerializer.serialize(opts.contract, 'string');
-            // For array query parameters with style:form and explode:false, convert to comma-separated string
+            let contractSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.contract, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
             if (Array.isArray(contractSerialized)) {
                 contractSerialized = contractSerialized.join(',');
             }
@@ -4954,13 +5313,17 @@ export class FuturesApi {
      */
     public async getPriceTriggeredOrder(
         settle: 'btc' | 'usdt' | 'usd1',
-        orderId: number,
+        orderId: number | bigint,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/price_orders/{order_id}'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+                .replace(
+                    '{' + 'order_id' + '}',
+                    encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(orderId, 'orderId')),
+                );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -5000,13 +5363,17 @@ export class FuturesApi {
      */
     public async cancelPriceTriggeredOrder(
         settle: 'btc' | 'usdt' | 'usd1',
-        orderId: number,
+        orderId: number | bigint,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/price_orders/{order_id}'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+                .replace(
+                    '{' + 'order_id' + '}',
+                    encodeURIComponent(ObjectSerializer.serializeIntegerPathParameter(orderId, 'orderId')),
+                );
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -5050,6 +5417,7 @@ export class FuturesApi {
         orderId: string,
         futuresUpdatePriceTriggeredOrder: FuturesUpdatePriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/price_orders/amend/{order_id}'

@@ -17,7 +17,7 @@ export class SpotAccountBook {
     /**
      * The timestamp of the change (in milliseconds)
      */
-    'time'?: number;
+    'time'?: number | bigint;
     /**
      * Currency changed
      */
@@ -54,7 +54,7 @@ export class SpotAccountBook {
         {
             name: 'time',
             baseName: 'time',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'currency',

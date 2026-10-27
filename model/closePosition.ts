@@ -13,7 +13,7 @@ import { ClosePositionData } from './closePositionData';
 
 export class ClosePosition {
     'data'?: ClosePositionData;
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,7 +26,7 @@ export class ClosePosition {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

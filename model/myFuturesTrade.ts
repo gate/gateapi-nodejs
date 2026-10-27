@@ -13,7 +13,7 @@ export class MyFuturesTrade {
     /**
      * Fill ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Fill Time
      */
@@ -65,12 +65,12 @@ export class MyFuturesTrade {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'contract',

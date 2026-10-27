@@ -124,7 +124,7 @@ export class FuturesOrderTimerange {
     /**
      * Position ID
      */
-    'pid'?: number;
+    'pid'?: number | bigint;
     /**
      * Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used
      */
@@ -158,7 +158,7 @@ export class FuturesOrderTimerange {
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'updateTime',
@@ -283,7 +283,7 @@ export class FuturesOrderTimerange {
         {
             name: 'pid',
             baseName: 'pid',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'marketOrderSlipRatio',

@@ -13,7 +13,7 @@ export class DeletePosition {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
     'data'?: object;
 
     static discriminator: string | undefined = undefined;
@@ -22,7 +22,7 @@ export class DeletePosition {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'data',

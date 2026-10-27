@@ -429,7 +429,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.StockApi(client);
-const orderId = 123456; // number | Order ID
+const orderId = BigInt('123456'); // bigint | Order ID
 const tradFiSpotOrderUpdateRequest = new TradFiSpotOrderUpdateRequest(); // TradFiSpotOrderUpdateRequest | 
 api.updateStockOrder(orderId, tradFiSpotOrderUpdateRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -441,7 +441,7 @@ api.updateStockOrder(orderId, tradFiSpotOrderUpdateRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **number**| Order ID | [default to undefined]
+ **orderId** | **number &#124; bigint**| Order ID | [default to undefined]
  **tradFiSpotOrderUpdateRequest** | [**TradFiSpotOrderUpdateRequest**](TradFiSpotOrderUpdateRequest.md)|  | 
 
 ### Return type
@@ -476,7 +476,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.StockApi(client);
-const orderId = 123456; // number | Order ID
+const orderId = BigInt('123456'); // bigint | Order ID
 api.deleteStockOrder(orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -487,7 +487,7 @@ api.deleteStockOrder(orderId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **number**| Order ID | [default to undefined]
+ **orderId** | **number &#124; bigint**| Order ID | [default to undefined]
 
 ### Return type
 
@@ -620,8 +620,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.StockApi(client);
 const opts = {
-  'beginTime': 1769378400, // number | Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be >= begin_time, query range must not exceed 3 months.
-  'endTime': 1769464800, // number | End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be >= begin_time, query range must not exceed 3 months.
+  'beginTime': BigInt('1769378400'), // number | Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be >= begin_time, query range must not exceed 3 months.
+  'endTime': BigInt('1769464800'), // number | End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be >= begin_time, query range must not exceed 3 months.
   'refId': "transfer-202607070001", // string | Business idempotent ID. When ref_id is provided, the server queries by ref_id, ignoring other parameters such as begin_time, end_time, type, page, page_size
   'type': "deposit", // 'deposit' | 'withdraw' | 'fee' | 'dividend' | 'sell' | 'buy' | 'award' | 'stock_transfer_in' | 'stock_transfer_out' | 流水类型。 - deposit: 资金转入，从现货账户转入到股票账户。 - withdraw: 资金转出，从股票账户转出到现货账户。 - fee: 交易手续费。 - dividend: 分红派息。 - sell: 卖出股票入账。 - buy: 买入股票出账。 - award: 空投奖励。 - stock_transfer_in: 股票转入。 - stock_transfer_out: 股票转出。
   'page': 1, // number | Page number, defaults to 1
@@ -637,8 +637,8 @@ api.queryStockTransactions(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **beginTime** | **number**| Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. | [optional] [default to undefined]
- **endTime** | **number**| End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. | [optional] [default to undefined]
+ **beginTime** | **number &#124; bigint**| Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. | [optional] [default to undefined]
+ **endTime** | **number &#124; bigint**| End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. | [optional] [default to undefined]
  **refId** | **string**| Business idempotent ID. When ref_id is provided, the server queries by ref_id, ignoring other parameters such as begin_time, end_time, type, page, page_size | [optional] [default to undefined]
  **type** | **Type**| 流水类型。 - deposit: 资金转入，从现货账户转入到股票账户。 - withdraw: 资金转出，从股票账户转出到现货账户。 - fee: 交易手续费。 - dividend: 分红派息。 - sell: 卖出股票入账。 - buy: 买入股票出账。 - award: 空投奖励。 - stock_transfer_in: 股票转入。 - stock_transfer_out: 股票转出。 | [optional] [default to undefined]
  **page** | **number**| Page number, defaults to 1 | [optional] [default to undefined]

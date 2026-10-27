@@ -210,12 +210,12 @@ export class P2pMerchantUserInfo {
         {
             name: 'completeRateMonth',
             baseName: 'complete_rate_month',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'ordersBuyRateMonth',
             baseName: 'orders_buy_rate_month',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'isBlack',
@@ -280,12 +280,12 @@ export class P2pMerchantUserInfo {
         {
             name: 'transactionsMonth',
             baseName: 'transactions_month',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'transactionsAll',
             baseName: 'transactions_all',
-            type: 'number',
+            type: 'double',
         },
         {
             name: 'tradeVersatile',

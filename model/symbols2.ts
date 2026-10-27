@@ -13,7 +13,7 @@ import { Symbols2Data } from './symbols2Data';
 
 export class Symbols2 {
     'data'?: Symbols2Data;
-    'timestamp'?: number;
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,7 +26,7 @@ export class Symbols2 {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

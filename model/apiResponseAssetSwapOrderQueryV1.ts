@@ -34,7 +34,7 @@ export class ApiResponseAssetSwapOrderQueryV1 {
     /**
      * Server timestamp (milliseconds)
      */
-    'timestamp': number;
+    'timestamp': number | bigint;
 
     static discriminator: string | undefined = undefined;
 
@@ -62,7 +62,7 @@ export class ApiResponseAssetSwapOrderQueryV1 {
         {
             name: 'timestamp',
             baseName: 'timestamp',
-            type: 'number',
+            type: 'int64',
         },
     ];
 

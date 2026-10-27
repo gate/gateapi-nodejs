@@ -16,7 +16,7 @@ export class OptionsPositionCloseOrder {
     /**
      * Order ID
      */
-    'id'?: number;
+    'id'?: number | bigint;
     /**
      * Order price (quote currency)
      */
@@ -32,7 +32,7 @@ export class OptionsPositionCloseOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'price',

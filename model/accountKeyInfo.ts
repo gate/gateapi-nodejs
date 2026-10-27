@@ -27,7 +27,7 @@ export class AccountKeyInfo {
     /**
      * API Key Remark
      */
-    'name'?: Array<string>;
+    'name'?: string;
     /**
      * Trading Pair Whitelist, Maximum 30 Pairs
      */
@@ -35,7 +35,7 @@ export class AccountKeyInfo {
     /**
      * User ID
      */
-    'userId'?: number;
+    'userId'?: number | bigint;
     /**
      * IP Whitelist
      */
@@ -71,7 +71,7 @@ export class AccountKeyInfo {
         {
             name: 'name',
             baseName: 'name',
-            type: 'Array<string>',
+            type: 'string',
         },
         {
             name: 'currencyPairs',
@@ -81,7 +81,7 @@ export class AccountKeyInfo {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'ipWhitelist',
