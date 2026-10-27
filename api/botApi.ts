@@ -12,10 +12,12 @@
 /* tslint:disable:no-unused-locals */
 import { AIHubCreateSuccessResponse } from '../model/aIHubCreateSuccessResponse';
 import { AIHubDiscoverSuccessResponse } from '../model/aIHubDiscoverSuccessResponse';
+import { AIHubFuturesComboCreateRequest } from '../model/aIHubFuturesComboCreateRequest';
 import { AIHubPortfolioDetailSuccessResponse } from '../model/aIHubPortfolioDetailSuccessResponse';
 import { AIHubPortfolioRunningSuccessResponse } from '../model/aIHubPortfolioRunningSuccessResponse';
 import { AIHubPortfolioStopRequest } from '../model/aIHubPortfolioStopRequest';
 import { AIHubPortfolioStopSuccessResponse } from '../model/aIHubPortfolioStopSuccessResponse';
+import { AIHubRebalanceCreateRequest } from '../model/aIHubRebalanceCreateRequest';
 import { ContractMartingaleCreateRequest } from '../model/contractMartingaleCreateRequest';
 import { FuturesGridCreateRequest } from '../model/futuresGridCreateRequest';
 import { InfiniteGridCreateRequest } from '../model/infiniteGridCreateRequest';
@@ -42,26 +44,28 @@ export class BotApi {
     }
 
     /**
-     * The only formal interface for the discover domain. Support scenarios: - `top1` - `bundle` - `filter` - `refresh` Constraints: - The active recommendation pool only contains `spot_grid`, `futures_grid`, `spot_martingale` - Can return but do not actively recommend `infinite_grid`, `margin_grid` - `contract_martingale`, `smart-position`, `spot-future-arbitrage` must not be returned - When `scene=filter` is used, only filtering by `market`, `backtest_apr_gte`, `max_drawdown_lte` is allowed - `scene=refresh` inherits the refresh context through `refresh_recommendation_id`; the official minimum format only requires `strategy_type|market` - If the upstream directly transmits the previous recommendation `recommendation_id`, the third paragraph `backtest_id` will currently be ignored.
+     * Six real official source types. Exact rebalance asset membership is filtered before ranking. contract_martingale and futures_combo are manual-only. Legacy APR/drawdown and ordinary two-segment refresh remain compatible. Exclusion binds one prior logical candidate before ranking; no alternative returns an empty list without relaxing constraints.
      * @summary Get AIHub strategy recommendations
      * @param opts Optional parameters
      * @param opts.market Trading pair, such as &#x60;BTC_USDT&#x60;
      * @param opts.strategyType Recommended target policy type; &#x60;contract_martingale&#x60; not allowed
      * @param opts.direction Market direction
-     * @param opts.investAmount Investment amount, string transparent transmission
+     * @param opts.investAmount Context only. No budget eligibility filter; reported unsupported when not consumed.
      * @param opts.scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic.
      * @param opts.refreshRecommendationId It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored.
-     * @param opts.limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10
+     * @param opts.limit Actual maximum result count, 1–10; defaults to 10.
      * @param opts.maxDrawdownLte Maximum drawdown limit
      * @param opts.backtestAprGte Backtest annualized lower limit
      * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
      * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
      * @param opts.xRequestId Request link ID; caller can transmit transparently
      * @param opts.xTraceId trace header; can be generated uniformly by APIv4
+     * @param opts.excludeRecommendationId Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan.
      */
     public async getAIHubStrategyRecommend(opts?: {
         market?: string;
-        strategyType?: 'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale';
+        strategyType?:
+            'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'smart_position';
         direction?: 'buy' | 'sell' | 'neutral';
         investAmount?: string;
         scene?: 'top1' | 'bundle' | 'filter' | 'refresh';
@@ -73,6 +77,7 @@ export class BotApi {
         xGateAppLang?: string;
         xRequestId?: string;
         xTraceId?: string;
+        excludeRecommendationId?: string;
     }): Promise<{ response: AxiosResponse; body: AIHubDiscoverSuccessResponse }> {
         // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/bot/strategy/recommend';
@@ -184,6 +189,17 @@ export class BotApi {
                 backtestAprGteSerialized = backtestAprGteSerialized.join(',');
             }
             localVarQueryParameters['backtest_apr_gte'] = backtestAprGteSerialized;
+        }
+
+        if (opts.excludeRecommendationId !== undefined) {
+            let excludeRecommendationIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.excludeRecommendationId, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(excludeRecommendationIdSerialized)) {
+                excludeRecommendationIdSerialized = excludeRecommendationIdSerialized.join(',');
+            }
+            localVarQueryParameters['exclude_recommendation_id'] = excludeRecommendationIdSerialized;
         }
 
         if (opts.xGateServiceId !== undefined) {
@@ -579,7 +595,14 @@ export class BotApi {
      */
     public async getAIHubPortfolioRunning(opts?: {
         strategyType?:
-            'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale';
+            | 'spot_grid'
+            | 'margin_grid'
+            | 'infinite_grid'
+            | 'futures_grid'
+            | 'spot_martingale'
+            | 'contract_martingale'
+            | 'smart_position'
+            | 'futures_combo';
         market?: string;
         page?: number;
         pageSize?: number;
@@ -687,7 +710,14 @@ export class BotApi {
     public async getAIHubPortfolioDetail(
         strategyId: string,
         strategyType:
-            'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale',
+            | 'spot_grid'
+            | 'margin_grid'
+            | 'infinite_grid'
+            | 'futures_grid'
+            | 'spot_martingale'
+            | 'contract_martingale'
+            | 'smart_position'
+            | 'futures_combo',
         opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
     ): Promise<{ response: AxiosResponse; body: AIHubPortfolioDetailSuccessResponse }> {
         // All int64 paths share exact validation; ordinary safe-number calls remain valid.
@@ -824,5 +854,123 @@ export class BotApi {
             'AIHubPortfolioStopSuccessResponse',
             authSettings,
         );
+    }
+
+    /**
+     * Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+     * @summary Create rebalance bot
+     * @param aIHubRebalanceCreateRequest
+     * @param opts Optional parameters
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
+     */
+    public async postAIHubSmartPositionCreate(
+        aIHubRebalanceCreateRequest: AIHubRebalanceCreateRequest,
+        opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
+    ): Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
+        const localVarPath = this.client.basePath + '/bot/smart-position/create';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'aIHubRebalanceCreateRequest' is not null or undefined
+        if (aIHubRebalanceCreateRequest === null || aIHubRebalanceCreateRequest === undefined) {
+            throw new Error(
+                'Required parameter aIHubRebalanceCreateRequest was null or undefined when calling postAIHubSmartPositionCreate.',
+            );
+        }
+
+        opts = opts || {};
+        if (opts.xGateServiceId !== undefined) {
+            localVarHeaderParams['X-Gate-Service-Id'] = ObjectSerializer.serialize(opts.xGateServiceId, 'string');
+        }
+        if (opts.xGateAppLang !== undefined) {
+            localVarHeaderParams['X-Gate-AppLang'] = ObjectSerializer.serialize(opts.xGateAppLang, 'string');
+        }
+        if (opts.xRequestId !== undefined) {
+            localVarHeaderParams['X-Request-Id'] = ObjectSerializer.serialize(opts.xRequestId, 'string');
+        }
+        if (opts.xTraceId !== undefined) {
+            localVarHeaderParams['X-Trace-Id'] = ObjectSerializer.serialize(opts.xTraceId, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(aIHubRebalanceCreateRequest, 'AIHubRebalanceCreateRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AIHubCreateSuccessResponse>(config, 'AIHubCreateSuccessResponse', authSettings);
+    }
+
+    /**
+     * Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+     * @summary Create futures-combo bot
+     * @param aIHubFuturesComboCreateRequest
+     * @param opts Optional parameters
+     * @param opts.xGateServiceId Call source identifier; injected by APIv4 if necessary
+     * @param opts.xGateAppLang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60;
+     * @param opts.xRequestId Request link ID; caller can transmit transparently
+     * @param opts.xTraceId trace header; can be generated uniformly by APIv4
+     */
+    public async postAIHubFuturesComboCreate(
+        aIHubFuturesComboCreateRequest: AIHubFuturesComboCreateRequest,
+        opts?: { xGateServiceId?: string; xGateAppLang?: string; xRequestId?: string; xTraceId?: string },
+    ): Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
+        const localVarPath = this.client.basePath + '/bot/futures-combo/create';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'aIHubFuturesComboCreateRequest' is not null or undefined
+        if (aIHubFuturesComboCreateRequest === null || aIHubFuturesComboCreateRequest === undefined) {
+            throw new Error(
+                'Required parameter aIHubFuturesComboCreateRequest was null or undefined when calling postAIHubFuturesComboCreate.',
+            );
+        }
+
+        opts = opts || {};
+        if (opts.xGateServiceId !== undefined) {
+            localVarHeaderParams['X-Gate-Service-Id'] = ObjectSerializer.serialize(opts.xGateServiceId, 'string');
+        }
+        if (opts.xGateAppLang !== undefined) {
+            localVarHeaderParams['X-Gate-AppLang'] = ObjectSerializer.serialize(opts.xGateAppLang, 'string');
+        }
+        if (opts.xRequestId !== undefined) {
+            localVarHeaderParams['X-Request-Id'] = ObjectSerializer.serialize(opts.xRequestId, 'string');
+        }
+        if (opts.xTraceId !== undefined) {
+            localVarHeaderParams['X-Trace-Id'] = ObjectSerializer.serialize(opts.xTraceId, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(aIHubFuturesComboCreateRequest, 'AIHubFuturesComboCreateRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AIHubCreateSuccessResponse>(config, 'AIHubCreateSuccessResponse', authSettings);
     }
 }

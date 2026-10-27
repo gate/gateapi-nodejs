@@ -15,13 +15,18 @@ import { StrategyType } from './strategyType';
  * The result information returned after the termination strategy is successful.
  */
 export class AIHubPortfolioStopData {
-    'strategyId': string;
-    'strategyType': StrategyType;
+    'strategyId'?: string;
+    'strategyType'?: StrategyType;
     /**
-     * The current implementation returns `stopping`
+     * Observed product lifecycle state, or unknown. Creation acceptance/starting is not running; stopping/finished alone does not prove funds settled.
      */
-    'status': string;
-    'resultMessage': string;
+    'status'?: string;
+    'resultMessage'?: string;
+    /**
+     * pending when the write result requires verification; rejected for a proven pre-effect refusal.
+     */
+    'operationStatus'?: string;
+    'recoveryRequired'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -45,6 +50,16 @@ export class AIHubPortfolioStopData {
             name: 'resultMessage',
             baseName: 'result_message',
             type: 'string',
+        },
+        {
+            name: 'operationStatus',
+            baseName: 'operation_status',
+            type: 'string',
+        },
+        {
+            name: 'recoveryRequired',
+            baseName: 'recovery_required',
+            type: 'boolean',
         },
     ];
 

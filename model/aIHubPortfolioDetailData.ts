@@ -9,9 +9,11 @@
  * Do not edit the class manually.
  */
 
+import { AIHubPortfolioAssetPosition } from './aIHubPortfolioAssetPosition';
 import { AIHubPortfolioBaseInfo } from './aIHubPortfolioBaseInfo';
 import { AIHubPortfolioMetrics } from './aIHubPortfolioMetrics';
 import { AIHubPortfolioPosition } from './aIHubPortfolioPosition';
+import { AIHubStopProgress } from './aIHubStopProgress';
 import { StrategyType } from './strategyType';
 
 /**
@@ -20,12 +22,24 @@ import { StrategyType } from './strategyType';
 export class AIHubPortfolioDetailData {
     'strategyId': string;
     'strategyType': StrategyType;
+    /**
+     * Single market, or empty string for a portfolio; use assets/markets for the latter.
+     */
     'market': string;
     'status': string;
     'baseInfo': AIHubPortfolioBaseInfo;
     'metrics': AIHubPortfolioMetrics;
     'position'?: AIHubPortfolioPosition | null;
     'stopSupported': boolean;
+    'assets'?: Array<string>;
+    'markets'?: Array<string>;
+    'positions'?: Array<AIHubPortfolioAssetPosition>;
+    'positionsStatus'?: AIHubPortfolioDetailData.PositionsStatus;
+    /**
+     * Product-specific saved configuration. spot_martingale exposes AIHubSpotMartingaleConfiguration; absence is unverified. Runtime recovery internals are excluded.
+     */
+    'configuration'?: object;
+    'stopProgress'?: AIHubStopProgress;
 
     static discriminator: string | undefined = undefined;
 
@@ -70,9 +84,48 @@ export class AIHubPortfolioDetailData {
             baseName: 'stop_supported',
             type: 'boolean',
         },
+        {
+            name: 'assets',
+            baseName: 'assets',
+            type: 'Array<string>',
+        },
+        {
+            name: 'markets',
+            baseName: 'markets',
+            type: 'Array<string>',
+        },
+        {
+            name: 'positions',
+            baseName: 'positions',
+            type: 'Array<AIHubPortfolioAssetPosition>',
+        },
+        {
+            name: 'positionsStatus',
+            baseName: 'positions_status',
+            type: 'AIHubPortfolioDetailData.PositionsStatus',
+        },
+        {
+            name: 'configuration',
+            baseName: 'configuration',
+            type: 'object',
+        },
+        {
+            name: 'stopProgress',
+            baseName: 'stop_progress',
+            type: 'AIHubStopProgress',
+        },
     ];
 
     static getAttributeTypeMap() {
         return AIHubPortfolioDetailData.attributeTypeMap;
+    }
+}
+
+export namespace AIHubPortfolioDetailData {
+    export enum PositionsStatus {
+        Verified = <any>'verified',
+        Partial = <any>'partial',
+        Unverified = <any>'unverified',
+        Historical = <any>'historical',
     }
 }

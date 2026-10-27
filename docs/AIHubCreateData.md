@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**strategyId** | **string** |  | [default to undefined]
-**strategyType** | [**StrategyType**](StrategyType.md) |  | [default to undefined]
-**market** | **string** |  | [default to undefined]
-**status** | **string** | The initial state after successful creation, usually &#x60;running&#x60; | [default to undefined]
+**strategyId** | **string** |  | [optional] [default to undefined]
+**strategyType** | [**StrategyType**](StrategyType.md) |  | [optional] [default to undefined]
+**market** | **string** |  | [optional] [default to undefined]
+**status** | **string** | Observed product lifecycle state, or unknown. Creation acceptance/starting is not running; stopping/finished alone does not prove funds settled. | [optional] [default to undefined]
 **jumpUrl** | **string** |  | [optional] [default to undefined]
+**operationStatus** | **string** | pending when the write result requires verification; rejected for a proven pre-effect refusal. | [optional] [default to undefined]
+**recoveryRequired** | **boolean** |  | [optional] [default to undefined]
 

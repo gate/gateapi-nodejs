@@ -17,8 +17,12 @@ import { AIHubDiscoverData } from './aIHubDiscoverData';
 export class AIHubDiscoverSuccessResponse {
     'code': number;
     'message': string;
-    'data': AIHubDiscoverData;
-    'traceId': string;
+    'data'?: AIHubDiscoverData;
+    'traceId'?: string;
+    /**
+     * Stable business error label when present. HTTP 200 can contain a non-200 business code; data may retain a real identity on failure.
+     */
+    'label'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -41,6 +45,11 @@ export class AIHubDiscoverSuccessResponse {
         {
             name: 'traceId',
             baseName: 'trace_id',
+            type: 'string',
+        },
+        {
+            name: 'label',
+            baseName: 'label',
             type: 'string',
         },
     ];

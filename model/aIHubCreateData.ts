@@ -15,14 +15,19 @@ import { StrategyType } from './strategyType';
  * Policy information returned after the policy is successfully created.
  */
 export class AIHubCreateData {
-    'strategyId': string;
-    'strategyType': StrategyType;
-    'market': string;
+    'strategyId'?: string;
+    'strategyType'?: StrategyType;
+    'market'?: string;
     /**
-     * The initial state after successful creation, usually `running`
+     * Observed product lifecycle state, or unknown. Creation acceptance/starting is not running; stopping/finished alone does not prove funds settled.
      */
-    'status': string;
+    'status'?: string;
     'jumpUrl'?: string;
+    /**
+     * pending when the write result requires verification; rejected for a proven pre-effect refusal.
+     */
+    'operationStatus'?: string;
+    'recoveryRequired'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -51,6 +56,16 @@ export class AIHubCreateData {
             name: 'jumpUrl',
             baseName: 'jump_url',
             type: 'string',
+        },
+        {
+            name: 'operationStatus',
+            baseName: 'operation_status',
+            type: 'string',
+        },
+        {
+            name: 'recoveryRequired',
+            baseName: 'recovery_required',
+            type: 'boolean',
         },
     ];
 

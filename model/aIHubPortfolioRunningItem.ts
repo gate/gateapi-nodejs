@@ -18,6 +18,9 @@ export class AIHubPortfolioRunningItem {
     'strategyId': string;
     'strategyType': StrategyType;
     'strategyName': string;
+    /**
+     * Single market, or empty string for a portfolio; use assets/markets for the latter.
+     */
     'market': string;
     'status': string;
     'pnl'?: string;
@@ -27,6 +30,8 @@ export class AIHubPortfolioRunningItem {
      * Created time
      */
     'createdAt'?: string;
+    'assets'?: Array<string>;
+    'markets'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -75,6 +80,16 @@ export class AIHubPortfolioRunningItem {
             name: 'createdAt',
             baseName: 'created_at',
             type: 'string',
+        },
+        {
+            name: 'assets',
+            baseName: 'assets',
+            type: 'Array<string>',
+        },
+        {
+            name: 'markets',
+            baseName: 'markets',
+            type: 'Array<string>',
         },
     ];
 

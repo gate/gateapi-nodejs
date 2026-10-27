@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**getAIHubPortfolioRunning**](BotApi.md#getAIHubPortfolioRunning) | **GET** /bot/portfolio/running | Query the list of running policies
 [**getAIHubPortfolioDetail**](BotApi.md#getAIHubPortfolioDetail) | **GET** /bot/portfolio/detail | Query order policy details
 [**postAIHubPortfolioStop**](BotApi.md#postAIHubPortfolioStop) | **POST** /bot/portfolio/stop | Terminate a single running policy
+[**postAIHubSmartPositionCreate**](BotApi.md#postAIHubSmartPositionCreate) | **POST** /bot/smart-position/create | Create rebalance bot
+[**postAIHubFuturesComboCreate**](BotApi.md#postAIHubFuturesComboCreate) | **POST** /bot/futures-combo/create | Create futures-combo bot
 
 
 ## getAIHubStrategyRecommend
@@ -22,7 +24,7 @@ Method | HTTP request | Description
 
 Get AIHub strategy recommendations
 
-The only formal interface for the discover domain. Support scenarios: - &#x60;top1&#x60; - &#x60;bundle&#x60; - &#x60;filter&#x60; - &#x60;refresh&#x60; Constraints: - The active recommendation pool only contains &#x60;spot_grid&#x60;, &#x60;futures_grid&#x60;, &#x60;spot_martingale&#x60; - Can return but do not actively recommend &#x60;infinite_grid&#x60;, &#x60;margin_grid&#x60; - &#x60;contract_martingale&#x60;, &#x60;smart-position&#x60;, &#x60;spot-future-arbitrage&#x60; must not be returned - When &#x60;scene&#x3D;filter&#x60; is used, only filtering by &#x60;market&#x60;, &#x60;backtest_apr_gte&#x60;, &#x60;max_drawdown_lte&#x60; is allowed - &#x60;scene&#x3D;refresh&#x60; inherits the refresh context through &#x60;refresh_recommendation_id&#x60;; the official minimum format only requires &#x60;strategy_type|market&#x60; - If the upstream directly transmits the previous recommendation &#x60;recommendation_id&#x60;, the third paragraph &#x60;backtest_id&#x60; will currently be ignored.
+Six real official source types. Exact rebalance asset membership is filtered before ranking. contract_martingale and futures_combo are manual-only. Legacy APR/drawdown and ordinary two-segment refresh remain compatible. Exclusion binds one prior logical candidate before ranking; no alternative returns an empty list without relaxing constraints.
 
 ### Example
 
@@ -37,18 +39,19 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.BotApi(client);
 const opts = {
   'market': "market_example", // string | Trading pair, such as `BTC_USDT`
-  'strategyType': "strategyType_example", // 'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | Recommended target policy type; `contract_martingale` not allowed
+  'strategyType': "strategyType_example", // 'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'smart_position' | Recommended target policy type; `contract_martingale` not allowed
   'direction': "direction_example", // 'buy' | 'sell' | 'neutral' | Market direction
-  'investAmount': "investAmount_example", // string | Investment amount, string transparent transmission
+  'investAmount': "investAmount_example", // string | Context only. No budget eligibility filter; reported unsupported when not consumed.
   'scene': "scene_example", // 'top1' | 'bundle' | 'filter' | 'refresh' | Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic.
   'refreshRecommendationId': "refreshRecommendationId_example", // string | It is recommended to refresh the context. Used when `scene=refresh` is used; when `scene` is empty but the field exists, bot-service will also automatically determine as `refresh`. The official minimum format is `strategy_type|market`; if the `recommendation_id` of the previous recommendation is directly passed through, the third paragraph `backtest_id` will be ignored.
-  'limit': 56, // number | Return quantity; when `scene=filter` is used, the actual results are up to 10
+  'limit': 56, // number | Actual maximum result count, 1–10; defaults to 10.
   'maxDrawdownLte': "maxDrawdownLte_example", // string | Maximum drawdown limit
   'backtestAprGte': "backtestAprGte_example", // string | Backtest annualized lower limit
   'xGateServiceId': "xGateServiceId_example", // string | Call source identifier; injected by APIv4 if necessary
   'xGateAppLang': "xGateAppLang_example", // string | Language context, such as `zh-CN` / `en-US`
   'xRequestId': "xRequestId_example", // string | Request link ID; caller can transmit transparently
-  'xTraceId': "xTraceId_example" // string | trace header; can be generated uniformly by APIv4
+  'xTraceId': "xTraceId_example", // string | trace header; can be generated uniformly by APIv4
+  'excludeRecommendationId': "excludeRecommendationId_example" // string | Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan.
 };
 api.getAIHubStrategyRecommend(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -63,16 +66,17 @@ Name | Type | Description  | Notes
  **market** | **string**| Trading pair, such as &#x60;BTC_USDT&#x60; | [optional] [default to undefined]
  **strategyType** | **StrategyType**| Recommended target policy type; &#x60;contract_martingale&#x60; not allowed | [optional] [default to undefined]
  **direction** | **Direction**| Market direction | [optional] [default to undefined]
- **investAmount** | **string**| Investment amount, string transparent transmission | [optional] [default to undefined]
+ **investAmount** | **string**| Context only. No budget eligibility filter; reported unsupported when not consumed. | [optional] [default to undefined]
  **scene** | **Scene**| Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. | [optional] [default to undefined]
  **refreshRecommendationId** | **string**| It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. | [optional] [default to undefined]
- **limit** | **number**| Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 | [optional] [default to undefined]
+ **limit** | **number**| Actual maximum result count, 1–10; defaults to 10. | [optional] [default to undefined]
  **maxDrawdownLte** | **string**| Maximum drawdown limit | [optional] [default to undefined]
  **backtestAprGte** | **string**| Backtest annualized lower limit | [optional] [default to undefined]
  **xGateServiceId** | **string**| Call source identifier; injected by APIv4 if necessary | [optional] [default to undefined]
  **xGateAppLang** | **string**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | [optional] [default to undefined]
  **xRequestId** | **string**| Request link ID; caller can transmit transparently | [optional] [default to undefined]
  **xTraceId** | **string**| trace header; can be generated uniformly by APIv4 | [optional] [default to undefined]
+ **excludeRecommendationId** | **string**| Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan. | [optional] [default to undefined]
 
 ### Return type
 
@@ -437,7 +441,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.BotApi(client);
 const opts = {
-  'strategyType': "strategyType_example", // 'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale' | Filter by policy type
+  'strategyType': "strategyType_example", // 'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale' | 'smart_position' | 'futures_combo' | Filter by policy type
   'market': "market_example", // string | Filter by trading pair
   'page': 1, // number | Page number, default 1
   'pageSize': 20, // number | Paging size, default 20, maximum 50
@@ -498,7 +502,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.BotApi(client);
 const strategyId = "strategyId_example"; // string | Policy ID
-const strategyType = "strategyType_example"; // 'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale' | Policy type; used for underlying detail distribution
+const strategyType = "strategyType_example"; // 'spot_grid' | 'margin_grid' | 'infinite_grid' | 'futures_grid' | 'spot_martingale' | 'contract_martingale' | 'smart_position' | 'futures_combo' | Policy type; used for underlying detail distribution
 const opts = {
   'xGateServiceId': "xGateServiceId_example", // string | Call source identifier; injected by APIv4 if necessary
   'xGateAppLang': "xGateAppLang_example", // string | Language context, such as `zh-CN` / `en-US`
@@ -580,6 +584,116 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: AIHubPortfolioStopSuccessResponse; }> [AIHubPortfolioStopSuccessResponse](AIHubPortfolioStopSuccessResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## postAIHubSmartPositionCreate
+
+> Promise<{ response: http.IncomingMessage; body: AIHubCreateSuccessResponse; }> postAIHubSmartPositionCreate(aIHubRebalanceCreateRequest, opts)
+
+Create rebalance bot
+
+Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.BotApi(client);
+const aIHubRebalanceCreateRequest = new AIHubRebalanceCreateRequest(); // AIHubRebalanceCreateRequest | 
+const opts = {
+  'xGateServiceId': "xGateServiceId_example", // string | Call source identifier; injected by APIv4 if necessary
+  'xGateAppLang': "xGateAppLang_example", // string | Language context, such as `zh-CN` / `en-US`
+  'xRequestId': "xRequestId_example", // string | Request link ID; caller can transmit transparently
+  'xTraceId': "xTraceId_example" // string | trace header; can be generated uniformly by APIv4
+};
+api.postAIHubSmartPositionCreate(aIHubRebalanceCreateRequest, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **aIHubRebalanceCreateRequest** | [**AIHubRebalanceCreateRequest**](AIHubRebalanceCreateRequest.md)|  | 
+ **xGateServiceId** | **string**| Call source identifier; injected by APIv4 if necessary | [optional] [default to undefined]
+ **xGateAppLang** | **string**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | [optional] [default to undefined]
+ **xRequestId** | **string**| Request link ID; caller can transmit transparently | [optional] [default to undefined]
+ **xTraceId** | **string**| trace header; can be generated uniformly by APIv4 | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse; }> [AIHubCreateSuccessResponse](AIHubCreateSuccessResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## postAIHubFuturesComboCreate
+
+> Promise<{ response: http.IncomingMessage; body: AIHubCreateSuccessResponse; }> postAIHubFuturesComboCreate(aIHubFuturesComboCreateRequest, opts)
+
+Create futures-combo bot
+
+Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.BotApi(client);
+const aIHubFuturesComboCreateRequest = new AIHubFuturesComboCreateRequest(); // AIHubFuturesComboCreateRequest | 
+const opts = {
+  'xGateServiceId': "xGateServiceId_example", // string | Call source identifier; injected by APIv4 if necessary
+  'xGateAppLang': "xGateAppLang_example", // string | Language context, such as `zh-CN` / `en-US`
+  'xRequestId': "xRequestId_example", // string | Request link ID; caller can transmit transparently
+  'xTraceId': "xTraceId_example" // string | trace header; can be generated uniformly by APIv4
+};
+api.postAIHubFuturesComboCreate(aIHubFuturesComboCreateRequest, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **aIHubFuturesComboCreateRequest** | [**AIHubFuturesComboCreateRequest**](AIHubFuturesComboCreateRequest.md)|  | 
+ **xGateServiceId** | **string**| Call source identifier; injected by APIv4 if necessary | [optional] [default to undefined]
+ **xGateAppLang** | **string**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | [optional] [default to undefined]
+ **xRequestId** | **string**| Request link ID; caller can transmit transparently | [optional] [default to undefined]
+ **xTraceId** | **string**| trace header; can be generated uniformly by APIv4 | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AIHubCreateSuccessResponse; }> [AIHubCreateSuccessResponse](AIHubCreateSuccessResponse.md)
 
 ### Authorization
 

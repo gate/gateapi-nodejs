@@ -15,3 +15,7 @@
 
 * `ContractMartingale` (value: `'contract_martingale'`)
 
+* `SmartPosition` (value: `'smart_position'`)
+
+* `FuturesCombo` (value: `'futures_combo'`)
+

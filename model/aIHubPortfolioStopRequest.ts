@@ -9,14 +9,20 @@
  * Do not edit the class manually.
  */
 
+import { AIHubRebalanceStopOptions } from './aIHubRebalanceStopOptions';
 import { StrategyType } from './strategyType';
 
 /**
- * The request body to terminate a running policy.
+ * Single owner-scoped stop. Existing six-type ID/type requests retain default exits. smart_position requires explicit mode, limit requires options; futures_combo uses fixed whole-portfolio close/settlement.
  */
 export class AIHubPortfolioStopRequest {
     'strategyId': string;
     'strategyType': StrategyType;
+    /**
+     * Required only for smart_position. Other types reject custom exit options.
+     */
+    'stopMode'?: AIHubPortfolioStopRequest.StopMode;
+    'stopOptions'?: AIHubRebalanceStopOptions;
 
     static discriminator: string | undefined = undefined;
 
@@ -31,9 +37,27 @@ export class AIHubPortfolioStopRequest {
             baseName: 'strategy_type',
             type: 'StrategyType',
         },
+        {
+            name: 'stopMode',
+            baseName: 'stop_mode',
+            type: 'AIHubPortfolioStopRequest.StopMode',
+        },
+        {
+            name: 'stopOptions',
+            baseName: 'stop_options',
+            type: 'AIHubRebalanceStopOptions',
+        },
     ];
 
     static getAttributeTypeMap() {
         return AIHubPortfolioStopRequest.attributeTypeMap;
+    }
+}
+
+export namespace AIHubPortfolioStopRequest {
+    export enum StopMode {
+        Market = <any>'market',
+        Limit = <any>'limit',
+        NoClose = <any>'no_close',
     }
 }

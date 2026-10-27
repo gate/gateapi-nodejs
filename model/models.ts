@@ -1,7 +1,13 @@
+export * from './aIHubContractMartingaleConfiguration';
 export * from './aIHubCreateData';
 export * from './aIHubCreateSuccessResponse';
 export * from './aIHubDiscoverData';
 export * from './aIHubDiscoverSuccessResponse';
+export * from './aIHubFuturesComboAsset';
+export * from './aIHubFuturesComboCreateParams';
+export * from './aIHubFuturesComboCreateRequest';
+export * from './aIHubMartingalePriceRule';
+export * from './aIHubPortfolioAssetPosition';
 export * from './aIHubPortfolioBaseInfo';
 export * from './aIHubPortfolioDetailData';
 export * from './aIHubPortfolioDetailSuccessResponse';
@@ -13,7 +19,13 @@ export * from './aIHubPortfolioRunningSuccessResponse';
 export * from './aIHubPortfolioStopData';
 export * from './aIHubPortfolioStopRequest';
 export * from './aIHubPortfolioStopSuccessResponse';
+export * from './aIHubRebalanceAsset';
+export * from './aIHubRebalanceCreateParams';
+export * from './aIHubRebalanceCreateRequest';
+export * from './aIHubRebalanceStopOptions';
 export * from './aIHubRecommendation';
+export * from './aIHubSpotMartingaleConfiguration';
+export * from './aIHubStopProgress';
 export * from './accountBalance';
 export * from './accountBookResponse';
 export * from './accountDetail';
@@ -776,10 +788,16 @@ import querystring = require('querystring');
 import crypto = require('crypto');
 import { URL } from 'url';
 
+import { AIHubContractMartingaleConfiguration } from './aIHubContractMartingaleConfiguration';
 import { AIHubCreateData } from './aIHubCreateData';
 import { AIHubCreateSuccessResponse } from './aIHubCreateSuccessResponse';
 import { AIHubDiscoverData } from './aIHubDiscoverData';
 import { AIHubDiscoverSuccessResponse } from './aIHubDiscoverSuccessResponse';
+import { AIHubFuturesComboAsset } from './aIHubFuturesComboAsset';
+import { AIHubFuturesComboCreateParams } from './aIHubFuturesComboCreateParams';
+import { AIHubFuturesComboCreateRequest } from './aIHubFuturesComboCreateRequest';
+import { AIHubMartingalePriceRule } from './aIHubMartingalePriceRule';
+import { AIHubPortfolioAssetPosition } from './aIHubPortfolioAssetPosition';
 import { AIHubPortfolioBaseInfo } from './aIHubPortfolioBaseInfo';
 import { AIHubPortfolioDetailData } from './aIHubPortfolioDetailData';
 import { AIHubPortfolioDetailSuccessResponse } from './aIHubPortfolioDetailSuccessResponse';
@@ -791,7 +809,13 @@ import { AIHubPortfolioRunningSuccessResponse } from './aIHubPortfolioRunningSuc
 import { AIHubPortfolioStopData } from './aIHubPortfolioStopData';
 import { AIHubPortfolioStopRequest } from './aIHubPortfolioStopRequest';
 import { AIHubPortfolioStopSuccessResponse } from './aIHubPortfolioStopSuccessResponse';
+import { AIHubRebalanceAsset } from './aIHubRebalanceAsset';
+import { AIHubRebalanceCreateParams } from './aIHubRebalanceCreateParams';
+import { AIHubRebalanceCreateRequest } from './aIHubRebalanceCreateRequest';
+import { AIHubRebalanceStopOptions } from './aIHubRebalanceStopOptions';
 import { AIHubRecommendation } from './aIHubRecommendation';
+import { AIHubSpotMartingaleConfiguration } from './aIHubSpotMartingaleConfiguration';
+import { AIHubStopProgress } from './aIHubStopProgress';
 import { AccountBalance } from './accountBalance';
 import { AccountBookResponse } from './accountBookResponse';
 import { AccountDetail } from './accountDetail';
@@ -1564,6 +1588,15 @@ let primitives = [
 ];
 
 let enumsMap: { [index: string]: any } = {
+    'AIHubFuturesComboAsset.Side': AIHubFuturesComboAsset.Side,
+    'AIHubFuturesComboCreateParams.BeginMoneyCurrency': AIHubFuturesComboCreateParams.BeginMoneyCurrency,
+    'AIHubFuturesComboCreateParams.Period': AIHubFuturesComboCreateParams.Period,
+    'AIHubFuturesComboCreateRequest.StrategyType': AIHubFuturesComboCreateRequest.StrategyType,
+    'AIHubPortfolioDetailData.PositionsStatus': AIHubPortfolioDetailData.PositionsStatus,
+    'AIHubPortfolioStopRequest.StopMode': AIHubPortfolioStopRequest.StopMode,
+    'AIHubRebalanceCreateParams.BeginMoneyCurrency': AIHubRebalanceCreateParams.BeginMoneyCurrency,
+    'AIHubRebalanceCreateParams.CloseFlag': AIHubRebalanceCreateParams.CloseFlag,
+    'AIHubRebalanceCreateRequest.StrategyType': AIHubRebalanceCreateRequest.StrategyType,
     'AccountBalance.Currency': AccountBalance.Currency,
     'AccountTransferDetail.Status': AccountTransferDetail.Status,
     'AccountTransferDetail.FromAccount': AccountTransferDetail.FromAccount,
@@ -1588,6 +1621,7 @@ let enumsMap: { [index: string]: any } = {
     'BatchOrder.FinishAs': BatchOrder.FinishAs,
     'Contract.Type': Contract.Type,
     'Contract.MarkType': Contract.MarkType,
+    'ContractMartingaleCreateParams.StopLossPriceType': ContractMartingaleCreateParams.StopLossPriceType,
     'ContractMartingaleCreateRequest.StrategyType': ContractMartingaleCreateRequest.StrategyType,
     ContractMartingaleDirection: ContractMartingaleDirection,
     'CouponDetailExtraItem.Type': CouponDetailExtraItem.Type,
@@ -1785,10 +1819,16 @@ let enumsMap: { [index: string]: any } = {
 };
 
 let typeMap: { [index: string]: any } = {
+    AIHubContractMartingaleConfiguration: AIHubContractMartingaleConfiguration,
     AIHubCreateData: AIHubCreateData,
     AIHubCreateSuccessResponse: AIHubCreateSuccessResponse,
     AIHubDiscoverData: AIHubDiscoverData,
     AIHubDiscoverSuccessResponse: AIHubDiscoverSuccessResponse,
+    AIHubFuturesComboAsset: AIHubFuturesComboAsset,
+    AIHubFuturesComboCreateParams: AIHubFuturesComboCreateParams,
+    AIHubFuturesComboCreateRequest: AIHubFuturesComboCreateRequest,
+    AIHubMartingalePriceRule: AIHubMartingalePriceRule,
+    AIHubPortfolioAssetPosition: AIHubPortfolioAssetPosition,
     AIHubPortfolioBaseInfo: AIHubPortfolioBaseInfo,
     AIHubPortfolioDetailData: AIHubPortfolioDetailData,
     AIHubPortfolioDetailSuccessResponse: AIHubPortfolioDetailSuccessResponse,
@@ -1800,7 +1840,13 @@ let typeMap: { [index: string]: any } = {
     AIHubPortfolioStopData: AIHubPortfolioStopData,
     AIHubPortfolioStopRequest: AIHubPortfolioStopRequest,
     AIHubPortfolioStopSuccessResponse: AIHubPortfolioStopSuccessResponse,
+    AIHubRebalanceAsset: AIHubRebalanceAsset,
+    AIHubRebalanceCreateParams: AIHubRebalanceCreateParams,
+    AIHubRebalanceCreateRequest: AIHubRebalanceCreateRequest,
+    AIHubRebalanceStopOptions: AIHubRebalanceStopOptions,
     AIHubRecommendation: AIHubRecommendation,
+    AIHubSpotMartingaleConfiguration: AIHubSpotMartingaleConfiguration,
+    AIHubStopProgress: AIHubStopProgress,
     AccountBalance: AccountBalance,
     AccountBookResponse: AccountBookResponse,
     AccountDetail: AccountDetail,

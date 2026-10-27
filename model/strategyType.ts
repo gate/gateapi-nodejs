@@ -19,4 +19,6 @@ export enum StrategyType {
     FuturesGrid = <any>'futures_grid',
     SpotMartingale = <any>'spot_martingale',
     ContractMartingale = <any>'contract_martingale',
+    SmartPosition = <any>'smart_position',
+    FuturesCombo = <any>'futures_combo',
 }

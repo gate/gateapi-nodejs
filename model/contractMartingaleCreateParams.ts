@@ -16,19 +16,23 @@ import { ContractMartingaleDirection } from './contractMartingaleDirection';
  */
 export class ContractMartingaleCreateParams {
     /**
-     * Margin allocated; the server converts it to initial contract size using live contract price, contract multiplier, and minimum lot size.
+     * Total strategy budget, not first-order margin. The server uses the complete existing ladder formula, owner fee and live contract facts, quantizes quantity down and rechecks before allocation. Minimum infeasible budget is rejected.
      */
     'investAmount': string;
     'priceDeviation': string;
+    /**
+     * Maximum additional entries, excluding the first; preserve this legacy meaning.
+     */
     'maxOrders': number;
     'takeProfitRatio': string;
     'direction': ContractMartingaleDirection;
     'leverage': string;
     /**
-     * Legacy field name. The AIHub `contract_martingale` creation path does not map this field today; follow contract martingale rules from the underlying API. MCP tooling must match bot-service behavior.
+     * Positive fixed stop price; requires explicit stop_loss_price_type. Missing both leaves the old no-fixed-stop request unchanged.
      */
     'stopLossPrice'?: string;
     'profitSharingRatio'?: string;
+    'stopLossPriceType'?: ContractMartingaleCreateParams.StopLossPriceType;
 
     static discriminator: string | undefined = undefined;
 
@@ -73,9 +77,22 @@ export class ContractMartingaleCreateParams {
             baseName: 'profit_sharing_ratio',
             type: 'string',
         },
+        {
+            name: 'stopLossPriceType',
+            baseName: 'stop_loss_price_type',
+            type: 'ContractMartingaleCreateParams.StopLossPriceType',
+        },
     ];
 
     static getAttributeTypeMap() {
         return ContractMartingaleCreateParams.attributeTypeMap;
+    }
+}
+
+export namespace ContractMartingaleCreateParams {
+    export enum StopLossPriceType {
+        Last = <any>'last',
+        Index = <any>'index',
+        Mark = <any>'mark',
     }
 }
