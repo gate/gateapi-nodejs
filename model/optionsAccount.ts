@@ -85,7 +85,7 @@ export class OptionsAccount {
     /**
      * Notional value upper limit, including the nominal value of positions and outstanding orders
      */
-    'positionNotionalLimit'?: number | bigint;
+    'positionNotionalLimit'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -183,7 +183,7 @@ export class OptionsAccount {
         {
             name: 'positionNotionalLimit',
             baseName: 'position_notional_limit',
-            type: 'int64',
+            type: 'string',
         },
     ];
 

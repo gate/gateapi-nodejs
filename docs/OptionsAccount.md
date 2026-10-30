@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **point** | **string** | Point card amount | [optional] [default to undefined]
 **currency** | **string** | Settlement currency | [optional] [default to undefined]
 **ordersLimit** | **number** | Maximum number of outstanding orders | [optional] [default to undefined]
-**positionNotionalLimit** | **number &#124; bigint** | Notional value upper limit, including the nominal value of positions and outstanding orders | [optional] [default to undefined]
+**positionNotionalLimit** | **string** | Notional value upper limit, including the nominal value of positions and outstanding orders | [optional] [default to undefined]
 
 ## Enum: OptionsAccount.MarginMode
 

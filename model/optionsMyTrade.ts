@@ -25,7 +25,7 @@ export class OptionsMyTrade {
     /**
      * Related order ID
      */
-    'orderId'?: number;
+    'orderId'?: number | bigint;
     /**
      * Trading size
      */
@@ -64,7 +64,7 @@ export class OptionsMyTrade {
         {
             name: 'orderId',
             baseName: 'order_id',
-            type: 'number',
+            type: 'int64',
         },
         {
             name: 'size',
