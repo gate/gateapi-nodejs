@@ -1606,6 +1606,7 @@ let enumsMap: { [index: string]: any } = {
         ApiResponseExSkillGetBeginnerTaskListRespDataTasks.PrizeType,
     'ApiResponseExSkillGetBeginnerTaskListRespDataTasks.Status':
         ApiResponseExSkillGetBeginnerTaskListRespDataTasks.Status,
+    'AutoInvestMinInvestAmount.AssetType': AutoInvestMinInvestAmount.AssetType,
     'AutoRepaySetting.Status': AutoRepaySetting.Status,
     'BatchFuturesOrder.FinishAs': BatchFuturesOrder.FinishAs,
     'BatchFuturesOrder.Status': BatchFuturesOrder.Status,

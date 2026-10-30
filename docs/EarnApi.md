@@ -1533,7 +1533,9 @@ const page = 1; // number | Page number
 const limit = 100; // number | Page size
 const opts = {
   'asset': "USDT", // string | Currency
-  'type': 1 // number | Product type: 1 for regular, 2 for VIP
+  'type': 1, // number | Product type: 1 for regular, 2 for VIP
+  'status': 2, // number | Product status filter. Pass 2 for products available for subscription.
+  'showStatus': "2" // string | Visibility status filter. Pass \"2\" for visible products.
 };
 api.listEarnFixedTermProducts(page, limit, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1549,6 +1551,8 @@ Name | Type | Description  | Notes
  **limit** | **number**| Page size | [default to undefined]
  **asset** | **string**| Currency | [optional] [default to undefined]
  **type** | **number**| Product type: 1 for regular, 2 for VIP | [optional] [default to undefined]
+ **status** | **number**| Product status filter. Pass 2 for products available for subscription. | [optional] [default to undefined]
+ **showStatus** | **string**| Visibility status filter. Pass \&quot;2\&quot; for visible products. | [optional] [default to undefined]
 
 ### Return type
 

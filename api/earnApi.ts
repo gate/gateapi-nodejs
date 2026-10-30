@@ -1858,11 +1858,13 @@ export class EarnApi {
      * @param opts Optional parameters
      * @param opts.asset Currency
      * @param opts.type Product type: 1 for regular, 2 for VIP
+     * @param opts.status Product status filter. Pass 2 for products available for subscription.
+     * @param opts.showStatus Visibility status filter. Pass \&quot;2\&quot; for visible products.
      */
     public async listEarnFixedTermProducts(
         page: number,
         limit: number,
-        opts?: { asset?: string; type?: number },
+        opts?: { asset?: string; type?: number; status?: number; showStatus?: string },
     ): Promise<{ response: AxiosResponse; body: ListEarnFixedTermProductsResponse }> {
         // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath = this.client.basePath + '/earn/fixed-term/product';
@@ -1907,6 +1909,28 @@ export class EarnApi {
                 typeSerialized = typeSerialized.join(',');
             }
             localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        if (opts.status !== undefined) {
+            let statusSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.status, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(statusSerialized)) {
+                statusSerialized = statusSerialized.join(',');
+            }
+            localVarQueryParameters['status'] = statusSerialized;
+        }
+
+        if (opts.showStatus !== undefined) {
+            let showStatusSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.showStatus, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(showStatusSerialized)) {
+                showStatusSerialized = showStatusSerialized.join(',');
+            }
+            localVarQueryParameters['show_status'] = showStatusSerialized;
         }
 
         let pageSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(page, 'number'));

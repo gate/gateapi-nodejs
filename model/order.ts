@@ -170,6 +170,10 @@ export class Order {
     'slippage'?: string;
     'stopProfit'?: SpotOrderStopProfit | null;
     'stopLoss'?: SpotOrderStopLoss | null;
+    /**
+     * Redeem Simple Earn funds when placing an order
+     */
+    'useEarn'?: boolean | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -373,6 +377,11 @@ export class Order {
             name: 'stopLoss',
             baseName: 'stop_loss',
             type: 'SpotOrderStopLoss',
+        },
+        {
+            name: 'useEarn',
+            baseName: 'use_earn',
+            type: 'boolean',
         },
     ];
 

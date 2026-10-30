@@ -19,6 +19,10 @@ export class AutoInvestMinInvestAmount {
      * Currency, optional: USDT or BTC
      */
     'money': string;
+    /**
+     * Asset type: 1 for cryptocurrency, 2 for TradFi stocks; must be provided explicitly
+     */
+    'assetType': AutoInvestMinInvestAmount.AssetType;
     'items': Array<AutoInvestMinInvestAmountItems>;
 
     static discriminator: string | undefined = undefined;
@@ -30,6 +34,11 @@ export class AutoInvestMinInvestAmount {
             type: 'string',
         },
         {
+            name: 'assetType',
+            baseName: 'asset_type',
+            type: 'AutoInvestMinInvestAmount.AssetType',
+        },
+        {
             name: 'items',
             baseName: 'items',
             type: 'Array<AutoInvestMinInvestAmountItems>',
@@ -38,5 +47,12 @@ export class AutoInvestMinInvestAmount {
 
     static getAttributeTypeMap() {
         return AutoInvestMinInvestAmount.attributeTypeMap;
+    }
+}
+
+export namespace AutoInvestMinInvestAmount {
+    export enum AssetType {
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
     }
 }
