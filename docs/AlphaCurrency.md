@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**currency** | **string** | Currency symbol | [optional] [default to undefined]
-**name** | **string** | Currency name | [optional] [default to undefined]
+**currency** | **string** | Alpha currency ID, for example USDS02b5a8dd2f59a098; use it as the currency parameter in Alpha APIs, not the display symbol USDS. | [optional] [default to undefined]
+**name** | **string** | Display name or symbol, for example USDS; it cannot replace the currency field as the Alpha currency ID. | [optional] [default to undefined]
 **chain** | **string** | The main chain corresponding to the coin | [optional] [default to undefined]
 **address** | **string** | Contract Address | [optional] [default to undefined]
 **amountPrecision** | **number** | Quantity precision | [optional] [default to undefined]

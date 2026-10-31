@@ -188,7 +188,7 @@ export class AlphaApi {
      *
      * @summary Alpha Order List API
      * @param opts Optional parameters
-     * @param opts.currency Trading symbol
+     * @param opts.currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit.
      * @param opts.side Buy or sell orders - buy - sell
      * @param opts.status Order Status - &#x60;0&#x60; : All - &#x60;1&#x60; : Processing - &#x60;2&#x60; : Successful - &#x60;3&#x60; : Failed - &#x60;4&#x60; : Cancelled - &#x60;5&#x60; : Buy order placed but transfer not completed - &#x60;6&#x60; : Order cancelled but transfer not completed
      * @param opts.from Start time for order query
@@ -386,7 +386,7 @@ export class AlphaApi {
      * When currency is provided, query and return specified currency information; when currency is not provided, return paginated currency list
      * @summary Query currency information
      * @param opts Optional parameters
-     * @param opts.currency Query currency information by currency symbol
+     * @param opts.currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit.
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.page Page number
      */
@@ -456,7 +456,7 @@ export class AlphaApi {
      * When currency is provided, returns ticker information for the specified currency. When currency is not provided, returns paginated ticker list
      * @summary Query currency ticker
      * @param opts Optional parameters
-     * @param opts.currency Query by specified currency name
+     * @param opts.currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit.
      * @param opts.limit Maximum number of records returned in a single list
      * @param opts.page Page number
      */
