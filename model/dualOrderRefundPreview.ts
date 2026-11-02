@@ -39,7 +39,7 @@ export class DualOrderRefundPreview {
      */
     'orderId'?: number | bigint;
     /**
-     * Request ID used for actual redemption
+     * Request ID used for redemption, returned by GET /earn/dual/order-refund-preview. The request to POST /earn/dual/order-refund requires order_id and req_id.
      */
     'reqId'?: string;
     /**

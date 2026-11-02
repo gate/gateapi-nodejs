@@ -25,7 +25,7 @@ export class UnifiedAccount {
      */
     'refreshTime'?: number | bigint;
     /**
-     * Whether the account is locked, valid in cross-currency margin/combined margin mode, false in other modes such as single-currency margin mode
+     * Whether the account is locked. Applicable in multi-currency margin and portfolio margin modes; false in other modes, such as single-currency margin mode.
      */
     'locked'?: boolean;
     'balances'?: { [key: string]: UnifiedBalance };

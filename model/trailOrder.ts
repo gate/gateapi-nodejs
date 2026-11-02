@@ -94,7 +94,7 @@ export class TrailOrder {
      */
     'reason'?: string;
     /**
-     * Sub-order text field
+     * The child order\'s text field.
      */
     'suborderText'?: string;
     /**
@@ -106,7 +106,7 @@ export class TrailOrder {
      */
     'triggerPrice'?: string;
     /**
-     * Sub-order ID
+     * Child order ID.
      */
     'suborderId'?: bigint;
     /**

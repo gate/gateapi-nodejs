@@ -39,7 +39,7 @@ export class Trade {
      */
     'amount'?: string;
     /**
-     * Order price
+     * Trade price.
      */
     'price'?: string;
     /**

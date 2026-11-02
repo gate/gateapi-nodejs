@@ -15,7 +15,7 @@ export class PatchUniLend {
      */
     'currency'?: string;
     /**
-     * Minimum interest rate
+     * Minimum hourly interest rate.
      */
     'minRate'?: string;
 

@@ -43,7 +43,7 @@ export class OptionsAccount {
      */
     'marginMode'?: OptionsAccount.MarginMode;
     /**
-     * Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
+     * Unrealized PnL, for reference only. Position unrealized PnL = (mark price - average entry price) × position quantity. Position quantity is measured in currency units, negative for shorts and positive for longs.
      */
     'unrealisedPnl'?: string;
     /**

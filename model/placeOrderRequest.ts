@@ -30,7 +30,7 @@ export class PlaceOrderRequest {
      */
     'gasMode': string;
     /**
-     * Slippage tolerance (10 means 10% tolerance)
+     * Slippage percentage: \"10\" means 10%.
      */
     'slippage'?: string;
     /**

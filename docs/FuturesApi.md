@@ -1813,7 +1813,7 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 
 Query futures order list
 
-- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use &#x60;GET /futures/{settle}/orders_timerange&#x60;.
+- Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use &#x60;GET /futures/{settle}/orders_timerange&#x60;.
 
 ### Example
 
@@ -1870,7 +1870,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](
 
 Place futures order
 
-- When placing an order, the number of contracts is specified &#x60;size&#x60;, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface &#x60;quanto_multiplier&#x60; - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting &#x60;reduce_only&#x60; to &#x60;true&#x60; can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set &#x60;size&#x60; to 0 and &#x60;close&#x60; to &#x60;true&#x60; - In dual warehouse mode,   - Reduce position: reduce_only&#x3D;true, size is a positive number that indicates short position, negative number that indicates long position  - Add number that indicates adding long positions, and negative numbers indicate adding short positions  - Close position: size&#x3D;0, set the direction of closing position according to auto_size, and set &#x60;reduce_only&#x60; to true  at the same time - reduce_only: Make sure to only perform position reduction operations to prevent increased positions - Set &#x60;stp_act&#x60; to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter &#x60;stp_act&#x60;
+- When placing an order, the number of contracts is specified &#x60;size&#x60;, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface &#x60;quanto_multiplier&#x60; - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting &#x60;reduce_only&#x60; to &#x60;true&#x60; can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set &#x60;size&#x60; to 0 and &#x60;close&#x60; to &#x60;true&#x60; - In hedge mode:   - Reduce a position: with &#x60;reduce_only&#x3D;true&#x60;, a positive &#x60;size&#x60; reduces the short position and a negative &#x60;size&#x60; reduces the long position.   - Increase a position: with &#x60;reduce_only&#x3D;false&#x60;, a positive &#x60;size&#x60; increases the long position and a negative &#x60;size&#x60; increases the short position.   - Close a position: set &#x60;size&#x3D;0&#x60;, select the closing side with &#x60;auto_size&#x60;, and set &#x60;reduce_only&#x3D;true&#x60;.   - &#x60;reduce_only&#x60; ensures position reduction only and prevents increasing the position. - Set &#x60;stp_act&#x60; to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter &#x60;stp_act&#x60;
 
 ### Example
 
@@ -2086,7 +2086,7 @@ Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder>; }> [BatchFutu
 
 Query single order details
 
-- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  
+- Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported. 
 
 ### Example
 
@@ -2367,7 +2367,7 @@ const opts = {
   'offset': 0, // number | List offset, starting from 0
   'from': BigInt('1547706332'), // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
   'to': BigInt('1547706332'), // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-  'side': "short", // string | Query side. long or shot
+  'side': "short", // string | Direction filter: long or short.
   'pnl': "profit" // string | Query profit or loss
 };
 api.listPositionClose(settle, opts)
@@ -2386,7 +2386,7 @@ Name | Type | Description  | Notes
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **from** | **number &#124; bigint**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
  **to** | **number &#124; bigint**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
- **side** | **string**| Query side. long or shot | [optional] [default to undefined]
+ **side** | **string**| Direction filter: long or short. | [optional] [default to undefined]
  **pnl** | **string**| Query profit or loss | [optional] [default to undefined]
 
 ### Return type
@@ -2945,7 +2945,7 @@ Promise<{ response: AxiosResponse; body: TrailOrderListResponse; }> [TrailOrderL
 
 ## getTrailOrders
 
-> Promise<{ response: http.IncomingMessage; body: TrailOrderListResponse; }> getTrailOrders(settle, opts)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderListResponseEnvelope; }> getTrailOrders(settle, opts)
 
 Get trail order list
 
@@ -3001,7 +3001,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: TrailOrderListResponse; }> [TrailOrderListResponse](TrailOrderListResponse.md)
+Promise<{ response: AxiosResponse; body: TrailOrderListResponseEnvelope; }> [TrailOrderListResponseEnvelope](TrailOrderListResponseEnvelope.md)
 
 ### Authorization
 
@@ -3306,7 +3306,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd1' | Perpetual futures settlement currency
-const sortBy = 56; // 1 | 2 | Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
+const sortBy = 56; // 1 | 2 | Sort field: 1 for creation time; 2 for finish time. 0 is not accepted.
 const opts = {
   'contract': "contract_example", // string | Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
   'isFinished': True, // boolean | true to query finished orders, false to query in-progress orders
@@ -3329,7 +3329,7 @@ api.getChaseOrders(settle, sortBy, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Perpetual futures settlement currency | [default to undefined]
- **sortBy** | **SortBy**| Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 | [default to undefined]
+ **sortBy** | **SortBy**| Sort field: 1 for creation time; 2 for finish time. 0 is not accepted. | [default to undefined]
  **contract** | **string**| Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase | [optional] [default to undefined]
  **isFinished** | **boolean**| true to query finished orders, false to query in-progress orders | [optional] [default to undefined]
  **startAt** | **number &#124; bigint**| Lower time bound for the history list, paired with end_at. Required when is_finished is true | [optional] [default to undefined]

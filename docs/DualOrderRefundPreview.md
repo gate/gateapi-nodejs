@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **investCurrency** | **string** | Investment Token | [optional] [default to undefined]
 **name** | **string** | Order name identifier | [optional] [default to undefined]
 **orderId** | **number &#124; bigint** | Order ID | [optional] [default to undefined]
-**reqId** | **string** | Request ID used for actual redemption | [optional] [default to undefined]
+**reqId** | **string** | Request ID used for redemption, returned by GET /earn/dual/order-refund-preview. The request to POST /earn/dual/order-refund requires order_id and req_id. | [optional] [default to undefined]
 **refundServiceCharge** | **number &#124; bigint** | Refund fee | [optional] [default to undefined]
 **settlePrice** | **string** | Settlement price | [optional] [default to undefined]
 **settlementAmount** | **string** | Settlement amount | [optional] [default to undefined]

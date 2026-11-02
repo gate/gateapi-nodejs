@@ -19,7 +19,7 @@ export class MultiChainAddressItem {
      */
     'address'?: string;
     /**
-     * Notes that some currencies required(e.g., Tag, Memo) when depositing
+     * A memo required when depositing certain currencies, such as a Tag or Memo.
      */
     'paymentId'?: string;
     /**
@@ -27,7 +27,7 @@ export class MultiChainAddressItem {
      */
     'paymentName'?: string;
     /**
-     * The obtain failed status- 0: address successfully obtained- 1: failed to obtain address
+     * Whether address retrieval failed: 0 means success; 1 means failure and retrieval may need to be retried.
      */
     'obtainFailed'?: number;
     /**

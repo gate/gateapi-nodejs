@@ -78,7 +78,7 @@ export class CurrencyPair {
      */
     'buyStart'?: number | bigint;
     /**
-     * Expected time to remove the shelves, Unix timestamp in seconds
+     * Expected delisting time as a Unix timestamp in seconds.
      */
     'delistingTime'?: number | bigint;
     /**

@@ -115,7 +115,7 @@ export class CFDApi {
      *
      * @summary Query symbol commission rates
      * @param opts Optional parameters
-     * @param opts.symbols List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required
+     * @param opts.symbols Comma-separated instrument symbols. Provide at least one of symbols and category_code.
      * @param opts.categoryCode List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required
      */
     public async querySymbolCommissions(opts?: {
@@ -972,7 +972,7 @@ export class CFDApi {
      * @param opts Optional parameters
      * @param opts.page Page number; defaults to 1 if omitted.
      * @param opts.pageSize Page size; defaults to 10 if omitted. Maximum 100.
-     * @param opts.beginTime Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
+     * @param opts.beginTime Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago.
      * @param opts.endTime End time (timestamp in seconds)
      * @param opts.symbol Trading symbol (e.g., EURUSD)
      * @param opts.positionDir Position direction (Long&#x3D;long position, Short&#x3D;short position)

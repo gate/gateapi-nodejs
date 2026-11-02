@@ -17,11 +17,11 @@ export class P2pTransactionDetail {
      */
     'isSell'?: number;
     /**
-     * Order ID
+     * Order ID (txid).
      */
     'txid'?: number;
     /**
-     * Order ID
+     * ID of the posted order (orderid).
      */
     'orderid'?: number;
     /**

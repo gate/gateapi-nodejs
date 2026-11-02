@@ -332,6 +332,7 @@ export * from './futuresPositionCrossMode';
 export * from './futuresPremiumIndex';
 export * from './futuresPriceTrigger';
 export * from './futuresPriceTriggeredOrder';
+export * from './futuresPriceTriggeredOrderError';
 export * from './futuresRiskLimitTier';
 export * from './futuresTicker';
 export * from './futuresTrade';
@@ -708,6 +709,7 @@ export * from './trailOrder';
 export * from './trailOrderChangeLogResponse';
 export * from './trailOrderDetailResponse';
 export * from './trailOrderListResponse';
+export * from './trailOrderListResponseEnvelope';
 export * from './trailOrderResponse';
 export * from './transactionConfig';
 export * from './transactionID';
@@ -1122,6 +1124,7 @@ import { FuturesPositionCrossMode } from './futuresPositionCrossMode';
 import { FuturesPremiumIndex } from './futuresPremiumIndex';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
 import { FuturesPriceTriggeredOrder } from './futuresPriceTriggeredOrder';
+import { FuturesPriceTriggeredOrderError } from './futuresPriceTriggeredOrderError';
 import { FuturesRiskLimitTier } from './futuresRiskLimitTier';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
@@ -1498,6 +1501,7 @@ import { TrailOrder } from './trailOrder';
 import { TrailOrderChangeLogResponse } from './trailOrderChangeLogResponse';
 import { TrailOrderDetailResponse } from './trailOrderDetailResponse';
 import { TrailOrderListResponse } from './trailOrderListResponse';
+import { TrailOrderListResponseEnvelope } from './trailOrderListResponseEnvelope';
 import { TrailOrderResponse } from './trailOrderResponse';
 import { TransactionConfig } from './transactionConfig';
 import { TransactionID } from './transactionID';
@@ -2151,6 +2155,7 @@ let typeMap: { [index: string]: any } = {
     FuturesPremiumIndex: FuturesPremiumIndex,
     FuturesPriceTrigger: FuturesPriceTrigger,
     FuturesPriceTriggeredOrder: FuturesPriceTriggeredOrder,
+    FuturesPriceTriggeredOrderError: FuturesPriceTriggeredOrderError,
     FuturesRiskLimitTier: FuturesRiskLimitTier,
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
@@ -2527,6 +2532,7 @@ let typeMap: { [index: string]: any } = {
     TrailOrderChangeLogResponse: TrailOrderChangeLogResponse,
     TrailOrderDetailResponse: TrailOrderDetailResponse,
     TrailOrderListResponse: TrailOrderListResponse,
+    TrailOrderListResponseEnvelope: TrailOrderListResponseEnvelope,
     TrailOrderResponse: TrailOrderResponse,
     TransactionConfig: TransactionConfig,
     TransactionID: TransactionID,

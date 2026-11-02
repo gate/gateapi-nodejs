@@ -49,7 +49,7 @@ export class Currency {
      */
     'chain'?: string;
     /**
-     * All links corresponding to coins
+     * All blockchains associated with this currency.
      */
     'chains'?: Array<SpotCurrencyChain>;
     /**

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **tradeStatus** | **CurrencyPair.TradeStatus** | Trading status  - untradable: cannot be traded - buyable: can be bought - sellable: can be sold - tradable: can be bought and sold | [optional] [default to undefined]
 **sellStart** | **number &#124; bigint** | Sell start unix timestamp in seconds | [optional] [default to undefined]
 **buyStart** | **number &#124; bigint** | Buy start unix timestamp in seconds | [optional] [default to undefined]
-**delistingTime** | **number &#124; bigint** | Expected time to remove the shelves, Unix timestamp in seconds | [optional] [default to undefined]
+**delistingTime** | **number &#124; bigint** | Expected delisting time as a Unix timestamp in seconds. | [optional] [default to undefined]
 **type** | **string** | Trading pair type, normal: normal, premarket: pre-market | [optional] [default to undefined]
 **tradeUrl** | **string** | Transaction link | [optional] [default to undefined]
 **stTag** | **boolean** | Whether the trading pair is in ST risk assessment, false - No, true - Yes | [optional] [default to undefined]

@@ -5,7 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**listCurrencyChains**](WalletApi.md#listCurrencyChains) | **GET** /wallet/currency_chains | Query chains supported for specified currency
-[**getDepositAddress**](WalletApi.md#getDepositAddress) | **GET** /wallet/deposit_address | Generate currency deposit address
+[**getDepositAddress**](WalletApi.md#getDepositAddress) | **GET** /wallet/deposit_address | Get a currency deposit address
 [**listWithdrawals**](WalletApi.md#listWithdrawals) | **GET** /wallet/withdrawals | Get withdrawal records
 [**listDeposits**](WalletApi.md#listDeposits) | **GET** /wallet/deposits | Get deposit records
 [**getTransfer**](WalletApi.md#getTransfer) | **GET** /wallet/transfers | Get trading account transfer
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
 [**subAccountToSubAccount**](WalletApi.md#subAccountToSubAccount) | **POST** /wallet/sub_account_to_sub_account | Transfer between sub-accounts
 [**getTransferOrderStatus**](WalletApi.md#getTransferOrderStatus) | **GET** /wallet/order_status | Main-Sub Account Transfer Status Query
-[**listWithdrawStatus**](WalletApi.md#listWithdrawStatus) | **GET** /wallet/withdraw_status | Query withdrawal status
+[**listWithdrawStatus**](WalletApi.md#listWithdrawStatus) | **GET** /wallet/withdraw_status | Get currency withdrawal fees and limits, optionally filtered by currency.
 [**listSubAccountBalances**](WalletApi.md#listSubAccountBalances) | **GET** /wallet/sub_account_balances | Query sub-account balance information
 [**listSubAccountMarginBalances**](WalletApi.md#listSubAccountMarginBalances) | **GET** /wallet/sub_account_margin_balances | Query sub-account isolated margin account balance information
 [**listSubAccountFuturesBalances**](WalletApi.md#listSubAccountFuturesBalances) | **GET** /wallet/sub_account_futures_balances | Query sub-account perpetual futures account balance information
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**getTotalBalance**](WalletApi.md#getTotalBalance) | **GET** /wallet/total_balance | Query personal account totals
 [**listSmallBalance**](WalletApi.md#listSmallBalance) | **GET** /wallet/small_balance | Get list of convertible small balance currencies
 [**convertSmallBalance**](WalletApi.md#convertSmallBalance) | **POST** /wallet/small_balance | Convert small balance currency
-[**listSmallBalanceHistory**](WalletApi.md#listSmallBalanceHistory) | **GET** /wallet/small_balance_history | Get convertible small balance currency history
+[**listSmallBalanceHistory**](WalletApi.md#listSmallBalanceHistory) | **GET** /wallet/small_balance_history | Get small-balance conversion history
 [**listPushOrders**](WalletApi.md#listPushOrders) | **GET** /wallet/push | Get UID transfer history
 [**getLowCapExchangeList**](WalletApi.md#getLowCapExchangeList) | **GET** /wallet/getLowCapExchangeList | Retrieve the list of low-liquidity or low-cap tokens
 
@@ -76,7 +76,7 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: DepositAddress; }> getDepositAddress(currency)
 
-Generate currency deposit address
+Get a currency deposit address
 
 ### Example
 
@@ -519,7 +519,7 @@ Promise<{ response: AxiosResponse; body: TransferOrderStatus; }> [TransferOrderS
 
 > Promise<{ response: http.IncomingMessage; body: Array<WithdrawStatus>; }> listWithdrawStatus(opts)
 
-Query withdrawal status
+Get currency withdrawal fees and limits, optionally filtered by currency.
 
 API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
 
@@ -981,7 +981,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: Array<SmallBalanceHistory>; }> listSmallBalanceHistory(opts)
 
-Get convertible small balance currency history
+Get small-balance conversion history
 
 ### Example
 
@@ -995,7 +995,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
 const opts = {
-  'currency': "currency_example", // string | Currency to convert
+  'currency': "currency_example", // string | Filter by conversion currency.
   'page': 1, // number | Page number
   'limit': 100 // number | Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
 };
@@ -1009,7 +1009,7 @@ api.listSmallBalanceHistory(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Currency to convert | [optional] [default to undefined]
+ **currency** | **string**| Filter by conversion currency. | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 | [optional] [default to 100]
 

@@ -90,7 +90,7 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.StockApi(client);
 const opts = {
   'symbols': "AAPL,TSLA", // string | Symbol list, multiple separated by commas
-  'exchange': "us", // 'us' | 'hk' | 'kr' | 'jp' | Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
+  'exchange': "us", // 'us' | 'hk' | 'kr' | 'jp' | Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks.
   'withDescI18n': true, // boolean | Whether to return multilingual symbol description
   'page': 1, // number | Page number, defaults to 1
   'pageSize': 100 // number | Page size, defaults to 10, max 500; server caps at 500
@@ -106,7 +106,7 @@ api.queryStockSymbols(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbols** | **string**| Symbol list, multiple separated by commas | [optional] [default to undefined]
- **exchange** | **Exchange**| Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. | [optional] [default to undefined]
+ **exchange** | **Exchange**| Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks. | [optional] [default to undefined]
  **withDescI18n** | **boolean**| Whether to return multilingual symbol description | [optional] [default to undefined]
  **page** | **number**| Page number, defaults to 1 | [optional] [default to undefined]
  **pageSize** | **number**| Page size, defaults to 10, max 500; server caps at 500 | [optional] [default to undefined]

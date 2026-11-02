@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **mmpEnabled** | **boolean** | Whether to enable MMP | [optional] [default to undefined]
 **liqTriggered** | **boolean** | Whether the account is in a liquidation state | [optional] [default to undefined]
 **marginMode** | **OptionsAccount.MarginMode** | This field indicates the margin mode used by the unified account:  - 0: Classic Spot Margin Mode - 1: Cross-Currency Margin Mode - 2: Portfolio Margin Mode - 3: Single-Currency Margin Mode | [optional] [default to undefined]
-**unrealisedPnl** | **string** | Unrealised PnL &#x3D; (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only. | [optional] [default to undefined]
+**unrealisedPnl** | **string** | Unrealized PnL, for reference only. Position unrealized PnL &#x3D; (mark price - average entry price) × position quantity. Position quantity is measured in currency units, negative for shorts and positive for longs. | [optional] [default to undefined]
 **initMargin** | **string** | Initial position margin | [optional] [default to undefined]
 **maintMargin** | **string** | Position maintenance margin | [optional] [default to undefined]
 **orderMargin** | **string** | Order margin of unfinished orders | [optional] [default to undefined]

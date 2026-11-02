@@ -154,7 +154,7 @@ export class Contract {
      */
     'enableBonus'?: boolean;
     /**
-     * Whether portfolio margin account is enabled
+     * Whether this contract supports unified accounts.
      */
     'enableCredit'?: boolean;
     /**
@@ -170,7 +170,7 @@ export class Contract {
      */
     'status'?: string;
     /**
-     * Contract expiry timestamp
+     * Contract trading start time.
      */
     'launchTime'?: number | bigint;
     /**

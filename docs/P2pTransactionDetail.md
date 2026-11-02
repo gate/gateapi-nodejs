@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **isSell** | **number** | Whether the current user is the seller. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] [default to undefined]
-**txid** | **number** | Order ID | [optional] [default to undefined]
-**orderid** | **number** | Order ID | [optional] [default to undefined]
+**txid** | **number** | Order ID (txid). | [optional] [default to undefined]
+**orderid** | **number** | ID of the posted order (orderid). | [optional] [default to undefined]
 **timest** | **number** | Order creation timestamp | [optional] [default to undefined]
 **lastPayTime** | **number** | Payment deadline | [optional] [default to undefined]
 **remainPayTime** | **number** | Seconds left to pay; &#x60;&lt;&#x3D; 0&#x60; means overdue. | [optional] [default to undefined]

@@ -23,7 +23,7 @@ export class OptionsAccountBook {
      */
     'balance'?: string;
     /**
-     * Changing Type: - dnw: Deposit & Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+     * Changing Type: - dnw: Deposit & Withdraw - prem: Trading premium - fee: Trading fee - set: settlement - refr: Referrer rebate - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
      */
     'type'?: string;
     /**

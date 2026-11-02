@@ -38,7 +38,7 @@ export class FuturesOrder {
      */
     'finishAs'?: FuturesOrder.FinishAs;
     /**
-     * Order status  - `open`: Pending - `finished`: Completed
+     * Order status:  - `open`: pending - `finished`: the order has ended
      */
     'status'?: FuturesOrder.Status;
     /**
@@ -46,7 +46,7 @@ export class FuturesOrder {
      */
     'contract': string;
     /**
-     * Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
+     * Required. Order size in contracts: positive to buy and negative to sell. Set to 0 for a closing order.
      */
     'size': string;
     /**
@@ -94,11 +94,11 @@ export class FuturesOrder {
      */
     'text'?: string;
     /**
-     * Taker fee
+     * Taker fee rate.
      */
     'tkfr'?: string;
     /**
-     * Maker fee
+     * Maker fee rate.
      */
     'mkfr'?: string;
     /**

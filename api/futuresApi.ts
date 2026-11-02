@@ -42,6 +42,7 @@ import { FuturesOrderTimerange } from '../model/futuresOrderTimerange';
 import { FuturesPositionCrossMode } from '../model/futuresPositionCrossMode';
 import { FuturesPremiumIndex } from '../model/futuresPremiumIndex';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
+import { FuturesPriceTriggeredOrderError } from '../model/futuresPriceTriggeredOrderError';
 import { FuturesRiskLimitTier } from '../model/futuresRiskLimitTier';
 import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
@@ -63,6 +64,7 @@ import { StopTrailOrder } from '../model/stopTrailOrder';
 import { TrailOrderChangeLogResponse } from '../model/trailOrderChangeLogResponse';
 import { TrailOrderDetailResponse } from '../model/trailOrderDetailResponse';
 import { TrailOrderListResponse } from '../model/trailOrderListResponse';
+import { TrailOrderListResponseEnvelope } from '../model/trailOrderListResponseEnvelope';
 import { TrailOrderResponse } from '../model/trailOrderResponse';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { TriggerTime } from '../model/triggerTime';
@@ -2667,7 +2669,7 @@ export class FuturesApi {
     }
 
     /**
-     * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/orders_timerange`.
+     * - Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/orders_timerange`.
      * @summary Query futures order list
      * @param settle Perpetual futures settlement currency
      * @param status Query order list based on status
@@ -2770,7 +2772,7 @@ export class FuturesApi {
     }
 
     /**
-     * - When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In dual warehouse mode,   - Reduce position: reduce_only=true, size is a positive number that indicates short position, negative number that indicates long position  - Add number that indicates adding long positions, and negative numbers indicate adding short positions  - Close position: size=0, set the direction of closing position according to auto_size, and set `reduce_only` to true  at the same time - reduce_only: Make sure to only perform position reduction operations to prevent increased positions - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
+     * - When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In hedge mode:   - Reduce a position: with `reduce_only=true`, a positive `size` reduces the short position and a negative `size` reduces the long position.   - Increase a position: with `reduce_only=false`, a positive `size` increases the long position and a negative `size` increases the short position.   - Close a position: set `size=0`, select the closing side with `auto_size`, and set `reduce_only=true`.   - `reduce_only` ensures position reduction only and prevents increasing the position. - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
      * @summary Place futures order
      * @param settle Perpetual futures settlement currency
      * @param futuresOrder
@@ -3092,7 +3094,7 @@ export class FuturesApi {
     }
 
     /**
-     * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  
+     * - Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported.
      * @summary Query single order details
      * @param settle Perpetual futures settlement currency
      * @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely.
@@ -3503,7 +3505,7 @@ export class FuturesApi {
      * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.side Query side. long or shot
+     * @param opts.side Direction filter: long or short.
      * @param opts.pnl Query profit or loss
      */
     public async listPositionClose(
@@ -4368,7 +4370,7 @@ export class FuturesApi {
             reduceOnly?: 1 | 2;
             side?: 1 | 2;
         },
-    ): Promise<{ response: AxiosResponse; body: TrailOrderListResponse }> {
+    ): Promise<{ response: AxiosResponse; body: TrailOrderListResponseEnvelope }> {
         // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
@@ -4532,7 +4534,11 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TrailOrderListResponse>(config, 'TrailOrderListResponse', authSettings);
+        return this.client.request<TrailOrderListResponseEnvelope>(
+            config,
+            'TrailOrderListResponseEnvelope',
+            authSettings,
+        );
     }
 
     /**
@@ -4876,7 +4882,7 @@ export class FuturesApi {
      *
      * @summary List chase orders
      * @param settle Perpetual futures settlement currency
-     * @param sortBy Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
+     * @param sortBy Sort field: 1 for creation time; 2 for finish time. 0 is not accepted.
      * @param opts Optional parameters
      * @param opts.contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
      * @param opts.isFinished true to query finished orders, false to query in-progress orders

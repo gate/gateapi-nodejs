@@ -582,7 +582,7 @@ export class BotApi {
 
     /**
      * Query the list of AIHub strategies currently running by the user, and support filtering by strategy type, trading pair and paging conditions.
-     * @summary Query the list of running policies
+     * @summary List running strategies.
      * @param opts Optional parameters
      * @param opts.strategyType Filter by policy type
      * @param opts.market Filter by trading pair

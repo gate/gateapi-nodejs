@@ -10,7 +10,7 @@
  */
 
 /**
- * Update auto invest plan request
+ * Request to update an auto-invest plan. The current model contains plan_id, fund_source, and fund_flow.
  */
 export class AutoInvestPlanUpdate {
     /**

@@ -203,8 +203,8 @@ export class UnifiedApi {
     }
 
     /**
-     *
-     * @summary Batch query maximum transferable amount for unified accounts. Each currency shows the maximum value. After user withdrawal, the transferable amount for all currencies will change
+     * Each currency’s value is its maximum transferable amount. After a user withdrawal, the transferable amounts for all currencies will change.
+     * @summary Get maximum transferable amounts for multiple unified-account currencies
      * @param currencies Specify the currency name to query in batches, and support up to 100 pass parameters at a time
      */
     public async getUnifiedTransferables(
@@ -663,7 +663,7 @@ export class UnifiedApi {
     }
 
     /**
-     * Each account mode switch only requires passing the corresponding account mode parameter, and also supports turning on or off the configuration switches under the corresponding account mode during the switch. - When enabling the classic account mode, mode=classic ```  PUT /unified/unified_mode  {  \"mode\": \"classic\"  } ``` - When enabling the cross-currency margin \"multi_currency\",  \"settings\": {  \"usdt_futures\": true  }  } ``` - When enabling the portfolio margin mode, mode=portfolio ```  PUT /unified/unified_mode  {  \"mode\": \"portfolio\",  \"settings\": {  \"spot_hedge\": true  }  } ``` - When enabling the single-currency margin mode, mode=single_currency ```  PUT /unified/unified_mode  {  \"mode\": \"single_currency\"  } ```
+     * Each account mode switch only requires passing the corresponding account mode parameter, and also supports turning on or off the configuration switches under the corresponding account mode during the switch. - When enabling the classic account mode, mode=classic ```  PUT /unified/unified_mode  {  \"mode\": \"classic\"  } ``` - When enabling the cross-currency margin mode, mode=multi_currency ```  PUT /unified/unified_mode  {  \"mode\": \"multi_currency\",  \"settings\": {  \"usdt_futures\": true  }  } ``` - When enabling the portfolio margin mode, mode=portfolio ```  PUT /unified/unified_mode  {  \"mode\": \"portfolio\",  \"settings\": {  \"spot_hedge\": true  }  } ``` - When enabling the single-currency margin mode, mode=single_currency ```  PUT /unified/unified_mode  {  \"mode\": \"single_currency\"  } ```
      * @summary Set unified account mode
      * @param unifiedModeSet
      */
@@ -737,7 +737,7 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary Query unified account tiered
+     * @summary Get currency margin discount tiers for unified accounts
      */
     public async listCurrencyDiscountTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedDiscount> }> {
         // All int64 paths share exact validation; ordinary safe-number calls remain valid.

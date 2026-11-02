@@ -121,7 +121,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CFDApi(client);
 const opts = {
-  'symbols': "AUDUSD,XAUUSD", // string | List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required
+  'symbols': "AUDUSD,XAUUSD", // string | Comma-separated instrument symbols. Provide at least one of symbols and category_code.
   'categoryCode': "forex-外汇,metal-金属,index-指数,commodity-大宗商品,stock-股票" // string | List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required
 };
 api.querySymbolCommissions(opts)
@@ -134,7 +134,7 @@ api.querySymbolCommissions(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbols** | **string**| List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required | [optional] [default to undefined]
+ **symbols** | **string**| Comma-separated instrument symbols. Provide at least one of symbols and category_code. | [optional] [default to undefined]
  **categoryCode** | **string**| List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required | [optional] [default to undefined]
 
 ### Return type
@@ -911,7 +911,7 @@ const api = new GateApi.CFDApi(client);
 const opts = {
   'page': BigInt('1'), // number | Page number; defaults to 1 if omitted.
   'pageSize': BigInt('10'), // number | Page size; defaults to 10 if omitted. Maximum 100.
-  'beginTime': BigInt('56'), // number | Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
+  'beginTime': BigInt('56'), // number | Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago.
   'endTime': BigInt('56'), // number | End time (timestamp in seconds)
   'symbol': "symbol_example", // string | Trading symbol (e.g., EURUSD)
   'positionDir': "positionDir_example" // 'Long' | 'Short' | Position direction (Long=long position, Short=short position)
@@ -928,7 +928,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **number &#124; bigint**| Page number; defaults to 1 if omitted. | [optional] [default to undefined]
  **pageSize** | **number &#124; bigint**| Page size; defaults to 10 if omitted. Maximum 100. | [optional] [default to undefined]
- **beginTime** | **number &#124; bigint**| Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago | [optional] [default to undefined]
+ **beginTime** | **number &#124; bigint**| Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago. | [optional] [default to undefined]
  **endTime** | **number &#124; bigint**| End time (timestamp in seconds) | [optional] [default to undefined]
  **symbol** | **string**| Trading symbol (e.g., EURUSD) | [optional] [default to undefined]
  **positionDir** | **PositionDir**| Position direction (Long&#x3D;long position, Short&#x3D;short position) | [optional] [default to undefined]

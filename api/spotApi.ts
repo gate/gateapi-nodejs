@@ -55,7 +55,7 @@ export class SpotApi {
     }
 
     /**
-     * When a currency corresponds to multiple chains, you can query the information of multiple chains through the `chains` field, such as the charging and recharge status, identification, etc. of the chain
+     * When a currency is associated with multiple blockchains, use `chains` to view information about each chain, such as deposit and withdrawal status and chain identifiers.
      * @summary Query all currency information
      */
     public async listCurrencies(): Promise<{ response: AxiosResponse; body: Array<Currency> }> {
@@ -1225,7 +1225,7 @@ export class SpotApi {
 
     /**
      * When the `account` parameter is not specified, all pending orders including spot, unified account, and isolated margin will be cancelled. When `currency_pair` is not specified, all trading pair pending orders will be cancelled. You can specify a particular account to cancel all pending orders under that account
-     * @summary Cancel all `open` orders in specified currency pair
+     * @summary Cancel `open` orders in bulk, optionally filtered by currency pair
      * @param opts Optional parameters
      * @param opts.currencyPair Currency pair
      * @param opts.side Specify all bids or all asks, both included if not specified
@@ -1528,7 +1528,7 @@ export class SpotApi {
     }
 
     /**
-     * Modify orders in spot, unified account and isolated margin account by default.  Currently both request body and query support currency_pair and account parameters, but request body has higher priority.  currency_pair must be filled in one of the request body or query parameters.  About rate limit: Order modification and order creation share the same rate limit rules.  About matching priority: Only reducing the quantity does not affect the matching priority. Modifying the price or increasing the quantity will adjust the priority to the end of the new price level.  Note: Modifying the quantity to be less than the filled quantity will trigger a cancellation and isolated margin account by default.  Currently both request body and query support currency_pair and account parameters, but request body has higher priority.  currency_pair must be filled in one of the request body or query parameters.  About rate limit: Order modification and order creation share the same rate limit rules.  About matching priority: Only reducing the quantity does not affect the matching priority. Modifying the price or increasing the quantity will adjust the priority to the end of the new price level.  Note: Modifying the quantity to be less than the filled quantity will trigger a cancellation operation.
+     * By default, amend orders for spot, unified, and isolated-margin accounts.  Both the request body and query parameters support `currency_pair` and `account`; the request body has higher precedence.  Provide `currency_pair` in either the request body or the query parameters, choosing one location.  Amendments and order creation share rate limits.  Reducing quantity alone preserves matching priority. Changing the price or increasing the quantity places the order at the end of the new price level.  A new quantity below the filled quantity triggers cancellation.
      * @summary Amend single order
      * @param orderId The order ID returned when the order was successfully created or the custom ID specified by the user\&#39;s creation (i.e. the &#x60;text&#x60; field). Operations based on custom IDs can only be checked in pending orders. Only order ID can be used after the order is finished (transaction/cancel)
      * @param orderPatch
@@ -1754,7 +1754,7 @@ export class SpotApi {
     }
 
     /**
-     * Spot order heartbeat detection. If there is no \"cancel existing countdown\" or \"set new countdown\" when the user-set `timeout` time is reached, the related `spot pending orders` will be automatically cancelled. This interface can be called repeatedly to set a new countdown or cancel the countdown. Usage example: Repeat this interface at 30s intervals, setting the countdown `timeout` to `30 (seconds)` each time. If this interface is not called again within 30 seconds, all pending orders on the `market` you specified will be automatically cancelled. If no `market` is specified, all market cancelled. If the `timeout` is set to 0 within 30 seconds, the countdown timer will be terminated and the automatic order cancellation function will be cancelled.
+     * Spot order heartbeat detection. If there is no \"cancel existing countdown\" or \"set new countdown\" when the user-set `timeout` time is reached, the related `spot pending orders` will be automatically cancelled. This interface can be called repeatedly to set a new countdown or cancel the countdown. Usage example: Repeat this interface at 30s intervals, setting the countdown `timeout` to `30 (seconds)` each time. If this interface is not called again within 30 seconds, all open orders for the `currency_pair` you specified will be automatically cancelled. If no `currency_pair` is specified, open orders for all currency pairs are cancelled automatically. If the `timeout` is set to 0 within 30 seconds, the countdown timer will be terminated and the automatic order cancellation function will be cancelled.
      * @summary Countdown cancel orders
      * @param countdownCancelAllSpotTask
      */
@@ -2328,8 +2328,8 @@ export class SpotApi {
     }
 
     /**
-     *
-     * @summary Create a Spot POV order
+     * participation_rate specifies the target participation rate, and ttl specifies the validity period. The response contains the order id, which can be used with GET /spot/pov_orders/{order_id} to query details.
+     * @summary Create a spot percentage-of-volume (POV) strategy order
      * @param spotPovOrderCreator
      */
     public async createSpotPovOrder(

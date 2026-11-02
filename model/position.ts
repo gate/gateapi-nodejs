@@ -157,7 +157,7 @@ export class Position {
      */
     'averageMaintenanceRate'?: string;
     /**
-     * Sub-account position ID
+     * Split-position ID.
      */
     'pid'?: number | bigint;
     /**

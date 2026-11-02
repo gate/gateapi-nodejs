@@ -99,7 +99,7 @@ export class WalletApi {
 
     /**
      *
-     * @summary Generate currency deposit address
+     * @summary Get a currency deposit address
      * @param currency Currency name
      */
     public async getDepositAddress(currency: string): Promise<{ response: AxiosResponse; body: DepositAddress }> {
@@ -678,7 +678,7 @@ export class WalletApi {
 
     /**
      * API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
-     * @summary Query withdrawal status
+     * @summary Get currency withdrawal fees and limits, optionally filtered by currency.
      * @param opts Optional parameters
      * @param opts.currency Query by specified currency name
      */
@@ -1206,9 +1206,9 @@ export class WalletApi {
 
     /**
      *
-     * @summary Get convertible small balance currency history
+     * @summary Get small-balance conversion history
      * @param opts Optional parameters
-     * @param opts.currency Currency to convert
+     * @param opts.currency Filter by conversion currency.
      * @param opts.page Page number
      * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */

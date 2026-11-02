@@ -39,7 +39,7 @@ const opts = {
   'page': 1, // number | Page number
   'limit': 10, // number | Maximum number of records returned in a single list
   'sort': "ltv_asc", // string | Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio
-  'orderType': "current" // string | Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
+  'orderType': "current" // string | Order type: current for flexible-term orders; fixed for fixed-term orders. If omitted, current is used.
 };
 api.listMultiCollateralOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 10]
  **sort** | **string**| Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio | [optional] [default to undefined]
- **orderType** | **string**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | [optional] [default to undefined]
+ **orderType** | **string**| Order type: current for flexible-term orders; fixed for fixed-term orders. If omitted, current is used. | [optional] [default to undefined]
 
 ### Return type
 

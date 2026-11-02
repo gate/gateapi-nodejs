@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**updateCrossexPositionsLeverage**](CrossExApi.md#updateCrossexPositionsLeverage) | **POST** /crossex/positions/leverage | Modify Contract Trading Pair Leverage Multiplier
 [**getCrossexMarginPositionsLeverage**](CrossExApi.md#getCrossexMarginPositionsLeverage) | **GET** /crossex/margin_positions/leverage | Query Leveraged Trading Pair Leverage Multiplier
 [**updateCrossexMarginPositionsLeverage**](CrossExApi.md#updateCrossexMarginPositionsLeverage) | **POST** /crossex/margin_positions/leverage | Modify Leveraged Trading Pair Leverage Multiplier
-[**closeCrossexPosition**](CrossExApi.md#closeCrossexPosition) | **POST** /crossex/position | Full Close Position
+[**closeCrossexPosition**](CrossExApi.md#closeCrossexPosition) | **POST** /crossex/position | Close a position in full.
 [**getCrossexPositionsMarginMode**](CrossExApi.md#getCrossexPositionsMarginMode) | **GET** /crossex/positions/margin_mode | Get futures position margin mode
 [**updateCrossexPositionsMarginMode**](CrossExApi.md#updateCrossexPositionsMarginMode) | **POST** /crossex/positions/margin_mode | Update futures position margin mode
 [**updateCrossexPositionsMargin**](CrossExApi.md#updateCrossexPositionsMargin) | **POST** /crossex/positions/margin | Increase or decrease isolated margin
@@ -892,7 +892,7 @@ Promise<{ response: AxiosResponse; body: CrossexLeverageResponse; }> [CrossexLev
 
 > Promise<{ response: http.IncomingMessage; body: CrossexOrderActionResponse; }> closeCrossexPosition(opts)
 
-Full Close Position
+Close a position in full.
 
 Rate limit: 100 requests per day. Automatic position-closing rules. FUTURE and MARGIN positions are supported.  Before using this endpoint, ensure that the following prerequisite is met: - There are no open orders for the symbol in the current account. - Once the prerequisite is met, the system checks whether the position meets either of the following conditions: - Less than the minimum notional amount (minNotional) - Less than the minimum order size (minSize)  When either condition is met, the system automatically creates a closing order and immediately closes the entire position. This endpoint prevents positions that are too small to be submitted to an exchange from becoming stranded and ensures that small positions can be closed when they fall below the threshold.
 

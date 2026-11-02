@@ -18,7 +18,7 @@ export class MockSpotBalance {
      */
     'currency': string;
     /**
-     * Currency equity, where equity = balance - borrowed, represents the net delta exposure of your spot positions
+     * Currency equity = balance - borrowed amount. It represents net spot delta exposure and may be negative.
      */
     'equity': string;
 

@@ -21,11 +21,11 @@ export class QuickRepaymentResponse {
      */
     'orderId': string;
     /**
-     * Repaid currency details
+     * Repayment currency details: currency is the currency name, repaid is the amount repaid, and left is the remaining liability amount.
      */
     'repaidInfos': Array<UnifiedQuickRepayRepaidInfo>;
     /**
-     * Currencies used for repayment
+     * Details of currencies used for repayment: currency is the currency name, and used is the amount exchanged.
      */
     'usedInfos': Array<UnifiedQuickRepayUsedInfo>;
 

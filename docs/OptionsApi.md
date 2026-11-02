@@ -32,7 +32,7 @@ Method | HTTP request | Description
 [**listMyOptionsTrades**](OptionsApi.md#listMyOptionsTrades) | **GET** /options/my_trades | Query personal trading records
 [**getOptionsMMP**](OptionsApi.md#getOptionsMMP) | **GET** /options/mmp | MMP Query.
 [**setOptionsMMP**](OptionsApi.md#setOptionsMMP) | **POST** /options/mmp | MMP Settings
-[**resetOptionsMMP**](OptionsApi.md#resetOptionsMMP) | **POST** /options/mmp/reset | MMP Reset
+[**resetOptionsMMP**](OptionsApi.md#resetOptionsMMP) | **POST** /options/mmp/reset | Reset MMP for the specified underlying.
 
 
 ## listOptionsUnderlyings
@@ -1341,7 +1341,7 @@ Promise<{ response: AxiosResponse; body: OptionsMMP; }> [OptionsMMP](OptionsMMP.
 
 > Promise<{ response: http.IncomingMessage; body: OptionsMMP; }> resetOptionsMMP(optionsMMPReset)
 
-MMP Reset
+Reset MMP for the specified underlying.
 
 ### Example
 

@@ -1818,7 +1818,7 @@ export class OptionsApi {
 
     /**
      *
-     * @summary MMP Reset
+     * @summary Reset MMP for the specified underlying.
      * @param optionsMMPReset
      */
     public async resetOptionsMMP(

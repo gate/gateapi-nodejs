@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **userId** | **number &#124; bigint** | User ID | [optional] [readonly] [default to undefined]
-**mode** | **number** | Mode: 1 - classic 2 - portfolio account | [optional] [default to undefined]
+**mode** | **number** | Account mode: 1 for a classic account; 2 for a unified account. | [optional] [default to undefined]
 **name** | **string** | API Key Name | [optional] [default to undefined]
 **perms** | [**Array<SubAccountKeyPerms>**](SubAccountKeyPerms.md) |  | [optional] [default to undefined]
 **ipWhitelist** | **Array<string>** | IP whitelist (list will be cleared if no value is passed) | [optional] [default to undefined]
