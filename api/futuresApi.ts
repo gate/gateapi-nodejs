@@ -5358,7 +5358,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesPriceTriggeredOrder>(config, 'FuturesPriceTriggeredOrder', authSettings);
+        return this.client.request<FuturesPriceTriggeredOrder>(config, 'FuturesPriceTriggeredOrder', authSettings, 205);
     }
 
     /**

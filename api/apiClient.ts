@@ -154,10 +154,20 @@ export class ApiClient {
         config: AxiosRequestConfig,
         responseType: string,
         authSettings: Array<string>,
+        ...errorStatuses: number[]
     ): Promise<{ response: AxiosResponse; body: T }> {
         // Fresh config/arrays isolate SDK behavior while preserving explicit
         // per-request transforms and the original client's interceptors.
         const requestConfig: AxiosRequestConfig = { ...config };
+        // Per-call YAML metadata, never a global Axios status override.
+        const declaredErrors = errorStatuses.length ? new Set(errorStatuses) : undefined;
+        if (declaredErrors) {
+            const validate =
+                requestConfig.validateStatus === undefined
+                    ? this.axiosInstance.defaults.validateStatus
+                    : requestConfig.validateStatus;
+            requestConfig.validateStatus = (status) => !declaredErrors.has(status) && (!validate || validate(status));
+        }
         if (requestConfig.transformResponse === undefined) {
             requestConfig.transformResponse = [
                 // Success cannot hide broken JSON. For an already rejected HTTP
@@ -166,7 +176,10 @@ export class ApiClient {
                     try {
                         return parseResponseData(data, headers && headers['content-type']);
                     } catch (error) {
-                        if (typeof status === 'number' && (status < 200 || status >= 300)) {
+                        if (
+                            typeof status === 'number' &&
+                            (status < 200 || status >= 300 || declaredErrors?.has(status))
+                        ) {
                             return data;
                         }
                         throw error;
