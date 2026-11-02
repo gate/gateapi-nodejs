@@ -68,27 +68,27 @@ export class TrailOrder {
     /**
      * Created time
      */
-    'createdAt'?: number | bigint;
+    'createdAt'?: string;
     /**
      * Activation time
      */
-    'activatedAt'?: number | bigint;
+    'activatedAt'?: string;
     /**
      * End time
      */
-    'finishedAt'?: number | bigint;
+    'finishedAt'?: string;
     /**
      * Created time
      */
-    'createTime'?: number | bigint;
+    'createTime'?: string;
     /**
      * Activation time
      */
-    'activeTime'?: number | bigint;
+    'activeTime'?: string;
     /**
      * End time
      */
-    'finishTime'?: number | bigint;
+    'finishTime'?: string;
     /**
      * End reason
      */
@@ -128,7 +128,7 @@ export class TrailOrder {
     /**
      * Update time
      */
-    'updatedAt'?: number | bigint;
+    'updatedAt'?: string;
     /**
      * Extremum price
      */
@@ -176,17 +176,17 @@ export class TrailOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'bigint',
+            type: 'bigint-string',
         },
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'bigint',
+            type: 'bigint-string',
         },
         {
             name: 'user',
             baseName: 'user',
-            type: 'bigint',
+            type: 'bigint-string',
         },
         {
             name: 'contract',
@@ -241,32 +241,32 @@ export class TrailOrder {
         {
             name: 'createdAt',
             baseName: 'created_at',
-            type: 'int64',
+            type: 'string',
         },
         {
             name: 'activatedAt',
             baseName: 'activated_at',
-            type: 'int64',
+            type: 'string',
         },
         {
             name: 'finishedAt',
             baseName: 'finished_at',
-            type: 'int64',
+            type: 'string',
         },
         {
             name: 'createTime',
             baseName: 'create_time',
-            type: 'int64',
+            type: 'string',
         },
         {
             name: 'activeTime',
             baseName: 'active_time',
-            type: 'int64',
+            type: 'string',
         },
         {
             name: 'finishTime',
             baseName: 'finish_time',
-            type: 'int64',
+            type: 'string',
         },
         {
             name: 'reason',
@@ -291,7 +291,7 @@ export class TrailOrder {
         {
             name: 'suborderId',
             baseName: 'suborder_id',
-            type: 'bigint',
+            type: 'bigint-string',
         },
         {
             name: 'sideLabel',
@@ -316,7 +316,7 @@ export class TrailOrder {
         {
             name: 'updatedAt',
             baseName: 'updated_at',
-            type: 'int64',
+            type: 'string',
         },
         {
             name: 'extremumPrice',

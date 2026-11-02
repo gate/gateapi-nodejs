@@ -27,9 +27,9 @@ export class CreateTrailOrder {
      */
     'isGte'?: boolean;
     /**
-     * Activation price type: 1-latest price, 2-index price, 3-mark price
+     * Activation price type, required: 1-latest price, 2-index price, 3-mark price. The caller must specify it explicitly.
      */
-    'priceType'?: CreateTrailOrder.PriceType;
+    'priceType': CreateTrailOrder.PriceType;
     /**
      * Callback ratio or price distance, e.g., `0.1` or `0.1%`
      */
