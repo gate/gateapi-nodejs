@@ -9,18 +9,45 @@
  * Do not edit the class manually.
  */
 
-import { TrailChangeLog } from './trailChangeLog';
+import { TrailOrderChangeLogData } from './trailOrderChangeLogData';
 
 export class TrailOrderChangeLogResponse {
-    'changeLog'?: Array<TrailChangeLog>;
+    /**
+     * Status code, 0 means success
+     */
+    'code'?: number;
+    /**
+     * Response message
+     */
+    'message'?: string;
+    'data'?: TrailOrderChangeLogData;
+    /**
+     * Response timestamp (milliseconds)
+     */
+    'timestamp'?: number | bigint;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'changeLog',
-            baseName: 'change_log',
-            type: 'Array<TrailChangeLog>',
+            name: 'code',
+            baseName: 'code',
+            type: 'number',
+        },
+        {
+            name: 'message',
+            baseName: 'message',
+            type: 'string',
+        },
+        {
+            name: 'data',
+            baseName: 'data',
+            type: 'TrailOrderChangeLogData',
+        },
+        {
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'int64',
         },
     ];
 

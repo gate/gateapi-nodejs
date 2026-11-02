@@ -2855,7 +2855,7 @@ Promise<{ response: AxiosResponse; body: CreateTrailOrderResponse; }> [CreateTra
 
 ## stopTrailOrder
 
-> Promise<{ response: http.IncomingMessage; body: TrailOrderResponse; }> stopTrailOrder(settle, stopTrailOrder)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderDetailResponse; }> stopTrailOrder(settle, stopTrailOrder)
 
 Terminate trail order
 
@@ -2887,7 +2887,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: TrailOrderResponse; }> [TrailOrderResponse](TrailOrderResponse.md)
+Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse; }> [TrailOrderDetailResponse](TrailOrderDetailResponse.md)
 
 ### Authorization
 
@@ -3059,7 +3059,7 @@ Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse; }> [TrailOrde
 
 ## updateTrailOrder
 
-> Promise<{ response: http.IncomingMessage; body: TrailOrderResponse; }> updateTrailOrder(settle, updateTrailOrder)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderDetailResponse; }> updateTrailOrder(settle, updateTrailOrder)
 
 Update trail order
 
@@ -3091,7 +3091,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: TrailOrderResponse; }> [TrailOrderResponse](TrailOrderResponse.md)
+Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse; }> [TrailOrderDetailResponse](TrailOrderDetailResponse.md)
 
 ### Authorization
 

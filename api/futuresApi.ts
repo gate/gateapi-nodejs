@@ -65,7 +65,6 @@ import { TrailOrderChangeLogResponse } from '../model/trailOrderChangeLogRespons
 import { TrailOrderDetailResponse } from '../model/trailOrderDetailResponse';
 import { TrailOrderListResponse } from '../model/trailOrderListResponse';
 import { TrailOrderListResponseEnvelope } from '../model/trailOrderListResponseEnvelope';
-import { TrailOrderResponse } from '../model/trailOrderResponse';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { TriggerTime } from '../model/triggerTime';
 import { UpdateDualCompPositionCrossModeRequest } from '../model/updateDualCompPositionCrossModeRequest';
@@ -4245,7 +4244,7 @@ export class FuturesApi {
     public async stopTrailOrder(
         settle: 'btc' | 'usdt' | 'usd1',
         stopTrailOrder: StopTrailOrder,
-    ): Promise<{ response: AxiosResponse; body: TrailOrderResponse }> {
+    ): Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse }> {
         // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
@@ -4282,7 +4281,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TrailOrderResponse>(config, 'TrailOrderResponse', authSettings);
+        return this.client.request<TrailOrderDetailResponse>(config, 'TrailOrderDetailResponse', authSettings);
     }
 
     /**
@@ -4605,7 +4604,7 @@ export class FuturesApi {
     public async updateTrailOrder(
         settle: 'btc' | 'usdt' | 'usd1',
         updateTrailOrder: UpdateTrailOrder,
-    ): Promise<{ response: AxiosResponse; body: TrailOrderResponse }> {
+    ): Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse }> {
         // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
@@ -4642,7 +4641,7 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TrailOrderResponse>(config, 'TrailOrderResponse', authSettings);
+        return this.client.request<TrailOrderDetailResponse>(config, 'TrailOrderDetailResponse', authSettings);
     }
 
     /**

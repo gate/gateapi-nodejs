@@ -706,6 +706,7 @@ export * from './trade';
 export * from './tradeFee';
 export * from './trailChangeLog';
 export * from './trailOrder';
+export * from './trailOrderChangeLogData';
 export * from './trailOrderChangeLogResponse';
 export * from './trailOrderDetailResponse';
 export * from './trailOrderListResponse';
@@ -1498,6 +1499,7 @@ import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
 import { TrailChangeLog } from './trailChangeLog';
 import { TrailOrder } from './trailOrder';
+import { TrailOrderChangeLogData } from './trailOrderChangeLogData';
 import { TrailOrderChangeLogResponse } from './trailOrderChangeLogResponse';
 import { TrailOrderDetailResponse } from './trailOrderDetailResponse';
 import { TrailOrderListResponse } from './trailOrderListResponse';
@@ -2529,6 +2531,7 @@ let typeMap: { [index: string]: any } = {
     TradeFee: TradeFee,
     TrailChangeLog: TrailChangeLog,
     TrailOrder: TrailOrder,
+    TrailOrderChangeLogData: TrailOrderChangeLogData,
     TrailOrderChangeLogResponse: TrailOrderChangeLogResponse,
     TrailOrderDetailResponse: TrailOrderDetailResponse,
     TrailOrderListResponse: TrailOrderListResponse,

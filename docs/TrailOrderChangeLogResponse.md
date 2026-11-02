@@ -4,5 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**changeLog** | [**Array<TrailChangeLog>**](TrailChangeLog.md) |  | [optional] [default to undefined]
+**code** | **number** | Status code, 0 means success | [optional] [default to undefined]
+**message** | **string** | Response message | [optional] [default to undefined]
+**data** | [**TrailOrderChangeLogData**](TrailOrderChangeLogData.md) |  | [optional] [default to undefined]
+**timestamp** | **number &#124; bigint** | Response timestamp (milliseconds) | [optional] [default to undefined]
 
