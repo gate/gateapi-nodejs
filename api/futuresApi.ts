@@ -63,7 +63,6 @@ import { StopChaseOrderResp } from '../model/stopChaseOrderResp';
 import { StopTrailOrder } from '../model/stopTrailOrder';
 import { TrailOrderChangeLogResponse } from '../model/trailOrderChangeLogResponse';
 import { TrailOrderDetailResponse } from '../model/trailOrderDetailResponse';
-import { TrailOrderListResponse } from '../model/trailOrderListResponse';
 import { TrailOrderListResponseEnvelope } from '../model/trailOrderListResponseEnvelope';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { TriggerTime } from '../model/triggerTime';
@@ -4293,7 +4292,7 @@ export class FuturesApi {
     public async stopAllTrailOrders(
         settle: 'btc' | 'usdt' | 'usd1',
         stopAllTrailOrders: StopAllTrailOrders,
-    ): Promise<{ response: AxiosResponse; body: TrailOrderListResponse }> {
+    ): Promise<{ response: AxiosResponse; body: TrailOrderListResponseEnvelope }> {
         // All int64 paths share exact validation; ordinary safe-number calls remain valid.
         const localVarPath =
             this.client.basePath +
@@ -4332,7 +4331,11 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TrailOrderListResponse>(config, 'TrailOrderListResponse', authSettings);
+        return this.client.request<TrailOrderListResponseEnvelope>(
+            config,
+            'TrailOrderListResponseEnvelope',
+            authSettings,
+        );
     }
 
     /**

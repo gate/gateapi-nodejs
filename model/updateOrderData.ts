@@ -16,31 +16,31 @@ export class UpdateOrderData {
     /**
      * Order ID
      */
-    'orderId'?: bigint;
+    'orderId': bigint;
     /**
      * Currency pair
      */
-    'symbol'?: string;
+    'symbol': string;
     /**
      * Order status code
      */
-    'state'?: string;
+    'state': string;
     /**
      * Order quantity
      */
-    'volume'?: string;
+    'volume': string;
     /**
      * Current price
      */
-    'price'?: string;
+    'price': string;
     /**
      * Current take profit price
      */
-    'priceTp'?: string;
+    'priceTp': string;
     /**
      * Current stop loss price
      */
-    'priceSl'?: string;
+    'priceSl': string;
 
     static discriminator: string | undefined = undefined;
 

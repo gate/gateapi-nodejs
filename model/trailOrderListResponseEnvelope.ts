@@ -25,7 +25,7 @@ export class TrailOrderListResponseEnvelope {
     'message'?: string;
     'data'?: TrailOrderListResponse;
     /**
-     * Response timestamp in microseconds.
+     * Response timestamp (milliseconds)
      */
     'timestamp'?: number | bigint;
 

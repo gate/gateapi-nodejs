@@ -2900,7 +2900,7 @@ Promise<{ response: AxiosResponse; body: TrailOrderDetailResponse; }> [TrailOrde
 
 ## stopAllTrailOrders
 
-> Promise<{ response: http.IncomingMessage; body: TrailOrderListResponse; }> stopAllTrailOrders(settle, stopAllTrailOrders)
+> Promise<{ response: http.IncomingMessage; body: TrailOrderListResponseEnvelope; }> stopAllTrailOrders(settle, stopAllTrailOrders)
 
 Batch terminate trail orders
 
@@ -2932,7 +2932,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: TrailOrderListResponse; }> [TrailOrderListResponse](TrailOrderListResponse.md)
+Promise<{ response: AxiosResponse; body: TrailOrderListResponseEnvelope; }> [TrailOrderListResponseEnvelope](TrailOrderListResponseEnvelope.md)
 
 ### Authorization
 
