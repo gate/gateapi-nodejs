@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**queryStockUserAssets**](StockApi.md#queryStockUserAssets) | **GET** /stock/users/assets | Query user assets
+[**setStockMarginFeature**](StockApi.md#setStockMarginFeature) | **PUT** /stock/users/margin-feature | Set margin financing availability
 [**queryStockSymbols**](StockApi.md#queryStockSymbols) | **GET** /stock/symbols | Query symbol list
 [**queryStockSymbolDetail**](StockApi.md#queryStockSymbolDetail) | **GET** /stock/symbols/detail | Query symbol details
 [**queryStockOrderBook**](StockApi.md#queryStockOrderBook) | **GET** /stock/market/{symbol}/orderbook | Query market order book
@@ -12,12 +13,14 @@ Method | HTTP request | Description
 [**createStockOrder**](StockApi.md#createStockOrder) | **POST** /stock/orders | Create order
 [**deleteAllStockOrders**](StockApi.md#deleteAllStockOrders) | **DELETE** /stock/orders | Cancel all open orders
 [**queryStockOrderHistory**](StockApi.md#queryStockOrderHistory) | **GET** /stock/orders/history | Query historical order list
+[**queryStockOrderDeals**](StockApi.md#queryStockOrderDeals) | **GET** /stock/orders/deals | Query order trade records
 [**updateStockOrder**](StockApi.md#updateStockOrder) | **PUT** /stock/orders/{order_id} | Modify order
 [**deleteStockOrder**](StockApi.md#deleteStockOrder) | **DELETE** /stock/orders/{order_id} | Cancel order
 [**queryStockPositions**](StockApi.md#queryStockPositions) | **GET** /stock/positions | Query current position list
 [**closeStockPosition**](StockApi.md#closeStockPosition) | **POST** /stock/positions/close | Close position
 [**queryStockTransactions**](StockApi.md#queryStockTransactions) | **GET** /stock/transactions | Query transaction records
 [**createStockTransaction**](StockApi.md#createStockTransaction) | **POST** /stock/transactions | Fund transfer
+[**queryStockBalanceRecords**](StockApi.md#queryStockBalanceRecords) | **GET** /stock/users/balance-records | Query user balance records
 [**queryStockExchanges**](StockApi.md#queryStockExchanges) | **GET** /stock/exchanges | Query supported exchanges
 [**queryStockFeeRate**](StockApi.md#queryStockFeeRate) | **GET** /stock/fee-rate | Query fee rates for Japanese and Korean stocks
 
@@ -69,6 +72,51 @@ Promise<{ response: AxiosResponse; body: UserAssetResp2; }> [UserAssetResp2](Use
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+## setStockMarginFeature
+
+> Promise<{ response: http.IncomingMessage; body: SetMarginFeature; }> setStockMarginFeature(tradFiSpotSetMarginFeatureRequest)
+
+Set margin financing availability
+
+Rate limit: 5 requests per second. Enable or disable margin financing for the user.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.StockApi(client);
+const tradFiSpotSetMarginFeatureRequest = new TradFiSpotSetMarginFeatureRequest(); // TradFiSpotSetMarginFeatureRequest | 
+api.setStockMarginFeature(tradFiSpotSetMarginFeatureRequest)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tradFiSpotSetMarginFeatureRequest** | [**TradFiSpotSetMarginFeatureRequest**](TradFiSpotSetMarginFeatureRequest.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: SetMarginFeature; }> [SetMarginFeature](SetMarginFeature.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ## queryStockSymbols
@@ -410,6 +458,57 @@ Promise<{ response: AxiosResponse; body: OrderHistoryList2; }> [OrderHistoryList
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## queryStockOrderDeals
+
+> Promise<{ response: http.IncomingMessage; body: OrderDealList; }> queryStockOrderDeals(orderId, opts)
+
+Query order trade records
+
+Rate limit: 5 requests per second. Query the current user\&#39;s trade records by order ID. &#x60;price&#x60;, &#x60;value&#x60;, and &#x60;fee&#x60; are denominated in the instrument trading currency (for example, USD for US stocks, HKD for Hong Kong stocks, JPY for Japanese stocks, and KRW for Korean stocks). &#x60;role&#x60; returns &#x60;maker&#x60; or &#x60;taker&#x60;.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.StockApi(client);
+const orderId = BigInt('123456'); // bigint | Order ID
+const opts = {
+  'page': 1, // number | Page number, defaults to 1
+  'pageSize': 20 // number | Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100.
+};
+api.queryStockOrderDeals(orderId, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **bigint**| Order ID | [default to undefined]
+ **page** | **number**| Page number, defaults to 1 | [optional] [default to undefined]
+ **pageSize** | **number**| Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: OrderDealList; }> [OrderDealList](OrderDealList.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 ## updateStockOrder
 
 > Promise<{ response: http.IncomingMessage; body: UpdateOrder2; }> updateStockOrder(orderId, tradFiSpotOrderUpdateRequest)
@@ -700,6 +799,71 @@ Promise<{ response: AxiosResponse; body: CreateTransaction2; }> [CreateTransacti
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+## queryStockBalanceRecords
+
+> Promise<{ response: http.IncomingMessage; body: BalanceRecordList; }> queryStockBalanceRecords(opts)
+
+Query user balance records
+
+Rate limit: 5 requests per second. Query the current user\&#39;s raw balance records. User scope is derived from the request headers; a query parameter &#x60;user_id&#x60; is not supported. - &#x60;type&#x60; and &#x60;business&#x60; support multiple comma-separated values. - &#x60;begin_time&#x60; and &#x60;end_time&#x60; filter record creation time in seconds. When both are provided, &#x60;end_time&#x60; must be greater than &#x60;begin_time&#x60;. - Results are always sorted by primary key &#x60;id&#x60;; &#x60;sort_direction&#x60; accepts &#x60;asc&#x60; or &#x60;desc&#x60;. The default is &#x60;id desc&#x60;. With &#x60;start_id&#x60; and no &#x60;sort_direction&#x60;, the order is &#x60;id asc&#x60;, and only records with &#x60;id &gt; start_id&#x60; are returned for incremental retrieval. - &#x60;detail&#x60; is omitted by default and returned only when &#x60;include_detail&#x3D;true&#x60;. - &#x60;stock_change&#x60; is parsed from &#x60;detail.amount&#x60; for stock quantity records; &#x60;balance&#x60; is a cash balance snapshot, not a stock position balance.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.StockApi(client);
+const opts = {
+  'type': "deposit,fee", // string | Record types, separated by commas
+  'business': "transfer,trade", // string | Business identifiers, separated by commas
+  'symbol': "AAPL", // string | Symbol
+  'beginTime': BigInt('1769378400'), // number | Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time.
+  'endTime': BigInt('1769464800'), // number | End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time.
+  'startId': BigInt('1000'), // bigint | Starting primary key ID for incremental queries. Only records with a greater id are returned.
+  'sortDirection': "desc", // 'asc' | 'desc' | Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id.
+  'includeDetail': false, // boolean | Whether to return the raw detail field; defaults to false when omitted
+  'page': 1, // number | Page number, defaults to 1
+  'pageSize': 20 // number | Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100.
+};
+api.queryStockBalanceRecords(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| Record types, separated by commas | [optional] [default to undefined]
+ **business** | **string**| Business identifiers, separated by commas | [optional] [default to undefined]
+ **symbol** | **string**| Symbol | [optional] [default to undefined]
+ **beginTime** | **number &#124; bigint**| Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. | [optional] [default to undefined]
+ **endTime** | **number &#124; bigint**| End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. | [optional] [default to undefined]
+ **startId** | **bigint**| Starting primary key ID for incremental queries. Only records with a greater id are returned. | [optional] [default to undefined]
+ **sortDirection** | **SortDirection**| Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id. | [optional] [default to undefined]
+ **includeDetail** | **boolean**| Whether to return the raw detail field; defaults to false when omitted | [optional] [default to undefined]
+ **page** | **number**| Page number, defaults to 1 | [optional] [default to undefined]
+ **pageSize** | **number**| Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: BalanceRecordList; }> [BalanceRecordList](BalanceRecordList.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 ## queryStockExchanges

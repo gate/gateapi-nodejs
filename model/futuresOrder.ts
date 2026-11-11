@@ -26,13 +26,25 @@ export class FuturesOrder {
      */
     'createTime'?: number;
     /**
+     * Order creation time as a Unix timestamp in microseconds; omitted when unavailable
+     */
+    'createTimeUs'?: number | bigint;
+    /**
      * OrderUpdateTime
      */
     'updateTime'?: number;
     /**
+     * Order update time as a Unix timestamp in microseconds; omitted when unavailable
+     */
+    'updateTimeUs'?: number | bigint;
+    /**
      * Order finished time. Not returned if order is open
      */
     'finishTime'?: number;
+    /**
+     * Order finish time as a Unix timestamp in microseconds; omitted if the order has not finished or the timestamp is unavailable
+     */
+    'finishTimeUs'?: number | bigint;
     /**
      * How the order was finished:  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set - position_closed: cancelled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention
      */
@@ -173,14 +185,29 @@ export class FuturesOrder {
             type: 'double',
         },
         {
+            name: 'createTimeUs',
+            baseName: 'create_time_us',
+            type: 'int64',
+        },
+        {
             name: 'updateTime',
             baseName: 'update_time',
             type: 'double',
         },
         {
+            name: 'updateTimeUs',
+            baseName: 'update_time_us',
+            type: 'int64',
+        },
+        {
             name: 'finishTime',
             baseName: 'finish_time',
             type: 'double',
+        },
+        {
+            name: 'finishTimeUs',
+            baseName: 'finish_time_us',
+            type: 'int64',
         },
         {
             name: 'finishAs',

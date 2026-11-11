@@ -34,6 +34,7 @@ import { CrossexMarginInterestRecord } from '../model/crossexMarginInterestRecor
 import { CrossexMarginModeRequest } from '../model/crossexMarginModeRequest';
 import { CrossexMarginModeResponse } from '../model/crossexMarginModeResponse';
 import { CrossexMarginPosition } from '../model/crossexMarginPosition';
+import { CrossexOpenCapacity } from '../model/crossexOpenCapacity';
 import { CrossexOrder } from '../model/crossexOrder';
 import { CrossexOrderActionResponse } from '../model/crossexOrderActionResponse';
 import { CrossexOrderRequest } from '../model/crossexOrderRequest';
@@ -111,6 +112,34 @@ export class CrossExApi {
 
         const authSettings = [];
         return this.client.request<Array<Symbol>>(config, 'Array<Symbol>', authSettings);
+    }
+
+    /**
+     * Query the current maximum remaining opening notional value for each futures trading pair in the LONG and SHORT directions. Only trading pairs and position sides with remaining opening capacity below the threshold are returned; omission means the remaining capacity is at least the threshold. When `available_to_open_notional` is `0`, no position can currently be opened for that trading pair and position side. Closing positions is not affected by this rule.
+     * @summary Query remaining platform opening capacity
+     */
+    public async listCrossexRuleOpenCapacity(): Promise<{ response: AxiosResponse; body: Array<CrossexOpenCapacity> }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
+        const localVarPath = this.client.basePath + '/crossex/rule/open_capacity';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<CrossexOpenCapacity>>(config, 'Array<CrossexOpenCapacity>', authSettings);
     }
 
     /**
@@ -308,7 +337,7 @@ export class CrossExApi {
     }
 
     /**
-     * Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE` - When either side of the transfer is `CROSSEX_KRAKEN`, only USDT is supported for now. - When either side of the transfer is `CROSSEX_HYPERLIQUID`, the other side must be `SPOT`, and only USDC is supported. - When either side of the transfer is `CROSSEX_LIGHTER`, the other side must be `SPOT`, and only USDC is supported.
+     * Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE` - When either side of the transfer is `CROSSEX_KRAKEN`, only USDT is supported for now. - When either side of the transfer is `CROSSEX_DERIBIT`, only USDC is currently supported. - When either side of the transfer is `CROSSEX_HYPERLIQUID`, the other side must be `SPOT`, and only USDC is supported. - When either side of the transfer is `CROSSEX_LIGHTER`, the other side must be `SPOT`, and only USDC is supported.
      * @summary Fund Transfer
      * @param opts Optional parameters
      * @param opts.crossexTransferRequest

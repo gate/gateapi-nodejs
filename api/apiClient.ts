@@ -174,7 +174,7 @@ export class ApiClient {
                 // status, retain its body/status instead of a parser error.
                 (data, headers, status) => {
                     try {
-                        return parseResponseData(data, headers && headers['content-type']);
+                        return parseResponseData(data, headers && headers['content-type'], responseType);
                     } catch (error) {
                         if (
                             typeof status === 'number' &&

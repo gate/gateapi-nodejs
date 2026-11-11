@@ -10,6 +10,7 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { BalanceRecordList } from '../model/balanceRecordList';
 import { ClosePosition } from '../model/closePosition';
 import { CreateOrder2 } from '../model/createOrder2';
 import { CreateTransaction2 } from '../model/createTransaction2';
@@ -17,15 +18,18 @@ import { DeleteOrder } from '../model/deleteOrder';
 import { Exchanges } from '../model/exchanges';
 import { FeeRate } from '../model/feeRate';
 import { OrderBook2 } from '../model/orderBook2';
+import { OrderDealList } from '../model/orderDealList';
 import { OrderHistoryList2 } from '../model/orderHistoryList2';
 import { OrderList2 } from '../model/orderList2';
 import { PositionList2 } from '../model/positionList2';
+import { SetMarginFeature } from '../model/setMarginFeature';
 import { SymbolDetail } from '../model/symbolDetail';
 import { Symbols2 } from '../model/symbols2';
 import { TradFiSpotClosePositionRequest } from '../model/tradFiSpotClosePositionRequest';
 import { TradFiSpotError } from '../model/tradFiSpotError';
 import { TradFiSpotOrderRequest } from '../model/tradFiSpotOrderRequest';
 import { TradFiSpotOrderUpdateRequest } from '../model/tradFiSpotOrderUpdateRequest';
+import { TradFiSpotSetMarginFeatureRequest } from '../model/tradFiSpotSetMarginFeatureRequest';
 import { TradFiSpotTransactionRequest } from '../model/tradFiSpotTransactionRequest';
 import { TransactionList2 } from '../model/transactionList2';
 import { UpdateOrder2 } from '../model/updateOrder2';
@@ -104,6 +108,45 @@ export class StockApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<UserAssetResp2>(config, 'UserAssetResp2', authSettings);
+    }
+
+    /**
+     * Rate limit: 5 requests per second. Enable or disable margin financing for the user.
+     * @summary Set margin financing availability
+     * @param tradFiSpotSetMarginFeatureRequest
+     */
+    public async setStockMarginFeature(
+        tradFiSpotSetMarginFeatureRequest: TradFiSpotSetMarginFeatureRequest,
+    ): Promise<{ response: AxiosResponse; body: SetMarginFeature }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
+        const localVarPath = this.client.basePath + '/stock/users/margin-feature';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'tradFiSpotSetMarginFeatureRequest' is not null or undefined
+        if (tradFiSpotSetMarginFeatureRequest === null || tradFiSpotSetMarginFeatureRequest === undefined) {
+            throw new Error(
+                'Required parameter tradFiSpotSetMarginFeatureRequest was null or undefined when calling setStockMarginFeature.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'PUT',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(tradFiSpotSetMarginFeatureRequest, 'TradFiSpotSetMarginFeatureRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<SetMarginFeature>(config, 'SetMarginFeature', authSettings);
     }
 
     /**
@@ -555,6 +598,76 @@ export class StockApi {
     }
 
     /**
+     * Rate limit: 5 requests per second. Query the current user\'s trade records by order ID. `price`, `value`, and `fee` are denominated in the instrument trading currency (for example, USD for US stocks, HKD for Hong Kong stocks, JPY for Japanese stocks, and KRW for Korean stocks). `role` returns `maker` or `taker`.
+     * @summary Query order trade records
+     * @param orderId Order ID
+     * @param opts Optional parameters
+     * @param opts.page Page number, defaults to 1
+     * @param opts.pageSize Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100.
+     */
+    public async queryStockOrderDeals(
+        orderId: bigint,
+        opts?: { page?: number; pageSize?: number },
+    ): Promise<{ response: AxiosResponse; body: OrderDealList }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
+        const localVarPath = this.client.basePath + '/stock/orders/deals';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling queryStockOrderDeals.');
+        }
+
+        opts = opts || {};
+        let orderIdSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(orderId, 'bigint'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
+        if (Array.isArray(orderIdSerialized)) {
+            orderIdSerialized = orderIdSerialized.join(',');
+        }
+        localVarQueryParameters['order_id'] = orderIdSerialized;
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OrderDealList>(config, 'OrderDealList', authSettings);
+    }
+
+    /**
      * Rate limit: 5 qps.
      * @summary Modify order
      * @param orderId Order ID
@@ -921,6 +1034,167 @@ export class StockApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<CreateTransaction2>(config, 'CreateTransaction2', authSettings);
+    }
+
+    /**
+     * Rate limit: 5 requests per second. Query the current user\'s raw balance records. User scope is derived from the request headers; a query parameter `user_id` is not supported. - `type` and `business` support multiple comma-separated values. - `begin_time` and `end_time` filter record creation time in seconds. When both are provided, `end_time` must be greater than `begin_time`. - Results are always sorted by primary key `id`; `sort_direction` accepts `asc` or `desc`. The default is `id desc`. With `start_id` and no `sort_direction`, the order is `id asc`, and only records with `id > start_id` are returned for incremental retrieval. - `detail` is omitted by default and returned only when `include_detail=true`. - `stock_change` is parsed from `detail.amount` for stock quantity records; `balance` is a cash balance snapshot, not a stock position balance.
+     * @summary Query user balance records
+     * @param opts Optional parameters
+     * @param opts.type Record types, separated by commas
+     * @param opts.business Business identifiers, separated by commas
+     * @param opts.symbol Symbol
+     * @param opts.beginTime Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time.
+     * @param opts.endTime End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time.
+     * @param opts.startId Starting primary key ID for incremental queries. Only records with a greater id are returned.
+     * @param opts.sortDirection Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id.
+     * @param opts.includeDetail Whether to return the raw detail field; defaults to false when omitted
+     * @param opts.page Page number, defaults to 1
+     * @param opts.pageSize Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100.
+     */
+    public async queryStockBalanceRecords(opts?: {
+        type?: string;
+        business?: string;
+        symbol?: string;
+        beginTime?: number | bigint;
+        endTime?: number | bigint;
+        startId?: bigint;
+        sortDirection?: 'asc' | 'desc';
+        includeDetail?: boolean;
+        page?: number;
+        pageSize?: number;
+    }): Promise<{ response: AxiosResponse; body: BalanceRecordList }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
+        const localVarPath = this.client.basePath + '/stock/users/balance-records';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.type !== undefined) {
+            let typeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.type, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(typeSerialized)) {
+                typeSerialized = typeSerialized.join(',');
+            }
+            localVarQueryParameters['type'] = typeSerialized;
+        }
+
+        if (opts.business !== undefined) {
+            let businessSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.business, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(businessSerialized)) {
+                businessSerialized = businessSerialized.join(',');
+            }
+            localVarQueryParameters['business'] = businessSerialized;
+        }
+
+        if (opts.symbol !== undefined) {
+            let symbolSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.symbol, 'string'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(symbolSerialized)) {
+                symbolSerialized = symbolSerialized.join(',');
+            }
+            localVarQueryParameters['symbol'] = symbolSerialized;
+        }
+
+        if (opts.beginTime !== undefined) {
+            let beginTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.beginTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(beginTimeSerialized)) {
+                beginTimeSerialized = beginTimeSerialized.join(',');
+            }
+            localVarQueryParameters['begin_time'] = beginTimeSerialized;
+        }
+
+        if (opts.endTime !== undefined) {
+            let endTimeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.endTime, 'int64'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(endTimeSerialized)) {
+                endTimeSerialized = endTimeSerialized.join(',');
+            }
+            localVarQueryParameters['end_time'] = endTimeSerialized;
+        }
+
+        if (opts.startId !== undefined) {
+            let startIdSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.startId, 'bigint'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(startIdSerialized)) {
+                startIdSerialized = startIdSerialized.join(',');
+            }
+            localVarQueryParameters['start_id'] = startIdSerialized;
+        }
+
+        if (opts.sortDirection !== undefined) {
+            let sortDirectionSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.sortDirection, 'SortDirection'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(sortDirectionSerialized)) {
+                sortDirectionSerialized = sortDirectionSerialized.join(',');
+            }
+            localVarQueryParameters['sort_direction'] = sortDirectionSerialized;
+        }
+
+        if (opts.includeDetail !== undefined) {
+            let includeDetailSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.includeDetail, 'boolean'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(includeDetailSerialized)) {
+                includeDetailSerialized = includeDetailSerialized.join(',');
+            }
+            localVarQueryParameters['include_detail'] = includeDetailSerialized;
+        }
+
+        if (opts.page !== undefined) {
+            let pageSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.page, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(pageSerialized)) {
+                pageSerialized = pageSerialized.join(',');
+            }
+            localVarQueryParameters['page'] = pageSerialized;
+        }
+
+        if (opts.pageSize !== undefined) {
+            let pageSizeSerialized = ObjectSerializer.serializeQueryParameter(
+                ObjectSerializer.serialize(opts.pageSize, 'number'),
+            );
+            // Multi-valued form query keeps repeated names; CSV is used only when declared.
+            if (Array.isArray(pageSizeSerialized)) {
+                pageSizeSerialized = pageSizeSerialized.join(',');
+            }
+            localVarQueryParameters['page_size'] = pageSizeSerialized;
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<BalanceRecordList>(config, 'BalanceRecordList', authSettings);
     }
 
     /**

@@ -31,6 +31,13 @@ Name | Type | Description | Notes
 **orderFillTiming** | **SymbolDetailItem.OrderFillTiming** | Order fill timing (1&#x3D;immediate, 2&#x3D;after pre-market opens, 3&#x3D;after regular session opens) | [optional] [default to undefined]
 **symbolDescs** | [**Array<SymbolDetailItemSymbolDescs>**](SymbolDetailItemSymbolDescs.md) | Multilingual symbol description | [optional] [default to undefined]
 **iconLink** | **string** | Icon URL | [optional] [default to undefined]
+**marginMode** | **SymbolDetailItem.MarginMode** | Margin trading mode. - 0: Neither margin financing nor securities borrowing is supported. - 1: Margin financing is supported. - 2: Securities borrowing is supported. - 3: Both margin financing and securities borrowing are supported. | [optional] [default to undefined]
+**longIm** | **string** | Initial margin ratio for long positions | [optional] [default to undefined]
+**longMm** | **string** | Maintenance margin ratio for long positions | [optional] [default to undefined]
+**shortIm** | **string** | Initial margin ratio for short positions | [optional] [default to undefined]
+**shortMm** | **string** | Maintenance margin ratio for short positions | [optional] [default to undefined]
+**longBorrowingRate** | **string** | Annual margin financing interest rate. An empty string indicates that no valid rate is currently available. | [optional] [default to undefined]
+**shortBorrowingRate** | **string** | Annual securities borrowing interest rate. An empty string indicates that no valid rate is currently available. | [optional] [default to undefined]
 
 ## Enum: SymbolDetailItem.Exchange
 
@@ -100,6 +107,17 @@ Name | Type | Description | Notes
 
 
 ## Enum: SymbolDetailItem.OrderFillTiming
+
+* `NUMBER_1` (value: `1`)
+
+* `NUMBER_2` (value: `2`)
+
+* `NUMBER_3` (value: `3`)
+
+
+## Enum: SymbolDetailItem.MarginMode
+
+* `NUMBER_0` (value: `0`)
 
 * `NUMBER_1` (value: `1`)
 

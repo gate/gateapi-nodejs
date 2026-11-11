@@ -21,9 +21,17 @@ export class FuturesOrderBook {
      */
     'current'?: number;
     /**
+     * Response data timestamp in microseconds; omitted when unavailable
+     */
+    'currentUs'?: number | bigint;
+    /**
      * Order book changed timestamp
      */
     'update'?: number;
+    /**
+     * Order book update timestamp in microseconds; omitted when unavailable
+     */
+    'updateUs'?: number | bigint;
     /**
      * Ask Depth
      */
@@ -47,9 +55,19 @@ export class FuturesOrderBook {
             type: 'double',
         },
         {
+            name: 'currentUs',
+            baseName: 'current_us',
+            type: 'int64',
+        },
+        {
             name: 'update',
             baseName: 'update',
             type: 'double',
+        },
+        {
+            name: 'updateUs',
+            baseName: 'update_us',
+            type: 'int64',
         },
         {
             name: 'asks',

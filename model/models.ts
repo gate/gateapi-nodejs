@@ -90,6 +90,9 @@ export * from './autoInvestPortfolioItem';
 export * from './autoRepaySetting';
 export * from './awardListStruct';
 export * from './awardListStructList';
+export * from './balanceRecordItem';
+export * from './balanceRecordList';
+export * from './balanceRecordListData';
 export * from './baseResponse';
 export * from './batchAmendItem';
 export * from './batchAmendOrderReq';
@@ -198,6 +201,7 @@ export * from './crossexMarginInterestRecord';
 export * from './crossexMarginModeRequest';
 export * from './crossexMarginModeResponse';
 export * from './crossexMarginPosition';
+export * from './crossexOpenCapacity';
 export * from './crossexOrder';
 export * from './crossexOrderActionResponse';
 export * from './crossexOrderRequest';
@@ -301,6 +305,8 @@ export * from './flashSwapOrderPreviewResp';
 export * from './flashSwapOrderPreviewRespData';
 export * from './flashSwapOrderRequest';
 export * from './flashSwapPreviewRequest';
+export * from './flashSwapV1CurrencyPair';
+export * from './flashSwapV1CurrencyPairListResp';
 export * from './fundingAccount';
 export * from './fundingRateRecord';
 export * from './futureCancelOrderResult';
@@ -470,6 +476,9 @@ export * from './orderBookPrice';
 export * from './orderCancel';
 export * from './orderCreateV1Req';
 export * from './orderCreateV1Resp';
+export * from './orderDealItem';
+export * from './orderDealList';
+export * from './orderDealListData';
 export * from './orderHistoryList';
 export * from './orderHistoryList2';
 export * from './orderHistoryList2Data';
@@ -629,6 +638,7 @@ export * from './repayRecordTotalInterest';
 export * from './riskUnits';
 export * from './savedAddress';
 export * from './sendChatMessageRequest';
+export * from './setMarginFeature';
 export * from './setMerchantWorkHoursRequest';
 export * from './smallBalance';
 export * from './smallBalanceHistory';
@@ -698,6 +708,7 @@ export * from './tradFiSpotClosePositionRequest';
 export * from './tradFiSpotError';
 export * from './tradFiSpotOrderRequest';
 export * from './tradFiSpotOrderUpdateRequest';
+export * from './tradFiSpotSetMarginFeatureRequest';
 export * from './tradFiSpotTransactionRequest';
 export * from './tradFiTicker';
 export * from './tradFiTickerData';
@@ -786,6 +797,8 @@ export * from './withdrawalRecord';
 export * from './withdrawalsDel';
 
 import JSONBig from 'json-bigint';
+import { BigNumber } from 'bignumber.js';
+import { parse as parseLosslessJson, isLosslessNumber } from 'lossless-json';
 import { AxiosRequestConfig } from 'axios';
 import querystring = require('querystring');
 import crypto = require('crypto');
@@ -883,6 +896,9 @@ import { AutoInvestPortfolioItem } from './autoInvestPortfolioItem';
 import { AutoRepaySetting } from './autoRepaySetting';
 import { AwardListStruct } from './awardListStruct';
 import { AwardListStructList } from './awardListStructList';
+import { BalanceRecordItem } from './balanceRecordItem';
+import { BalanceRecordList } from './balanceRecordList';
+import { BalanceRecordListData } from './balanceRecordListData';
 import { BaseResponse } from './baseResponse';
 import { BatchAmendItem } from './batchAmendItem';
 import { BatchAmendOrderReq } from './batchAmendOrderReq';
@@ -991,6 +1007,7 @@ import { CrossexMarginInterestRecord } from './crossexMarginInterestRecord';
 import { CrossexMarginModeRequest } from './crossexMarginModeRequest';
 import { CrossexMarginModeResponse } from './crossexMarginModeResponse';
 import { CrossexMarginPosition } from './crossexMarginPosition';
+import { CrossexOpenCapacity } from './crossexOpenCapacity';
 import { CrossexOrder } from './crossexOrder';
 import { CrossexOrderActionResponse } from './crossexOrderActionResponse';
 import { CrossexOrderRequest } from './crossexOrderRequest';
@@ -1094,6 +1111,8 @@ import { FlashSwapOrderPreviewResp } from './flashSwapOrderPreviewResp';
 import { FlashSwapOrderPreviewRespData } from './flashSwapOrderPreviewRespData';
 import { FlashSwapOrderRequest } from './flashSwapOrderRequest';
 import { FlashSwapPreviewRequest } from './flashSwapPreviewRequest';
+import { FlashSwapV1CurrencyPair } from './flashSwapV1CurrencyPair';
+import { FlashSwapV1CurrencyPairListResp } from './flashSwapV1CurrencyPairListResp';
 import { FundingAccount } from './fundingAccount';
 import { FundingRateRecord } from './fundingRateRecord';
 import { FutureCancelOrderResult } from './futureCancelOrderResult';
@@ -1263,6 +1282,9 @@ import { OrderBookPrice } from './orderBookPrice';
 import { OrderCancel } from './orderCancel';
 import { OrderCreateV1Req } from './orderCreateV1Req';
 import { OrderCreateV1Resp } from './orderCreateV1Resp';
+import { OrderDealItem } from './orderDealItem';
+import { OrderDealList } from './orderDealList';
+import { OrderDealListData } from './orderDealListData';
 import { OrderHistoryList } from './orderHistoryList';
 import { OrderHistoryList2 } from './orderHistoryList2';
 import { OrderHistoryList2Data } from './orderHistoryList2Data';
@@ -1422,6 +1444,7 @@ import { RepayRecordTotalInterest } from './repayRecordTotalInterest';
 import { RiskUnits } from './riskUnits';
 import { SavedAddress } from './savedAddress';
 import { SendChatMessageRequest } from './sendChatMessageRequest';
+import { SetMarginFeature } from './setMarginFeature';
 import { SetMerchantWorkHoursRequest } from './setMerchantWorkHoursRequest';
 import { SmallBalance } from './smallBalance';
 import { SmallBalanceHistory } from './smallBalanceHistory';
@@ -1491,6 +1514,7 @@ import { TradFiSpotClosePositionRequest } from './tradFiSpotClosePositionRequest
 import { TradFiSpotError } from './tradFiSpotError';
 import { TradFiSpotOrderRequest } from './tradFiSpotOrderRequest';
 import { TradFiSpotOrderUpdateRequest } from './tradFiSpotOrderUpdateRequest';
+import { TradFiSpotSetMarginFeatureRequest } from './tradFiSpotSetMarginFeatureRequest';
 import { TradFiSpotTransactionRequest } from './tradFiSpotTransactionRequest';
 import { TradFiTicker } from './tradFiTicker';
 import { TradFiTickerData } from './tradFiTickerData';
@@ -1638,6 +1662,7 @@ let enumsMap: { [index: string]: any } = {
     'CrossMarginLoan.Status': CrossMarginLoan.Status,
     'CrossexIsolatedMarginRequest.PositionSide': CrossexIsolatedMarginRequest.PositionSide,
     'CrossexMarginModeRequest.MarginMode': CrossexMarginModeRequest.MarginMode,
+    'CrossexOpenCapacity.PositionSide': CrossexOpenCapacity.PositionSide,
     'CrossexOrderRequest.Side': CrossexOrderRequest.Side,
     'CrossexOrderRequest.Type': CrossexOrderRequest.Type,
     'CrossexOrderRequest.TimeInForce': CrossexOrderRequest.TimeInForce,
@@ -1720,6 +1745,9 @@ let enumsMap: { [index: string]: any } = {
     'OrderCancel.TimeInForce': OrderCancel.TimeInForce,
     'OrderCancel.StpAct': OrderCancel.StpAct,
     'OrderCancel.FinishAs': OrderCancel.FinishAs,
+    'OrderDealItem.Exchange': OrderDealItem.Exchange,
+    'OrderDealItem.Side': OrderDealItem.Side,
+    'OrderDealItem.Role': OrderDealItem.Role,
     'OrderHistoryListDataList.PriceType': OrderHistoryListDataList.PriceType,
     'OrderHistoryListDataList.OrderOptType': OrderHistoryListDataList.OrderOptType,
     'OrderHistoryListDataList.Side': OrderHistoryListDataList.Side,
@@ -1793,12 +1821,14 @@ let enumsMap: { [index: string]: any } = {
     'SymbolDetailItem.TradeStatus': SymbolDetailItem.TradeStatus,
     'SymbolDetailItem.TradeMode': SymbolDetailItem.TradeMode,
     'SymbolDetailItem.OrderFillTiming': SymbolDetailItem.OrderFillTiming,
+    'SymbolDetailItem.MarginMode': SymbolDetailItem.MarginMode,
     'SymbolListItem.Exchange': SymbolListItem.Exchange,
     'SymbolListItem.Category': SymbolListItem.Category,
     'SymbolListItem.AssetType': SymbolListItem.AssetType,
     'SymbolListItem.TradeStatus': SymbolListItem.TradeStatus,
     'SymbolListItem.TradeMode': SymbolListItem.TradeMode,
     'SymbolListItem.OrderFillTiming': SymbolListItem.OrderFillTiming,
+    'SymbolListItem.MarginMode': SymbolListItem.MarginMode,
     'TradFiClosePositionRequest.CloseType': TradFiClosePositionRequest.CloseType,
     'TradFiOrderRequest.PriceType': TradFiOrderRequest.PriceType,
     'TradFiOrderRequest.Side': TradFiOrderRequest.Side,
@@ -1918,6 +1948,9 @@ let typeMap: { [index: string]: any } = {
     AutoRepaySetting: AutoRepaySetting,
     AwardListStruct: AwardListStruct,
     AwardListStructList: AwardListStructList,
+    BalanceRecordItem: BalanceRecordItem,
+    BalanceRecordList: BalanceRecordList,
+    BalanceRecordListData: BalanceRecordListData,
     BaseResponse: BaseResponse,
     BatchAmendItem: BatchAmendItem,
     BatchAmendOrderReq: BatchAmendOrderReq,
@@ -2025,6 +2058,7 @@ let typeMap: { [index: string]: any } = {
     CrossexMarginModeRequest: CrossexMarginModeRequest,
     CrossexMarginModeResponse: CrossexMarginModeResponse,
     CrossexMarginPosition: CrossexMarginPosition,
+    CrossexOpenCapacity: CrossexOpenCapacity,
     CrossexOrder: CrossexOrder,
     CrossexOrderActionResponse: CrossexOrderActionResponse,
     CrossexOrderRequest: CrossexOrderRequest,
@@ -2127,6 +2161,8 @@ let typeMap: { [index: string]: any } = {
     FlashSwapOrderPreviewRespData: FlashSwapOrderPreviewRespData,
     FlashSwapOrderRequest: FlashSwapOrderRequest,
     FlashSwapPreviewRequest: FlashSwapPreviewRequest,
+    FlashSwapV1CurrencyPair: FlashSwapV1CurrencyPair,
+    FlashSwapV1CurrencyPairListResp: FlashSwapV1CurrencyPairListResp,
     FundingAccount: FundingAccount,
     FundingRateRecord: FundingRateRecord,
     FutureCancelOrderResult: FutureCancelOrderResult,
@@ -2295,6 +2331,9 @@ let typeMap: { [index: string]: any } = {
     OrderCancel: OrderCancel,
     OrderCreateV1Req: OrderCreateV1Req,
     OrderCreateV1Resp: OrderCreateV1Resp,
+    OrderDealItem: OrderDealItem,
+    OrderDealList: OrderDealList,
+    OrderDealListData: OrderDealListData,
     OrderHistoryList: OrderHistoryList,
     OrderHistoryList2: OrderHistoryList2,
     OrderHistoryList2Data: OrderHistoryList2Data,
@@ -2455,6 +2494,7 @@ let typeMap: { [index: string]: any } = {
     RiskUnits: RiskUnits,
     SavedAddress: SavedAddress,
     SendChatMessageRequest: SendChatMessageRequest,
+    SetMarginFeature: SetMarginFeature,
     SetMerchantWorkHoursRequest: SetMerchantWorkHoursRequest,
     SmallBalance: SmallBalance,
     SmallBalanceHistory: SmallBalanceHistory,
@@ -2523,6 +2563,7 @@ let typeMap: { [index: string]: any } = {
     TradFiSpotError: TradFiSpotError,
     TradFiSpotOrderRequest: TradFiSpotOrderRequest,
     TradFiSpotOrderUpdateRequest: TradFiSpotOrderUpdateRequest,
+    TradFiSpotSetMarginFeatureRequest: TradFiSpotSetMarginFeatureRequest,
     TradFiSpotTransactionRequest: TradFiSpotTransactionRequest,
     TradFiTicker: TradFiTicker,
     TradFiTickerData: TradFiTickerData,
@@ -2615,8 +2656,58 @@ const JSONBigInt = JSONBig({ useNativeBigInt: true });
 // The BigNumber parse mode handles long fractional tokens as well as integers.
 // Convert only unsafe integral values to bigint; ordinary numbers remain numbers.
 const ResponseJSON = JSONBig({ useNativeBigInt: false });
+// A generated business model may itself be named Symbol; resolve the runtime
+// primitive explicitly so metadata identity cannot collide with model exports.
+const exactParsedContainer = globalThis.Symbol('gate-exact-json-container');
 
-export function parseResponseData(data: any, contentType?: unknown): any {
+/** Preserve the established ordinary number/bigint behavior outside decimal leaves. */
+function legacyNumber(value: any): any {
+    if (isLosslessNumber(value)) {
+        // Ordinary fields intentionally keep the original parser's behavior.
+        // This conversion is never used for a declared decimal value.
+        return ResponseJSON.parse(value.value, (_key: string, child: any) => legacyNumber(child));
+    }
+    if (!BigNumber.isBigNumber(value)) return value;
+    if (value.isInteger()) {
+        const integer = BigInt(value.toFixed(0));
+        return integer >= BigInt(Number.MIN_SAFE_INTEGER) && integer <= BigInt(Number.MAX_SAFE_INTEGER)
+            ? Number(integer)
+            : integer;
+    }
+    const number = Number(value.toString());
+    if (!Number.isFinite(number)) throw new RangeError('JSON number exceeds the JavaScript finite number range.');
+    return number;
+}
+
+/** Unknown JSON subtrees retain their previous primitive and prototype shapes. */
+function legacyData(data: any, seen: WeakMap<object, any> = new WeakMap()): any {
+    if (isLosslessNumber(data)) return legacyNumber(data);
+    if (data === null || typeof data !== 'object') return data;
+    // Caller-supplied transforms and ordinary decoded object identities must
+    // remain untouched. Only this SDK's exact parser needs the legacy rewrite.
+    if (!data[exactParsedContainer]) return data;
+    if (seen.has(data)) return seen.get(data);
+    if (Array.isArray(data)) {
+        const result: any[] = [];
+        seen.set(data, result);
+        for (const item of data) result.push(legacyData(item, seen));
+        return result;
+    }
+    if (Object.prototype.toString.call(data) !== '[object Object]') return data;
+    const result = Object.create(Object.getPrototypeOf(data));
+    seen.set(data, result);
+    for (const key of Object.keys(data)) {
+        Object.defineProperty(result, key, {
+            value: legacyData(data[key], seen),
+            enumerable: true,
+            configurable: true,
+            writable: true,
+        });
+    }
+    return result;
+}
+
+export function parseResponseData(data: any, contentType?: unknown, responseType?: string): any {
     if (typeof data !== 'string' || data.length === 0) {
         return data;
     }
@@ -2625,27 +2716,26 @@ export function parseResponseData(data: any, contentType?: unknown): any {
     }
     // A malformed JSON response must reject the request, never become a string
     // subsequently iterated as a list of fabricated empty model instances.
-    return ResponseJSON.parse(data, (_key: string, value: any) => {
-        if (
-            value &&
-            typeof value === 'object' &&
-            typeof value.isInteger === 'function' &&
-            typeof value.toFixed === 'function'
-        ) {
-            if (value.isInteger()) {
-                const integer = BigInt(value.toFixed(0));
-                return integer >= BigInt(Number.MIN_SAFE_INTEGER) && integer <= BigInt(Number.MAX_SAFE_INTEGER)
-                    ? Number(integer)
-                    : integer;
-            }
-            const number = Number(value.toString());
-            if (!Number.isFinite(number)) {
-                throw new RangeError('JSON number exceeds the JavaScript finite number range.');
-            }
-            return number;
-        }
-        return value;
-    });
+    if (responseType && ObjectSerializer.requiresExactNumbers(responseType)) {
+        // The serializer applies legacy coercion to each non-decimal leaf. A
+        // response-wide float conversion here would already destroy precision.
+        return parseLosslessJson(
+            data,
+            (key: string, value: any) => {
+                // Match JSONBig's existing prototype/constructor poisoning policy.
+                // The library itself also defines __proto__ safely before revival.
+                if (key === '__proto__' || key === 'constructor')
+                    throw new SyntaxError('Forbidden JSON property: ' + key);
+                if (value !== null && typeof value === 'object' && !isLosslessNumber(value)) {
+                    if (!Array.isArray(value)) Object.setPrototypeOf(value, null);
+                    Object.defineProperty(value, exactParsedContainer, { value: true });
+                }
+                return value;
+            },
+            { onDuplicateKey: ({ newValue }) => newValue },
+        );
+    }
+    return ResponseJSON.parse(data, (_key: string, value: any) => legacyNumber(value));
 }
 
 export function serializeRequestData(data: any) {
@@ -2665,6 +2755,48 @@ export function serializeRequestData(data: any) {
 }
 
 export class ObjectSerializer {
+    /** Walk the finite generated type graph; cycles are per-call, never global state. */
+    public static requiresExactNumbers(type: string, seen: Set<string> = new Set()): boolean {
+        if (type === 'decimal') return true;
+        if (type.startsWith('Array<') && type.endsWith('>')) {
+            return this.requiresExactNumbers(type.slice(6, -1), seen);
+        }
+        const valueType = this.dictionaryValueType(type);
+        if (valueType !== undefined) return this.requiresExactNumbers(valueType, seen);
+        if (!typeMap[type] || seen.has(type)) return false;
+        seen.add(type);
+        return typeMap[type]
+            .getAttributeTypeMap()
+            .some((field: { type: string }) => this.requiresExactNumbers(field.type, seen));
+    }
+
+    /** Reject binary floating inputs that may already have lost monetary digits. */
+    private static exactNumber(data: any): BigNumber {
+        if (isLosslessNumber(data)) return ObjectSerializer.exactNumberText(data.value);
+        if (BigNumber.isBigNumber(data)) {
+            if (!data.isFinite()) throw new RangeError('Decimal must be a finite JSON number.');
+            return data;
+        }
+        if (typeof data === 'bigint' || (typeof data === 'number' && Number.isSafeInteger(data))) {
+            return ObjectSerializer.exactNumberText(String(data));
+        }
+        if (typeof data === 'string' && /^-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$/.test(data)) {
+            return ObjectSerializer.exactNumberText(data);
+        }
+        throw new TypeError(
+            'Decimal requires a finite BigNumber or exact decimal string; floating number inputs are unsafe.',
+        );
+    }
+
+    /** Construct from the raw token and fail closed on the library's exponent bounds. */
+    private static exactNumberText(text: string): BigNumber {
+        const value = new BigNumber(text);
+        if (!value.isFinite()) throw new RangeError('Decimal overflow exceeds BigNumber range.');
+        const mantissa = text.split(/[eE]/, 1)[0];
+        if (value.isZero() && /[1-9]/.test(mantissa))
+            throw new RangeError('Decimal underflow exceeds BigNumber range.');
+        return value;
+    }
     /** Validate int64 before serialization; an unsafe number has already lost its original ID. */
     private static integerValue(value: any): number | bigint {
         if (typeof value === 'bigint' || (typeof value === 'number' && Number.isSafeInteger(value))) {
@@ -2757,6 +2889,8 @@ export class ObjectSerializer {
     public static serialize(data: any, type: string) {
         if (data == undefined) {
             return data;
+        } else if (type === 'decimal') {
+            return ObjectSerializer.exactNumber(data);
         } else if (type.toLowerCase() === 'bigint-string') {
             // The extension changes the JavaScript representation, not the
             // authoritative JSON string wire type.
@@ -2816,11 +2950,16 @@ export class ObjectSerializer {
         type = ObjectSerializer.findCorrectType(data, type);
         if (data == undefined) {
             return data;
+        } else if (type === 'decimal') {
+            if (!BigNumber.isBigNumber(data) && !isLosslessNumber(data))
+                throw new TypeError('Decimal response must be a JSON number.');
+            return ObjectSerializer.exactNumber(data);
         } else if (type.toLowerCase() === 'bigint-string') {
-            return ObjectSerializer.bigintValue(data);
+            return ObjectSerializer.bigintValue(legacyNumber(data));
         } else if (type.toLowerCase() === 'int64') {
-            return ObjectSerializer.integerValue(data);
+            return ObjectSerializer.integerValue(legacyNumber(data));
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
+            data = legacyData(data);
             if (type.toLowerCase() === 'bigint') {
                 if (typeof data === 'number') {
                     ObjectSerializer.integerValue(data);
@@ -2859,16 +2998,16 @@ export class ObjectSerializer {
         } else if (ObjectSerializer.dictionaryValueType(type) !== undefined) {
             return ObjectSerializer.dictionary(data, ObjectSerializer.dictionaryValueType(type) as string, true);
         } else if (type === 'Date') {
-            return new Date(data);
+            return new Date(legacyNumber(data));
         } else {
             if (enumsMap[type]) {
                 // is Enum
-                return data;
+                return legacyData(data);
             }
 
             if (!typeMap[type]) {
                 // dont know the type
-                return data;
+                return legacyData(data);
             }
             if (typeof data !== 'object' || Array.isArray(data)) {
                 throw new TypeError('Expected an object for ' + type + '.');

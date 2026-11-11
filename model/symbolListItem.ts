@@ -96,6 +96,34 @@ export class SymbolListItem {
      * Multilingual symbol description
      */
     'symbolDescs'?: Array<I18nTxt>;
+    /**
+     * Margin trading mode. - 0: Neither margin financing nor securities borrowing is supported. - 1: Margin financing is supported. - 2: Securities borrowing is supported. - 3: Both margin financing and securities borrowing are supported.
+     */
+    'marginMode'?: SymbolListItem.MarginMode;
+    /**
+     * Initial margin ratio for long positions
+     */
+    'longIm'?: string;
+    /**
+     * Maintenance margin ratio for long positions
+     */
+    'longMm'?: string;
+    /**
+     * Initial margin ratio for short positions
+     */
+    'shortIm'?: string;
+    /**
+     * Maintenance margin ratio for short positions
+     */
+    'shortMm'?: string;
+    /**
+     * Annual margin financing interest rate. An empty string indicates that no valid rate is currently available.
+     */
+    'longBorrowingRate'?: string;
+    /**
+     * Annual securities borrowing interest rate. An empty string indicates that no valid rate is currently available.
+     */
+    'shortBorrowingRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -205,6 +233,41 @@ export class SymbolListItem {
             baseName: 'symbol_descs',
             type: 'Array<I18nTxt>',
         },
+        {
+            name: 'marginMode',
+            baseName: 'margin_mode',
+            type: 'SymbolListItem.MarginMode',
+        },
+        {
+            name: 'longIm',
+            baseName: 'long_im',
+            type: 'string',
+        },
+        {
+            name: 'longMm',
+            baseName: 'long_mm',
+            type: 'string',
+        },
+        {
+            name: 'shortIm',
+            baseName: 'short_im',
+            type: 'string',
+        },
+        {
+            name: 'shortMm',
+            baseName: 'short_mm',
+            type: 'string',
+        },
+        {
+            name: 'longBorrowingRate',
+            baseName: 'long_borrowing_rate',
+            type: 'string',
+        },
+        {
+            name: 'shortBorrowingRate',
+            baseName: 'short_borrowing_rate',
+            type: 'string',
+        },
     ];
 
     static getAttributeTypeMap() {
@@ -250,6 +313,12 @@ export namespace SymbolListItem {
         NUMBER_8 = <any>8,
     }
     export enum OrderFillTiming {
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
+        NUMBER_3 = <any>3,
+    }
+    export enum MarginMode {
+        NUMBER_0 = <any>0,
         NUMBER_1 = <any>1,
         NUMBER_2 = <any>2,
         NUMBER_3 = <any>3,

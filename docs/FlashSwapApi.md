@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**createFlashSwapOrder**](FlashSwapApi.md#createFlashSwapOrder) | **POST** /flash_swap/orders | Create a flash swap order
 [**getFlashSwapOrder**](FlashSwapApi.md#getFlashSwapOrder) | **GET** /flash_swap/orders/{order_id} | Query single flash swap order
 [**previewFlashSwapOrder**](FlashSwapApi.md#previewFlashSwapOrder) | **POST** /flash_swap/orders/preview | Flash swap order preview
+[**listFlashSwapCurrencyPairV1**](FlashSwapApi.md#listFlashSwapCurrencyPairV1) | **GET** /flash-swap/v1/currency-pair | List Flash Swap currency pairs
 [**createFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#createFlashSwapMultiCurrencyManyToOneOrder) | **POST** /flash_swap/multi-currency/many-to-one/order/create | Flash Swap - Multi-currency exchange - Place order (many-to-one)
 [**previewFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#previewFlashSwapMultiCurrencyManyToOneOrder) | **POST** /flash_swap/multi-currency/many-to-one/order/preview | Flash Swap - Multi-currency exchange - Preview (many-to-one)
 [**createFlashSwapOrderV1**](FlashSwapApi.md#createFlashSwapOrderV1) | **POST** /flash_swap/order/create | Flash Swap - Place order (one-to-one)
@@ -250,6 +251,57 @@ Promise<{ response: AxiosResponse; body: FlashSwapOrderPreview; }> [FlashSwapOrd
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+## listFlashSwapCurrencyPairV1
+
+> Promise<{ response: http.IncomingMessage; body: FlashSwapV1CurrencyPairListResp; }> listFlashSwapCurrencyPairV1(assetName, side, opts)
+
+List Flash Swap currency pairs
+
+List available Flash Swap currency pairs and buy/sell amount limits for the specified currency and trading side
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FlashSwapApi(client);
+const assetName = "BTC"; // string | Currency name
+const side = 1; // 1 | 2 | Trading side - `1`: Sell - `2`: Buy
+const opts = {
+  'xGateRegion': "xGateRegion_example" // string | User region
+};
+api.listFlashSwapCurrencyPairV1(assetName, side, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **assetName** | **string**| Currency name | [default to undefined]
+ **side** | **Side**| Trading side - &#x60;1&#x60;: Sell - &#x60;2&#x60;: Buy | [default to undefined]
+ **xGateRegion** | **string**| User region | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FlashSwapV1CurrencyPairListResp; }> [FlashSwapV1CurrencyPairListResp](FlashSwapV1CurrencyPairListResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 ## createFlashSwapMultiCurrencyManyToOneOrder

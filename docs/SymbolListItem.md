@@ -25,6 +25,13 @@ Name | Type | Description | Notes
 **sellPriceProtection** | **string** | Sell price protection rate | [optional] [default to undefined]
 **buyPriceProtection** | **string** | Buy price protection rate | [optional] [default to undefined]
 **symbolDescs** | [**Array<I18nTxt>**](I18nTxt.md) | Multilingual symbol description | [optional] [default to undefined]
+**marginMode** | **SymbolListItem.MarginMode** | Margin trading mode. - 0: Neither margin financing nor securities borrowing is supported. - 1: Margin financing is supported. - 2: Securities borrowing is supported. - 3: Both margin financing and securities borrowing are supported. | [optional] [default to undefined]
+**longIm** | **string** | Initial margin ratio for long positions | [optional] [default to undefined]
+**longMm** | **string** | Maintenance margin ratio for long positions | [optional] [default to undefined]
+**shortIm** | **string** | Initial margin ratio for short positions | [optional] [default to undefined]
+**shortMm** | **string** | Maintenance margin ratio for short positions | [optional] [default to undefined]
+**longBorrowingRate** | **string** | Annual margin financing interest rate. An empty string indicates that no valid rate is currently available. | [optional] [default to undefined]
+**shortBorrowingRate** | **string** | Annual securities borrowing interest rate. An empty string indicates that no valid rate is currently available. | [optional] [default to undefined]
 
 ## Enum: SymbolListItem.Exchange
 
@@ -94,6 +101,17 @@ Name | Type | Description | Notes
 
 
 ## Enum: SymbolListItem.OrderFillTiming
+
+* `NUMBER_1` (value: `1`)
+
+* `NUMBER_2` (value: `2`)
+
+* `NUMBER_3` (value: `3`)
+
+
+## Enum: SymbolListItem.MarginMode
+
+* `NUMBER_0` (value: `0`)
 
 * `NUMBER_1` (value: `1`)
 

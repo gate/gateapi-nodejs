@@ -27,6 +27,7 @@ import { FlashSwapOrderPreview } from '../model/flashSwapOrderPreview';
 import { FlashSwapOrderPreviewResp } from '../model/flashSwapOrderPreviewResp';
 import { FlashSwapOrderRequest } from '../model/flashSwapOrderRequest';
 import { FlashSwapPreviewRequest } from '../model/flashSwapPreviewRequest';
+import { FlashSwapV1CurrencyPairListResp } from '../model/flashSwapV1CurrencyPairListResp';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -337,6 +338,79 @@ export class FlashSwapApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<FlashSwapOrderPreview>(config, 'FlashSwapOrderPreview', authSettings);
+    }
+
+    /**
+     * List available Flash Swap currency pairs and buy/sell amount limits for the specified currency and trading side
+     * @summary List Flash Swap currency pairs
+     * @param assetName Currency name
+     * @param side Trading side - &#x60;1&#x60;: Sell - &#x60;2&#x60;: Buy
+     * @param opts Optional parameters
+     * @param opts.xGateRegion User region
+     */
+    public async listFlashSwapCurrencyPairV1(
+        assetName: string,
+        side: 1 | 2,
+        opts?: { xGateRegion?: string },
+    ): Promise<{ response: AxiosResponse; body: FlashSwapV1CurrencyPairListResp }> {
+        // All int64 paths share exact validation; ordinary safe-number calls remain valid.
+        const localVarPath = this.client.basePath + '/flash-swap/v1/currency-pair';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'assetName' is not null or undefined
+        if (assetName === null || assetName === undefined) {
+            throw new Error(
+                'Required parameter assetName was null or undefined when calling listFlashSwapCurrencyPairV1.',
+            );
+        }
+
+        // verify required parameter 'side' is not null or undefined
+        if (side === null || side === undefined) {
+            throw new Error('Required parameter side was null or undefined when calling listFlashSwapCurrencyPairV1.');
+        }
+
+        opts = opts || {};
+        let assetNameSerialized = ObjectSerializer.serializeQueryParameter(
+            ObjectSerializer.serialize(assetName, 'string'),
+        );
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
+        if (Array.isArray(assetNameSerialized)) {
+            assetNameSerialized = assetNameSerialized.join(',');
+        }
+        localVarQueryParameters['asset_name'] = assetNameSerialized;
+
+        let sideSerialized = ObjectSerializer.serializeQueryParameter(ObjectSerializer.serialize(side, 'Side'));
+        // Multi-valued form query keeps repeated names; CSV is used only when declared.
+        if (Array.isArray(sideSerialized)) {
+            sideSerialized = sideSerialized.join(',');
+        }
+        localVarQueryParameters['side'] = sideSerialized;
+
+        if (opts.xGateRegion !== undefined) {
+            localVarHeaderParams['X-Gate-Region'] = ObjectSerializer.serialize(opts.xGateRegion, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FlashSwapV1CurrencyPairListResp>(
+            config,
+            'FlashSwapV1CurrencyPairListResp',
+            authSettings,
+        );
     }
 
     /**

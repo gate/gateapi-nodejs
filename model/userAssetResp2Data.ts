@@ -23,6 +23,34 @@ export class UserAssetResp2Data {
      */
     'available'?: string;
     /**
+     * Loan amount. Non-negative: the absolute value of the original available balance when it is negative, otherwise 0.
+     */
+    'loanAmount'?: string;
+    /**
+     * Buying power
+     */
+    'buyPower'?: string;
+    /**
+     * Leverage
+     */
+    'leverage'?: string;
+    /**
+     * Excess liquidity
+     */
+    'leaveLiquidity'?: string;
+    /**
+     * Excess liquidity ratio
+     */
+    'leaveLiquidityRate'?: string;
+    /**
+     * Available Excess Equity (AEE)
+     */
+    'aee'?: string;
+    /**
+     * Options margin
+     */
+    'optionsMargin'?: string;
+    /**
      * Position market value
      */
     'positionMarketValue'?: string;
@@ -50,6 +78,14 @@ export class UserAssetResp2Data {
      * Whether the user has activated the service
      */
     'userExists'?: boolean;
+    /**
+     * Whether margin financing is enabled
+     */
+    'marginEnabled'?: boolean;
+    /**
+     * Annual margin financing interest rate. An empty string indicates that no valid rate is currently available.
+     */
+    'longBorrowingRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -67,6 +103,41 @@ export class UserAssetResp2Data {
         {
             name: 'available',
             baseName: 'available',
+            type: 'string',
+        },
+        {
+            name: 'loanAmount',
+            baseName: 'loan_amount',
+            type: 'string',
+        },
+        {
+            name: 'buyPower',
+            baseName: 'buy_power',
+            type: 'string',
+        },
+        {
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
+        },
+        {
+            name: 'leaveLiquidity',
+            baseName: 'leave_liquidity',
+            type: 'string',
+        },
+        {
+            name: 'leaveLiquidityRate',
+            baseName: 'leave_liquidity_rate',
+            type: 'string',
+        },
+        {
+            name: 'aee',
+            baseName: 'aee',
+            type: 'string',
+        },
+        {
+            name: 'optionsMargin',
+            baseName: 'options_margin',
             type: 'string',
         },
         {
@@ -103,6 +174,16 @@ export class UserAssetResp2Data {
             name: 'userExists',
             baseName: 'user_exists',
             type: 'boolean',
+        },
+        {
+            name: 'marginEnabled',
+            baseName: 'margin_enabled',
+            type: 'boolean',
+        },
+        {
+            name: 'longBorrowingRate',
+            baseName: 'long_borrowing_rate',
+            type: 'string',
         },
     ];
 
